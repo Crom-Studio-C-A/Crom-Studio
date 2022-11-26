@@ -1,6 +1,6 @@
-#Sistema Administrativo y Contable Valerys (Crom Studio)
+# Sistema Administrativo y Contable Valerys (Crom Studio)
 
-##Caracterisitcas
+## Caracterisitcas
 Valery incluye las siguientes características o ventajas:
 1. Es el software más económico del mercado.
 2. Con 8 módulos completos, inventario, cxc, cxp, clientes, bancos, facturación, libros de impuestos.
@@ -25,4 +25,4 @@ Valery incluye las siguientes características o ventajas:
 
 Los Productos Valery se han caracterizados por su facilidad de uso y procesos sencillos para que todos los usuarios se sientan cómodos a la hora de trabajar con Valery.
 
-#Imagenes
+# Imagenes
