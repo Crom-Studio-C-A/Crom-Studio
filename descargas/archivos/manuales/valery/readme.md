@@ -3,13 +3,13 @@
 [Manual](Valery.pdf)
 
 
-[Preguntas Frecuentes](https://cromstudio.online/descargas/archivos/manuales/valery/)
+[Preguntas Frecuentes](descargas/archivos/manuales/valery/Preguntas y respuestas mas frecuentes.pdf)
 
 
-[Respaldo de Datos]()
+[Respaldo de Datos](descargas/archivos/manuales/valery/Respaldos De Datos Valery.pdf)
 
 
-[Editor de Reportes]()
+[Editor de Reportes](descargas/archivos/manuales/valery/Editor de reportes.pdf)
 
 
-[Como Hacer Una Factura de Contado]()
+[Como Hacer Una Factura de Contado](descargas/archivos/manuales/valery/Como Hacer Una Factura De Venta al Contado.pdf)
