@@ -1,6 +1,4 @@
 # Website
-Repositorio oficial de la web de Crom Studio
-
 
 ## Soporte Tecnico
 
