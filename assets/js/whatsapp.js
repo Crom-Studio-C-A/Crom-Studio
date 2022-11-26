@@ -14,8 +14,8 @@ $form.addEventListener('submit', (event) => {
 
     setTimeout(() => {
         let name = document.querySelector('#name').value
-        let lastname = document.querySelector('#referencia').value
-        let email = document.querySelector('#text').value
+        let referencia = document.querySelector('#referencia').value
+        let text = document.querySelector('#text').value
         let message = 'send?phone=' + phone + '&text=*_Formulario De Pago_*%0A*CROM STUDIO*%0A%0A*Nombre*%0A' + name + '%0A*Referencia*%0A' + referencia + '%0A*Banco*%0A' + text + ''
 
 
