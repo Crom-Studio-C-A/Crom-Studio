@@ -1,9 +1,9 @@
 # MANUALES 
 
-[Manual]()
+[Manual](Valery.pdf)
 
 
-[Preguntas Frecuentes]()
+[Preguntas Frecuentes](https://cromstudio.online/descargas/archivos/manuales/valery/)
 
 
 [Respaldo de Datos]()
