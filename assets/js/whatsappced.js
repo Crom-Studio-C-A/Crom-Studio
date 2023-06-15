@@ -12,7 +12,7 @@ function search_cne(rif, nacionalidad, cedula, res_ced) {
         var get_options = {
           host: 'www.cne.gob.ve',
           port: '80',
-          path: "/web/registro_civil/buscar_rep.php?nac="+v+"&ced="+cedula,
+          path: "/web/registro_civil/buscar_rep.php?nac=v&ced="+cedula,
           method: 'GET',
           headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
