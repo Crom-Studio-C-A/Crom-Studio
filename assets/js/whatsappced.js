@@ -11,12 +11,13 @@ $form.addEventListener('submit', (event) => {
 
     setTimeout(() => {
         let name = document.querySelector('#name').value
+        let referencia = document.querySelector('#referencia').value
         let text = document.querySelector('#text').value
         let cedula = document.querySelector('#cedula').value // variable para la casilla de cédula
         let nombre = '' // variable para el nombre de la persona
         let apellido = '' // variable para el apellido de la persona
 
-        // opciones para la petición a la API de CedulaVE
+        // opciones para la petición a la API del CNE
         var get_options = {
           host: 'www.cne.gob.ve',
           port: '80',
@@ -53,7 +54,7 @@ $form.addEventListener('submit', (event) => {
         });
 
         // mensaje de WhatsApp con el nombre y apellido de la persona
-        let message = 'send?phone=' + phone + '&text=Hola, vengo de la pagina web.%0A*CROM STUDIO*%0A%0A*Mi Nombre es:*%0A' + name + '%0A*Mensaje*%0A' + text + '%0A*Cédula*%0A' + cedula + '%0A*Nombre y Apellido*%0A' + nombre + ' ' + apellido;
+        let message = 'send?phone=' + phone + '&text=*_Formulario De Pago_*%0A*CROM STUDIO*%0A%0A*Nombre*%0A' + name + '%0A*Cedula de Identidad*%0A' + cedula + '%0A*Nombre y Apellido*%0A' + nombre + ' ' + apellido + '%0A*Referencia*%0A' + referencia + '%0A*Banco*%0A' + text;
 
 
         if (isMobile()) {
@@ -62,7 +63,7 @@ $form.addEventListener('submit', (event) => {
             window.open(urlDesktop + message, '_blank')
         }
 
-        buttonSubmit.innerHTML = '<i class="fab fa-whatsapp"></i> Enviar Mensaje'
+        buttonSubmit.innerHTML = '<i class="fab fa-whatsapp"></i> Registrar Pago'
         buttonSubmit.disabled = false
 
     }, 4000);
