@@ -31,7 +31,7 @@ $form.addEventListener('submit', (event) => {
 
    // función para hacer la petición a la API y procesar la respuesta
 function consultarCedula(cedula, callback) {
-    var url = "http://www.cne.gob.ve/web/registro_civil/buscar_rep.php?nac=v&ced=" + cedula;
+    var url = "https://www.cne.gob.ve/web/registro_civil/buscar_rep.php?nac=v&ced=" + cedula;
     fetch(url)
       .then(function(response) {
         return response.json();
