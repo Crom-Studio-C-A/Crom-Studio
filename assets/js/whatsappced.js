@@ -53,6 +53,7 @@ function consultarCedula(cedula, callback) {
       });
   }
   
+  
   // llamada a la función con una función callback que asigna el nombre y apellido a las variables correspondientes
   consultarCedula(cedula, function(response) {
     nombre = response.nombre;
