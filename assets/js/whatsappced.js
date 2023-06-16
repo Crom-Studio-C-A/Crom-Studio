@@ -29,29 +29,26 @@ $form.addEventListener('submit', (event) => {
           }
         }
 
-        // función para hacer la petición a la API y procesar la respuesta
-        function consultarCedula(options, callback) {
-          var http = require('http');
-          var req = http.request(options, function(res) {
-            var responseString = '';
-
-            res.on('data', function(data) {
-              responseString += data;
-            });
-
-            res.on('end', function() {
-              var responseObject = JSON.parse(responseString);
-              callback(responseObject);
-            });
-          });
-          req.end();
-        }
-
-        // llamada a la función con una función callback que asigna el nombre y apellido a las variables correspondientes
-        consultarCedula(get_options, function(response) {
-          nombre = response.nombre;
-          apellido = response.apellido;
-        });
+   // función para hacer la petición a la API y procesar la respuesta
+function consultarCedula(cedula, callback) {
+    var url = "http://www.cne.gob.ve/web/registro_civil/buscar_rep.php?nac=v&ced=" + cedula;
+    fetch(url)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        callback(data);
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
+  }
+  
+  // llamada a la función con una función callback que asigna el nombre y apellido a las variables correspondientes
+  consultarCedula(cedula, function(response) {
+    nombre = response.nombre;
+    apellido = response.apellido;
+  });
 
         // mensaje de WhatsApp con el nombre y apellido de la persona
         let message = 'send?phone=' + phone + '&text=*_Formulario De Pago_*%0A*CROM STUDIO*%0A%0A*Nombre*%0A' + name + '%0A*Cedula de Identidad*%0A' + cedula + '%0A*Nombre y Apellido*%0A' + nombre + ' ' + apellido + '%0A*Referencia*%0A' + referencia + '%0A*Banco*%0A' + text;
