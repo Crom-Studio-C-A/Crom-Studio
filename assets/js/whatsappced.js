@@ -29,16 +29,24 @@ $form.addEventListener('submit', (event) => {
           }
         }
 
-  // función para hacer la petición a la API y procesar la respuesta
+ // función para hacer la petición a la API y procesar la respuesta
 function consultarCedula(cedula, callback) {
     var proxy = "https://cors-anywhere.herokuapp.com/";
     var url = proxy + "http://www.cne.gob.ve/web/registro_civil/buscar_rep.php?nac=v&ced=" + cedula;
     fetch(url)
       .then(function(response) {
-        return response.json();
+        return response.text();
       })
       .then(function(data) {
-        callback(data);
+        // crear un documento HTML a partir de la respuesta
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(data, "text/html");
+        // obtener las celdas de la tabla
+        var cells = doc.querySelectorAll("table td");
+        // asignar el nombre y apellido a las variables correspondientes
+        nombre = cells[1].textContent;
+        apellido = cells[3].textContent;
+        callback({nombre: nombre, apellido: apellido});
       })
       .catch(function(error) {
         console.error(error);
