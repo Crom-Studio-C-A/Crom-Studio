@@ -18,7 +18,7 @@
     var nombre = doc.querySelector('td:nth-child(2)').textContent.trim();
     var apellido = doc.querySelector('td:nth-child(3)').textContent.trim();
     // Se devuelve el nombre y los apellidos como un objeto
-    return {nombre: nombre, apellido: apellido};
+    return {nombre: nombre, apellido: apellido}; 
     catch (err) {
     // Si hay algún error en la ejecución del código o en la respuesta de la api, se devuelve
     return err;
