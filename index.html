@@ -25,6 +25,8 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
         }
 
         .nav_li {
@@ -36,6 +38,12 @@
             color: #fff;
             text-decoration: none;
             font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav_li i {
+            margin-right: 5px;
         }
 
         .primerimagen_container {
@@ -155,33 +163,38 @@
             text-align: center;
         }
 
-    
-    
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
-
+       <!--Start of Tawk.to Script-->
+       <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
     <header>
         <nav class="nav">
             <ul class="nav_ul">
-                <li class="nav_li"><a href="/">Inicio</a></li>
-                <li class="nav_li"><a href="/registro-pago/">Registrar Pago</a></li>
-                <li class="nav_li"><a href="/descargas/">Descargas</a></li>
-                <li class="nav_li"><a href="/contacto/">Contacto</a></li>
+                <li class="nav_li"><a href="#"><i class="fas fa-home"></i>Inicio</a></li>
+                <li class="nav_li"><a href="#"><i class="fas fa-money-check"></i>Registrar Pago</a></li>
+                <li class="nav_li"><a href="#"><i class="fas fa-server"></i>Descargas</a></li>
+                <li class="nav_li"><a href="#"><i class="fas fa-address-card"></i>Contacto</a></li>
             </ul>
         </nav>
         <div class="primerimagen_container">
