@@ -6,108 +6,89 @@
     <title>Crom Studio – Tienda Crom Studio Venezuela</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
+        /* ... (código anterior) ... */
+
+        .section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
             color: #333;
         }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .nav_ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav_li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        .nav_li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .primerimagen_container {
-            text-align: center;
-        }
-
-        .primerimagen img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .cuerpo {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .titulocuerpo {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .parrafo1 {
+        .section p {
             font-size: 18px;
             color: #555;
         }
 
-        .social-icons {
-            margin-top: 20px;
+        .card-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
         }
 
-        .social-icons a {
-            color: #333;
-            margin: 0 10px;
-            text-decoration: none;
+        .card {
+            max-width: 300px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
             font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
         }
 
-        @media screen and (max-width: 768px) {
-            .nav_li {
-                display: block;
-                margin: 10px 0;
-            }
+        .card p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .card .price {
+            font-size: 30px;
+            color: #333;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="nav">
-            <ul class="nav_ul">
-                <li class="nav_li"><a href="/">Inicio</a></li>
-                <li class="nav_li"><a href="/registro-pago/">Registrar Pago</a></li>
-                <li class="nav_li"><a href="/descargas/">Descargas</a></li>
-                <li class="nav_li"><a href="/contacto/">Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="primerimagen_container">
-            <div class="primerimagen"><img src="/imagenes/fondocompleto.png" alt="Imagen Principal"></div>
-        </div>
-        <div class="cuerpo">
-            <h1 class="titulocuerpo">Bienvenido a nuestro Portal para clientes</h1>
-            <p class="parrafo1">
-                Ofrecemos soporte remoto y presencial respetando las medidas de bioseguridad.<br>
-                Registra tus pagos de manera automática y fácil.<br>
-                Realiza tu compra de manera virtual 100% seguro.<br>
-            </p>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/cromstudio21"><i class="fab fa-facebook-square"></i></a>
-                <a href="https://www.instagram.com/crom_studio21/?hl=es-la"><i class="fab fa-instagram-square"></i></a>
-                <a href="https://twitter.com/AngelJromero21"><i class="fab fa-twitter-square"></i></a>
+    <!-- ... (código anterior) ... -->
+
+    <section class="section" id="desarrolladores">
+        <h2>Desarrolladores de Software</h2>
+        <p>Somos expertos en desarrollo de software a medida.</p>
+    </section>
+
+    <section class="section" id="proyectos">
+        <h2>Proyectos</h2>
+        <p>Te ayudamos a llevar tus ideas a la realidad.</p>
+    </section>
+
+    <section class="section" id="servicios">
+        <h2>Servicios</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Pack Básico</h3>
+                <p>Descripción del Pack Básico.</p>
+                <div class="price">$100</div>
+            </div>
+            <div class="card">
+                <h3>Pack Estándar</h3>
+                <p>Descripción del Pack Estándar.</p>
+                <div class="price">$200</div>
+            </div>
+            <div class="card">
+                <h3>Pack Premium</h3>
+                <p>Descripción del Pack Premium.</p>
+                <div class="price">$300</div>
             </div>
         </div>
-    </header>
+    </section>
 </body>
 </html>
