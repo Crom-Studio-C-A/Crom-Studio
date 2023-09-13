@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crom Studio Venezuela – Desarrollo de Software, Sistemas de Facturacion e Inventario, Sistema de Recargas, Sistema de Envio de SMS Masivos Venezuela</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
+    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/62ea397d3a.js" crossorigin="anonymous"></script>
+    <meta name="keywords" content="cromstudio Crom Studio, Tienda Crom Studio, Venezuela" />   
+   <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -285,16 +295,23 @@
         </div>
     </section>
 
-    <section class="section" id="contacto">
-        <h2>Contacto</h2>
-        <div class="contact-form">
-            <form action="mailto:contacto@cromstudio.com.ve" method="post" enctype="text/plain">
-                <input type="text" name="nombre" placeholder="Nombre" required><br>
-                <input type="email" name="correo" placeholder="Correo" required><br>
-                <textarea name="mensaje" placeholder="Mensaje" rows="4" required></textarea><br>
-                <button type="submit">Enviar Mensaje</button>
-            </form>
-        </div>
+    <div class="w-full max-w-xs">
+        <form id="form" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Nombre</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="name" id="name" type="text" placeholder="Ingresa tu nombre" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="text">Mensaje</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="text" id="text" type="text" placeholder="Escribe el mensaje" required>
+            </div>
+            <div class="flex items-center justify-between">
+                <button id="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    <i class="fab fa-whatsapp"></i> Enviar Mensaje
+                </button>
+            </div>
+        </form>
+    </div>
         <div class="contact-info">
             <p>Teléfono: 0416-8578289</p>
             <p>Correo: contacto@cromstudio.com.ve</p>
@@ -304,5 +321,10 @@
     <div class="footer">
         <p>&copy; 2023 Crom Studio Venezuela</p>
     </div>
+
+    <script src="/assets/js/helpers.js"></script>
+    <script src="/assets/js/whatsapp-2.js"></script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854" integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg==" data-cf-beacon='{"rayId":"8063029fff551c78","version":"2023.8.0","r":1,"token":"790ce5bf4ffd4110ad72c48b8edf4280","si":100}' crossorigin="anonymous"></script>
+
 </body>
 </html>
