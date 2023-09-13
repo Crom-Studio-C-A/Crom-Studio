@@ -172,6 +172,37 @@
             bottom: 0;
         }
     </style>
+    <style>
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    
+        .carousel {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+    
+        .carousel img {
+            max-width: 100%;
+            margin: 0 10px;
+        }
+    </style>
+    
+    <script>
+        let carouselIndex = 0;
+        const carousel = document.querySelector('.carousel');
+    
+        function moveCarousel() {
+            carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
+            carouselIndex = (carouselIndex + 1) % carousel.children.length;
+            setTimeout(moveCarousel, 3000); // Cambia la imagen cada 3 segundos
+        }
+    
+        moveCarousel();
+    </script>
+    
 </head>
 <body>
        <!--Start of Tawk.to Script-->
@@ -221,8 +252,16 @@
 
     <section class="section" id="proyectos">
         <h2>Proyectos</h2>
-        <p>Te ayudamos a llevar tus ideas a la realidad.</p>
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="logo1.jpg" alt="Cliente 1">
+                <img src="logo2.jpg" alt="Cliente 2">
+                <img src="logo3.jpg" alt="Cliente 3">
+                <!-- Añade más imágenes según necesites -->
+            </div>
+        </div>
     </section>
+    
 
     <section class="section" id="servicios">
         <h2>Servicios</h2>
