@@ -121,6 +121,49 @@
             color: #333;
             margin-top: 10px;
         }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -181,5 +224,25 @@
             </div>
         </div>
     </section>
+
+    <section class="section" id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact-form">
+            <form action="mailto:contacto@cromstudio.com.ve" method="post" enctype="text/plain">
+                <input type="text" name="nombre" placeholder="Nombre" required><br>
+                <input type="email" name="correo" placeholder="Correo" required><br>
+                <textarea name="mensaje" placeholder="Mensaje" rows="4" required></textarea><br>
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </div>
+        <div class="contact-info">
+            <p>Teléfono: 0416-8578289</p>
+            <p>Correo: contacto@cromstudio.com.ve</p>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>&copy; 2023 Crom Studio Venezuela</p>
+    </div>
 </body>
 </html>
