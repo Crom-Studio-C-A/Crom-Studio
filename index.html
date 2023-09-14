@@ -211,7 +211,7 @@
         function moveCarousel() {
             carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
             carouselIndex = (carouselIndex + 1) % carousel.children.length;
-            setTimeout(moveCarousel, 3000); // Cambia la imagen cada 3 segundos
+            setTimeout(moveCarousel, 2300); // Cambia la imagen cada 3 segundos
         }
     
         moveCarousel();
@@ -279,6 +279,8 @@
             </div>
         </div>
     </section>
+
+    <h2>Productos y Servicios</h2>
     
     <section class="section" id="proyectos">
         <h2>Sistema de Ventas de Recargas</h2>
