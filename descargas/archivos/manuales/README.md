@@ -1,4 +1,8 @@
-# MANUALES
+# Documentos y Manuales
+
+Seleccione el sistema del cual requiere Documentos y Manuales.
+
+
 
 [Valery](https://cromstudio.com.ve/descargas/archivos/manuales/valery)
 
@@ -7,6 +11,12 @@
 [Abarrotes](https://cromstudio.com.ve/descargas/archivos/manuales/abarrot/manual-eleventa-punto-de-venta.pdf)
 
 
+
+[CAES](https://cromstudio.com.ve/descargas/archivos/manuales/caes/)
+
+
+
+[SMS Masivos Venezuela](https://cromstudio.com.ve/descargas/archivos/manuales/sms)
 
 
 
