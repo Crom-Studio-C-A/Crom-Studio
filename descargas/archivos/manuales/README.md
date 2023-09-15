@@ -20,6 +20,10 @@ Seleccione el sistema del cual requiere Documentos y Manuales.
 
 
 
+[Crom Studio Cloud](https://cromstudio.com.ve/descargas/archivos/manuales/cloud)
+
+
+
 
 
 
