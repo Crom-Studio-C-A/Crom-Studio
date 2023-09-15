@@ -1,6 +1,6 @@
 # UTILIDADES
 
-[AnyDesk](https://cromstudio.com.ve/descargas/archivos/utilidades/AnyDesk.exe)
+[AnyDesk](https://download.anydesk.com/AnyDesk.exe)
 
 
 [Driver POS-58](https://cromstudio.com.ve/descargas/archivos/utilidades/pos-printer-driver-setup.exe)
