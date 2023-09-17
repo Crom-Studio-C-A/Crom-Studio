@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const password = localStorage.getItem('password');
 
     // Realiza solicitudes a tu API para obtener información
-    fetch(`http://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=credits`)
+    fetch(`https://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=credits`)
         .then(response => response.json())
         .then(data => {
             // Muestra el saldo disponible en el panel
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error al obtener créditos:', error);
         });
 
-    fetch(`http://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=status`)
+    fetch(`https://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=status`)
         .then(response => response.json())
         .then(data => {
             // Muestra el estado del servicio en el panel
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error al obtener estado del servicio:', error);
         });
 
-    fetch(`http://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=expire`)
+    fetch(`https://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=expire`)
         .then(response => response.json())
         .then(data => {
             // Muestra la fecha de corte en el panel

@@ -5,7 +5,7 @@
         const password = document.getElementById('password').value;
     
         // Realiza la autenticación con tu API
-        const authURL = `http://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=status`;
+        const authURL = `https://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=status`;
 
         // Supongamos que la autenticación fue exitosa
         const authenticationSuccessful = true;
