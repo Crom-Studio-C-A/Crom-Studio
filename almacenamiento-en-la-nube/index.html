@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacenamiento en la Nube Disco Duro Virtual - Crom Studio Venezuela</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <meta name="description" content="Impulsa la productividad de tu empresa con Crom Studio Cloud, la plataforma líder en soluciones de almacenamiento en la nube. Nuestra infraestructura escalable y herramientas avanzadas llevan tu negocio al siguiente nivel, garantizando la seguridad y disponibilidad de tus datos en todo momento.">
+    <meta name="keywords" content="Almacenamiento en la Nube, Soluciones en la Nube, Plataforma de Almacenamiento, Crom Studio Cloud, Productividad Empresarial, Infraestructura Escalable, Seguridad de Datos, Acceso Seguro a Datos, Servicio de Almacenamiento, Nube Empresarial, Almacenamiento Escalable, Protección de Datos, Eficiencia Empresarial, Herramientas de Almacenamiento, Almacenamiento en la Nube Confiable, Crom Studio, Crom Studio Venezuela">
+    <meta name="author" content="Crom Studio Venezuela">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="es">
+    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico">
+
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav_li {
+    margin: 0 10px;
+}
+
+.nav_li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.nav_li i {
+    margin-right: 5px;
+}
+
+
+        .primerimagen_container {
+            text-align: center;
+        }
+
+        .primerimagen img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .cuerpo {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .titulocuerpo {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .parrafo1 {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #333;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .card {
+            max-width: 300px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .card .price {
+            font-size: 30px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 767px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+
+    </style>
+    <style>
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    
+        .carousel {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+    
+        .carousel img {
+            max-width: 100%;
+            margin: 0 10px;
+        }
+    </style>
+    
+    <script>
+        let carouselIndex = 0;
+        const carousel = document.querySelector('.carousel');
+    
+        function moveCarousel() {
+            carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
+            carouselIndex = (carouselIndex + 1) % carousel.children.length;
+            setTimeout(moveCarousel, 2300); // Cambia la imagen cada 3 segundos
+        }
+    
+        moveCarousel();
+    </script>
+
+<style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .row {
+      display: flex;
+      width: 80%;
+      margin: 20px 0;
+      align-items: center;
+    }
+    .image {
+      flex: 1;
+      max-width: 50%;
+    }
+    .text {
+      flex: 1;
+      max-width: 50%;
+      text-align: center;
+    }
+  </style>
+    
+</head>
+<body>
+       <!--Start of Tawk.to Script-->
+       <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+    <header>
+        <nav class="nav">
+            <ul class="nav_ul">
+                <li class="nav_li"><a href="/"><i class="fas fa-home"></i>Inicio</a></li>
+                <li class="nav_li"><a href="/registro-pago/"><i class="fas fa-money-check"></i>Registrar Pago</a></li>
+                <li class="nav_li"><a href="/descargas/"><i class="fas fa-server"></i>Descargas</a></li>
+                <li class="nav_li"><a href="/contacto/"><i class="fas fa-address-card"></i>Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="section" id="nube">
+        <h2>Almacenamiento en la Nube Confiable y Escalable</h2>
+        <p>Crom Studio Cloud es la plataforma líder en soluciones en la nube, diseñada para impulsar la productividad y eficiencia de tu empresa.</p>
+        <p> Con un conjunto completo de herramientas y una infraestructura escalable, estamos listos para llevar tu negocio al siguiente nivel.</p>
+        <p>Con Crom Studio Cloud, puedes estar seguro de que tus datos estarán protegidos y disponibles cuando los necesites.</p>
+      
+           <div class="card-container">
+            <div class="card">
+                <h3>Plan Economico</h3>
+                <p>Almacenamiento: 1 GB</p>
+                <div class="price">$1/MES</div>
+            </div>
+            <div class="card">
+                <h3>Plan Basico</h3>
+                <p>Almacenamiento: 10 GB</p>
+                <div class="price">$2/MES</div>
+            </div>
+            <div class="card">
+                <h3>Plan Avanzado</h3>
+                <p>Almacenamiento: 50 GB</p>
+                <div class="price">$5/MES</div>
+            </div>
+            <div class="card">
+                <h3>Plan Pro</h3>
+                <p>Almacenamiento: 100 GB</p>
+                <div class="price">$10/MES</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+          <div class="image">
+            <img src="imagen1.jpg" alt="Imagen 1">
+          </div>
+          <div class="text">
+            <p>Texto 1</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text">
+            <p>Texto 2</p>
+          </div>
+          <div class="image">
+            <img src="imagen2.jpg" alt="Imagen 2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="image">
+            <img src="imagen3.jpg" alt="Imagen 3">
+          </div>
+          <div class="text">
+            <p>Texto 3</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text">
+            <p>Texto 4</p>
+          </div>
+          <div class="image">
+            <img src="imagen4.jpg" alt="Imagen 4">
+          </div>
+        </div>
+      </div>
+
+    <section class="section" id="clientes">
+        <h2>Clientes</h2>
+        <p>La confianza que nuestros clientes depositan en nosotros es el motor que impulsa nuestra dedicación y esfuerzo constante por superar sus expectativas.</p>
+        <p>Cada proyecto es una nueva oportunidad para demostrar nuestro compromiso con la calidad, la innovación y la satisfacción del cliente.</p>
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/imagenes/empresas/clientes-1.png" alt="Clientes de Crom Studio">
+                </div>
+                <!-- Añade más imágenes según necesites -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section" id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact-info">
+            <p>Teléfono: 0416-8578289</p>
+            <p>Correo: contacto@cromstudio.com.ve</p>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>&copy; 2023 Crom Studio Venezuela</p>
+    </div>
+
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.10/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
