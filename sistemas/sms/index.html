@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard SMS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard SMS</h1>
+        <div class="form">
+            <label for="phoneNumber">Número de Teléfono:</label>
+            <input type="text" id="phoneNumber" required>
+            <label for="message">Mensaje:</label>
+            <textarea id="message" required></textarea>
+            <button onclick="sendMessage()">Enviar SMS</button>
+        </div>
+        <div class="status">
+            <button onclick="checkCredits()">Consultar Créditos</button>
+            <button onclick="checkStatus()">Consultar Estado de Cuenta</button>
+            <button onclick="checkExpiration()">Consultar Fecha de Corte</button>
+        </div>
+        <div id="response"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
