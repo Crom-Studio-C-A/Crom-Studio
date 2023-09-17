@@ -233,25 +233,29 @@
 
 <style>
     .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .row {
-      display: flex;
-      width: 80%;
-      margin: 20px 0;
-      align-items: center;
-    }
-    .image {
-      flex: 1;
-      max-width: 50%;
-    }
-    .text {
-      flex: 1;
-      max-width: 50%;
-      text-align: center;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .row {
+    display: flex;
+    width: 80%;
+    margin: 20px 0;
+    align-items: center;
+  }
+  .image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .image {
+    flex: 1;
+    max-width: 50%;
+  }
+  .text {
+    flex: 1;
+    max-width: 50%;
+    text-align: center;
+  }
   </style>
     
 </head>
@@ -340,10 +344,9 @@
             <img src="/imagenes/nextcloud/nextcloud-hub4-office-preview.png" alt="Imagen 2">
           </div>
         </div>
-        </div>
       </div>
 
-      <section class="section" id="clientes">
+      <section class="section" id="metodos">
         <h2>Métodos de Pagos</h2>
         <div id="carouselExample" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
