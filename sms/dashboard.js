@@ -1,27 +1,36 @@
-document.getElementById('sendSingleMessage').addEventListener('click', function() {
-    // Redirige al usuario a la página para enviar un mensaje a un destinatario individual
-    window.location.href = 'sendSingle.html';
-});
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtén las credenciales del almacenamiento local
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
 
-document.getElementById('sendGroupMessage').addEventListener('click', function() {
-    // Redirige al usuario a la página para enviar un mensaje a un grupo
-    window.location.href = 'sendGroup.html';
-});
+    // Realiza solicitudes a tu API para obtener información
+    fetch(`http://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=credits`)
+        .then(response => response.json())
+        .then(data => {
+            // Muestra el saldo disponible en el panel
+            document.getElementById('credits').innerText = `Saldo Disponible: ${data.credits}`;
+        })
+        .catch(error => {
+            console.error('Error al obtener créditos:', error);
+        });
 
-document.getElementById('checkCredits').addEventListener('click', function() {
-    // Realiza una solicitud para consultar créditos
-    // (similar al ejemplo de autenticación en el archivo index.html)
-    // ...
-});
+    fetch(`http://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=status`)
+        .then(response => response.json())
+        .then(data => {
+            // Muestra el estado del servicio en el panel
+            document.getElementById('status').innerText = `Estado del Servicio: ${data.status}`;
+        })
+        .catch(error => {
+            console.error('Error al obtener estado del servicio:', error);
+        });
 
-document.getElementById('checkStatus').addEventListener('click', function() {
-    // Realiza una solicitud para consultar el estado de la cuenta
-    // (similar al ejemplo de autenticación en el archivo index.html)
-    // ...
-});
-
-document.getElementById('checkExpiry').addEventListener('click', function() {
-    // Realiza una solicitud para consultar la fecha de corte
-    // (similar al ejemplo de autenticación en el archivo index.html)
-    // ...
+    fetch(`http://www.interconectados.net/api2/get.asp?user=${username}&password=${password}&get=expire`)
+        .then(response => response.json())
+        .then(data => {
+            // Muestra la fecha de corte en el panel
+            document.getElementById('expiry').innerText = `Fecha de Corte: ${data.expire}`;
+        })
+        .catch(error => {
+            console.error('Error al obtener fecha de corte:', error);
+        });
 });
