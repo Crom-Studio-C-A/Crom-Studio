@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Masivos Venezuela & API Gateway SMS - Crom Studio Venezuela</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <meta name="description" content="Conecta con tu audiencia de manera efectiva utilizando nuestro servicio de SMS Masivos y API Gateway. Diseña y envía campañas personalizadas para potenciar tu negocio.">
+    <meta name="keywords" content="SMS Masivo para Venezuela, SMS digital, Mensajeria de texto masiva, SMS Marketing, Marketing Digital, Api Gateway SMS, Envio de SMS MAsivso en Venezuela, SMS Venezuela, Digitel, Movistar, Movilnet, SMS venezuela, Crom Studio, Crom Studio Venezuela">
+    <meta name="author" content="Crom Studio Venezuela">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="es">
+    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico">
+
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav {
+    display: flex;
+    justify-content: center;
+}
+
+.nav_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav_li {
+    margin: 0 10px;
+}
+
+.nav_li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.nav_li i {
+    margin-right: 5px;
+}
+
+
+        .primerimagen_container {
+            text-align: center;
+        }
+
+        .primerimagen img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .cuerpo {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .titulocuerpo {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .parrafo1 {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #333;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .card {
+            max-width: 300px;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .card .price {
+            font-size: 30px;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 767px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+        max-width: 300px;
+    }
+}
+
+
+    </style>
+    <style>
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    
+        .carousel {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+        }
+    
+        .carousel img {
+            max-width: 100%;
+            margin: 0 10px;
+        }
+    </style>
+    
+    <script>
+        let carouselIndex = 0;
+        const carousel = document.querySelector('.carousel');
+    
+        function moveCarousel() {
+            carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
+            carouselIndex = (carouselIndex + 1) % carousel.children.length;
+            setTimeout(moveCarousel, 2300); // Cambia la imagen cada 3 segundos
+        }
+    
+        moveCarousel();
+    </script>
+
+<style>
+    .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .row {
+    display: flex;
+    width: 80%;
+    margin: 20px 0;
+    align-items: center;
+  }
+  .image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .image {
+    flex: 1;
+    max-width: 50%;
+  }
+  .text {
+    flex: 1;
+    max-width: 50%;
+    text-align: center;
+  }
+  </style>
+    
+
+</head>
+<body>
+       <!--Start of Tawk.to Script-->
+       <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+        </script>
+        <!--End of Tawk.to Script-->
+    <header>
+        <nav class="nav">
+            <ul class="nav_ul">
+                <li class="nav_li"><a href="/"><i class="fas fa-home"></i>Inicio</a></li>
+                <li class="nav_li"><a href="/registro-pago/"><i class="fas fa-money-check"></i>Registrar Pago</a></li>
+                <li class="nav_li"><a href="/descargas/"><i class="fas fa-server"></i>Descargas</a></li>
+                <li class="nav_li"><a href="/contacto/"><i class="fas fa-address-card"></i>Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="section" id="sms">
+        <h2>SMS MASIVOS & API GATEWAY SMS</h2>
+        <p>Envía mensajes de texto de forma amplia y conecta fácilmente tu desarrollo a través de una API. Diseña campañas de SMS masivas personalizadas para tu negocio.</p>
+        <p>El cliente debe efectuar el pago mensual correspondiente al paquete elegido. Los mensajes acumulados se mantendrán activos siempre y cuando el plan sea cancelado.</p>
+        <p>Nuestros precios estan anclado en Bolivares Digitales, el servicio de SMS es Pre-Pago lo que significa que usted tendra un saldo activo.</p>
+        <p>En Caso de aumentar la tarifa usted continuara con su saldo, pero la cantidad de SMS se reduce.</p>
+        <div class="card-container">
+            <div class="card">
+                <h3>Pack Básico</h3>
+                <p>Cantidad de SMS: 100</p>
+                <p>Soporte en linea</p>
+                <p>Integracion con su desarrollo</p>
+                <p>Envio de Campañas Masivas</p>
+                <div class="price">Bs.D 70,00</div>
+            </div>
+            <div class="card">
+                <h3>Pack Estándar</h3>
+                <p>Cantidad de SMS: 500</p>
+                <p>Soporte en linea</p>
+                <p>Integracion con su desarrollo</p>
+                <p>Envio de Campañas Masivas</p>
+                <div class="price">Bs.D 350,00</div>
+            </div>
+            <div class="card">
+                <h3>Pack Premium</h3>
+                <p>Cantidad de SMS: 1000</p>
+                <p>Soporte en linea</p>
+                <p>Integracion con su desarrollo</p>
+                <p>Envio de Campañas Masivas</p>
+                <div class="price">Bs.D 700,00</div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <div class="container">
+        <div class="row">
+          <div class="image">
+            <img src="/imagenes/sms/sms1.png" alt="Envio de SMS Masivos">
+          </div>
+          <div class="text">
+            <p><strong>Envio de SMS Masivos.</strong></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text">
+            <p><strong>API Gateway SMS</strong></p>
+          </div>
+          <div class="image">
+            <img src="/imagenes/sms/sms2.webp" alt="API GATEWAY SMS VENEZUELA">
+          </div>
+        </div>
+    </div>
+    
+    <section class="section" id="informacionsms">
+        <h2>Envio de SMS Masivos & API Gateway SMS </h2>
+        <p>El SMS MT Masivo es una herramienta que facilita la comunicación directa y personalizada mediante el envío de mensajes de texto desde la plataforma de Crom Studio hacia los teléfonos celulares de tu elección.</p>
+        <p>Esta función es comúnmente utilizada en campañas publicitarias, procesos de cobranza y para la transmisión de mensajes diversos.</p>
+        <p>Además, gracias a las API para SMS de Crom Studio, puedes integrar de manera sencilla y sin costos adicionales el envío y recepción de SMS en tu página web, software o lugar de gestión.</p>
+        <br>
+        <p>Contamos con códigos de ejemplos listos para usar en diferentes lenguajes, los cuales podrás descargar y visualizar en el área de desarrolladores de tu cuenta.</p>
+        <p>Estas API permiten una fácil integración de nuestro servicio con tu aplicación, página web o software en cuestión de segundos. Asimismo, te brindan la posibilidad de configurar recordatorios, avisos de alerta o de averías a través de la automatización de SMS.</p>
+        <p>Además, cuentan con la capacidad de gestionar el tráfico de SMS mediante el balanceo de carga para optimizar el envío de los mismos.</p>
+        <br>
+        <p>Para facilitar el proceso, las peticiones SMS pueden realizarse a través de HTTP POST y GET, lo que proporciona una mayor flexibilidad en la comunicación. </p>
+        <p>Esta solución abarca todo el territorio venezolano, siendo compatible con todas las operadoras de telefonía móvil del país.</p>
+        <p>Además, los mensajes de texto no tienen fecha de caducidad, permitiéndote acumularlos mes a mes para su uso en el momento que prefieras. </p>
+        <p>También puedes personalizar los mensajes o los campos definidos de una base de datos según tus necesidades.</p>
+        <p> La interfaz de usuario es amigable y simplifica el proceso de desarrollo de campañas. Incluso en situaciones sin electricidad o acceso a internet, puedes programar tus campañas con la certeza de que serán enviadas.</p>
+        <p>Por último, puedes descargar los informes de las campañas enviadas y sus respuestas para tener un registro detallado de la comunicación.</p>
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/imagenes/recargas1.png" alt="Operadores">
+                </div>
+    </section>
+
+
+      <section class="section" id="metodos">
+        <h2>Métodos de Pagos</h2>
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/imagenes/metodos.png" alt="Métodos de Pagos de Crom Studio">
+                </div>
+                <!-- Añade más imágenes según necesites -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section" id="clientes">
+        <h2>Clientes</h2>
+        <p>La confianza que nuestros clientes depositan en nosotros es el motor que impulsa nuestra dedicación y esfuerzo constante por superar sus expectativas.</p>
+        <p>Cada proyecto es una nueva oportunidad para demostrar nuestro compromiso con la calidad, la innovación y la satisfacción del cliente.</p>
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/imagenes/empresas/clientes-1.png" alt="Clientes de Crom Studio">
+                </div>
+                <!-- Añade más imágenes según necesites -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section" id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact-info">
+            <p>Teléfono: 0416-8578289</p>
+            <p>Correo: contacto@cromstudio.com.ve</p>
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>&copy; 2023 Crom Studio Venezuela</p>
+    </div>
+
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.10/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
