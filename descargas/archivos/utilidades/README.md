@@ -1,3 +1,6 @@
+---
+layout: post
+---
 # UTILIDADES
 
 [AnyDesk](https://download.anydesk.com/AnyDesk.exe)
