@@ -25,11 +25,11 @@
 [TeamViewer 64BITS](https://download.teamviewer.com/download/TeamViewerQS_x64.exe)
 
 
+[RustDesk 32BITS](https://github.com/rustdesk/rustdesk/releases/download/1.2.3-1/rustdesk-1.2.3-x86-sciter.exe)
 
 
 ## ¿Como Descargar?
 Debes de darle click al archivo que debes descargar.
-
 
 
 
