@@ -527,6 +527,69 @@ function exportarCSV() {
 
 
 
+
+
+
+
+
+
+
+
+ // Función para importar datos desde un archivo CSV
+ function cargarDatosDesdeCSV() {
+        fetch('datos.csv') // Reemplaza 'datos.csv' con la ruta correcta de tu archivo CSV
+            .then(response => response.text())
+            .then(data => {
+                const lineas = data.split('\n');
+                lineas.forEach(linea => {
+                    const campos = linea.split(',');
+                    const venta = {
+                        nombre: campos[0],
+                        boleto: parseInt(campos[1]),
+                        metodoPago: campos[2],
+                        numRef: campos[3],
+                        fecha: new Date(campos[4])
+                    };
+                    ventas.push(venta);
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar los datos desde el archivo CSV:', error);
+            });
+    }
+
+    // Función para registrar la venta y guardarla en el archivo CSV
+    function registrarVenta(venta) {
+        ventas.push(venta);
+        guardarDatosEnCSV();
+    }
+
+    // Función para guardar datos en el archivo CSV
+    function guardarDatosEnCSV() {
+        let contenidoCSV = '';
+        ventas.forEach(venta => {
+            contenidoCSV += `${venta.nombre},${venta.boleto},${venta.metodoPago},${venta.numRef},${venta.fecha.toISOString()}\n`;
+        });
+
+        const blob = new Blob([contenidoCSV], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+
+        const enlace = document.createElement('a');
+        enlace.href = url;
+        enlace.download = 'datos.csv';
+        document.body.appendChild(enlace);
+
+        enlace.click();
+
+        // Limpiar y liberar el objeto URL
+        URL.revokeObjectURL(url);
+        document.body.removeChild(enlace);
+    }
+
+
+
+
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
