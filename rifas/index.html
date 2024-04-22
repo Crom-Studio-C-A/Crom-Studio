@@ -5,245 +5,294 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venta de Lotería/Rifas</title>
     <style>
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .boletos, .compra, .reporte {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .lista-boletos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .boleto {
+            width: 200px;
+            height: 100px;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            margin: 10px;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .compra form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .compra label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .compra input,
+        .compra select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .compra button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .reporte .ventas-dia {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .reporte .venta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .configuracion {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .configuracion h2 {
+            margin-top: 0;
+        }
+
+        .configuracion label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .configuracion input[type="number"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100px;
+        }
+
+        .configuracion button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .configuracion button:hover {
+            background-color: #45a049;
+        }
+
+        .configuracion button:active {
+            background-color: #3e8e41;
+        }
+
+        /* Estilo para ocultar el campo de número de referencia por defecto */
+        #num-ref-wrapper {
+            display: none;
+        }
+        /* Estilos para la gráfica y el cuadro de total */
+.grafica-container {
+    margin-bottom: 20px;
 }
 
-header {
+.total-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
     background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
 }
 
-h1 {
-    margin: 0;
+.total {
+    font-size: 24px;
+    color: #4CAF50; /* Color verde */
+    font-weight: bold;
 }
-
-.boletos, .compra, .reporte {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.lista-boletos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.boleto {
-    width: 200px;
-    height: 100px;
-    background-color: #eee;
-    border: 1px solid #ccc;
-    margin: 10px;
-    text-align: center;
-    padding: 10px;
-    font-size: 16px;
-}
-
-.compra form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.compra label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.compra input,
-.compra select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.compra button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.reporte .ventas-dia {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.reporte .venta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border-bottom: 1px solid #ccc;
-}
-
-.configuracion {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.configuracion h2 {
-    margin-top: 0;
-}
-
-.configuracion label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.configuracion input[type="number"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100px;
-}
-
-.configuracion button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.configuracion button:hover {
-    background-color: #45a049;
-}
-
-.configuracion button:active {
-    background-color: #3e8e41;
-}
-
 
     </style>
 </head>
 <body>
 <header>
-        <h1>Venta de Lotería/Rifas</h1>
-    </header>
+    <h1>Venta de Lotería/Rifas</h1>
+</header>
 
-    <section class="boletos">
-        <h2>Boletos Disponibles</h2>
-        <div id="lista-boletos">
-            </div>  </section>
+<section class="boletos">
+    <h2>Boletos Disponibles</h2>
+    <div id="lista-boletos">
+    </div>
+</section>
 
-    <section class="compra">
-        <h2>Comprar Boleto</h2>
-        <form id="formulario-compra">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+<section class="compra">
+    <h2>Comprar Boleto</h2>
+    <form id="formulario-compra">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
 
-            <label for="boleto">Número de boleto:</label>
-            <select id="boleto" name="boleto" required>
-            </select>
+        <label for="boleto">Número de boleto:</label>
+        <select id="boleto" name="boleto" required>
+        </select>
 
-            <label for="metodo-pago">Método de pago:</label>
-            <select id="metodo-pago" name="metodo-pago" required>
-                <option value="efectivo">Efectivo</option>
-                <option value="tarjeta">Tarjeta de crédito/débito</option>
-            </select>
-
-            <button type="submit">Comprar</button>
-        </form>
-    </section>
-
-    <section class="reporte">
-        <h2>Reporte de Ventas</h2>
-        <div class="ventas-dia">
+        <div id="num-ref-wrapper">
+            <label for="num-ref">Número de referencia:</label>
+            <input type="text" id="num-ref" name="num-ref">
         </div>
-        <canvas id="graficaVentas"></canvas></section>
-    
-        <section class="configuracion">
-            <h2>Configuración de Rifas</h2>
-            <form id="formulario-configuracion">
-                <label for="cantidad-numeros">Cantidad de números de rifa:</label>
-                <input type="number" id="cantidad-numeros" name="cantidad-numeros" min="1" value="10" required>
-        
-                <label for="precio-boleto">Precio por boleto:</label>
-                <input type="number" id="precio-boleto" name="precio-boleto" min="0" step="0.01" value="1.00" required>
-        
-                <div id="metodos-pago-container">
-                    <div class="metodo-pago">
-                        <label for="metodo-pago-1">Método de pago 1:</label>
-                        <input type="text" id="metodo-pago-1" name="metodo-pago-1" required>
-                        <button type="button" class="eliminar-metodo-pago">Eliminar</button>
-                    </div>
-                </div>
-        
-                <button type="button" id="agregar-metodo-pago">Agregar Método de Pago</button>
-                <button type="submit">Guardar Configuración</button>
-            </form>
-        </section>
-        
-        
+
+        <label for="metodo-pago">Método de pago:</label>
+        <select id="metodo-pago" name="metodo-pago" required>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Pago-Movil">Pago Movil</option>
+        </select>
+
+        <button type="submit">Comprar</button>
+    </form>
+</section>
+
+<section class="reporte">
+    <h2>Reporte de Ventas</h2>
+    <button id="exportarCSV">Exportar a CSV</button>
+    <div class="ventas-dia">
+        <div class="grafica-container">
+            <canvas id="graficaVentas"></canvas>
+        </div>
+        <div class="total-container">
+            <h3>Total Obtenido</h3>
+            <div id="totalObtenido" class="total"></div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="configuracion">
+    <h2>Configuración de Rifas</h2>
+    <form id="formulario-configuracion">
+        <label for="cantidad-numeros">Cantidad de números de rifa:</label>
+        <input type="number" id="cantidad-numeros" name="cantidad-numeros" min="1" value="10" required>
+
+        <label for="precio-boleto">Precio por boleto:</label>
+        <input type="number" id="precio-boleto" name="precio-boleto" min="0" step="0.01" value="1.00" required>
+
+        <button type="submit">Guardar Configuración</button>
+    </form>
+</section>
 
 <script>
-// Simulación de base de datos de boletos (en este caso, un arreglo simple)
-const boletosDisponibles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    // Simulación de base de datos de boletos (en este caso, un arreglo simple)
+    let boletosDisponibles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-// Variables para almacenar datos de ventas
-let ventas = [];
+    // Variables para almacenar datos de ventas
+    let ventas = [];
 
-// Inicializar la interfaz al cargar la página
-window.onload = function() {
-    cargarBoletosDisponibles();
-    configurarFormularioCompra();
-    actualizarReporteVentas();
-};
+    // Inicializar la interfaz al cargar la página
+    window.onload = function () {
+        cargarBoletosDisponibles();
+        configurarFormularioCompra();
+        cargarDatosDesdeLocalStorage(); // Cargar datos desde el almacenamiento local
+        actualizarReporteVentas();
+    };
 
-// Función para cargar los boletos disponibles en la interfaz
-function cargarBoletosDisponibles() {
-    const listaBoletos = document.getElementById('lista-boletos');
-    const selectBoleto = document.getElementById('boleto');
-    const selectMetodoPago = document.getElementById('metodo-pago');
+    // Función para cargar los datos desde el almacenamiento local
+    function cargarDatosDesdeLocalStorage() {
+        const boletosGuardados = localStorage.getItem('boletosDisponibles');
+        if (boletosGuardados) {
+            boletosDisponibles = JSON.parse(boletosGuardados);
+        }
 
-    listaBoletos.innerHTML = ''; // Limpiar lista antes de agregar nuevos boletos
-    selectBoleto.innerHTML = ''; // Limpiar opciones del select antes de agregar nuevas
-    selectMetodoPago.innerHTML = ''; // Limpiar opciones del select de método de pago
+        const ventasGuardadas = localStorage.getItem('ventas');
+        if (ventasGuardadas) {
+            ventas = JSON.parse(ventasGuardadas);
+        }
+    }
 
-    boletosDisponibles.forEach(boleto => {
-        const elementoBoleto = document.createElement('div');
-        elementoBoleto.classList.add('boleto');
-        elementoBoleto.textContent = boleto;
-        listaBoletos.appendChild(elementoBoleto);
+    // Función para guardar datos en el almacenamiento local
+    function guardarDatosEnLocalStorage() {
+        localStorage.setItem('boletosDisponibles', JSON.stringify(boletosDisponibles));
+        localStorage.setItem('ventas', JSON.stringify(ventas));
+    }
 
-        const optionBoleto = document.createElement('option');
-        optionBoleto.value = boleto;
-        optionBoleto.textContent = boleto;
-        selectBoleto.appendChild(optionBoleto);
-    });
+    // Función para registrar la venta y guardarla en el almacenamiento local
+    function registrarVenta(venta) {
+        ventas.push(venta);
+        guardarDatosEnLocalStorage();
+    }
 
-    // Agregar opciones de método de pago
-    metodosPago.forEach((metodo, index) => {
-        const optionMetodoPago = document.createElement('option');
-        optionMetodoPago.value = metodo;
-        optionMetodoPago.textContent = metodo;
-        selectMetodoPago.appendChild(optionMetodoPago);
-    });
-}
+    // Función para cargar los boletos disponibles en la interfaz
+    function cargarBoletosDisponibles() {
+        const listaBoletos = document.getElementById('lista-boletos');
+        const selectBoleto = document.getElementById('boleto');
 
+        listaBoletos.innerHTML = ''; // Limpiar lista antes de agregar nuevos boletos
+        selectBoleto.innerHTML = ''; // Limpiar opciones del select antes de agregar nuevas
 
+        boletosDisponibles.forEach(boleto => {
+            const elementoBoleto = document.createElement('div');
+            elementoBoleto.classList.add('boleto');
+            elementoBoleto.textContent = boleto;
+            listaBoletos.appendChild(elementoBoleto);
+
+            const optionBoleto = document.createElement('option');
+            optionBoleto.value = boleto;
+            optionBoleto.textContent = boleto;
+            selectBoleto.appendChild(optionBoleto);
+        });
+    }
 // Función para configurar el formulario de compra
 function configurarFormularioCompra() {
     const formularioCompra = document.getElementById('formulario-compra');
-    formularioCompra.addEventListener('submit', function(event) {
+    const numRefWrapper = document.getElementById('num-ref-wrapper'); // Referencia al contenedor del número de referencia
+
+    formularioCompra.addEventListener('submit', function (event) {
         event.preventDefault(); // Evitar la recarga de la página
 
         const nombre = document.getElementById('nombre').value;
         const boleto = parseInt(document.getElementById('boleto').value);
         const metodoPago = document.getElementById('metodo-pago').value;
+        let numRef = ''; // Inicializar el número de referencia como una cadena vacía
+
+        // Obtener el valor del número de referencia si el método de pago es "Tarjeta"
+        if (metodoPago === 'Pago-Movil') {
+            numRef = document.getElementById('num-ref').value;
+        }
 
         // Validar datos del formulario
         if (!nombre || isNaN(boleto) || !metodoPago) {
@@ -262,6 +311,7 @@ function configurarFormularioCompra() {
             nombre: nombre,
             boleto: boleto,
             metodoPago: metodoPago,
+            numRef: numRef, // Agregar el número de referencia a la venta
             fecha: new Date()
         };
         ventas.push(venta);
@@ -273,119 +323,209 @@ function configurarFormularioCompra() {
         // Limpiar el formulario
         formularioCompra.reset();
 
+        // Ocultar el campo de número de referencia si el método de pago es "Efectivo"
+        if (metodoPago === 'efectivo') {
+            numRefWrapper.style.display = 'none';
+        }
+
         // Alertar al usuario de la compra exitosa
         alert('¡Compra realizada con éxito!');
+
+        // Ocultar automáticamente el campo de número de referencia después de enviar la venta
+        numRefWrapper.style.display = 'none';
     });
+
+    // Escuchar el cambio en el método de pago para mostrar u ocultar el campo de número de referencia
+    document.getElementById('metodo-pago').addEventListener('change', function () {
+        if (this.value === 'Pago-Movil') {
+            numRefWrapper.style.display = 'block'; // Mostrar el campo de número de referencia si el método de pago es "Tarjeta"
+        } else {
+            numRefWrapper.style.display = 'none'; // Ocultar el campo de número de referencia para otros métodos de pago
+        }
+    });
+
+    // Ocultar inicialmente el campo de número de referencia
+    numRefWrapper.style.display = 'none';
 }
 
-// Función para actualizar la lista de boletos disponibles
-function actualizarBoletosDisponibles(boletoVendido) {
-    const indiceBoleto = boletosDisponibles.indexOf(boletoVendido);
-    if (indiceBoleto !== -1) {
-        boletosDisponibles.splice(indiceBoleto, 1);
+
+
+
+    // Función para actualizar la lista de boletos disponibles
+    function actualizarBoletosDisponibles(boletoVendido) {
+        const indiceBoleto = boletosDisponibles.indexOf(boletoVendido);
+        if (indiceBoleto !== -1) {
+            boletosDisponibles.splice(indiceBoleto, 1);
+            cargarBoletosDisponibles();
+        }
+    }
+
+    // Función para actualizar el reporte de ventas
+    function actualizarReporteVentas() {
+        const reporteVentas = document.querySelector('.reporte .ventas-dia');
+        reporteVentas.innerHTML = ''; // Limpiar reporte antes de agregar nuevos datos
+
+        const totalPorMetodoPago = {}; // Objeto para almacenar el total por cada método de pago
+
+        ventas.forEach(venta => {
+            const elementoVenta = document.createElement('div');
+            elementoVenta.classList.add('venta');
+            elementoVenta.innerHTML = `
+                <span>${venta.nombre} - ${venta.boleto}</span>
+                <span>${venta.metodoPago}</span>
+                <span>${venta.numRef}</span>
+                <span>${venta.fecha.toLocaleDateString()}</span>
+            `;
+            reporteVentas.appendChild(elementoVenta);
+
+            // Incrementar el total por cada método de pago
+            if (!totalPorMetodoPago[venta.metodoPago]) {
+                totalPorMetodoPago[venta.metodoPago] = 0;
+            }
+            totalPorMetodoPago[venta.metodoPago] += parseFloat(document.getElementById('precio-boleto').value);
+        });
+
+        // Mostrar el total por cada método de pago en el reporte
+        for (const metodoPago in totalPorMetodoPago) {
+            const elementoTotalMetodoPago = document.createElement('div');
+            elementoTotalMetodoPago.textContent = `Total vendido (${metodoPago}): $${totalPorMetodoPago[metodoPago].toFixed(2)}`;
+            reporteVentas.appendChild(elementoTotalMetodoPago);
+        }
+    }
+
+    // Función para configurar la cantidad de números y el precio por boleto
+    function configurarRifas(event) {
+        event.preventDefault(); // Evitar la recarga de la página
+
+        const cantidadNumeros = parseInt(document.getElementById('cantidad-numeros').value);
+        const precioBoleto = parseFloat(document.getElementById('precio-boleto').value);
+
+        // Validar datos
+        if (cantidadNumeros <= 0 || precioBoleto <= 0) {
+            alert('Por favor, ingrese valores válidos para la cantidad de números y el precio por boleto.');
+            return;
+        }
+
+        // Actualizar la configuración
+        boletosDisponibles.length = 0; // Vaciar el array
+        for (let i = 1; i <= cantidadNumeros; i++) {
+            boletosDisponibles.push(i);
+        }
+
+        // Actualizar la interfaz
         cargarBoletosDisponibles();
     }
+
+    // Escuchar el envío del formulario de configuración
+    const formularioConfiguracion = document.getElementById('formulario-configuracion');
+    formularioConfiguracion.addEventListener('submit', configurarRifas);
+
+
+
+    
+// Función para actualizar la gráfica de ventas
+function actualizarGraficaVentas() {
+    const boletosVendidos = ventas.length;
+    const boletosRestantes = boletosDisponibles.length;
+
+    // Obtener el contexto del canvas
+    const ctx = document.getElementById('graficaVentas').getContext('2d');
+
+    // Datos para la gráfica
+    const data = {
+        labels: ['Vendidos', 'Restantes'],
+        datasets: [{
+            label: 'Boletos',
+            backgroundColor: ['#4CAF50', '#f0f0f0'], // Colores de las barras
+            data: [boletosVendidos, boletosRestantes]
+        }]
+    };
+
+    // Configuración de la gráfica
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            display: false
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    };
+
+    // Crear la gráfica
+    const graficaVentas = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options
+    });
 }
 
-// Función para actualizar el reporte de ventas
-function actualizarReporteVentas() {
-    const reporteVentas = document.querySelector('.reporte .ventas-dia');
-    reporteVentas.innerHTML = ''; // Limpiar reporte antes de agregar nuevos datos
-
-    const totalPorMetodoPago = {}; // Objeto para almacenar el total por cada método de pago
-
-    ventas.forEach(venta => {
-        const elementoVenta = document.createElement('div');
-        elementoVenta.classList.add('venta');
-        elementoVenta.innerHTML = `
-            <span>${venta.nombre} - ${venta.boleto}</span>
-            <span>${venta.metodoPago}</span>
-            <span>${venta.fecha.toLocaleDateString()}</span>
-        `;
-        reporteVentas.appendChild(elementoVenta);
-
-        // Incrementar el total por cada método de pago
-        if (!totalPorMetodoPago[venta.metodoPago]) {
-            totalPorMetodoPago[venta.metodoPago] = 0;
-        }
-        totalPorMetodoPago[venta.metodoPago] += precioPorBoleto;
-    });
-
-    // Mostrar el total por cada método de pago en el reporte
-    for (const metodoPago in totalPorMetodoPago) {
-        const elementoTotalMetodoPago = document.createElement('div');
-        elementoTotalMetodoPago.textContent = `Total vendido (${metodoPago}): $${totalPorMetodoPago[metodoPago].toFixed(2)}`;
-        reporteVentas.appendChild(elementoTotalMetodoPago);
-    }
+// Función para actualizar el cuadro de total obtenido
+function actualizarTotalObtenido() {
+    const totalObtenido = ventas.reduce((total, venta) => total + parseFloat(document.getElementById('precio-boleto').value), 0);
+    document.getElementById('totalObtenido').textContent = `$${totalObtenido.toFixed(2)}`;
 }
 
-
-
-
-
-
-// Función para configurar la cantidad de números y el precio por boleto
-function configurarRifas(event) {
-    event.preventDefault(); // Evitar la recarga de la página
-
-    const cantidadNumeros = parseInt(document.getElementById('cantidad-numeros').value);
-    const precioBoleto = parseFloat(document.getElementById('precio-boleto').value);
-    const metodosPagoInputs = document.querySelectorAll('[id^="metodo-pago-"]');
-
-    // Validar datos
-    if (cantidadNumeros <= 0 || precioBoleto <= 0) {
-        alert('Por favor, ingrese valores válidos para la cantidad de números y el precio por boleto.');
-        return;
-    }
-
-    // Actualizar la configuración
-    boletosDisponibles.length = 0; // Vaciar el array
-    for (let i = 1; i <= cantidadNumeros; i++) {
-        boletosDisponibles.push(i);
-    }
-
-    // Actualizar precio de boleto
-    precioPorBoleto = precioBoleto;
-
-    // Actualizar métodos de pago
-    metodosPago = [];
-    metodosPagoInputs.forEach(input => {
-        if (input.value.trim() !== '') {
-            metodosPago.push(input.value.trim());
-        }
-    });
-
-    // Actualizar la interfaz
+// Actualizar la interfaz al cargar la página
+window.onload = function () {
     cargarBoletosDisponibles();
+    configurarFormularioCompra();
+    actualizarReporteVentas();
+    actualizarGraficaVentas(); // Agregar esta línea para actualizar la gráfica
+    actualizarTotalObtenido(); // Agregar esta línea para actualizar el total obtenido
+};
+
+// Escuchar el evento de cambio en el input de importar CSV
+document.getElementById('importarCSV').addEventListener('change', importarCSV);
+
+// Función para importar datos desde un archivo CSV
+function importarCSV(event) {
+    const archivo = event.target.files[0];
+    const lector = new FileReader();
+
+    lector.onload = function (evento) {
+        const contenido = evento.target.result;
+        // Convertir el contenido del archivo CSV a un array de objetos
+        const ventasImportadas = parsearCSV(contenido);
+        // Agregar las ventas importadas a la lista existente
+        ventas.push(...ventasImportadas);
+        // Actualizar el reporte de ventas
+        actualizarReporteVentas();
+    };
+
+    lector.readAsText(archivo);
+}
+// Escuchar el evento de clic en el botón de exportar CSV
+document.getElementById('exportarCSV').addEventListener('click', exportarCSV);
+
+// Función para exportar datos a un archivo CSV
+function exportarCSV() {
+    const encabezados = ['Nombre', 'Boleto', 'Método de Pago', 'Número de Referencia', 'Fecha'];
+    const filas = ventas.map(venta => `${venta.nombre},${venta.boleto},${venta.metodoPago},${venta.numRef},${venta.fecha.toISOString()}`);
+    const contenidoCSV = [encabezados.join(','), ...filas].join('\n');
+
+    const blob = new Blob([contenidoCSV], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+
+    const enlace = document.createElement('a');
+    enlace.href = url;
+    enlace.download = 'reporte_ventas.csv';
+    document.body.appendChild(enlace);
+
+    enlace.click();
+
+    // Limpiar y liberar el objeto URL
+    URL.revokeObjectURL(url);
+    document.body.removeChild(enlace);
 }
 
-// Agregar evento al botón "agregar-metodo-pago"
-document.getElementById('agregar-metodo-pago').addEventListener('click', function() {
-    const container = document.getElementById('metodos-pago-container');
-    const numMetodosPago = container.querySelectorAll('.metodo-pago').length + 1;
-
-    const nuevoMetodoPago = document.createElement('div');
-    nuevoMetodoPago.classList.add('metodo-pago');
-    nuevoMetodoPago.innerHTML = `
-        <label for="metodo-pago-${numMetodosPago}">Método de pago ${numMetodosPago}:</label>
-        <input type="text" id="metodo-pago-${numMetodosPago}" name="metodo-pago-${numMetodosPago}" required>
-        <button type="button" class="eliminar-metodo-pago">Eliminar</button>
-    `;
-
-    container.appendChild(nuevoMetodoPago);
-});
-
-// Agregar evento delegado a los botones "eliminar-metodo-pago"
-document.getElementById('metodos-pago-container').addEventListener('click', function(event) {
-    if (event.target.classList.contains('eliminar-metodo-pago')) {
-        event.target.parentNode.remove();
-    }
-});
 
 
-// Escuchar el envío del formulario de configuración
-const formularioConfiguracion = document.getElementById('formulario-configuracion');
-formularioConfiguracion.addEventListener('submit', configurarRifas);
 
 </script>
 
