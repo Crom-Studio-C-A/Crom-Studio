@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Lotería/Rifas</title>
+    <style>
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.boletos, .compra, .reporte {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.lista-boletos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.boleto {
+    width: 200px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    margin: 10px;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.compra form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.compra label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.compra input,
+.compra select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.compra button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reporte .ventas-dia {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reporte .venta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+    </style>
+</head>
+<body>
+<header>
+        <h1>Venta de Lotería/Rifas</h1>
+    </header>
+
+    <section class="boletos">
+        <h2>Boletos Disponibles</h2>
+        <div id="lista-boletos">
+            </div>  </section>
+
+    <section class="compra">
+        <h2>Comprar Boleto</h2>
+        <form id="formulario-compra">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="boleto">Número de boleto:</label>
+            <select id="boleto" name="boleto" required>
+            </select>
+
+            <label for="metodo-pago">Método de pago:</label>
+            <select id="metodo-pago" name="metodo-pago" required>
+                <option value="efectivo">Efectivo</option>
+                <option value="tarjeta">Tarjeta de crédito/débito</option>
+            </select>
+
+            <button type="submit">Comprar</button>
+        </form>
+    </section>
+
+    <section class="reporte">
+        <h2>Reporte de Ventas</h2>
+        <div class="ventas-dia">
+        </div>
+        <canvas id="graficaVentas"></canvas> </section>
+    
+
+<script>
+// Simulación de base de datos de boletos (en este caso, un arreglo simple)
+const boletosDisponibles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Variables para almacenar datos de ventas
+let ventas = [];
+
+// Inicializar la interfaz al cargar la página
+window.onload = function() {
+    cargarBoletosDisponibles();
+    configurarFormularioCompra();
+    actualizarReporteVentas();
+};
+
+// Función para cargar los boletos disponibles en la interfaz
+function cargarBoletosDisponibles() {
+    const listaBoletos = document.getElementById('lista-boletos');
+    const selectBoleto = document.getElementById('boleto');
+
+    listaBoletos.innerHTML = ''; // Limpiar lista antes de agregar nuevos boletos
+    selectBoleto.innerHTML = ''; // Limpiar opciones del select antes de agregar nuevas
+
+    boletosDisponibles.forEach(boleto => {
+        const elementoBoleto = document.createElement('div');
+        elementoBoleto.classList.add('boleto');
+        elementoBoleto.textContent = boleto;
+        listaBoletos.appendChild(elementoBoleto);
+
+        const optionBoleto = document.createElement('option');
+        optionBoleto.value = boleto;
+        optionBoleto.textContent = boleto;
+        selectBoleto.appendChild(optionBoleto);
+    });
+}
+
+// Función para configurar el formulario de compra
+function configurarFormularioCompra() {
+    const formularioCompra = document.getElementById('formulario-compra');
+    formularioCompra.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar la recarga de la página
+
+        const nombre = document.getElementById('nombre').value;
+        const boleto = parseInt(document.getElementById('boleto').value);
+        const metodoPago = document.getElementById('metodo-pago').value;
+
+        // Validar datos del formulario
+        if (!nombre || isNaN(boleto) || !metodoPago) {
+            alert('Por favor, complete todos los campos del formulario.');
+            return;
+        }
+
+        // Verificar si el boleto está disponible
+        if (!boletosDisponibles.includes(boleto)) {
+            alert('El boleto seleccionado no está disponible.');
+            return;
+        }
+
+        // Registrar la venta
+        const venta = {
+            nombre: nombre,
+            boleto: boleto,
+            metodoPago: metodoPago,
+            fecha: new Date()
+        };
+        ventas.push(venta);
+
+        // Actualizar la interfaz
+        actualizarBoletosDisponibles(boleto);
+        actualizarReporteVentas();
+
+        // Limpiar el formulario
+        formularioCompra.reset();
+
+        // Alertar al usuario de la compra exitosa
+        alert('¡Compra realizada con éxito!');
+    });
+}
+
+// Función para actualizar la lista de boletos disponibles
+function actualizarBoletosDisponibles(boletoVendido) {
+    const indiceBoleto = boletosDisponibles.indexOf(boletoVendido);
+    if (indiceBoleto !== -1) {
+        boletosDisponibles.splice(indiceBoleto, 1);
+        cargarBoletosDisponibles();
+    }
+}
+
+// Función para actualizar el reporte de ventas
+function actualizarReporteVentas() {
+    const reporteVentas = document.querySelector('.reporte .ventas-dia');
+    reporteVentas.innerHTML = ''; // Limpiar reporte antes de agregar nuevos datos
+
+    ventas.forEach(venta => {
+        const elementoVenta = document.createElement('div');
+        elementoVenta.classList.add('venta');
+        elementoVenta.innerHTML = `
+            <span>${venta.nombre} - ${venta.boleto}</span>
+            <span>${venta.metodoPago}</span>
+            <span>${venta.fecha.toLocaleDateString()}</span>
+        `;
+        reporteVentas.appendChild(elementoVenta);
+    });
+}
+
+
+// Función para generar la gráfica de ventas
+function generarGraficaVentas() {
+    const ctx = document.getElementById('graficaVentas').getContext('2d');
+    const datosVentas = obtenerDatosVentas();
+
+    const chart = new Chart(ctx, {
+        type: 'bar', // Tipo de gráfica (barras, líneas, etc.)
+        data: {
+            labels: datosVentas.boletosDisponibles, // Etiquetas para cada barra
+            datasets: [{
+                label: 'Boletos',
+                data: datosVentas.cantidades, // Valores para cada barra
+                backgroundColor: ['#4CAF50', '#2196F3'], // Colores de las barras
+                borderColor: ['#4CAF50', '#2196F3'], // Bordes de las barras
+                borderWidth: 1 // Ancho del borde
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: { // Configuración de las marcas del eje Y
+                        beginAtZero: true // Iniciar desde 0
+                    }
+                }]
+            },
+            title: {
+                display: true, // Mostrar título
+                text: 'Ventas por Boleto' // Texto del título
+            }
+        }
+    });
+}
+
+// Función para obtener los datos de ventas
+function obtenerDatosVentas() {
+    const boletosDisponibles = [];
+    const cantidades = [];
+
+    boletosDisponibles.push('Vendidos');
+    cantidades.push(ventas.length);
+
+    boletosDisponibles.push('Disponibles');
+    cantidades.push(boletosDisponibles.length - ventas.length);
+
+    return {
+        boletosDisponibles: boletosDisponibles,
+        cantidades: cantidades
+    };
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
