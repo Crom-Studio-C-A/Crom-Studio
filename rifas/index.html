@@ -86,6 +86,47 @@ h1 {
     border-bottom: 1px solid #ccc;
 }
 
+.configuracion {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.configuracion h2 {
+    margin-top: 0;
+}
+
+.configuracion label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.configuracion input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100px;
+}
+
+.configuracion button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.configuracion button:hover {
+    background-color: #45a049;
+}
+
+.configuracion button:active {
+    background-color: #3e8e41;
+}
+
+
     </style>
 </head>
 <body>
@@ -122,8 +163,31 @@ h1 {
         <h2>Reporte de Ventas</h2>
         <div class="ventas-dia">
         </div>
-        <canvas id="graficaVentas"></canvas> </section>
+        <canvas id="graficaVentas"></canvas></section>
     
+        <section class="configuracion">
+            <h2>Configuración de Rifas</h2>
+            <form id="formulario-configuracion">
+                <label for="cantidad-numeros">Cantidad de números de rifa:</label>
+                <input type="number" id="cantidad-numeros" name="cantidad-numeros" min="1" value="10" required>
+        
+                <label for="precio-boleto">Precio por boleto:</label>
+                <input type="number" id="precio-boleto" name="precio-boleto" min="0" step="0.01" value="1.00" required>
+        
+                <div id="metodos-pago-container">
+                    <div class="metodo-pago">
+                        <label for="metodo-pago-1">Método de pago 1:</label>
+                        <input type="text" id="metodo-pago-1" name="metodo-pago-1" required>
+                        <button type="button" class="eliminar-metodo-pago">Eliminar</button>
+                    </div>
+                </div>
+        
+                <button type="button" id="agregar-metodo-pago">Agregar Método de Pago</button>
+                <button type="submit">Guardar Configuración</button>
+            </form>
+        </section>
+        
+        
 
 <script>
 // Simulación de base de datos de boletos (en este caso, un arreglo simple)
@@ -143,9 +207,11 @@ window.onload = function() {
 function cargarBoletosDisponibles() {
     const listaBoletos = document.getElementById('lista-boletos');
     const selectBoleto = document.getElementById('boleto');
+    const selectMetodoPago = document.getElementById('metodo-pago');
 
     listaBoletos.innerHTML = ''; // Limpiar lista antes de agregar nuevos boletos
     selectBoleto.innerHTML = ''; // Limpiar opciones del select antes de agregar nuevas
+    selectMetodoPago.innerHTML = ''; // Limpiar opciones del select de método de pago
 
     boletosDisponibles.forEach(boleto => {
         const elementoBoleto = document.createElement('div');
@@ -158,7 +224,16 @@ function cargarBoletosDisponibles() {
         optionBoleto.textContent = boleto;
         selectBoleto.appendChild(optionBoleto);
     });
+
+    // Agregar opciones de método de pago
+    metodosPago.forEach((metodo, index) => {
+        const optionMetodoPago = document.createElement('option');
+        optionMetodoPago.value = metodo;
+        optionMetodoPago.textContent = metodo;
+        selectMetodoPago.appendChild(optionMetodoPago);
+    });
 }
+
 
 // Función para configurar el formulario de compra
 function configurarFormularioCompra() {
@@ -217,6 +292,8 @@ function actualizarReporteVentas() {
     const reporteVentas = document.querySelector('.reporte .ventas-dia');
     reporteVentas.innerHTML = ''; // Limpiar reporte antes de agregar nuevos datos
 
+    const totalPorMetodoPago = {}; // Objeto para almacenar el total por cada método de pago
+
     ventas.forEach(venta => {
         const elementoVenta = document.createElement('div');
         elementoVenta.classList.add('venta');
@@ -226,59 +303,89 @@ function actualizarReporteVentas() {
             <span>${venta.fecha.toLocaleDateString()}</span>
         `;
         reporteVentas.appendChild(elementoVenta);
+
+        // Incrementar el total por cada método de pago
+        if (!totalPorMetodoPago[venta.metodoPago]) {
+            totalPorMetodoPago[venta.metodoPago] = 0;
+        }
+        totalPorMetodoPago[venta.metodoPago] += precioPorBoleto;
     });
+
+    // Mostrar el total por cada método de pago en el reporte
+    for (const metodoPago in totalPorMetodoPago) {
+        const elementoTotalMetodoPago = document.createElement('div');
+        elementoTotalMetodoPago.textContent = `Total vendido (${metodoPago}): $${totalPorMetodoPago[metodoPago].toFixed(2)}`;
+        reporteVentas.appendChild(elementoTotalMetodoPago);
+    }
 }
 
 
-// Función para generar la gráfica de ventas
-function generarGraficaVentas() {
-    const ctx = document.getElementById('graficaVentas').getContext('2d');
-    const datosVentas = obtenerDatosVentas();
 
-    const chart = new Chart(ctx, {
-        type: 'bar', // Tipo de gráfica (barras, líneas, etc.)
-        data: {
-            labels: datosVentas.boletosDisponibles, // Etiquetas para cada barra
-            datasets: [{
-                label: 'Boletos',
-                data: datosVentas.cantidades, // Valores para cada barra
-                backgroundColor: ['#4CAF50', '#2196F3'], // Colores de las barras
-                borderColor: ['#4CAF50', '#2196F3'], // Bordes de las barras
-                borderWidth: 1 // Ancho del borde
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: { // Configuración de las marcas del eje Y
-                        beginAtZero: true // Iniciar desde 0
-                    }
-                }]
-            },
-            title: {
-                display: true, // Mostrar título
-                text: 'Ventas por Boleto' // Texto del título
-            }
+
+
+
+// Función para configurar la cantidad de números y el precio por boleto
+function configurarRifas(event) {
+    event.preventDefault(); // Evitar la recarga de la página
+
+    const cantidadNumeros = parseInt(document.getElementById('cantidad-numeros').value);
+    const precioBoleto = parseFloat(document.getElementById('precio-boleto').value);
+    const metodosPagoInputs = document.querySelectorAll('[id^="metodo-pago-"]');
+
+    // Validar datos
+    if (cantidadNumeros <= 0 || precioBoleto <= 0) {
+        alert('Por favor, ingrese valores válidos para la cantidad de números y el precio por boleto.');
+        return;
+    }
+
+    // Actualizar la configuración
+    boletosDisponibles.length = 0; // Vaciar el array
+    for (let i = 1; i <= cantidadNumeros; i++) {
+        boletosDisponibles.push(i);
+    }
+
+    // Actualizar precio de boleto
+    precioPorBoleto = precioBoleto;
+
+    // Actualizar métodos de pago
+    metodosPago = [];
+    metodosPagoInputs.forEach(input => {
+        if (input.value.trim() !== '') {
+            metodosPago.push(input.value.trim());
         }
     });
+
+    // Actualizar la interfaz
+    cargarBoletosDisponibles();
 }
 
-// Función para obtener los datos de ventas
-function obtenerDatosVentas() {
-    const boletosDisponibles = [];
-    const cantidades = [];
+// Agregar evento al botón "agregar-metodo-pago"
+document.getElementById('agregar-metodo-pago').addEventListener('click', function() {
+    const container = document.getElementById('metodos-pago-container');
+    const numMetodosPago = container.querySelectorAll('.metodo-pago').length + 1;
 
-    boletosDisponibles.push('Vendidos');
-    cantidades.push(ventas.length);
+    const nuevoMetodoPago = document.createElement('div');
+    nuevoMetodoPago.classList.add('metodo-pago');
+    nuevoMetodoPago.innerHTML = `
+        <label for="metodo-pago-${numMetodosPago}">Método de pago ${numMetodosPago}:</label>
+        <input type="text" id="metodo-pago-${numMetodosPago}" name="metodo-pago-${numMetodosPago}" required>
+        <button type="button" class="eliminar-metodo-pago">Eliminar</button>
+    `;
 
-    boletosDisponibles.push('Disponibles');
-    cantidades.push(boletosDisponibles.length - ventas.length);
+    container.appendChild(nuevoMetodoPago);
+});
 
-    return {
-        boletosDisponibles: boletosDisponibles,
-        cantidades: cantidades
-    };
-}
+// Agregar evento delegado a los botones "eliminar-metodo-pago"
+document.getElementById('metodos-pago-container').addEventListener('click', function(event) {
+    if (event.target.classList.contains('eliminar-metodo-pago')) {
+        event.target.parentNode.remove();
+    }
+});
+
+
+// Escuchar el envío del formulario de configuración
+const formularioConfiguracion = document.getElementById('formulario-configuracion');
+formularioConfiguracion.addEventListener('submit', configurarRifas);
 
 </script>
 
