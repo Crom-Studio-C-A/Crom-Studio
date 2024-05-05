@@ -97,12 +97,11 @@ button[type="submit"]:hover {
 
             // Recopila la información del formulario
             const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
             const reference = document.getElementById('reference').value;
             const paymentMethod = document.getElementById('paymentMethod').value;
 
             // Construye el mensaje a enviar
-            const message = `Tipo: ${name} Telefono: ${phone} Referencia: ${reference} Metodo de pago: ${paymentMethod}`;
+            const message = `Tipo: ${name} Referencia: ${reference} Metodo de pago: ${paymentMethod}`;
 
             // Envia la solicitud a la API en segundo plano
             const xhr = new XMLHttpRequest();
