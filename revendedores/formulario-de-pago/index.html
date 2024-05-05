@@ -86,20 +86,36 @@ button[type="submit"]:hover {
         <button type="submit">Enviar</button>
     </form>
 
+    <div id="confirmation" style="display: none;">
+        <img src="https://cdn-icons-png.flaticon.com/512/1021/1021677.png" alt="Checkmark" width="50px">
+        <p>¡Reportado!</p>
+    </div>
+
     <script>
         function submitForm(event) {
             event.preventDefault(); // Evita que el formulario se envíe de manera predeterminada
 
             // Recopila la información del formulario
             const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
             const reference = document.getElementById('reference').value;
             const paymentMethod = document.getElementById('paymentMethod').value;
 
             // Construye el mensaje a enviar
-            const message = `Tipo: ${name}%0AReferencia: ${reference}%0AMetodo de pago: ${paymentMethod}`;
+            const message = `Tipo: ${name} Telefono: ${phone} Referencia: ${reference} Metodo de pago: ${paymentMethod}`;
 
-            // Envia la solicitud a la API
-            window.location.href = `https://api.redlinuxclick.com:8443/sendText2?phone=04246167146&text=${message}`;
+            // Envia la solicitud a la API en segundo plano
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `https://api.redlinuxclick.com:8443/sendText2?phone=04246167146&text=${message}`, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Muestra el mensaje de confirmación
+                    document.getElementById('confirmation').style.display = 'block';
+                } else {
+                    console.error('Error al enviar la solicitud a la API.');
+                }
+            };
+            xhr.send();
         }
     </script>
 </body>
