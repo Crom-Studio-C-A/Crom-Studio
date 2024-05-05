@@ -92,12 +92,11 @@ button[type="submit"]:hover {
 
             // Recopila la información del formulario
             const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
             const reference = document.getElementById('reference').value;
             const paymentMethod = document.getElementById('paymentMethod').value;
 
             // Construye el mensaje a enviar
-            const message = `Tipo: ${name}%0ATelefono: ${phone}%0AReferencia: ${reference}%0AMetodo de pago: ${paymentMethod}`;
+            const message = `Tipo: ${name}%0AReferencia: ${reference}%0AMetodo de pago: ${paymentMethod}`;
 
             // Envia la solicitud a la API
             window.location.href = `https://api.redlinuxclick.com:8443/sendText2?phone=04246167146&text=${message}`;
