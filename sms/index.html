@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar SMS con Cromstudio</title>
+    <style>
+
+body {
+    font-family: sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+label {
+    margin-top: 10px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#respuesta {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Enviar SMS con Cromstudio</h1>
+
+    <form id="formulario-sms">
+        <label for="numero-telefono">Número de teléfono:</label>
+        <input type="tel" id="numero-telefono" name="numero-telefono" required>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit">Enviar SMS</button>
+    </form>
+
+    <div id="respuesta"></div>
+
+
+    <script>
+
+const formulario = document.getElementById('formulario-sms');
+const numeroTelefonoInput = document.getElementById('numero-telefono');
+const mensajeInput = document.getElementById('mensaje');
+const respuestaDiv = document.getElementById('respuesta');
+
+formulario.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const numeroTelefono = numeroTelefonoInput.value.trim();
+    const mensaje = mensajeInput.value.trim();
+
+    if (!numeroTelefono || !mensaje) {
+        respuestaDiv.textContent = 'Error: Debes completar todos los campos.';
+        return;
+    }
+
+    const apiKey = 'TU_API_KEY'; // Reemplaza con tu API key real
+    const userId = 'TU_USER_ID'; // Reemplaza con tu ID de usuario real
+
+    const url = `https://apisms.cromstudio.com.ve:2053/send-sms?userId=${userId}&numeros=${numeroTelefono}&texto=${mensaje}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                respuestaDiv.textContent = `SMS enviado exitosamente al número ${numeroTelefono}`;
+            } else {
+                respuestaDiv.textContent = `Error: ${data.message}`;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            respuestaDiv.textContent = 'Error: Ha ocurrido un problema al enviar el SMS.';
+        });
+});
+
+    </script>
+</body>
+</html>
