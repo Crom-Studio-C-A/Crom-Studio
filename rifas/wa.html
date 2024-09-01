@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Solicitud a la API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enviar Solicitud a la API</h1>
+        <button id="send-request">Enviar Solicitud</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('send-request').addEventListener('click', async function() {
+            try {
+                const response = await fetch('http://localhost:3002/api/payments', {  // Cambia la URL a la IP pública si no estás probando localmente
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Basic YmFuY29hZG1pbjpTa3VrZUd1YW5hcmUxMjMkJA==',
+                        'confirmationPassword': '-v8njr%CH3&<1~]M90_$'
+                    },
+                    body: JSON.stringify({
+                        amount: '100.00',  // Monto del pago
+                        description: 'InstrId: 22ce0730-2c63-4354-a7f6-4f5b547fcac4, NbDbtr: Prueba, E2E: 80012023121117211700211111', // Ejemplo de descripción
+                        currency: 'unit',
+                        subject: 'USUARIO',
+                        type: 'debit.toUser'
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                document.getElementById('result').textContent = `Respuesta de la API: ${JSON.stringify(data)}`;
+            } catch (error) {
+                document.getElementById('result').textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
