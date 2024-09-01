@@ -49,7 +49,7 @@
     <script>
         document.getElementById('send-request').addEventListener('click', async function() {
             try {
-                const response = await fetch('http://localhost:3002/api/payments', {  // Cambia la URL a la IP pública si no estás probando localmente
+                const response = await fetch('http://74.208.216.139:3002/api/payments', {  // Cambia la URL a la IP pública si no estás probando localmente
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
