@@ -33,6 +33,13 @@
       <description></description>
     </item>
     <item>
+      <title>Canaima</title>
+      <link>https://cromstudio.com.ve/blog/tags/canaima/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/canaima/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Ciberseguridad</title>
       <link>https://cromstudio.com.ve/blog/tags/ciberseguridad/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
@@ -61,6 +68,20 @@
       <description></description>
     </item>
     <item>
+      <title>Contacto</title>
+      <link>https://cromstudio.com.ve/blog/tags/contacto/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/contacto/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Crom Studio</title>
+      <link>https://cromstudio.com.ve/blog/tags/crom-studio/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/crom-studio/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Crom Studio Cloud</title>
       <link>https://cromstudio.com.ve/blog/tags/crom-studio-cloud/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
@@ -75,6 +96,13 @@
       <description></description>
     </item>
     <item>
+      <title>Estrategias</title>
+      <link>https://cromstudio.com.ve/blog/tags/estrategias/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/estrategias/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Finanzas</title>
       <link>https://cromstudio.com.ve/blog/tags/finanzas/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
@@ -82,10 +110,24 @@
       <description></description>
     </item>
     <item>
+      <title>GNU/Linux</title>
+      <link>https://cromstudio.com.ve/blog/tags/gnu/linux/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/gnu/linux/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>HTTPS</title>
       <link>https://cromstudio.com.ve/blog/tags/https/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
       <guid>https://cromstudio.com.ve/blog/tags/https/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Marketing Digital</title>
+      <link>https://cromstudio.com.ve/blog/tags/marketing-digital/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/marketing-digital/</guid>
       <description></description>
     </item>
     <item>
@@ -110,6 +152,13 @@
       <description></description>
     </item>
     <item>
+      <title>Redes Sociales</title>
+      <link>https://cromstudio.com.ve/blog/tags/redes-sociales/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/redes-sociales/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Seguridad</title>
       <link>https://cromstudio.com.ve/blog/tags/seguridad/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
@@ -121,6 +170,27 @@
       <link>https://cromstudio.com.ve/blog/tags/seguridad-inform%C3%A1tica/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
       <guid>https://cromstudio.com.ve/blog/tags/seguridad-inform%C3%A1tica/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SEO</title>
+      <link>https://cromstudio.com.ve/blog/tags/seo/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/seo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Servicio Al Cliente</title>
+      <link>https://cromstudio.com.ve/blog/tags/servicio-al-cliente/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/servicio-al-cliente/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software Libre</title>
+      <link>https://cromstudio.com.ve/blog/tags/software-libre/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/software-libre/</guid>
       <description></description>
     </item>
     <item>
