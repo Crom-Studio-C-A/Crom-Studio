@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Hugo Theme Tailwind Example Site</title>
+    <title>Posts on Blog - Crom Studio Venezuela</title>
     <link>https://cromstudio.com.ve/blog/posts/</link>
-    <description>Recent content in Posts on Hugo Theme Tailwind Example Site</description>
+    <description>Recent content in Posts on Blog - Crom Studio Venezuela</description>
     <generator>Hugo</generator>
-    <language>en</language>
+    <language>es</language>
     <managingEditor>user@example.com (Hugo Author)</managingEditor>
     <webMaster>user@example.com (Hugo Author)</webMaster>
-    <copyright>Your Name</copyright>
+    <copyright>Crom Studio</copyright>
     <lastBuildDate>Fri, 01 Nov 2024 10:00:00 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>

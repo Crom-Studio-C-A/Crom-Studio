@@ -2,13 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cromstudio.com.ve/blog/</loc>
-    <lastmod>2024-11-01T13:07:35-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/posts/</loc>
-    <lastmod>2024-11-01T13:07:35-04:00</lastmod>
-  </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/blog/</loc>
+    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/</loc>
     <lastmod>2024-11-01T10:00:00-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/</loc>
@@ -21,6 +18,9 @@
     <lastmod>2024-11-01T10:00:00-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/posts/mi-primer-post/</loc>
+    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/</loc>
     <lastmod>2024-11-01T10:00:00-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/</loc>
