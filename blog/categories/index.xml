@@ -19,6 +19,13 @@
       <description></description>
     </item>
     <item>
+      <title>Ciberseguridad</title>
+      <link>https://cromstudio.com.ve/blog/categories/ciberseguridad/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/ciberseguridad/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Contabilidad</title>
       <link>https://cromstudio.com.ve/blog/categories/contabilidad/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
@@ -33,6 +40,13 @@
       <description></description>
     </item>
     <item>
+      <title>Empresas</title>
+      <link>https://cromstudio.com.ve/blog/categories/empresas/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/empresas/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Finanzas</title>
       <link>https://cromstudio.com.ve/blog/categories/finanzas/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
@@ -40,10 +54,24 @@
       <description></description>
     </item>
     <item>
+      <title>Seguridad</title>
+      <link>https://cromstudio.com.ve/blog/categories/seguridad/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/seguridad/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Seguridad Web</title>
       <link>https://cromstudio.com.ve/blog/categories/seguridad-web/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
       <guid>https://cromstudio.com.ve/blog/categories/seguridad-web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Servicios en La Nube</title>
+      <link>https://cromstudio.com.ve/blog/categories/servicios-en-la-nube/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/servicios-en-la-nube/</guid>
       <description></description>
     </item>
     <item>
