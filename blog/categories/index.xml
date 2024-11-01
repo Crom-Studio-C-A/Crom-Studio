@@ -9,20 +9,20 @@
     <managingEditor>user@example.com (Hugo Author)</managingEditor>
     <webMaster>user@example.com (Hugo Author)</webMaster>
     <copyright>Crom Studio</copyright>
-    <lastBuildDate>Fri, 01 Nov 2024 10:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Tutorial</title>
-      <link>https://cromstudio.com.ve/blog/categories/tutorial/</link>
-      <pubDate>Fri, 01 Nov 2024 10:00:00 -0400</pubDate><author>user@example.com (Hugo Author)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/tutorial/</guid>
-      <description></description>
-    </item>
     <item>
       <title>Agricultura</title>
       <link>https://cromstudio.com.ve/blog/categories/agricultura/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
       <guid>https://cromstudio.com.ve/blog/categories/agricultura/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Contabilidad</title>
+      <link>https://cromstudio.com.ve/blog/categories/contabilidad/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/contabilidad/</guid>
       <description></description>
     </item>
     <item>
@@ -51,6 +51,13 @@
       <link>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
       <guid>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Venezuela</title>
+      <link>https://cromstudio.com.ve/blog/categories/venezuela/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/venezuela/</guid>
       <description></description>
     </item>
   </channel>

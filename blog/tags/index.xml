@@ -9,29 +9,8 @@
     <managingEditor>user@example.com (Hugo Author)</managingEditor>
     <webMaster>user@example.com (Hugo Author)</webMaster>
     <copyright>Crom Studio</copyright>
-    <lastBuildDate>Fri, 01 Nov 2024 10:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Blog</title>
-      <link>https://cromstudio.com.ve/blog/tags/blog/</link>
-      <pubDate>Fri, 01 Nov 2024 10:00:00 -0400</pubDate><author>user@example.com (Hugo Author)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/blog/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Guía</title>
-      <link>https://cromstudio.com.ve/blog/tags/gu%C3%ADa/</link>
-      <pubDate>Fri, 01 Nov 2024 10:00:00 -0400</pubDate><author>user@example.com (Hugo Author)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/gu%C3%ADa/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hugo</title>
-      <link>https://cromstudio.com.ve/blog/tags/hugo/</link>
-      <pubDate>Fri, 01 Nov 2024 10:00:00 -0400</pubDate><author>user@example.com (Hugo Author)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/hugo/</guid>
-      <description></description>
-    </item>
     <item>
       <title>Agricultura</title>
       <link>https://cromstudio.com.ve/blog/tags/agricultura/</link>
@@ -65,6 +44,13 @@
       <link>https://cromstudio.com.ve/blog/tags/cloud-computing/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
       <guid>https://cromstudio.com.ve/blog/tags/cloud-computing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Contabilidad</title>
+      <link>https://cromstudio.com.ve/blog/tags/contabilidad/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/contabilidad/</guid>
       <description></description>
     </item>
     <item>
@@ -114,6 +100,13 @@
       <link>https://cromstudio.com.ve/blog/tags/tecnolog%C3%ADa/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
       <guid>https://cromstudio.com.ve/blog/tags/tecnolog%C3%ADa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Venezuela</title>
+      <link>https://cromstudio.com.ve/blog/tags/venezuela/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/venezuela/</guid>
       <description></description>
     </item>
     <item>

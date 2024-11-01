@@ -2,32 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cromstudio.com.ve/blog/tags/blog/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/categories/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/tags/gu%C3%ADa/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/tags/hugo/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/posts/mi-primer-post/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/posts/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/tags/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/categories/tutorial/</loc>
-    <lastmod>2024-11-01T10:00:00-04:00</lastmod>
+    <loc>https://cromstudio.com.ve/blog/posts/como-funciona-la-contabilidad-en-venezuela/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/posts/https/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
@@ -47,13 +23,25 @@
     <loc>https://cromstudio.com.ve/blog/posts/almacenamiento-nube/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://cromstudio.com.ve/blog/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/caes/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/cifrado/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/cloud-computing/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/contabilidad/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/contabilidad/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/emprendimiento/</loc>
@@ -74,6 +62,9 @@
     <loc>https://cromstudio.com.ve/blog/tags/negocios/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/seguridad/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
@@ -83,10 +74,19 @@
     <loc>https://cromstudio.com.ve/blog/tags/ssl/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/tecnolog%C3%ADa/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/venezuela/</loc>
+    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/venezuela/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/ventajas/</loc>
