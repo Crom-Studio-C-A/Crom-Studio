@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Almacenamiento on Blog - Crom Studio Venezuela</title>
+    <link>https://cromstudio.com.ve/blog/categories/almacenamiento/</link>
+    <description>Recent content in Almacenamiento on Blog - Crom Studio Venezuela</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>user@example.com (Hugo Author)</managingEditor>
+    <webMaster>user@example.com (Hugo Author)</webMaster>
+    <copyright>Crom Studio</copyright>
+    <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/categories/almacenamiento/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>¿Qué es Nextcloud? Conoce sus ventajas y cómo funciona</title>
+      <link>https://cromstudio.com.ve/blog/posts/que-es-nextcloud-y-como-funciona/</link>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/que-es-nextcloud-y-como-funciona/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.postimg.cc/8zCD9cz6/nextcloud-files-featured-image.webp&#34;&#xD;&#xA;      alt=&#34;nextcloud&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h1 id=&#34;qué-es-nextcloud-y-cómo-funciona-ventajas-y-soluciones-con-crom-studio-cloud&#34;&gt;¿Qué es Nextcloud y cómo funciona? Ventajas y soluciones con Crom Studio Cloud&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Nextcloud&lt;/strong&gt; es una plataforma de almacenamiento y colaboración en la nube de código abierto que permite a empresas y usuarios tener control total sobre sus datos. Al funcionar como una nube privada, Nextcloud proporciona un espacio seguro y personalizable para el almacenamiento de archivos, la colaboración en documentos, el uso compartido de contenido y la comunicación en tiempo real. Con esta solución, los usuarios pueden tener la funcionalidad de servicios de nube comerciales, pero con la tranquilidad de mantener el control de sus datos.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
