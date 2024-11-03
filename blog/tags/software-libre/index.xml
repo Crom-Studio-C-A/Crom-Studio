@@ -6,15 +6,15 @@
     <description>Recent content in Software Libre on Blog - Crom Studio Venezuela</description>
     <generator>Hugo</generator>
     <language>es</language>
-    <managingEditor>user@example.com (Hugo Author)</managingEditor>
-    <webMaster>user@example.com (Hugo Author)</webMaster>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Crom Studio</copyright>
     <lastBuildDate>Fri, 01 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/tags/software-libre/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>¿Qué es Canaima GNU/Linux?</title>
       <link>https://cromstudio.com.ve/blog/posts/canaima-gnu-linux/</link>
-      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>user@example.com (Hugo Author)</author>
+      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/canaima-gnu-linux/</guid>
       <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Canaima_Imawari.png/800px-Canaima_Imawari.png&#34;&#xD;&#xA;      alt=&#34;crom studio&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h2 id=&#34;qué-es-canaima-gnulinux&#34;&gt;¿Qué es Canaima GNU/Linux?&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Canaima GNU/Linux&lt;/strong&gt; es una distribución de sistema operativo basada en &lt;strong&gt;GNU/Linux&lt;/strong&gt; diseñada y desarrollada en Venezuela. Nació en 2008 como una iniciativa del gobierno venezolano para promover el uso de &lt;strong&gt;software libre&lt;/strong&gt; en instituciones públicas, con el objetivo de reducir la dependencia de software propietario y fomentar la autonomía tecnológica en el país.&lt;/p&gt;&#xA;&lt;h3 id=&#34;características-de-canaima-gnulinux&#34;&gt;Características de Canaima GNU/Linux&lt;/h3&gt;&#xA;&lt;p&gt;Canaima se basa en los principios del software libre, lo que significa que su código fuente es accesible para cualquiera que desee modificarlo, adaptarlo o mejorar su funcionalidad. Aquí algunas de sus características destacadas:&lt;/p&gt;</description>
     </item>
