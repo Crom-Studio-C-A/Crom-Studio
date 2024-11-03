@@ -10,7 +10,7 @@
 [RustDesk](https://cromstudio.com.ve/descargas/archivos/utilidades/rustdesk.exe)
 
 
-[NextCloud](https://github.com/nextcloud-releases/desktop/releases/download/v3.10.0/Nextcloud-3.10.0-x64.msi)
+[NextCloud](https://github.com/nextcloud-releases/desktop/releases/download/v3.14.2/Nextcloud-3.14.2-x64.msi)
 
 
 [OwnCloud 64BITS](https://download.owncloud.com/desktop/ownCloud/stable/4.2.0.11670/win/ownCloud-4.2.0.11670.x64.msi)

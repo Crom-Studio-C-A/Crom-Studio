@@ -12,15 +12,13 @@ Seleccione una opcion...
 
 
 
-[CAES](https://cromstudio.com.ve/descargas/archivos/manuales/caes/)
+[CAES](https://cromstudio.com.ve/whatsapp)
 
 
 
-[SMS Masivos Venezuela](https://cromstudio.com.ve/descargas/archivos/manuales/sms)
 
 
-
-[Crom Studio Cloud](https://cromstudio.com.ve/descargas/archivos/manuales/cloud)
+[Crom Studio Cloud](https://cromstudio.com.ve/blog/categories/crom-studio-cloud/)
 
 
 
