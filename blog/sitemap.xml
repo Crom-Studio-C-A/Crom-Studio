@@ -556,10 +556,10 @@
     <loc>https://cromstudio.com.ve/blog/search/_index.de/</loc>
     <priority>0.1</priority>
   </url><url>
-    <loc>https://cromstudio.com.ve/blog/search/</loc>
+    <loc>https://cromstudio.com.ve/blog/search/_index.en/</loc>
     <priority>0.1</priority>
   </url><url>
-    <loc>https://cromstudio.com.ve/blog/search/_index.es/</loc>
+    <loc>https://cromstudio.com.ve/blog/search/</loc>
     <priority>0.1</priority>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/search/_index.fr/</loc>
