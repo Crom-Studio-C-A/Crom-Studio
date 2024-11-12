@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <title>Quishing: El Fraude de Códigos QR y Cómo Protegerse de Este Ataque :: Blog - Crom Studio Venezuela</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="En la era de la tecnología y la digitalización, los códigos QR se han vuelto una herramienta popular para facilitar la conexión entre el mundo físico y el digital. Sin embargo, con el aumento de su uso, también se ha incrementado el riesgo de que estos códigos sean aprovechados por ciberdelincuentes para realizar estafas, dando origen a una modalidad de ataque llamada quishing. Este artículo explica en profundidad qué es quishing, cómo funciona este ataque y cómo protegerse para evitar caer en una trampa digital.
+"
+/>
+<meta
+  name="keywords"
+  content="crom studio, blog crom studio, blog venezuela, noticias de tecnologia, tecnologia venezuela"
+/>
+<meta name="robots" content="noodp" /><link rel="manifest" href="/manifest.json" /><meta property="og:url" content="https://cromstudio.com.ve/blog/posts/quishing-que-es-estafa-con-codigos-qr/">
+  <meta property="og:site_name" content="Blog - Crom Studio Venezuela">
+  <meta property="og:title" content="Quishing: El Fraude de Códigos QR y Cómo Protegerse de Este Ataque">
+  <meta property="og:description" content="En la era de la tecnología y la digitalización, los códigos QR se han vuelto una herramienta popular para facilitar la conexión entre el mundo físico y el digital. Sin embargo, con el aumento de su uso, también se ha incrementado el riesgo de que estos códigos sean aprovechados por ciberdelincuentes para realizar estafas, dando origen a una modalidad de ataque llamada quishing. Este artículo explica en profundidad qué es quishing, cómo funciona este ataque y cómo protegerse para evitar caer en una trampa digital.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-11T20:46:10-04:00">
+    <meta property="article:modified_time" content="2024-11-11T20:46:10-04:00">
+    <meta property="article:tag" content="Seguridad Digital">
+    <meta property="article:tag" content="Quishing">
+    <meta property="article:tag" content="Código QR">
+    <meta property="article:tag" content="Phishing">
+    <meta property="og:image" content="https://i.imgur.com/JePaCR7.png">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://i.imgur.com/JePaCR7.png">
+  <meta name="twitter:title" content="Quishing: El Fraude de Códigos QR y Cómo Protegerse de Este Ataque">
+  <meta name="twitter:description" content="En la era de la tecnología y la digitalización, los códigos QR se han vuelto una herramienta popular para facilitar la conexión entre el mundo físico y el digital. Sin embargo, con el aumento de su uso, también se ha incrementado el riesgo de que estos códigos sean aprovechados por ciberdelincuentes para realizar estafas, dando origen a una modalidad de ataque llamada quishing. Este artículo explica en profundidad qué es quishing, cómo funciona este ataque y cómo protegerse para evitar caer en una trampa digital.">
+
+
+<link rel="canonical" href="https://cromstudio.com.ve/blog/posts/quishing-que-es-estafa-con-codigos-qr/" />
+
+<link rel="shortcut icon" href="/blog/favicon.ico" />
+<link rel="stylesheet" href="/blog/css/index.min.c860e17f20d9f258820c02bf7ab3f57c9595d0bc21dede7eda08ccd63ba3f4cc.css">
+
+
+
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FTCG8F3HMV');
+        }
+      </script>
+
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7313467653686833"
+     crossorigin="anonymous"></script>
+  
+  
+
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800"><header class="flex flex-none justify-center z-10">
+    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/blog/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/blog/logo.webp" alt="logo">
+    </a>
+  </div>
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Abrir menú principal</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-sm md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="post" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600 text-emerald-600"
+            href="/blog/posts/" title="Publicaciones">Publicaciones</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href=/blog/search/ class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Buscar</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Cambiar a modo oscuro">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Cambiar a modo oscuro">
+      <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
+        <i class="h-6 w-6 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:group-[]:invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+        </i>
+        <i class="h-6 w-6 flex-none rounded-full place-self-center invisible peer-checked:group-[]:visible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+        </i>
+      </div>
+    </label>
+  </div>
+</div>
+
+  </header>
+  <main class="flex flex-auto justify-center">
+    
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
+    <div>
+      <a href="/blog/posts/quishing-que-es-estafa-con-codigos-qr/">
+        
+      </a>
+    </div>
+    <div class="flex flex-col gap-y-3 p-6">
+      <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+        <a href="/blog/posts/quishing-que-es-estafa-con-codigos-qr/">Quishing: El Fraude de Códigos QR y Cómo Protegerse de Este Ataque</a>
+      </h1>
+
+      
+      
+  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
+    
+      
+      <li>
+        <a href="/blog/categories/seguridad-digital/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          Seguridad Digital
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/categories/ciberseguridad/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          Ciberseguridad
+        </a>
+      </li>
+      
+    
+    
+      
+      <li>
+        <a href="/blog/tags/seguridad-digital/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Seguridad Digital</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/quishing/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Quishing</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/c%C3%B3digo-qr/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Código QR</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/phishing/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Phishing</span>
+        </a>
+      </li>
+      
+    
+  </ul>
+
+
+
+      <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2024-11-11T20:46:10-04:00">
+      2024-11-11
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+</svg>
+
+    </i>
+    <span>
+      10 minutos de lectura
+    </span>
+  </div>
+</div>
+
+      
+
+      
+        
+        <section class="prose prose-slate dark:prose-invert w-full max-w-4xl lg:max-w-5xl mt-6">
+          <h2>Tabla de contenido</h2>
+          <aside><nav id="TableOfContents">
+  <ul>
+    <li><a href="#qué-es-un-código-qr">¿Qué es un Código QR?</a></li>
+    <li><a href="#qué-es-quishing">¿Qué es Quishing?</a></li>
+    <li><a href="#cómo-me-pueden-estafar-con-quishing">¿Cómo Me Pueden Estafar con Quishing?</a></li>
+    <li><a href="#un-código-qr-puede-ser-clonado">¿Un Código QR Puede Ser Clonado?</a></li>
+    <li><a href="#cómo-evitar-ser-estafado">¿Cómo Evitar Ser Estafado?</a></li>
+    <li><a href="#cómo-funciona-este-ataque">¿Cómo Funciona Este Ataque?</a></li>
+    <li><a href="#cuáles-son-los-riesgos-del-código-qr">¿Cuáles Son los Riesgos del Código QR?</a></li>
+    <li><a href="#cómo-protegerse">¿Cómo Protegerse?</a></li>
+    <li><a href="#casos-conocidos-sobre-quishing">Casos Conocidos Sobre Quishing</a></li>
+    <li><a href="#posibles-casos-de-quishing-en-venezuela">Posibles Casos de Quishing en Venezuela</a></li>
+    <li><a href="#conclusión">Conclusión</a></li>
+  </ul>
+</nav></aside>
+        </section>
+        
+      
+
+      <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+        <p><div class="not-prose">
+<figure>
+    <img src="https://i.imgur.com/JePaCR7.png"
+      alt="qr" 
+      loading="lazy"
+    >
+  </figure></div>
+</p>
+<p>En la era de la tecnología y la digitalización, los códigos QR se han vuelto una herramienta popular para facilitar la conexión entre el mundo físico y el digital. Sin embargo, con el aumento de su uso, también se ha incrementado el riesgo de que estos códigos sean aprovechados por ciberdelincuentes para realizar estafas, dando origen a una modalidad de ataque llamada <strong>quishing</strong>. Este artículo explica en profundidad qué es quishing, cómo funciona este ataque y cómo protegerse para evitar caer en una trampa digital.</p>
+<h2 id="qué-es-un-código-qr">¿Qué es un Código QR?</h2>
+<p>Un <strong>código QR</strong> (Quick Response Code) es un tipo de código de barras bidimensional que puede ser escaneado mediante la cámara de un dispositivo móvil o lector de códigos para acceder a información de manera rápida. Estos códigos fueron creados inicialmente en Japón por la compañía Denso Wave en 1994, con el objetivo de facilitar la trazabilidad de piezas en el sector automotriz. Hoy en día, los códigos QR son ampliamente utilizados en todo el mundo, especialmente para redirigir a las personas a sitios web, menús de restaurantes, aplicaciones o incluso para facilitar transacciones de pago.</p>
+<p>A diferencia de los códigos de barras tradicionales, los códigos QR pueden almacenar una mayor cantidad de información en un espacio reducido. Su versatilidad y facilidad de uso los han hecho ideales para el marketing, la publicidad, la atención al cliente y, especialmente, durante la pandemia de COVID-19, para reducir el contacto físico en diferentes transacciones. Sin embargo, esta creciente popularidad ha despertado el interés de los ciberdelincuentes, quienes han encontrado formas de aprovechar estos códigos para llevar a cabo estafas y ataques de phishing.</p>
+<h2 id="qué-es-quishing">¿Qué es Quishing?</h2>
+<p><strong>Quishing</strong> es un término derivado de “QR” y “phishing” (suplantación de identidad), y hace referencia al uso malicioso de códigos QR para engañar a las personas y robar sus datos personales, credenciales o información financiera. En un ataque de quishing, el atacante sustituye un código QR legítimo por uno malicioso, que redirige a la víctima a un sitio web falso diseñado para imitar a una página legítima.</p>
+<p>Este tipo de ataque funciona como el phishing tradicional, pero en lugar de enviar un enlace sospechoso por correo electrónico o mensaje de texto, se utiliza un código QR manipulado. Cuando la víctima escanea el código, es llevada a un sitio web falso donde se le pide que ingrese información confidencial, la cual luego es capturada por el atacante.</p>
+<p>El quishing es especialmente peligroso porque los códigos QR no son visualmente interpretables para el usuario; al escanear el código, la persona no puede ver a simple vista hacia dónde la está dirigiendo. Esto permite que los atacantes enmascaren fácilmente sus intenciones maliciosas y hace que este método sea particularmente efectivo.</p>
+<h2 id="cómo-me-pueden-estafar-con-quishing">¿Cómo Me Pueden Estafar con Quishing?</h2>
+<p>Existen varias formas en las que los ciberdelincuentes pueden utilizar el quishing para estafar a las personas. Una técnica común es reemplazar códigos QR en lugares públicos, como restaurantes, tiendas o estaciones de transporte, con códigos falsificados que redirigen a sitios maliciosos. Estos sitios pueden parecer legítimos y solicitar información confidencial, como credenciales de inicio de sesión o detalles de tarjetas de crédito.</p>
+<p>Otra forma en que el quishing puede ocurrir es a través de correos electrónicos o mensajes de texto que contienen códigos QR. Los atacantes pueden enviar un mensaje que aparenta ser de una entidad confiable (banco, empresa de telecomunicaciones, etc.) e invitar al usuario a escanear el código para verificar información o completar un supuesto trámite urgente. Al escanearlo, la víctima es llevada a una página de phishing donde los ciberdelincuentes pueden recopilar su información.</p>
+<p>Además, algunos códigos QR maliciosos pueden redirigir a la víctima a descargar aplicaciones de malware, que una vez instaladas pueden robar información almacenada en el dispositivo o incluso rastrear la actividad de la persona. Esto convierte al quishing en una amenaza versátil y peligrosa, que se adapta a múltiples contextos y plataformas.</p>
+<h2 id="un-código-qr-puede-ser-clonado">¿Un Código QR Puede Ser Clonado?</h2>
+<p>Sí, los códigos QR pueden ser clonados o replicados fácilmente. Dado que estos códigos son visualmente idénticos entre sí, cualquier persona con acceso a una impresora puede crear un código QR malicioso y colocarlo sobre un código legítimo en lugares estratégicos. Esta simplicidad hace que el quishing sea especialmente atractivo para los ciberdelincuentes, ya que les permite clonar códigos QR en cualquier lugar con un mínimo de esfuerzo.</p>
+<p>Además, los códigos QR maliciosos pueden distribuirse digitalmente a través de redes sociales, sitios web o correos electrónicos, lo que aumenta el alcance potencial del ataque. Aunque hay métodos de verificación de códigos QR, como los certificados de autenticidad, estos son poco comunes en aplicaciones comerciales cotidianas, lo que deja a los usuarios en una posición vulnerable ante posibles ataques de clonación.</p>
+<p>La facilidad para clonar un código QR y su naturaleza visualmente indistinguible hacen que el quishing sea una forma de ataque especialmente difícil de detectar sin una buena preparación y educación en seguridad digital.</p>
+<h2 id="cómo-evitar-ser-estafado">¿Cómo Evitar Ser Estafado?</h2>
+<p>La mejor defensa contra el quishing es la <strong>precaución</strong>. Aquí algunos consejos para evitar ser víctima de este tipo de ataque:</p>
+<ol>
+<li>
+<p><strong>Verificar el contexto</strong>: Si un código QR está en un lugar sospechoso o parece haber sido pegado recientemente, es mejor evitar escanearlo. Los atacantes suelen colocar códigos falsos en lugares concurridos donde es más probable que las personas no revisen la autenticidad del código.</p>
+</li>
+<li>
+<p><strong>Usar aplicaciones de escaneo seguras</strong>: Algunas aplicaciones de escaneo muestran la URL a la que redirige el código antes de abrirla, permitiendo al usuario verificar si es legítima. Evita escanear códigos QR con aplicaciones o software desconocidos.</p>
+</li>
+<li>
+<p><strong>No proporcionar información confidencial</strong>: Si después de escanear un código QR se te pide información personal o financiera, toma precauciones y verifica la URL. Los sitios seguros deben comenzar con &ldquo;https&rdquo; y pertenecer a un dominio confiable.</p>
+</li>
+<li>
+<p><strong>Evitar escanear códigos QR en correos electrónicos sospechosos</strong>: Si recibes un correo de una entidad confiable que contiene un código QR, verifica directamente con la entidad antes de escanear el código.</p>
+</li>
+</ol>
+<p>La educación y la conciencia sobre los riesgos del quishing son fundamentales para protegerse. Tomarse el tiempo de revisar cada código QR que se escanee es una práctica de seguridad que puede evitar problemas futuros.</p>
+<h2 id="cómo-funciona-este-ataque">¿Cómo Funciona Este Ataque?</h2>
+<p>El ataque de quishing funciona reemplazando o clonando códigos QR legítimos con versiones manipuladas que redirigen a un sitio malicioso. Cuando el usuario escanea el código, es dirigido a un sitio web controlado por los atacantes, donde se le solicita que ingrese datos sensibles o realice alguna acción, como descargar un archivo o instalar una aplicación.</p>
+<p>Los atacantes pueden emplear herramientas de diseño gráfico para crear códigos QR que se integren visualmente con el entorno, haciéndolos pasar desapercibidos. En muchos casos, el sitio al que redirige el código está diseñado para parecer legítimo, imitando el estilo y el diseño de una página de confianza.</p>
+<p>Una vez que la víctima ingresa su información en el sitio falso, los atacantes pueden usar esos datos para realizar fraudes, acceder a cuentas bancarias, o incluso robar identidades. Por esta razón, es fundamental evitar confiar ciegamente en los códigos QR, especialmente en situaciones donde no se puede verificar su autenticidad.</p>
+<h2 id="cuáles-son-los-riesgos-del-código-qr">¿Cuáles Son los Riesgos del Código QR?</h2>
+<p>El uso de códigos QR, aunque conveniente, plantea riesgos de seguridad importantes. Entre los principales riesgos se encuentran:</p>
+<ul>
+<li><strong>Redireccionamiento a sitios maliciosos</strong>: Los códigos QR maliciosos pueden redirigir a los usuarios a sitios fraudulentos que recolectan datos personales y financieros.</li>
+<li><strong>Descarga de malware</strong>: Algunos códigos QR pueden activar la descarga de aplicaciones de malware en dispositivos móviles, comprometiendo la seguridad del dispositivo y la información del usuario.</li>
+<li><strong>Suplantación de identidad</strong>: Al igual que en el phishing tradicional, los sitios de quishing pueden solicitar información personal, que luego es utilizada para cometer fraude.</li>
+<li><strong>Impacto en la reputación</strong>: Las empresas también pueden verse afectadas si los códigos QR en sus establecimientos son alterados, ya que esto puede dañar la confianza de los clientes en la seguridad de la empresa.</li>
+</ul>
+<p>Para reducir estos riesgos, los usuarios deben adoptar prácticas de seguridad básicas y ser conscientes de las posibles amenazas al escanear códigos QR.</p>
+<h2 id="cómo-protegerse">¿Cómo Protegerse?</h2>
+<p>Para protegerse contra el quishing, es fundamental seguir buenas prácticas de seguridad digital. Algunas de las medidas más efectivas incluyen:</p>
+<ul>
+<li><strong>Verificar la URL</strong> antes de abrir cualquier enlace al escanear un código QR.</li>
+<li><strong>Usar aplicaciones de seguridad</strong> que notifiquen si un enlace puede ser peligroso.</li>
+<li><strong>Estar atento</strong> a códigos QR en lugares públicos, especialmente si parecen haber sido colocados recientemente o sobrepuestos sobre otros códigos.</li>
+<li><strong>Evitar compartir información sensible</strong> a través de sitios web a los que se ha accedido mediante un código QR, especialmente si no se puede confirmar su autenticidad.</li>
+</ul>
+<h2 id="casos-conocidos-sobre-quishing">Casos Conocidos Sobre Quishing</h2>
+<p>El quishing ha sido una técnica de estafa recurrente en los últimos años, y existen varios casos documentados a nivel global. Uno de los incidentes más notables ocurrió en Estados Unidos, donde en 2022 se descubrió una serie de códigos QR falsificados en parquímetros. Los usuarios escaneaban estos códigos para pagar el estacionamiento, pero en realidad eran redirigidos a un sitio de phishing que robaba sus datos de tarjetas de crédito.</p>
+<p>Otro caso se dio en Europa, donde ciberdelincuentes utilizaron quishing en restaurantes, sustituyendo los códigos QR de los menús por códigos falsos. Los clientes que escaneaban estos códigos eran llevados a sitios que descargaban malware en sus teléfonos, exponiéndolos a pérdidas de datos y a robos de identidad. La facilidad con la que se pueden distribuir códigos QR maliciosos hace que el quishing sea un método muy utilizado, sobre todo en lugares donde el uso de estos códigos es común.</p>
+<p>Estos casos subrayan la importancia de verificar la autenticidad de los códigos QR antes de escanearlos. En muchos casos, las víctimas escanearon los códigos sin sospechar nada, ya que los códigos QR son comúnmente aceptados en esos entornos, lo que enfatiza la necesidad de estar alerta ante posibles fraudes.</p>
+<h2 id="posibles-casos-de-quishing-en-venezuela">Posibles Casos de Quishing en Venezuela</h2>
+<p>Venezuela no ha sido ajena a los riesgos de quishing, especialmente en un contexto donde los pagos digitales han ganado popularidad debido a la hiperinflación y la limitada disponibilidad de efectivo. Los códigos QR se han convertido en una herramienta común para pagos y transferencias en comercios de todo el país, lo que crea oportunidades para que los ciberdelincuentes introduzcan códigos QR falsos en entornos de alto tráfico.</p>
+<p>Un posible caso de quishing podría ocurrir en las grandes ciudades de Venezuela, donde se están implementando códigos QR en estacionamientos, comercios y establecimientos de comida. Sin una regulación o vigilancia adecuada, los atacantes podrían reemplazar los códigos legítimos con versiones falsas, dirigiendo a los usuarios a sitios web de phishing que recolecten datos personales y financieros.</p>
+<p>Otro posible escenario en Venezuela sería el envío de códigos QR falsos a través de aplicaciones de mensajería como WhatsApp o Telegram, donde los atacantes se hacen pasar por entidades bancarias o proveedores de servicios para engañar a las personas y robar su información. Estos posibles casos son una advertencia sobre la necesidad de ser precavidos y verificar la autenticidad de los códigos antes de utilizarlos.</p>
+<h2 id="conclusión">Conclusión</h2>
+<p>El quishing es una forma de estafa digital que utiliza códigos QR falsos para redirigir a los usuarios a sitios web maliciosos con el fin de robar su información. Este método de ataque es altamente efectivo, debido a que los códigos QR no muestran visualmente la URL de destino, lo que permite a los atacantes ocultar sus intenciones detrás de una simple imagen.</p>
+<p>Para evitar caer en este tipo de estafa, es fundamental tomar medidas de seguridad, como verificar la autenticidad del código antes de escanearlo, evitar compartir información sensible y usar aplicaciones seguras de escaneo. Los usuarios en Venezuela, así como en otros países, deben estar especialmente atentos al quishing debido a la creciente adopción de códigos QR en transacciones cotidianas.</p>
+<p>La educación en ciberseguridad y la adopción de buenas prácticas de seguridad digital son herramientas esenciales para protegerse de esta y otras amenazas en el entorno digital. Estar informados y tomar precauciones ante el uso de códigos QR puede marcar la diferencia entre una experiencia segura y ser víctima de un ataque de quishing.</p>
+
+      </article>
+
+      
+
+
+
+
+    </div>
+  </div>
+</div>
+
+  </main>
+  <footer class="flex flex-none justify-center">
+    <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-2 md:gap-0 justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+    
+  
+  
+    <a href="https://www.facebook.com/cromstudio21" target="_blank" title="Facebook" class="flex flex-row mr-2">
+      <span class="hidden">Facebook</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://twitter.com/cromstudio" target="_blank" title="Twitter" class="flex flex-row mr-2">
+      <span class="hidden">Twitter</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+   <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://www.instagram.com/cromstudio21" target="_blank" title="Instagram" class="flex flex-row mr-2">
+      <span class="hidden">Instagram</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M16.5 7.5l0 .01"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+  <div class="grow"></div>
+  <div class="flex flex-row">
+    <i class="h-6 w-6 flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2024 Blog Crom Studio
+    
+  </div>
+  
+  <div class="flex flex-row">
+    <span class="ml-0 pl-0 md:ml-2 md:pl-2 border-l-0 md:border-l border-slate-300 dark:border-slate-400">
+      Con tecnología de <a href="https://cromstudio.com.ve/" target="_blank" rel="noopener" class="underline">Crom Studio</a> <no value> <no value>
+    </span>
+  </div>
+  
+</section>
+
+  </footer>
+  <script src="/blog/main.min.65ca5b0808abf278fcec5d424701ebf0b4bc46a737129cd5e57fdb739f463e79.js"></script>
+
+
+
+
+</body>
+</html>

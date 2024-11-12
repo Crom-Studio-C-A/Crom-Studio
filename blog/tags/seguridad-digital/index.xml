@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seguridad Digital on Blog - Crom Studio Venezuela</title>
+    <link>https://cromstudio.com.ve/blog/tags/seguridad-digital/</link>
+    <description>Recent content in Seguridad Digital on Blog - Crom Studio Venezuela</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Mon, 11 Nov 2024 20:46:10 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/seguridad-digital/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quishing: El Fraude de Códigos QR y Cómo Protegerse de Este Ataque</title>
+      <link>https://cromstudio.com.ve/blog/posts/quishing-que-es-estafa-con-codigos-qr/</link>
+      <pubDate>Mon, 11 Nov 2024 20:46:10 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/quishing-que-es-estafa-con-codigos-qr/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/JePaCR7.png&#34;&#xD;&#xA;      alt=&#34;qr&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;En la era de la tecnología y la digitalización, los códigos QR se han vuelto una herramienta popular para facilitar la conexión entre el mundo físico y el digital. Sin embargo, con el aumento de su uso, también se ha incrementado el riesgo de que estos códigos sean aprovechados por ciberdelincuentes para realizar estafas, dando origen a una modalidad de ataque llamada &lt;strong&gt;quishing&lt;/strong&gt;. Este artículo explica en profundidad qué es quishing, cómo funciona este ataque y cómo protegerse para evitar caer en una trampa digital.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
