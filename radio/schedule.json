@@ -1,8 +1,12 @@
 [
     { "hour": 0, "name": "Música Nocturna" },
+    { "hour": 4, "name": "El Amanecer Musical" },
+    { "hour": 5, "name": "El Amanecer Musical" },
     { "hour": 6, "name": "El Amanecer Musical" },
     { "hour": 10, "name": "Conexión Matutina" },
     { "hour": 14, "name": "Tarde de Hits" },
+    { "hour": 16, "name": "El Amanecer Musical" },
+    { "hour": 17, "name": "El Amanecer Musical" },
     { "hour": 18, "name": "La Voz del Pueblo" },
     { "hour": 22, "name": "Relax Nocturno" }
   ]
