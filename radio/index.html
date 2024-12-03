@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio en Vivo</title>
+  <style>
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.radio-container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.logo {
+  max-width: 150px;
+  margin-bottom: 10px;
+}
+
+#play-button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#play-button:hover {
+  background: #0056b3;
+}
+
+#whatsapp-button {
+  display: inline-block;
+  margin-top: 10px;
+  color: #fff;
+  background: #25d366;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#whatsapp-button:hover {
+  background: #1abe52;
+}
+
+.ad {
+  margin-top: 20px;
+}
+
+.ad-image {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="radio-container">
+    <header>
+      <img src="https://cdn.urbe.edu/portal-urbe/images/logos/urbe-hd.png" alt="Logo de la Emisora" class="logo">
+      <h1 id="station-name">Emisora XYZ</h1>
+    </header>
+    
+    <div class="player">
+      <button id="play-button">▶️ Play</button>
+      <p id="current-song">Canción en reproducción: --</p>
+    </div>
+
+    <div class="contact">
+      <a href="https://wa.me/1234567890" target="_blank" id="whatsapp-button">Enviar mensaje por WhatsApp</a>
+      <p id="phone-number">Teléfono: 123-456-7890</p>
+    </div>
+
+    <div class="schedule">
+      <h2>Programación en Vivo</h2>
+      <p id="current-program">Programa Actual: --</p>
+    </div>
+
+    <div class="ad">
+      <h2>Anuncio Publicitario</h2>
+      <img src="https://cdn.urbe.edu/portal-urbe/images/logos/clima.jpg" alt="Espacio Publicitario" class="ad-image">
+    </div>
+  </div>
+
+  <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  const playButton = document.getElementById('play-button');
+  const currentSong = document.getElementById('current-song');
+  const currentProgram = document.getElementById('current-program');
+
+  // Radio Stream URL
+  const streamUrl = "http://stream.zeno.fm/9xze1eypbrzuv";
+  const audio = new Audio(streamUrl);
+
+  // JSON URL
+  const scheduleJson = "schedule.json";
+
+  // Toggle Play/Pause
+  playButton.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      playButton.textContent = "⏸️ Pausa";
+    } else {
+      audio.pause();
+      playButton.textContent = "▶️ Play";
+    }
+  });
+
+  // Load Current Program
+  fetch(scheduleJson)
+    .then(response => response.json())
+    .then(schedule => {
+      const currentTime = new Date();
+      const hour = currentTime.getHours();
+
+      // Find Current Program
+      const program = schedule.find(p => p.hour === hour);
+      currentProgram.textContent = program ? program.name : "No hay programación en este momento";
+    })
+    .catch(error => console.error("Error loading schedule:", error));
+});
+
+
+
+  </script>
+</body>
+</html>
