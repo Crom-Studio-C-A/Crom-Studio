@@ -93,7 +93,6 @@
   <div class="radio-container">
     <header>
       <img src="https://cdn.urbe.edu/portal-urbe/images/logos/urbe-hd.png" alt="Logo de la Emisora" class="logo">
-      <h1 id="station-name">Emisora XYZ</h1>
     </header>
 
     <div class="schedule">
@@ -102,9 +101,9 @@
     </div>
     
     <div class="player">
-      <h2>Reproducción</h2>
+
       <button id="play-button">▶️ Play</button>
-      <p id="current-song">Canción en reproducción: --</p>
+  
     </div>
 
     <div class="contact">
@@ -125,6 +124,7 @@
       const currentProgram = document.getElementById('current-program');
 
       // Radio Stream URL
+    
       const streamUrl = "https://stream.zeno.fm/9xze1eypbrzuv";
       const audio = new Audio(streamUrl);
 
