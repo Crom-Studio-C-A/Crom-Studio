@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio en Vivo</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ececec, #ffffff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .radio-container {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      color: #333;
+      margin: 10px 0;
+    }
+
+    p {
+      color: #555;
+      margin: 10px 0;
+    }
+
+    #play-button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+
+    #play-button:hover {
+      background: #0056b3;
+    }
+
+    #whatsapp-button {
+      display: inline-block;
+      margin-top: 20px;
+      color: #fff;
+      background: #25d366;
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    #whatsapp-button:hover {
+      background: #1abe52;
+    }
+
+    .ad-image {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .radio-container {
+        padding: 40px;
+      }
+
+      #play-button, #whatsapp-button {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="radio-container">
+    <header>
+      <img src="https://cdn.urbe.edu/portal-urbe/images/logos/urbe-hd.png" alt="Logo de la Emisora" class="logo">
+      <h1 id="station-name">Emisora XYZ</h1>
+    </header>
+
+    <div class="schedule">
+      <h2>Programación en Vivo</h2>
+      <p id="current-program">Programa Actual: --</p>
+    </div>
+    
+    <div class="player">
+      <h2>Reproducción</h2>
+      <button id="play-button">▶️ Play</button>
+      <p id="current-song">Canción en reproducción: --</p>
+    </div>
+
+    <div class="contact">
+      <a href="https://wa.me/1234567890" target="_blank" id="whatsapp-button">Enviar mensaje por WhatsApp</a>
+      <p id="phone-number">Teléfono: 123-456-7890</p>
+    </div>
+
+    <div class="ad">
+      <h2>Anuncio Publicitario</h2>
+      <img src="https://cdn.urbe.edu/portal-urbe/images/logos/clima.jpg" alt="Espacio Publicitario" class="ad-image">
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const playButton = document.getElementById('play-button');
+      const currentSong = document.getElementById('current-song');
+      const currentProgram = document.getElementById('current-program');
+
+      // Radio Stream URL
+      const streamUrl = "https://stream.zeno.fm/9xze1eypbrzuv";
+      const audio = new Audio(streamUrl);
+
+      // JSON URL for Program Schedule
+      const scheduleJson = "https://cromstudio.com.ve/radio/schedule.json";
+
+      // Toggle Play/Pause
+      playButton.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play();
+          playButton.textContent = "⏸️ Pausa";
+        } else {
+          audio.pause();
+          playButton.textContent = "▶️ Play";
+        }
+      });
+
+      // Load Current Program
+      fetch(scheduleJson)
+        .then(response => response.json())
+        .then(schedule => {
+          const currentTime = new Date();
+          const hour = currentTime.getHours();
+
+          // Find Current Program
+          const program = schedule.find(p => p.hour === hour);
+          currentProgram.textContent = program ? program.name : "No hay programación en este momento";
+        })
+        .catch(error => console.error("Error loading schedule:", error));
+
+      // Handle Media Metadata (if available)
+      audio.addEventListener('playing', () => {
+        fetch(streamUrl, { method: 'GET', headers: { 'Icy-MetaData': '1' } })
+          .then(response => {
+            const icyHeaders = response.headers.get('icy-metaint');
+            if (icyHeaders) {
+              // Process metadata here (e.g., extract song title)
+              console.log("Metadata support detected");
+              currentSong.textContent = "Canción en reproducción: [Detectando...]";
+            }
+          })
+          .catch(error => console.error("Error al obtener metadatos:", error));
+      });
+    });
+  </script>
+</body>
+</html>
