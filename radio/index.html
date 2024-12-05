@@ -19,7 +19,7 @@ body {
 .radio-player {
   width: 100%;
   height: 100%;
-  background: url('https://t4.ftcdn.net/jpg/05/98/27/35/360_F_598273531_318lD8da8hKgQpPl84ZlPdD6zE6HSjEd.jpg') no-repeat center center;
+  background: url('https://i.postimg.cc/dsRzWSqd/suprema3.webp') no-repeat center center;
   background-size: cover;
   position: relative;
 }
@@ -35,15 +35,14 @@ body {
   border-radius: 50%;
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  background-image: url('https://via.placeholder.com/70/play-icon.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
 
-.play-stop.playing {
-  background-image: url('https://via.placeholder.com/70/stop-icon.png');
+.play-stop svg {
+  color: #333;
 }
 
 
@@ -51,25 +50,32 @@ body {
 </head>
 <body>
   <div class="radio-player">
-    <button id="playStopButton" class="play-stop"></button>
+    <button id="playStopButton" class="play-stop">
+      <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+      <svg id="stopIcon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><rect x="6" y="6" width="12" height="12"></rect></svg>
+    </button>
   </div>
-  <audio id="radioStream" src="https://radio.cromstudio.com.ve/stream"></audio>
-<script>
+  <audio id="radioStream" src="https://streaming-url-aqui.com/radio.mp3"></audio>
+  <script>
 
 const playStopButton = document.getElementById('playStopButton');
 const radioStream = document.getElementById('radioStream');
+const playIcon = document.getElementById('playIcon');
+const stopIcon = document.getElementById('stopIcon');
 
 playStopButton.addEventListener('click', () => {
   if (radioStream.paused) {
     radioStream.play();
-    playStopButton.classList.add('playing');
+    playIcon.style.display = 'none';
+    stopIcon.style.display = 'block';
   } else {
     radioStream.pause();
-    playStopButton.classList.remove('playing');
+    playIcon.style.display = 'block';
+    stopIcon.style.display = 'none';
   }
 });
 
 
-</script>
+  </script>
 </body>
 </html>
