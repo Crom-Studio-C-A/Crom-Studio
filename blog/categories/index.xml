@@ -9,8 +9,29 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Wed, 13 Nov 2024 18:12:12 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 08 Dec 2024 17:33:27 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gaming</title>
+      <link>https://cromstudio.com.ve/blog/categories/gaming/</link>
+      <pubDate>Sun, 08 Dec 2024 17:33:27 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/gaming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tecnología</title>
+      <link>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</link>
+      <pubDate>Sun, 08 Dec 2024 17:33:27 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Telecomunicaciones</title>
+      <link>https://cromstudio.com.ve/blog/categories/telecomunicaciones/</link>
+      <pubDate>Sun, 08 Dec 2024 17:33:27 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/telecomunicaciones/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Desarrollo Social</title>
       <link>https://cromstudio.com.ve/blog/categories/desarrollo-social/</link>
@@ -138,13 +159,6 @@
       <description></description>
     </item>
     <item>
-      <title>Tecnología</title>
-      <link>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</link>
-      <pubDate>Mon, 11 Nov 2024 20:39:54 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Manualidades</title>
       <link>https://cromstudio.com.ve/blog/categories/manualidades/</link>
       <pubDate>Mon, 11 Nov 2024 20:38:46 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
@@ -170,13 +184,6 @@
       <link>https://cromstudio.com.ve/blog/categories/desarrollo-personal/</link>
       <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/desarrollo-personal/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Gaming</title>
-      <link>https://cromstudio.com.ve/blog/categories/gaming/</link>
-      <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/gaming/</guid>
       <description></description>
     </item>
     <item>
@@ -247,13 +254,6 @@
       <link>https://cromstudio.com.ve/blog/categories/noticias/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/noticias/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Telecomunicaciones</title>
-      <link>https://cromstudio.com.ve/blog/categories/telecomunicaciones/</link>
-      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/telecomunicaciones/</guid>
       <description></description>
     </item>
     <item>
