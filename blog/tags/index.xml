@@ -9,8 +9,71 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Sun, 05 Jan 2025 13:11:07 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 03 Mar 2025 08:06:39 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>España</title>
+      <link>https://cromstudio.com.ve/blog/tags/espa%C3%B1a/</link>
+      <pubDate>Mon, 03 Mar 2025 08:06:39 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Lenguajes De Programación Más Demandados en España</title>
+      <link>https://cromstudio.com.ve/blog/tags/lenguajes-de-programaci%C3%B3n-m%C3%A1s-demandados-en-espa%C3%B1a/</link>
+      <pubDate>Mon, 03 Mar 2025 08:06:39 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/lenguajes-de-programaci%C3%B3n-m%C3%A1s-demandados-en-espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mejor Lenguaje De Programación en España</title>
+      <link>https://cromstudio.com.ve/blog/tags/mejor-lenguaje-de-programaci%C3%B3n-en-espa%C3%B1a/</link>
+      <pubDate>Mon, 03 Mar 2025 08:06:39 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/mejor-lenguaje-de-programaci%C3%B3n-en-espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python vs JavaScript vs Go</title>
+      <link>https://cromstudio.com.ve/blog/tags/python-vs-javascript-vs-go/</link>
+      <pubDate>Mon, 03 Mar 2025 08:06:39 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/python-vs-javascript-vs-go/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blockchain</title>
+      <link>https://cromstudio.com.ve/blog/tags/blockchain/</link>
+      <pubDate>Mon, 03 Mar 2025 07:55:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/blockchain/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>España 2025</title>
+      <link>https://cromstudio.com.ve/blog/tags/espa%C3%B1a-2025/</link>
+      <pubDate>Mon, 03 Mar 2025 07:55:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/espa%C3%B1a-2025/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Futuro Del Trabajo</title>
+      <link>https://cromstudio.com.ve/blog/tags/futuro-del-trabajo/</link>
+      <pubDate>Mon, 03 Mar 2025 07:55:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/futuro-del-trabajo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Inteligencia Artificial</title>
+      <link>https://cromstudio.com.ve/blog/tags/inteligencia-artificial/</link>
+      <pubDate>Mon, 03 Mar 2025 07:55:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/inteligencia-artificial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tendencias Tecnológicas</title>
+      <link>https://cromstudio.com.ve/blog/tags/tendencias-tecnol%C3%B3gicas/</link>
+      <pubDate>Mon, 03 Mar 2025 07:55:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/tendencias-tecnol%C3%B3gicas/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Crom Studio</title>
       <link>https://cromstudio.com.ve/blog/tags/crom-studio/</link>
@@ -163,13 +226,6 @@
       <link>https://cromstudio.com.ve/blog/tags/desarrollo-web/</link>
       <pubDate>Thu, 02 Jan 2025 13:00:53 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/desarrollo-web/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tendencias Tecnológicas</title>
-      <link>https://cromstudio.com.ve/blog/tags/tendencias-tecnol%C3%B3gicas/</link>
-      <pubDate>Thu, 02 Jan 2025 13:00:53 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/tendencias-tecnol%C3%B3gicas/</guid>
       <description></description>
     </item>
     <item>
@@ -534,13 +590,6 @@
       <link>https://cromstudio.com.ve/blog/tags/automatizaci%C3%B3n/</link>
       <pubDate>Mon, 11 Nov 2024 20:39:54 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/automatizaci%C3%B3n/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Inteligencia Artificial</title>
-      <link>https://cromstudio.com.ve/blog/tags/inteligencia-artificial/</link>
-      <pubDate>Mon, 11 Nov 2024 20:39:54 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/inteligencia-artificial/</guid>
       <description></description>
     </item>
     <item>
