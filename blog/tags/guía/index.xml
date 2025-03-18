@@ -6,17 +6,17 @@
     <description>Recent content in Guía on Blog - Crom Studio Venezuela</description>
     <generator>Hugo</generator>
     <language>es</language>
-    <managingEditor>user@example.com (Hugo Author)</managingEditor>
-    <webMaster>user@example.com (Hugo Author)</webMaster>
-    <copyright>Crom Studio</copyright>
-    <lastBuildDate>Fri, 01 Nov 2024 10:00:00 -0400</lastBuildDate>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Fri, 14 Mar 2025 13:09:35 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/tags/gu%C3%ADa/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Mi Primer Post</title>
-      <link>https://cromstudio.com.ve/blog/posts/mi-primer-post/</link>
-      <pubDate>Fri, 01 Nov 2024 10:00:00 -0400</pubDate><author>user@example.com (Hugo Author)</author>
-      <guid>https://cromstudio.com.ve/blog/posts/mi-primer-post/</guid>
-      <description>&lt;h1 id=&#34;bienvenidos-a-mi-primer-post&#34;&gt;Bienvenidos a mi primer post&lt;/h1&gt;&#xA;&lt;p&gt;Este es el primer post en mi blog creado con Hugo. Aquí puedes escribir lo que quieras, usando &lt;a href=&#34;https://www.markdownguide.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Markdown&lt;/a&gt;&#xD;&#xA; para el formato.&lt;/p&gt;&#xA;&lt;h2 id=&#34;sección-1&#34;&gt;Sección 1&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Punto 1&lt;/li&gt;&#xA;&lt;li&gt;Punto 2&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;sección-2&#34;&gt;Sección 2&lt;/h2&gt;&#xA;&lt;p&gt;Aquí puedes agregar texto, imágenes, enlaces, y más.&lt;/p&gt;</description>
+      <title>Guía Completa para Crear una Base de Datos en MySQL</title>
+      <link>https://cromstudio.com.ve/blog/posts/como-crear-una-base-de-datos-en-mysql/</link>
+      <pubDate>Fri, 14 Mar 2025 13:09:35 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/como-crear-una-base-de-datos-en-mysql/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/v3R6ZGV.jpeg&#34;&#xD;&#xA;      alt=&#34;mysql&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h2 id=&#34;introducción&#34;&gt;Introducción&lt;/h2&gt;&#xA;&lt;p&gt;MySQL es uno de los sistemas de gestión de bases de datos relacionales (RDBMS) más populares del mundo. Es ampliamente utilizado en aplicaciones web, desde pequeños proyectos hasta grandes plataformas empresariales. En este artículo, aprenderemos cómo crear una base de datos en MySQL paso a paso.&lt;/p&gt;&#xA;&lt;h2 id=&#34;requisitos-previos&#34;&gt;Requisitos Previos&lt;/h2&gt;&#xA;&lt;p&gt;Antes de comenzar, asegúrese de tener lo siguiente:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;MySQL instalado en su sistema. Puede descargarlo desde &lt;a href=&#34;https://dev.mysql.com/downloads/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;el sitio oficial de MySQL&lt;/a&gt;&#xD;&#xA;.&lt;/li&gt;&#xA;&lt;li&gt;Acceso a MySQL a través de la línea de comandos o una herramienta gráfica como MySQL Workbench o phpMyAdmin.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;1-acceder-a-mysql&#34;&gt;1. Acceder a MySQL&lt;/h2&gt;&#xA;&lt;p&gt;Si está utilizando la línea de comandos, abra su terminal y escriba:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

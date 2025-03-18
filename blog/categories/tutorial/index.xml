@@ -6,17 +6,17 @@
     <description>Recent content in Tutorial on Blog - Crom Studio Venezuela</description>
     <generator>Hugo</generator>
     <language>es</language>
-    <managingEditor>user@example.com (Hugo Author)</managingEditor>
-    <webMaster>user@example.com (Hugo Author)</webMaster>
-    <copyright>Crom Studio</copyright>
-    <lastBuildDate>Fri, 01 Nov 2024 10:00:00 -0400</lastBuildDate>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Tue, 18 Mar 2025 10:18:23 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Mi Primer Post</title>
-      <link>https://cromstudio.com.ve/blog/posts/mi-primer-post/</link>
-      <pubDate>Fri, 01 Nov 2024 10:00:00 -0400</pubDate><author>user@example.com (Hugo Author)</author>
-      <guid>https://cromstudio.com.ve/blog/posts/mi-primer-post/</guid>
-      <description>&lt;h1 id=&#34;bienvenidos-a-mi-primer-post&#34;&gt;Bienvenidos a mi primer post&lt;/h1&gt;&#xA;&lt;p&gt;Este es el primer post en mi blog creado con Hugo. Aquí puedes escribir lo que quieras, usando &lt;a href=&#34;https://www.markdownguide.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Markdown&lt;/a&gt;&#xD;&#xA; para el formato.&lt;/p&gt;&#xA;&lt;h2 id=&#34;sección-1&#34;&gt;Sección 1&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Punto 1&lt;/li&gt;&#xA;&lt;li&gt;Punto 2&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;sección-2&#34;&gt;Sección 2&lt;/h2&gt;&#xA;&lt;p&gt;Aquí puedes agregar texto, imágenes, enlaces, y más.&lt;/p&gt;</description>
+      <title>Guía Completa: Cómo Borrar una Base de Datos en MySQL de Forma Segura y Eficiente</title>
+      <link>https://cromstudio.com.ve/blog/posts/como-borrar-una-base-de-datos-en-mysql/</link>
+      <pubDate>Tue, 18 Mar 2025 10:18:23 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/como-borrar-una-base-de-datos-en-mysql/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/ajeQRMt.jpeg&#34;&#xD;&#xA;      alt=&#34;sql&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Eliminar bases de datos en MySQL es una tarea común que pueden realizar administradores de bases de datos o desarrolladores cuando necesitan limpiar, reorganizar o eliminar datos innecesarios de un sistema. Sin embargo, realizar esta operación de forma incorrecta puede tener graves consecuencias, como la pérdida de datos importantes. Por eso, en esta guía explicativa, te mostraremos cómo borrar una base de datos en MySQL de forma segura, paso a paso, además de explicarte las precauciones necesarias para evitar errores.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Guias on Blog - Crom Studio Venezuela</title>
+    <link>https://cromstudio.com.ve/blog/categories/guias/</link>
+    <description>Recent content in Guias on Blog - Crom Studio Venezuela</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Tue, 18 Mar 2025 10:18:23 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/categories/guias/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guía Completa: Cómo Borrar una Base de Datos en MySQL de Forma Segura y Eficiente</title>
+      <link>https://cromstudio.com.ve/blog/posts/como-borrar-una-base-de-datos-en-mysql/</link>
+      <pubDate>Tue, 18 Mar 2025 10:18:23 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/como-borrar-una-base-de-datos-en-mysql/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/ajeQRMt.jpeg&#34;&#xD;&#xA;      alt=&#34;sql&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Eliminar bases de datos en MySQL es una tarea común que pueden realizar administradores de bases de datos o desarrolladores cuando necesitan limpiar, reorganizar o eliminar datos innecesarios de un sistema. Sin embargo, realizar esta operación de forma incorrecta puede tener graves consecuencias, como la pérdida de datos importantes. Por eso, en esta guía explicativa, te mostraremos cómo borrar una base de datos en MySQL de forma segura, paso a paso, además de explicarte las precauciones necesarias para evitar errores.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

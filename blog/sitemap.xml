@@ -2,16 +2,64 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://cromstudio.com.ve/blog/tags/base-de-datos/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/borrar-base-de-datos/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/como-borrar-una-base-de-datos-en-mysql/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/guias/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/guias/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/mysql/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/mysql/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/sql/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/tutorial/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/tutorial/</loc>
+    <lastmod>2025-03-18T10:18:23-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/base-de-datos/</loc>
+    <lastmod>2025-03-14T13:09:35-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/gu%C3%ADa/</loc>
+    <lastmod>2025-03-14T13:09:35-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/gu%C3%ADa/</loc>
+    <lastmod>2025-03-14T13:09:35-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/como-crear-una-base-de-datos-en-mysql/</loc>
+    <lastmod>2025-03-14T13:09:35-04:00</lastmod>
+  </url><url>
     <loc>https://cromstudio.com.ve/blog/posts/que-lenguaje-de-programacion-aprender-en-2025-espa%C3%B1a/</loc>
     <lastmod>2025-03-03T08:06:39-04:00</lastmod>
   </url><url>
-    <loc>https://cromstudio.com.ve/blog/</loc>
-    <lastmod>2025-03-03T08:06:39-04:00</lastmod>
-  </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/carrera-profesional/</loc>
-    <lastmod>2025-03-03T08:06:39-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/categories/</loc>
     <lastmod>2025-03-03T08:06:39-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/espa%C3%B1a/</loc>
@@ -26,16 +74,10 @@
     <loc>https://cromstudio.com.ve/blog/tags/mejor-lenguaje-de-programaci%C3%B3n-en-espa%C3%B1a/</loc>
     <lastmod>2025-03-03T08:06:39-04:00</lastmod>
   </url><url>
-    <loc>https://cromstudio.com.ve/blog/posts/</loc>
-    <lastmod>2025-03-03T08:06:39-04:00</lastmod>
-  </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/programaci%C3%B3n/</loc>
     <lastmod>2025-03-03T08:06:39-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/python-vs-javascript-vs-go/</loc>
-    <lastmod>2025-03-03T08:06:39-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/tags/</loc>
     <lastmod>2025-03-03T08:06:39-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</loc>
