@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 <head>
-  <title>Guía Completa: Cómo Borrar una Base de Datos en MySQL de Forma Segura y Eficiente :: Blog - Crom Studio Venezuela</title>
+  <title>Guía Completa: Cómo Borrar una Base de Datos en MySQL de Forma Segura y Eficiente :: Blog - Crom Studio</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +15,7 @@
   content="crom studio, blog crom studio, blog venezuela, noticias de tecnologia, tecnologia venezuela"
 />
 <meta name="robots" content="noodp" /><link rel="manifest" href="/manifest.json" /><meta property="og:url" content="https://cromstudio.com.ve/blog/posts/como-borrar-una-base-de-datos-en-mysql/">
-  <meta property="og:site_name" content="Blog - Crom Studio Venezuela">
+  <meta property="og:site_name" content="Blog - Crom Studio">
   <meta property="og:title" content="Guía Completa: Cómo Borrar una Base de Datos en MySQL de Forma Segura y Eficiente">
   <meta property="og:description" content="Eliminar bases de datos en MySQL es una tarea común que pueden realizar administradores de bases de datos o desarrolladores cuando necesitan limpiar, reorganizar o eliminar datos innecesarios de un sistema. Sin embargo, realizar esta operación de forma incorrecta puede tener graves consecuencias, como la pérdida de datos importantes. Por eso, en esta guía explicativa, te mostraremos cómo borrar una base de datos en MySQL de forma segura, paso a paso, además de explicarte las precauciones necesarias para evitar errores.">
   <meta property="og:locale" content="es">
@@ -405,18 +405,18 @@
 </li>
 <li>
 <p>Conéctate a tu servidor MySQL con el siguiente comando:</p>
-<pre tabindex="0"><code>bashCopiarmysql -u root -p
+<pre tabindex="0"><code>mysql -u root -p
 </code></pre><p>Aquí, <code>root</code> es el nombre del usuario administrador de MySQL. Si usas otro usuario, reemplázalo por su nombre. Después de ejecutar este comando, se te pedirá que ingreses la contraseña de tu usuario de MySQL.</p>
 </li>
 </ol>
 <h5 id="paso-2-verifica-las-bases-de-datos-existentes"><strong>Paso 2: Verifica las Bases de Datos Existentes</strong></h5>
 <p>Antes de borrar cualquier base de datos, es recomendable asegurarte de que tienes la base de datos correcta. Para ver una lista de todas las bases de datos existentes, usa el siguiente comando:</p>
-<pre tabindex="0"><code>bashCopiarSHOW DATABASES;
+<pre tabindex="0"><code>SHOW DATABASES;
 </code></pre><h5 id="paso-3-selecciona-la-base-de-datos-a-eliminar"><strong>Paso 3: Selecciona la Base de Datos a Eliminar</strong></h5>
 <p>Una vez que veas todas las bases de datos, selecciona la que deseas eliminar. Para borrar una base de datos, utiliza el siguiente comando:</p>
-<pre tabindex="0"><code>bashCopiarDROP DATABASE nombre_de_la_base_de_datos;
+<pre tabindex="0"><code>DROP DATABASE nombre_de_la_base_de_datos;
 </code></pre><p>Reemplaza <code>nombre_de_la_base_de_datos</code> con el nombre de la base de datos que deseas eliminar. Por ejemplo, si la base de datos se llama <code>mi_proyecto</code>, el comando sería:</p>
-<pre tabindex="0"><code>bashCopiarDROP DATABASE mi_proyecto;
+<pre tabindex="0"><code>DROP DATABASE mi_proyecto;
 </code></pre><h5 id="paso-4-verifica-que-la-base-de-datos-ha-sido-eliminada"><strong>Paso 4: Verifica que la Base de Datos Ha Sido Eliminada</strong></h5>
 <p>Para asegurarte de que la base de datos fue eliminada correctamente, puedes ejecutar nuevamente el comando <code>SHOW DATABASES;</code>. La base de datos eliminada ya no debería aparecer en la lista.</p>
 <h4 id="opción-2-borrar-una-base-de-datos-usando-mysql-workbench"><strong>Opción 2: Borrar una Base de Datos Usando MySQL Workbench</strong></h4>
@@ -533,7 +533,7 @@
    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
    <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
 </svg>
-</i> 2024 - 2025 Blog Crom Studio
+</i> 2021 - 2025 Blog Crom Studio
     
   </div>
   

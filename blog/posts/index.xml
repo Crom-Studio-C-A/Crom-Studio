@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Blog - Crom Studio Venezuela</title>
+    <title>Posts on Blog - Crom Studio</title>
     <link>https://cromstudio.com.ve/blog/posts/</link>
-    <description>Recent content in Posts on Blog - Crom Studio Venezuela</description>
+    <description>Recent content in Posts on Blog - Crom Studio</description>
     <generator>Hugo</generator>
     <language>es</language>
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Tue, 18 Mar 2025 10:18:23 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 18 Mar 2025 10:34:31 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SEPE Cursos Gratuitos para Desempleados: Formación Profesional y Oportunidades para Mejorar tu Empleabilidad</title>
+      <link>https://cromstudio.com.ve/blog/posts/cursos-para-desempleados-del-sepe-espa%C3%B1a/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/cursos-para-desempleados-del-sepe-espa%C3%B1a/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/e2Dntly.jpeg&#34;&#xD;&#xA;      alt=&#34;españa&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;En España, el &lt;strong&gt;Servicio Público de Empleo Estatal (SEPE)&lt;/strong&gt; ofrece múltiples oportunidades para aquellos que se encuentran en situación de desempleo. Uno de los recursos más valiosos que proporciona el SEPE son los &lt;strong&gt;cursos gratuitos para desempleados&lt;/strong&gt;, los cuales están diseñados para mejorar las habilidades profesionales de los participantes y aumentar sus posibilidades de reinsertarse en el mercado laboral. En este artículo, exploraremos todo lo que necesitas saber sobre estos cursos gratuitos, cómo acceder a ellos y qué ventajas ofrecen a los desempleados.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Ventajas de MySQL: Un Sistema de Gestión de Bases de Datos Confiable y Eficiente</title>
+      <link>https://cromstudio.com.ve/blog/posts/ventajas-de-mysql/</link>
+      <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/ventajas-de-mysql/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/dtA5Lc5.jpeg&#34;&#xD;&#xA;      alt=&#34;sql&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;En el mundo de las bases de datos, MySQL se ha establecido como uno de los sistemas de gestión más populares y ampliamente utilizados. Su capacidad para manejar grandes volúmenes de datos de manera eficiente y su flexibilidad en entornos tanto pequeños como grandes hacen de MySQL una elección preferida para desarrolladores y empresas de todo el mundo. En este artículo, exploraremos las principales ventajas de MySQL y por qué sigue siendo una de las mejores opciones para gestionar bases de datos.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Guía Completa: Cómo Borrar una Base de Datos en MySQL de Forma Segura y Eficiente</title>
       <link>https://cromstudio.com.ve/blog/posts/como-borrar-una-base-de-datos-en-mysql/</link>

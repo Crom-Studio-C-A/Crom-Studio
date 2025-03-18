@@ -1,34 +1,83 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Blog - Crom Studio Venezuela</title>
+    <title>Categories on Blog - Crom Studio</title>
     <link>https://cromstudio.com.ve/blog/categories/</link>
-    <description>Recent content in Categories on Blog - Crom Studio Venezuela</description>
+    <description>Recent content in Categories on Blog - Crom Studio</description>
     <generator>Hugo</generator>
     <language>es</language>
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Tue, 18 Mar 2025 10:18:23 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 18 Mar 2025 10:34:31 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cursos</title>
+      <link>https://cromstudio.com.ve/blog/categories/cursos/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/cursos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cursos Del SEPE</title>
+      <link>https://cromstudio.com.ve/blog/categories/cursos-del-sepe/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/cursos-del-sepe/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>España</title>
+      <link>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Formación</title>
+      <link>https://cromstudio.com.ve/blog/categories/formaci%C3%B3n/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/formaci%C3%B3n/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Formación Profesional</title>
+      <link>https://cromstudio.com.ve/blog/categories/formaci%C3%B3n-profesional/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/formaci%C3%B3n-profesional/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FP</title>
+      <link>https://cromstudio.com.ve/blog/categories/fp/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/fp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SEPE</title>
+      <link>https://cromstudio.com.ve/blog/categories/sepe/</link>
+      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/sepe/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Guias</title>
       <link>https://cromstudio.com.ve/blog/categories/guias/</link>
-      <pubDate>Tue, 18 Mar 2025 10:18:23 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/guias/</guid>
       <description></description>
     </item>
     <item>
       <title>MySQL</title>
       <link>https://cromstudio.com.ve/blog/categories/mysql/</link>
-      <pubDate>Tue, 18 Mar 2025 10:18:23 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/mysql/</guid>
       <description></description>
     </item>
     <item>
       <title>Tutorial</title>
       <link>https://cromstudio.com.ve/blog/categories/tutorial/</link>
-      <pubDate>Tue, 18 Mar 2025 10:18:23 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/tutorial/</guid>
       <description></description>
     </item>
@@ -51,13 +100,6 @@
       <link>https://cromstudio.com.ve/blog/categories/carrera-profesional/</link>
       <pubDate>Mon, 03 Mar 2025 08:06:39 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/carrera-profesional/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>España</title>
-      <link>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</link>
-      <pubDate>Mon, 03 Mar 2025 08:06:39 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</guid>
       <description></description>
     </item>
     <item>
