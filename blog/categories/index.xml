@@ -9,8 +9,29 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Thu, 20 Mar 2025 12:41:14 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 21 Mar 2025 05:05:43 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estudios</title>
+      <link>https://cromstudio.com.ve/blog/categories/estudios/</link>
+      <pubDate>Fri, 21 Mar 2025 05:05:43 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/estudios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Guias</title>
+      <link>https://cromstudio.com.ve/blog/categories/guias/</link>
+      <pubDate>Fri, 21 Mar 2025 05:05:43 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/guias/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ingles</title>
+      <link>https://cromstudio.com.ve/blog/categories/ingles/</link>
+      <pubDate>Fri, 21 Mar 2025 05:05:43 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/ingles/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Aprender</title>
       <link>https://cromstudio.com.ve/blog/categories/aprender/</link>
@@ -23,20 +44,6 @@
       <link>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</link>
       <pubDate>Thu, 20 Mar 2025 12:41:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Guias</title>
-      <link>https://cromstudio.com.ve/blog/categories/guias/</link>
-      <pubDate>Thu, 20 Mar 2025 12:41:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/guias/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ingles</title>
-      <link>https://cromstudio.com.ve/blog/categories/ingles/</link>
-      <pubDate>Thu, 20 Mar 2025 12:41:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/ingles/</guid>
       <description></description>
     </item>
     <item>
