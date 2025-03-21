@@ -9,27 +9,139 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Fri, 21 Mar 2025 05:10:08 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 21 Mar 2025 05:31:30 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>España</title>
-      <link>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</link>
-      <pubDate>Fri, 21 Mar 2025 05:10:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</guid>
+      <title>Consejos</title>
+      <link>https://cromstudio.com.ve/blog/categories/consejos/</link>
+      <pubDate>Fri, 21 Mar 2025 05:31:30 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/consejos/</guid>
       <description></description>
     </item>
     <item>
-      <title>Europa</title>
-      <link>https://cromstudio.com.ve/blog/categories/europa/</link>
-      <pubDate>Fri, 21 Mar 2025 05:10:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/europa/</guid>
+      <title>Guias</title>
+      <link>https://cromstudio.com.ve/blog/categories/guias/</link>
+      <pubDate>Fri, 21 Mar 2025 05:31:30 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/guias/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ingles</title>
+      <link>https://cromstudio.com.ve/blog/categories/ingles/</link>
+      <pubDate>Fri, 21 Mar 2025 05:31:30 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/ingles/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ingles Britanico</title>
+      <link>https://cromstudio.com.ve/blog/categories/ingles-britanico/</link>
+      <pubDate>Fri, 21 Mar 2025 05:31:30 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/ingles-britanico/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Antivirus</title>
+      <link>https://cromstudio.com.ve/blog/categories/antivirus/</link>
+      <pubDate>Fri, 21 Mar 2025 05:30:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/antivirus/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ciberseguridad</title>
+      <link>https://cromstudio.com.ve/blog/categories/ciberseguridad/</link>
+      <pubDate>Fri, 21 Mar 2025 05:30:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/ciberseguridad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ransomware</title>
+      <link>https://cromstudio.com.ve/blog/categories/ransomware/</link>
+      <pubDate>Fri, 21 Mar 2025 05:30:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/ransomware/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CITAS</title>
+      <link>https://cromstudio.com.ve/blog/categories/citas/</link>
+      <pubDate>Fri, 21 Mar 2025 05:28:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/citas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Citas en Madrid</title>
+      <link>https://cromstudio.com.ve/blog/categories/citas-en-madrid/</link>
+      <pubDate>Fri, 21 Mar 2025 05:28:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/citas-en-madrid/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>España</title>
+      <link>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</link>
+      <pubDate>Fri, 21 Mar 2025 05:28:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</guid>
       <description></description>
     </item>
     <item>
       <title>Madrid</title>
       <link>https://cromstudio.com.ve/blog/categories/madrid/</link>
-      <pubDate>Fri, 21 Mar 2025 05:10:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <pubDate>Fri, 21 Mar 2025 05:28:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/madrid/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SEPE</title>
+      <link>https://cromstudio.com.ve/blog/categories/sepe/</link>
+      <pubDate>Fri, 21 Mar 2025 05:28:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/sepe/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tramites</title>
+      <link>https://cromstudio.com.ve/blog/categories/tramites/</link>
+      <pubDate>Fri, 21 Mar 2025 05:28:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/tramites/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tramites en Madrid</title>
+      <link>https://cromstudio.com.ve/blog/categories/tramites-en-madrid/</link>
+      <pubDate>Fri, 21 Mar 2025 05:28:14 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/tramites-en-madrid/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MySQL</title>
+      <link>https://cromstudio.com.ve/blog/categories/mysql/</link>
+      <pubDate>Fri, 21 Mar 2025 05:27:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MySQL Workbench</title>
+      <link>https://cromstudio.com.ve/blog/categories/mysql-workbench/</link>
+      <pubDate>Fri, 21 Mar 2025 05:27:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/mysql-workbench/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tutorial</title>
+      <link>https://cromstudio.com.ve/blog/categories/tutorial/</link>
+      <pubDate>Fri, 21 Mar 2025 05:27:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/tutorial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Europa</title>
+      <link>https://cromstudio.com.ve/blog/categories/europa/</link>
+      <pubDate>Fri, 21 Mar 2025 05:25:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/europa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Transporte</title>
+      <link>https://cromstudio.com.ve/blog/categories/transporte/</link>
+      <pubDate>Fri, 21 Mar 2025 05:25:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/transporte/</guid>
       <description></description>
     </item>
     <item>
@@ -37,20 +149,6 @@
       <link>https://cromstudio.com.ve/blog/categories/estudios/</link>
       <pubDate>Fri, 21 Mar 2025 05:05:43 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/estudios/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Guias</title>
-      <link>https://cromstudio.com.ve/blog/categories/guias/</link>
-      <pubDate>Fri, 21 Mar 2025 05:05:43 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/guias/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ingles</title>
-      <link>https://cromstudio.com.ve/blog/categories/ingles/</link>
-      <pubDate>Fri, 21 Mar 2025 05:05:43 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/ingles/</guid>
       <description></description>
     </item>
     <item>
@@ -114,27 +212,6 @@
       <link>https://cromstudio.com.ve/blog/categories/fp/</link>
       <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/fp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SEPE</title>
-      <link>https://cromstudio.com.ve/blog/categories/sepe/</link>
-      <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/sepe/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>MySQL</title>
-      <link>https://cromstudio.com.ve/blog/categories/mysql/</link>
-      <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/mysql/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tutorial</title>
-      <link>https://cromstudio.com.ve/blog/categories/tutorial/</link>
-      <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/tutorial/</guid>
       <description></description>
     </item>
     <item>
@@ -366,13 +443,6 @@
       <link>https://cromstudio.com.ve/blog/categories/transformaci%C3%B3n-digital/</link>
       <pubDate>Tue, 12 Nov 2024 20:22:23 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/transformaci%C3%B3n-digital/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ciberseguridad</title>
-      <link>https://cromstudio.com.ve/blog/categories/ciberseguridad/</link>
-      <pubDate>Mon, 11 Nov 2024 20:46:10 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/ciberseguridad/</guid>
       <description></description>
     </item>
     <item>
