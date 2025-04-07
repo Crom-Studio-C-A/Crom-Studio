@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <title>Guía Completa sobre el Update de MySQL: Todo lo que Necesitas Saber :: Blog - Crom Studio</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="MySQL es uno de los sistemas de gestión de bases de datos más utilizados en el mundo debido a su fiabilidad, rendimiento y facilidad de uso. Ya sea que estés administrando una base de datos pequeña o una infraestructura más compleja, es importante entender cómo funciona el comando UPDATE en MySQL. En este artículo, te ofreceremos una guía detallada sobre el uso del UPDATE en MySQL, desde sus conceptos básicos hasta las mejores prácticas y ejemplos avanzados.
+"
+/>
+<meta
+  name="keywords"
+  content="crom studio, blog crom studio, blog venezuela, noticias de tecnologia, tecnologia venezuela"
+/>
+<meta name="robots" content="noodp" /><link rel="manifest" href="/manifest.json" /><meta property="og:url" content="https://cromstudio.com.ve/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/">
+  <meta property="og:site_name" content="Blog - Crom Studio">
+  <meta property="og:title" content="Guía Completa sobre el Update de MySQL: Todo lo que Necesitas Saber">
+  <meta property="og:description" content="MySQL es uno de los sistemas de gestión de bases de datos más utilizados en el mundo debido a su fiabilidad, rendimiento y facilidad de uso. Ya sea que estés administrando una base de datos pequeña o una infraestructura más compleja, es importante entender cómo funciona el comando UPDATE en MySQL. En este artículo, te ofreceremos una guía detallada sobre el uso del UPDATE en MySQL, desde sus conceptos básicos hasta las mejores prácticas y ejemplos avanzados.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-07T06:07:41-04:00">
+    <meta property="article:modified_time" content="2025-04-07T06:07:41-04:00">
+    <meta property="article:tag" content="MySQL">
+    <meta property="article:tag" content="Comando `UPDATE`">
+    <meta property="article:tag" content="Tutorial De MySQL">
+    <meta property="article:tag" content="Actualizar Registros MySQL">
+    <meta property="article:tag" content="Mejores Prácticas en MySQL">
+    <meta property="article:tag" content="SQL">
+    <meta property="og:image" content="https://i.imgur.com/aGK5J1Q.png">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://i.imgur.com/aGK5J1Q.png">
+  <meta name="twitter:title" content="Guía Completa sobre el Update de MySQL: Todo lo que Necesitas Saber">
+  <meta name="twitter:description" content="MySQL es uno de los sistemas de gestión de bases de datos más utilizados en el mundo debido a su fiabilidad, rendimiento y facilidad de uso. Ya sea que estés administrando una base de datos pequeña o una infraestructura más compleja, es importante entender cómo funciona el comando UPDATE en MySQL. En este artículo, te ofreceremos una guía detallada sobre el uso del UPDATE en MySQL, desde sus conceptos básicos hasta las mejores prácticas y ejemplos avanzados.">
+
+
+<link rel="canonical" href="https://cromstudio.com.ve/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/" />
+
+<link rel="shortcut icon" href="/blog/favicon.ico" />
+<link rel="stylesheet" href="/blog/css/index.min.c860e17f20d9f258820c02bf7ab3f57c9595d0bc21dede7eda08ccd63ba3f4cc.css">
+
+
+
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FTCG8F3HMV');
+        }
+      </script>
+
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7313467653686833"
+     crossorigin="anonymous"></script>
+  
+  
+
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800"><header class="flex flex-none justify-center z-10">
+    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/blog/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/blog/logo.webp" alt="logo">
+    </a>
+  </div>
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Abrir menú principal</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-sm md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="post" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600 text-emerald-600"
+            href="/blog/posts/" title="Publicaciones">Publicaciones</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href=/blog/search/ class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Buscar</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Cambiar a modo oscuro">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Cambiar a modo oscuro">
+      <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
+        <i class="h-6 w-6 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:group-[]:invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+        </i>
+        <i class="h-6 w-6 flex-none rounded-full place-self-center invisible peer-checked:group-[]:visible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+        </i>
+      </div>
+    </label>
+  </div>
+</div>
+
+  </header>
+  <main class="flex flex-auto justify-center">
+    
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
+    <div>
+      <a href="/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/">
+        
+      </a>
+    </div>
+    <div class="flex flex-col gap-y-3 p-6">
+      <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+        <a href="/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/">Guía Completa sobre el Update de MySQL: Todo lo que Necesitas Saber</a>
+      </h1>
+
+      
+      
+  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
+    
+      
+      <li>
+        <a href="/blog/categories/mysql/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          MySQL
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/categories/tutoriales/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          Tutoriales
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/categories/tutorial/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          Tutorial
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/categories/guias/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          Guias
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/categories/guia/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          Guia
+        </a>
+      </li>
+      
+    
+    
+      
+      <li>
+        <a href="/blog/tags/mysql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">MySQL</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/comando-update/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Comando `UPDATE`</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/tutorial-de-mysql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Tutorial De MySQL</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/actualizar-registros-mysql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Actualizar Registros MySQL</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/mejores-pr%C3%A1cticas-en-mysql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Mejores Prácticas en MySQL</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/sql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">SQL</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/base-de-datos-mysql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Base De Datos MySQL</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/actualizaci%C3%B3n-de-datos/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Actualización De Datos</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/rendimiento-de-mysql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Rendimiento De MySQL</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/subconsulta-en-mysql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Subconsulta en MySQL</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/transacciones-mysql/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Transacciones MySQL</span>
+        </a>
+      </li>
+      
+    
+  </ul>
+
+
+
+      <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2025-04-07T06:07:41-04:00">
+      2025-04-07
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+</svg>
+
+    </i>
+    <span>
+      6 minutos de lectura
+    </span>
+  </div>
+</div>
+
+      
+
+      
+        
+        <section class="prose prose-slate dark:prose-invert w-full max-w-4xl lg:max-w-5xl mt-6">
+          <h2>Tabla de contenido</h2>
+          <aside><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#qué-es-el-comando-update-en-mysql"><strong>¿Qué es el Comando</strong> <code>UPDATE</code> <strong>en MySQL?</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#1-sintaxis-básica-del-comando-update"><strong>1. Sintaxis Básica del Comando</strong> <code>UPDATE</code></a>
+      <ul>
+        <li><a href="#ejemplo-básico"><strong>Ejemplo Básico:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#2-uso-de-múltiples-columnas-en-un-update"><strong>2. Uso de Múltiples Columnas en un</strong> <code>UPDATE</code></a>
+      <ul>
+        <li><a href="#ejemplo-con-múltiples-columnas"><strong>Ejemplo con Múltiples Columnas:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#3-importancia-de-la-cláusula-where"><strong>3. Importancia de la Cláusula</strong> <code>WHERE</code></a>
+      <ul>
+        <li><a href="#riesgo-de-olvidar-la-cláusula-where"><strong>Riesgo de Olvidar la Cláusula</strong> <code>WHERE</code><strong>:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#4-uso-de-update-con-subconsultas"><strong>4. Uso de</strong> <code>UPDATE</code> <strong>con Subconsultas</strong></a>
+      <ul>
+        <li><a href="#ejemplo-con-subconsulta"><strong>Ejemplo con Subconsulta:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#5-actualización-de-registros-con-update-y-funciones"><strong>5. Actualización de Registros con</strong> <code>UPDATE</code> <strong>y Funciones</strong></a>
+      <ul>
+        <li><a href="#ejemplo-de-uso-de-funciones-en-un-update"><strong>Ejemplo de Uso de Funciones en un</strong> <code>UPDATE</code><strong>:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#6-consideraciones-de-rendimiento-en-update"><strong>6. Consideraciones de Rendimiento en</strong> <code>UPDATE</code></a></li>
+    <li><a href="#7-cómo-realizar-una-actualización-segura"><strong>7. Cómo Realizar una Actualización Segura</strong></a>
+      <ul>
+        <li><a href="#pasos-para-una-actualización-segura"><strong>Pasos para una Actualización Segura:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#8-comandos-update-en-transacciones"><strong>8. Comandos</strong> <code>UPDATE</code> <strong>en Transacciones</strong></a>
+      <ul>
+        <li><a href="#ejemplo-de-transacción-con-update"><strong>Ejemplo de Transacción con</strong> <code>UPDATE</code><strong>:</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusión"><strong>Conclusión</strong></a></li>
+  </ul>
+</nav></aside>
+        </section>
+        
+      
+
+      <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+        <p><div class="not-prose">
+<figure>
+    <img src="https://i.imgur.com/aGK5J1Q.png"
+      alt="MySQL" 
+      loading="lazy"
+    >
+  </figure></div>
+</p>
+<p>MySQL es uno de los sistemas de gestión de bases de datos más utilizados en el mundo debido a su fiabilidad, rendimiento y facilidad de uso. Ya sea que estés administrando una base de datos pequeña o una infraestructura más compleja, es importante entender cómo funciona el comando <code>UPDATE</code> en MySQL. En este artículo, te ofreceremos una guía detallada sobre el uso del <code>UPDATE</code> en MySQL, desde sus conceptos básicos hasta las mejores prácticas y ejemplos avanzados.</p>
+<h3 id="qué-es-el-comando-update-en-mysql"><strong>¿Qué es el Comando</strong> <code>UPDATE</code> <strong>en MySQL?</strong></h3>
+<p>El comando <code>UPDATE</code> en MySQL se utiliza para modificar registros existentes en una tabla de base de datos. A diferencia del comando <code>INSERT</code>, que agrega nuevos registros, el comando <code>UPDATE</code> se enfoca en cambiar los valores de columnas específicas de registros ya existentes. Es una herramienta poderosa que permite realizar modificaciones de datos de manera eficiente, pero también requiere precaución para evitar cambios indeseados.</p>
+<hr>
+<h2 id="1-sintaxis-básica-del-comando-update"><strong>1. Sintaxis Básica del Comando</strong> <code>UPDATE</code></h2>
+<p>La sintaxis básica de un comando <code>UPDATE</code> en MySQL es la siguiente:</p>
+<pre tabindex="0"><code>UPDATE nombre_de_la_tabla
+SET columna1 = valor1, columna2 = valor2, ...
+WHERE condición;
+</code></pre><ul>
+<li><code>nombre_de_la_tabla</code>: Es el nombre de la tabla donde se encuentra la información que deseas actualizar.</li>
+<li><code>columna1 = valor1, columna2 = valor2, ...</code>: Especifica las columnas que deseas actualizar junto con sus nuevos valores.</li>
+<li><code>WHERE condición</code>: Es una condición que especifica qué registros deben ser actualizados. Es importante siempre incluir una cláusula <code>WHERE</code> para evitar actualizar todos los registros de la tabla.</li>
+</ul>
+<h3 id="ejemplo-básico"><strong>Ejemplo Básico:</strong></h3>
+<p>Supongamos que tenemos una tabla llamada <code>usuarios</code>, y queremos actualizar la dirección de correo electrónico de un usuario específico. El código sería algo así:</p>
+<pre tabindex="0"><code>UPDATE usuarios
+SET email = &#39;nuevo_email@dominio.com&#39;
+WHERE id = 5;
+</code></pre><p>En este ejemplo:</p>
+<ul>
+<li>Estamos actualizando el valor de la columna <code>email</code>.</li>
+<li>Usamos la condición <code>WHERE id = 5</code> para asegurarnos de que solo se actualice el registro con <code>id = 5</code>.</li>
+</ul>
+<hr>
+<h2 id="2-uso-de-múltiples-columnas-en-un-update"><strong>2. Uso de Múltiples Columnas en un</strong> <code>UPDATE</code></h2>
+<p>Uno de los aspectos útiles del comando <code>UPDATE</code> es que puedes actualizar múltiples columnas al mismo tiempo. Si deseas cambiar más de una columna en un solo comando, simplemente separa las asignaciones con comas.</p>
+<h3 id="ejemplo-con-múltiples-columnas"><strong>Ejemplo con Múltiples Columnas:</strong></h3>
+<pre tabindex="0"><code>UPDATE usuarios
+SET email = &#39;nuevo_email@dominio.com&#39;, nombre = &#39;Juan Pérez&#39;, edad = 30
+WHERE id = 5;
+</code></pre><p>En este caso, actualizamos tres columnas: <code>email</code>, <code>nombre</code> y <code>edad</code>, en el mismo comando.</p>
+<hr>
+<h2 id="3-importancia-de-la-cláusula-where"><strong>3. Importancia de la Cláusula</strong> <code>WHERE</code></h2>
+<p>La cláusula <code>WHERE</code> es esencial cuando utilizas el comando <code>UPDATE</code> en MySQL. Sin ella, <strong>todos los registros de la tabla se verían actualizados</strong>, lo cual podría ser un error grave si no estás seguro de qué datos estás manipulando. Siempre que sea posible, asegúrate de usar una condición específica que identifique de manera precisa los registros que deseas modificar.</p>
+<h3 id="riesgo-de-olvidar-la-cláusula-where"><strong>Riesgo de Olvidar la Cláusula</strong> <code>WHERE</code><strong>:</strong></h3>
+<pre tabindex="0"><code>UPDATE usuarios
+SET email = &#39;nuevo_email@dominio.com&#39;;
+</code></pre><p>Este código sin la cláusula <code>WHERE</code> actualizaría el campo <code>email</code> para <strong>todos los usuarios en la tabla</strong>, lo cual, en muchos casos, no es el resultado deseado.</p>
+<hr>
+<h2 id="4-uso-de-update-con-subconsultas"><strong>4. Uso de</strong> <code>UPDATE</code> <strong>con Subconsultas</strong></h2>
+<p>A veces es necesario actualizar una columna en una tabla utilizando valores provenientes de otra tabla. Esto se puede lograr utilizando una subconsulta dentro del comando <code>UPDATE</code>.</p>
+<h3 id="ejemplo-con-subconsulta"><strong>Ejemplo con Subconsulta:</strong></h3>
+<p>Supongamos que tienes una tabla <code>productos</code> y otra tabla <code>ventas</code>, y deseas actualizar el precio de los productos que han sido vendidos, con un nuevo precio basado en las ventas realizadas:</p>
+<pre tabindex="0"><code>UPDATE productos p
+JOIN ventas v ON p.id = v.producto_id
+SET p.precio = p.precio * 1.10
+WHERE v.fecha_venta &gt; &#39;2025-01-01&#39;;
+</code></pre><p>En este caso, el precio de los productos que se vendieron después del 1 de enero de 2025 se incrementa en un 10% (<code>* 1.10</code>).</p>
+<hr>
+<h2 id="5-actualización-de-registros-con-update-y-funciones"><strong>5. Actualización de Registros con</strong> <code>UPDATE</code> <strong>y Funciones</strong></h2>
+<p>MySQL permite usar <strong>funciones</strong> dentro de los comandos <code>UPDATE</code>. Esto puede ser útil si necesitas realizar cálculos o manipulaciones de datos al actualizar los registros.</p>
+<h3 id="ejemplo-de-uso-de-funciones-en-un-update"><strong>Ejemplo de Uso de Funciones en un</strong> <code>UPDATE</code><strong>:</strong></h3>
+<pre tabindex="0"><code>UPDATE usuarios
+SET saldo = saldo + 100
+WHERE fecha_ultimo_pago &lt; &#39;2025-01-01&#39;;
+</code></pre><p>En este ejemplo, estamos sumando 100 al saldo de todos los usuarios cuyo último pago fue antes del 1 de enero de 2025.</p>
+<hr>
+<h2 id="6-consideraciones-de-rendimiento-en-update"><strong>6. Consideraciones de Rendimiento en</strong> <code>UPDATE</code></h2>
+<p>Cuando trabajas con tablas grandes, las actualizaciones pueden afectar el rendimiento de la base de datos. Algunas buenas prácticas incluyen:</p>
+<ul>
+<li><strong>Usar índices</strong>: Asegúrate de que las columnas en la cláusula <code>WHERE</code> estén indexadas para mejorar el rendimiento de la búsqueda de registros a actualizar.</li>
+<li><strong>Realizar actualizaciones en lotes</strong>: Si tienes una gran cantidad de registros para actualizar, realiza las actualizaciones en partes más pequeñas para evitar bloquear la tabla durante largos períodos de tiempo.</li>
+<li><strong>Evitar operaciones innecesarias</strong>: Solo actualiza las columnas que realmente necesitan ser modificadas. No es necesario actualizar las columnas si sus valores no han cambiado.</li>
+</ul>
+<hr>
+<h2 id="7-cómo-realizar-una-actualización-segura"><strong>7. Cómo Realizar una Actualización Segura</strong></h2>
+<p>Para garantizar que el comando <code>UPDATE</code> se ejecute de forma segura y no cause problemas en tu base de datos, considera lo siguiente:</p>
+<h3 id="pasos-para-una-actualización-segura"><strong>Pasos para una Actualización Segura:</strong></h3>
+<ol>
+<li>
+<p><strong>Haz un respaldo de la base de datos</strong> antes de realizar cualquier operación <code>UPDATE</code>, especialmente si trabajas con datos importantes.</p>
+</li>
+<li>
+<p><strong>Verifica la condición de la cláusula</strong> <code>WHERE</code>: Ejecuta una consulta <code>SELECT</code> con la misma condición de <code>WHERE</code> para verificar que estás actualizando solo los registros correctos.</p>
+<pre tabindex="0"><code>SELECT * FROM usuarios WHERE id = 5;
+</code></pre></li>
+<li>
+<p><strong>Realiza la actualización en un entorno de prueba</strong> si estás trabajando en un entorno de producción. Esto te permitirá detectar posibles errores sin afectar los datos reales.</p>
+</li>
+</ol>
+<hr>
+<h2 id="8-comandos-update-en-transacciones"><strong>8. Comandos</strong> <code>UPDATE</code> <strong>en Transacciones</strong></h2>
+<p>En algunos casos, es útil agrupar varios comandos <code>UPDATE</code> dentro de una <strong>transacción</strong> para garantizar que todos los cambios se realicen correctamente o, en caso de error, se reviertan. Para ello, MySQL soporta transacciones que te permiten asegurar la consistencia de los datos.</p>
+<h3 id="ejemplo-de-transacción-con-update"><strong>Ejemplo de Transacción con</strong> <code>UPDATE</code><strong>:</strong></h3>
+<pre tabindex="0"><code>START TRANSACTION;
+
+UPDATE productos SET precio = precio * 1.05 WHERE categoria = &#39;Electrónica&#39;;
+UPDATE productos SET precio = precio * 1.10 WHERE categoria = &#39;Muebles&#39;;
+
+COMMIT;  -- Si todo va bien, confirmamos los cambios.
+-- ROLLBACK; -- Si algo sale mal, revertimos los cambios.
+</code></pre><hr>
+<h2 id="conclusión"><strong>Conclusión</strong></h2>
+<p>El comando <code>UPDATE</code> es una herramienta poderosa en MySQL para modificar registros en una base de datos. A medida que trabajas con bases de datos más grandes y complejas, es fundamental que sigas las mejores prácticas para garantizar que las actualizaciones sean seguras y eficientes. Recuerda siempre respaldar tus datos antes de realizar cambios, utilizar las cláusulas <code>WHERE</code> de manera efectiva, y emplear transacciones cuando sea necesario para asegurar la integridad de la información.</p>
+<p>Con esta guía, ahora tienes un conocimiento más profundo sobre cómo realizar actualizaciones en MySQL de manera efectiva. Si sigues estos consejos y prácticas recomendadas, podrás manejar la base de datos de manera mucho más eficiente y evitar errores comunes que pueden surgir en el proceso de actualización.</p>
+<hr>
+<p><strong>Palabras clave SEO</strong>: MySQL, comando <code>UPDATE</code>, tutorial de MySQL, actualizar registros MySQL, mejores prácticas en MySQL, SQL, base de datos MySQL, actualización de datos, rendimiento de MySQL, subconsulta en MySQL, transacciones MySQL.</p>
+
+      </article>
+
+      
+
+
+
+
+    </div>
+  </div>
+</div>
+
+  </main>
+  <footer class="flex flex-none justify-center">
+    <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-2 md:gap-0 justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+    
+  
+  
+    <a href="https://www.facebook.com/cromstudio21" target="_blank" title="Facebook" class="flex flex-row mr-2">
+      <span class="hidden">Facebook</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://twitter.com/cromstudio" target="_blank" title="Twitter" class="flex flex-row mr-2">
+      <span class="hidden">Twitter</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+   <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://www.instagram.com/cromstudio21" target="_blank" title="Instagram" class="flex flex-row mr-2">
+      <span class="hidden">Instagram</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M16.5 7.5l0 .01"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+  <div class="grow"></div>
+  <div class="flex flex-row">
+    <i class="h-6 w-6 flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2021 - 2025 Blog Crom Studio
+    
+  </div>
+  
+  <div class="flex flex-row">
+    <span class="ml-0 pl-0 md:ml-2 md:pl-2 border-l-0 md:border-l border-slate-300 dark:border-slate-400">
+      Con tecnología de <a href="https://cromstudio.com.ve/" target="_blank" rel="noopener" class="underline">Crom Studio</a> <no value> <no value>
+    </span>
+  </div>
+  
+</section>
+
+  </footer>
+  <script src="/blog/main.min.65ca5b0808abf278fcec5d424701ebf0b4bc46a737129cd5e57fdb739f463e79.js"></script>
+
+<div class="hidden top-1 right-1" id="code-copy">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+  <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+</svg>
+
+  </i>
+</div>
+<div class="hidden top-1 right-1" id="code-copy-done">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M5 12l5 5l10 -10" />
+</svg>
+
+  </i>
+</div><script src="/blog/code-copy.min.e7b2a74adef1ed474c335c8bd5e7832b2316b8842b0f9184d65286c5bd64f51a.js"></script>
+
+
+
+
+
+</body>
+</html>

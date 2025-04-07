@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Transacciones MySQL on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/transacciones-mysql/</link>
+    <description>Recent content in Transacciones MySQL on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Mon, 07 Apr 2025 06:07:41 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/transacciones-mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guía Completa sobre el Update de MySQL: Todo lo que Necesitas Saber</title>
+      <link>https://cromstudio.com.ve/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/aGK5J1Q.png&#34;&#xD;&#xA;      alt=&#34;MySQL&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;MySQL es uno de los sistemas de gestión de bases de datos más utilizados en el mundo debido a su fiabilidad, rendimiento y facilidad de uso. Ya sea que estés administrando una base de datos pequeña o una infraestructura más compleja, es importante entender cómo funciona el comando &lt;code&gt;UPDATE&lt;/code&gt; en MySQL. En este artículo, te ofreceremos una guía detallada sobre el uso del &lt;code&gt;UPDATE&lt;/code&gt; en MySQL, desde sus conceptos básicos hasta las mejores prácticas y ejemplos avanzados.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

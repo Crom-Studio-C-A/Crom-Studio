@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Particionamiento MySQL on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/particionamiento-mysql/</link>
+    <description>Recent content in Particionamiento MySQL on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Mon, 07 Apr 2025 06:11:56 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/particionamiento-mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL Avanzado: Domina las Funciones y Características Más Potentes de MySQL</title>
+      <link>https://cromstudio.com.ve/blog/posts/curso-de-mysql-avanzado/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/curso-de-mysql-avanzado/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/aGK5J1Q.png&#34;&#xD;&#xA;      alt=&#34;MYSQL&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;MySQL&lt;/strong&gt; es uno de los sistemas de gestión de bases de datos más populares y robustos en el mundo del desarrollo de software. Si ya tienes experiencia con &lt;strong&gt;MySQL básico&lt;/strong&gt; y deseas profundizar en su uso, este artículo te guiará a través de técnicas avanzadas que te permitirán aprovechar al máximo este poderoso sistema de bases de datos. En esta guía, exploraremos conceptos avanzados de &lt;strong&gt;MySQL&lt;/strong&gt;, como &lt;strong&gt;optimización de consultas&lt;/strong&gt;, &lt;strong&gt;índices&lt;/strong&gt;, &lt;strong&gt;procedimientos almacenados&lt;/strong&gt;, &lt;strong&gt;triggers&lt;/strong&gt;, &lt;strong&gt;vistas&lt;/strong&gt;, y mucho más. Si estás buscando una manera de llevar tus habilidades con MySQL al siguiente nivel, ¡este artículo es para ti!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

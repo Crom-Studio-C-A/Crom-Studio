@@ -9,8 +9,316 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Fri, 21 Mar 2025 05:31:30 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 07 Apr 2025 06:11:56 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL Avanzado</title>
+      <link>https://cromstudio.com.ve/blog/tags/mysql-avanzado/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/mysql-avanzado/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimización De Consultas MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/optimizaci%C3%B3n-de-consultas-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/optimizaci%C3%B3n-de-consultas-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Particionamiento MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/particionamiento-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/particionamiento-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Procedimientos Almacenados MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/procedimientos-almacenados-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/procedimientos-almacenados-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Replicación MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/replicaci%C3%B3n-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/replicaci%C3%B3n-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Seguridad en MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/seguridad-en-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/seguridad-en-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Triggers MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/triggers-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/triggers-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vistas MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/vistas-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/vistas-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Actualización De Datos</title>
+      <link>https://cromstudio.com.ve/blog/tags/actualizaci%C3%B3n-de-datos/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/actualizaci%C3%B3n-de-datos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Actualizar Registros MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/actualizar-registros-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/actualizar-registros-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Base De Datos MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/base-de-datos-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/base-de-datos-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Comando `UPDATE`</title>
+      <link>https://cromstudio.com.ve/blog/tags/comando-update/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/comando-update/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mejores Prácticas en MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/mejores-pr%C3%A1cticas-en-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/mejores-pr%C3%A1cticas-en-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rendimiento De MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/rendimiento-de-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/rendimiento-de-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/sql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/sql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Subconsulta en MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/subconsulta-en-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/subconsulta-en-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Transacciones MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/transacciones-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/transacciones-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tutorial De MySQL</title>
+      <link>https://cromstudio.com.ve/blog/tags/tutorial-de-mysql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:07:41 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/tutorial-de-mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Aprender a Programar Web</title>
+      <link>https://cromstudio.com.ve/blog/tags/aprender-a-programar-web/</link>
+      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/aprender-a-programar-web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Aprender HTML Y CSS</title>
+      <link>https://cromstudio.com.ve/blog/tags/aprender-html-y-css/</link>
+      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/aprender-html-y-css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cómo Crear Una Página Web Con HTML</title>
+      <link>https://cromstudio.com.ve/blog/tags/c%C3%B3mo-crear-una-p%C3%A1gina-web-con-html/</link>
+      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/c%C3%B3mo-crear-una-p%C3%A1gina-web-con-html/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Crear Página Web Fácil</title>
+      <link>https://cromstudio.com.ve/blog/tags/crear-p%C3%A1gina-web-f%C3%A1cil/</link>
+      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/crear-p%C3%A1gina-web-f%C3%A1cil/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Diseño Web Básico</title>
+      <link>https://cromstudio.com.ve/blog/tags/dise%C3%B1o-web-b%C3%A1sico/</link>
+      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/dise%C3%B1o-web-b%C3%A1sico/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ejemplo De Página Web Sencilla</title>
+      <link>https://cromstudio.com.ve/blog/tags/ejemplo-de-p%C3%A1gina-web-sencilla/</link>
+      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/ejemplo-de-p%C3%A1gina-web-sencilla/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Guía HTML Y CSS</title>
+      <link>https://cromstudio.com.ve/blog/tags/gu%C3%ADa-html-y-css/</link>
+      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/gu%C3%ADa-html-y-css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tutorial HTML Y CSS</title>
+      <link>https://cromstudio.com.ve/blog/tags/tutorial-html-y-css/</link>
+      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/tutorial-html-y-css/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Aprender Nuevas Habilidades 2025</title>
+      <link>https://cromstudio.com.ve/blog/tags/aprender-nuevas-habilidades-2025/</link>
+      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/aprender-nuevas-habilidades-2025/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cursos 2025 en España</title>
+      <link>https://cromstudio.com.ve/blog/tags/cursos-2025-en-espa%C3%B1a/</link>
+      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/cursos-2025-en-espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cursos Más Demandados España</title>
+      <link>https://cromstudio.com.ve/blog/tags/cursos-m%C3%A1s-demandados-espa%C3%B1a/</link>
+      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/cursos-m%C3%A1s-demandados-espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cursos Para Mejorar Empleo España</title>
+      <link>https://cromstudio.com.ve/blog/tags/cursos-para-mejorar-empleo-espa%C3%B1a/</link>
+      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/cursos-para-mejorar-empleo-espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cursos Recomendados 2025</title>
+      <link>https://cromstudio.com.ve/blog/tags/cursos-recomendados-2025/</link>
+      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/cursos-recomendados-2025/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Formación Online en España</title>
+      <link>https://cromstudio.com.ve/blog/tags/formaci%C3%B3n-online-en-espa%C3%B1a/</link>
+      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/formaci%C3%B3n-online-en-espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tendencias De Formación 2025</title>
+      <link>https://cromstudio.com.ve/blog/tags/tendencias-de-formaci%C3%B3n-2025/</link>
+      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/tendencias-de-formaci%C3%B3n-2025/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Contabilidad</title>
+      <link>https://cromstudio.com.ve/blog/tags/contabilidad/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/contabilidad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Economía Social</title>
+      <link>https://cromstudio.com.ve/blog/tags/econom%C3%ADa-social/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/econom%C3%ADa-social/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Emprendimiento Social</title>
+      <link>https://cromstudio.com.ve/blog/tags/emprendimiento-social/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/emprendimiento-social/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Emprendimiento Social en Venezuela</title>
+      <link>https://cromstudio.com.ve/blog/tags/emprendimiento-social-en-venezuela/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/emprendimiento-social-en-venezuela/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Emprendimiento Social en Venezuela 2025</title>
+      <link>https://cromstudio.com.ve/blog/tags/emprendimiento-social-en-venezuela-2025/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/emprendimiento-social-en-venezuela-2025/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Proyecto Socio-Productivo</title>
+      <link>https://cromstudio.com.ve/blog/tags/proyecto-socio-productivo/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/proyecto-socio-productivo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Proyectos Economicos</title>
+      <link>https://cromstudio.com.ve/blog/tags/proyectos-economicos/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/proyectos-economicos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Proyectos Sociales</title>
+      <link>https://cromstudio.com.ve/blog/tags/proyectos-sociales/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/proyectos-sociales/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Proyectos Socio Productivos en Venezuela</title>
+      <link>https://cromstudio.com.ve/blog/tags/proyectos-socio-productivos-en-venezuela/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/proyectos-socio-productivos-en-venezuela/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Proyectos Socio Productivos en Venezuela 2025</title>
+      <link>https://cromstudio.com.ve/blog/tags/proyectos-socio-productivos-en-venezuela-2025/</link>
+      <pubDate>Mon, 07 Apr 2025 05:52:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/proyectos-socio-productivos-en-venezuela-2025/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Aprender Inglés Británico</title>
       <link>https://cromstudio.com.ve/blog/tags/aprender-ingl%C3%A9s-brit%C3%A1nico/</link>
@@ -607,20 +915,6 @@
       <description></description>
     </item>
     <item>
-      <title>MySQL</title>
-      <link>https://cromstudio.com.ve/blog/tags/mysql/</link>
-      <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/mysql/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SQL</title>
-      <link>https://cromstudio.com.ve/blog/tags/sql/</link>
-      <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/sql/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Tutorial</title>
       <link>https://cromstudio.com.ve/blog/tags/tutorial/</link>
       <pubDate>Tue, 18 Mar 2025 10:27:08 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
@@ -765,13 +1059,6 @@
       <link>https://cromstudio.com.ve/blog/tags/venezuela/</link>
       <pubDate>Sun, 05 Jan 2025 08:25:25 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/venezuela/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Contabilidad</title>
-      <link>https://cromstudio.com.ve/blog/tags/contabilidad/</link>
-      <pubDate>Sat, 04 Jan 2025 13:14:20 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/contabilidad/</guid>
       <description></description>
     </item>
     <item>
@@ -992,24 +1279,10 @@
       <description></description>
     </item>
     <item>
-      <title>Proyecto Socio-Productivo</title>
-      <link>https://cromstudio.com.ve/blog/tags/proyecto-socio-productivo/</link>
-      <pubDate>Wed, 13 Nov 2024 18:12:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/proyecto-socio-productivo/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Sostenibilidad</title>
       <link>https://cromstudio.com.ve/blog/tags/sostenibilidad/</link>
       <pubDate>Wed, 13 Nov 2024 18:12:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/sostenibilidad/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Emprendimiento Social</title>
-      <link>https://cromstudio.com.ve/blog/tags/emprendimiento-social/</link>
-      <pubDate>Wed, 13 Nov 2024 18:08:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/emprendimiento-social/</guid>
       <description></description>
     </item>
     <item>
@@ -1122,13 +1395,6 @@
       <link>https://cromstudio.com.ve/blog/tags/proyecto-social/</link>
       <pubDate>Wed, 13 Nov 2024 17:47:58 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/proyecto-social/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Economía Social</title>
-      <link>https://cromstudio.com.ve/blog/tags/econom%C3%ADa-social/</link>
-      <pubDate>Wed, 13 Nov 2024 17:46:23 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/econom%C3%ADa-social/</guid>
       <description></description>
     </item>
     <item>
