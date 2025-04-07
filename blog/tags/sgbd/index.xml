@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SGBD on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/sgbd/</link>
+    <description>Recent content in SGBD on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Mon, 07 Apr 2025 06:38:58 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/sgbd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>¿Qué Son las Bases de Datos? Conceptos Clave, Tipos y Aplicaciones en la Era Digital</title>
+      <link>https://cromstudio.com.ve/blog/posts/que-son-las-bases-de-datos-conceptos-tipos-aplicaciones-bd/</link>
+      <pubDate>Mon, 07 Apr 2025 06:38:58 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/que-son-las-bases-de-datos-conceptos-tipos-aplicaciones-bd/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/UYaiFwa.png&#34;&#xD;&#xA;      alt=&#34;base de datos&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;En la era digital actual, las &lt;strong&gt;bases de datos&lt;/strong&gt; juegan un papel fundamental en el almacenamiento, organización y gestión de la información. Ya sea que se trate de una pequeña empresa o una gran corporación, las bases de datos son esenciales para el manejo eficiente de datos, asegurando que la información esté disponible, accesible y protegida. Si alguna vez te has preguntado qué son las bases de datos y cómo funcionan, este artículo te proporcionará una explicación detallada y fácil de entender sobre este concepto clave.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -2,14 +2,125 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://cromstudio.com.ve/blog/posts/que-son-las-bases-de-datos-conceptos-tipos-aplicaciones-bd/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/aplicaciones-de-bases-de-datos/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/base-de-datos/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/bases-de-datos-en-la-nube/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/bases-de-datos-nosql/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/bases-de-datos-relacionales/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
     <loc>https://cromstudio.com.ve/blog/</loc>
-    <lastmod>2025-04-07T06:11:56-04:00</lastmod>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/</loc>
-    <lastmod>2025-04-07T06:11:56-04:00</lastmod>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/gesti%C3%B3n-de-datos/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/mongodb/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/mysql/</loc>
-    <lastmod>2025-04-07T06:11:56-04:00</lastmod>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/oracle/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/postgresql/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/qu%C3%A9-son-las-bases-de-datos/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/sgbd/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/sql-server/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/tipos-de-bases-de-datos/</loc>
+    <lastmod>2025-04-07T06:38:58-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/c%C3%B3mo-crear-views-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/consultas-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/ejemplos-de-views-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/eliminar-views-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/modificar-vistas-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/qu%C3%A9-son-las-views-en-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/rendimiento-de-las-views-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/views-en-mysql-todo-lo-que-debes-de-saber/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/ventajas-de-las-views-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/vistas-en-mysql/</loc>
+    <lastmod>2025-04-07T06:35:22-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/c%C3%B3mo-usar-join-en-mysql/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/cross-join/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/ejemplos-de-join-mysql/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/full-join-en-mysql/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/uso-de-join-en-mysql-tipo-sintaxis-y-ejemplos/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/inner-join/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/join-en-mysql/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/left-join/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/rendimiento-de-join-en-mysql/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/right-join/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/tipos-de-join-en-mysql/</loc>
+    <lastmod>2025-04-07T06:31:18-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/mysql-avanzado/</loc>
     <lastmod>2025-04-07T06:11:56-04:00</lastmod>
@@ -23,9 +134,6 @@
     <loc>https://cromstudio.com.ve/blog/tags/particionamiento-mysql/</loc>
     <lastmod>2025-04-07T06:11:56-04:00</lastmod>
   </url><url>
-    <loc>https://cromstudio.com.ve/blog/posts/</loc>
-    <lastmod>2025-04-07T06:11:56-04:00</lastmod>
-  </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/procedimientos-almacenados-mysql/</loc>
     <lastmod>2025-04-07T06:11:56-04:00</lastmod>
   </url><url>
@@ -33,9 +141,6 @@
     <lastmod>2025-04-07T06:11:56-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/seguridad-en-mysql/</loc>
-    <lastmod>2025-04-07T06:11:56-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/tags/</loc>
     <lastmod>2025-04-07T06:11:56-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/triggers-mysql/</loc>
@@ -592,9 +697,6 @@
   </url><url>
     <loc>https://cromstudio.com.ve/blog/posts/como-borrar-una-base-de-datos-en-mysql/</loc>
     <lastmod>2025-03-18T10:18:23-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/categories/base-de-datos/</loc>
-    <lastmod>2025-03-14T13:09:35-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/posts/como-crear-una-base-de-datos-en-mysql/</loc>
     <lastmod>2025-03-14T13:09:35-04:00</lastmod>

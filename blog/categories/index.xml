@@ -9,13 +9,48 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Mon, 07 Apr 2025 06:11:56 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 07 Apr 2025 06:38:58 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Base De Datos</title>
+      <link>https://cromstudio.com.ve/blog/categories/base-de-datos/</link>
+      <pubDate>Mon, 07 Apr 2025 06:38:58 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/base-de-datos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>MongoDB</title>
+      <link>https://cromstudio.com.ve/blog/categories/mongodb/</link>
+      <pubDate>Mon, 07 Apr 2025 06:38:58 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/mongodb/</guid>
+      <description></description>
+    </item>
     <item>
       <title>MySQL</title>
       <link>https://cromstudio.com.ve/blog/categories/mysql/</link>
-      <pubDate>Mon, 07 Apr 2025 06:11:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <pubDate>Mon, 07 Apr 2025 06:38:58 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/mysql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oracle</title>
+      <link>https://cromstudio.com.ve/blog/categories/oracle/</link>
+      <pubDate>Mon, 07 Apr 2025 06:38:58 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/oracle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PostgreSQL</title>
+      <link>https://cromstudio.com.ve/blog/categories/postgresql/</link>
+      <pubDate>Mon, 07 Apr 2025 06:38:58 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/postgresql/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SQL Server</title>
+      <link>https://cromstudio.com.ve/blog/categories/sql-server/</link>
+      <pubDate>Mon, 07 Apr 2025 06:38:58 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/sql-server/</guid>
       <description></description>
     </item>
     <item>
@@ -317,13 +352,6 @@
       <link>https://cromstudio.com.ve/blog/categories/fp/</link>
       <pubDate>Tue, 18 Mar 2025 10:34:31 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/fp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Base De Datos</title>
-      <link>https://cromstudio.com.ve/blog/categories/base-de-datos/</link>
-      <pubDate>Fri, 14 Mar 2025 13:09:35 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/base-de-datos/</guid>
       <description></description>
     </item>
     <item>
