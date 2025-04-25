@@ -3,403 +3,715 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMS Masivos Venezuela & API Gateway SMS - Crom Studio Venezuela</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>SMS Masivos Venezuela & API Gateway SMS | Crom Studio Venezuela</title>
 
-    <meta name="description" content="Conecta con tu audiencia de manera efectiva utilizando nuestro servicio de SMS Masivos y API Gateway. Diseña y envía campañas personalizadas para potenciar tu negocio.">
-    <meta name="keywords" content="SMS Masivo para Venezuela, SMS digital, Mensajeria de texto masiva, SMS Marketing, Marketing Digital, Api Gateway SMS, Envio de SMS MAsivso en Venezuela, SMS Venezuela, Digitel, Movistar, Movilnet, SMS venezuela, Crom Studio, Crom Studio Venezuela">
+    <meta name="description" content="Plataforma de envío de SMS Masivos en Venezuela con API Gateway para desarrolladores. Conecta con tus clientes, envía notificaciones y campañas de marketing de forma eficaz. Planes flexibles y soporte local.">
+    <meta name="keywords" content="sms masivos venezuela, api sms venezuela, gateway sms, envio sms marketing, sms digitel, sms movistar, sms movilnet, plataforma sms, mensajeria texto masiva, crom studio venezuela, sms para empresas, notificaciones sms">
     <meta name="author" content="Crom Studio Venezuela">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="es">
-    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <meta name="robots" content="index, follow"> <meta name="language" content="es">
+    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
-  gtag('config', 'G-FTCG8F3HMV');
-</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
 
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+/* ===== PÁGINA SMS MASIVOS ===== */
 
-        .nav {
-    display: flex;
-    justify-content: center;
-}
-
-.nav_ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.nav_li {
-    margin: 0 10px;
-}
-
-.nav_li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-}
-
-.nav_li i {
-    margin-right: 5px;
-}
-
-
-        .primerimagen_container {
-            text-align: center;
-        }
-
-        .primerimagen img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .cuerpo {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .titulocuerpo {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .parrafo1 {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: #333;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 24px;
-        }
-
-        .section {
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .section p {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .card-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .card {
-            max-width: 300px;
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .card p {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .card .price {
-            font-size: 30px;
-            color: #333;
-            margin-top: 10px;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .contact-form button {
-            padding: 10px 20px;
-            background: #333;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .contact-info {
-            text-align: center;
-        }
-
-        .footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            bottom: 0;
-        }
-
-        @media (max-width: 767px) {
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 80%;
-        max-width: 300px;
-    }
-}
-
-
-    </style>
-    <style>
-        .carousel-container {
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-    
-        .carousel {
-            display: flex;
-            transition: transform 0.8s ease-in-out;
-        }
-    
-        .carousel img {
-            max-width: 100%;
-            margin: 0 10px;
-        }
-    </style>
-    
-    <script>
-        let carouselIndex = 0;
-        const carousel = document.querySelector('.carousel');
-    
-        function moveCarousel() {
-            carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
-            carouselIndex = (carouselIndex + 1) % carousel.children.length;
-            setTimeout(moveCarousel, 2300); // Cambia la imagen cada 3 segundos
-        }
-    
-        moveCarousel();
-    </script>
-
-<style>
-    .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .row {
-    display: flex;
-    width: 80%;
-    margin: 20px 0;
-    align-items: center;
-  }
-  .image img {
-    max-width: 100%;
-    height: auto;
-  }
-  .image {
-    flex: 1;
-    max-width: 50%;
-  }
-  .text {
-    flex: 1;
-    max-width: 50%;
+/* Hero Específico de Página Interna */
+.page-hero {
+    background-color: hsl(var(--primary-hue), 60%, 98%); /* Fondo muy sutil */
     text-align: center;
-  }
-  </style>
-    
+    padding-top: calc(var(--header-height) + 2rem); /* Espacio para header fijo */
+    padding-bottom: 3rem;
+}
 
+.page-hero .section-title {
+    margin-bottom: var(--mb-1);
+}
+
+.page-hero-description {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--mb-1-5);
+    color: var(--text-color);
+}
+
+/* Sección de Características (Adaptación de .services-card si es necesario o nuevo estilo) */
+.features-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card { /* Similar a service-card pero podrías diferenciarlo */
+    background-color: var(--container-color);
+    padding: 2rem 1.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px hsla(var(--primary-hue), 69%, 61%, 0.1);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: var(--mb-1);
+    display: block;
+}
+
+.feature-title {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-0-5);
+}
+
+.feature-description {
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+    line-height: 1.5;
+}
+
+/* Sección Cómo Funciona / Casos de Uso (Layout Alternado) */
+.bg-light { /* Clase utilitaria para fondos alternos */
+     background-color: hsl(var(--primary-hue), 60%, 98%);
+}
+
+.use-case-container {
+    gap: 4rem; /* Más espacio entre filas */
+}
+
+.use-case-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.use-case-image img {
+    max-width: 350px; /* Ajustar tamaño de imagen */
+    width: 100%;
+    margin: 0 auto; /* Centrar imagen */
+    border-radius: .5rem; /* Opcional: bordes redondeados */
+}
+
+.use-case-text {
+    text-align: center;
+}
+
+.use-case-title {
+    font-size: var(--h2-font-size);
+    margin-bottom: var(--mb-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: .5rem;
+}
+
+.use-case-title i {
+    color: var(--primary-color);
+    font-size: 1.5rem; /* Ajustar tamaño icono */
+}
+
+.use-case-text p {
+    margin-bottom: var(--mb-1);
+}
+
+.use-case-text ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: var(--mb-1);
+    display: inline-block; /* Centrar lista */
+    text-align: left;
+}
+
+.use-case-text ul li {
+    margin-bottom: var(--mb-0-5);
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.use-case-text ul li i {
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+/* Sección API Gateway */
+.api-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.api-image img {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.api-content {
+    text-align: left;
+}
+
+.api-content .section-title {
+    text-align: left; /* Asegurar alineación izquierda */
+    margin-bottom: var(--mb-1-5);
+}
+
+.api-content p {
+     margin-bottom: var(--mb-1);
+}
+
+.api-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: var(--mb-2);
+}
+
+.api-content ul li {
+    margin-bottom: var(--mb-0-75);
+    display: flex;
+    align-items: flex-start; /* Para textos largos */
+    column-gap: 0.75rem;
+}
+
+.api-content ul li i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-top: 0.15rem; /* Alinear icono */
+}
+
+
+/* Sección Métodos de Pago */
+.payment-methods {
+    text-align: center;
+}
+
+.payment-logos {
+    display: flex;
+    flex-wrap: wrap; /* Para que quepan en varias líneas si son muchos */
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; /* Espacio entre logos */
+    margin-top: var(--mb-2);
+}
+
+.payment-logos img {
+    max-height: 45px; /* Ajustar altura máxima de logos */
+    width: auto; /* Mantener proporción */
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+.payment-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Sección CTA Final */
+.cta-container {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: var(--h2-font-size);
+    color: white;
+    margin-bottom: var(--mb-1);
+}
+
+.cta-description {
+    margin-bottom: var(--mb-1-5);
+    opacity: 0.9;
+}
+
+.cta-container .button-primary {
+    background-color: white;
+    color: var(--primary-color);
+}
+.cta-container .button-primary:hover {
+    background-color: hsl(0, 0%, 90%); /* Gris claro al pasar el mouse */
+}
+
+.cta-container .button-secondary {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+.cta-container .button-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.button-large { /* Clase opcional para botones más grandes en CTA */
+    padding: 1.1rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* Ajustes Responsivos Específicos para esta página */
+
+@media screen and (min-width: 768px) {
+    .page-hero {
+        padding-top: calc(var(--header-height) + 3rem);
+        padding-bottom: 4rem;
+    }
+
+    .use-case-row {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+        gap: 3rem;
+        text-align: left;
+    }
+     .use-case-text {
+        text-align: left;
+    }
+    .use-case-title {
+        justify-content: flex-start; /* Alinear título a la izquierda */
+    }
+     .use-case-text ul {
+        display: block; /* Resetear display inline */
+    }
+
+    /* Para alternar imagen/texto */
+    .order-lg-1 { order: 1; }
+    .order-lg-2 { order: 2; }
+
+
+    .api-container {
+        grid-template-columns: 0.8fr 1.2fr; /* Ajustar proporción imagen/texto */
+        gap: 4rem;
+    }
+
+    .cta-container {
+        padding: 4rem 3rem;
+    }
+    .cta-title {
+        font-size: var(--h1-font-size);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .features-container {
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    }
+
+    .use-case-image img {
+        max-width: 400px;
+    }
+
+     .api-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+    }
+     .api-image img {
+        max-width: 450px;
+    }
+
+     .pricing-container { /* Asegurar 3 columnas para SMS si no se heredó bien */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTCG8F3HMV');
+    </script>
 </head>
 <body>
-       <!--Start of Tawk.to Script-->
-       <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-        </script>
-        <!--End of Tawk.to Script-->
-    <header>
-        <nav class="nav">
-            <ul class="nav_ul">
-                <li class="nav_li"><a href="/"><i class="fas fa-home"></i>Inicio</a></li>
-                <li class="nav_li"><a href="/registro-pago/"><i class="fas fa-money-check"></i>Registrar Pago</a></li>
-                <li class="nav_li"><a href="/descargas/"><i class="fas fa-server"></i>Descargas</a></li>
-                <li class="nav_li"><a href="/contacto/"><i class="fas fa-address-card"></i>Contacto</a></li>
-            </ul>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav-logo">Crom Studio</a> <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#hero" class="nav-link active-link">Inicio</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#about" class="nav-link">Quiénes Somos</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#services" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#pricing" class="nav-link">Precios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/blog/" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/descargas/" class="nav-link">Descargas</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#contact" class="nav-link">Contacto</a></li>
+                    </ul>
+                <button class="nav-close" id="nav-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </nav>
     </header>
 
+    <main class="main">
 
-    <section class="section" id="sms">
-        <h2>SMS MASIVOS & API GATEWAY SMS</h2>
-        <p>Envía mensajes de texto de forma amplia y conecta fácilmente tu desarrollo a través de una API. Diseña campañas de SMS masivas personalizadas para tu negocio.</p>
-        <p>El cliente debe efectuar el pago mensual correspondiente al paquete elegido. Los mensajes acumulados se mantendrán activos siempre y cuando el plan sea cancelado.</p>
-        <p>Nuestros precios estan anclado en Bolivares Digitales, el servicio de SMS es Pre-Pago lo que significa que usted tendra un saldo activo.</p>
-        <p>En Caso de aumentar la tarifa usted continuara con su saldo, pero la cantidad de SMS se reduce.</p>
-        <div class="card-container">
-            <div class="card">
-                <h3>Pack Básico</h3>
-                <p>Cantidad de SMS: 100</p>
-                <p>Soporte en linea</p>
-                <p>Integracion con su desarrollo</p>
-                <p>Envio de Campañas Masivas</p>
-                <div class="price">Bs.D 80,00</div>
+        <section class="page-hero section">
+            <div class="container">
+                <span class="section-subtitle">Comunicación Directa y Efectiva</span>
+                <h1 class="section-title">SMS Masivos y API Gateway para Venezuela</h1>
+                <p class="page-hero-description">
+                    Llega a tu audiencia al instante. Envía campañas de marketing, notificaciones importantes o códigos de verificación a través de nuestra plataforma robusta y nuestra potente API para desarrolladores.
+                </p>
+                 <a href="#pricing" class="button button-primary">Ver Planes</a>
+                 <a href="#api-details" class="button button-secondary">Info API</a>
             </div>
-            <div class="card">
-                <h3>Pack Estándar</h3>
-                <p>Cantidad de SMS: 500</p>
-                <p>Soporte en linea</p>
-                <p>Integracion con su desarrollo</p>
-                <p>Envio de Campañas Masivas</p>
-                <div class="price">Bs.D 400,00</div>
-            </div>
-            <div class="card">
-                <h3>Pack Premium</h3>
-                <p>Cantidad de SMS: 1000</p>
-                <p>Soporte en linea</p>
-                <p>Integracion con su desarrollo</p>
-                <p>Envio de Campañas Masivas</p>
-                <div class="price">Bs.D 800,00</div>
-            </div>
-        </div>
-    </section>
-    
-    
+        </section>
 
-    <div class="container">
-        <div class="row">
-          <div class="image">
-            <img src="/imagenes/sms/sms1.png" alt="Envio de SMS Masivos">
-          </div>
-          <div class="text">
-            <p><strong>Envio de SMS Masivos.</strong></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="text">
-            <p><strong>API Gateway SMS</strong></p>
-          </div>
-          <div class="image">
-            <img src="/imagenes/sms/sms2.webp" alt="API GATEWAY SMS VENEZUELA">
-          </div>
-        </div>
-    </div>
-    
-   
-
-      <section class="section" id="metodos">
-        <h2>Métodos de Pagos</h2>
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/imagenes/metodos.png" alt="Métodos de Pagos de Crom Studio">
+        <section class="features section" id="features">
+             <span class="section-subtitle">¿Por Qué Elegirnos?</span>
+            <h2 class="section-title">Potencia tu Comunicación con SMS</h2>
+            <div class="features-container container grid">
+                <div class="feature-card">
+                    <i class="fas fa-paper-plane feature-icon"></i>
+                    <h3 class="feature-title">Envíos Masivos Fáciles</h3>
+                    <p class="feature-description">Plataforma intuitiva para gestionar contactos, crear y programar tus campañas de SMS en minutos.</p>
                 </div>
-                <!-- Añade más imágenes según necesites -->
-            </div>
-        </div>
-    </section>
-
-
-
-    <section class="section" id="clientes">
-        <h2>Clientes</h2>
-        <p>La confianza que nuestros clientes depositan en nosotros es el motor que impulsa nuestra dedicación y esfuerzo constante por superar sus expectativas.</p>
-        <p>Cada proyecto es una nueva oportunidad para demostrar nuestro compromiso con la calidad, la innovación y la satisfacción del cliente.</p>
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/imagenes/empresas/clientes-1.png" alt="Clientes de Crom Studio">
+                <div class="feature-card">
+                    <i class="fas fa-cogs feature-icon"></i>
+                    <h3 class="feature-title">Potente API Gateway</h3>
+                    <p class="feature-description">Integra el envío de SMS en tus propias aplicaciones y sistemas de forma sencilla y segura.</p>
                 </div>
-                <!-- Añade más imágenes según necesites -->
+                <div class="feature-card">
+                    <i class="fas fa-map-marker-alt feature-icon"></i>
+                    <h3 class="feature-title">Cobertura Nacional</h3>
+                    <p class="feature-description">Envíos a todas las operadoras principales de Venezuela: Movistar, Digitel y Movilnet.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3 class="feature-title">Reportes Detallados</h3>
+                    <p class="feature-description">Monitorea el estado de tus envíos y el rendimiento de tus campañas con estadísticas claras.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3 class="feature-title">Seguridad y Confiabilidad</h3>
+                    <p class="feature-description">Infraestructura robusta para garantizar la entrega segura y puntual de tus mensajes.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-headset feature-icon"></i>
+                    <h3 class="feature-title">Soporte Local</h3>
+                    <p class="feature-description">Atención personalizada en español para ayudarte a resolver tus dudas y optimizar tus envíos.</p>
+                </div>
             </div>
+        </section>
+
+        <section class="how-it-works section bg-light" id="use-cases">
+             <span class="section-subtitle">Aplicaciones Prácticas</span>
+            <h2 class="section-title">Ideal para Diversos Escenarios</h2>
+            <div class="use-case-container container grid">
+                <div class="use-case-row">
+                    <div class="use-case-image">
+                        <img src="placeholder-sms-marketing.svg" alt="Ilustración de Marketing por SMS">
+                    </div>
+                    <div class="use-case-text">
+                        <h3 class="use-case-title"><i class="fas fa-bullhorn"></i> Marketing y Promociones</h3>
+                        <p>Envía ofertas especiales, descuentos, lanzamientos de productos y novedades directamente al móvil de tus clientes.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Alta tasa de apertura.</li>
+                            <li><i class="fas fa-check"></i> Comunicación inmediata.</li>
+                            <li><i class="fas fa-check"></i> Segmentación de audiencia.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="use-case-row">
+                     <div class="use-case-image order-lg-2"> <img src="placeholder-sms-notifications.svg" alt="Ilustración de Notificaciones por SMS">
+                    </div>
+                    <div class="use-case-text order-lg-1"> <h3 class="use-case-title"><i class="fas fa-bell"></i> Notificaciones y Alertas</h3>
+                        <p>Informa sobre estados de pedidos, recordatorios de citas, confirmaciones de transacciones, alertas de seguridad y más.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Entrega garantizada (alta probabilidad).</li>
+                            <li><i class="fas fa-check"></i> Información crítica al instante.</li>
+                            <li><i class="fas fa-check"></i> Mejora la experiencia del cliente.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="use-case-row">
+                    <div class="use-case-image">
+                        <img src="placeholder-sms-verification.svg" alt="Ilustración de Verificación por SMS">
+                    </div>
+                    <div class="use-case-text">
+                        <h3 class="use-case-title"><i class="fas fa-key"></i> Códigos de Verificación (OTP)</h3>
+                        <p>Implementa la autenticación de dos factores (2FA) enviando códigos únicos vía SMS para proteger las cuentas de tus usuarios.</p>
+                         <ul>
+                            <li><i class="fas fa-check"></i> Capa extra de seguridad.</li>
+                            <li><i class="fas fa-check"></i> Proceso rápido y familiar.</li>
+                            <li><i class="fas fa-check"></i> Integración vía API.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="api-gateway section" id="api-details">
+            <div class="container grid api-container">
+                 <div class="api-image">
+                    <img src="placeholder-api.svg" alt="Ilustración de API Gateway">
+                 </div>
+                 <div class="api-content">
+                    <span class="section-subtitle">Para Desarrolladores</span>
+                    <h2 class="section-title" style="text-align: left;">Integra SMS con Nuestra API Restful</h2>
+                    <p>Nuestra API Gateway SMS te permite enviar mensajes de texto directamente desde tus aplicaciones, sitios web o sistemas internos. Es ideal para automatizar notificaciones, verificaciones y mucho más.</p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Documentación clara y completa.</li>
+                        <li><i class="fas fa-check-circle"></i> Ejemplos de código en varios lenguajes.</li>
+                        <li><i class="fas fa-check-circle"></i> Endpoints seguros y estables (HTTPS).</li>
+                        <li><i class="fas fa-check-circle"></i> Consulta de saldo y estado de envíos vía API.</li>
+                        <li><i class="fas fa-check-circle"></i> Soporte técnico para la integración.</li>
+                    </ul>
+                    <a href="#" class="button button-secondary">Ver Documentación API (Próximamente)</a> </div>
+            </div>
+        </section>
+
+        <section class="pricing section" id="pricing">
+             <span class="section-subtitle">Planes Flexibles</span>
+            <h2 class="section-title">Precios Adaptados a tu Volumen</h2>
+             <p class="pricing-category-description container">Servicio prepago en Bolívares Digitales (Bs.D). Tu saldo se mantiene activo mientras renueves tu plan. Los SMS no consumidos se acumulan.</p>
+             <div class="pricing-container container grid">
+                <div class="pricing-card">
+                    <span class="pricing-plan">Básico</span>
+                    <h3 class="pricing-price">Bs.D 80<span></span></h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 100 SMS incluidos</li>
+                        <li><i class="fas fa-check"></i> Plataforma Web</li>
+                        <li><i class="fas fa-check"></i> Acceso API Gateway</li>
+                        <li><i class="fas fa-check"></i> Soporte en línea</li>
+                        <li><i class="fas fa-check"></i> Reportes básicos</li>
+                    </ul>
+                    <a href="https://cromstudio.com.ve/#contact" class="button button-secondary">Solicitar Plan</a>
+                </div>
+                <div class="pricing-card recommended">
+                    <span class="pricing-recommended">Recomendado</span>
+                    <span class="pricing-plan">Estándar</span>
+                    <h3 class="pricing-price">Bs.D 400<span></span></h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 500 SMS incluidos</li>
+                        <li><i class="fas fa-check"></i> Plataforma Web</li>
+                        <li><i class="fas fa-check"></i> Acceso API Gateway</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                         <li><i class="fas fa-check"></i> Reportes detallados</li>
+                    </ul>
+                    <a href="https://cromstudio.com.ve/#contact" class="button button-primary">Solicitar Plan</a>
+                </div>
+                 <div class="pricing-card">
+                    <span class="pricing-plan">Premium</span>
+                    <h3 class="pricing-price">Bs.D 800<span></span></h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1000 SMS incluidos</li>
+                        <li><i class="fas fa-check"></i> Plataforma Web</li>
+                        <li><i class="fas fa-check"></i> Acceso API Gateway</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                        <li><i class="fas fa-check"></i> Reportes avanzados</li>
+                    </ul>
+                   <a href="https://cromstudio.com.ve/#contact" class="button button-secondary">Solicitar Plan</a>
+                </div>
+            </div>
+             <p class="pricing-note container">¿Necesitas mayor volumen o planes personalizados? <a href="#contact">Contáctanos</a>.</p>
+        </section>
+
+         <section class="payment-methods section bg-light" id="payment-methods">
+            <h2 class="section-title">Métodos de Pago Aceptados</h2>
+            <div class="payment-logos container">
+                <img src="/imagenes/logos/pago-movil.png" alt="Pago Móvil" title="Pago Móvil">
+                <img src="/imagenes/logos/transferencia-bdv.png" alt="Transferencia Banco de Venezuela" title="Transferencia Banco de Venezuela">
+                <img src="/imagenes/logos/transferencia-banesco.png" alt="Transferencia Banesco" title="Transferencia Banesco">
+                <img src="/imagenes/logos/zinli.png" alt="Zinli" title="Zinli">
+                <img src="/imagenes/logos/binance.png" alt="Binance Pay" title="Binance Pay">
+                </div>
+        </section>
+
+        <section class="cta section" id="cta">
+            <div class="cta-container container">
+                <h2 class="cta-title">¿Listo para Empezar a Enviar SMS?</h2>
+                <p class="cta-description">
+                    Elige el plan que mejor se adapte a tus necesidades o contáctanos para una asesoría personalizada.
+                </p>
+                <a href="#pricing" class="button button-primary button-large">Ver Planes y Precios</a>
+                <a href="https://cromstudio.com.ve/#contact" class="button button-secondary button-large">Contactar a Ventas</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container container grid">
+            <div>
+                <a href="/" class="footer-logo">Crom Studio Venezuela</a>
+                <p class="footer-description">Soluciones tecnológicas para el mercado venezolano.</p>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="https://cromstudio.com.ve/#about" class="footer-link">Quiénes Somos</a></li>
+                    <li><a href="https://cromstudio.com.ve/#services" class="footer-link">Servicios</a></li>
+                    <li><a href="https://cromstudio.com.ve/#pricing" class="footer-link">Precios</a></li>
+                     <li><a href="https://cromstudio.com.ve/blog/" target="_blank" class="footer-link">Blog</a></li>
+                     <li><a href="https://cromstudio.com.ve/descargas/" class="footer-link">Descargas</a></li>
+                    </ul>
+            </div>
+             <div class="footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                 <ul>
+                    <li><i class="fas fa-phone"></i> +58 416-8578289</li>
+                    <li><i class="fas fa-envelope"></i> contacto@cromstudio.com.ve</li>
+                     <li><i class="fas fa-map-marker-alt"></i> Venezuela</li>
+                </ul>
+            </div>
+             <div class="footer-social">
+                 <h3 class="footer-title">Síguenos</h3>
+                 <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                 <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                 <a href="https://twitter.com/" target="_blank" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+             </div>
         </div>
-    </section>
+        <span class="footer-copy container">
+            &copy; <span id="current-year"></span> Crom Studio Venezuela. Todos los derechos reservados.
+        </span>
+    </footer>
+
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up scrollup-icon"></i>
+    </a>
+
+    <script>
+        // Año actual en Footer
+        const currentYearElement = document.getElementById('current-year');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // Lógica del Menú Móvil
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        if (navClose && navMenu) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Solo cerrar si es un enlace de ancla en la misma página
+                 const href = link.getAttribute('href');
+                 if (href && href.startsWith('/#') || href === '#') {
+                     if (navMenu && navMenu.classList.contains('show-menu')) {
+                         navMenu.classList.remove('show-menu');
+                     }
+                 } else if (href && !href.startsWith('http') && !href.startsWith('/#')) {
+                     // Si es un enlace a otra página interna (ej /contacto.html), cerrar menú
+                      if (navMenu && navMenu.classList.contains('show-menu')) {
+                         navMenu.classList.remove('show-menu');
+                     }
+                 }
+            });
+        });
 
 
+        // Añadir sombra al header al hacer scroll
+        const header = document.querySelector('.header');
+        function handleScrollHeader() {
+             if (header) {
+                if (window.scrollY >= 80) {
+                    header.classList.add('scroll-header');
+                } else {
+                    header.classList.remove('scroll-header');
+                }
+             }
+        }
+        window.addEventListener('scroll', handleScrollHeader);
+        handleScrollHeader(); // Check initial state
 
-    <section class="section" id="contacto">
-        <h2>Contacto</h2>
-        <div class="contact-info">
-            <p>Teléfono: 0416-8578289</p>
-            <p>Correo: contacto@cromstudio.com.ve</p>
-        </div>
-    </section>
+        // Mostrar botón Scroll Up
+        const scrollUp = document.getElementById('scroll-up');
+        function handleScrollUpButton() {
+            if (scrollUp) {
+                if (window.scrollY >= 560) {
+                    scrollUp.classList.add('show-scroll');
+                } else {
+                    scrollUp.classList.remove('show-scroll');
+                }
+            }
+        }
+        window.addEventListener('scroll', handleScrollUpButton);
+        handleScrollUpButton(); // Check initial state
 
-    <div class="footer">
-        <p>&copy; 2025 Crom Studio Venezuela</p>
-    </div>
+        // Active link en scroll (adaptado para página específica)
+        const sections = document.querySelectorAll('section[id]');
+        const navMenuLinks = document.querySelectorAll('.nav-menu a'); // Seleccionar enlaces del menú
 
+        function scrollActivePage(){
+            const scrollY = window.pageYOffset;
 
+            let currentSectionId = '';
+            sections.forEach(current =>{
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 58; // Ajustar offset
+                const sectionId = current.getAttribute('id');
 
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                   currentSectionId = sectionId;
+                }
+            });
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.10/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            // Activar enlace del menú correspondiente a la sección visible
+            navMenuLinks.forEach(link => {
+                 const href = link.getAttribute('href');
+                 // Comprobar si el href termina con #id_seccion
+                 if (href && href.endsWith('#' + currentSectionId)) {
+                     link.classList.add('active-link');
+                 } else {
+                     link.classList.remove('active-link');
+                 }
+            });
+
+             // Si no hay sección activa (arriba de todo), activar enlace a la página actual si existe
+             if (!currentSectionId) {
+                 const currentPageLink = document.querySelector('.nav-menu a[href="/sms-masivos.html"]'); // O la URL actual
+                 if (currentPageLink) {
+                    // Desactivar otros y activar este (opcional, depende de cómo quieras manejarlo)
+                    // currentPageLink.classList.add('active-link');
+                 } else {
+                     // Si no hay enlace a la página actual, activar el de Inicio
+                     const homeLink = document.querySelector('.nav-menu a[href="/#hero"]');
+                     if(homeLink) homeLink.classList.add('active-link');
+                 }
+             }
+
+        }
+        window.addEventListener('scroll', scrollActivePage);
+        scrollActivePage(); // Check initial state
+
+    </script>
 
 </body>
 </html>

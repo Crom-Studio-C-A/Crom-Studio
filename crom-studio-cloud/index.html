@@ -1,439 +1,558 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <title>Crom Studio Cloud | Almacenamiento en la nube Disco Virtual Cloud Venezuela - Crom Studio Venezuela</title>
-        <meta name="description" content="Crom Studio Cloud, líder en soluciones de almacenamiento en la nube. Impulsa la productividad con nuestra infraestructura escalable y herramientas avanzadas.">
-        <meta name="keywords" content="Almacenamiento en la Nube, Soluciones en la Nube, Plataforma de Almacenamiento, Crom Studio Cloud, Productividad Empresarial, Infraestructura Escalable, Seguridad de Datos, Acceso Seguro a Datos, Servicio de Almacenamiento, Nube Empresarial, Almacenamiento Escalable, Protección de Datos, Eficiencia Empresarial, Herramientas de Almacenamiento, Almacenamiento en la Nube Confiable, Crom Studio, Crom Studio Venezuela">
-        <meta name="author" content="Crom Studio Venezuela">
-        <meta name="robots" content="index, follow">
-        <meta name="language" content="es">
-        <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico">
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-FTCG8F3HMV');
-        </script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crom Studio Cloud | Almacenamiento Nube Seguro Venezuela</title>
+
+    <meta name="description" content="Descubre Crom Studio Cloud: Tu solución de almacenamiento en la nube segura, escalable y accesible desde cualquier dispositivo en Venezuela. Colabora y protege tus archivos.">
+    <meta name="keywords" content="crom studio cloud, almacenamiento nube venezuela, disco virtual venezuela, nube privada, nextcloud venezuela, owncloud venezuela, compartir archivos seguro, backup nube, colaboracion nube">
+    <meta name="author" content="Crom Studio Venezuela">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="es">
+    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
 
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .nav {
-    display: flex;
-    justify-content: center;
+.visual-features-container {
+    gap: 4rem;
 }
 
-.nav_ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.nav_li {
-    margin: 0 10px;
-}
-
-.nav_li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
+.visual-feature-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     align-items: center;
 }
 
-.nav_li i {
-    margin-right: 5px;
+.visual-feature-image img {
+    max-width: 450px; /* Ajustar según tus imágenes */
+    width: 100%;
+    margin: 0 auto;
+    border-radius: .75rem; /* Bordes redondeados a las imágenes */
+    box-shadow: 0 4px 15px hsla(var(--primary-hue), 30%, 15%, 0.1);
 }
 
-
-        .primerimagen_container {
-            text-align: center;
-        }
-
-        .primerimagen img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .cuerpo {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .titulocuerpo {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .parrafo1 {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: #333;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 24px;
-        }
-
-        .section {
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .section p {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .card-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .card {
-            max-width: 300px;
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .card p {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .card .price {
-            font-size: 30px;
-            color: #333;
-            margin-top: 10px;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .contact-form button {
-            padding: 10px 20px;
-            background: #333;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .contact-info {
-            text-align: center;
-        }
-
-        .footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            bottom: 0;
-        }
-
-        @media (max-width: 767px) {
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 80%;
-        max-width: 300px;
-    }
+.visual-feature-text {
+    text-align: center;
 }
 
+.visual-feature-title {
+    font-size: var(--h2-font-size);
+    margin-bottom: var(--mb-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+}
+.visual-feature-title i {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+}
 
-    </style>
-    <style>
-        .carousel-container {
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-    
-        .carousel {
-            display: flex;
-            transition: transform 0.8s ease-in-out;
-        }
-    
-        .carousel img {
-            max-width: 100%;
-            margin: 0 10px;
-        }
-    </style>
-    
-    <script>
-        let carouselIndex = 0;
-        const carousel = document.querySelector('.carousel');
-    
-        function moveCarousel() {
-            carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
-            carouselIndex = (carouselIndex + 1) % carousel.children.length;
-            setTimeout(moveCarousel, 2300); // Cambia la imagen cada 3 segundos
-        }
-    
-        moveCarousel();
-    </script>
+.visual-feature-text p {
+    margin-bottom: var(--mb-1);
+    color: var(--text-color);
+}
 
-<style>
-    .container {
+/* Sección Descarga de Clientes */
+.client-download-description {
+    text-align: center;
+    margin-bottom: var(--mb-2);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.client-download-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.client-download-card {
+    background-color: var(--container-color);
+    border: 1px solid var(--border-color);
+    border-radius: .75rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .row {
+    justify-content: space-between; /* Para alinear botón al fondo si varía altura */
+}
+
+.client-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: var(--mb-1);
+}
+/* Para iconos dobles */
+.client-download-card .client-icon + .client-icon {
+    margin-left: .5rem;
+}
+
+.client-title {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-0-5);
+}
+
+.client-download-card p {
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+    margin-bottom: var(--mb-1-5);
+    flex-grow: 1; /* Ocupar espacio si varía altura */
+}
+
+.app-store-buttons {
     display: flex;
-    width: 80%;
-    margin: 20px 0;
-    align-items: center;
-  }
-  .image img {
-    max-width: 100%;
-    height: auto;
-  }
-  .image {
-    flex: 1;
-    max-width: 50%;
-  }
-  .text {
-    flex: 1;
-    max-width: 50%;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: auto; /* Empujar al fondo */
+}
+
+.store-badge {
+    height: 40px; /* Ajustar tamaño de badges */
+    width: auto;
+}
+
+/* Sección Clientes/Confianza (Texto Simple) */
+.clients-description {
     text-align: center;
-  }
-  </style>
-    
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+/* Ajustes Responsivos Específicos Cloud */
+@media screen and (min-width: 768px) {
+    .visual-feature-row {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+        gap: 3rem;
+        text-align: left;
+    }
+     .visual-feature-text {
+        text-align: left;
+    }
+    .visual-feature-title {
+        justify-content: flex-start; /* Alinear título a la izquierda */
+    }
+    /* Alternar orden para layout zig-zag */
+    .order-lg-1 { order: 1; }
+    .order-lg-2 { order: 2; }
+
+    .pricing-container { /* Asegurar 4 columnas si es necesario */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+}
+@media screen and (min-width: 992px) {
+     .pricing-container {
+        grid-template-columns: repeat(4, 1fr); /* Forzar 4 columnas */
+    }
+     .client-download-grid {
+         grid-template-columns: repeat(3, 1fr); /* Tres columnas para descargas */
+     }
+}
+
+
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTCG8F3HMV');
+    </script>
 </head>
 <body>
-       <!--Start of Tawk.to Script-->
-       <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-        </script>
-        <!--End of Tawk.to Script-->
-    <header>
-        <nav class="nav">
-            <ul class="nav_ul">
-                <li class="nav_li"><a href="/"><i class="fas fa-home"></i>Inicio</a></li>
-                <li class="nav_li"><a href="/registro-pago/"><i class="fas fa-money-check"></i>Registrar Pago</a></li>
-                <li class="nav_li"><a href="/descargas/"><i class="fas fa-server"></i>Descargas</a></li>
-                <li class="nav_li"><a href="/contacto/"><i class="fas fa-address-card"></i>Contacto</a></li>
-            </ul>
+
+    <script type="text/javascript">
+    // Mantén o comenta según preferencia
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <header class="header">
+        <nav class="nav container">
+             <a href="/" class="nav-logo">Crom Studio</a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#hero" class="nav-link active-link">Inicio</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#about" class="nav-link">Quiénes Somos</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#services" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#pricing" class="nav-link">Precios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/blog/" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/descargas/" class="nav-link">Descargas</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#contact" class="nav-link">Contacto</a></li>
+                    </ul>
+                <button class="nav-close" id="nav-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </nav>
     </header>
 
+    <main class="main">
 
-    <section class="section" id="nube">
-        <h2>Crom Studio Cloud Venezuela Almacenamiento en la Nube Confiable y Escalable</h2>
-        <p>Crom Studio Cloud es la plataforma líder en soluciones en la nube, diseñada para impulsar la productividad y eficiencia de tu empresa.</p>
-        <p>Con un conjunto completo de herramientas y una infraestructura escalable, estamos listos para llevar tu negocio al siguiente nivel.</p>
-        <p>Con Crom Studio Cloud, puedes estar seguro de que tus datos estarán protegidos y disponibles cuando los necesites.</p>
-      
-           <div class="card-container">
-            <div class="card">
-                <h3>Plan Economico</h3>
-                <p>Almacenamiento: 1 GB</p>
-                <p>Enlaces Externos Ilimitados</p>
-                <p>Aplicacion para Escritorio y Android</p>
-                <p>Dispositivos Ilimitados</p>
-                <div class="price">$1/MES</div>
+        <section class="page-hero section">
+            <div class="container">
+                <span class="section-subtitle">Tu Nube Privada en Venezuela</span>
+                <h1 class="section-title">Crom Studio Cloud: Almacenamiento Seguro y Accesible</h1>
+                <p class="page-hero-description">
+                    Guarda, sincroniza, comparte y colabora en tus archivos importantes desde cualquier dispositivo, con la confianza y el soporte local que necesitas.
+                </p>
+                 <a href="#pricing" class="button button-primary">Ver Planes Cloud</a>
+                 <a href="#client-apps" class="button button-secondary">Descargar Apps</a>
             </div>
-            <div class="card">
-                <h3>Plan Basico</h3>
-                <p>Almacenamiento: 10 GB</p>
-                <p>Enlaces Externos Ilimitados</p>
-                <p>Aplicacion para Escritorio y Android</p>
-                <p>Dispositivos Ilimitados</p>
-                <div class="price">$2/MES</div>
-            </div>
-            <div class="card">
-                <h3>Plan Avanzado</h3>
-                <p>Almacenamiento: 50 GB</p>
-                <p>Enlaces Externos Ilimitados</p>
-                <p>Aplicacion para Escritorio y Android</p>
-                <p>Dispositivos Ilimitados</p>
-                <div class="price">$5/MES</div>
-            </div>
-            <div class="card">
-                <h3>Plan Pro</h3>
-                <p>Almacenamiento: 100 GB</p>
-                <p>Enlaces Externos Ilimitados</p>
-                <p>Aplicacion para Escritorio y Android</p>
-                <p>Dispositivos Ilimitados</p>
-                <div class="price">$10/MES</div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="promo">
-        <div class="container">
-            <div class="cuerpo">
-                <h2>Transforma Tu Negocio con Crom Studio Cloud</h2>
-                <p>Descubre la solución líder en almacenamiento en la nube que potenciará la productividad y eficiencia de tu empresa. Crom Studio Cloud es la clave para desbloquear todo el potencial de tus operaciones diarias.</p>
-                <br>
-                <p><strong>¿Por qué elegir Crom Studio Cloud?</strong></p>
+        <section class="features section bg-light" id="cloud-features">
+             <span class="section-subtitle">Beneficios Principales</span>
+            <h2 class="section-title">¿Por Qué Crom Studio Cloud?</h2>
+            <div class="features-container container grid">
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
+                    <h3 class="feature-title">Acceso Multiplataforma</h3>
+                    <p class="feature-description">Sincroniza tus archivos en Windows, macOS, Linux, Android e iOS. Accede desde cualquier navegador web.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-lock feature-icon"></i>
+                    <h3 class="feature-title">Seguridad Robusta</h3>
+                    <p class="feature-description">Tus datos protegidos con encriptación en tránsito y en reposo, backups regulares y control de acceso.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-share-alt feature-icon"></i>
+                    <h3 class="feature-title">Compartir de Forma Segura</h3>
+                    <p class="feature-description">Comparte archivos y carpetas con compañeros o externos mediante enlaces protegidos por contraseña y fecha de expiración.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3 class="feature-title">Colaboración Eficiente</h3>
+                    <p class="feature-description">Edita documentos ofimáticos directamente en la nube (dependiendo del plan/backend) y gestiona versiones de archivos.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3 class="feature-title">Planes Escalables</h3>
+                    <p class="feature-description">Comienza con el almacenamiento que necesitas y amplía tu plan fácilmente a medida que tu negocio crece.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-headset feature-icon"></i>
+                    <h3 class="feature-title">Soporte en Venezuela</h3>
+                    <p class="feature-description">Obtén ayuda rápida y en español de nuestro equipo local para resolver cualquier duda o incidencia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="visual-features section" id="visual-demo">
+             <span class="section-subtitle">Interfaz Intuitiva</span>
+            <h2 class="section-title">Trabaja Como Quieras, Donde Quieras</h2>
+            <div class="visual-features-container container grid">
+                 <div class="visual-feature-row">
+                    <div class="visual-feature-image">
+                        <img src="/imagenes/nextcloud/nextcloud-hub4-files-preview.png.webp" alt="Interfaz de Crom Studio Cloud en varios dispositivos">
+                    </div>
+                    <div class="visual-feature-text">
+                        <h3 class="visual-feature-title"><i class="fas fa-sync-alt"></i> Sincronización Total</h3>
+                        <p>Mantén tus archivos actualizados automáticamente en todos tus dispositivos: computador, laptop, tablet y teléfono celular.</p>
+                        <p>Accede a la última versión de tus documentos estés donde estés.</p>
+                    </div>
+                </div>
+                <div class="visual-feature-row">
+                     <div class="visual-feature-image order-lg-2"> <img src="/imagenes/nextcloud/nextcloud-hub4-office-preview.png" alt="Edición de documentos en Crom Studio Cloud">
+                    </div>
+                    <div class="visual-feature-text order-lg-1"> <h3 class="visual-feature-title"><i class="fas fa-edit"></i> Comparte y Colabora</h3>
+                        <p>Comparte archivos grandes fácilmente con enlaces seguros. Trabaja en equipo sobre los mismos documentos y mantén un historial de versiones.</p>
+                        <p>(La edición en tiempo real puede depender de la configuración del servidor y el plan).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section class="pricing section bg-light" id="pricing">
+             <span class="section-subtitle">Elige tu Espacio</span>
+            <h2 class="section-title">Planes de Crom Studio Cloud</h2>
+             <p class="pricing-category-description container">Todos los planes incluyen enlaces externos ilimitados, aplicaciones de escritorio/móvil y conexión desde dispositivos ilimitados. Precios mensuales en Dólares (USD).</p>
+             <div class="pricing-container container grid">
+                 <div class="pricing-card">
+                    <span class="pricing-plan">Económico</span>
+                    <h3 class="pricing-price">$1<span>/mes</span></h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-hdd"></i> 1 GB Almacenamiento</li>
+                        <li><i class="fas fa-link"></i> Enlaces Externos Ilimitados</li>
+                        <li><i class="fas fa-desktop"></i> App Escritorio y Móvil</li>
+                        <li><i class="fas fa-infinity"></i> Dispositivos Ilimitados</li>
+                    </ul>
+                    <a href="#contact" class="button button-secondary">Solicitar Plan</a>
+                </div>
+                <div class="pricing-card">
+                    <span class="pricing-plan">Básico</span>
+                    <h3 class="pricing-price">$2<span>/mes</span></h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-hdd"></i> 10 GB Almacenamiento</li>
+                        <li><i class="fas fa-link"></i> Enlaces Externos Ilimitados</li>
+                        <li><i class="fas fa-desktop"></i> App Escritorio y Móvil</li>
+                        <li><i class="fas fa-infinity"></i> Dispositivos Ilimitados</li>
+                    </ul>
+                    <a href="#contact" class="button button-secondary">Solicitar Plan</a>
+                </div>
+                 <div class="pricing-card recommended">
+                     <span class="pricing-recommended">Popular</span>
+                    <span class="pricing-plan">Avanzado</span>
+                    <h3 class="pricing-price">$5<span>/mes</span></h3>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-hdd"></i> 50 GB Almacenamiento</li>
+                        <li><i class="fas fa-link"></i> Enlaces Externos Ilimitados</li>
+                        <li><i class="fas fa-desktop"></i> App Escritorio y Móvil</li>
+                        <li><i class="fas fa-infinity"></i> Dispositivos Ilimitados</li>
+                    </ul>
+                    <a href="#contact" class="button button-primary">Solicitar Plan</a>
+                </div>
+                 <div class="pricing-card">
+                    <span class="pricing-plan">Pro</span>
+                    <h3 class="pricing-price">$10<span>/mes</span></h3>
+                    <ul class="pricing-features">
+                       <li><i class="fas fa-hdd"></i> 100 GB Almacenamiento</li>
+                        <li><i class="fas fa-link"></i> Enlaces Externos Ilimitados</li>
+                        <li><i class="fas fa-desktop"></i> App Escritorio y Móvil</li>
+                        <li><i class="fas fa-infinity"></i> Dispositivos Ilimitados</li>
+                    </ul>
+                    <a href="#contact" class="button button-secondary">Solicitar Plan</a>
+                </div>
+             </div>
+              <p class="pricing-note container">¿Necesitas más espacio o características personalizadas? <a href="#contact">Hablemos</a>.</p>
+        </section>
+
+        <section class="client-download section" id="client-apps">
+             <span class="section-subtitle">Accede Desde Cualquier Lugar</span>
+             <h2 class="section-title">Descarga las Aplicaciones Cliente</h2>
+             <p class="container client-download-description">Instala nuestras aplicaciones en tus dispositivos para una sincronización perfecta y acceso sin conexión.</p>
+             <div class="container client-download-grid grid">
+                 <div class="client-download-card">
+                     <i class="fab fa-windows client-icon"></i>
+                     <h3 class="client-title">Windows</h3>
+                     <p>Clientes para versiones de 32 y 64 bits.</p>
+                     <a href="/utilidades.html#utilities-list" class="button button-secondary button-small">Ver Descargas</a>
+                 </div>
+                 <div class="client-download-card">
+                      <i class="fas fa-mobile-alt client-icon"></i>
+                     <h3 class="client-title">Móvil (Android/iOS)</h3>
+                     <p>Accede desde tu teléfono o tablet. Busca "Nextcloud" u "ownCloud" en tu tienda de aplicaciones.</p>
+                      <div class="app-store-buttons">
+                          <a href="https://play.google.com/store/apps/details?id=com.nextcloud.client" target="_blank" rel="noopener noreferrer" title="Descargar en Google Play"><img src="/imagenes/logos/google-play-badge.png" alt="Google Play" class="store-badge"></a>
+                           <a href="https://apps.apple.com/us/app/nextcloud/id1125420102" target="_blank" rel="noopener noreferrer" title="Descargar en App Store"><img src="/imagenes/logos/app-store-badge.png" alt="App Store" class="store-badge"></a>
+                      </div>
+                 </div>
+                 <div class="client-download-card">
+                      <i class="fab fa-linux client-icon"></i> <i class="fab fa-apple client-icon"></i>
+                     <h3 class="client-title">macOS / Linux</h3>
+                     <p>También disponibles clientes nativos para otros sistemas operativos de escritorio.</p>
+                      <a href="/utilidades.html#utilities-list" class="button button-secondary button-small">Ver Descargas</a>
+                 </div>
+             </div>
+        </section>
+
+        <section class="payment-methods section bg-light" id="payment-methods">
+            <h2 class="section-title">Métodos de Pago Flexibles</h2>
+            <div class="payment-logos container">
+                <img src="/imagenes/logos/pago-movil.png" alt="Pago Móvil" title="Pago Móvil">
+                <img src="/imagenes/logos/transferencia-bdv.png" alt="Transferencia Banco de Venezuela" title="Transferencia Banco de Venezuela">
+                <img src="/imagenes/logos/transferencia-banesco.png" alt="Transferencia Banesco" title="Transferencia Banesco">
+                <img src="/imagenes/logos/zinli.png" alt="Zinli" title="Zinli">
+                <img src="/imagenes/logos/binance.png" alt="Binance Pay" title="Binance Pay">
+            </div>
+        </section>
+
+        <section class="clients section" id="clients">
+            <div class="container">
+                 <span class="section-subtitle">Nuestra Garantía</span>
+                <h2 class="section-title">Confianza y Satisfacción</h2>
+                 <p class="clients-description">Empresas y emprendedores en Venezuela confían en Crom Studio Cloud para gestionar y proteger su información más valiosa. Nos esforzamos por ofrecer un servicio estable, seguro y con el mejor soporte local.</p>
+                 </div>
+        </section>
+
+
+        <section class="cta section" id="cta">
+            <div class="cta-container container">
+                <h2 class="cta-title">Empieza a Usar Crom Studio Cloud Hoy</h2>
+                <p class="cta-description">
+                    Selecciona tu plan ideal o contáctanos si tienes preguntas. ¡Tu nube privada te espera!
+                </p>
+                <a href="#pricing" class="button button-primary button-large">Ver Planes Cloud</a>
+                <a href="#contact" class="button button-secondary button-large">Hablar con un Asesor</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container container grid">
+             <div>
+                <a href="/" class="footer-logo">Crom Studio Venezuela</a>
+                <p class="footer-description">Soluciones tecnológicas para el mercado venezolano.</p>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
                 <ul>
-                    <li>Infraestructura escalable para adaptarse al crecimiento de tu empresa.</li>
-                    <li>Herramientas avanzadas para mejorar la eficiencia y colaboración.</li>
-                    <li>Protección de datos garantizada, priorizando la seguridad y disponibilidad.</li>
+                    <li><a href="https://cromstudio.com.ve/#about" class="footer-link">Quiénes Somos</a></li>
+                    <li><a href="https://cromstudio.com.ve/#services" class="footer-link">Servicios</a></li>
+                    <li><a href="https://cromstudio.com.ve/#pricing" class="footer-link">Precios</a></li>
+                     <li><a href="https://cromstudio.com.ve/blog/" target="_blank" class="footer-link">Blog</a></li>
+                     <li><a href="https://cromstudio.com.ve/descargas/" class="footer-link">Descargas</a></li>
+                    </ul>
+            </div>
+             <div class="footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                 <ul>
+                    <li><i class="fas fa-phone"></i> +58 416-8578289</li>
+                    <li><i class="fas fa-envelope"></i> contacto@cromstudio.com.ve</li>
+                     <li><i class="fas fa-map-marker-alt"></i> Venezuela</li>
                 </ul>
-                <br>
-                <h3>Planes Flexibles para Todas las Necesidades</h3>
-                <p>Desde el Plan Económico hasta el Plan Pro, ofrecemos opciones que se ajustan a tus requisitos específicos. Almacenamiento generoso, enlaces externos ilimitados y aplicaciones para escritorio y dispositivos móviles, todo a precios accesibles.</p>
-                <br>
-                <h3>Compatibilidad Total con tu Estilo de Trabajo</h3>
-                <p>Crom Studio Cloud es compatible con computadoras y teléfonos celulares, permitiéndote acceder y compartir archivos desde cualquier lugar. Colabora eficientemente con tu equipo y edita en tiempo real para mejorar la conectividad y productividad.</p>
-                <br>
-                <h3>Clientes Satisfechos, Empresas Transformadas</h3>
-                <p>Nuestros clientes confían en nosotros para impulsar sus operaciones diarias. Cada proyecto es una oportunidad para demostrar nuestro compromiso con la calidad, la innovación y la satisfacción del cliente.</p>
-                <br>
             </div>
+             <div class="footer-social">
+                 <h3 class="footer-title">Síguenos</h3>
+                 <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                 <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                 <a href="https://twitter.com/" target="_blank" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+             </div>
         </div>
-    </section>
+        <span class="footer-copy container">
+            &copy; <span id="current-year"></span> Crom Studio Venezuela. Todos los derechos reservados.
+        </span>
+    </footer>
 
-    <div class="container">
-        <div class="row">
-          <div class="image">
-            <img src="/imagenes/nextcloud/nextcloud-hub4-files-preview.png.webp" alt="Dispositivos">
-          </div>
-          <div class="text">
-            <p><strong>Compatible con Computador y Telefono Celular.</strong></p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="text">
-            <p><strong>Comparte y edita Archivos con tu equipo.</strong></p>
-          </div>
-          <div class="image">
-            <img src="/imagenes/nextcloud/nextcloud-hub4-office-preview.png" alt="Imagen 2">
-          </div>
-        </div>
-    </div>
-    
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up scrollup-icon"></i>
+    </a>
 
-      <section class="section" id="metodos">
-        <h2>Métodos de Pagos</h2>
-        <p>Facilitamos tus transacciones con una variedad de métodos de pago seguros. Tu tranquilidad es nuestra prioridad.</p>
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/imagenes/metodos.png" alt="Métodos de Pagos de Crom Studio">
-                </div>
-                <!-- Añade más imágenes según necesites -->
-            </div>
-        </div>
-    </section>
+    <script>
+        // Año actual en Footer
+        const currentYearElement = document.getElementById('current-year');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
 
+        // Lógica del Menú Móvil
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
 
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
 
-    <section class="section" id="clientes">
-        <h2>Clientes</h2>
-        <p>La confianza que nuestros clientes depositan en nosotros es el motor que impulsa nuestra dedicación y esfuerzo constante por superar sus expectativas.</p>
-        <p>Cada proyecto es una nueva oportunidad para demostrar nuestro compromiso con la calidad, la innovación y la satisfacción del cliente.</p>
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/imagenes/empresas/clientes-1.png" alt="Clientes de Crom Studio">
-                </div>
-                <!-- Añade más imágenes según necesites -->
-            </div>
-        </div>
-    </section>
+        if (navClose && navMenu) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
 
+        // Cerrar menú al hacer clic en un enlace (revisado)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                 const href = link.getAttribute('href');
+                 const isCurrentPageAnchor = href && href.startsWith('#'); // Enlace de ancla en esta página
+                 const isHomePageAnchor = href && href.startsWith('/#'); // Enlace de ancla a la home
+                 const isInternalPage = href && !href.startsWith('#') && !href.startsWith('/#') && !href.startsWith('http'); // Enlace a otra página interna
 
-    <section class="section" id="contacto">
-        <h2>Contacto Directo para tus Consultas</h2>
-        <p>¿Tienes preguntas o necesitas asistencia? Estamos aquí para ayudarte. Llámanos al 0416-8578289 o envíanos un correo a contacto@cromstudio.com.ve.</p>
-        <p>Descubre el futuro del almacenamiento en la nube con Crom Studio Cloud. ¡Haz clic para comenzar tu viaje hacia la eficiencia empresarial!</p>
-    
-        <br>
-
-        <div class="contact-info">
-            <p>Teléfono: 0416-8578289</p>
-            <p><a href="https://cromstudio.com.ve/whatsapp">WhatsApp</a> +58 416 857 82 89</p>
-            <p>Correo: contacto@cromstudio.com.ve</p>
-        </div>
-    </section>
-
-    <div class="footer">
-        <p>&copy; 2025 Crom Studio Venezuela</p>
-    </div>
+                 if (isCurrentPageAnchor || isHomePageAnchor || isInternalPage) {
+                      if (navMenu && navMenu.classList.contains('show-menu')) {
+                         navMenu.classList.remove('show-menu');
+                     }
+                 }
+            });
+        });
 
 
+        // Añadir sombra al header al hacer scroll
+        const header = document.querySelector('.header');
+        function handleScrollHeader() {
+             if (header) {
+                if (window.scrollY >= 80) {
+                    header.classList.add('scroll-header');
+                } else {
+                    header.classList.remove('scroll-header');
+                }
+             }
+        }
+        window.addEventListener('scroll', handleScrollHeader);
+        handleScrollHeader(); // Check initial state
 
+        // Mostrar botón Scroll Up
+        const scrollUp = document.getElementById('scroll-up');
+        function handleScrollUpButton() {
+            if (scrollUp) {
+                if (window.scrollY >= 560) {
+                    scrollUp.classList.add('show-scroll');
+                } else {
+                    scrollUp.classList.remove('show-scroll');
+                }
+            }
+        }
+        window.addEventListener('scroll', handleScrollUpButton);
+        handleScrollUpButton(); // Check initial state
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.10/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+         // Active link en scroll (adaptado para página específica con secciones internas)
+         const sections = document.querySelectorAll('section[id]');
+         const navMenuLinks = document.querySelectorAll('.nav-menu a'); // Seleccionar enlaces del menú
+
+         function scrollActivePageCloud(){
+             const scrollY = window.pageYOffset;
+             let currentSectionId = null;
+
+             sections.forEach(current =>{
+                 const sectionHeight = current.offsetHeight;
+                 const sectionTop = current.offsetTop - 58; // Ajustar offset según altura del header
+                 const sectionId = current.getAttribute('id');
+
+                 if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                    currentSectionId = sectionId;
+                 }
+             });
+
+             // Activar enlace del menú correspondiente a la sección visible O al enlace de la página si existe
+              const cloudPageLink = document.querySelector('.nav-menu a[href="/cloud.html"]'); // O la URL actual
+
+              navMenuLinks.forEach(link => {
+                  link.classList.remove('active-link'); // Limpiar todos primero
+                  const href = link.getAttribute('href');
+
+                  // Si hay una sección activa Y el enlace apunta a ella
+                  if (currentSectionId && href && href.includes('#' + currentSectionId)) {
+                      link.classList.add('active-link');
+                  // Si NO hay sección activa (estamos arriba) Y existe enlace a esta página, activarlo
+                  } else if (!currentSectionId && cloudPageLink && link === cloudPageLink) {
+                      link.classList.add('active-link');
+                  }
+              });
+
+              // Fallback si no hay sección activa ni enlace directo a la página: activar Inicio
+             const isActive = Array.from(navMenuLinks).some(l => l.classList.contains('active-link'));
+              if (!isActive) {
+                 const homeLink = document.querySelector('.nav-menu a[href="/#hero"]');
+                 if(homeLink) homeLink.classList.add('active-link');
+              }
+         }
+         window.addEventListener('scroll', scrollActivePageCloud);
+         scrollActivePageCloud(); // Check initial state
+
+    </script>
 
 </body>
 </html>

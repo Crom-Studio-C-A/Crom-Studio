@@ -3,128 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descargas | Crom Studio Venezuela</title>
+    <title>Manuales y Documentación | Crom Studio Venezuela</title>
 
-    <meta name="description" content="Accede a manuales, instaladores y utilidades de los productos y servicios de Crom Studio Venezuela. Encuentra los recursos que necesitas para sacar el máximo provecho a nuestras soluciones.">
-    <meta name="keywords" content="descargas crom studio, manuales software, instaladores sistemas, utilidades venezuela, soporte tecnico software, recursos crom studio">
+    <meta name="description" content="Accede a manuales de usuario, guías y documentación para los sistemas Valery, Abarrotes (Eleventa), CAES y Crom Studio Cloud ofrecidos por Crom Studio Venezuela.">
+    <meta name="keywords" content="manual valery, manual eleventa, documentación crom studio cloud, guias software venezuela, soporte caes, manuales sistemas administrativos">
     <meta name="author" content="Crom Studio Venezuela">
-    <meta name="robots" content="index, follow"> <meta name="language" content="es">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="es">
     <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
+    <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css"> 
+    
 
-    <style>
+<style>
 
-/* ===== PÁGINA DESCARGAS ===== */
+/* ===== PÁGINA MANUALES Y DOCUMENTACIÓN ===== */
 
-/* (Reutiliza el estilo .page-hero si ya lo definiste para sms-masivos.html) */
-/* Si no, añade: */
-/*
-.page-hero {
-    background-color: hsl(var(--primary-hue), 60%, 98%);
-    text-align: center;
-    padding-top: calc(var(--header-height) + 2rem);
-    padding-bottom: 3rem;
+/* (Asegúrate que .page-hero y .breadcrumbs estén definidos como en páginas anteriores) */
+/* (Asegúrate que .download-instruction y .downloads-note estén definidos) */
+
+/* Grid para las tarjetas de categorías de documentación */
+.documentation-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
-.page-hero .section-title {
+/* Enlace que envuelve la tarjeta */
+.documentation-category-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%; /* Para que todas las tarjetas en una fila tengan la misma altura si varía contenido */
+    transition: transform 0.3s;
+}
+
+.documentation-category-link:hover {
+   transform: translateY(-3px);
+}
+
+/* Estilo de Tarjeta (reutilizando .feature-card) */
+.documentation-grid .feature-card {
+   height: 100%; /* Trabaja junto con height en el 'a' */
+   display: flex;
+   flex-direction: column; /* Para alinear contenido verticalmente */
+   /* min-height: 220px; */ /* Opcional: altura mínima */
+}
+
+.documentation-grid .feature-card .feature-icon {
+    /* Estilos ya definidos probablemente */
     margin-bottom: var(--mb-1);
 }
 
-.page-hero-description {
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: var(--mb-1-5);
-    color: var(--text-color);
+.documentation-grid .feature-card .feature-title {
+     /* Estilos ya definidos probablemente */
+     margin-bottom: var(--mb-0-75);
 }
 
-@media screen and (min-width: 768px) {
-    .page-hero {
-        padding-top: calc(var(--header-height) + 3rem);
-        padding-bottom: 4rem;
-    }
-}
-*/
-
-
-/* Sección de Grid de Descargas */
-.downloads-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajusta minmax según necesites */
-    gap: 2rem; /* Espacio entre tarjetas */
+.documentation-grid .feature-card .feature-description {
+    /* Estilos ya definidos probablemente */
+    flex-grow: 1; /* Empuja el indicador de tipo de enlace hacia abajo */
+    margin-bottom: var(--mb-1); /* Espacio antes del indicador */
 }
 
-/* Estilo para el enlace que envuelve la tarjeta */
-.download-category-link {
-    text-decoration: none; /* Quitar subrayado del enlace */
-    color: inherit; /* Heredar color de texto de la tarjeta */
-    display: block; /* Asegurar que el enlace ocupe todo el espacio de la tarjeta */
-    transition: transform 0.3s; /* Transición suave para el hover del enlace */
-}
-
-/* Opcional: Efecto hover sobre el enlace completo */
-.download-category-link:hover {
-   transform: translateY(-3px); /* Levantar ligeramente la tarjeta */
-}
-
-/* Estilo para la tarjeta (reutilizando .feature-card) */
-/* Asegúrate que los estilos de .feature-card (padding, border, etc.) están definidos */
-.downloads-grid .feature-card {
-   /* Puedes añadir aquí estilos específicos si quieres que las tarjetas de descarga */
-   /* sean ligeramente diferentes a las de features, por ejemplo: */
-   /* min-height: 200px; */ /* Asegurar altura mínima si el texto es corto */
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between; /* Para alinear contenido si varía altura */
-}
-
-.downloads-grid .feature-card .feature-icon {
-     /* Ajustar si es necesario */
-}
-
-.downloads-grid .feature-card .feature-title {
-     /* Ajustar si es necesario */
-}
-
-.downloads-grid .feature-card .feature-description {
-     /* Ajustar si es necesario */
-     flex-grow: 1; /* Hace que la descripción ocupe espacio si la altura varía */
-     margin-bottom: 0; /* Quitar margen inferior si no hay botón dentro */
-}
-
-
-/* Nota al final de la sección de descargas */
-.downloads-note {
-    text-align: center;
+/* Indicador de tipo de enlace (Nuevo) */
+.link-type-indicator {
+    display: inline-flex; /* Usar flex para alinear icono y texto */
+    align-items: center;
+    gap: 0.4rem; /* Espacio entre icono y texto */
     font-size: var(--small-font-size);
-    margin-top: var(--mb-2-5);
-    color: var(--text-color-light);
+    color: var(--primary-color); /* O var(--text-color-light) */
+    font-weight: var(--font-medium);
+    margin-top: auto; /* Empuja al fondo de la tarjeta si usa flex-direction column */
+    padding: 0.3rem 0.6rem;
+    background-color: hsl(var(--primary-hue), 60%, 95%); /* Fondo sutil */
+    border-radius: .25rem;
+    border: 1px solid hsl(var(--primary-hue), 30%, 90%);
 }
 
-.downloads-note a {
-    color: var(--primary-color);
-    font-weight: var(--font-medium);
+.link-type-indicator i {
+    font-size: 0.9em; /* Icono ligeramente más pequeño */
 }
-.downloads-note a:hover {
-    text-decoration: underline;
-}
+
 
 /* Ajustes Responsivos */
+@media screen and (min-width: 768px) {
+    .documentation-grid {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en tablet */
+    }
+}
+
 @media screen and (min-width: 992px) {
-    .downloads-grid {
-        grid-template-columns: repeat(3, 1fr); /* Forzar 3 columnas en pantallas grandes */
+    .documentation-grid {
+        grid-template-columns: repeat(3, 1fr); /* Tres o cuatro columnas en desktop */
+    }
+     /* Podrías hacer que las tarjetas sean más anchas si solo hay 4 */
+     /* .documentation-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+     } */
+}
+
+@media screen and (min-width: 1200px) {
+     /* Quizás 4 columnas si hay espacio */
+      .documentation-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 
-    </style>
-
+</style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -135,6 +128,7 @@
 <body>
 
     <script type="text/javascript">
+    // Mantén o comenta según preferencia
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -147,7 +141,8 @@
     </script>
     <header class="header">
         <nav class="nav container">
-            <a href="/" class="nav-logo">Crom Studio</a> <div class="nav-menu" id="nav-menu">
+            <a href="/" class="nav-logo">Crom Studio</a>
+            <div class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="https://cromstudio.com.ve/#hero" class="nav-link active-link">Inicio</a></li>
                     <li class="nav-item"><a href="https://cromstudio.com.ve/#about" class="nav-link">Quiénes Somos</a></li>
@@ -169,49 +164,66 @@
 
         <section class="page-hero section">
             <div class="container">
-                <span class="section-subtitle">Recursos Disponibles</span>
-                <h1 class="section-title">Centro de Descargas</h1>
+                 <nav aria-label="breadcrumb" class="breadcrumbs">
+                </nav>
+                <span class="section-subtitle">Guías y Recursos</span>
+                <h1 class="section-title">Manuales y Documentación</h1>
                 <p class="page-hero-description">
-                    Aquí encontrarás los archivos necesarios para instalar, configurar y utilizar nuestros sistemas y servicios.
+                    Encuentra guías de usuario, tutoriales y documentación técnica para nuestros sistemas.
                 </p>
             </div>
         </section>
 
-        <section class="downloads section" id="downloads-list">
+        <section class="documentation-list section" id="manuals-list">
             <div class="container">
-                <div class="downloads-grid grid">
 
-                    <a href="/descargas/archivos/manuales/" class="download-category-link">
-                        <div class="feature-card"> <i class="fas fa-book-open feature-icon"></i>
-                            <h3 class="feature-title">Documentos y Manuales</h3>
-                            <p class="feature-description">Guías de usuario, documentación técnica y manuales de instalación y configuración.</p>
+                 <p class="download-instruction">
+                   <i class="fas fa-info-circle"></i> Selecciona el producto o servicio para acceder a su documentación:
+                </p>
+<br>
+                <div class="documentation-grid grid">
+
+                    <a href="/descargas/archivos/manuales/valery/" class="documentation-category-link">
+                        <div class="feature-card"> <i class="fas fa-cogs feature-icon"></i> <h3 class="feature-title">Sistema Valery</h3>
+                            <p class="feature-description">Manuales y guías de uso para las diferentes versiones del sistema administrativo Valery.</p>
+                            <span class="link-type-indicator"><i class="fas fa-folder-open"></i> Ver Archivos</span>
                         </div>
                     </a>
 
-                    <a href="/descargas/archivos/instaladores/" class="download-category-link">
+                    <a href="/descargas/archivos/manuales/abarrot/manual-eleventa-punto-de-venta.pdf" target="_blank" rel="noopener noreferrer" class="documentation-category-link">
                         <div class="feature-card">
-                            <i class="fas fa-download feature-icon"></i>
-                            <h3 class="feature-title">Instaladores</h3>
-                            <p class="feature-description">Archivos ejecutables y paquetes necesarios para la instalación de nuestros sistemas.</p>
+                            <i class="fas fa-shopping-basket feature-icon"></i>
+                            <h3 class="feature-title">Punto de Venta Abarrotes</h3>
+                            <p class="feature-description">Manual de usuario en PDF para el sistema Eleventa Punto de Venta.</p>
+                             <span class="link-type-indicator"><i class="fas fa-file-pdf"></i> Abrir PDF</span>
                         </div>
                     </a>
 
-                    <a href="/descargas/archivos/utilidades/" class="download-category-link">
+                    <a href="https://wa.me/584168578289?text=Hola,%20necesito%20información%20o%20manuales%20sobre%20el%20sistema%20CAES." target="_blank" rel="noopener noreferrer" class="documentation-category-link"> <div class="feature-card">
+                             <i class="fas fa-headset feature-icon"></i>
+                            <h3 class="feature-title">Sistema CAES</h3>
+                            <p class="feature-description">Para manuales, documentación o soporte sobre el sistema CAES, contáctanos directamente.</p>
+                             <span class="link-type-indicator"><i class="fab fa-whatsapp"></i> Contactar por WhatsApp</span>
+                        </div>
+                    </a>
+
+                     <a href="https://cromstudio.com.ve/blog/categories/crom-studio-cloud/" target="_blank" rel="noopener noreferrer" class="documentation-category-link">
                         <div class="feature-card">
-                             <i class="fas fa-tools feature-icon"></i>
-                            <h3 class="feature-title">Utilidades</h3>
-                            <p class="feature-description">Herramientas adicionales, drivers o software complementario para optimizar el uso de nuestros servicios.</p>
+                             <i class="fas fa-cloud feature-icon"></i>
+                            <h3 class="feature-title">Crom Studio Cloud</h3>
+                            <p class="feature-description">Consulta artículos, tutoriales y guías de uso para nuestra plataforma de almacenamiento en la nube.</p>
+                             <span class="link-type-indicator"><i class="fas fa-blog"></i> Ir al Blog</span>
                         </div>
                     </a>
 
-                </div>
-                 <p class="downloads-note container">
-                    Si tienes problemas con alguna descarga o no encuentras lo que buscas, por favor <a href="https://cromstudio.com.ve/#contact">contacta con soporte</a>.
+                    <br>
+
+                </div> <p class="downloads-note container"> ¿No encuentras la documentación que necesitas? <a href="/#contact">Ponte en contacto con nosotros</a>.
                  </p>
-            </div>
-        </section>
 
-        </main>
+            </div> </section>
+
+    </main>
 
     <footer class="footer">
         <div class="footer-container container grid">
@@ -282,21 +294,17 @@
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                  const href = link.getAttribute('href');
-                 const isCurrentPageAnchor = href && href.startsWith('#'); // Enlace de ancla en la página actual
-                 const isHomePageAnchor = href && href.startsWith('/#'); // Enlace de ancla a la home
+                 const isHomePageAnchor = href && href.startsWith('/#');
+                 const isInternalPage = href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:');
 
-                 if (isCurrentPageAnchor || isHomePageAnchor) {
-                      if (navMenu && navMenu.classList.contains('show-menu')) {
-                         navMenu.classList.remove('show-menu');
-                     }
-                 } else if (href && !href.startsWith('http')) { // Enlace interno a otra página
+                 if (isHomePageAnchor || isInternalPage) {
                       if (navMenu && navMenu.classList.contains('show-menu')) {
                          navMenu.classList.remove('show-menu');
                      }
                  }
-                 // No prevenir el comportamiento por defecto para enlaces externos o de ancla
             });
         });
+
 
         // Añadir sombra al header al hacer scroll
         const header = document.querySelector('.header');
@@ -326,24 +334,23 @@
         window.addEventListener('scroll', handleScrollUpButton);
         handleScrollUpButton(); // Check initial state
 
-         // Active link en scroll (simple para página sin secciones internas)
+        // Active link en scroll (simple para página sin secciones internas)
         const navMenuLinks = document.querySelectorAll('.nav-menu a');
-        function resetActiveLinks() {
+         function resetActiveLinks() {
              navMenuLinks.forEach(link => {
                  link.classList.remove('active-link');
              });
         }
-        // Marcar el enlace de descargas como activo si existe en el menú
-         const downloadsPageLink = document.querySelector('.nav-menu a[href="/descargas.html"]'); // Asegúrate que el href coincida
+         // Marcar el enlace de descargas como activo (padre)
+         const downloadsPageLink = document.querySelector('.nav-menu a[href="/descargas.html"]');
          if(downloadsPageLink){
-             resetActiveLinks(); // Quita activo de otros
+             resetActiveLinks();
              downloadsPageLink.classList.add('active-link');
          } else {
-             // Si no hay enlace directo, quizás marcar 'Inicio' o ninguno
+             // Fallback
              const homeLink = document.querySelector('.nav-menu a[href="/#hero"]');
-             // if(homeLink) homeLink.classList.add('active-link'); // Opcional
+             if(homeLink) homeLink.classList.add('active-link');
          }
-
 
     </script>
 

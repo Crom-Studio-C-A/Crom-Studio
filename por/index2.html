@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crom Studio - Transformamos Ideas en Experiencias Digitales</title>
+    <meta name="description" content="Crom Studio: Expertos en desarrollo web, diseño gráfico, sistemas personalizados y asesoría tecnológica. Transformamos tus ideas en soluciones digitales impactantes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/YOUR_FONTAWESOME_KIT_CODE.js" crossorigin="anonymous"></script>
+
+    <style>
+
+
+        /* ===== GOOGLE FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ===== VARIABLES CSS ===== */
+:root {
+    /* Colores (Ejemplo: Paleta Azul/Morado/Neutro) */
+    /* Puedes ajustar estos colores a tu gusto */
+    --hue-color: 250; /* Morado: 250, Azul: 210 */
+
+    --first-color: hsl(var(--hue-color), 69%, 61%); /* Color principal */
+    --first-color-second: hsl(var(--hue-color), 69%, 61%); /* Mantenido igual o ligera variación */
+    --first-color-alt: hsl(var(--hue-color), 57%, 53%); /* Tono más oscuro o saturado */
+    --first-color-lighter: hsl(var(--hue-color), 92%, 85%); /* Tono muy claro */
+    --title-color: hsl(var(--hue-color), 8%, 15%); /* Color para títulos */
+    --text-color: hsl(var(--hue-color), 8%, 45%); /* Color para texto normal */
+    --text-color-light: hsl(var(--hue-color), 8%, 65%); /* Color para texto más claro */
+    --input-color: hsl(var(--hue-color), 70%, 96%); /* Color de fondo para inputs */
+    --body-color: hsl(0, 0%, 99%); /* Color de fondo general */
+    --container-color: #fff; /* Color de fondo para contenedores/cards */
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 80%);
+
+    /* Fuentes y Tipografía */
+    --body-font: 'Poppins', sans-serif;
+    --heading-font: 'Montserrat', sans-serif;
+
+    /* Tamaños de fuente */
+    --big-font-size: 2.5rem;
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+
+    /* Peso de fuente */
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    /* Márgenes */
+    --mb-0-25: 0.25rem;
+    --mb-0-5: 0.5rem;
+    --mb-0-75: 0.75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --mb-3: 3rem;
+
+    /* z-index */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+
+    /* Otros */
+    --header-height: 4rem;
+    --border-radius: 0.75rem; /* Bordes redondeados */
+    --transition-speed: 0.3s; /* Velocidad de transición */
+}
+
+/* Responsive - Ajuste de tamaño de fuente para pantallas grandes */
+@media screen and (min-width: 968px) {
+    :root {
+        --big-font-size: 3.5rem;
+        --h1-font-size: 2.5rem;
+        --h2-font-size: 1.75rem;
+        --h3-font-size: 1.375rem;
+        --normal-font-size: 1.063rem;
+        --small-font-size: 0.938rem;
+        --smaller-font-size: 0.875rem;
+    }
+}
+
+/* ===== BASE ===== */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+body {
+    margin: 0 0 var(--header-height) 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    transition: background-color var(--transition-speed) ease; /* Suaviza cambio de tema (si se implementa) */
+}
+
+h1, h2, h3, h4 {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+    font-family: var(--heading-font); /* Fuente diferente para encabezados */
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--first-color);
+    transition: color var(--transition-speed) ease;
+}
+a:hover {
+    color: var(--first-color-alt);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Evita espacio extra debajo */
+}
+
+button, input, textarea, select {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* ===== CLASES REUTILIZABLES ===== */
+.section {
+    padding: 4rem 0 2rem; /* Aumentado el padding superior */
+}
+
+.section__title {
+    font-size: var(--h1-font-size);
+    color: var(--title-color);
+    text-align: center;
+    margin-bottom: var(--mb-0-5);
+}
+
+.section__subtitle {
+    display: block;
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-3);
+    text-align: center;
+    color: var(--text-color-light);
+}
+
+.container {
+    max-width: 968px; /* Ancho máximo del contenido */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem; /* Espacio entre elementos del grid */
+}
+
+/* ===== HEADER Y NAVEGACIÓN ===== */
+.header {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    background-color: var(--body-color);
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.nav {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__logo,
+.nav__toggle,
+.nav__close {
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
+.nav__logo:hover {
+    color: var(--first-color);
+}
+
+.nav__toggle {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.nav__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en móvil */
+    gap: 2rem;
+    padding: 1rem 0; /* Espacio interno */
+}
+
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--small-font-size);
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    transition: color var(--transition-speed) ease;
+}
+.nav__link:hover {
+    color: var(--first-color);
+}
+
+.nav__icon { /* Si decides usar iconos en la nav */
+    font-size: 1.2rem;
+    margin-bottom: var(--mb-0-25);
+}
+
+.nav__close {
+    position: absolute;
+    right: 1.3rem;
+    bottom: .5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--first-color);
+}
+.nav__close:hover {
+    color: var(--first-color-alt);
+}
+
+/* Mostrar menú */
+.nav__menu {
+    position: fixed;
+    bottom: -100%; /* Oculto por defecto */
+    left: 0;
+    width: 100%;
+    background-color: var(--body-color);
+    padding: 2rem 1.5rem 4rem;
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 1.5rem 1.5rem 0 0;
+    transition: bottom var(--transition-speed) ease-in-out;
+}
+.show-menu {
+    bottom: 0;
+}
+
+/* Link activo */
+.active-link {
+    color: var(--first-color);
+}
+
+/* Cambiar fondo del header al hacer scroll */
+.scroll-header {
+    box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== BOTONES ===== */
+.button {
+    display: inline-block;
+    background-color: var(--first-color);
+    color: #fff;
+    padding: 1rem 1.75rem;
+    border-radius: var(--border-radius);
+    font-weight: var(--font-medium);
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    text-align: center;
+}
+.button:hover {
+    background-color: var(--first-color-alt);
+    transform: translateY(-2px); /* Microinteracción */
+}
+
+.button__icon {
+    margin-left: var(--mb-0-5);
+    transition: transform var(--transition-speed) ease;
+}
+.button:hover .button__icon {
+     transform: translateX(3px);
+}
+
+.button--flex {
+    display: inline-flex;
+    align-items: center;
+}
+
+.button--small {
+    padding: 0.75rem 1rem;
+    font-size: var(--small-font-size);
+}
+
+.button--link {
+    padding: 0;
+    background-color: transparent;
+    color: var(--first-color);
+}
+.button--link:hover {
+    background-color: transparent;
+    color: var(--first-color-alt);
+    transform: none; /* Sin efecto de elevación */
+}
+
+
+/* ===== SECCIÓN INICIO (HERO) ===== */
+.hero {
+    padding-top: 6rem; /* Más espacio superior */
+    background: linear-gradient(170deg, hsl(var(--hue-color), 50%, 95%), var(--body-color) 60%); /* Degradado suave */
+}
+.hero__container {
+    gap: 1rem;
+    align-items: center; /* Centrar verticalmente */
+    min-height: calc(100vh - var(--header-height) - 6rem); /* Ocupar casi toda la pantalla inicial */
+}
+.hero__content {
+   text-align: center;
+}
+.hero__title {
+    font-size: var(--big-font-size);
+    margin-bottom: var(--mb-0-75);
+    font-family: var(--heading-font);
+    line-height: 1.2;
+}
+.hero__subtitle {
+    font-size: var(--h3-font-size);
+    color: var(--text-color);
+    font-weight: var(--font-medium);
+    margin-bottom: var(--mb-2);
+}
+.hero__image { /* Si añades imagen */
+    justify-self: center;
+}
+.hero__image img {
+    max-width: 280px;
+}
+
+/* ===== SECCIÓN SOBRE NOSOTROS ===== */
+.about__container {
+    align-items: center; /* Alinear imagen y texto */
+    gap: 2.5rem;
+}
+.about__image {
+    justify-self: center;
+}
+.about__img {
+    width: 250px;
+    border-radius: var(--border-radius);
+}
+.about__heading {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-0-75);
+}
+.about__description {
+    margin-bottom: var(--mb-2);
+    line-height: 1.6;
+}
+.about__values {
+    margin-top: var(--mb-1);
+}
+.about__values li {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--mb-0-5);
+}
+.about__values-icon {
+    color: var(--first-color);
+    margin-right: var(--mb-0-5);
+    font-size: 1.1rem;
+}
+
+/* ===== SECCIÓN SERVICIOS ===== */
+.services__container {
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Grid responsivo */
+}
+.service__card {
+    background-color: var(--container-color);
+    padding: 2.5rem 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: 0 2px 8px hsla(var(--hue-color), 50%, 15%, 0.08);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.service__card:hover {
+    transform: translateY(-5px); /* Microinteracción */
+    box-shadow: 0 6px 16px hsla(var(--hue-color), 50%, 15%, 0.12);
+}
+.service__icon {
+    font-size: 2.5rem; /* Iconos más grandes */
+    color: var(--first-color);
+    margin-bottom: var(--mb-1);
+    display: block; /* Asegura que el margen funcione */
+}
+.service__title {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-0-5);
+}
+.service__description {
+    font-size: var(--small-font-size);
+    line-height: 1.5;
+}
+
+/* ===== SECCIÓN PROYECTOS (PORTFOLIO) ===== */
+.portfolio__container {
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Grid responsivo */
+}
+.portfolio__item {
+    background-color: var(--container-color);
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Para que el overlay no se salga */
+    box-shadow: 0 2px 8px hsla(var(--hue-color), 50%, 15%, 0.08);
+    transition: box-shadow var(--transition-speed) ease;
+}
+.portfolio__item:hover {
+    box-shadow: 0 6px 16px hsla(var(--hue-color), 50%, 15%, 0.12);
+}
+.portfolio__image-container {
+    position: relative; /* Para el overlay */
+    overflow: hidden;
+}
+.portfolio__img {
+    width: 100%;
+    transition: transform var(--transition-speed) ease;
+}
+.portfolio__item:hover .portfolio__img {
+    transform: scale(1.05); /* Efecto zoom suave */
+}
+
+.portfolio__hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(var(--hue-color), 60%, 60%, 0.6); /* Overlay semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+    border-radius: var(--border-radius) var(--border-radius) 0 0; /* Redondeo superior */
+}
+.portfolio__item:hover .portfolio__hover-overlay {
+    opacity: 1;
+}
+.portfolio__button {
+   transform: translateY(10px); /* Empieza ligeramente abajo */
+   opacity: 0;
+   transition: transform var(--transition-speed) ease 0.1s, opacity var(--transition-speed) ease 0.1s; /* Retraso leve */
+}
+.portfolio__item:hover .portfolio__button {
+    transform: translateY(0);
+    opacity: 1;
+}
+.portfolio__data {
+    padding: 1.5rem;
+}
+.portfolio__title {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-0-5);
+}
+.portfolio__description {
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-1);
+    line-height: 1.5;
+}
+.portfolio__description strong {
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+}
+.portfolio__tech {
+    display: block;
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+    margin-top: var(--mb-0-75);
+}
+
+/* ===== SECCIÓN TECNOLOGÍAS ===== */
+.tech__container {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Ajusta el tamaño mínimo */
+    justify-items: center;
+    gap: 2rem 1rem; /* Más espacio vertical */
+}
+.tech__item {
+    text-align: center;
+    transition: transform var(--transition-speed) ease;
+}
+.tech__item:hover {
+    transform: scale(1.1); /* Microinteracción */
+}
+.tech__icon {
+    font-size: 3rem; /* Tamaño de los iconos */
+    color: var(--first-color-alt); /* Usar un color más sólido */
+    margin-bottom: var(--mb-0-25);
+}
+/* Tooltip simple (opcional, requiere JS o más CSS para mostrar/ocultar) */
+.tech__item[title]::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background-color: var(--title-color);
+    color: var(--container-color);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.25rem;
+    font-size: var(--smaller-font-size);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+    pointer-events: none; /* Evita que interfiera con el hover */
+}
+.tech__item[title]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ===== SECCIÓN TESTIMONIOS ===== */
+.testimonials__container {
+    gap: 2rem;
+    /* Para un slider, necesitarías una librería JS o CSS más avanzado */
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.testimonial__card {
+    background-color: var(--container-color);
+    padding: 2rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px hsla(var(--hue-color), 50%, 15%, 0.08);
+    text-align: center;
+}
+.testimonial__avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto var(--mb-1);
+    object-fit: cover; /* Asegura que la imagen cubra bien */
+    border: 3px solid var(--first-color-lighter);
+}
+.testimonial__avatar--logo {
+    border-radius: var(--border-radius); /* Bordes más cuadrados para logos */
+    padding: 5px; /* Espacio si el logo no tiene fondo */
+    background-color: #fff; /* Fondo blanco si es necesario */
+    object-fit: contain; /* Para que el logo se vea completo */
+}
+.testimonial__quote {
+    font-style: italic;
+    margin-bottom: var(--mb-1);
+    line-height: 1.6;
+    position: relative;
+    padding: 0 1rem; /* Espacio para comillas */
+}
+/* Comillas decorativas */
+.testimonial__quote::before,
+.testimonial__quote::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--first-color-lighter);
+    position: absolute;
+    line-height: 1;
+}
+.testimonial__quote::before {
+    top: -0.5rem;
+    left: -0.2rem;
+}
+.testimonial__quote::after {
+    bottom: -1rem;
+    right: -0.2rem;
+}
+.testimonial__client {
+    display: block;
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+    font-style: normal;
+    margin-top: var(--mb-1);
+}
+.testimonial__company {
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+    font-weight: normal;
+}
+.testimonial__logo {
+    max-width: 100px;
+    height: auto;
+    margin: var(--mb-1) auto 0;
+    opacity: 0.7;
+}
+
+/* ===== SECCIÓN CONTACTO ===== */
+.contact__container {
+    grid-template-columns: 1fr; /* Una columna en móvil */
+    gap: 3rem;
+}
+.contact__content {
+    /* Ocupa todo el ancho en móvil */
+}
+.contact__title {
+    font-size: var(--h3-font-size);
+    margin-bottom: var(--mb-1-5);
+    text-align: center;
+}
+.contact__form {
+    display: grid;
+    gap: 1.5rem;
+}
+.contact__form-div {
+    position: relative;
+    /* height: 4rem; */ /* Ajusta altura si es necesario, pero mejor dejarlo flexible */
+    margin-bottom: var(--mb-0-5); /* Espacio debajo de cada input */
+}
+.contact__form-input {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+    padding: 1.2rem 1rem;
+    background-color: var(--input-color);
+    color: var(--text-color);
+    border: 1px solid transparent; /* Borde inicial transparente */
+    border-radius: var(--border-radius);
+    outline: none;
+    z-index: 1;
+    transition: border-color var(--transition-speed) ease;
+}
+.contact__form-input:focus {
+    border-color: var(--first-color);
+}
+textarea.contact__form-input {
+    height: auto; /* Permitir que crezca */
+    resize: vertical; /* Permitir redimensionar verticalmente */
+    min-height: 120px;
+}
+.contact__form-tag {
+    position: absolute;
+    top: -0.85rem; /* Posiciona la etiqueta arriba */
+    left: 1.25rem;
+    font-size: var(--smaller-font-size);
+    padding: 0 .25rem;
+    background-color: var(--body-color); /* Fondo para cortar el borde */
+    color: var(--title-color);
+    z-index: 10;
+    transition: background-color var(--transition-speed) ease;
+}
+.contact__form-area {
+    height: auto; /* Ajusta la altura del contenedor del textarea */
+}
+/* Estilo para el select */
+select.contact__form-input {
+    appearance: none; /* Quita estilo por defecto */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23${(props) => encodeURIComponent(props.theme.colors.firstColor.substring(1))}" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Flecha SVG */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 3rem; /* Espacio para la flecha */
+}
+.contact__form .button {
+    margin-top: var(--mb-1);
+}
+.contact__options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center; /* Centrar enlaces */
+    margin-top: var(--mb-2);
+}
+.contact__option-link {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+}
+.contact__option-link:hover {
+    color: var(--first-color);
+}
+.contact__option-icon {
+    font-size: 1.5rem;
+    margin-right: var(--mb-0-75);
+    color: var(--first-color);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background-color: var(--first-color-second); /* Usar color principal o variación */
+    padding-top: 3rem; /* Más espacio arriba */
+    margin-top: 4rem; /* Separación de la última sección */
+}
+.footer__container {
+    text-align: center;
+    padding-bottom: 3rem; /* Espacio inferior */
+}
+.footer__title {
+    font-size: var(--h1-font-size);
+    color: #fff;
+    margin-bottom: var(--mb-1-5);
+}
+.footer__social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: var(--mb-2);
+}
+.footer__social-link {
+    background-color: hsla(0, 0%, 100%, 0.2); /* Fondo semitransparente */
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.6rem;
+    border-radius: 50%;
+    display: inline-flex; /* Para centrar el icono */
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+.footer__social-link:hover {
+    background-color: hsla(0, 0%, 100%, 0.4);
+    transform: translateY(-3px); /* Microinteracción */
+}
+.footer__copy {
+    display: block;
+    margin-top: 2rem;
+    font-size: var(--small-font-size);
+    color: var(--first-color-lighter); /* Color claro para contraste */
+}
+.footer__privacy-link {
+    color: var(--first-color-lighter);
+    text-decoration: underline;
+    transition: color var(--transition-speed) ease;
+}
+.footer__privacy-link:hover {
+     color: #fff;
+}
+
+/* ===== SCROLL BAR ===== */
+::-webkit-scrollbar {
+    width: .60rem;
+    background-color: var(--scroll-bar-color);
+    border-radius: .5rem;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb-color);
+    border-radius: .5rem;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-color-light);
+}
+
+/* ===== MEDIA QUERIES (RESPONSIVE DESIGN) ===== */
+
+/* Para dispositivos pequeños (Móviles landscape) */
+@media screen and (max-width: 350px) {
+    .container {
+        margin-left: var(--mb-1);
+        margin-right: var(--mb-1);
+    }
+    .nav__menu {
+        padding: 2rem 0.5rem 4rem;
+    }
+    .nav__list {
+        column-gap: 0;
+    }
+    .hero__title {
+        font-size: var(--h1-font-size);
+    }
+    .hero__subtitle {
+        font-size: var(--h3-font-size);
+    }
+    .service__card {
+        padding: 2rem 1rem;
+    }
+    .tech__icon {
+        font-size: 2.5rem;
+    }
+}
+
+/* Para dispositivos medianos (Tablets) */
+@media screen and (min-width: 768px) {
+    body {
+        margin: 0; /* Reset margin for desktop */
+    }
+    .header {
+        top: 0; /* Header en la parte superior */
+        bottom: auto;
+        background-color: transparent; /* Transparente inicialmente */
+        box-shadow: none; /* Sin sombra inicial */
+         transition: background-color 0.4s, box-shadow 0.4s; /* Transición suave */
+    }
+    /* Estilo del header al hacer scroll */
+    .scroll-header {
+        background-color: var(--body-color);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+    .nav {
+        height: calc(var(--header-height) + 1.5rem); /* Header más alto */
+        column-gap: 1rem;
+    }
+    .nav__logo {
+         font-size: 1.2rem; /* Logo un poco más grande */
+    }
+    .nav__icon, .nav__close, .nav__toggle {
+        display: none; /* Ocultar iconos de nav móvil */
+    }
+    .nav__list {
+        display: flex; /* Mostrar como fila */
+        column-gap: 2.5rem;
+        padding: 0; /* Quitar padding */
+    }
+    .nav__menu {
+        position: static; /* Quitar posicionamiento fijo */
+        margin-left: auto; /* Empujar a la derecha */
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+        width: auto; /* Ancho automático */
+    }
+    .nav__link {
+        font-size: var(--normal-font-size);
+        flex-direction: row; /* Texto al lado */
+    }
+    .section {
+        padding: 6rem 0 2rem; /* Más padding vertical */
+    }
+    .section__subtitle {
+        margin-bottom: 4rem;
+    }
+    .hero__container {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas en Hero */
+        align-items: center;
+        padding-top: 2rem;
+         min-height: auto; /* Altura automática */
+    }
+    .hero__content {
+        text-align: left; /* Alinear a la izquierda */
+        order: 1; /* Texto primero */
+    }
+    .hero__image { /* Si usas imagen */
+        order: 2; /* Imagen segunda */
+        justify-self: flex-end;
+    }
+     .hero__image img {
+        max-width: 400px; /* Imagen más grande */
+    }
+    .about__container {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center; /* Centrado vertical */
+        gap: 4rem; /* Más espacio */
+    }
+    .about__image {
+        justify-self: center; /* Centrar imagen horizontalmente */
+    }
+     .about__img {
+        width: 350px; /* Imagen más grande */
+    }
+    .services__container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas para servicios */
+        gap: 2rem;
+    }
+    .portfolio__container {
+        grid-template-columns: repeat(2, 1fr); /* 2 o 3 columnas */
+        gap: 2.5rem;
+    }
+    .tech__container {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 3rem 2rem;
+    }
+    .tech__icon {
+        font-size: 3.5rem;
+    }
+     .testimonials__container {
+        grid-template-columns: repeat(2, 1fr); /* 2 o 3 columnas */
+        gap: 2.5rem;
+    }
+    .contact__container {
+        grid-template-columns: 1fr 0.8fr; /* Dos columnas, formulario más ancho */
+        align-items: start; /* Alinear arriba */
+        gap: 4rem;
+    }
+    .contact__title {
+        text-align: left;
+    }
+     .contact__options {
+        align-items: flex-start; /* Alinear a la izquierda */
+        margin-top: 0; /* Resetear margen */
+    }
+    .footer__container {
+        /* Puedes añadir más estructura si quieres, ej. columnas */
+    }
+}
+
+/* Para dispositivos grandes (Desktops) */
+@media screen and (min-width: 1024px) {
+    .container {
+        padding-left: 1rem; /* Ajustar padding si es necesario */
+        padding-right: 1rem;
+    }
+    .header {
+        /* Podría no necesitar cambios específicos aquí si 768px ya lo cubre */
+    }
+    .hero__container {
+        padding-top: 4rem; /* Ajustar padding */
+    }
+    .hero__image img {
+        max-width: 450px;
+    }
+    .services__container {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas para servicios */
+    }
+     .portfolio__container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas para proyectos */
+    }
+    .testimonials__container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas para testimonios */
+    }
+    .contact__container {
+         grid-template-columns: 1fr 0.6fr; /* Ajustar proporción si se desea */
+    }
+}
+
+/* Ajustes finales de padding para secciones */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1140px; /* Ancho máximo un poco mayor */
+    }
+    .section {
+        padding: 7rem 0 3rem;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav container">
+            <a href="#inicio" class="nav__logo">Crom Studio</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#inicio" class="nav__link active-link">Inicio</a></li>
+                    <li class="nav__item"><a href="#sobre-nosotros" class="nav__link">Sobre Nosotros</a></li>
+                    <li class="nav__item"><a href="#servicios" class="nav__link">Servicios</a></li>
+                    <li class="nav__item"><a href="#proyectos" class="nav__link">Proyectos</a></li>
+                    <li class="nav__item"><a href="#tecnologias" class="nav__link">Tecnologías</a></li>
+                    <li class="nav__item"><a href="#testimonios" class="nav__link">Testimonios</a></li>
+                    <li class="nav__item"><a href="#contacto" class="nav__link">Contacto</a></li>
+                </ul>
+                <button class="nav__close" id="nav-close"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero section" id="inicio">
+            <div class="hero__container container grid">
+                <div class="hero__content">
+                    <h1 class="hero__title">Crom Studio</h1>
+                    <p class="hero__subtitle">Transformamos ideas en experiencias digitales</p>
+                    <a href="#contacto" class="button button--flex">
+                        Solicitar Presupuesto <i class="fas fa-arrow-right button__icon"></i>
+                    </a>
+                </div>
+                </div>
+        </section>
+
+        <section class="about section" id="sobre-nosotros">
+            <div class="container">
+                <h2 class="section__title">Sobre Nosotros</h2>
+                <span class="section__subtitle">Conoce al equipo detrás de Crom Studio</span>
+
+                <div class="about__container grid">
+                    <div class="about__image">
+                        <img src="img/placeholder-team.jpg" alt="Equipo de Crom Studio" class="about__img">
+                    </div>
+
+                    <div class="about__data">
+                        <h3 class="about__heading">Nuestra Historia y Enfoque</h3>
+                        <p class="about__description">
+                            En Crom Studio, nacimos de la pasión por la tecnología y el diseño creativo. Somos un equipo (o profesional independiente) dedicado a construir soluciones digitales que no solo lucen bien, sino que funcionan perfectamente y ayudan a nuestros clientes a alcanzar sus objetivos.
+                        </p>
+                        <h3 class="about__heading">Nuestros Valores</h3>
+                        <ul class="about__values">
+                            <li><i class="fas fa-check-circle about__values-icon"></i> Calidad y Excelencia</li>
+                            <li><i class="fas fa-check-circle about__values-icon"></i> Innovación Constante</li>
+                            <li><i class="fas fa-check-circle about__values-icon"></i> Colaboración y Transparencia</li>
+                            <li><i class="fas fa-check-circle about__values-icon"></i> Enfoque en el Cliente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services section" id="servicios">
+            <div class="container">
+                <h2 class="section__title">Nuestros Servicios</h2>
+                <span class="section__subtitle">Soluciones a tu medida</span>
+
+                <div class="services__container grid">
+                    <div class="service__card">
+                        <i class="fas fa-code service__icon"></i>
+                        <h3 class="service__title">Desarrollo Web</h3>
+                        <p class="service__description">Creamos sitios web modernos, responsivos y optimizados para el rendimiento y SEO.</p>
+                    </div>
+                    <div class="service__card">
+                        <i class="fas fa-palette service__icon"></i>
+                        <h3 class="service__title">Diseño Gráfico y UI/UX</h3>
+                        <p class="service__description">Diseñamos identidades visuales atractivas e interfaces intuitivas centradas en el usuario.</p>
+                    </div>
+                    <div class="service__card">
+                        <i class="fas fa-cogs service__icon"></i>
+                        <h3 class="service__title">Sistemas Personalizados</h3>
+                        <p class="service__description">Desarrollamos aplicaciones y sistemas a medida para optimizar tus procesos de negocio.</p>
+                    </div>
+                    <div class="service__card">
+                        <i class="fas fa-headset service__icon"></i>
+                        <h3 class="service__title">Asesoría Tecnológica</h3>
+                        <p class="service__description">Te guiamos en la adopción de las mejores tecnologías para impulsar tu proyecto o empresa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio section" id="proyectos">
+             <div class="container">
+                <h2 class="section__title">Proyectos Destacados</h2>
+                <span class="section__subtitle">Nuestro trabajo reciente</span>
+
+                <div class="portfolio__container grid">
+                    <article class="portfolio__item">
+                        <div class="portfolio__image-container">
+                            <img src="img/placeholder-project.jpg" alt="Nombre del Proyecto 1" class="portfolio__img">
+                             <div class="portfolio__hover-overlay">
+                                <a href="#" class="button button--flex button--small portfolio__button">
+                                    Ver Detalles <i class="fas fa-arrow-right button__icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Nombre del Proyecto 1</h3>
+                            <p class="portfolio__description"><strong>Reto:</strong> Descripción breve del desafío. <strong>Solución:</strong> Resumen de cómo se abordó.</p>
+                            <span class="portfolio__tech">Tecnologías: HTML, CSS, JavaScript, Figma</span>
+                        </div>
+                    </article>
+
+                    <article class="portfolio__item">
+                         <div class="portfolio__image-container">
+                            <img src="img/placeholder-project.jpg" alt="Nombre del Proyecto 2" class="portfolio__img">
+                             <div class="portfolio__hover-overlay">
+                                <a href="#" class="button button--flex button--small portfolio__button">
+                                    Ver Detalles <i class="fas fa-arrow-right button__icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portfolio__data">
+                            <h3 class="portfolio__title">Nombre del Proyecto 2</h3>
+                            <p class="portfolio__description"><strong>Reto:</strong> Describir el objetivo principal. <strong>Solución:</strong> Explicar la implementación clave.</p>
+                            <span class="portfolio__tech">Tecnologías: PHP, MySQL, Bootstrap</span>
+                         </div>
+                    </article>
+
+                    <article class="portfolio__item">
+                        <div class="portfolio__image-container">
+                           <img src="img/placeholder-project.jpg" alt="Nombre del Proyecto 3" class="portfolio__img">
+                            <div class="portfolio__hover-overlay">
+                               <a href="#" class="button button--flex button--small portfolio__button">
+                                   Ver Detalles <i class="fas fa-arrow-right button__icon"></i>
+                               </a>
+                           </div>
+                       </div>
+                       <div class="portfolio__data">
+                           <h3 class="portfolio__title">Nombre del Proyecto 3</h3>
+                           <p class="portfolio__description"><strong>Reto:</strong> Contexto del problema. <strong>Solución:</strong> El enfoque y resultado.</p>
+                           <span class="portfolio__tech">Tecnologías: React, Node.js, Figma</span>
+                        </div>
+                   </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech section" id="tecnologias">
+            <div class="container">
+                <h2 class="section__title">Tecnologías</h2>
+                <span class="section__subtitle">Herramientas que dominamos</span>
+
+                <div class="tech__container grid">
+                    <div class="tech__item" title="HTML5"><i class="fab fa-html5 tech__icon"></i></div>
+                    <div class="tech__item" title="CSS3"><i class="fab fa-css3-alt tech__icon"></i></div>
+                    <div class="tech__item" title="JavaScript"><i class="fab fa-js-square tech__icon"></i></div>
+                    <div class="tech__item" title="PHP"><i class="fab fa-php tech__icon"></i></div>
+                    <div class="tech__item" title="MySQL"><i class="fas fa-database tech__icon"></i></div> <div class="tech__item" title="Git"><i class="fab fa-git-alt tech__icon"></i></div>
+                    <div class="tech__item" title="Figma"><i class="fab fa-figma tech__icon"></i></div>
+                    <div class="tech__item" title="React"><i class="fab fa-react tech__icon"></i></div>
+                    <div class="tech__item" title="Node.js"><i class="fab fa-node-js tech__icon"></i></div>
+                    </div>
+            </div>
+        </section>
+
+        <section class="testimonials section" id="testimonios">
+            <div class="container">
+                <h2 class="section__title">Testimonios</h2>
+                <span class="section__subtitle">Lo que dicen nuestros clientes</span>
+
+                <div class="testimonials__container grid"> <div class="testimonial__card">
+                        <img src="img/placeholder-avatar.png" alt="Avatar Cliente 1" class="testimonial__avatar">
+                        <p class="testimonial__quote">"El equipo de Crom Studio superó nuestras expectativas. ¡Profesionales y muy creativos!"</p>
+                        <cite class="testimonial__client">Nombre Cliente 1 <span class="testimonial__company">- Empresa Ejemplo S.L.</span></cite>
+                        </div>
+                    <div class="testimonial__card">
+                        <img src="img/placeholder-avatar.png" alt="Avatar Cliente 2" class="testimonial__avatar">
+                        <p class="testimonial__quote">"Transformaron nuestra idea en una web funcional y atractiva. ¡Muy recomendados!"</p>
+                        <cite class="testimonial__client">Nombre Cliente 2</cite>
+                    </div>
+                     <div class="testimonial__card">
+                        <img src="img/placeholder-logo.png" alt="Logo Cliente 3" class="testimonial__avatar testimonial__avatar--logo">
+                        <p class="testimonial__quote">"Gran asesoramiento tecnológico y un desarrollo impecable. Estamos muy satisfechos."</p>
+                        <cite class="testimonial__client">Gerente <span class="testimonial__company">- Startup Innovadora</span></cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact section" id="contacto">
+            <div class="container">
+                <h2 class="section__title">Contacto</h2>
+                <span class="section__subtitle">Hablemos de tu proyecto</span>
+
+                <div class="contact__container grid">
+                    <div class="contact__content">
+                        <h3 class="contact__title">Envíanos un mensaje</h3>
+                        <form action="tu_script_de_procesamiento.php" method="POST" class="contact__form">
+                            <div class="contact__form-div">
+                                <label for="name" class="contact__form-tag">Nombre</label>
+                                <input type="text" name="name" id="name" required placeholder="Ingresa tu nombre" class="contact__form-input">
+                            </div>
+                             <div class="contact__form-div">
+                                <label for="email" class="contact__form-tag">Correo Electrónico</label>
+                                <input type="email" name="email" id="email" required placeholder="tu@correo.com" class="contact__form-input">
+                            </div>
+                             <div class="contact__form-div">
+                                <label for="project_type" class="contact__form-tag">Tipo de Proyecto</label>
+                                <select name="project_type" id="project_type" class="contact__form-input">
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="Desarrollo Web">Desarrollo Web</option>
+                                    <option value="Diseño Gráfico / UI/UX">Diseño Gráfico / UI/UX</option>
+                                    <option value="Sistema Personalizado">Sistema Personalizado</option>
+                                    <option value="Asesoría Tecnológica">Asesoría Tecnológica</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                             <div class="contact__form-div contact__form-area">
+                                <label for="message" class="contact__form-tag">Mensaje</label>
+                                <textarea name="message" id="message" cols="30" rows="7" required placeholder="Cuéntanos sobre tu idea..." class="contact__form-input"></textarea>
+                            </div>
+                            <button type="submit" class="button button--flex">
+                                Enviar Mensaje <i class="fas fa-paper-plane button__icon"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact__content">
+                        <h3 class="contact__title">O contáctanos por:</h3>
+                        <div class="contact__options">
+                             <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="contact__option-link">
+                                <i class="fab fa-whatsapp contact__option-icon"></i> WhatsApp
+                            </a>
+                             <a href="https://t.me/TUUSUARIODETELEGRAM" target="_blank" class="contact__option-link">
+                                <i class="fab fa-telegram-plane contact__option-icon"></i> Telegram
+                            </a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <h1 class="footer__title">Crom Studio</h1>
+
+            <ul class="footer__social">
+                <li><a href="https://linkedin.com/company/cromstudio" target="_blank" class="footer__social-link"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="https://instagram.com/cromstudio" target="_blank" class="footer__social-link"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://github.com/cromstudio" target="_blank" class="footer__social-link"><i class="fab fa-github"></i></a></li>
+                </ul>
+
+            <span class="footer__copy">
+                &#169; <span id="current-year"></span> Crom Studio. Todos los derechos reservados.
+                 | <a href="/politica-privacidad.html" class="footer__privacy-link">Política de Privacidad</a>
+            </span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

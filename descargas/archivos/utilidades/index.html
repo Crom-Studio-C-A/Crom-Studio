@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar Utilidades | Crom Studio Venezuela</title>
+
+    <meta name="description" content="Descarga AnyDesk, TeamViewer, drivers POS, clientes Cloud y otras utilidades recomendadas por Crom Studio Venezuela para soporte técnico y gestión de sistemas.">
+    <meta name="keywords" content="utilidades software, anydesk venezuela, teamviewer venezuela, driver pos 58, rustdesk, nextcloud client, owncloud client, soporte remoto venezuela, crom studio descargas">
+    <meta name="author" content="Crom Studio Venezuela">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="es">
+    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
+
+<style>
+
+/* ===== PÁGINA LISTADO DE DESCARGAS (Utilidades, etc.) ===== */
+
+/* (Asegúrate que .page-hero está definido como en páginas anteriores) */
+
+/* Estilo para Breadcrumbs (Opcional) */
+.breadcrumbs {
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-1-5);
+    color: var(--text-color-light);
+}
+
+.breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap; /* Por si hay muchos niveles */
+    gap: 0.5rem;
+}
+
+.breadcrumbs li::after {
+    content: '/'; /* Separador */
+    margin-left: 0.5rem;
+    color: var(--text-color-light);
+}
+
+.breadcrumbs li:last-child::after {
+    content: ''; /* No mostrar separador en el último elemento */
+}
+
+.breadcrumbs a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs li[aria-current="page"] {
+    color: var(--text-color);
+    font-weight: var(--font-medium);
+}
+
+/* Instrucción de Descarga */
+.download-instruction {
+    text-align: center;
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    background-color: hsl(var(--primary-hue), 60%, 96%); /* Fondo ligero */
+    border: 1px solid var(--border-color);
+    border-radius: .5rem;
+    padding: var(--mb-1) var(--mb-1-5);
+    margin-bottom: var(--mb-2-5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+}
+
+.download-instruction i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Contenedor de la lista de items */
+.download-items-list {
+    /* Puedes añadir un borde o fondo si quieres agrupar visualmente */
+    /* background-color: var(--container-color); */
+    /* border: 1px solid var(--border-color); */
+    /* border-radius: .5rem; */
+    /* padding: var(--mb-1); */
+}
+
+/* Estilo para cada fila/item de descarga */
+.download-item {
+    display: flex;
+    flex-wrap: wrap; /* Para que el botón pase abajo en móvil */
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem; /* Espacio entre info y botón */
+    padding: var(--mb-1-5) 0; /* Espaciado vertical */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.download-item:last-child {
+    border-bottom: none; /* No poner borde en el último item */
+}
+
+.download-item-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espacio entre icono e info de texto */
+    flex-grow: 1; /* Para que ocupe el espacio disponible */
+}
+
+.download-item-icon {
+    font-size: 1.8rem; /* Tamaño del icono */
+    color: var(--primary-color);
+    width: 30px; /* Ancho fijo para alineación */
+    text-align: center;
+}
+
+.download-item-name {
+    font-size: var(--normal-font-size); /* Ajustar si es necesario */
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+    display: block; /* Para que detalles aparezcan debajo */
+}
+
+.download-item-details {
+    font-size: var(--small-font-size);
+    color: var(--text-color-light);
+    display: block;
+}
+
+/* Indicador de enlace externo */
+.external-link-indicator {
+    font-size: 0.7em; /* Más pequeño */
+    color: var(--text-color-light);
+    vertical-align: super;
+    margin-left: 0.2em;
+}
+.external-link-indicator i {
+    font-size: 0.9em; /* Icono un poco más pequeño que el sup */
+}
+
+
+.download-item-action {
+    /* Contenedor del botón */
+    flex-shrink: 0; /* Evitar que el botón se encoja */
+}
+
+/* Botón Pequeño (si no existe ya) */
+.button-small {
+    padding: 0.6rem 1.2rem;
+    font-size: var(--small-font-size);
+}
+
+.button-small i {
+    margin-right: var(--mb-0-25); /* Espacio entre icono y texto en botón */
+}
+
+/* Ajustes Responsivos para la lista */
+@media screen and (max-width: 576px) {
+    .download-item {
+        flex-direction: column; /* Apilar en móvil */
+        align-items: flex-start; /* Alinear a la izquierda */
+        gap: 0.75rem; /* Reducir espacio */
+    }
+    .download-item-action {
+        width: 100%; /* Botón ocupa todo el ancho */
+        margin-top: var(--mb-0-5);
+    }
+    .download-item-action .button {
+        width: 100%; /* Botón ocupa todo el ancho */
+        text-align: center;
+        justify-content: center; /* Centrar icono y texto */
+    }
+    .download-instruction {
+        text-align: left;
+        justify-content: flex-start;
+    }
+}
+
+</style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTCG8F3HMV');
+    </script>
+</head>
+<body>
+
+    <script type="text/javascript">
+    // Mantén o comenta según preferencia para esta página
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav-logo">Crom Studio</a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#hero" class="nav-link active-link">Inicio</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#about" class="nav-link">Quiénes Somos</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#services" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#pricing" class="nav-link">Precios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/blog/" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/descargas/" class="nav-link">Descargas</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#contact" class="nav-link">Contacto</a></li>
+                    </ul>
+                <button class="nav-close" id="nav-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+
+        <section class="page-hero section">
+            <div class="container">
+                <nav aria-label="breadcrumb" class="breadcrumbs">
+                </nav>
+                <span class="section-subtitle">Herramientas Esenciales</span>
+                <h1 class="section-title">Utilidades Recomendadas</h1>
+                <p class="page-hero-description">
+                    Descarga herramientas de soporte remoto, clientes de sincronización en la nube y drivers para periféricos.
+                </p>
+            </div>
+        </section>
+
+        <section class="downloads-list-section section" id="utilities-list">
+            <div class="container">
+
+                <p class="download-instruction">
+                    <i class="fas fa-info-circle"></i> Para descargar, simplemente haz clic en el botón "Descargar" correspondiente al archivo que necesitas. Los enlaces externos se abrirán en una nueva pestaña.
+                </p>
+
+                <div class="download-items-list">
+
+                    <div class="download-item">
+                        <div class="download-item-info">
+                            <i class="fas fa-desktop download-item-icon"></i>
+                            <div>
+                                <span class="download-item-name">AnyDesk <sup class="external-link-indicator" title="Enlace externo"><i class="fas fa-external-link-alt"></i></sup></span>
+                                <span class="download-item-details">Herramienta de acceso remoto (Windows)</span>
+                            </div>
+                        </div>
+                        <div class="download-item-action">
+                            <a href="https://download.anydesk.com/AnyDesk.exe" target="_blank" rel="noopener noreferrer" class="button button-secondary button-small">
+                                <i class="fas fa-external-link-alt"></i> Ir al Sitio
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="download-item">
+                        <div class="download-item-info">
+                             <i class="fas fa-print download-item-icon"></i>
+                             <div>
+                                <span class="download-item-name">Driver Impresora POS-58</span>
+                                <span class="download-item-details">Controlador para impresora térmica 58mm</span>
+                             </div>
+                        </div>
+                        <div class="download-item-action">
+                             <a href="/descargas/archivos/utilidades/pos-printer-driver-setup.exe" class="button button-secondary button-small" download>
+                                <i class="fas fa-download"></i> Descargar
+                             </a>
+                        </div>
+                    </div>
+
+                     <div class="download-item">
+                        <div class="download-item-info">
+                            <i class="fas fa-desktop download-item-icon"></i>
+                            <div>
+                                <span class="download-item-name">RustDesk (Cliente Principal)</span>
+                                <span class="download-item-details">Alternativa de acceso remoto (Windows)</span>
+                            </div>
+                        </div>
+                        <div class="download-item-action">
+                            <a href="/descargas/archivos/utilidades/rustdesk.exe" class="button button-secondary button-small" download>
+                                <i class="fas fa-download"></i> Descargar
+                            </a>
+                        </div>
+                    </div>
+
+                     <div class="download-item">
+                        <div class="download-item-info">
+                             <i class="fas fa-cloud-arrow-down download-item-icon"></i>
+                             <div>
+                                <span class="download-item-name">Nextcloud Desktop Client <sup class="external-link-indicator" title="Enlace externo"><i class="fas fa-external-link-alt"></i></sup></span>
+                                <span class="download-item-details">Cliente de sincronización (Windows 64-bit, v3.14.2)</span>
+                             </div>
+                        </div>
+                        <div class="download-item-action">
+                             <a href="https://github.com/nextcloud-releases/desktop/releases/download/v3.14.2/Nextcloud-3.14.2-x64.msi" target="_blank" rel="noopener noreferrer" class="button button-secondary button-small">
+                                <i class="fas fa-external-link-alt"></i> Ir a GitHub
+                             </a>
+                        </div>
+                    </div>
+
+                     <div class="download-item">
+                        <div class="download-item-info">
+                            <i class="fas fa-cloud-arrow-down download-item-icon"></i>
+                             <div>
+                                <span class="download-item-name">ownCloud Desktop Client (64-bit) <sup class="external-link-indicator" title="Enlace externo"><i class="fas fa-external-link-alt"></i></sup></span>
+                                <span class="download-item-details">Cliente de sincronización (Windows 64-bit, v4.2.0)</span>
+                             </div>
+                        </div>
+                        <div class="download-item-action">
+                             <a href="https://download.owncloud.com/desktop/ownCloud/stable/4.2.0.11670/win/ownCloud-4.2.0.11670.x64.msi" target="_blank" rel="noopener noreferrer" class="button button-secondary button-small">
+                               <i class="fas fa-external-link-alt"></i> Ir al Sitio
+                             </a>
+                        </div>
+                    </div>
+
+                     <div class="download-item">
+                        <div class="download-item-info">
+                           <i class="fas fa-cloud-arrow-down download-item-icon"></i>
+                             <div>
+                                <span class="download-item-name">ownCloud Desktop Client (32-bit) <sup class="external-link-indicator" title="Enlace externo"><i class="fas fa-external-link-alt"></i></sup></span>
+                                <span class="download-item-details">Cliente de sincronización (Windows 32-bit, v4.2.0)</span>
+                             </div>
+                        </div>
+                        <div class="download-item-action">
+                             <a href="https://download.owncloud.com/desktop/ownCloud/stable/4.2.0.11670/win/ownCloud-4.2.0.11670.x86.msi" target="_blank" rel="noopener noreferrer" class="button button-secondary button-small">
+                                <i class="fas fa-external-link-alt"></i> Ir al Sitio
+                             </a>
+                        </div>
+                    </div>
+
+                     <div class="download-item">
+                        <div class="download-item-info">
+                             <i class="fas fa-desktop download-item-icon"></i>
+                             <div>
+                                <span class="download-item-name">TeamViewer QuickSupport (32-bit) <sup class="external-link-indicator" title="Enlace externo"><i class="fas fa-external-link-alt"></i></sup></span>
+                                <span class="download-item-details">Acceso remoto rápido (Windows 32-bit)</span>
+                             </div>
+                        </div>
+                        <div class="download-item-action">
+                             <a href="https://download.teamviewer.com/download/TeamViewerQS.exe" target="_blank" rel="noopener noreferrer" class="button button-secondary button-small">
+                               <i class="fas fa-external-link-alt"></i> Ir al Sitio
+                             </a>
+                        </div>
+                    </div>
+
+                     <div class="download-item">
+                        <div class="download-item-info">
+                            <i class="fas fa-desktop download-item-icon"></i>
+                             <div>
+                                <span class="download-item-name">TeamViewer QuickSupport (64-bit) <sup class="external-link-indicator" title="Enlace externo"><i class="fas fa-external-link-alt"></i></sup></span>
+                                <span class="download-item-details">Acceso remoto rápido (Windows 64-bit)</span>
+                             </div>
+                        </div>
+                        <div class="download-item-action">
+                             <a href="https://download.teamviewer.com/download/TeamViewerQS_x64.exe" target="_blank" rel="noopener noreferrer" class="button button-secondary button-small">
+                                <i class="fas fa-external-link-alt"></i> Ir al Sitio
+                             </a>
+                        </div>
+                    </div>
+
+                     <div class="download-item">
+                        <div class="download-item-info">
+                           <i class="fas fa-desktop download-item-icon"></i>
+                             <div>
+                                <span class="download-item-name">RustDesk (32-bit) <sup class="external-link-indicator" title="Enlace externo"><i class="fas fa-external-link-alt"></i></sup></span>
+                                <span class="download-item-details">Acceso remoto alternativo (Windows 32-bit, v1.2.3)</span>
+                             </div>
+                        </div>
+                        <div class="download-item-action">
+                             <a href="https://github.com/rustdesk/rustdesk/releases/download/1.2.3-1/rustdesk-1.2.3-x86-sciter.exe" target="_blank" rel="noopener noreferrer" class="button button-secondary button-small">
+                                <i class="fas fa-external-link-alt"></i> Ir a GitHub
+                             </a>
+                        </div>
+                    </div>
+
+                </div> </div> </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container container grid">
+             <div>
+                <a href="/" class="footer-logo">Crom Studio Venezuela</a>
+                <p class="footer-description">Soluciones tecnológicas para el mercado venezolano.</p>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="https://cromstudio.com.ve/#about" class="footer-link">Quiénes Somos</a></li>
+                    <li><a href="https://cromstudio.com.ve/#services" class="footer-link">Servicios</a></li>
+                    <li><a href="https://cromstudio.com.ve/#pricing" class="footer-link">Precios</a></li>
+                     <li><a href="https://cromstudio.com.ve/blog/" target="_blank" class="footer-link">Blog</a></li>
+                     <li><a href="https://cromstudio.com.ve/descargas/" class="footer-link">Descargas</a></li>
+                    </ul>
+            </div>
+             <div class="footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                 <ul>
+                    <li><i class="fas fa-phone"></i> +58 416-8578289</li>
+                    <li><i class="fas fa-envelope"></i> contacto@cromstudio.com.ve</li>
+                     <li><i class="fas fa-map-marker-alt"></i> Venezuela</li>
+                </ul>
+            </div>
+             <div class="footer-social">
+                 <h3 class="footer-title">Síguenos</h3>
+                 <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                 <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                 <a href="https://twitter.com/" target="_blank" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+             </div>
+        </div>
+        <span class="footer-copy container">
+            &copy; <span id="current-year"></span> Crom Studio Venezuela. Todos los derechos reservados.
+        </span>
+    </footer>
+
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up scrollup-icon"></i>
+    </a>
+
+    <script>
+        // Año actual en Footer
+        const currentYearElement = document.getElementById('current-year');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // Lógica del Menú Móvil
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        if (navClose && navMenu) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Cerrar menú al hacer clic en un enlace (revisado)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                 const href = link.getAttribute('href');
+                 const isHomePageAnchor = href && href.startsWith('/#');
+                 const isInternalPage = href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:');
+
+                 if (isHomePageAnchor || isInternalPage) {
+                      if (navMenu && navMenu.classList.contains('show-menu')) {
+                         navMenu.classList.remove('show-menu');
+                     }
+                 }
+            });
+        });
+
+        // Añadir sombra al header al hacer scroll
+        const header = document.querySelector('.header');
+        function handleScrollHeader() {
+             if (header) {
+                if (window.scrollY >= 80) {
+                    header.classList.add('scroll-header');
+                } else {
+                    header.classList.remove('scroll-header');
+                }
+             }
+        }
+        window.addEventListener('scroll', handleScrollHeader);
+        handleScrollHeader(); // Check initial state
+
+        // Mostrar botón Scroll Up
+        const scrollUp = document.getElementById('scroll-up');
+        function handleScrollUpButton() {
+            if (scrollUp) {
+                if (window.scrollY >= 560) {
+                    scrollUp.classList.add('show-scroll');
+                } else {
+                    scrollUp.classList.remove('show-scroll');
+                }
+            }
+        }
+        window.addEventListener('scroll', handleScrollUpButton);
+        handleScrollUpButton(); // Check initial state
+
+         // Active link en scroll (simple para página sin secciones internas)
+        const navMenuLinks = document.querySelectorAll('.nav-menu a');
+        function resetActiveLinks() {
+             navMenuLinks.forEach(link => {
+                 link.classList.remove('active-link');
+             });
+        }
+         // Marcar el enlace de descargas como activo (padre)
+         const downloadsPageLink = document.querySelector('.nav-menu a[href="/descargas.html"]');
+         if(downloadsPageLink){
+             resetActiveLinks();
+             downloadsPageLink.classList.add('active-link');
+         } else {
+             // Fallback si no existe el enlace a /descargas.html
+             const homeLink = document.querySelector('.nav-menu a[href="/#hero"]');
+             if(homeLink) homeLink.classList.add('active-link');
+         }
+
+    </script>
+
+</body>
+</html>

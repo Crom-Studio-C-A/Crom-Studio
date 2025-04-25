@@ -1,96 +1,310 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>404 | Pagina no encontrada.</title>
-<!-- Google tag (gtag.js) -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página No Encontrada (404) | Crom Studio Venezuela</title>
+
+    <meta name="description" content="Parece que te has perdido. La página que buscas no se encuentra en Crom Studio Venezuela.">
+    <meta name="author" content="Crom Studio Venezuela">
+    <meta name="robots" content="noindex, nofollow"> <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* ===== ERROR 404 PAGE ===== */
+.main {
+    /* Asegura que el main ocupe el espacio restante si el footer no es fijo */
+    flex-grow: 1; /* Necesitarás añadir display: flex; flex-direction: column; min-height: 100vh; a body si no lo tiene */
+}
+
+.error-page .section {
+    padding-top: 4rem; /* Menos padding superior que secciones normales */
+    padding-bottom: 4rem;
+}
+
+.error-container {
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 3rem;
+    align-items: center; /* Centrar verticalmente */
+    text-align: center;
+}
+
+.error-content {
+    order: 2; /* Contenido debajo de la imagen en móvil */
+}
+
+.error-code {
+    display: block;
+    font-size: 8rem; /* Tamaño muy grande */
+    font-weight: var(--font-bold);
+    font-family: var(--title-font);
+    color: var(--primary-color-light); /* Color primario claro o un gris */
+    line-height: 1;
+    margin-bottom: var(--mb-0-5);
+}
+
+.error-title {
+    font-size: var(--h1-font-size);
+    margin-bottom: var(--mb-1);
+}
+
+.error-description {
+    color: var(--text-color);
+    margin-bottom: var(--mb-2);
+    max-width: 500px; /* Limitar ancho del texto */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.error-image {
+    order: 1; /* Imagen arriba en móvil */
+    display: flex;
+    justify-content: center;
+}
+
+.error-img {
+    max-width: 300px; /* Ajustar tamaño de la ilustración */
+    width: 100%;
+}
+
+/* Adaptaciones para pantallas más grandes */
+@media screen and (min-width: 768px) {
+    .error-page .section {
+         padding-top: 6rem;
+         padding-bottom: 6rem;
+    }
+    .error-container {
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+        text-align: left; /* Alinear texto a la izquierda */
+        gap: 4rem;
+    }
+    .error-content {
+        order: 1; /* Contenido a la izquierda */
+    }
+     .error-description {
+        margin-left: 0; /* Resetear margen auto */
+        margin-right: 0;
+    }
+    .error-image {
+        order: 2; /* Imagen a la derecha */
+    }
+    .error-img {
+        max-width: 400px;
+    }
+     .error-code {
+        font-size: 10rem; /* Más grande en escritorio */
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .error-img {
+        max-width: 450px;
+    }
+    .error-code {
+        font-size: 12rem;
+    }
+}
+
+</style>
+
+<link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTCG8F3HMV');
+    </script>
 
-  gtag('config', 'G-FTCG8F3HMV');
-</script>
-
-  
-  <style type="text/css">
-    body {
-      padding: 30px 20px;
-      font-family: -apple-system, BlinkMacSystemFont,
-        "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-        "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-      color: #727272;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      margin: 0 0 40px;
-      font-size: 60px;
-      line-height: 1;
-      color: #252427;
-      font-weight: 700;
-    }
-
-    h2 {
-      margin: 100px 0 0;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: #A299AC;
-      text-transform: uppercase;
-    }
-
-    p {
-      font-size: 16px;
-      margin: 1em 0;
-    }
-
-    .go-back a {
-      display: inline-block;
-      margin-top: 3em;
-      padding: 10px;
-      color: #1B1A1A;
-      font-weight: 700;
-      border: solid 2px #e7e7e7;
-      text-decoration: none;
-      font-size: 16px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .go-back a:hover {
-      border-color: #1B1A1A;
-    }
-
-    @media screen and (min-width: 768px) {
-      body {
-        padding: 50px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      h1 {
-        font-size: 48px;
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <h2>404</h2>
-  <h1>Pagina no encontrada.</h1>
+    <script type="text/javascript">
+    // Puedes comentar o eliminar este script si no lo necesitas en la página 404
+    /*
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    */
+    </script>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/" class="nav-logo">Crom Studio</a> <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#hero" class="nav-link active-link">Inicio</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#about" class="nav-link">Quiénes Somos</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#services" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#pricing" class="nav-link">Precios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/blog/" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/descargas/" class="nav-link">Descargas</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#contact" class="nav-link">Contacto</a></li>
+                    </ul>
+                <button class="nav-close" id="nav-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
 
-  <p>Lo sentimos, la pagina a la cual quieres acceder no existe o se encuentra en construccion, te invitamos a verificar la URL.</p>
+    <main class="main">
+        <section class="error-page section">
+            <div class="error-container container grid">
+                <div class="error-content">
+                    <span class="error-code">404</span>
+                    <h1 class="error-title">¡Ups! Página No Encontrada</h1>
+                    <p class="error-description">
+                        Parece que el enlace está roto o la página que buscas ya no existe.
+                        No te preocupes, puedes volver al inicio.
+                    </p>
+                    <a href="/" class="button button-primary">Volver al Inicio</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
-  <span class="go-back"><a href="/">Inicio</a></span>
-</div>
+    <footer class="footer">
+        <div class="footer-container container grid">
+            <div>
+                <a href="/" class="footer-logo">Crom Studio Venezuela</a> <p class="footer-description">Soluciones tecnológicas para el mercado venezolano.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="https://cromstudio.com.ve/#about" class="footer-link">Quiénes Somos</a></li>
+                    <li><a href="https://cromstudio.com.ve/#services" class="footer-link">Servicios</a></li>
+                    <li><a href="https://cromstudio.com.ve/#pricing" class="footer-link">Precios</a></li>
+                     <li><a href="https://cromstudio.com.ve/blog/" target="_blank" class="footer-link">Blog</a></li>
+                     <li><a href="https://cromstudio.com.ve/descargas/" class="footer-link">Descargas</a></li>
+                    </ul>
+            </div>
+
+             <div class="footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                 <ul>
+                    <li><i class="fas fa-phone"></i> +58 416-8578289</li>
+                    <li><i class="fas fa-envelope"></i> contacto@cromstudio.com.ve</li>
+                     <li><i class="fas fa-map-marker-alt"></i> Venezuela</li>
+                </ul>
+            </div>
+
+             <div class="footer-social">
+                 <h3 class="footer-title">Síguenos</h3>
+                 <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                 <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                 <a href="https://twitter.com/" target="_blank" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+             </div>
+        </div>
+        <span class="footer-copy container">
+            &copy; <span id="current-year"></span> Crom Studio Venezuela. Todos los derechos reservados.
+        </span>
+    </footer>
+
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up scrollup-icon"></i>
+    </a>
+
+    <script>
+        // Año actual en Footer
+        const currentYearElement = document.getElementById('current-year');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+
+        // Lógica del Menú Móvil
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        if (navClose && navMenu) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Cerrar menú al hacer clic en un enlace (si aplica)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                 if (navMenu && navMenu.classList.contains('show-menu')) {
+                     navMenu.classList.remove('show-menu');
+                }
+            });
+        });
+
+        // Añadir sombra al header al hacer scroll
+        const header = document.querySelector('.header');
+        function handleScrollHeader() {
+             if (header) {
+                if (window.scrollY >= 80) {
+                    header.classList.add('scroll-header');
+                } else {
+                    header.classList.remove('scroll-header');
+                }
+             }
+        }
+        window.addEventListener('scroll', handleScrollHeader);
+        handleScrollHeader(); // Check initial state
+
+
+        // Mostrar botón Scroll Up
+        const scrollUp = document.getElementById('scroll-up');
+        function handleScrollUpButton() {
+            if (scrollUp) {
+                if (window.scrollY >= 560) {
+                    scrollUp.classList.add('show-scroll');
+                } else {
+                    scrollUp.classList.remove('show-scroll');
+                }
+            }
+        }
+        window.addEventListener('scroll', handleScrollUpButton);
+        handleScrollUpButton(); // Check initial state
+
+        // Active link en scroll (menos relevante en 404, pero mantenido por consistencia)
+        const sections = document.querySelectorAll('section[id]');
+        function scrollActive(){
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 58; // Ajustar offset
+                const sectionId = current.getAttribute('id');
+                // Corrección: Buscar enlaces con href que contengan el ID
+                const link = document.querySelector('.nav-menu a[href*="#' + sectionId + '"]');
+
+                if (link) {
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                        link.classList.add('active-link');
+                    } else {
+                        link.classList.remove('active-link');
+                    }
+                }
+            });
+        }
+        window.addEventListener('scroll', scrollActive);
+        scrollActive(); // Check initial state
+
+    </script>
 
 </body>
 </html>

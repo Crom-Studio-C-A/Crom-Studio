@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ángel Romero - Desarrollador Web Fullstack Junior</title>
+    <meta name="description" content="Portafolio profesional de Ángel Romero, Desarrollador Web Fullstack Junior especializado en HTML, CSS, JavaScript, PHP y MySQL.">
+    
+
+    <style>
+
+/* --- Variables y Modo Oscuro/Claro --- */
+:root {
+    --primary-color: #0a192f;  /* Azul oscuro */
+    --secondary-color: #64ffda; /* Celeste (Cyan brillante) o #a855f7 (Morado) */
+    --accent-color: #ccd6f6;   /* Texto claro */
+    --light-accent-color: #8892b0; /* Texto secundario */
+    --background-color: #ffffff; /* Blanco */
+    --light-background: #f8f9fa; /* Gris muy claro */
+    --dark-text-color: #333333;
+    --light-text-color: #ffffff;
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+
+    --font-primary: 'Poppins', sans-serif; /* Ejemplo - Importar en CSS */
+    --font-secondary: 'Roboto Mono', monospace; /* Ejemplo */
+
+    --transition-speed: 0.3s;
+}
+
+/* Importar fuentes (Ejemplo Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono&display=swap');
+
+body.dark-mode {
+    --primary-color: #64ffda;  /* Color primario pasa a ser el acento en modo oscuro */
+    --secondary-color: #0a192f; /* Invertido para contraste */
+    --accent-color: #ccd6f6;
+    --light-accent-color: #8892b0;
+    --background-color: #0a192f; /* Fondo oscuro */
+    --light-background: #112240; /* Fondo de sección ligeramente más claro */
+    --dark-text-color: #ccd6f6;  /* Texto claro sobre fondo oscuro */
+    --light-text-color: #0a192f; /* Texto oscuro para elementos claros */
+    --card-background: #112240;
+    --border-color: #233554;
+}
+
+/* --- Estilos Generales --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: var(--dark-text-color);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color); /* Usar color primario oscuro/claro */
+    transition: color var(--transition-speed) ease;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: var(--accent-color); /* Texto claro para títulos en modo oscuro */
+}
+
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-speed) ease;
+}
+
+body.dark-mode a {
+    color: var(--secondary-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+body.dark-mode a:hover {
+    color: var(--accent-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Header / Navegación --- */
+header {
+    background-color: var(--background-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color var(--transition-speed) ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    max-width: 1100px;
+    margin: auto;
+    padding: 1rem 20px; /* Asegura padding dentro del contenedor */
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+body.dark-mode nav .logo {
+    color: var(--secondary-color);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    font-weight: 600;
+    padding-bottom: 5px; /* Espacio para el borde inferior */
+    position: relative;
+}
+
+nav ul li a::after { /* Efecto hover sutil */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: width var(--transition-speed) ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle { /* Para móvil */
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+body.dark-mode .menu-toggle {
+    color: var(--secondary-color);
+}
+
+
+/* --- Botones --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 25px; /* Botones redondeados */
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border: 1px solid var(--primary-color);
+}
+body.dark-mode .btn-primary {
+     background-color: var(--secondary-color);
+     color: var(--primary-color); /* Texto oscuro en botón claro */
+     border: 1px solid var(--secondary-color);
+}
+
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color); /* Invertir colores en hover */
+    transform: translateY(-2px);
+     border: 1px solid var(--secondary-color);
+}
+body.dark-mode .btn-primary:hover {
+     background-color: var(--primary-color);
+     color: var(--secondary-color);
+     border: 1px solid var(--primary-color);
+}
+
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+body.dark-mode .btn-secondary {
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+     transform: translateY(-2px);
+}
+body.dark-mode .btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+
+/* --- Secciones --- */
+.section-padding {
+    padding: 60px 0;
+}
+
+.bg-light {
+    background-color: var(--light-background);
+    transition: background-color var(--transition-speed) ease;
+}
+
+/* --- Inicio --- */
+#inicio {
+    min-height: calc(100vh - 80px); /* Ajustar según altura del header */
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.intro-content .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem auto;
+    object-fit: cover;
+    border: 3px solid var(--secondary-color);
+}
+
+.intro-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.intro-content .subtitle {
+    font-size: 1.5rem;
+    color: var(--light-accent-color);
+    margin-bottom: 1rem;
+}
+
+.intro-content .bio-short {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    color: var(--light-accent-color);
+}
+
+
+/* --- Proyectos --- */
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    margin: 0 0.3rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    color: var(--dark-text-color);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border-color: var(--primary-color);
+}
+body.dark-mode .filter-btn.active,
+body.dark-mode .filter-btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-color: var(--secondary-color);
+}
+body.dark-mode .filter-btn {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed) ease;
+    display: flex; /* Para animación de filtro */
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px; /* Altura fija para la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio */
+}
+
+.project-card .card-content {
+    padding: 1.5rem;
+    flex-grow: 1; /* Asegura que el contenido ocupe el espacio restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: var(--light-accent-color);
+    flex-grow: 1; /* Empuja los elementos inferiores hacia abajo */
+    margin-bottom: 1rem;
+}
+
+.project-card .technologies {
+    margin-bottom: 1rem;
+}
+
+.project-card .technologies span {
+    background-color: var(--light-background);
+    color: var(--primary-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    margin-right: 0.3rem;
+    display: inline-block; /* Asegura el espaciado */
+    margin-bottom: 0.3rem; /* Espacio si se envuelven */
+}
+body.dark-mode .project-card .technologies span {
+     background-color: var(--primary-color);
+     color: var(--secondary-color);
+}
+
+.project-card .card-links {
+    margin-top: auto; /* Empuja los enlaces al final */
+    display: flex;
+    gap: 0.5rem; /* Espacio entre botones */
+}
+
+.project-card .card-links .btn {
+    padding: 0.5rem 1rem; /* Botones más pequeños */
+    font-size: 0.9rem;
+}
+.project-card .card-links .btn i {
+    margin-left: 5px;
+}
+
+
+/* --- Sobre Mí --- */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna por defecto */
+    gap: 3rem;
+}
+
+.about-columns { /* Contenedor para el layout de columnas */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columnas en pantallas anchas */
+    gap: 3rem;
+}
+
+
+.skills-list, .soft-skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Íconos en línea */
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skills-list li, .soft-skills-list li {
+    display: flex;
+    align-items: center;
+    background-color: var(--light-background);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+body.dark-mode .skills-list li, 
+body.dark-mode .soft-skills-list li {
+    background-color: var(--card-background); /* Fondo oscuro para items */
+}
+
+
+.skills-list i, .soft-skills-list i {
+    margin-right: 0.5rem;
+    color: var(--primary-color); /* Color del ícono */
+    font-size: 1.2em;
+}
+
+body.dark-mode .skills-list i,
+body.dark-mode .soft-skills-list i {
+    color: var(--secondary-color); /* Ícono de acento en modo oscuro */
+}
+
+.timeline {
+    list-style: none;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-top: 1.5rem;
+}
+
+.timeline::before { /* Línea vertical del timeline */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.timeline li {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 1.5rem; /* Espacio para el punto */
+}
+
+.timeline li::before { /* Punto del timeline */
+    content: '';
+    position: absolute;
+    left: -6px; /* Ajustar para centrar en la línea */
+    top: 5px; /* Alinear con el texto */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 2px solid var(--background-color); /* Anillo alrededor */
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+body.dark-mode .timeline li::before {
+    background-color: var(--secondary-color);
+     border: 2px solid var(--background-color);
+}
+
+
+.timeline strong {
+    display: block;
+    font-weight: 600;
+}
+
+.timeline small {
+    color: var(--light-accent-color);
+    display: block;
+    margin-top: 0.2rem;
+}
+
+
+/* --- Tecnologías --- */
+.tech-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tech-logos img {
+    height: 60px; /* Tamaño de logos */
+    width: auto;
+    filter: grayscale(100%); /* Logos en gris por defecto */
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.tech-logos img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+body.dark-mode .tech-logos img { /* En modo oscuro, pueden ser blancos */
+    filter: invert(90%) sepia(10%) saturate(1000%) hue-rotate(130deg) brightness(100%) contrast(90%); /* Aproximación al color secundario */
+}
+body.dark-mode .tech-logos img:hover {
+     filter: none; /* Color original en hover */
+}
+
+
+/* --- Contacto --- */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Formulario más ancho */
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+#contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--background-color);
+    color: var(--dark-text-color);
+     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+body.dark-mode #contact-form input[type="text"],
+body.dark-mode #contact-form input[type="email"],
+body.dark-mode #contact-form textarea {
+     background-color: var(--card-background);
+     color: var(--accent-color);
+     border-color: #233554;
+}
+
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(10, 100, 218, 0.2); /* Ajustar color */
+}
+body.dark-mode #contact-form input:focus,
+body.dark-mode #contact-form textarea:focus {
+     border-color: var(--secondary-color);
+     box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2); /* Ajustar color */
+}
+
+#contact-form textarea {
+    resize: vertical; /* Permitir redimensionar verticalmente */
+}
+
+#form-status {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+
+.contact-info h3 {
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+.contact-info p i {
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+body.dark-mode .contact-info p i {
+    color: var(--secondary-color);
+}
+
+
+.social-icons a {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+    color: var(--light-accent-color);
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+body.dark-mode .social-icons a:hover {
+    color: var(--secondary-color);
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 4rem; /* Espacio antes del footer */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+body.dark-mode footer {
+    background-color: #000; /* O un negro/azul muy oscuro */
+    color: var(--light-accent-color);
+}
+
+
+/* --- Botón Tema --- */
+#theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--card-background);
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+body.dark-mode #theme-toggle {
+    background-color: var(--light-background);
+    color: var(--secondary-color);
+     border: 1px solid var(--primary-color);
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Ocultar menú desktop */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: var(--background-color);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+    }
+
+    nav ul.active { /* Clase para mostrar menú */
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 0;
+        text-align: center;
+    }
+    nav ul li a {
+        display: block;
+        padding: 1rem;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostrar botón hamburguesa */
+    }
+
+    .intro-content h1 {
+        font-size: 2.5rem;
+    }
+    .intro-content .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .about-columns, .contact-wrapper {
+        grid-template-columns: 1fr; /* Apilar columnas */
+        gap: 2rem;
+    }
+    
+    .contact-wrapper {
+        flex-direction: column-reverse; /* Opcional: Info arriba, form abajo */
+    }
+    
+     #inicio {
+        min-height: auto; /* Ajustar altura en móvil */
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+
+/* --- Animaciones (Opcional) --- */
+/* Animación suave de aparición para secciones o elementos */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Clase para ocultar tarjetas de proyecto durante el filtrado */
+.project-card.hidden {
+    display: none; /* O usar opacity y pointer-events para animación */
+}
+
+
+    </style>
+
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+</head>
+<body>
+    <button id="theme-toggle" aria-label="Cambiar tema">
+        <i class="fas fa-sun"></i> </button>
+
+    <header>
+        <nav>
+            <div class="logo">Ángel Romero</div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#tecnologias">Tecnologías</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button> 
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="section-padding">
+            <div class="container intro-content">
+                <img src="images/avatar.jpg" alt="Foto de Ángel Romero" class="avatar">
+                <h1>Ángel Romero</h1>
+                <p class="subtitle">Desarrollador Web Fullstack Junior</p>
+                <p class="bio-short">Apasionado por crear soluciones web funcionales y atractivas. Buscando nuevos retos para aplicar mis habilidades y seguir creciendo profesionalmente.</p>
+                <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+            </div>
+        </section>
+
+        <section id="proyectos" class="section-padding bg-light">
+            <div class="container">
+                <h2>Mis Proyectos</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="landing">Landing Pages</button>
+                    <button class="filter-btn" data-filter="sistema">Sistemas</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                </div>
+                <div class="project-gallery">
+                    <div class="project-card" data-category="landing">
+                        <img src="images/project1_preview.png" alt="Vista previa Proyecto Landing Page">
+                        <div class="card-content">
+                            <h3>Landing Page Agencia Creativa</h3>
+                            <p>Diseño moderno y responsivo para una agencia.</p>
+                            <div class="technologies">
+                                <span>HTML</span> <span>CSS</span> <span>JavaScript</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="#" target="_blank" class="btn btn-secondary">Demo <i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" target="_blank" class="btn btn-secondary">GitHub <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-category="sistema">
+                        <img src="images/project2_preview.png" alt="Vista previa Sistema de Gestión">
+                        <div class="card-content">
+                            <h3>Sistema de Gestión Tareas</h3>
+                            <p>Aplicación web para organizar tareas y equipos.</p>
+                            <div class="technologies">
+                                <span>HTML</span> <span>CSS</span> <span>JS</span> <span>PHP</span> <span>MySQL</span>
+                            </div>
+                             <div class="card-links">
+                                <a href="#" target="_blank" class="btn btn-secondary">Demo <i class="fas fa-external-link-alt"></i></a>
+                                <a href="#" target="_blank" class="btn btn-secondary">GitHub <i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="section-padding">
+            <div class="container about-content">
+                <h2>Sobre Mí</h2>
+                <div class="about-columns">
+                    <div class="about-text">
+                         <h3>Quién Soy</h3>
+                         <p>Soy un desarrollador web fullstack junior con una sólida base en tecnologías frontend y backend. Me encanta transformar ideas en código funcional y disfruto aprendiendo constantemente nuevas herramientas y metodologías.</p>
+                         <h3>Intereses</h3>
+                         <p>Fuera del código, disfruto del ciclismo de montaña para desconectar y mantenerme activo. También soy un entusiasta de la informática en general, siempre explorando hardware y software.</p>
+                         <h3>Experiencia</h3>
+                         <ul class="timeline">
+                            <li>
+                                <strong>[Fecha Inicio] - [Fecha Fin / Actualidad]</strong><br>
+                                [Puesto / Tipo de Experiencia - ej: Desarrollador Freelance / Prácticas en Empresa X]<br>
+                                <small>[Breve descripción de responsabilidades y logros]</small>
+                            </li>
+                            <li>
+                                <strong>[Fecha Inicio] - [Fecha Fin]</strong><br>
+                                [Curso / Formación relevante]<br>
+                                <small>[Institución]</small>
+                            </li>
+                             </ul>
+                    </div>
+                    <div class="about-skills">
+                        <h3>Habilidades Técnicas</h3>
+                        <ul class="skills-list">
+                            <li><i class="fab fa-html5"></i> HTML5</li>
+                            <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                            <li><i class="fab fa-js-square"></i> JavaScript</li>
+                            <li><i class="fab fa-php"></i> PHP</li>
+                            <li><i class="fas fa-database"></i> MySQL</li>
+                            <li><i class="fab fa-git-alt"></i> Git</li>
+                            </ul>
+                        <h3>Habilidades Blandas</h3>
+                        <ul class="soft-skills-list">
+                            <li><i class="fas fa-comments"></i> Comunicación Efectiva</li>
+                            <li><i class="fas fa-users"></i> Trabajo en Equipo</li>
+                            <li><i class="fas fa-puzzle-piece"></i> Resolución de Problemas</li>
+                            <li><i class="fas fa-lightbulb"></i> Proactividad</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tecnologias" class="section-padding bg-light">
+            <div class="container">
+                <h2>Tecnologías que Domino</h2>
+                <div class="tech-logos">
+                    <img src="images/logos/html5.svg" alt="HTML5 Logo" title="HTML5">
+                    <img src="images/logos/css3.svg" alt="CSS3 Logo" title="CSS3">
+                    <img src="images/logos/javascript.svg" alt="JavaScript Logo" title="JavaScript">
+                    <img src="images/logos/php.svg" alt="PHP Logo" title="PHP">
+                    <img src="images/logos/mysql.svg" alt="MySQL Logo" title="MySQL">
+                    <img src="images/logos/git.svg" alt="Git Logo" title="Git">
+                    </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section-padding">
+            <div class="container">
+                <h2>Contacto</h2>
+                <p>¿Interesado en colaborar o tienes alguna pregunta? ¡Contáctame!</p>
+                <div class="contact-wrapper">
+                    <form id="contact-form" action="URL_DEL_ENDPOINT_FORMULARIO" method="POST"> <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje:</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                        <p id="form-status"></p> </form>
+                    <div class="contact-info">
+                         <h3>Información Adicional</h3>
+                         <p><i class="fas fa-envelope"></i> <a href="mailto:angel.romero.dev@email.com">angel.romero.dev@email.com</a></p>
+                         <div class="social-icons">
+                            <a href="https://github.com/tu_usuario_github" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/tu_usuario_linkedin" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Ángel Romero. Todos los derechos reservados.</p> 
+        </div>
+    </footer>
+
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+
+// --- Navegación Móvil ---
+const menuToggle = document.querySelector('.menu-toggle');
+const navUl = document.querySelector('nav ul');
+
+if (menuToggle && navUl) {
+    menuToggle.addEventListener('click', () => {
+        navUl.classList.toggle('active');
+        // Cambiar icono de hamburguesa a 'X' (opcional)
+         menuToggle.innerHTML = navUl.classList.contains('active') ? '<i class="fas fa-times"></i>' : '☰';
+    });
+    
+    // Cerrar menú al hacer clic en un enlace (para SPAs)
+    navUl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+             if (navUl.classList.contains('active')) {
+                 navUl.classList.remove('active');
+                 menuToggle.innerHTML = '☰';
+             }
+        });
+    });
+}
+
+// --- Modo Oscuro/Claro ---
+const themeToggle = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Función para aplicar el tema
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Icono luna
+         localStorage.setItem('theme', 'dark');
+    } else {
+        document.body.classList.remove('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Icono sol
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+// Aplicar tema inicial
+ if (currentTheme) {
+     applyTheme(currentTheme);
+ } else if (prefersDark) {
+     applyTheme('dark'); // Aplicar tema oscuro si es la preferencia del sistema y no hay nada guardado
+ } else {
+     applyTheme('light'); // Por defecto, tema claro
+ }
+
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+        applyTheme(newTheme);
+    });
+}
+
+// --- Filtro de Proyectos ---
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+if (filterButtons.length > 0 && projectCards.length > 0) {
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Actualizar botón activo
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+
+            // Mostrar/Ocultar tarjetas
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filter === 'all' || filter === category) {
+                    card.classList.remove('hidden'); // Asegurar que sea visible
+                    card.style.display = 'flex'; // O 'block', según tu CSS
+                } else {
+                    card.classList.add('hidden'); // Ocultar
+                     card.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+// --- Formulario de Contacto (Ejemplo con Fetch API para Formspree o similar) ---
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm && formStatus) {
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Evitar el envío tradicional
+
+        const formData = new FormData(contactForm);
+        const action = contactForm.getAttribute('action'); // URL del endpoint
+
+        formStatus.textContent = 'Enviando...';
+        formStatus.style.color = 'inherit'; // Reset color
+
+        try {
+            const response = await fetch(action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Importante para Formspree
+                }
+            });
+
+            if (response.ok) {
+                formStatus.textContent = '¡Mensaje enviado con éxito!';
+                formStatus.style.color = 'green';
+                contactForm.reset(); // Limpiar formulario
+            } else {
+                 // Intenta obtener el mensaje de error si el servidor lo envía en JSON
+                 const data = await response.json();
+                 if (Object.hasOwnProperty.call(data, 'errors')) {
+                    formStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
+                 } else {
+                    formStatus.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+                 }
+                 formStatus.style.color = 'red';
+            }
+        } catch (error) {
+            console.error('Error en el envío del formulario:', error);
+            formStatus.textContent = 'Error de red al enviar el mensaje.';
+            formStatus.style.color = 'red';
+        }
+
+         // Ocultar mensaje después de unos segundos
+         setTimeout(() => {
+            formStatus.textContent = '';
+        }, 5000);
+    });
+}
+
+ // --- Actualizar año en el footer ---
+ const currentYearSpan = document.getElementById('current-year');
+ if (currentYearSpan) {
+     currentYearSpan.textContent = new Date().getFullYear();
+ }
+
+ // --- Animación Fade-in al hacer scroll (Opcional) ---
+ const fadeElems = document.querySelectorAll('.fade-in');
+ const observerOptions = {
+     root: null, // viewport
+     rootMargin: '0px',
+     threshold: 0.1 // Trigger cuando el 10% del elemento es visible
+ };
+
+ const observer = new IntersectionObserver((entries, observer) => {
+     entries.forEach(entry => {
+         if (entry.isIntersecting) {
+             entry.target.classList.add('visible');
+             observer.unobserve(entry.target); // Dejar de observar una vez animado
+         }
+     });
+ }, observerOptions);
+
+ fadeElems.forEach(elem => {
+     observer.observe(elem);
+ });
+
+}); // Fin del DOMContentLoaded
+    </script>
+</body>
+</html>

@@ -3,529 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crom Studio Venezuela – Desarrollo de Software, Sistemas de Facturacion e Inventario, Sistema de Recargas, Sistema de Envio de SMS Masivos Venezuela</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Crom Studio Venezuela – Soluciones Digitales para Empresas y Emprendedores</title>
 
-    <meta name="google-adsense-account" content="ca-pub-7313467653686833">
-
-    <meta name="description" content="Desarrollo de Software, Sistema de Facturacion e Inventario, Sistema de Recargas, Sistema de Envios de SMS Masivos">
-    <meta name="keywords" content="SMS Masivo para Venezuela, SMS digital, Mensajeria de texto masiva, SMS Marketing, Marketing Digital, envio de mensajes de texto masivo, envio masivo de sms para empresas, sms empresas, sms negocios, sms masivos, soluciones sms, SMSDigital.Net, envio de sms a venezuela, envio de mensajes de texto en venezuela, movil marketing, digital marketing, envios de mensajes a celulares, envio de mensajes de texto, mensajitos de texto, mercadeo sms, enviar mensajes a movistar, movilnet, digitel, publicidad movil, clientes sms, envio masivo de mensajes de texto sms y mms, envio de sms latinoamerica, envio de sms caracas, enviar mensajes masivos desde android, sistema de facturacion, sistema de inventario, sistema de facturacion fiscal, sistema de facturacion venezuela, sistema de ventas, sistema de facturacion gratis, desarrollo de software venezuela, vende recargas desde tu casa, recargas de saldo, recargas de saldo movilnet, recarga movilnet, recarga movistar, recarga digitel, vende recargas de saldo, movilnet, movistar, digitel, cantv, simple tv, sistema de recargas, sistema de recargas venezuela">
+    <meta name="description" content="Impulsa tu negocio en Venezuela con Crom Studio: Desarrollo de Software a medida, Sistemas de Facturación e Inventario eficientes, Plataforma de Recargas Electrónicas y Envíos de SMS Masivos. Soluciones tecnológicas confiables y accesibles.">
+    <meta name="keywords" content="desarrollo de software venezuela, sistema de facturacion venezuela, sistema de inventario, recargas electronicas venezuela, sms masivos venezuela, software para pymes, soluciones digitales, tecnologia venezuela, crom studio, sistemas administrativos, api sms venezuela, marketing sms">
     <meta name="author" content="Crom Studio Venezuela">
     <meta name="robots" content="index, follow">
     <meta name="language" content="es">
-    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico">
+    <meta name="google-adsense-account" content="ca-pub-7313467653686833"> <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  gtag('config', 'G-FTCG8F3HMV');
-</script>
+    <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
 
-    
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .nav {
-    display: flex;
-    justify-content: center;
-}
-
-.nav_ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.nav_li {
-    margin: 0 10px;
-}
-
-.nav_li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-}
-
-.nav_li i {
-    margin-right: 5px;
-}
-
-
-        .primerimagen_container {
-            text-align: center;
-        }
-
-        .primerimagen img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .cuerpo {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .titulocuerpo {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .parrafo1 {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .social-icons {
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            color: #333;
-            margin: 0 10px;
-            text-decoration: none;
-            font-size: 24px;
-        }
-
-        .section {
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .section p {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .card-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .card {
-            max-width: 300px;
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .card p {
-            font-size: 18px;
-            color: #555;
-        }
-
-        .card .price {
-            font-size: 30px;
-            color: #333;
-            margin-top: 10px;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .contact-form button {
-            padding: 10px 20px;
-            background: #333;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .contact-info {
-            text-align: center;
-        }
-
-        .footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            bottom: 0;
-        }
-
-        @media (max-width: 767px) {
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        width: 80%;
-        max-width: 300px;
-    }
-}
-
-
-    </style>
-    <style>
-        .carousel-container {
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-    
-        .carousel {
-            display: flex;
-            transition: transform 0.8s ease-in-out;
-        }
-    
-        .carousel img {
-            max-width: 100%;
-            margin: 0 10px;
-        }
-    </style>
-    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
     <script>
-        let carouselIndex = 0;
-        const carousel = document.querySelector('.carousel');
-    
-        function moveCarousel() {
-            carousel.style.transform = `translateX(-${carouselIndex * 100}%)`;
-            carouselIndex = (carouselIndex + 1) % carousel.children.length;
-            setTimeout(moveCarousel, 2300); // Cambia la imagen cada 3 segundos
-        }
-    
-        moveCarousel();
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTCG8F3HMV');
     </script>
-    
 </head>
 <body>
-       <!--Start of Tawk.to Script-->
-       <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-        </script>
-        <!--End of Tawk.to Script-->
-    <header>
-        <nav class="nav">
-            <ul class="nav_ul">
-                <li class="nav_li"><a href="/"><i class="fas fa-home"></i>Inicio</a></li>
-                <li class="nav_li"><a href="/registro-pago/"><i class="fas fa-money-check"></i>Pago</a></li>
-                <li class="nav_li"><a href="/descargas/"><i class="fas fa-server"></i>Descargas</a></li>
-                <li class="nav_li"><a href="/contacto/"><i class="fas fa-address-card"></i>Contacto</a></li>
-            </ul>
-        </nav>
-        <div class="primerimagen_container">
-            <div class="primerimagen"><img src="https://cromstudio.com.ve/imagenes/fondocompleto.png" alt="Logo de Crom Studio"></div>
-        </div>
-        <div class="cuerpo">
-            <h1 class="titulocuerpo">Crom Studio Venezuela</h1>
-            <p class="parrafo1">
-                Ofrecemos soporte remoto y presencial respetando las medidas de bioseguridad.<br>
-                Registra tus pagos de manera automática y fácil.<br>
-                Realiza tu compra de manera virtual 100% seguro.<br>
-            </p>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/cromstudio21"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com/cromstudio21/?hl=es-la"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="nav-logo">Crom Studio</a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#hero" class="nav-link active-link">Inicio</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#about" class="nav-link">Quiénes Somos</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#services" class="nav-link">Servicios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#pricing" class="nav-link">Precios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/blog/" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/descargas/" class="nav-link">Descargas</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/#contact" class="nav-link">Contacto</a></li>
+                    </ul>
+                <button class="nav-close" id="nav-close"><i class="fas fa-times"></i></button>
             </div>
-        </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
     </header>
 
-
-
-    <section class="section" id="quienessomos">
-        <h2>Quienes Somos</h2>
-        <p>Crom Studio Venezuela es una empresa líder en desarrollo de software, comprometida con la innovación y la excelencia.</p>
-        <p> Nuestro equipo de expertos crea soluciones tecnológicas a medida que impulsan el crecimiento de nuestros clientes.</p>
-        <p> Con una amplia experiencia en diversas industrias, ofrecemos un servicio personalizado y soluciones adaptadas a las necesidades únicas de cada negocio.</p>
-    </section>
-
-    <section class="section" id="clientes">
-        <h2>Clientes</h2>
-        <p>La confianza que nuestros clientes depositan en nosotros es el motor que impulsa nuestra dedicación y esfuerzo constante por superar sus expectativas.</p>
-        <p>Cada proyecto es una nueva oportunidad para demostrar nuestro compromiso con la calidad, la innovación y la satisfacción del cliente.</p>
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://cromstudio.com.ve/imagenes/empresas/clientes-1.png" alt="Clientes de Crom Studio">
+    <main>
+        <section class="hero section" id="hero">
+            <div class="hero-container container grid">
+                <div class="hero-content">
+                    <h1 class="hero-title">Impulsamos tu Negocio con Tecnología Hecha en Venezuela</h1>
+                    <p class="hero-description">
+                        Soluciones digitales confiables y accesibles para empresarios y emprendedores venezolanos. Software a medida, facturación, recargas y más.
+                    </p>
+                    <a href="#contact" class="button button-primary">Solicita una Consulta</a>
+                    <a href="#services" class="button button-secondary">Ver Servicios</a>
                 </div>
-                <!-- Añade más imágenes según necesites -->
+                <div class="hero-image">
+                    <img src="placeholder-hero.svg" alt="Ilustración tecnológica abstracta" class="hero-img">
+                    </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <h2 class="text-center" style="font-size: 50px;">Productos y Servicios</h2>
-    
-    <section class="section" id="recargas">
-        <h2>Sistema de Ventas de Recargas</h2>
-        <p>Los usuarios tienen la capacidad de utilizar un sistema bancario automatizado que les permite efectuar recargas y pagos de servicios en el momento que lo necesiten.</p>
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://cromstudio.com.ve/imagenes/recargas1.png" alt="Sistema de Recargas">
-                </div>
-                    <div class="carousel-item">
-                    <img src="https://cromstudio.com.ve/imagenes/recargas2.png" alt="Sistema de Recargas">
-                </div>
-                    <div class="carousel-item">
-                    <img src="https://cromstudio.com.ve/imagenes/recargas3.png" alt="Sistema de Recargas">
+        <section class="about section" id="about">
+            <div class="container grid about-container">
+                <div class="about-image">
+                     <img src="placeholder-about.svg" alt="Ilustración sobre confianza y colaboración" class="about-img">
+                     </div>
+                <div class="about-content">
+                    <span class="section-subtitle">Conócenos</span>
+                    <h2 class="section-title">Tu Aliado Tecnológico Local</h2>
+                    <p class="about-description">
+                        En Crom Studio Venezuela, entendemos los desafíos del mercado venezolano. Somos un equipo apasionado por la tecnología, dedicado a crear soluciones digitales que realmente funcionan para tu negocio.
+                    </p>
+                    <p class="about-description">
+                        Nos enfocamos en la <strong>confianza</strong>, la <strong>cercanía</strong> y el <strong>profesionalismo</strong>, ofreciendo soporte personalizado y herramientas que simplifican tu día a día y potencian tu crecimiento.
+                    </p>
+                     <div class="about-values">
+                        <div><i class="fas fa-check-circle"></i> Innovación Constante</div>
+                        <div><i class="fas fa-check-circle"></i> Soporte Cercano</div>
+                        <div><i class="fas fa-check-circle"></i> Soluciones Robustas</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="sistemasdefacturacion">
-        <h2>Sistemas Administrativos</h2>
-        <p>Administramos una amplia gama de sistemas, desde opciones básicas que comienzan en 20 dólares hasta soluciones profesionales a partir de 170 dólares.</p>
-        <p>También brindamos la posibilidad de crear un sistema personalizado que se ajuste a tus necesidades específicas.</p>
-        <div class="card-container">
-            <div class="card">
-                <h3>Sistema de Facturación</h3>
-                <p>Inventario</p>
-                <p>Facturación</p>
-                <p>Corte del dia</p>
-                <p>Gestion de Clientes</p>
-                <p>Cuentas por Cobrar</p>
-                <p>Diferentes formas de pago (Dolares, Bolivares, ETC)</p>
-                <p>Impresora</p>
-                <p>Lector de Barras</p>
-                <p>Peso Electronico</p>
-                <p>Gaveta de Dinero</p><p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <div class="price">$20</div>
+        <section class="services section" id="services">
+            <span class="section-subtitle">Nuestras Soluciones</span>
+            <h2 class="section-title">Servicios Diseñados para Ti</h2>
+            <div class="services-container container grid">
+                <div class="service-card">
+                    <i class="fas fa-code service-icon"></i>
+                    <h3 class="service-title">Desarrollo de Software</h3>
+                    <p class="service-description">Creamos aplicaciones web y de escritorio a la medida de tus necesidades específicas.</p>
                 </div>
-            <div class="card">
-                <h3>Sistema Administrativo</h3>
-                <p>Inventario</p>
-                <p>Facturación</p>
-                <p>Corte del dia</p>
-                <p>Gestion de Clientes</p>
-                <p>Cuentas por Cobrar</p>
-                <p>Reportes</p>
-                <p>Cuentas por Pagar</p>
-                <p>Proveedores</p>
-                <p>Personalizacion de Facturas</p>
-                <p>Multimoneda (Dolares, Pesos, Bolivares, ETC)</p>
-                <p>Impresora</p>
-                <p>Lector de Barras</p>
-                <p>Peso Electronico</p>
-                <p>Gaveta de Dinero</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <p>-</p>
-                <div class="price">$25</div>
+                <div class="service-card">
+                    <i class="fas fa-file-invoice-dollar service-icon"></i>
+                    <h3 class="service-title">Sistemas de Facturación e Inventario</h3>
+                    <p class="service-description">Gestiona tus ventas, inventario y facturación de forma eficiente y adaptada a la normativa local.</p>
                 </div>
-            <div class="card">
-                <h3>Sistema Administrativo + Nube</h3>
-                <p>Inventario</p>
-                <p>Facturación</p>
-                <p>Corte del dia</p>
-                <p>Gestion de Clientes</p>
-                <p>Cuentas por Cobrar</p>
-                <p>Reportes Administrativos Avanzados</p>
-                <p>Cuentas por Pagar</p>
-                <p>Proveedores</p>
-                <p>Personalizacion de Facturas</p>
-                <p>Multimoneda (Dolares, Pesos, Bolivares, ETC)</p>
-                <p>Departamentos de Productos</p>
-                <p>Servicios</p>
-                <p>Vendedores</p>
-                <p>Presupuestos y Cotizaciones</p>
-                <p>Notas de Entregas</p>
-                <p>Asientos de Caja</p>
-                <p>Compras</p>
-                <p>Inventario con materia prima</p>
-                <p>Libro Fiscales</p>
-                <p>Respaldo Automatico en la Nube</p>
-                <p>Impresora</p>
-                <p>Lector de Barras</p>
-                <p>Peso Electronico</p>
-                <p>Gaveta de Dinero</p>
-                <div class="price">$30</div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt service-icon"></i>
+                    <h3 class="service-title">Recargas Electrónicas</h3>
+                    <p class="service-description">Plataforma robusta para la venta de recargas de saldo (Movistar, Digitel, Movilnet, etc.).</p>
+                </div>
+                 <div class="service-card">
+                    <i class="fas fa-comment-dots service-icon"></i>
+                    <h3 class="service-title">Envíos SMS Masivos</h3>
+                    <p class="service-description">Comunícate con tus clientes de forma directa y efectiva a través de campañas de SMS Marketing.</p>
+                </div>
+                 <div class="service-card">
+                    <i class="fas fa-cloud service-icon"></i>
+                    <h3 class="service-title">Almacenamiento en la Nube</h3>
+                    <p class="service-description">Guarda y accede a tus archivos de forma segura desde cualquier lugar con Crom Studio Cloud.</p>
+                </div>
+                 <div class="service-card">
+                    <i class="fas fa-headset service-icon"></i>
+                    <h3 class="service-title">Soporte Técnico</h3>
+                    <p class="service-description">Ofrecemos soporte remoto y presencial para garantizar el óptimo funcionamiento de tus sistemas.</p>
+                </div>
             </div>
+        </section>
+
+        <section class="pricing section" id="pricing">
+             <span class="section-subtitle">Planes Flexibles</span>
+            <h2 class="section-title">Precios Adaptados a tu Necesidad</h2>
+
+            <div class="pricing-category">
+                <h3 class="pricing-category-title">Planes de SMS Masivos</h3>
+                 <p class="pricing-category-description">Servicio prepago. Precios en Bolívares Digitales (Bs.D). Saldo activo mientras renueves tu plan.</p>
+                 <div class="pricing-container container grid">
+                    <div class="pricing-card">
+                        <span class="pricing-plan">Básico</span>
+                        <h3 class="pricing-price">Bs.D 80<span></span></h3>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 100 SMS incluidos</li>
+                            <li><i class="fas fa-check"></i> Plataforma de envío</li>
+                            <li><i class="fas fa-check"></i> API Gateway disponible</li>
+                            <li><i class="fas fa-check"></i> Soporte en línea</li>
+                        </ul>
+                        <a href="https://cromstudio.com.ve/sms-masivos-venezuela/" target="_blank" class="button button-secondary">Más Info SMS</a>
+                    </div>
+                    <div class="pricing-card recommended">
+                        <span class="pricing-recommended">Recomendado</span>
+                        <span class="pricing-plan">Estándar</span>
+                        <h3 class="pricing-price">Bs.D 400<span></span></h3>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 500 SMS incluidos</li>
+                            <li><i class="fas fa-check"></i> Plataforma de envío</li>
+                            <li><i class="fas fa-check"></i> API Gateway disponible</li>
+                            <li><i class="fas fa-check"></i> Soporte en línea</li>
+                        </ul>
+                        <a href="https://cromstudio.com.ve/sms-masivos-venezuela/" target="_blank" class="button button-primary">Más Info SMS</a>
+                    </div>
+                     <div class="pricing-card">
+                        <span class="pricing-plan">Premium</span>
+                        <h3 class="pricing-price">Bs.D 800<span></span></h3>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 1000 SMS incluidos</li>
+                            <li><i class="fas fa-check"></i> Plataforma de envío</li>
+                            <li><i class="fas fa-check"></i> API Gateway disponible</li>
+                            <li><i class="fas fa-check"></i> Soporte en línea</li>
+                        </ul>
+                       <a href="https://cromstudio.com.ve/sms-masivos-venezuela/" target="_blank" class="button button-secondary">Más Info SMS</a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="pricing-category">
+                <h3 class="pricing-category-title">Planes de Almacenamiento en la Nube</h3>
+                 <p class="pricing-category-description">Accede a tus archivos donde quieras. Precios mensuales en Dólares (USD).</p>
+                 <div class="pricing-container container grid">
+                    <div class="pricing-card">
+                        <span class="pricing-plan">Económico</span>
+                        <h3 class="pricing-price">$1<span>/mes</span></h3>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 1 GB Almacenamiento</li>
+                            <li><i class="fas fa-check"></i> Enlaces Externos Ilimitados</li>
+                            <li><i class="fas fa-check"></i> App Escritorio y Móvil</li>
+                            <li><i class="fas fa-check"></i> Dispositivos Ilimitados</li>
+                        </ul>
+                        <a href="https://cromstudio.com.ve/almacenamiento-en-la-nube/" target="_blank" class="button button-secondary">Más Info Nube</a>
+                    </div>
+                    <div class="pricing-card">
+                        <span class="pricing-plan">Básico</span>
+                        <h3 class="pricing-price">$2<span>/mes</span></h3>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 10 GB Almacenamiento</li>
+                            <li><i class="fas fa-check"></i> Enlaces Externos Ilimitados</li>
+                            <li><i class="fas fa-check"></i> App Escritorio y Móvil</li>
+                            <li><i class="fas fa-check"></i> Dispositivos Ilimitados</li>
+                        </ul>
+                        <a href="https://cromstudio.com.ve/almacenamiento-en-la-nube/" target="_blank" class="button button-secondary">Más Info Nube</a>
+                    </div>
+                     <div class="pricing-card">
+                        <span class="pricing-plan">Avanzado</span>
+                        <h3 class="pricing-price">$5<span>/mes</span></h3>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 50 GB Almacenamiento</li>
+                            <li><i class="fas fa-check"></i> Enlaces Externos Ilimitados</li>
+                            <li><i class="fas fa-check"></i> App Escritorio y Móvil</li>
+                            <li><i class="fas fa-check"></i> Dispositivos Ilimitados</li>
+                        </ul>
+                        <a href="https://cromstudio.com.ve/almacenamiento-en-la-nube/" target="_blank" class="button button-secondary">Más Info Nube</a>
+                    </div>
+                     <div class="pricing-card">
+                        <span class="pricing-plan">Pro</span>
+                        <h3 class="pricing-price">$10<span>/mes</span></h3>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> 100 GB Almacenamiento</li>
+                            <li><i class="fas fa-check"></i> Enlaces Externos Ilimitados</li>
+                            <li><i class="fas fa-check"></i> App Escritorio y Móvil</li>
+                            <li><i class="fas fa-check"></i> Dispositivos Ilimitados</li>
+                        </ul>
+                        <a href="https://cromstudio.com.ve/almacenamiento-en-la-nube/" target="_blank" class="button button-secondary">Más Info Nube</a>
+                    </div>
+                </div>
+            </div>
+            <p class="pricing-note container">Para precios de Sistemas de Facturación/Administrativos y Desarrollo a Medida, <a href="#contact">contáctanos</a> para una cotización personalizada.</p>
+        </section>
+
+         <section class="testimonials section" id="testimonials">
+             <span class="section-subtitle">Nuestros Clientes Opinan</span>
+            <h2 class="section-title">Confianza y Resultados</h2>
+            <div class="testimonials-container container grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                    <blockquote class="testimonial-quote">
+                        "El sistema de facturación que desarrollaron para nosotros es intuitivo y nos ha ahorrado mucho tiempo. ¡El soporte técnico es excelente!"
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <p class="author-name">Ana María R.</p>
+                        <p class="author-title">Dueña de Minimarket, Caracas</p>
+                    </div>
+                </div>
+                 <div class="testimonial-card">
+                     <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                    <blockquote class="testimonial-quote">
+                        "La plataforma de SMS masivos es muy fácil de usar y nos permite llegar a nuestros clientes rápidamente. Crom Studio entendió nuestras necesidades."
+                    </blockquote>
+                     <div class="testimonial-author">
+                        <p class="author-name">Carlos J. Pérez</p>
+                        <p class="author-title">Gerente de Marketing, Valencia</p>
+                    </div>
+                </div>
+                 <div class="testimonial-card">
+                     <i class="fas fa-quote-left testimonial-quote-icon"></i>
+                    <blockquote class="testimonial-quote">
+                        "Implementamos el sistema de recargas y ha sido un éxito. La integración fue sencilla y el equipo de Crom Studio siempre está dispuesto a ayudar."
+                    </blockquote>
+                     <div class="testimonial-author">
+                        <p class="author-name">Luisa Fernández</p>
+                        <p class="author-title">Emprendedora Digital, Maracaibo</p>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+        <section class="contact section" id="contact">
+            <span class="section-subtitle">Hablemos</span>
+            <h2 class="section-title">Ponte en Contacto</h2>
+            <div class="contact-container container grid">
+                <div class="contact-info">
+                    <h3 class="contact-info-title">Información de Contacto</h3>
+                    <p class="contact-info-description">
+                        ¿Listo para digitalizar tu negocio? Contáctanos para discutir tus ideas o solicitar una cotización.
+                    </p>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div>
+                            <span class="contact-label">Teléfono / WhatsApp</span>
+                            <a href="https://wa.me/584168578289" target="_blank" class="contact-link">+58 416-8578289</a>
+                        </div>
+                    </div>
+                     <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                         <div>
+                            <span class="contact-label">Correo Electrónico</span>
+                            <a href="mailto:contacto@cromstudio.com.ve" class="contact-link">contacto@cromstudio.com.ve</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                         <div>
+                            <span class="contact-label">Ubicación</span>
+                            <span class="contact-text">Venezuela (Atención Remota y Presencial bajo cita)</span>
+                         </div>
+                    </div>
+
+                     <div class="contact-socials">
+                         <a href="https://www.facebook.com/cromstudio21" target="_blank" class="contact-social-link"><i class="fab fa-facebook-f"></i></a>
+                         <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="contact-social-link"><i class="fab fa-instagram"></i></a>
+                         <a href="https://twitter.com/" target="_blank" class="contact-social-link"><i class="fab fa-twitter"></i></a> </div>
+                </div>
+
+                <form action="tu-endpoint-de-formulario" method="POST" class="contact-form"> <h3 class="contact-form-title">Envíanos un Mensaje</h3>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nombre</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="subject" class="form-label">Asunto</label>
+                        <input type="text" id="subject" name="subject" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" class="form-input" required></textarea>
+                    </div>
+                    <button type="submit" class="button button-primary">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container container grid">
+            <div>
+                <a href="#" class="footer-logo">Crom Studio Venezuela</a>
+                <p class="footer-description">Soluciones tecnológicas para el mercado venezolano.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="https://cromstudio.com.ve/#about" class="footer-link">Quiénes Somos</a></li>
+                    <li><a href="https://cromstudio.com.ve/#services" class="footer-link">Servicios</a></li>
+                    <li><a href="https://cromstudio.com.ve/#pricing" class="footer-link">Precios</a></li>
+                     <li><a href="https://cromstudio.com.ve/blog/" target="_blank" class="footer-link">Blog</a></li>
+                     <li><a href="https://cromstudio.com.ve/descargas/" class="footer-link">Descargas</a></li>
+                    </ul>
+            </div>
+
+             <div class="footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                 <ul>
+                    <li><i class="fas fa-phone"></i> +58 416-8578289</li>
+                    <li><i class="fas fa-envelope"></i> contacto@cromstudio.com.ve</li>
+                     <li><i class="fas fa-map-marker-alt"></i> Venezuela</li>
+                </ul>
+            </div>
+
+             <div class="footer-social">
+                 <h3 class="footer-title">Síguenos</h3>
+                 <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                 <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                 <a href="https://twitter.com/" target="_blank" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+             </div>
         </div>
-    </section>
+        <span class="footer-copy container">
+            &copy; <span id="current-year"></span> Crom Studio Venezuela. Todos los derechos reservados.
+        </span>
+    </footer>
+
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up scrollup-icon"></i>
+    </a>
+
+    <script>
+        // Año actual en Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Lógica del Menú Móvil
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.add('show-menu');
+            });
+        }
+
+        if (navClose) {
+            navClose.addEventListener('click', () => {
+                navMenu.classList.remove('show-menu');
+            });
+        }
+
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('show-menu')) {
+                     navMenu.classList.remove('show-menu');
+                }
+            });
+        });
+
+        // Añadir sombra al header al hacer scroll
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= 80) {
+                header.classList.add('scroll-header');
+            } else {
+                header.classList.remove('scroll-header');
+            }
+        });
+
+        // Mostrar botón Scroll Up
+        const scrollUp = document.getElementById('scroll-up');
+         window.addEventListener('scroll', () => {
+            if (window.scrollY >= 560) {
+                scrollUp.classList.add('show-scroll');
+            } else {
+                scrollUp.classList.remove('show-scroll');
+            }
+        });
+
+        // Active link en scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', scrollActive);
+
+        function scrollActive(){
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 50; // Adjust offset as needed
+                const sectionId = current.getAttribute('id');
+                const link = document.querySelector('.nav-menu a[href*=' + sectionId + ']');
+
+                if (link) { // Check if link exists before trying to modify classList
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        link.classList.add('active-link');
+                    } else {
+                        link.classList.remove('active-link');
+                    }
+                }
+            });
+        }
 
 
-    <section class="section" id="sms">
-        <h2><a href="https://cromstudio.com.ve/sms-masivos-venezuela/" target="_blank">SMS MASIVOS & API GATEWAY SMS</a></h2>
-        <p>Envía mensajes de texto de forma amplia y conecta fácilmente tu desarrollo a través de una API. Diseña campañas de SMS masivas personalizadas para tu negocio.</p>
-        <p>El cliente debe efectuar el pago mensual correspondiente al paquete elegido. Los mensajes acumulados se mantendrán activos siempre y cuando el plan sea cancelado.</p>
-        <p>Nuestros precios estan anclado en Bolivares Digitales, el servicio de SMS es Pre-Pago lo que significa que usted tendra un saldo activo.</p>
-        <p>En Caso de aumentar la tarifa usted continuara con su saldo, pero la cantidad de SMS se reduce.</p>
-        <div class="card-container">
-            <div class="card">
-                <h3>Pack Básico</h3>
-                <p>Cantidad de SMS: 100</p>
-                <p>Soporte en linea</p>
-                <p>Integracion con su desarrollo</p>
-                <p>Envio de Campañas Masivas</p>
-                <div class="price">Bs.D 80,00</div>
-            </div>
-            <div class="card">
-                <h3>Pack Estándar</h3>
-                <p>Cantidad de SMS: 500</p>
-                <p>Soporte en linea</p>
-                <p>Integracion con su desarrollo</p>
-                <p>Envio de Campañas Masivas</p>
-                <div class="price">Bs.D 400,00</div>
-            </div>
-            <div class="card">
-                <h3>Pack Premium</h3>
-                <p>Cantidad de SMS: 1000</p>
-                <p>Soporte en linea</p>
-                <p>Integracion con su desarrollo</p>
-                <p>Envio de Campañas Masivas</p>
-                <div class="price">Bs.D 800,00</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="nube">
-        <h2><a href="https://cromstudio.com.ve/almacenamiento-en-la-nube/" target="_blank">Almacenamiento en la Nube</a></h2>
-        <p>Crom Studio Cloud es la plataforma líder en soluciones en la nube, diseñada para impulsar la productividad y eficiencia de tu empresa.</p>
-        <p> Con un conjunto completo de herramientas y una infraestructura escalable, estamos listos para llevar tu negocio al siguiente nivel.</p>
-        <p>Con <a href="https://cromstudio.com.ve/crom-studio-cloud/">Crom Studio Cloud</a>, puedes estar seguro de que tus datos estarán protegidos y disponibles cuando los necesites.</p>
-
-        <div class="card-container">
-            <div class="card">
-                <h3>Plan Economico</h3>
-                <p>Almacenamiento: 1 GB</p>
-                <p>Enlaces Externos Ilimitados</p>
-                <p>Aplicacion para Escritorio y Android</p>
-                <p>Dispositivos Ilimitados</p>
-                <div class="price">$1/MES</div>
-            </div>
-            <div class="card">
-                <h3>Plan Basico</h3>
-                <p>Almacenamiento: 10 GB</p>
-                <p>Enlaces Externos Ilimitados</p>
-                <p>Aplicacion para Escritorio y Android</p>
-                <p>Dispositivos Ilimitados</p>
-                <div class="price">$2/MES</div>
-            </div>
-            <div class="card">
-                <h3>Plan Avanzado</h3>
-                <p>Almacenamiento: 50 GB</p>
-                <p>Enlaces Externos Ilimitados</p>
-                <p>Aplicacion para Escritorio y Android</p>
-                <p>Dispositivos Ilimitados</p>
-                <div class="price">$5/MES</div>
-            </div>
-            <div class="card">
-                <h3>Plan Pro</h3>
-                <p>Almacenamiento: 100 GB</p>
-                <p>Enlaces Externos Ilimitados</p>
-                <p>Aplicacion para Escritorio y Android</p>
-                <p>Dispositivos Ilimitados</p>
-                <div class="price">$10/MES</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="blog">
-        <h2><a href="https://cromstudio.com.ve/blog/" target="_blank">Blog</a></h2>
-        <p>Visita nuestro <a href="https://cromstudio.com.ve/blog/">Blog de Tecnologia</a>, donde subimos noticias, tutoriales y novedades del acontecer tecnologico en Venezuela.</p>
-    </section>
-
-
-    <section class="section" id="contacto">
-        <h2><a href="https://cromstudio.com.ve/contacto/" target="_blank">Contacto</a></h2>
-        <div class="contact-info">
-            <p>Teléfono: 0416-8578289</p>
-            <p>WhatsApp de Crom Studio: +58 416 857 8289</p>
-            <p>Correo: contacto@cromstudio.com.ve</p>
-        </div>
-    </section>
-
-    <div class="footer">
-        <p>&copy; 2025 Crom Studio Venezuela - WhatsApp +58 416-8578289</p>
-    </div>
-
-
-
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.10/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </script>
 
 </body>
 </html>
