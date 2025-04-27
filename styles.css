@@ -1264,3 +1264,86 @@ textarea.form-input {
        /* font-size: 2.2rem; */
   }
 }
+
+
+
+
+/* ===== PÁGINA MAPA DEL SITIO (Actualizado) ===== */
+
+/* (Asegúrate que .page-hero está definido) */
+/* (Asegúrate que .sitemap-list ul, li, a, .sitemap-icon, .external-link-indicator estén definidos como antes) */
+
+/* Contenedor principal del sitemap con columnas */
+.sitemap-structure {
+  grid-template-columns: 1fr; /* Una columna por defecto */
+  gap: var(--mb-3); /* Espacio entre columnas si se muestran lado a lado */
+}
+
+/* Títulos para las secciones Vzla / España */
+.sitemap-section-title {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  margin-bottom: var(--mb-1-5);
+  padding-bottom: var(--mb-0-5);
+  border-bottom: 2px solid var(--primary-color); /* Línea debajo del título */
+}
+
+/* Separador visual opcional entre secciones */
+.sitemap-divider {
+  border: 0;
+  border-top: 1px solid var(--border-color);
+  margin: var(--mb-2-5) 0;
+}
+
+
+/* Media Query para mostrar en dos columnas en escritorio */
+@media screen and (min-width: 768px) {
+  .sitemap-structure {
+      grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+  }
+}
+
+/* Estilos anteriores para .sitemap-list (revisar/asegurar) */
+.sitemap-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: var(--mb-0-75);
+}
+.sitemap-list ul ul {
+  padding-left: 1.5rem; /* Indentación reducida para que quepa mejor */
+  margin-top: var(--mb-0-5);
+}
+.sitemap-list li {
+  margin-bottom: var(--mb-0-75);
+  line-height: 1.6;
+}
+.sitemap-list a {
+  /* Estilo global */
+}
+.sitemap-list a:hover {
+   color: var(--primary-color-alt);
+   text-decoration: underline;
+}
+.sitemap-list li:not(:has(> a)) {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  margin-top: var(--mb-1);
+  font-size: 1.05rem; /* Ligeramente más pequeño que h3 */
+   padding-left: calc(20px + var(--mb-0-5)); /* Alinear con texto si tiene icono */
+   position: relative; /* Para posicionar icono si se añade */
+}
+.sitemap-icon {
+  color: var(--primary-color);
+  margin-right: var(--mb-0-5);
+  width: 20px;
+  text-align: center;
+  font-size: 1em; /* Ajustar tamaño */
+   display: inline-block; /* Asegurar espacio */
+   vertical-align: middle; /* Alinear con texto */
+}
+/* Ajuste para iconos en cabeceras sin enlace */
+.sitemap-list li:not(:has(> a)) > .sitemap-icon {
+   position: absolute;
+   left: 0;
+   top: 0.1em; /* Ajustar verticalmente */
+}
