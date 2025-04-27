@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacenamiento en la Nube para Empresas en España | Crom Studio</title>
+
+    <meta name="description" content="Servicio de almacenamiento en la nube de Crom Studio para España. Seguro, escalable y accesible. Guarda, comparte y colabora en tus archivos empresariales.">
+    <meta name="keywords" content="almacenamiento nube españa, cloud españa, disco virtual españa, nube pymes españa, nextcloud españa, owncloud españa, backup nube españa, compartir archivos empresa">
+    <meta name="author" content="Crom Studio">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="es-ES">
+    <link rel="shortcut icon" type="image/x-icon" href="../imagenes/faviconempresa.ico"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTCG8F3HMV');
+    </script>
+
+
+<style>
+    .visual-features-container {
+        gap: 4rem;
+    }
+    
+    .visual-feature-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .visual-feature-image img {
+        max-width: 450px; /* Ajustar según tus imágenes */
+        width: 100%;
+        margin: 0 auto;
+        border-radius: .75rem; /* Bordes redondeados a las imágenes */
+        box-shadow: 0 4px 15px hsla(var(--primary-hue), 30%, 15%, 0.1);
+    }
+    
+    .visual-feature-text {
+        text-align: center;
+    }
+    
+    .visual-feature-title {
+        font-size: var(--h2-font-size);
+        margin-bottom: var(--mb-1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: .75rem;
+    }
+    .visual-feature-title i {
+        color: var(--primary-color);
+        font-size: 1.6rem;
+    }
+    
+    .visual-feature-text p {
+        margin-bottom: var(--mb-1);
+        color: var(--text-color);
+    }
+    
+
+/* Sección Métodos de Pago */
+.payment-methods {
+text-align: center;
+}
+
+.payment-logos {
+display: flex;
+flex-wrap: wrap; /* Para que quepan en varias líneas si son muchos */
+justify-content: center;
+align-items: center;
+gap: 2rem; /* Espacio entre logos */
+margin-top: var(--mb-2);
+}
+
+.payment-logos img {
+max-height: 45px; /* Ajustar altura máxima de logos */
+width: auto; /* Mantener proporción */
+filter: grayscale(100%);
+opacity: 0.7;
+transition: filter 0.3s, opacity 0.3s;
+}
+
+.payment-logos img:hover {
+filter: grayscale(0%);
+opacity: 1;
+}
+
+
+    /* Sección Descarga de Clientes */
+    .client-download-description {
+        text-align: center;
+        margin-bottom: var(--mb-2);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .client-download-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    
+    .client-download-card {
+        background-color: var(--container-color);
+        border: 1px solid var(--border-color);
+        border-radius: .75rem;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between; /* Para alinear botón al fondo si varía altura */
+    }
+    
+    .client-icon {
+        font-size: 3rem;
+        color: var(--primary-color);
+        margin-bottom: var(--mb-1);
+    }
+    /* Para iconos dobles */
+    .client-download-card .client-icon + .client-icon {
+        margin-left: .5rem;
+    }
+    
+    .client-title {
+        font-size: var(--h3-font-size);
+        margin-bottom: var(--mb-0-5);
+    }
+    
+    .client-download-card p {
+        font-size: var(--small-font-size);
+        color: var(--text-color-light);
+        margin-bottom: var(--mb-1-5);
+        flex-grow: 1; /* Ocupar espacio si varía altura */
+    }
+    
+    .app-store-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: auto; /* Empujar al fondo */
+    }
+    
+    .store-badge {
+        height: 40px; /* Ajustar tamaño de badges */
+        width: auto;
+    }
+    
+    /* Sección Clientes/Confianza (Texto Simple) */
+    .clients-description {
+        text-align: center;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        color: var(--text-color);
+        line-height: 1.7;
+    }
+    
+    /* Ajustes Responsivos Específicos Cloud */
+    @media screen and (min-width: 768px) {
+        .visual-feature-row {
+            grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+            gap: 3rem;
+            text-align: left;
+        }
+         .visual-feature-text {
+            text-align: left;
+        }
+        .visual-feature-title {
+            justify-content: flex-start; /* Alinear título a la izquierda */
+        }
+        /* Alternar orden para layout zig-zag */
+        .order-lg-1 { order: 1; }
+        .order-lg-2 { order: 2; }
+    
+        .pricing-container { /* Asegurar 4 columnas si es necesario */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+    }
+    @media screen and (min-width: 992px) {
+         .pricing-container {
+            grid-template-columns: repeat(4, 1fr); /* Forzar 4 columnas */
+        }
+         .client-download-grid {
+             grid-template-columns: repeat(3, 1fr); /* Tres columnas para descargas */
+         }
+    }
+    
+    
+        </style>
+
+
+
+</head>
+<body>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <header class="header">
+        <nav class="nav container">
+            <a href="/españa/" class="nav-logo">Crom Studio</a> <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/españa/#hero" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="/españa/#about" class="nav-link">Quiénes Somos</a></li>
+                    <li class="nav-item"><a href="/españa/#services" class="nav-link">Soluciones</a></li>
+                    <li class="nav-item"><a href="/españa/#pricing" class="nav-link">Planes</a></li>
+                    <li class="nav-item"><a href="/españa/#contact" class="nav-link">Contacto</a></li>
+                     </ul>
+                <button class="nav-close" id="nav-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+
+        <section class="page-hero section">
+            <div class="container">
+                <span class="section-subtitle">Cloud Empresarial para España</span>
+                <h1 class="section-title">Almacenamiento en la Nube Seguro y Flexible</h1>
+                <p class="page-hero-description">
+                   Accede, comparte y colabora en los archivos de tu negocio desde cualquier lugar con la plataforma Cloud de Crom Studio, adaptada para empresas en España.
+                </p>
+                 <a href="#pricing" class="button button-primary">Ver Planes (€)</a>
+                 <a href="#client-apps" class="button button-secondary">Descargar Aplicaciones</a>
+            </div>
+        </section>
+
+        <section class="features section bg-light" id="cloud-features">
+             <span class="section-subtitle">Ventajas Principales</span>
+            <h2 class="section-title">Beneficios de Nuestra Nube</h2>
+            <div class="features-container container grid">
+                <div class="feature-card">
+                    <i class="fas fa-desktop feature-icon"></i> <i class="fas fa-mobile-alt feature-icon" style="margin-left: 5px;"></i>
+                    <h3 class="feature-title">Acceso Universal</h3>
+                    <p class="feature-description">Sincroniza y accede a tus datos desde Windows, macOS, Linux, Android, iOS y cualquier navegador web.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3 class="feature-title">Seguridad y Privacidad</h3>
+                    <p class="feature-description">Encriptación, backups, controles de acceso y consideración de normativas como GDPR para proteger tu información.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-share-nodes feature-icon"></i> <h3 class="feature-title">Compartir Fácil y Seguro</h3>
+                    <p class="feature-description">Comparte archivos y carpetas mediante enlaces protegidos con contraseña y fecha de caducidad.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-users-cog feature-icon"></i> <h3 class="feature-title">Colaboración Optimizada</h3>
+                    <p class="feature-description">Trabaja en equipo sobre documentos, gestiona versiones y mejora la productividad (integración Office opcional).</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-signal feature-icon"></i>
+                    <h3 class="feature-title">Planes Flexibles</h3>
+                    <p class="feature-description">Adapta el almacenamiento a tus necesidades actuales y futuras, pagando solo por lo que necesitas.</p>
+                </div>
+                 <div class="feature-card">
+                    <i class="fas fa-headset feature-icon"></i>
+                    <h3 class="feature-title">Soporte Técnico</h3>
+                    <p class="feature-description">Ofrecemos asistencia técnica para resolver tus dudas sobre el uso de la plataforma.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="visual-features section" id="visual-demo">
+             <span class="section-subtitle">Interfaz Moderna</span>
+            <h2 class="section-title">Tu Información, Siempre Contigo</h2>
+            <div class="visual-features-container container grid">
+                 <div class="visual-feature-row">
+                    <div class="visual-feature-image">
+                        <img src="https://cromstudio.com.ve/imagenes/nextcloud/nextcloud-hub4-files-preview.png.webp" alt="Interfaz de almacenamiento en la nube en varios dispositivos">
+                    </div>
+                    <div class="visual-feature-text">
+                        <h3 class="visual-feature-title"><i class="fas fa-sync-alt"></i> Sincronización Inteligente</h3>
+                        <p>Mantén tus archivos importantes sincronizados en todos tus equipos y dispositivos móviles de forma automática y eficiente.</p>
+                    </div>
+                </div>
+                <div class="visual-feature-row">
+                     <div class="visual-feature-image order-lg-2">
+                        <img src="https://cromstudio.com.ve/imagenes/nextcloud/nextcloud-hub4-office-preview.png" alt="Edición de documentos en la nube">
+                    </div>
+                    <div class="visual-feature-text order-lg-1">
+                        <h3 class="visual-feature-title"><i class="fas fa-people-arrows"></i> Colabora Sin Límites</h3>
+                        <p>Comparte documentos de forma segura con tu equipo o clientes y facilita el trabajo conjunto sobre los mismos archivos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <section class="pricing section bg-light" id="pricing">
+             <span class="section-subtitle">Elige tu Plan</span>
+            <h2 class="section-title">Planes de Almacenamiento (Precios en €)</h2>
+             <p class="pricing-category-description container">Todos los planes incluyen enlaces externos ilimitados, aplicaciones cliente y conexión de dispositivos ilimitada. Precios mensuales + IVA.</p>
+             <div class="pricing-container container grid">
+                 <div class="pricing-card">
+                     <span class="pricing-plan">Cloud Básico</span>
+                     <h3 class="pricing-price">€ 2<span>/mes</span></h3>
+                     <ul class="pricing-features">
+                         <li><i class="fas fa-hdd"></i> 10 GB Almacenamiento</li>
+                         <li><i class="fas fa-link"></i> Enlaces Externos Ilimitados</li>
+                         <li><i class="fas fa-desktop"></i> App Escritorio y Móvil</li>
+                         <li><i class="fas fa-infinity"></i> Dispositivos Ilimitados</li>
+                     </ul>
+                      <a href="/españa/#contact" class="button button-secondary">Solicitar Plan</a>
+                 </div>
+                  <div class="pricing-card">
+                     <span class="pricing-plan">Cloud Avanzado</span>
+                     <h3 class="pricing-price">€ 5<span>/mes</span></h3>
+                     <ul class="pricing-features">
+                          <li><i class="fas fa-hdd"></i> 50 GB Almacenamiento</li>
+                          <li><i class="fas fa-link"></i> Enlaces Externos Ilimitados</li>
+                         <li><i class="fas fa-desktop"></i> App Escritorio y Móvil</li>
+                         <li><i class="fas fa-infinity"></i> Dispositivos Ilimitados</li>
+                     </ul>
+                      <a href="/españa/#contact" class="button button-secondary">Solicitar Plan</a>
+                 </div>
+                  <div class="pricing-card recommended">
+                      <span class="pricing-recommended">Popular</span>
+                     <span class="pricing-plan">Cloud Pro</span>
+                     <h3 class="pricing-price">€ 10<span>/mes</span></h3>
+                     <ul class="pricing-features">
+                         <li><i class="fas fa-hdd"></i> 100 GB Almacenamiento</li>
+                         <li><i class="fas fa-link"></i> Enlaces Externos Ilimitados</li>
+                         <li><i class="fas fa-desktop"></i> App Escritorio y Móvil</li>
+                         <li><i class="fas fa-infinity"></i> Dispositivos Ilimitados</li>
+                     </ul>
+                      <a href="/españa/#contact" class="button button-primary">Solicitar Plan</a>
+                 </div>
+                  <div class="pricing-card">
+                     <span class="pricing-plan">Cloud Empresa</span>
+                      <h3 class="pricing-price">€ 20<span>/mes</span></h3>
+                     <ul class="pricing-features">
+                         <li><i class="fas fa-hdd"></i> 250 GB Almacenamiento</li>
+                        <li><i class="fas fa-link"></i> Enlaces Externos Ilimitados</li>
+                         <li><i class="fas fa-desktop"></i> App Escritorio y Móvil</li>
+                         <li><i class="fas fa-infinity"></i> Dispositivos Ilimitados</li>
+                     </ul>
+                      <a href="/españa/#contact" class="button button-secondary">Solicitar Plan</a>
+                 </div>
+             </div>
+              <p class="pricing-note container">Planes con mayor capacidad o configuraciones personalizadas disponibles bajo consulta. <a href="/españa/#contact">Contáctanos</a>.</p>
+        </section>
+
+        <section class="client-download section" id="client-apps">
+             <span class="section-subtitle">Acceso Fácil</span>
+             <h2 class="section-title">Aplicaciones Cliente</h2>
+             <p class="container client-download-description">Instala los clientes oficiales para sincronizar tus archivos automáticamente en todos tus dispositivos.</p>
+             <div class="container client-download-grid grid">
+                  <div class="client-download-card">
+                     <i class="fab fa-windows client-icon"></i>
+                     <h3 class="client-title">Windows</h3>
+                     <p>Descarga el cliente recomendado para tu PC.</p>
+                     <a href="https://cromstudio.com.ve/descargas/archivos/utilidades" class="button button-secondary button-small">Descargas para Windows</a>
+                 </div>
+                 <div class="client-download-card">
+                      <i class="fas fa-mobile-alt client-icon"></i>
+                     <h3 class="client-title">Móvil (Android/iOS)</h3>
+                     <p>Busca "Nextcloud" o la app recomendada en tu tienda.</p>
+                      <div class="app-store-buttons">
+                        <a href="https://play.google.com/store/apps/details?id=com.nextcloud.client" target="_blank" rel="noopener noreferrer" title="Descargar en Google Play"><img src="https://cromstudio.com.ve/imagenes/logos/google-play.svg" alt="Google Play" class="store-badge"></a>
+                        <a href="https://apps.apple.com/us/app/nextcloud/id1125420102" target="_blank" rel="noopener noreferrer" title="Descargar en App Store"><img src="https://cromstudio.com.ve/imagenes/logos/app-store.svg" alt="App Store" class="store-badge"></a>
+                   </div>
+                 </div>
+                 <div class="client-download-card">
+                      <i class="fab fa-linux client-icon"></i> <i class="fab fa-apple client-icon"></i>
+                     <h3 class="client-title">macOS / Linux</h3>
+                     <p>Clientes nativos disponibles para otros sistemas.</p>
+                      <a href="https://cromstudio.com.ve/descargas/archivos/utilidades" class="button button-secondary button-small">Descargas Desktop</a>
+                 </div>
+             </div>
+        </section>
+
+        <section class="payment-methods section bg-light" id="payment-methods">
+            <h2 class="section-title">Métodos de Pago (España)</h2>
+            <div class="payment-logos container">
+                <img src="https://cromstudio.com.ve/imagenes/logos/logo-Paypal.svg" alt="PayPal" title="PayPal">
+                <img src="https://cromstudio.com.ve/imagenes/logos/zinli.svg" alt="Zinli" title="Zinli">
+                <img src="https://cromstudio.com.ve/imagenes/logos/binance.svg" alt="Binance Pay" title="Binance Pay">
+                <img src="https://cromstudio.com.ve/imagenes/logos/bbva.svg" alt="BBVA" title="BBVA">
+                <img src="https://cromstudio.com.ve/imagenes/logos/bizum.svg" alt="Bizum" title="Bizum">     
+            </div>
+            <br>
+             <p class="payment-note container">Consulta por otros métodos de pago disponibles.</p>
+        </section>
+
+        <section class="clients section" id="clients">
+            <div class="container">
+                 <span class="section-subtitle">Nuestra Experiencia</span>
+                <h2 class="section-title">Clientes Satisfechos</h2>
+                 <p class="clients-description">Ayudamos a empresas en España y Latinoamérica a optimizar su gestión de archivos y colaboración con soluciones cloud fiables y seguras.</p>
+            </div>
+        </section>
+
+        <section class="cta section" id="cta">
+            <div class="cta-container container">
+                <h2 class="cta-title">Optimiza tu Almacenamiento Hoy Mismo</h2>
+                <p class="cta-description">
+                    Elige el plan Cloud perfecto para tu negocio en España o pídenos una configuración a medida.
+                </p>
+                <a href="#pricing" class="button button-primary button-large">Ver Planes (€)</a>
+                <a href="/españa/#contact" class="button button-secondary button-large">Contactar</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container container grid">
+             <div>
+                <a href="/españa/" class="footer-logo">Crom Studio</a>
+                <p class="footer-description">Soluciones tecnológicas a medida.</p>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-title">Navegación</h3>
+                <ul>
+                    <li><a href="/españa/#about" class="footer-link">Quiénes Somos</a></li>
+                    <li><a href="/españa/#services" class="footer-link">Soluciones</a></li>
+                    <li><a href="/españa/#pricing" class="footer-link">Planes</a></li>
+                    <li><a href="/politica-privacidad" class="footer-link">Política de Privacidad</a></li>
+                    <li><a href="/politica-cookies" class="footer-link">Política de Cookies</a></li>
+                    <li><a href="/sitemap" class="footer-link">Mapa del Sitio Global</a></li>
+                </ul>
+            </div>
+             <div class="footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                 <ul>
+                    <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/584168578289" target="_blank" style="color: inherit;">+58 416-8578289</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:contacto@cromstudio.com.ve" style="color: inherit;">contacto@cromstudio.com.ve</a></li>
+                    <li><i class="fas fa-globe-europe"></i> Servicios para España</li>
+                </ul>
+            </div>
+             <div class="footer-social">
+                 <h3 class="footer-title">Síguenos</h3>
+                  <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                 <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                 <a href="https://twitter.com/" target="_blank" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+             </div>
+        </div>
+        <span class="footer-copy container">
+            &copy; <span id="current-year"></span> Crom Studio. Todos los derechos reservados.
+        </span>
+    </footer>
+
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fas fa-arrow-up scrollup-icon"></i>
+    </a>
+
+    <script>
+        // Año actual en Footer
+        const currentYearElement = document.getElementById('current-year');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+
+        // Lógica Menú Móvil, Header Scroll, Scroll Up (Idéntico)
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+        if(navToggle && navMenu){navToggle.addEventListener('click',()=>{navMenu.classList.add('show-menu')})}
+        if(navClose && navMenu){navClose.addEventListener('click',()=>{navMenu.classList.remove('show-menu')})}
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link=>{link.addEventListener('click',()=>{if(navMenu && navMenu.classList.contains('show-menu')){const href=link.getAttribute('href'); if(!href || href.startsWith('#') || href.startsWith('/#') || href.startsWith('../#') || (!href.startsWith('http')&&!href.startsWith('mailto:')&&!href.startsWith('tel:'))){navMenu.classList.remove('show-menu')}}})});
+        const header = document.querySelector('.header');
+        function handleScrollHeader(){if(header){if(window.scrollY >= 80){header.classList.add('scroll-header')}else{header.classList.remove('scroll-header')}}}
+        window.addEventListener('scroll', handleScrollHeader); handleScrollHeader();
+        const scrollUp = document.getElementById('scroll-up');
+        function handleScrollUpButton(){if(scrollUp){if(window.scrollY >= 560){scrollUp.classList.add('show-scroll')}else{scrollUp.classList.remove('show-scroll')}}}
+        window.addEventListener('scroll', handleScrollUpButton); handleScrollUpButton();
+
+        // Active link en scroll (adaptado para página específica con secciones internas)
+         const sections = document.querySelectorAll('section[id]');
+         const navMenuLinks = document.querySelectorAll('.nav-menu a');
+
+         function scrollActivePageCloudES(){
+             const scrollY = window.pageYOffset;
+             let currentSectionId = null;
+
+             sections.forEach(current =>{
+                 const sectionHeight = current.offsetHeight;
+                 const sectionTop = current.offsetTop - 58;
+                 const sectionId = current.getAttribute('id');
+
+                 if (sectionId && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                    currentSectionId = sectionId;
+                 }
+             });
+
+              // Intentar activar enlace de sección actual #id
+             let linkActivated = false;
+             navMenuLinks.forEach(link => {
+                 link.classList.remove('active-link');
+                 const href = link.getAttribute('href');
+                 if (currentSectionId && href && href === '#' + currentSectionId) { // Enlace a sección en ESTA página
+                     link.classList.add('active-link');
+                     linkActivated = true;
+                 }
+             });
+
+              // Si no se activó por sección, intentar activar enlace genérico a la home de España
+              if (!linkActivated) {
+                  const espanaHomeLink = document.querySelector('.nav-menu a[href="/españa/#hero"]'); // Enlace a inicio España
+                   if(espanaHomeLink) espanaHomeLink.classList.add('active-link');
+              }
+         }
+         window.addEventListener('scroll', scrollActivePageCloudES);
+         scrollActivePageCloudES(); // Check initial state
+
+    </script>
+
+</body>
+</html>
