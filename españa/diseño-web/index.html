@@ -20,7 +20,59 @@
 
     <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
 
+<style>
 
+
+    /* ===== EN TU ARCHIVO CSS PRINCIPAL (ej: style.css) ===== */
+
+/* 1. Asegurar que la clase .container funcione */
+.container {
+  max-width: 1140px; /* O el ancho máximo que definiste */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%; /* Asegura que intente ocupar el ancho disponible */
+}
+
+/* 2. Configuración del Grid para el contenedor de precios */
+.pricing-container.grid { /* Selector un poco más específico */
+  display: grid;
+  /* Esta es la regla clave para distribuir columnas automáticamente */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajusta 280px si tus cards son más anchas/estrechas */
+  gap: 2rem; /* O el espacio que definiste */
+
+  /* Propiedad ADICIONAL para centrar los items si sobran columnas o no ocupan todo */
+  justify-content: center;
+}
+
+/* 3. Estilo base de las tarjetas (asegurar que no tengan ancho fijo restrictivo) */
+.pricing-card {
+    background-color: var(--container-color);
+    padding: 2rem 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    /* IMPORTANTE: Asegúrate de NO tener un 'width' o 'max-width' fijo aquí que impida que la tarjeta crezca en el grid */
+    /* width: 300px; */ /* <= EVITA esto aquí si usas '1fr' en el grid */
+    /* max-width: 320px; */ /* <= EVITA esto aquí si usas '1fr' en el grid */
+    display: flex; /* Opcional: para alinear contenido interno si varía altura */
+    flex-direction: column;
+}
+
+/* 4. Media Query específica para forzar 3 columnas en pantallas grandes (si auto-fit no centra bien) */
+/* ESTA REGLA ES ALTERNATIVA a la de auto-fit si esa no funciona como esperas */
+/* Si usas esta, comenta o elimina la regla de auto-fit de arriba */
+/* @media screen and (min-width: 992px) {
+    .pricing-container.grid {
+         grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+/* justify-content: center; */ /* Ya no sería tan necesario con 1fr, pero no hace daño */
+/* } */
+/* } */
+
+/* Asegúrate de que no haya otra regla más específica anulando esto, por ejemplo: */
+/* #packs-precios .pricing-container { width: 80%; } <= ¡Esto podría romper el centrado! */
+</style>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
     <script>
@@ -30,6 +82,7 @@
       gtag('config', 'G-FTCG8F3HMV');
     </script>
 </head>
+
 <body>
 
     <script type="text/javascript">
@@ -61,7 +114,6 @@
     </header>
 
     <main class="main">
-
         <section class="page-hero section" id="hero">
             <div class="container">
                 <span class="section-subtitle">Diseño y Desarrollo Web en España</span>
@@ -180,7 +232,7 @@
              <p class="portfolio-note container">Pronto añadiremos más ejemplos. <a href="/españa/#contact">Consúltanos</a> si quieres ver trabajos similares a tu sector.</p>
         </section>
 
-
+        
         <section class="pricing section bg-light" id="packs-precios">
              <span class="section-subtitle">Inversión Estimada</span>
             <h2 class="section-title">Packs de Desarrollo Web (Orientativos)</h2>
@@ -252,13 +304,13 @@
              <p class="container narrow-container" style="text-align: center; margin-bottom: var(--mb-2);">Una web profesional es solo el principio. Combínala con nuestros otros servicios para maximizar tus resultados en España:</p>
             <div class="features-container container grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 800px;"> <a href="/españa/almacenamiento-en-la-nube-españa/" class="feature-card-link">
                      <div class="feature-card">
-                         <i class="fas fa-cloud-shield-alt feature-icon"></i> <h3 class="feature-title">Almacenamiento Cloud Seguro</h3>
+                         <h3 class="feature-title">Almacenamiento Cloud Seguro</h3>
                          <p class="feature-description">Aloja los archivos de tu web o backups en nuestra plataforma cloud fiable y accesible.</p>
                      </div>
                  </a>
                  <a href="/españa/soporte-tecnico/" class="feature-card-link">
                     <div class="feature-card">
-                        <i class="fas fa-life-ring feature-icon"></i>
+               
                         <h3 class="feature-title">Soporte y Mantenimiento Web</h3>
                         <p class="feature-description">Asegura el buen funcionamiento, actualizaciones y seguridad de tu web a largo plazo.</p>
                     </div>
@@ -345,8 +397,10 @@
                     <li><a href="/españa/#about" class="footer-link">Quiénes Somos</a></li>
                     <li><a href="/españa/desarrollo-web/" class="footer-link">Diseño Web</a></li> <li><a href="/españa/almacenamiento-en-la-nube-españa/" class="footer-link">Cloud</a></li>
                     <li><a href="/españa/soporte-tecnico/" class="footer-link">Soporte</a></li>
-                    <li><a href="/españa/politica-privacidad.html" class="footer-link">Privacidad (España)</a></li>
-                    <li><a href="/españa/politica-cookies.html" class="footer-link">Cookies (España)</a></li>
+                    <li><a href="/politica-privacidad" class="footer-link">Privacidad</a></li>
+                    <li><a href="/españa/desarrollo-web/" class="footer-link">Desarrollo WEB en Madrid</a></li>
+                    <li><a href="/politica-cookies" class="footer-link">Cookies</a></li>
+
                 </ul>
             </div>
              <div class="footer-contact">
@@ -354,7 +408,7 @@
                  <ul>
                      <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/584168578289" target="_blank" style="color: inherit;">+58 416-8578289</a></li>
                     <li><i class="fas fa-envelope"></i> <a href="mailto:contacto@cromstudio.com.ve" style="color: inherit;">contacto@cromstudio.com.ve</a></li>
-                    <li><i class="fas fa-globe-europe"></i> Servicios para España</li>
+                    <li><i class="fas fa-globe-europe"></i> Servicios para España y Europa</li>
                 </ul>
             </div>
              <div class="footer-social">
