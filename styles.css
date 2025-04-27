@@ -1347,3 +1347,184 @@ textarea.form-input {
    left: 0;
    top: 0.1em; /* Ajustar verticalmente */
 }
+
+
+
+
+
+
+
+
+
+/* ===== PÁGINA DISEÑO WEB (ESPAÑA) ===== */
+
+/* Contenedor Estrecho para Texto */
+.narrow-container {
+  max-width: 800px; /* Ajusta según necesidad */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilos para sección Por Qué Web (Ejemplo usando lista) */
+.why-website ul {
+  list-style: none;
+  padding-left: 0;
+}
+.why-website ul li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: var(--mb-0-75);
+  line-height: 1.6;
+}
+.why-website ul li i {
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+/* Estilos Portfolio (Básico) */
+.portfolio-description,
+.portfolio-note {
+  text-align: center;
+  margin-bottom: var(--mb-1-5);
+   max-width: 700px;
+   margin-left: auto;
+   margin-right: auto;
+}
+.portfolio-note {
+  margin-top: var(--mb-2);
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+}
+.portfolio-note a {
+   color: var(--primary-color);
+   font-weight: var(--font-medium);
+}
+
+.portfolio-container {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.portfolio-item {
+  background-color: var(--container-color);
+  border-radius: .75rem;
+  overflow: hidden; /* Para que la imagen no se salga */
+  box-shadow: 0 4px 10px hsla(var(--primary-hue), 30%, 15%, 0.1);
+  transition: transform 0.3s;
+}
+.portfolio-item:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 220px; /* Altura fija o aspect-ratio */
+  object-fit: cover; /* Para que la imagen cubra sin distorsionarse */
+  display: block;
+}
+
+.portfolio-info {
+  padding: 1rem 1.25rem;
+}
+
+.portfolio-info h3 {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-0-5);
+  color: var(--title-color);
+}
+
+.portfolio-info p {
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+  margin-bottom: 0;
+}
+
+/* (Asegúrate que los estilos de .process-list están definidos como en la respuesta anterior) */
+/* (Asegúrate que los estilos de .pricing-explanation están definidos como en la respuesta anterior) */
+
+/* Sección Enlaces Internos */
+.internal-links .feature-card-link { /* Enlace que envuelve la tarjeta */
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+.internal-links .feature-card {
+  height: 100%; /* Asegurar misma altura en la fila */
+}
+.internal-links .feature-card:hover { /* Efecto hover heredado de feature-card */
+   transform: translateY(-5px);
+  box-shadow: 0 8px 20px hsla(var(--primary-hue), 69%, 61%, 0.1);
+}
+
+/* Estilos FAQ (Acordeón Simple con <details>) */
+.faq-container {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--mb-1);
+}
+.faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.faq-question {
+  font-size: var(--normal-font-size); /* O h3-font-size */
+  font-weight: var(--font-medium);
+  color: var(--title-color);
+  padding: var(--mb-1) 0;
+  cursor: pointer;
+  position: relative;
+  list-style: none; /* Ocultar marcador por defecto de summary */
+  display: flex; /* Para alinear icono */
+  align-items: center;
+  gap: .75rem;
+}
+.faq-question::-webkit-details-marker { display: none; } /* Ocultar marcador en Chrome/Safari */
+.faq-question::marker { display: none; } /* Ocultar marcador en Firefox */
+
+.faq-icon {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Rotar icono cuando está abierto */
+.faq-item[open] .faq-question .faq-icon {
+  /* Puedes rotar un icono diferente o el mismo */
+  /* transform: rotate(45deg); */
+}
+/* Icono de "chevron" es más común para acordeones */
+.faq-question::after { /* Icono de flecha usando pseudo-elemento */
+  content: '\f078'; /* Font Awesome chevron-down */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  margin-left: auto; /* Empujar a la derecha */
+  font-size: .9em;
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+.faq-item[open] .faq-question::after {
+   transform: rotate(180deg);
+}
+
+
+.faq-answer {
+  padding: 0 var(--mb-0-5) var(--mb-1-5) var(--mb-0-5); /* Espaciado interno de la respuesta */
+  line-height: 1.7;
+  color: var(--text-color);
+}
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+.faq-answer a {
+  /* Estilo de enlace normal */
+}
