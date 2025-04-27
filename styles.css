@@ -968,3 +968,211 @@ textarea.form-input {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+/* Contenedor principal del contenido legal */
+.legal-content .container {
+  max-width: 800px; /* Limitar ancho para mejor legibilidad */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.legal-content h2 {
+  font-size: var(--h2-font-size);
+  margin-top: var(--mb-2);
+  margin-bottom: var(--mb-1);
+  padding-bottom: var(--mb-0-25);
+  border-bottom: 1px solid var(--border-color); /* Separador visual */
+}
+
+.legal-content h3 {
+  font-size: var(--h3-font-size);
+  margin-top: var(--mb-1-5);
+  margin-bottom: var(--mb-0-75);
+  color: var(--title-color);
+}
+
+.legal-content p,
+.legal-content ul,
+.legal-content ol {
+  line-height: 1.7; /* Buena interlínea para lectura */
+  margin-bottom: var(--mb-1);
+  color: var(--text-color);
+}
+
+.legal-content ul,
+.legal-content ol {
+  padding-left: 1.5rem; /* Indentación estándar para listas */
+}
+.legal-content ul li,
+.legal-content ol li {
+   margin-bottom: var(--mb-0-5);
+}
+/* Estilo específico para sub-listas si es necesario */
+.legal-content ul ul {
+  margin-top: var(--mb-0-5);
+  margin-bottom: var(--mb-0-75);
+}
+
+.legal-content strong {
+  color: var(--title-color); /* Resaltar texto importante */
+}
+
+.legal-content a {
+  /* Estilo de enlace ya debería estar definido globalmente */
+  /* word-break: break-all; */ /* Opcional: para URLs largas */
+}
+
+/* ===== PÁGINA DESARROLLO WEB (ESPAÑA) ===== */
+
+/* (Asegúrate que .page-hero, .features-container, .feature-card, .cta-container, etc. estén definidos) */
+/* (Asegúrate que .bg-light esté definido para fondos alternos) */
+
+/* Sección Nuestro Proceso */
+.process-container {
+  max-width: 800px; /* Limitar ancho para mejor lectura */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.process-list {
+  list-style: none;
+  padding-left: 0;
+  counter-reset: process-counter; /* Iniciar contador */
+}
+
+.process-list li {
+  position: relative;
+  padding-left: 3.5rem; /* Espacio para el número */
+  margin-bottom: var(--mb-2); /* Espacio entre pasos */
+  padding-bottom: var(--mb-1-5); /* Espacio antes de la línea (si se añade) */
+  /* border-bottom: 1px dashed var(--border-color); */ /* Opcional: línea separadora */
+}
+.process-list li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  /* border-bottom: none; */
+}
+
+.process-step-number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; /* Tamaño del círculo */
+  height: 2.5rem;
+  background-color: var(--primary-color-light);
+  color: var(--primary-color);
+  border-radius: 50%;
+  font-weight: var(--font-bold);
+  font-size: var(--normal-font-size);
+  line-height: 1;
+  counter-increment: process-counter; /* Incrementar contador */
+  content: counter(process-counter); /* Mostrar número */
+  /* Si quieres usar el número directamente del HTML: */
+  /* content: ''; */
+}
+/* Estilo alternativo para el número si se pone en HTML */
+/* .process-list li::before {
+  counter-increment: process-counter;
+  content: counter(process-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+   ... (mismos estilos de arriba para el círculo) ...
+} */
+
+
+.process-step-content h3 {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-0-5);
+  color: var(--title-color);
+}
+
+.process-step-content p {
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 0; /* Quitar margen inferior si no hay más texto */
+}
+
+
+/* Sección Explicación Precios Web */
+.web-pricing .container {
+  max-width: 800px; /* Limitar ancho */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left; /* Alinear texto a la izquierda para mejor lectura */
+}
+.web-pricing .section-title {
+   text-align: center; /* Mantener título centrado */
+}
+
+.pricing-explanation p {
+  margin-bottom: var(--mb-1);
+  line-height: 1.7;
+}
+
+.pricing-explanation ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: var(--mb-1-5);
+}
+
+.pricing-explanation ul li {
+  margin-bottom: var(--mb-0-5);
+  padding-left: 1.5rem; /* Espacio para icono */
+  position: relative;
+}
+
+.pricing-explanation ul li i {
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  top: 0.3em; /* Ajustar alineación vertical */
+  font-size: 0.9em;
+}
+
+.pricing-explanation strong {
+   color: var(--title-color);
+}
+
+/* Botón centrado en sección de precios */
+.web-pricing .button-large {
+  display: inline-block; /* Asegurar que no ocupe todo el ancho por defecto */
+}
+
+
+/* Ajustes Responsivos Proceso */
+@media screen and (max-width: 576px) {
+  .process-list li {
+      padding-left: 0; /* Quitar padding izquierdo */
+      padding-top: 3.5rem; /* Espacio arriba para el número */
+      text-align: center;
+  }
+  .process-step-number {
+      left: 50%; /* Centrar número */
+      transform: translateX(-50%);
+      top: 0;
+  }
+  .process-step-content {
+       margin-top: var(--mb-0-5);
+  }
+   .pricing-explanation {
+      text-align: center; /* Centrar texto en móvil */
+   }
+   .pricing-explanation ul {
+       display: inline-block; /* Centrar lista */
+       text-align: left; /* Alinear texto de la lista a la izquierda */
+   }
+}
