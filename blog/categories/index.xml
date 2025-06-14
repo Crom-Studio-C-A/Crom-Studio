@@ -9,8 +9,50 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Mon, 07 Apr 2025 06:38:58 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 14 Jun 2025 17:45:46 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>El Camino De Santiago</title>
+      <link>https://cromstudio.com.ve/blog/categories/el-camino-de-santiago/</link>
+      <pubDate>Sat, 14 Jun 2025 17:45:46 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/el-camino-de-santiago/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>España</title>
+      <link>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</link>
+      <pubDate>Sat, 14 Jun 2025 17:45:46 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Europa</title>
+      <link>https://cromstudio.com.ve/blog/categories/europa/</link>
+      <pubDate>Sat, 14 Jun 2025 17:45:46 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/europa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Madrid</title>
+      <link>https://cromstudio.com.ve/blog/categories/madrid/</link>
+      <pubDate>Sat, 14 Jun 2025 17:45:46 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/madrid/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Turismo</title>
+      <link>https://cromstudio.com.ve/blog/categories/turismo/</link>
+      <pubDate>Sat, 14 Jun 2025 17:45:46 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/turismo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Viajes</title>
+      <link>https://cromstudio.com.ve/blog/categories/viajes/</link>
+      <pubDate>Sat, 14 Jun 2025 17:45:46 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/viajes/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Base De Datos</title>
       <link>https://cromstudio.com.ve/blog/categories/base-de-datos/</link>
@@ -145,13 +187,6 @@
       <description></description>
     </item>
     <item>
-      <title>España</title>
-      <link>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</link>
-      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/espa%C3%B1a/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Formación</title>
       <link>https://cromstudio.com.ve/blog/categories/formaci%C3%B3n/</link>
       <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
@@ -170,13 +205,6 @@
       <link>https://cromstudio.com.ve/blog/categories/ia/</link>
       <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/ia/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Madrid</title>
-      <link>https://cromstudio.com.ve/blog/categories/madrid/</link>
-      <pubDate>Mon, 07 Apr 2025 05:55:32 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/madrid/</guid>
       <description></description>
     </item>
     <item>
@@ -289,13 +317,6 @@
       <link>https://cromstudio.com.ve/blog/categories/mysql-workbench/</link>
       <pubDate>Fri, 21 Mar 2025 05:27:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/mysql-workbench/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Europa</title>
-      <link>https://cromstudio.com.ve/blog/categories/europa/</link>
-      <pubDate>Fri, 21 Mar 2025 05:25:56 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/europa/</guid>
       <description></description>
     </item>
     <item>
@@ -639,13 +660,6 @@
       <link>https://cromstudio.com.ve/blog/categories/roblox/</link>
       <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/roblox/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Turismo</title>
-      <link>https://cromstudio.com.ve/blog/categories/turismo/</link>
-      <pubDate>Sun, 10 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/turismo/</guid>
       <description></description>
     </item>
     <item>
