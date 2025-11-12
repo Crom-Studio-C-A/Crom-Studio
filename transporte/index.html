@@ -3,126 +3,614 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visor de Ruta (Cuatricentenario)</title>
-    
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
-          integrity="sha256-p4NxAoJBhpmA9n5jaKJCrEaHNNpqLzDYUklEcLkAzoI=" 
-          crossorigin=""/>
-    
-    <style>
-        /* Reseteo básico y estilos del body */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-        }
-
-        /* El mapa debe ocupar toda la pantalla */
-        #map {
-            width: 100vw;
-            height: 100vh;
-        }
-    </style>
-</head>
-<body>
-    
-    <div id="map"></div>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
-            crossorigin=""></script>
+    <title>Horarios de Transporte - Crom Studio</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Configuración General --- */
+        :root {
+            --color-primario: #0d6efd;
+            --color-fondo: #f8f9fa;
+            --color-tarjeta: #ffffff;
+            --color-texto: #212529;
+            --color-texto-secundario: #6c757d;
+            --color-borde: #dee2e6;
+            --color-hover: #f1f3f5;
+            --color-activo: #e7f1ff;
+            --color-proximo: #fff3cd;
+            --color-proximo-texto: #856404;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden; /* Evita el scroll de la página */
+        }
+
+        /* --- Contenedor Principal (Layout) --- */
+        #app-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            background: var(--color-tarjeta);
+        }
+
+        /* --- Paneles (Columnas) --- */
+        .panel {
+            border-right: 1px solid var(--color-borde);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            flex-shrink: 0; /* Evita que se encojan */
+        }
+
+        #panel-rutas { width: 320px; }
+        #panel-paradas { width: 360px; }
+        #panel-detalles {
+            width: auto;
+            flex-grow: 1; /* Ocupa el espacio restante */
+            border-right: none;
+        }
+        
+        /* --- Encabezados de Panel --- */
+        .panel-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--color-borde);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .panel-header h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #111;
+        }
+        
+        .back-button {
+            display: none; /* Oculto en PC */
+            font-size: 24px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--color-primario);
+            line-height: 1;
+        }
+
+        /* --- Listas --- */
+        .panel-list {
+            overflow-y: auto;
+            flex-grow: 1;
+            padding: 8px 0;
+        }
+
+        .list-item {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f1f1f1;
+            cursor: pointer;
+            transition: background-color 0.15s ease-out;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        .list-item:hover {
+            background-color: var(--color-hover);
+        }
+        .list-item.active {
+            background-color: var(--color-activo);
+            box-shadow: inset 4px 0 0 var(--color-primario);
+            padding-left: 20px;
+        }
+        .list-item .icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .list-item div {
+            flex-grow: 1;
+        }
+        .list-item strong {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-texto);
+            display: block;
+        }
+        .list-item span {
+            font-size: 14px;
+            color: var(--color-texto-secundario);
+        }
+
+        /* --- Panel de Horarios --- */
+        #horarios-container {
+            padding: 24px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        #horarios-container h3 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        #reloj-actual {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--color-texto-secundario);
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed var(--color-borde);
+        }
+        #reloj-actual span {
+            font-family: monospace;
+            font-size: 1.1em;
+            color: var(--color-texto);
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+        
+        .horario-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .horario-item:last-child {
+            border-bottom: none;
+        }
+        
+        .horario-item .hora {
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-texto);
+        }
+        .horario-item .destino {
+            font-size: 16px;
+            font-weight: 500;
+            text-align: right;
+            color: var(--color-texto-secundario);
+        }
+        
+        /* Próximo Bus */
+        .horario-item.proximo {
+            background-color: var(--color-proximo);
+            margin: 0 -24px; /* Expande al ancho del panel */
+            padding: 14px 24px;
+            border-radius: 6px;
+        }
+        .horario-item.proximo .hora {
+            color: var(--color-proximo-texto);
+        }
+        .horario-item.proximo .destino {
+            color: var(--color-proximo-texto);
+            font-weight: 600;
+        }
+
+        /* --- Placeholder (Mensaje inicial) --- */
+        #detalles-placeholder {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--color-texto-secundario);
+        }
+        #detalles-placeholder .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        /* --- Estado de Carga --- */
+        #estado-carga {
+            padding: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+        }
+        .status-loading { color: #555; }
+        .status-error { color: #dc3545; background: #fff0f0; padding: 20px; }
+
+        /* ===== DISEÑO RESPONSIVO (MÓVIL) ===== */
+        @media (max-width: 768px) {
+            #app-container {
+                flex-direction: column;
+                height: 100vh;
+                /* El overflow se gestiona con JS */
+            }
+            
+            .panel {
+                width: 100% !important; /* Todos los paneles ocupan el ancho */
+                height: 100%; /* Ocupan toda la altura */
+                border-right: none;
+                border-bottom: 1px solid var(--color-borde);
+                display: none; /* Ocultos por defecto, JS los muestra */
+            }
+            
+            #panel-rutas {
+                display: flex; /* El primero se muestra por defecto */
+            }
+            
+            .back-button {
+                display: block; /* Muestra el botón de volver */
+            }
+
+            .panel-header {
+                padding: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="app-container">
+        
+        <div id="panel-rutas" class="panel">
+            <div class="panel-header">
+                <h2>🚌 Rutas</h2>
+            </div>
+            
+            <div id="estado-carga" class="status-loading">
+                Cargando archivos GTFS...
+            </div>
+            
+            <div class="panel-list" id="lista-rutas">
+                </div>
+        </div>
+
+        <div id="panel-paradas" class="panel">
+            <div class="panel-header">
+                <a href="#" class="back-button" id="back-a-rutas" aria-label="Volver a Rutas">&lsaquo;</a>
+                <h2 id="paradas-titulo">📍 Paradas</h2>
+            </div>
+            <div class="panel-list" id="lista-paradas">
+                </div>
+        </div>
+
+        <div id="panel-detalles" class="panel">
+            <div class="panel-header">
+                <a href="#" class="back-button" id="back-a-paradas" aria-label="Volver a Paradas">&lsaquo;</a>
+                <h2 id="detalles-titulo">🕒 Horarios</h2>
+            </div>
+            <div id="horarios-container">
+                <div id="detalles-placeholder">
+                    <div class="icon">👈</div>
+                    Seleccione una ruta y luego una parada para ver los horarios.
+                </div>
+                
+                <div id="reloj-actual" style="display:none;">
+                    Día: <span id="reloj-dia">--</span> | Hora: <span id="reloj-hora">--:--:--</span>
+                </div>
+                
+                <div id="horarios-lista">
+                    </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Espera a que la página esté lista
         document.addEventListener("DOMContentLoaded", () => {
             
-            // La URL base donde están todos sus archivos GTFS
+            // --- CONFIGURACIÓN ---
             const gtfsBaseUrl = "https://cromstudio.com.ve/transporte/";
+            const diasSemana = ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
             
-            // 1. Inicializar el Mapa (Centrado en sus coordenadas)
-            // Centrado entre Valera (9.313) y Escuque (9.295)
-            const map = L.map('map').setView([9.304, -70.641], 15); // Zoom 15
+            // --- REFERENCIAS AL DOM ---
+            const dom = {
+                appContainer: document.getElementById("app-container"),
+                estadoCarga: document.getElementById("estado-carga"),
+                
+                panelRutas: document.getElementById("panel-rutas"),
+                listaRutas: document.getElementById("lista-rutas"),
+                
+                panelParadas: document.getElementById("panel-paradas"),
+                paradasTitulo: document.getElementById("paradas-titulo"),
+                listaParadas: document.getElementById("lista-paradas"),
+                backARutas: document.getElementById("back-a-rutas"),
 
-            // 2. Añadir la capa de mapa base (OpenStreetMap)
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+                panelDetalles: document.getElementById("panel-detalles"),
+                detallesTitulo: document.getElementById("detalles-titulo"),
+                detallesPlaceholder: document.getElementById("detalles-placeholder"),
+                backAParadas: document.getElementById("back-a-paradas"),
 
-            // 3. Cargar y dibujar las Paradas (stops.txt)
-            Papa.parse(gtfsBaseUrl + "stops.txt", {
-                download: true,   // Descarga el archivo desde la URL
-                header: true,     // La primera fila es el encabezado
-                dynamicTyping: true, // Convierte lat/lon a números
-                complete: (results) => {
-                    console.log("Paradas cargadas:", results.data);
-                    
-                    // Recorrer cada parada y añadir un marcador
-                    for (const stop of results.data) {
-                        if (stop.stop_lat && stop.stop_lon) {
-                            L.marker([stop.stop_lat, stop.stop_lon])
-                                .addTo(map)
-                                .bindPopup(`<b>${stop.stop_name}</b><br>ID: ${stop.stop_id}`);
-                        }
-                    }
-                },
-                error: (err) => {
-                    console.error("Error cargando stops.txt:", err);
-                    alert("No se pudo cargar 'stops.txt'. Revise la URL y que el archivo exista.");
-                }
-            });
+                relojContainer: document.getElementById("reloj-actual"),
+                relojDia: document.getElementById("reloj-dia"),
+                relojHora: document.getElementById("reloj-hora"),
+                horariosLista: document.getElementById("horarios-lista"),
+            };
 
-            // 4. Cargar y dibujar las Rutas (shapes.txt)
-            Papa.parse(gtfsBaseUrl + "shapes.txt", {
-                download: true,
-                header: true,
-                dynamicTyping: true,
-                skipEmptyLines: true,
-                complete: (results) => {
-                    console.log("Shapes cargados:", results.data);
-                    
-                    const shapes = {}; // Objeto para agrupar puntos
-                    
-                    for (const point of results.data) {
-                        if (!point.shape_id) continue;
+            // --- BASE DE DATOS EN MEMORIA ---
+            const db = {
+                routes: new Map(),
+                trips: new Map(),
+                stops: new Map(),
+                calendar: new Map(),
+                stopTimes: [],
+                agencyTimezone: "America/Caracas"
+            };
 
-                        if (!shapes[point.shape_id]) {
-                            shapes[point.shape_id] = [];
-                        }
-                        
-                        // Añadimos la coordenada [lat, lon]
-                        // Asegurándonos de que esté en el orden de secuencia
-                        shapes[point.shape_id].push({
-                            lat: point.shape_pt_lat,
-                            lon: point.shape_pt_lon,
-                            seq: point.shape_pt_sequence
+            // --- ESTADO DE LA APLICACIÓN ---
+            let relojIntervalo = null;
+            let estadoApp = {
+                rutaActiva: null,
+                paradaActiva: null
+            };
+            const esMovil = () => window.innerWidth <= 768;
+
+            // --- INICIALIZACIÓN ---
+
+            /** Función principal que inicia todo */
+            async function main() {
+                try {
+                    const parseFile = (fileName) => {
+                        return new Promise((resolve, reject) => {
+                            Papa.parse(gtfsBaseUrl + fileName, {
+                                download: true,
+                                header: true,
+                                dynamicTyping: true,
+                                skipEmptyLines: true,
+                                complete: (results) => results.errors.length > 0 ? reject(new Error(`Error de parseo en ${fileName}`)) : resolve(results.data),
+                                error: (err) => reject(new Error(`Error de red al cargar ${fileName}. ¿Existe y es público?`))
+                            });
                         });
+                    };
+
+                    const [agency, routes, stops, trips, stopTimes, calendar] = await Promise.all([
+                        parseFile("agency.txt"),
+                        parseFile("routes.txt"),
+                        parseFile("stops.txt"),
+                        parseFile("trips.txt"),
+                        parseFile("stop_times.txt"),
+                        parseFile("calendar.txt"),
+                    ]);
+
+                    // Procesar y almacenar datos
+                    if (agency.length > 0) db.agencyTimezone = agency[0].agency_timezone || "America/Caracas";
+                    routes.forEach(r => db.routes.set(r.route_id, r));
+                    stops.forEach(s => db.stops.set(s.stop_id, s));
+                    trips.forEach(t => db.trips.set(t.trip_id, t));
+                    calendar.forEach(c => db.calendar.set(c.service_id, c));
+                    db.stopTimes = stopTimes;
+
+                    // Ocultar carga y mostrar interfaz
+                    dom.estadoCarga.style.display = "none";
+                    
+                    renderizarListaRutas();
+                    iniciarReloj();
+                    configurarNavegacion();
+                    mostrarPanel('panel-rutas'); // Mostrar el panel inicial
+
+                } catch (error) {
+                    console.error("Error fatal en main():", error);
+                    dom.estadoCarga.textContent = `Error al cargar: ${error.message}`;
+                    dom.estadoCarga.className = "status-error";
+                }
+            }
+
+            /** Muestra el panel correcto (especialmente para móvil) */
+            function mostrarPanel(panelId) {
+                if (!esMovil()) {
+                    // En PC, todos los paneles son visibles siempre
+                    dom.panelRutas.style.display = "flex";
+                    dom.panelParadas.style.display = "flex";
+                    dom.panelDetalles.style.display = "flex";
+                    return;
+                }
+                
+                // En Móvil, ocultar todos y mostrar solo el activo
+                ['panelRutas', 'panelParadas', 'panelDetalles'].forEach(id => {
+                    dom[id].style.display = (id === panelId) ? 'flex' : 'none';
+                });
+            }
+            
+            /** Configura los botones "Volver" */
+            function configurarNavegacion() {
+                dom.backARutas.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mostrarPanel('panel-rutas');
+                });
+                
+                dom.backAParadas.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mostrarPanel('panel-paradas');
+                });
+            }
+
+            /** Inicia el reloj digital */
+            function iniciarReloj() {
+                dom.relojContainer.style.display = "block";
+                
+                const actualizarHora = () => {
+                    const ahora = new Date();
+                    const opcionesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: db.agencyTimezone };
+                    const horaFormato = new Intl.DateTimeFormat('es-VE', opcionesHora).format(ahora);
+                    const diaSemanaIndex = ahora.getDay();
+                    const diaNombre = diasSemana[diaSemanaIndex];
+                    
+                    dom.relojDia.textContent = diaNombre.charAt(0).toUpperCase() + diaNombre.slice(1);
+                    dom.relojHora.textContent = horaFormato;
+                    
+                    if (estadoApp.paradaActiva) {
+                        renderizarHorarios(estadoApp.paradaActiva, true); // True = solo refrescar
+                    }
+                };
+                
+                if (relojIntervalo) clearInterval(relojIntervalo);
+                actualizarHora();
+                relojIntervalo = setInterval(actualizarHora, 1000);
+            }
+
+            // --- FUNCIONES DE RENDERIZADO ---
+
+            /** Muestra la lista de rutas en la barra lateral */
+            function renderizarListaRutas() {
+                dom.listaRutas.innerHTML = '';
+                db.routes.forEach(route => {
+                    const div = document.createElement('div');
+                    div.className = 'list-item';
+                    div.dataset.routeId = route.route_id;
+                    div.innerHTML = `
+                        <span class="icon">🚌</span>
+                        <div>
+                            <strong>${route.route_short_name || 'Ruta'}</strong>
+                            <span>${route.route_long_name}</span>
+                        </div>
+                    `;
+                    div.addEventListener('click', () => {
+                        document.querySelectorAll('#lista-rutas .list-item').forEach(el => el.classList.remove('active'));
+                        div.classList.add('active');
+                        estadoApp.rutaActiva = route.route_id;
+                        renderizarListaParadas(route.route_id);
+                    });
+                    dom.listaRutas.appendChild(div);
+                });
+            }
+
+            /** Muestra la lista de paradas para una ruta */
+            function renderizarListaParadas(routeId) {
+                const route = db.routes.get(routeId);
+                dom.paradasTitulo.textContent = `📍 Paradas de ${route.route_short_name}`;
+
+                const viajesRuta = [...db.trips.values()].filter(t => t.route_id === routeId);
+                const idsViajesRuta = new Set(viajesRuta.map(t => t.trip_id));
+                
+                const idsParadas = new Set();
+                const paradasOrdenadas = [];
+                // Tomamos el primer viaje como "ejemplo" para el orden de paradas
+                const primerViaje = viajesRuta.length > 0 ? viajesRuta[0].trip_id : null;
+                if(primerViaje) {
+                    db.stopTimes
+                        .filter(st => st.trip_id === primerViaje)
+                        .sort((a,b) => a.stop_sequence - b.stop_sequence)
+                        .forEach(st => {
+                            if (!idsParadas.has(st.stop_id)) {
+                                paradasOrdenadas.push(st.stop_id);
+                                idsParadas.add(st.stop_id);
+                            }
+                        });
+                }
+                
+                dom.listaParadas.innerHTML = '';
+                paradasOrdenadas.forEach(stopId => {
+                    const stop = db.stops.get(stopId);
+                    if (!stop) return;
+                    
+                    const div = document.createElement('div');
+                    div.className = 'list-item';
+                    div.dataset.stopId = stop.stop_id;
+                    div.innerHTML = `
+                        <span class="icon">📍</span>
+                        <div><strong>${stop.stop_name}</strong></div>
+                    `;
+                    div.addEventListener('click', () => {
+                        document.querySelectorAll('#lista-paradas .list-item').forEach(el => el.classList.remove('active'));
+                        div.classList.add('active');
+                        estadoApp.paradaActiva = stop.stop_id;
+                        renderizarHorarios(stop.stop_id, false); // False = renderizado completo
+                    });
+                    dom.listaParadas.appendChild(div);
+                });
+                
+                // Limpiar panel de detalles
+                dom.detallesPlaceholder.style.display = "block";
+                dom.horariosLista.innerHTML = '';
+                
+                mostrarPanel('panel-paradas');
+            }
+
+            /** Muestra los horarios para una parada */
+            function renderizarHorarios(stopId, esRefresco = false) {
+                if (!esRefresco) {
+                    // Si no es solo un refresco del reloj, preparamos el panel
+                    const stop = db.stops.get(stopId);
+                    dom.detallesTitulo.textContent = `🕒 ${stop.stop_name}`;
+                    dom.detallesPlaceholder.style.display = "none";
+                    dom.horariosLista.innerHTML = '';
+                    mostrarPanel('panel-detalles');
+                }
+
+                const horaActual = dom.relojHora.textContent;
+                const diaActual = dom.relojDia.textContent.toLowerCase();
+                
+                const idsViajesRutaActiva = new Set(
+                    [...db.trips.values()]
+                        .filter(t => t.route_id === estadoApp.rutaActiva)
+                        .map(t => t.trip_id)
+                );
+
+                const horariosHoy = db.stopTimes
+                    .filter(st => {
+                        if (st.stop_id !== stopId) return false;
+                        if (!idsViajesRutaActiva.has(st.trip_id)) return false;
+                        const trip = db.trips.get(st.trip_id);
+                        if (!trip) return false;
+                        const calendario = db.calendar.get(trip.service_id);
+                        return calendario && calendario[diaActual] === 1;
+                    })
+                    .map(st => ({
+                        hora: st.departure_time,
+                        destino: db.trips.get(st.trip_id).trip_headsign || "Sin destino"
+                    }))
+                    .sort((a, b) => a.hora.localeCompare(b.hora));
+
+                const horariosUnicos = [];
+                const visto = new Set();
+                for (const h of horariosHoy) {
+                    const id = h.hora + h.destino;
+                    if (!visto.has(id)) {
+                        horariosUnicos.push(h);
+                        visto.add(id);
+                    }
+                }
+                
+                let proximoEncontrado = false;
+                dom.horariosLista.innerHTML = ''; // Limpiar siempre al refrescar
+                
+                let busesPasados = 0;
+                horariosUnicos.forEach(h => {
+                    const div = document.createElement('div');
+                    div.className = 'horario-item';
+                    
+                    if (!proximoEncontrado && h.hora > horaActual) {
+                        div.classList.add('proximo');
+                        proximoEncontrado = true;
+                    } else if (h.hora <= horaActual) {
+                        busesPasados++;
                     }
                     
-                    console.log("Shapes agrupados:", shapes);
-
-                    // Ahora dibujamos las polilíneas
-                    for (const shapeId in shapes) {
-                        // Ordenamos los puntos por su 'shape_pt_sequence'
-                        const sortedPoints = shapes[shapeId].sort((a, b) => a.seq - b.seq);
-                        
-                        // Convertimos a un array simple de [lat, lon] para Leaflet
-                        const latLngs = sortedPoints.map(p => [p.lat, p.lon]);
-                        
-                        // Asignamos un color diferente a cada 'shape' (ida y vuelta)
-                        const color = (shapeId === 'RUTA_ESC_VAL') ? '#0000FF' : '#FF0000'; // Azul para ida, Rojo para vuelta
-                        
-                        const line = L.polyline(latLngs, { color: color, weight: 5 }).addTo(map);
-                    }
-                },
-                error: (err) => {
-                    console.error("Error cargando shapes.txt:", err);
-                    alert("No se pudo cargar 'shapes.txt'. Revise la URL y que el archivo exista.");
+                    div.innerHTML = `
+                        <span class="hora">${h.hora}</span>
+                        <span class="destino">${h.destino}</span>
+                    `;
+                    dom.horariosLista.appendChild(div);
+                });
+                
+                if (busesPasados === horariosUnicos.length && horariosUnicos.length > 0) {
+                     dom.horariosLista.innerHTML = '<div class="horario-item">No hay más salidas programadas para hoy.</div>';
+                } else if (horariosUnicos.length === 0) {
+                     dom.horariosLista.innerHTML = '<div class="horario-item">No hay salidas programadas para hoy.</div>';
                 }
-            });
+            }
+
+            // --- INICIAR LA APLICACIÓN ---
+            main();
         });
     </script>
-    
 </body>
 </html>
