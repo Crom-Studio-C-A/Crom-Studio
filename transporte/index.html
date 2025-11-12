@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Ruta (Cuatricentenario)</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+          integrity="sha256-p4NxAoJBhpmA9n5jaKJCrEaHNNpqLzDYUklEcLkAzoI=" 
+          crossorigin=""/>
+    
+    <style>
+        /* Reseteo básico y estilos del body */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        /* El mapa debe ocupar toda la pantalla */
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <script>
+        // Espera a que la página esté lista
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // La URL base donde están todos sus archivos GTFS
+            const gtfsBaseUrl = "https://cromstudio.com.ve/transporte/";
+            
+            // 1. Inicializar el Mapa (Centrado en sus coordenadas)
+            // Centrado entre Valera (9.313) y Escuque (9.295)
+            const map = L.map('map').setView([9.304, -70.641], 15); // Zoom 15
+
+            // 2. Añadir la capa de mapa base (OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // 3. Cargar y dibujar las Paradas (stops.txt)
+            Papa.parse(gtfsBaseUrl + "stops.txt", {
+                download: true,   // Descarga el archivo desde la URL
+                header: true,     // La primera fila es el encabezado
+                dynamicTyping: true, // Convierte lat/lon a números
+                complete: (results) => {
+                    console.log("Paradas cargadas:", results.data);
+                    
+                    // Recorrer cada parada y añadir un marcador
+                    for (const stop of results.data) {
+                        if (stop.stop_lat && stop.stop_lon) {
+                            L.marker([stop.stop_lat, stop.stop_lon])
+                                .addTo(map)
+                                .bindPopup(`<b>${stop.stop_name}</b><br>ID: ${stop.stop_id}`);
+                        }
+                    }
+                },
+                error: (err) => {
+                    console.error("Error cargando stops.txt:", err);
+                    alert("No se pudo cargar 'stops.txt'. Revise la URL y que el archivo exista.");
+                }
+            });
+
+            // 4. Cargar y dibujar las Rutas (shapes.txt)
+            Papa.parse(gtfsBaseUrl + "shapes.txt", {
+                download: true,
+                header: true,
+                dynamicTyping: true,
+                skipEmptyLines: true,
+                complete: (results) => {
+                    console.log("Shapes cargados:", results.data);
+                    
+                    const shapes = {}; // Objeto para agrupar puntos
+                    
+                    for (const point of results.data) {
+                        if (!point.shape_id) continue;
+
+                        if (!shapes[point.shape_id]) {
+                            shapes[point.shape_id] = [];
+                        }
+                        
+                        // Añadimos la coordenada [lat, lon]
+                        // Asegurándonos de que esté en el orden de secuencia
+                        shapes[point.shape_id].push({
+                            lat: point.shape_pt_lat,
+                            lon: point.shape_pt_lon,
+                            seq: point.shape_pt_sequence
+                        });
+                    }
+                    
+                    console.log("Shapes agrupados:", shapes);
+
+                    // Ahora dibujamos las polilíneas
+                    for (const shapeId in shapes) {
+                        // Ordenamos los puntos por su 'shape_pt_sequence'
+                        const sortedPoints = shapes[shapeId].sort((a, b) => a.seq - b.seq);
+                        
+                        // Convertimos a un array simple de [lat, lon] para Leaflet
+                        const latLngs = sortedPoints.map(p => [p.lat, p.lon]);
+                        
+                        // Asignamos un color diferente a cada 'shape' (ida y vuelta)
+                        const color = (shapeId === 'RUTA_ESC_VAL') ? '#0000FF' : '#FF0000'; // Azul para ida, Rojo para vuelta
+                        
+                        const line = L.polyline(latLngs, { color: color, weight: 5 }).addTo(map);
+                    }
+                },
+                error: (err) => {
+                    console.error("Error cargando shapes.txt:", err);
+                    alert("No se pudo cargar 'shapes.txt'. Revise la URL y que el archivo exista.");
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

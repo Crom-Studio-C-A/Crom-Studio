@@ -1,0 +1,3 @@
+stop_id,stop_name,stop_lat,stop_lon
+P_VALERA,Parada Valera,9.312756,-70.611262
+P_ESCUQUE,Parada Escuque,9.295932,-70.670822

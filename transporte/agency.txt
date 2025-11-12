@@ -1,0 +1,2 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang
+LC,Linea Cuatricentenaria Skuke,https://www.cromstudio.com.ve,America/Caracas,es
