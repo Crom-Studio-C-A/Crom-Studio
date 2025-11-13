@@ -1,2 +1,3 @@
 agency_id,agency_name,agency_url,agency_timezone,agency_lang
-LC,Linea Cuatricentenaria Skuke,https://www.cromstudio.com.ve,America/Caracas,es
+LC,Linea Cuatricentenaria Skuke,https://www.cromstudio.com.ve/transporte/,America/Caracas,es
+sitssa,Sistema Integral de Transporte Superficial S.A,https://www.sitssa.gob.ve/sobre-nosotros/,America/Caracas,es

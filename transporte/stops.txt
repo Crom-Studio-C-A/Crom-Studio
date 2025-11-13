@@ -1,3 +1,5 @@
 stop_id,stop_name,stop_lat,stop_lon
 P_VALERA,Parada Valera,9.312756,-70.611262
 P_ESCUQUE,Parada Escuque,9.295932,-70.670822
+T_GUANARE,Terminal de Pasajeros de Guanare,9.026222,-69.736546
+T_CARACAS,Terminal de Pasajeros La Bandera,10.476213,-66.899044
