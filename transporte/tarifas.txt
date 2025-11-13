@@ -1,3 +1,3 @@
 route_id,descripcion_tarifa
 L-CUATRI,Pasaje único: 90.00 Bs. | El pago se realiza directamente al conductor en efectivo o pago móvil.
-sitssa,Pasaje único: 17 $ | El pago se realia directamente en oficina del terminal de pasajeros.
+CCS-GRE,Pasaje único: 17 $ | El pago se realia directamente en oficina del terminal de pasajeros.
