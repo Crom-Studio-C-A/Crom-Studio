@@ -1,0 +1,2 @@
+route_id,descripcion_tarifa
+L-CUATRI,Pasaje único: 90.00 Bs. | El pago se realiza directamente al conductor en efectivo o pago móvil.

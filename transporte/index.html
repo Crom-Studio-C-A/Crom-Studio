@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS (Con estilos para Novedades) -->
+    <!-- CSS (Con estilos para Tarifas) -->
     <style>
         :root {
             --color-primario: #0d6efd;
@@ -114,13 +114,13 @@
             font-size: 14px; color: var(--color-texto-secundario);
         }
         
-        /* --- NUEVO: Estilos de Novedades --- */
+        /* --- Estilos de Novedades y Tarifas --- */
         .novedades-container {
             padding: 16px;
             background: #fdfdfd;
             border-bottom: 1px solid var(--color-borde);
             flex-shrink: 0;
-            max-height: 35%; /* Evita que ocupe todo */
+            max-height: 35%;
             overflow-y: auto;
         }
         .novedades-container h3 {
@@ -158,11 +158,30 @@
             text-transform: uppercase;
             margin-right: 8px;
         }
-        /* Tipos de Novedad */
         .tipo-ALERTA { background-color: var(--color-alerta-bg); color: var(--color-alerta-texto); border: 1px solid var(--color-alerta-borde); }
         .tipo-INFO { background-color: var(--color-info-bg); color: var(--color-info-texto); border: 1px solid var(--color-info-borde); }
         .tipo-OBRA { background-color: var(--color-obra-bg); color: var(--color-obra-texto); border: 1px solid var(--color-obra-borde); }
-        /* --- Fin Estilos Novedades --- */
+
+        /* NUEVO: Estilo para la Tarifa */
+        #tarifa-info {
+            padding: 16px;
+            background: var(--color-activo);
+            border-bottom: 1px solid var(--color-borde);
+            flex-shrink: 0;
+        }
+        #tarifa-info h3 {
+            font-size: 16px;
+            margin: 0 0 8px 0;
+            color: var(--color-primario);
+        }
+        #tarifa-info p {
+            font-size: 15px;
+            color: var(--color-texto);
+            margin: 0;
+            line-height: 1.5;
+            white-space: pre-wrap; /* Respeta los saltos de línea */
+        }
+        /* --- Fin Estilos Novedades/Tarifa --- */
 
         #horarios-panel-content {
             flex-grow: 1;
@@ -306,7 +325,6 @@
         <div id="panel-rutas" class="panel">
             <div class="panel-header"> <h2>🚌 Rutas</h2> </div>
             
-            <!-- NUEVO: Novedades Generales -->
             <div id="novedades-generales-container" class="novedades-container" style="display: none;">
                 <h3>📣 Novedades Generales</h3>
                 <div id="novedades-generales-lista"></div>
@@ -325,7 +343,12 @@
                 <h2 id="paradas-titulo">📍 Paradas</h2>
             </div>
             
-            <!-- NUEVO: Novedades de Ruta -->
+            <!-- NUEVO: Contenedor de Tarifa -->
+            <div id="tarifa-info" style="display: none;">
+                <h3>💲 Tarifa y Pago</h3>
+                <p id="tarifa-descripcion"></p>
+            </div>
+            
             <div id="novedades-ruta-container" class="novedades-container" style="display: none;">
                 <h3>📣 Novedades de la Ruta</h3>
                 <div id="novedades-ruta-lista"></div>
@@ -399,19 +422,22 @@
                 proximoHora: document.getElementById("proximo-hora"),
                 proximoDestino: document.getElementById("proximo-destino"),
                 tituloListaHorarios: document.getElementById("titulo-lista-horarios"),
-                
-                // Nuevos DOM de Novedades
                 novedadesGeneralesContainer: document.getElementById("novedades-generales-container"),
                 novedadesGeneralesLista: document.getElementById("novedades-generales-lista"),
                 novedadesRutaContainer: document.getElementById("novedades-ruta-container"),
-                novedadesRutaLista: document.getElementById("novedades-ruta-lista")
+                novedadesRutaLista: document.getElementById("novedades-ruta-lista"),
+                
+                // Nuevos DOM de Tarifa
+                tarifaInfo: document.getElementById("tarifa-info"),
+                tarifaDescripcion: document.getElementById("tarifa-descripcion")
             };
 
             // --- DB & ESTADO ---
             const db = {
                 routes: new Map(), trips: new Map(),
                 stops: new Map(), calendar: new Map(),
-                stopTimes: [], noticias: [], // <-- Nueva DB de noticias
+                stopTimes: [], noticias: [],
+                tarifas: new Map(), // <-- Nueva DB de tarifas
                 agencyTimezone: "America/Caracas"
             };
             let relojIntervalo = null;
@@ -424,11 +450,7 @@
 
             // --- LOGGING ---
             function logDebug(message, type = 'info') {
-                /* Oculto por petición del usuario
-                const tipoClase = `log-${type}`;
-                dom.debugLog.innerHTML += `\n<span class="${tipoClase}">[${new Date().toLocaleTimeString()}] ${message}</span>`;
-                dom.debugLog.scrollTop = dom.debugLog.scrollHeight;
-                */
+                /* Oculto */
             }
 
             // --- INICIALIZACIÓN ---
@@ -450,11 +472,13 @@
                         });
                     };
 
-                    const [agency, routes, stops, trips, stopTimes, calendar, noticias] = await Promise.all([
+                    // Añadir tarifas.txt al Promise.all
+                    const [agency, routes, stops, trips, stopTimes, calendar, noticias, tarifas] = await Promise.all([
                         parseFile("agency.txt"), parseFile("routes.txt"),
                         parseFile("stops.txt"), parseFile("trips.txt"),
                         parseFile("stop_times.txt"), parseFile("calendar.txt"),
-                        parseFile("noticias.txt") // <-- Cargar el nuevo archivo
+                        parseFile("noticias.txt"),
+                        parseFile("tarifas.txt") // <-- Cargar el nuevo archivo
                     ]);
 
                     // Procesar
@@ -464,13 +488,14 @@
                     trips.forEach(t => db.trips.set(t.trip_id, t));
                     calendar.forEach(c => db.calendar.set(c.service_id, c));
                     db.stopTimes = stopTimes;
-                    // Guardar noticias ordenadas por fecha (más nueva primero)
                     db.noticias = noticias.sort((a, b) => new Date(b.fecha_publicacion) - new Date(a.fecha_publicacion));
+                    // Procesar tarifas
+                    tarifas.forEach(t => db.tarifas.set(t.route_id, t.descripcion_tarifa));
 
                     logDebug("Base de datos en memoria creada.", 'ok');
                     dom.estadoCarga.style.display = "none";
                     
-                    renderizarNovedadesGenerales(); // <-- Renderizar noticias generales
+                    renderizarNovedadesGenerales();
                     renderizarListaRutas();
                     iniciarReloj();
                     configurarNavegacion();
@@ -544,12 +569,10 @@
                 relojIntervalo = setInterval(actualizarHora, 1000);
             }
 
-            // --- RENDERIZADO (CON NOVEDADES) ---
+            // --- RENDERIZADO (CON NOVEDADES Y TARIFA) ---
             
-            /** Crea el HTML para un item de novedad */
             function crearHtmlNovedad(novedad) {
                 const tipo = novedad.tipo || 'INFO';
-                // Añade el trip_headsign al título si existe
                 const titulo = novedad.trip_headsign 
                     ? `${novedad.titulo} (${novedad.trip_headsign})`
                     : novedad.titulo;
@@ -562,7 +585,6 @@
                 `;
             }
 
-            /** Renderiza solo las noticias generales */
             function renderizarNovedadesGenerales() {
                 const noticiasGenerales = db.noticias.filter(n => !n.route_id);
                 if (noticiasGenerales.length > 0) {
@@ -573,7 +595,6 @@
                 }
             }
             
-            /** Renderiza noticias para una ruta específica */
             function renderizarNovedadesDeRuta(routeId) {
                 const noticiasDeRuta = db.noticias.filter(n => n.route_id === routeId);
                 if (noticiasDeRuta.length > 0) {
@@ -602,7 +623,7 @@
                         estadoApp.rutaActiva = route.route_id;
                         logDebug(`Ruta seleccionada: ${route.route_long_name}`, 'info');
                         
-                        renderizarNovedadesDeRuta(route.route_id); // <-- Cargar noticias de la ruta
+                        renderizarNovedadesDeRuta(route.route_id);
                         renderizarListaParadas(route.route_id);
                     });
                     dom.listaRutas.appendChild(div);
@@ -612,6 +633,16 @@
             function renderizarListaParadas(routeId) {
                 const route = db.routes.get(routeId);
                 dom.paradasTitulo.textContent = `📍 Paradas de ${route.route_short_name}`;
+
+                // --- AÑADIDO: Mostrar Tarifa ---
+                const descripcionTarifa = db.tarifas.get(routeId);
+                if (descripcionTarifa) {
+                    dom.tarifaDescripcion.textContent = descripcionTarifa;
+                    dom.tarifaInfo.style.display = 'block';
+                } else {
+                    dom.tarifaInfo.style.display = 'none';
+                }
+                // --- FIN ---
 
                 const viajesRuta = [...db.trips.values()].filter(t => t.route_id === routeId);
                 const idsViajesRuta = new Set(viajesRuta.map(t => t.trip_id));
