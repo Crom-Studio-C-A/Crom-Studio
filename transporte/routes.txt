@@ -1,3 +1,4 @@
 route_id,agency_id,route_short_name,route_long_name,route_type
 L-CUATRI,LC,Cuatricentenaria,Linea Cuatricentenaria (Valera - Escuque),3
 CCS-GRE,sitssa,Ruta 019 - Occidente, Caracas - Guanare | Ruta 019 - Occidente,3
+GRE-BIS,BP,Biscucuy,Ruta Guanare - Biscucuy,3
