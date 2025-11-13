@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS (Sin cambios) -->
+    <!-- CSS (Con las nuevas secciones) -->
     <style>
         :root {
             --color-primario: #0d6efd;
@@ -26,6 +26,7 @@
             --color-activo: #e7f1ff;
             --color-proximo: #fff3cd;
             --color-proximo-texto: #856404;
+            --color-proximo-borde: #ffeeba;
         }
         * { box-sizing: border-box; }
         body {
@@ -103,6 +104,8 @@
         .list-item span {
             font-size: 14px; color: var(--color-texto-secundario);
         }
+        
+        /* --- Panel de Horarios --- */
         #horarios-panel-content {
             flex-grow: 1;
             display: flex;
@@ -126,6 +129,44 @@
             padding: 4px 8px; border-radius: 4px;
             margin-left: 8px;
         }
+        
+        /* --- NUEVO: Resumen Próximo Bus --- */
+        #proximo-bus-resumen {
+            display: none; /* Oculto por defecto */
+            margin-bottom: 24px;
+        }
+        #proximo-bus-resumen h3 {
+            font-size: 18px;
+            color: var(--color-texto);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .horario-item.proximo-resumen {
+            background-color: var(--color-proximo);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--color-proximo-borde);
+        }
+        .horario-item.proximo-resumen .hora {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-proximo-texto);
+        }
+        .horario-item.proximo-resumen .destino {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-proximo-texto);
+        }
+
+        #titulo-lista-horarios {
+            font-size: 18px;
+            color: var(--color-texto);
+            margin-top: 0;
+            margin-bottom: 10px;
+            display: none; /* Oculto por defecto */
+        }
+        
+        /* --- Lista de Horarios --- */
         .horario-item {
             padding: 14px 0;
             border-bottom: 1px solid #f0f0f0;
@@ -142,6 +183,7 @@
             font-size: 16px; font-weight: 500;
             text-align: right; color: var(--color-texto-secundario);
         }
+        /* Destaque en la lista completa */
         .horario-item.proximo {
             background-color: var(--color-proximo);
             margin: 0 -24px;
@@ -152,6 +194,7 @@
         .horario-item.proximo .destino {
             color: var(--color-proximo-texto); font-weight: 600;
         }
+        
         #detalles-placeholder {
             text-align: center; padding: 60px 20px;
             color: var(--color-texto-secundario);
@@ -165,7 +208,10 @@
         }
         .status-loading { color: #555; }
         .status-error { color: #dc3545; background: #fff0f0; padding: 20px; }
+        
+        /* --- Ocultar Panel de Diagnóstico --- */
         #debug-log {
+            display: none; /* <-- AQUÍ ESTÁ EL CAMBIO */
             flex-shrink: 0;
             background: #2b2b2b;
             color: #f1f1f1;
@@ -174,13 +220,14 @@
             padding: 15px;
             height: 150px;
             overflow-y: auto;
-            white-space: pre-wrap; /* Ajuste de línea */
+            white-space: pre-wrap;
             border-top: 2px solid var(--color-borde);
         }
         .log-info { color: #80caff; }
         .log-ok { color: #a5d6a7; }
         .log-warn { color: #ffcc80; }
         .log-error { color: #ef9a9a; }
+        
         @media (max-width: 768px) {
             #app-container {
                 flex-direction: column;
@@ -241,6 +288,17 @@
                         Día (Venezuela): <span id="reloj-dia">--</span> | Hora: <span id="reloj-hora">--:--:--</span>
                     </div>
                     
+                    <!-- ===== NUEVA SECCIÓN DE RESUMEN ===== -->
+                    <div id="proximo-bus-resumen" style="display: none;">
+                        <h3>Próximo Autobús</h3>
+                        <div class="horario-item proximo-resumen">
+                            <span class="hora" id="proximo-hora">--:--:--</span>
+                            <span class="destino" id="proximo-destino">Cargando...</span>
+                        </div>
+                    </div>
+                    <!-- ==================================== -->
+                    
+                    <h3 id="titulo-lista-horarios" style="display: none;">Todos los Horarios</h3>
                     <div id="horarios-lista"></div>
                 </div>
                 
@@ -255,7 +313,6 @@
             
             // --- CONFIGURACIÓN ---
             const gtfsBaseUrl = "https://cromstudio.com.ve/transporte/";
-            // Mapeo de días: Español (de Intl) -> Inglés (de calendar.txt)
             const diasSemanaGTFS = {
                 "domingo": "sunday",
                 "lunes": "monday",
@@ -283,7 +340,13 @@
                 relojDia: document.getElementById("reloj-dia"),
                 relojHora: document.getElementById("reloj-hora"),
                 horariosLista: document.getElementById("horarios-lista"),
-                debugLog: document.getElementById("debug-log")
+                debugLog: document.getElementById("debug-log"),
+                
+                // Nuevos elementos de resumen
+                proximoResumen: document.getElementById("proximo-bus-resumen"),
+                proximoHora: document.getElementById("proximo-hora"),
+                proximoDestino: document.getElementById("proximo-destino"),
+                tituloListaHorarios: document.getElementById("titulo-lista-horarios")
             };
 
             // --- DB & ESTADO ---
@@ -295,8 +358,8 @@
             let relojIntervalo = null;
             let estadoApp = {
                 rutaActiva: null, paradaActiva: null,
-                diaActualGTFS_Field: 'monday', // El campo de calendar.txt (ej. "thursday")
-                fechaActualYYYYMMDD: '20250101' // Fecha en formato GTFS
+                diaActualGTFS_Field: 'monday',
+                fechaActualYYYYMMDD: 20250101
             };
             const esMovil = () => window.innerWidth <= 768;
 
@@ -341,15 +404,6 @@
                     db.stopTimes = stopTimes;
 
                     logDebug("Base de datos en memoria creada.", 'ok');
-                    logDebug(`Zona Horaria de Agencia: ${db.agencyTimezone}`, 'info');
-                    
-                    // Validar que se cargó el calendario
-                    if (db.calendar.has("SERVICIO_DIARIO")) {
-                         logDebug("Detectado 'SERVICIO_DIARIO' en calendar.txt", 'ok');
-                    } else {
-                         logDebug("¡ATENCIÓN! No se encontró 'SERVICIO_DIARIO' en calendar.txt. Compruebe mayúsculas/minúsculas.", 'error');
-                    }
-
                     dom.estadoCarga.style.display = "none";
                     
                     renderizarListaRutas();
@@ -384,7 +438,7 @@
                 dom.backAParadas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanel('panel-paradas'); });
             }
 
-            // --- LÓGICA DE TIEMPO (CORREGIDA) ---
+            // --- LÓGICA DE TIEMPO ---
             function aSegundos(horaStr) {
                 if (!horaStr || typeof horaStr !== 'string' || horaStr.split(':').length < 3) {
                     logDebug(`Hora inválida: "${horaStr}"`, 'warn');
@@ -405,27 +459,19 @@
                 const actualizarHora = () => {
                     const ahora = new Date();
                     
-                    // Obtener la HORA en la zona de la agencia
                     const opcionesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: db.agencyTimezone };
                     const horaFormato = new Intl.DateTimeFormat('es-VE', opcionesHora).format(ahora);
                     
-                    // Obtener el DÍA en la zona de la agencia
                     const opcionesDia = { weekday: 'long', timeZone: db.agencyTimezone };
                     const diaNombreConAcento = new Intl.DateTimeFormat('es-VE', opcionesDia).format(ahora);
-                    
-                    // *** LÓGICA CORREGIDA ***
-                    // 1. Limpiar acentos y normalizar (ej. "miércoles" -> "miercoles")
                     const diaNombreLimpio = diaNombreConAcento.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     
-                    // 2. Mapear a inglés (ej. "miercoles" -> "wednesday")
-                    estadoApp.diaActualGTFS_Field = diasSemanaGTFS[diaNombreLimpio] || 'monday'; // Default a 'monday' si algo falla
+                    estadoApp.diaActualGTFS_Field = diasSemanaGTFS[diaNombreLimpio] || 'monday';
                     
-                    // Obtener la FECHA YYYYMMDD en la zona de la agencia
                     const ymdFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: db.agencyTimezone, year: 'numeric', month: '2-digit', day: '2-digit' });
                     const [y, m, d] = ymdFormatter.format(ahora).split('-');
-                    estadoApp.fechaActualYYYYMMDD = parseInt(`${y}${m}${d}`, 10); // Guardar como número
+                    estadoApp.fechaActualYYYYMMDD = parseInt(`${y}${m}${d}`, 10);
                     
-                    // Actualizar la interfaz
                     dom.relojDia.textContent = diaNombreConAcento.charAt(0).toUpperCase() + diaNombreConAcento.slice(1);
                     dom.relojHora.textContent = horaFormato;
                     
@@ -509,6 +555,9 @@
                 
                 dom.detallesPlaceholder.style.display = "block";
                 dom.horariosLista.innerHTML = '';
+                dom.proximoResumen.style.display = 'none';
+                dom.tituloListaHorarios.style.display = 'none';
+                
                 mostrarPanel('panel-paradas');
             }
 
@@ -523,11 +572,10 @@
                     mostrarPanel('panel-detalles');
                 }
 
-                // Obtener estado actual
                 const horaActualStr = dom.relojHora.textContent;
                 const segundosActuales = aSegundos(horaActualStr);
-                const diaActualField = estadoApp.diaActualGTFS_Field; // ej. "thursday"
-                const fechaActual = estadoApp.fechaActualYYYYMMDD; // ej. 20251101
+                const diaActualField = estadoApp.diaActualGTFS_Field;
+                const fechaActual = estadoApp.fechaActualYYYYMMDD;
 
                 if (!esRefresco) {
                     logDebug(`Hora actual (${db.agencyTimezone}): ${horaActualStr} (${segundosActuales}s)`, 'info');
@@ -555,12 +603,8 @@
                             return false;
                         }
 
-                        // *** LÓGICA DE FECHA CORREGIDA ***
                         const esDiaValido = calendario[diaActualField] === 1;
                         const estaEnRango = fechaActual >= calendario.start_date && fechaActual <= calendario.end_date;
-
-                        if (!esRefresco && !esDiaValido) logDebug(`Viaje ${trip.trip_id} descartado (día incorrecto: ${diaActualField} no es 1)`, 'warn');
-                        if (!esRefresco && !estaEnRango) logDebug(`Viaje ${trip.trip_id} descartado (fuera de rango: ${fechaActual} no está entre ${calendario.start_date} y ${calendario.end_date})`, 'warn');
 
                         return esDiaValido && estaEnRango;
                     })
@@ -568,7 +612,7 @@
                         hora: st.departure_time,
                         destino: db.trips.get(st.trip_id).trip_headsign || "Sin destino"
                     }))
-                    .sort((a, b) => a.hora.localeCompare(b.hora)); // Ordenar por hora
+                    .sort((a, b) => a.hora.localeCompare(b.hora));
 
                 const horariosUnicos = [];
                 const visto = new Set();
@@ -584,21 +628,43 @@
                     logDebug(`Se encontraron ${horariosUnicos.length} salidas únicas para hoy.`, 'ok');
                 }
                 
-                let proximoEncontrado = false;
+                // --- LÓGICA DE PRÓXIMO BUS MEJORADA ---
+                let proximoBus = null;
+                for (const h of horariosUnicos) {
+                    if (aSegundos(h.hora) > segundosActuales) {
+                        proximoBus = h; // Encontrar el primero
+                        break;
+                    }
+                }
+
+                // Mostrar el resumen del próximo bus
+                if (proximoBus) {
+                    dom.proximoHora.textContent = proximoBus.hora;
+                    dom.proximoDestino.textContent = proximoBus.destino;
+                    dom.proximoResumen.style.display = 'block';
+                    dom.tituloListaHorarios.style.display = 'block';
+                    if (!esRefresco) logDebug(`Próximo bus: ${proximoBus.hora}`, 'ok');
+                } else {
+                    dom.proximoResumen.style.display = 'none';
+                    dom.tituloListaHorarios.style.display = 'none';
+                }
+
+                // Renderizar la lista completa
                 dom.horariosLista.innerHTML = '';
-                
                 let busesPasados = 0;
+                
                 horariosUnicos.forEach(h => {
                     const div = document.createElement('div');
                     div.className = 'horario-item';
                     
                     const segundosBus = aSegundos(h.hora);
-                    const esMayor = segundosBus > segundosActuales;
-
-                    if (!proximoEncontrado && esMayor) {
+                    
+                    // Solo destacar el próximo bus si es el que encontramos
+                    if (proximoBus && h.hora === proximoBus.hora && h.destino === proximoBus.destino) {
                         div.classList.add('proximo');
-                        proximoEncontrado = true;
-                    } else if (!esMayor) {
+                    }
+                    
+                    if (segundosBus <= segundosActuales) {
                         busesPasados++;
                     }
                     
@@ -613,10 +679,12 @@
                 const msgSinMasSalidas = 'No hay más salidas programadas para hoy.';
                 const msgSinSalidasHoy = `No hay salidas programadas para hoy (verifique el día y el rango de fechas del servicio).`;
                 
-                if (busesPasados === horariosUnicos.length && horariosUnicos.length > 0) {
+                if (!proximoBus && horariosUnicos.length > 0) {
+                     // Si no hay próximo bus, pero SÍ hubo horarios
                      dom.horariosLista.innerHTML = `<div class="horario-item" style="text-align: center; color: var(--color-texto-secundario); padding: 20px 0;">${msgSinMasSalidas}</div>`;
                      if (!esRefresco) logDebug(msgSinMasSalidas, 'warn');
                 } else if (horariosUnicos.length === 0) {
+                     // Si no hubo ningún horario para hoy
                      dom.horariosLista.innerHTML = `<div class="horario-item" style="text-align: center; color: var(--color-texto-secundario); padding: 20px 0;">${msgSinSalidasHoy}</div>`;
                      if (!esRefresco) logDebug(msgSinSalidasHoy, 'warn');
                 }
@@ -627,6 +695,5 @@
             window.addEventListener('resize', () => mostrarPanel(esMovil() ? 'panel-rutas' : 'panel-rutas'));
         });
     </script>
-    
 </body>
 </html>
