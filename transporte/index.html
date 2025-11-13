@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS (Con las nuevas secciones) -->
+    <!-- CSS (Con estilos para Novedades) -->
     <style>
         :root {
             --color-primario: #0d6efd;
@@ -27,6 +27,15 @@
             --color-proximo: #fff3cd;
             --color-proximo-texto: #856404;
             --color-proximo-borde: #ffeeba;
+            --color-alerta-bg: #f8d7da;
+            --color-alerta-texto: #721c24;
+            --color-alerta-borde: #f5c6cb;
+            --color-info-bg: #cce5ff;
+            --color-info-texto: #004085;
+            --color-info-borde: #b8daff;
+            --color-obra-bg: #d4edda;
+            --color-obra-texto: #155724;
+            --color-obra-borde: #c3e6cb;
         }
         * { box-sizing: border-box; }
         body {
@@ -105,7 +114,56 @@
             font-size: 14px; color: var(--color-texto-secundario);
         }
         
-        /* --- Panel de Horarios --- */
+        /* --- NUEVO: Estilos de Novedades --- */
+        .novedades-container {
+            padding: 16px;
+            background: #fdfdfd;
+            border-bottom: 1px solid var(--color-borde);
+            flex-shrink: 0;
+            max-height: 35%; /* Evita que ocupe todo */
+            overflow-y: auto;
+        }
+        .novedades-container h3 {
+            font-size: 16px;
+            margin: 0 0 12px 0;
+            color: var(--color-texto);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--color-borde);
+        }
+        .novedad-item {
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid var(--color-borde);
+        }
+        .novedad-item:last-child { margin-bottom: 0; }
+        
+        .novedad-item strong {
+            display: block;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .novedad-item p {
+            font-size: 14px;
+            margin: 0;
+            color: var(--color-texto-secundario);
+        }
+        .chip {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 12px;
+            text-transform: uppercase;
+            margin-right: 8px;
+        }
+        /* Tipos de Novedad */
+        .tipo-ALERTA { background-color: var(--color-alerta-bg); color: var(--color-alerta-texto); border: 1px solid var(--color-alerta-borde); }
+        .tipo-INFO { background-color: var(--color-info-bg); color: var(--color-info-texto); border: 1px solid var(--color-info-borde); }
+        .tipo-OBRA { background-color: var(--color-obra-bg); color: var(--color-obra-texto); border: 1px solid var(--color-obra-borde); }
+        /* --- Fin Estilos Novedades --- */
+
         #horarios-panel-content {
             flex-grow: 1;
             display: flex;
@@ -129,10 +187,8 @@
             padding: 4px 8px; border-radius: 4px;
             margin-left: 8px;
         }
-        
-        /* --- NUEVO: Resumen Próximo Bus --- */
         #proximo-bus-resumen {
-            display: none; /* Oculto por defecto */
+            display: none;
             margin-bottom: 24px;
         }
         #proximo-bus-resumen h3 {
@@ -157,16 +213,13 @@
             font-weight: 600;
             color: var(--color-proximo-texto);
         }
-
         #titulo-lista-horarios {
             font-size: 18px;
             color: var(--color-texto);
             margin-top: 0;
             margin-bottom: 10px;
-            display: none; /* Oculto por defecto */
+            display: none;
         }
-        
-        /* --- Lista de Horarios --- */
         .horario-item {
             padding: 14px 0;
             border-bottom: 1px solid #f0f0f0;
@@ -183,7 +236,6 @@
             font-size: 16px; font-weight: 500;
             text-align: right; color: var(--color-texto-secundario);
         }
-        /* Destaque en la lista completa */
         .horario-item.proximo {
             background-color: var(--color-proximo);
             margin: 0 -24px;
@@ -194,7 +246,6 @@
         .horario-item.proximo .destino {
             color: var(--color-proximo-texto); font-weight: 600;
         }
-        
         #detalles-placeholder {
             text-align: center; padding: 60px 20px;
             color: var(--color-texto-secundario);
@@ -209,9 +260,8 @@
         .status-loading { color: #555; }
         .status-error { color: #dc3545; background: #fff0f0; padding: 20px; }
         
-        /* --- Ocultar Panel de Diagnóstico --- */
         #debug-log {
-            display: none; /* <-- AQUÍ ESTÁ EL CAMBIO */
+            display: none; /* Panel de diagnóstico oculto */
             flex-shrink: 0;
             background: #2b2b2b;
             color: #f1f1f1;
@@ -255,6 +305,13 @@
         <!-- Panel Izquierdo: Rutas -->
         <div id="panel-rutas" class="panel">
             <div class="panel-header"> <h2>🚌 Rutas</h2> </div>
+            
+            <!-- NUEVO: Novedades Generales -->
+            <div id="novedades-generales-container" class="novedades-container" style="display: none;">
+                <h3>📣 Novedades Generales</h3>
+                <div id="novedades-generales-lista"></div>
+            </div>
+            
             <div id="estado-carga" class="status-loading">
                 Cargando archivos GTFS...
             </div>
@@ -267,6 +324,13 @@
                 <a href="#" class="back-button" id="back-a-rutas" aria-label="Volver a Rutas">&lsaquo;</a>
                 <h2 id="paradas-titulo">📍 Paradas</h2>
             </div>
+            
+            <!-- NUEVO: Novedades de Ruta -->
+            <div id="novedades-ruta-container" class="novedades-container" style="display: none;">
+                <h3>📣 Novedades de la Ruta</h3>
+                <div id="novedades-ruta-lista"></div>
+            </div>
+            
             <div class="panel-list" id="lista-paradas"></div>
         </div>
 
@@ -283,12 +347,9 @@
                         <div class="icon">👈</div>
                         Seleccione una ruta y luego una parada.
                     </div>
-                    
                     <div id="reloj-actual" style="display:none;">
                         Día (Venezuela): <span id="reloj-dia">--</span> | Hora: <span id="reloj-hora">--:--:--</span>
                     </div>
-                    
-                    <!-- ===== NUEVA SECCIÓN DE RESUMEN ===== -->
                     <div id="proximo-bus-resumen" style="display: none;">
                         <h3>Próximo Autobús</h3>
                         <div class="horario-item proximo-resumen">
@@ -296,8 +357,6 @@
                             <span class="destino" id="proximo-destino">Cargando...</span>
                         </div>
                     </div>
-                    <!-- ==================================== -->
-                    
                     <h3 id="titulo-lista-horarios" style="display: none;">Todos los Horarios</h3>
                     <div id="horarios-lista"></div>
                 </div>
@@ -314,13 +373,8 @@
             // --- CONFIGURACIÓN ---
             const gtfsBaseUrl = "https://cromstudio.com.ve/transporte/";
             const diasSemanaGTFS = {
-                "domingo": "sunday",
-                "lunes": "monday",
-                "martes": "tuesday",
-                "miercoles": "wednesday",
-                "jueves": "thursday",
-                "viernes": "friday",
-                "sabado": "saturday"
+                "domingo": "sunday", "lunes": "monday", "martes": "tuesday",
+                "miercoles": "wednesday", "jueves": "thursday", "viernes": "friday", "sabado": "saturday"
             };
             
             // --- DOM REFS ---
@@ -341,19 +395,24 @@
                 relojHora: document.getElementById("reloj-hora"),
                 horariosLista: document.getElementById("horarios-lista"),
                 debugLog: document.getElementById("debug-log"),
-                
-                // Nuevos elementos de resumen
                 proximoResumen: document.getElementById("proximo-bus-resumen"),
                 proximoHora: document.getElementById("proximo-hora"),
                 proximoDestino: document.getElementById("proximo-destino"),
-                tituloListaHorarios: document.getElementById("titulo-lista-horarios")
+                tituloListaHorarios: document.getElementById("titulo-lista-horarios"),
+                
+                // Nuevos DOM de Novedades
+                novedadesGeneralesContainer: document.getElementById("novedades-generales-container"),
+                novedadesGeneralesLista: document.getElementById("novedades-generales-lista"),
+                novedadesRutaContainer: document.getElementById("novedades-ruta-container"),
+                novedadesRutaLista: document.getElementById("novedades-ruta-lista")
             };
 
             // --- DB & ESTADO ---
             const db = {
                 routes: new Map(), trips: new Map(),
                 stops: new Map(), calendar: new Map(),
-                stopTimes: [], agencyTimezone: "America/Caracas"
+                stopTimes: [], noticias: [], // <-- Nueva DB de noticias
+                agencyTimezone: "America/Caracas"
             };
             let relojIntervalo = null;
             let estadoApp = {
@@ -365,9 +424,11 @@
 
             // --- LOGGING ---
             function logDebug(message, type = 'info') {
+                /* Oculto por petición del usuario
                 const tipoClase = `log-${type}`;
                 dom.debugLog.innerHTML += `\n<span class="${tipoClase}">[${new Date().toLocaleTimeString()}] ${message}</span>`;
                 dom.debugLog.scrollTop = dom.debugLog.scrollHeight;
+                */
             }
 
             // --- INICIALIZACIÓN ---
@@ -389,10 +450,11 @@
                         });
                     };
 
-                    const [agency, routes, stops, trips, stopTimes, calendar] = await Promise.all([
+                    const [agency, routes, stops, trips, stopTimes, calendar, noticias] = await Promise.all([
                         parseFile("agency.txt"), parseFile("routes.txt"),
                         parseFile("stops.txt"), parseFile("trips.txt"),
                         parseFile("stop_times.txt"), parseFile("calendar.txt"),
+                        parseFile("noticias.txt") // <-- Cargar el nuevo archivo
                     ]);
 
                     // Procesar
@@ -402,10 +464,13 @@
                     trips.forEach(t => db.trips.set(t.trip_id, t));
                     calendar.forEach(c => db.calendar.set(c.service_id, c));
                     db.stopTimes = stopTimes;
+                    // Guardar noticias ordenadas por fecha (más nueva primero)
+                    db.noticias = noticias.sort((a, b) => new Date(b.fecha_publicacion) - new Date(a.fecha_publicacion));
 
                     logDebug("Base de datos en memoria creada.", 'ok');
                     dom.estadoCarga.style.display = "none";
                     
+                    renderizarNovedadesGenerales(); // <-- Renderizar noticias generales
                     renderizarListaRutas();
                     iniciarReloj();
                     configurarNavegacion();
@@ -440,17 +505,11 @@
 
             // --- LÓGICA DE TIEMPO ---
             function aSegundos(horaStr) {
-                if (!horaStr || typeof horaStr !== 'string' || horaStr.split(':').length < 3) {
-                    logDebug(`Hora inválida: "${horaStr}"`, 'warn');
-                    return 0;
-                }
+                if (!horaStr || typeof horaStr !== 'string' || horaStr.split(':').length < 3) return 0;
                 try {
                     const [h, m, s] = horaStr.split(':').map(Number);
                     return (h * 3600) + (m * 60) + s;
-                } catch (e) {
-                    logDebug(`Error al parsear hora: ${horaStr}`, 'error');
-                    return 0;
-                }
+                } catch (e) { return 0; }
             }
 
             function iniciarReloj() {
@@ -485,7 +544,46 @@
                 relojIntervalo = setInterval(actualizarHora, 1000);
             }
 
-            // --- RENDERIZADO ---
+            // --- RENDERIZADO (CON NOVEDADES) ---
+            
+            /** Crea el HTML para un item de novedad */
+            function crearHtmlNovedad(novedad) {
+                const tipo = novedad.tipo || 'INFO';
+                // Añade el trip_headsign al título si existe
+                const titulo = novedad.trip_headsign 
+                    ? `${novedad.titulo} (${novedad.trip_headsign})`
+                    : novedad.titulo;
+                
+                return `
+                    <div class="novedad-item tipo-${tipo}">
+                        <strong><span class="chip tipo-${tipo}">${tipo}</span>${titulo}</strong>
+                        <p>${novedad.descripcion}</p>
+                    </div>
+                `;
+            }
+
+            /** Renderiza solo las noticias generales */
+            function renderizarNovedadesGenerales() {
+                const noticiasGenerales = db.noticias.filter(n => !n.route_id);
+                if (noticiasGenerales.length > 0) {
+                    dom.novedadesGeneralesLista.innerHTML = noticiasGenerales.map(crearHtmlNovedad).join('');
+                    dom.novedadesGeneralesContainer.style.display = 'block';
+                } else {
+                    dom.novedadesGeneralesContainer.style.display = 'none';
+                }
+            }
+            
+            /** Renderiza noticias para una ruta específica */
+            function renderizarNovedadesDeRuta(routeId) {
+                const noticiasDeRuta = db.noticias.filter(n => n.route_id === routeId);
+                if (noticiasDeRuta.length > 0) {
+                    dom.novedadesRutaLista.innerHTML = noticiasDeRuta.map(crearHtmlNovedad).join('');
+                    dom.novedadesRutaContainer.style.display = 'block';
+                } else {
+                    dom.novedadesRutaContainer.style.display = 'none';
+                }
+            }
+
             function renderizarListaRutas() {
                 dom.listaRutas.innerHTML = '';
                 db.routes.forEach(route => {
@@ -503,6 +601,8 @@
                         div.classList.add('active');
                         estadoApp.rutaActiva = route.route_id;
                         logDebug(`Ruta seleccionada: ${route.route_long_name}`, 'info');
+                        
+                        renderizarNovedadesDeRuta(route.route_id); // <-- Cargar noticias de la ruta
                         renderizarListaParadas(route.route_id);
                     });
                     dom.listaRutas.appendChild(div);
@@ -628,16 +728,14 @@
                     logDebug(`Se encontraron ${horariosUnicos.length} salidas únicas para hoy.`, 'ok');
                 }
                 
-                // --- LÓGICA DE PRÓXIMO BUS MEJORADA ---
                 let proximoBus = null;
                 for (const h of horariosUnicos) {
                     if (aSegundos(h.hora) > segundosActuales) {
-                        proximoBus = h; // Encontrar el primero
+                        proximoBus = h;
                         break;
                     }
                 }
 
-                // Mostrar el resumen del próximo bus
                 if (proximoBus) {
                     dom.proximoHora.textContent = proximoBus.hora;
                     dom.proximoDestino.textContent = proximoBus.destino;
@@ -649,7 +747,6 @@
                     dom.tituloListaHorarios.style.display = 'none';
                 }
 
-                // Renderizar la lista completa
                 dom.horariosLista.innerHTML = '';
                 let busesPasados = 0;
                 
@@ -659,7 +756,6 @@
                     
                     const segundosBus = aSegundos(h.hora);
                     
-                    // Solo destacar el próximo bus si es el que encontramos
                     if (proximoBus && h.hora === proximoBus.hora && h.destino === proximoBus.destino) {
                         div.classList.add('proximo');
                     }
@@ -675,16 +771,13 @@
                     dom.horariosLista.appendChild(div);
                 });
                 
-                // Mensajes de estado
                 const msgSinMasSalidas = 'No hay más salidas programadas para hoy.';
                 const msgSinSalidasHoy = `No hay salidas programadas para hoy (verifique el día y el rango de fechas del servicio).`;
                 
                 if (!proximoBus && horariosUnicos.length > 0) {
-                     // Si no hay próximo bus, pero SÍ hubo horarios
                      dom.horariosLista.innerHTML = `<div class="horario-item" style="text-align: center; color: var(--color-texto-secundario); padding: 20px 0;">${msgSinMasSalidas}</div>`;
                      if (!esRefresco) logDebug(msgSinMasSalidas, 'warn');
                 } else if (horariosUnicos.length === 0) {
-                     // Si no hubo ningún horario para hoy
                      dom.horariosLista.innerHTML = `<div class="horario-item" style="text-align: center; color: var(--color-texto-secundario); padding: 20px 0;">${msgSinSalidasHoy}</div>`;
                      if (!esRefresco) logDebug(msgSinSalidasHoy, 'warn');
                 }

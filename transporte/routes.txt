@@ -1,2 +1,2 @@
 route_id,agency_id,route_short_name,route_long_name,route_type
-L-CUATRI,LC,Cuatricentenario,Linea Cuatricentenario (Valera - Escuque),3
+L-CUATRI,LC,Cuatricentenaria,Linea Cuatricentenaria (Valera - Escuque),3
