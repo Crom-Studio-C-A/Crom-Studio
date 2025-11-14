@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horarios de Transporte - Crom Studio</title>
+    <title>Horarios y Mapa - Crom Studio</title>
     
     <!-- JS de PapaParse (CDN - para leer los .txt/CSV) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -12,8 +12,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+          
+    <!-- 
+      ==================================================================
+      NUEVO: API de Google Maps con tu API Key
+      ==================================================================
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxQnqhHh_H7IGHH5p5bow2Bz8iPIIqRww&libraries=routes"></script>
 
-    <!-- CSS (Con estilos para Tarifas) -->
+    <!-- CSS (Con estilos para Google Maps y Planificador v2) -->
     <style>
         :root {
             --color-primario: #0d6efd;
@@ -45,12 +52,229 @@
             margin: 0; padding: 0;
             height: 100vh;
             overflow: hidden;
+            display: flex;
+            flex-direction: column; /* Para la barra de navegación */
         }
-        #app-container {
+        
+        /* --- Barra de Navegación --- */
+        #main-nav {
+            flex-shrink: 0;
+            background: var(--color-tarjeta);
+            border-bottom: 1px solid var(--color-borde);
+            padding: 0 20px;
+        }
+        #main-nav ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            list-style: none;
+        }
+        #main-nav li a {
+            display: block;
+            padding: 16px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--color-texto-secundario);
+            border-bottom: 3px solid transparent;
+        }
+        #main-nav li a:hover {
+            color: var(--color-texto);
+        }
+        #main-nav li a.active {
+            color: var(--color-primario);
+            border-bottom-color: var(--color-primario);
+        }
+        /* --- Fin Barra de Navegación --- */
+
+        #app-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* --- Contenedor Principal (Layout) --- */
+        #visor-horarios {
             width: 100%; height: 100%;
             display: flex;
             background: var(--color-tarjeta);
         }
+        
+        /* --- Contenedor del Mapa --- */
+        #visor-mapa {
+            width: 100%;
+            height: 100%;
+            display: none; /* Oculto por defecto */
+            position: relative; /* Para superponer el panel */
+        }
+        #mapa-principal {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* --- Panel de "Cómo Llegar" de Google Maps --- */
+        #directions-panel {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 5;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 300px;
+        }
+        #directions-panel h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+        }
+        #directions-panel input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--color-borde);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+        }
+        #directions-panel button {
+            padding: 10px;
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        #directions-panel button:hover {
+            background-color: #0b5ed7;
+        }
+        /* --- Fin Panel "Cómo Llegar" --- */
+
+        /* --- Contenedor del Planificador --- */
+        #visor-planificador {
+            width: 100%;
+            height: 100%;
+            display: none; /* Oculto por defecto */
+            padding: 24px;
+            overflow-y: auto;
+        }
+        #planificador-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        #planificador-form {
+            background: var(--color-tarjeta);
+            border: 1px solid var(--color-borde);
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 16px;
+            align-items: end;
+        }
+        #planificador-form label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+        #planificador-form select {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid var(--color-borde);
+            border-radius: 4px;
+            background: #fff;
+        }
+        #btn-buscar-ruta {
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            background: var(--color-primario);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        #btn-buscar-ruta:hover {
+            background: #0b5ed7;
+        }
+        
+        #planificador-resultados {
+            margin-top: 24px;
+        }
+        #planificador-resultados h2 {
+            font-size: 22px;
+            color: var(--color-texto);
+            margin-bottom: 16px;
+        }
+        /* Estilo para "Mañana" */
+        #planificador-resultados h2.manana {
+            color: var(--color-proximo-texto);
+        }
+        
+        .resultado-viaje {
+            background: var(--color-tarjeta);
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .resultado-viaje h3 {
+            background: var(--color-activo);
+            padding: 16px 20px;
+            margin: 0;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .resultado-viaje h3 span {
+            font-weight: 500;
+            color: var(--color-texto-secundario);
+        }
+        .resultado-viaje .detalles {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 16px;
+            font-size: 16px;
+        }
+        .resultado-viaje .hora {
+            font-size: 22px;
+            font-weight: 700;
+            font-family: monospace;
+        }
+        .resultado-viaje .parada {
+            font-weight: 600;
+        }
+        .resultado-viaje .duracion {
+            text-align: center;
+            font-size: 14px;
+            color: var(--color-texto-secundario);
+        }
+        
+        /* Estilos para Transbordo */
+        .transbordo-conector {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-primario);
+            padding: 16px;
+            background: var(--color-fondo);
+            border-top: 1px dashed var(--color-borde);
+            border-bottom: 1px dashed var(--color-borde);
+        }
+
+        /* --- Fin Contenedor Planificador --- */
+
         .panel {
             border-right: 1px solid var(--color-borde);
             display: flex;
@@ -162,7 +386,6 @@
         .tipo-INFO { background-color: var(--color-info-bg); color: var(--color-info-texto); border: 1px solid var(--color-info-borde); }
         .tipo-OBRA { background-color: var(--color-obra-bg); color: var(--color-obra-texto); border: 1px solid var(--color-obra-borde); }
 
-        /* NUEVO: Estilo para la Tarifa */
         #tarifa-info {
             padding: 16px;
             background: var(--color-activo);
@@ -179,7 +402,7 @@
             color: var(--color-texto);
             margin: 0;
             line-height: 1.5;
-            white-space: pre-wrap; /* Respeta los saltos de línea */
+            white-space: pre-wrap;
         }
         /* --- Fin Estilos Novedades/Tarifa --- */
 
@@ -298,9 +521,9 @@
         .log-error { color: #ef9a9a; }
         
         @media (max-width: 768px) {
-            #app-container {
+            #visor-horarios {
                 flex-direction: column;
-                height: 100vh;
+                height: 100%;
             }
             .panel {
                 width: 100% !important;
@@ -313,83 +536,140 @@
             .back-button { display: block; }
             .panel-header { padding: 16px; }
             #debug-log { height: 100px; }
+            
+            /* Móvil: Planificador */
+            #planificador-form {
+                grid-template-columns: 1fr;
+            }
+            /* Móvil: Panel de "Cómo Llegar" */
+            #directions-panel {
+                width: calc(100% - 20px);
+            }
         }
     </style>
 </head>
 <body>
+    
+    <!-- ===== NUEVA BARRA DE NAVEGACIÓN ===== -->
+    <nav id="main-nav">
+        <ul>
+            <li><a href="#" id="btn-horarios" class="active">Horarios</a></li>
+            <li><a href="#" id="btn-mapa">Mapa</a></li>
+            <li><a href="#" id="btn-planificador">Planificador</a></li>
+        </ul>
+    </nav>
+    
+    <!-- ===== CONTENEDOR DE LA APP ===== -->
+    <div id="app-wrapper">
 
-    <!-- ===== ESTRUCTURA DE LA APLICACIÓN ===== -->
-    <div id="app-container">
-        
-        <!-- Panel Izquierdo: Rutas -->
-        <div id="panel-rutas" class="panel">
-            <div class="panel-header"> <h2>🚌 Rutas</h2> </div>
-            
-            <div id="novedades-generales-container" class="novedades-container" style="display: none;">
-                <h3>📣 Novedades Generales</h3>
-                <div id="novedades-generales-lista"></div>
-            </div>
-            
-            <div id="estado-carga" class="status-loading">
-                Cargando archivos GTFS...
-            </div>
-            <div class="panel-list" id="lista-rutas"></div>
-        </div>
-
-        <!-- Panel Central: Paradas -->
-        <div id="panel-paradas" class="panel">
-            <div class="panel-header">
-                <a href="#" class="back-button" id="back-a-rutas" aria-label="Volver a Rutas">&lsaquo;</a>
-                <h2 id="paradas-titulo">📍 Paradas</h2>
-            </div>
-            
-            <!-- NUEVO: Contenedor de Tarifa -->
-            <div id="tarifa-info" style="display: none;">
-                <h3>💲 Tarifa y Pago</h3>
-                <p id="tarifa-descripcion"></p>
-            </div>
-            
-            <div id="novedades-ruta-container" class="novedades-container" style="display: none;">
-                <h3>📣 Novedades de la Ruta</h3>
-                <div id="novedades-ruta-lista"></div>
-            </div>
-            
-            <div class="panel-list" id="lista-paradas"></div>
-        </div>
-
-        <!-- Panel Derecho: Horarios de la Parada Seleccionada -->
-        <div id="panel-detalles" class="panel">
-            <div class="panel-header">
-                <a href="#" class="back-button" id="back-a-paradas" aria-label="Volver a Paradas">&lsaquo;</a>
-                <h2 id="detalles-titulo">🕒 Horarios</h2>
-            </div>
-            
-            <div id="horarios-panel-content">
-                <div id="horarios-container">
-                    <div id="detalles-placeholder">
-                        <div class="icon">👈</div>
-                        Seleccione una ruta y luego una parada.
-                    </div>
-                    <div id="reloj-actual" style="display:none;">
-                        Día (Venezuela): <span id="reloj-dia">--</span> | Hora: <span id="reloj-hora">--:--:--</span>
-                    </div>
-                    <div id="proximo-bus-resumen" style="display: none;">
-                        <h3>Próximo Autobús</h3>
-                        <div class="horario-item proximo-resumen">
-                            <span class="hora" id="proximo-hora">--:--:--</span>
-                            <span class="destino" id="proximo-destino">Cargando...</span>
-                        </div>
-                    </div>
-                    <h3 id="titulo-lista-horarios" style="display: none;">Todos los Horarios</h3>
-                    <div id="horarios-lista"></div>
+        <!-- ===== VISOR DE HORARIOS ===== -->
+        <div id="visor-horarios">
+            <!-- Panel Izquierdo: Rutas -->
+            <div id="panel-rutas" class="panel">
+                <div class="panel-header"> <h2>🚌 Rutas</h2> </div>
+                <div id="novedades-generales-container" class="novedades-container" style="display: none;">
+                    <h3>📣 Novedades Generales</h3>
+                    <div id="novedades-generales-lista"></div>
                 </div>
-                
-                <pre id="debug-log">Iniciando panel de diagnóstico...</pre>
+                <div id="estado-carga" class="status-loading">
+                    Cargando archivos GTFS...
+                </div>
+                <div class="panel-list" id="lista-rutas"></div>
+            </div>
+
+            <!-- Panel Central: Paradas -->
+            <div id="panel-paradas" class="panel">
+                <div class="panel-header">
+                    <a href="#" class="back-button" id="back-a-rutas" aria-label="Volver a Rutas">&lsaquo;</a>
+                    <h2 id="paradas-titulo">📍 Paradas</h2>
+                </div>
+                <div id="tarifa-info" style="display: none;">
+                    <h3>💲 Tarifa y Pago</h3>
+                    <p id="tarifa-descripcion"></p>
+                </div>
+                <div id="novedades-ruta-container" class="novedades-container" style="display: none;">
+                    <h3>📣 Novedades de la Ruta</h3>
+                    <div id="novedades-ruta-lista"></div>
+                </div>
+                <div class="panel-list" id="lista-paradas"></div>
+            </div>
+
+            <!-- Panel Derecho: Horarios -->
+            <div id="panel-detalles" class="panel">
+                <div class="panel-header">
+                    <a href="#" class="back-button" id="back-a-paradas" aria-label="Volver a Paradas">&lsaquo;</a>
+                    <h2 id="detalles-titulo">🕒 Horarios</h2>
+                </div>
+                <div id="horarios-panel-content">
+                    <div id="horarios-container">
+                        <div id="detalles-placeholder">
+                            <div class="icon">👈</div>
+                            Seleccione una ruta y luego una parada.
+                        </div>
+                        <div id="reloj-actual" style="display:none;">
+                            Día (Venezuela): <span id="reloj-dia">--</span> | Hora: <span id="reloj-hora">--:--:--</span>
+                        </div>
+                        <div id="proximo-bus-resumen" style="display: none;">
+                            <h3>Próximo Autobús</h3>
+                            <div class="horario-item proximo-resumen">
+                                <span class="hora" id="proximo-hora">--:--:--</span>
+                                <span class="destino" id="proximo-destino">Cargando...</span>
+                            </div>
+                        </div>
+                        <h3 id="titulo-lista-horarios" style="display: none;">Todos los Horarios</h3>
+                        <div id="horarios-lista"></div>
+                    </div>
+                    <pre id="debug-log">Iniciando panel de diagnóstico...</pre>
+                </div>
             </div>
         </div>
+        
+        <!-- ===== VISOR DE MAPA (GOOGLE MAPS) ===== -->
+        <div id="visor-mapa">
+            <div id="mapa-principal"></div>
+            
+            <!-- Panel de Cómo Llegar (Google Maps) -->
+            <div id="directions-panel">
+                <h3>Cómo Llegar (en auto/caminando)</h3>
+                <input type="text" id="directions-start" placeholder="Punto de inicio">
+                <input type="text" id="directions-end" placeholder="Punto de destino">
+                <button id="calculate-route-btn">Calcular Ruta</button>
+                <div id="directions-error" style="color: red; font-size: 12px;"></div>
+            </div>
+        </div>
+        
+        <!-- ===== VISOR PLANIFICADOR (GTFS) ===== -->
+        <div id="visor-planificador">
+            <div id="planificador-container">
+                <div id="planificador-form">
+                    <div>
+                        <label for="plan-origen">Desde:</label>
+                        <select id="plan-origen">
+                            <option value="">Seleccione una parada...</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="plan-destino">Hasta:</label>
+                        <select id="plan-destino">
+                            <option value="">Seleccione una parada...</option>
+                        </select>
+                    </div>
+                    <button id="btn-buscar-ruta">Buscar Ruta en Autobús</button>
+                </div>
+                <div id="planificador-resultados">
+                    <!-- Los resultados de la búsqueda aparecerán aquí -->
+                </div>
+            </div>
+        </div>
+        
     </div>
 
-    <!-- ===== SCRIPT DE LA APLICACIÓN ===== -->
+    <!-- ===== SCRIPTS ===== -->
+    
+    <!-- JS de PapaParse -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <!-- SCRIPT DE LA APLICACIÓN (Actualizado con Google Maps y Transbordos) -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
@@ -399,9 +679,19 @@
                 "domingo": "sunday", "lunes": "monday", "martes": "tuesday",
                 "miercoles": "wednesday", "jueves": "thursday", "viernes": "friday", "sabado": "saturday"
             };
+            const MIN_TIEMPO_TRANSBORDO_SEGUNDOS = 20 * 60; // 20 minutos
             
             // --- DOM REFS ---
             const dom = {
+                // Contenedores principales
+                visorHorarios: document.getElementById("visor-horarios"),
+                visorMapa: document.getElementById("visor-mapa"),
+                visorPlanificador: document.getElementById("visor-planificador"),
+                btnHorarios: document.getElementById("btn-horarios"),
+                btnMapa: document.getElementById("btn-mapa"),
+                btnPlanificador: document.getElementById("btn-planificador"),
+
+                // Panel Horarios
                 estadoCarga: document.getElementById("estado-carga"),
                 panelRutas: document.getElementById("panel-rutas"),
                 listaRutas: document.getElementById("lista-rutas"),
@@ -426,10 +716,20 @@
                 novedadesGeneralesLista: document.getElementById("novedades-generales-lista"),
                 novedadesRutaContainer: document.getElementById("novedades-ruta-container"),
                 novedadesRutaLista: document.getElementById("novedades-ruta-lista"),
-                
-                // Nuevos DOM de Tarifa
                 tarifaInfo: document.getElementById("tarifa-info"),
-                tarifaDescripcion: document.getElementById("tarifa-descripcion")
+                tarifaDescripcion: document.getElementById("tarifa-descripcion"),
+                
+                // DOM de Mapa
+                directionsStart: document.getElementById("directions-start"),
+                directionsEnd: document.getElementById("directions-end"),
+                calculateRouteBtn: document.getElementById("calculate-route-btn"),
+                directionsError: document.getElementById("directions-error"),
+                
+                // DOM de Planificador
+                planOrigen: document.getElementById("plan-origen"),
+                planDestino: document.getElementById("plan-destino"),
+                btnBuscarRuta: document.getElementById("btn-buscar-ruta"),
+                planResultados: document.getElementById("planificador-resultados")
             };
 
             // --- DB & ESTADO ---
@@ -437,20 +737,32 @@
                 routes: new Map(), trips: new Map(),
                 stops: new Map(), calendar: new Map(),
                 stopTimes: [], noticias: [],
-                tarifas: new Map(), // <-- Nueva DB de tarifas
-                agencyTimezone: "America/Caracas"
+                tarifas: new Map(), 
+                shapes: new Map(), 
+                agencyTimezone: "America/Caracas",
+                // Index para búsqueda rápida: stop_id -> [stop_time, stop_time, ...]
+                stopTimesPorParada: new Map() 
             };
             let relojIntervalo = null;
             let estadoApp = {
                 rutaActiva: null, paradaActiva: null,
                 diaActualGTFS_Field: 'monday',
-                fechaActualYYYYMMDD: 20250101
+                fechaActualYYYYMMDD: 20250101,
+                // Estado de Google Maps
+                googleMap: null, 
+                mapaInicializado: false,
+                directionsService: null,
+                directionsRenderer: null
             };
             const esMovil = () => window.innerWidth <= 768;
 
             // --- LOGGING ---
             function logDebug(message, type = 'info') {
-                /* Oculto */
+                /* Oculto por petición del usuario
+                const tipoClase = `log-${type}`;
+                dom.debugLog.innerHTML += `\n<span class="${tipoClase}">[${new Date().toLocaleTimeString()}] ${message}</span>`;
+                dom.debugLog.scrollTop = dom.debugLog.scrollHeight;
+                */
             }
 
             // --- INICIALIZACIÓN ---
@@ -472,13 +784,12 @@
                         });
                     };
 
-                    // Añadir tarifas.txt al Promise.all
-                    const [agency, routes, stops, trips, stopTimes, calendar, noticias, tarifas] = await Promise.all([
+                    const [agency, routes, stops, trips, stopTimes, calendar, noticias, tarifas, shapes] = await Promise.all([
                         parseFile("agency.txt"), parseFile("routes.txt"),
                         parseFile("stops.txt"), parseFile("trips.txt"),
                         parseFile("stop_times.txt"), parseFile("calendar.txt"),
-                        parseFile("noticias.txt"),
-                        parseFile("tarifas.txt") // <-- Cargar el nuevo archivo
+                        parseFile("noticias.txt"), parseFile("tarifas.txt"),
+                        parseFile("shapes.txt") 
                     ]);
 
                     // Procesar
@@ -489,8 +800,25 @@
                     calendar.forEach(c => db.calendar.set(c.service_id, c));
                     db.stopTimes = stopTimes;
                     db.noticias = noticias.sort((a, b) => new Date(b.fecha_publicacion) - new Date(a.fecha_publicacion));
-                    // Procesar tarifas
                     tarifas.forEach(t => db.tarifas.set(t.route_id, t.descripcion_tarifa));
+                    
+                    shapes.forEach(p => {
+                        if (!db.shapes.has(p.shape_id)) {
+                            db.shapes.set(p.shape_id, []);
+                        }
+                        db.shapes.get(p.shape_id).push(p);
+                    });
+                    db.shapes.forEach(points => points.sort((a, b) => a.shape_pt_sequence - b.shape_pt_sequence));
+                    
+                    // --- NUEVO: Crear índice para el Planificador ---
+                    logDebug("Creando índice de stop_times...", 'info');
+                    db.stopTimes.forEach(st => {
+                        if (!db.stopTimesPorParada.has(st.stop_id)) {
+                            db.stopTimesPorParada.set(st.stop_id, []);
+                        }
+                        db.stopTimesPorParada.get(st.stop_id).push(st);
+                    });
+                    logDebug(`Índice creado para ${db.stopTimesPorParada.size} paradas.`, 'ok');
 
                     logDebug("Base de datos en memoria creada.", 'ok');
                     dom.estadoCarga.style.display = "none";
@@ -499,7 +827,7 @@
                     renderizarListaRutas();
                     iniciarReloj();
                     configurarNavegacion();
-                    mostrarPanel('panel-rutas');
+                    popularDropdownsPlanificador();
 
                 } catch (error) {
                     console.error("Error fatal en main():", error);
@@ -510,7 +838,42 @@
             }
 
             // --- NAVEGACIÓN ---
-            function mostrarPanel(panelId) {
+            
+            function mostrarVisor(visorId) {
+                dom.visorHorarios.style.display = 'none';
+                dom.visorMapa.style.display = 'none';
+                dom.visorPlanificador.style.display = 'none';
+                
+                dom.btnHorarios.classList.remove('active');
+                dom.btnMapa.classList.remove('active');
+                dom.btnPlanificador.classList.remove('active');
+
+                if (visorId === 'visor-mapa') {
+                    dom.visorMapa.style.display = 'block';
+                    dom.btnMapa.classList.add('active');
+                    
+                    requestAnimationFrame(() => {
+                        if (!estadoApp.mapaInicializado) {
+                            logDebug("Iniciando mapa por primera vez...", 'info');
+                            iniciarMapaGoogle(); // Cambiado
+                            renderizarTodasLasRutasEnMapa(); 
+                            renderizarTodasLasParadasEnMapa(); 
+                            estadoApp.mapaInicializado = true;
+                            logDebug("Mapa inicializado y datos dibujados.", 'ok');
+                        }
+                    });
+
+                } else if (visorId === 'visor-planificador') {
+                    dom.visorPlanificador.style.display = 'block';
+                    dom.btnPlanificador.classList.add('active');
+                }
+                else { // 'visor-horarios' es el default
+                    dom.visorHorarios.style.display = 'flex';
+                    dom.btnHorarios.classList.add('active');
+                }
+            }
+
+            function mostrarPanelHorarios(panelId) {
                 if (!esMovil()) {
                     dom.panelRutas.style.display = "flex";
                     dom.panelParadas.style.display = "flex";
@@ -524,8 +887,118 @@
             }
             
             function configurarNavegacion() {
-                dom.backARutas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanel('panel-rutas'); });
-                dom.backAParadas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanel('panel-paradas'); });
+                dom.btnHorarios.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-horarios'); });
+                dom.btnMapa.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-mapa'); });
+                dom.btnPlanificador.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-planificador'); });
+
+                dom.backARutas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanelHorarios('panel-rutas'); });
+                dom.backAParadas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanelHorarios('panel-paradas'); });
+                
+                dom.calculateRouteBtn.addEventListener('click', calcularRutaGoogleMaps);
+                dom.btnBuscarRuta.addEventListener('click', buscarRutaGTFS);
+            }
+            
+            // --- FUNCIONES DE MAPA (GOOGLE MAPS) ---
+            
+            function iniciarMapaGoogle() {
+                logDebug("Inicializando Google Maps...");
+                // Comprobar si la API de Google Maps se cargó
+                if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+                    logDebug("ERROR: La API de Google Maps no se ha cargado. ¿Falta la API Key o es inválida?", 'error');
+                    dom.visorMapa.innerHTML = `<h2 style="padding: 20px; color: red;">Error: No se pudo cargar Google Maps. Verifique su API Key.</h2>`;
+                    return;
+                }
+                
+                const mapCenter = { lat: 9.5, lng: -69.5 }; // Centro de Venezuela
+                estadoApp.googleMap = new google.maps.Map(document.getElementById('mapa-principal'), {
+                    zoom: 7,
+                    center: mapCenter,
+                    mapTypeId: 'roadmap' // roadmap, satellite, hybrid, terrain
+                });
+                
+                estadoApp.directionsService = new google.maps.DirectionsService();
+                estadoApp.directionsRenderer = new google.maps.DirectionsRenderer();
+                estadoApp.directionsRenderer.setMap(estadoApp.googleMap);
+                
+                logDebug("Google Maps inicializado.", 'ok');
+            }
+            
+            function renderizarTodasLasRutasEnMapa() {
+                const colores = ['#0d6efd', '#dc3545', '#198754', '#ffc107', '#0dcaf0', '#fd7e14'];
+                let colorIndex = 0;
+                let groupBounds = new google.maps.LatLngBounds();
+
+                db.shapes.forEach((points, shapeId) => {
+                    const latLngs = points.map(p => ({ lat: p.shape_pt_lat, lng: p.shape_pt_lon }));
+                    const color = colores[colorIndex % colores.length];
+                    
+                    const polyline = new google.maps.Polyline({
+                        path: latLngs,
+                        strokeColor: color,
+                        strokeOpacity: 0.8,
+                        strokeWeight: 5,
+                        map: estadoApp.googleMap
+                    });
+                    
+                    const infoWindow = new google.maps.InfoWindow({ content: `Ruta: ${shapeId}` });
+                    polyline.addListener('click', (e) => {
+                        infoWindow.setPosition(e.latLng);
+                        infoWindow.open(estadoApp.googleMap);
+                    });
+
+                    latLngs.forEach(latLng => groupBounds.extend(latLng));
+                    colorIndex++;
+                });
+                
+                if (!groupBounds.isEmpty()) {
+                    estadoApp.googleMap.fitBounds(groupBounds);
+                }
+                logDebug(`Renderizadas ${db.shapes.size} rutas en Google Maps.`, 'ok');
+            }
+
+            function renderizarTodasLasParadasEnMapa() {
+                db.stops.forEach(stop => {
+                    const marker = new google.maps.Marker({
+                        position: { lat: stop.stop_lat, lng: stop.stop_lon },
+                        map: estadoApp.googleMap,
+                        title: stop.stop_name
+                    });
+
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: `<b>${stop.stop_name}</b>`
+                    });
+
+                    marker.addListener('click', () => {
+                        infoWindow.open(estadoApp.googleMap, marker);
+                    });
+                });
+                logDebug(`Renderizadas ${db.stops.size} paradas en Google Maps.`, 'ok');
+            }
+            
+            function calcularRutaGoogleMaps() {
+                const start = dom.directionsStart.value;
+                const end = dom.directionsEnd.value;
+                
+                if (!start || !end) {
+                    dom.directionsError.textContent = "Por favor, ingrese un inicio y un destino.";
+                    return;
+                }
+                dom.directionsError.textContent = "";
+                
+                const request = {
+                    origin: start,
+                    destination: end,
+                    travelMode: 'DRIVING' // Puede ser 'WALKING', 'BICYCLING'.
+                };
+                
+                estadoApp.directionsService.route(request, (result, status) => {
+                    if (status == 'OK') {
+                        estadoApp.directionsRenderer.setDirections(result);
+                    } else {
+                        logDebug(`Error al calcular ruta: ${status}`, 'error');
+                        dom.directionsError.textContent = `No se pudo calcular la ruta: ${status}`;
+                    }
+                });
             }
 
             // --- LÓGICA DE TIEMPO ---
@@ -535,6 +1008,12 @@
                     const [h, m, s] = horaStr.split(':').map(Number);
                     return (h * 3600) + (m * 60) + s;
                 } catch (e) { return 0; }
+            }
+            
+            function segundosAFormato(seg) {
+                const horas = Math.floor(seg / 3600);
+                const minutos = Math.floor((seg % 3600) / 60);
+                return `${horas}h ${minutos}min`;
             }
 
             function iniciarReloj() {
@@ -569,7 +1048,7 @@
                 relojIntervalo = setInterval(actualizarHora, 1000);
             }
 
-            // --- RENDERIZADO (CON NOVEDADES Y TARIFA) ---
+            // --- RENDERIZADO (VISOR HORARIOS) ---
             
             function crearHtmlNovedad(novedad) {
                 const tipo = novedad.tipo || 'INFO';
@@ -634,7 +1113,6 @@
                 const route = db.routes.get(routeId);
                 dom.paradasTitulo.textContent = `📍 Paradas de ${route.route_short_name}`;
 
-                // --- AÑADIDO: Mostrar Tarifa ---
                 const descripcionTarifa = db.tarifas.get(routeId);
                 if (descripcionTarifa) {
                     dom.tarifaDescripcion.textContent = descripcionTarifa;
@@ -642,18 +1120,20 @@
                 } else {
                     dom.tarifaInfo.style.display = 'none';
                 }
-                // --- FIN ---
 
                 const viajesRuta = [...db.trips.values()].filter(t => t.route_id === routeId);
                 const idsViajesRuta = new Set(viajesRuta.map(t => t.trip_id));
                 
                 const idsParadas = new Set();
                 const paradasOrdenadas = [];
-                const primerViaje = viajesRuta.length > 0 ? viajesRuta[0].trip_id : null;
+                let primerViajeIda = viajesRuta.find(t => t.direction_id === 0)?.trip_id;
+                if (!primerViajeIda) {
+                    primerViajeIda = viajesRuta.length > 0 ? viajesRuta[0].trip_id : null;
+                }
                 
-                if(primerViaje) {
+                if(primerViajeIda) {
                     db.stopTimes
-                        .filter(st => st.trip_id === primerViaje)
+                        .filter(st => st.trip_id === primerViajeIda)
                         .sort((a,b) => a.stop_sequence - b.stop_sequence)
                         .forEach(st => {
                             if (!idsParadas.has(st.stop_id)) {
@@ -689,10 +1169,9 @@
                 dom.proximoResumen.style.display = 'none';
                 dom.tituloListaHorarios.style.display = 'none';
                 
-                mostrarPanel('panel-paradas');
+                mostrarPanelHorarios('panel-paradas');
             }
 
-            /** Muestra los horarios para una parada */
             function renderizarHorarios(stopId, esRefresco = false) {
                 if (!esRefresco) {
                     const stop = db.stops.get(stopId);
@@ -700,7 +1179,7 @@
                     dom.detallesPlaceholder.style.display = "none";
                     dom.horariosLista.innerHTML = '';
                     dom.debugLog.innerHTML = 'Refrescando horarios...';
-                    mostrarPanel('panel-detalles');
+                    mostrarPanelHorarios('panel-detalles');
                 }
 
                 const horaActualStr = dom.relojHora.textContent;
@@ -813,10 +1292,310 @@
                      if (!esRefresco) logDebug(msgSinSalidasHoy, 'warn');
                 }
             }
+            
+            // --- NUEVAS FUNCIONES (PLANIFICADOR v2) ---
+            
+            function popularDropdownsPlanificador() {
+                const paradasOrdenadas = [...db.stops.values()].sort((a, b) => a.stop_name.localeCompare(b.stop_name));
+                
+                paradasOrdenadas.forEach(stop => {
+                    const optionOrigen = document.createElement('option');
+                    optionOrigen.value = stop.stop_id;
+                    optionOrigen.textContent = stop.stop_name;
+                    dom.planOrigen.appendChild(optionOrigen);
+                    
+                    const optionDestino = document.createElement('option');
+                    optionDestino.value = stop.stop_id;
+                    optionDestino.textContent = stop.stop_name;
+                    dom.planDestino.appendChild(optionDestino);
+                });
+                logDebug("Dropdowns de planificador populados.", 'ok');
+            }
+            
+            /** Obtiene los datos de tiempo para una búsqueda (hoy o mañana) */
+            function getDatosDeTiempo(paraManana = false) {
+                const ahora = new Date();
+                if (paraManana) {
+                    ahora.setDate(ahora.getDate() + 1);
+                }
+                
+                const opcionesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: db.agencyTimezone };
+                const horaFormato = new Intl.DateTimeFormat('es-VE', opcionesHora).format(ahora);
+                
+                const opcionesDia = { weekday: 'long', timeZone: db.agencyTimezone };
+                const diaNombreConAcento = new Intl.DateTimeFormat('es-VE', opcionesDia).format(ahora);
+                const diaNombreLimpio = diaNombreConAcento.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                
+                const diaField = diasSemanaGTFS[diaNombreLimpio] || 'monday';
+                
+                const ymdFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: db.agencyTimezone, year: 'numeric', month: '2-digit', day: '2-digit' });
+                const [y, m, d] = ymdFormatter.format(ahora).split('-');
+                const fechaYYYYMMDD = parseInt(`${y}${m}${d}`, 10);
+                
+                // Si es para mañana, la hora de inicio es 00:00:00
+                const segundosInicio = paraManana ? 0 : aSegundos(horaFormato);
+                
+                return {
+                    segundosInicio,
+                    diaField,
+                    fechaYYYYMMDD
+                };
+            }
+            
+            /** Comprueba si un viaje es válido para un día y fecha */
+            function esViajeValido(tripId, diaField, fecha) {
+                const trip = db.trips.get(tripId);
+                if (!trip) return false;
+                
+                const calendario = db.calendar.get(trip.service_id);
+                if (!calendario) return false;
+                
+                const esDiaValido = calendario[diaField] === 1;
+                const estaEnRango = fecha >= calendario.start_date && fecha <= calendario.end_date;
+                
+                return esDiaValido && estaEnRango;
+            }
+
+            /** Encuentra solo rutas directas */
+            function encontrarRutasDirectas(origenId, destinoId, tiempo) {
+                const { segundosInicio, diaField, fechaYYYYMMDD } = tiempo;
+                let resultados = [];
+                
+                const salidasPosibles = db.stopTimesPorParada.get(origenId) || [];
+
+                for (const stOrigen of salidasPosibles) {
+                    // Comprobar si sale después de ahora y es válido hoy
+                    const segundosSalida = aSegundos(stOrigen.departure_time);
+                    if (segundosSalida < segundosInicio) continue;
+                    if (!esViajeValido(stOrigen.trip_id, diaField, fechaYYYYMMDD)) continue;
+                    
+                    // Buscar destino en el MISMO viaje
+                    const stDestino = db.stopTimes.find(st => 
+                        st.trip_id === stOrigen.trip_id && 
+                        st.stop_id === destinoId &&
+                        st.stop_sequence > stOrigen.stop_sequence // Asegura la dirección
+                    );
+                    
+                    if (stDestino) {
+                        const trip = db.trips.get(stOrigen.trip_id);
+                        const route = db.routes.get(trip.route_id);
+                        const segundosLlegada = aSegundos(stDestino.arrival_time);
+                        
+                        resultados.push({
+                            tipo: 'directo',
+                            tramos: [{
+                                rutaNombre: route.route_short_name,
+                                rutaCompleta: route.route_long_name,
+                                destinoViaje: trip.trip_headsign,
+                                horaSalida: stOrigen.departure_time,
+                                segundosSalida: segundosSalida,
+                                paradaOrigen: db.stops.get(origenId).stop_name,
+                                horaLlegada: stDestino.arrival_time,
+                                segundosLlegada: segundosLlegada,
+                                paradaDestino: db.stops.get(destinoId).stop_name,
+                                duracion: segundosAFormato(segundosLlegada - segundosSalida)
+                            }],
+                            segundosLlegadaFinal: segundosLlegada
+                        });
+                    }
+                }
+                return resultados;
+            }
+            
+            /** Encuentra rutas con 1 transbordo */
+            function encontrarRutasConTransbordo(origenId, destinoId, tiempo) {
+                const { segundosInicio, diaField, fechaYYYYMMDD } = tiempo;
+                let resultados = [];
+                
+                const salidasTramo1 = db.stopTimesPorParada.get(origenId) || [];
+
+                // TRAMO 1: Salir de Origen
+                for (const stOrigen of salidasTramo1) {
+                    const segundosSalida1 = aSegundos(stOrigen.departure_time);
+                    if (segundosSalida1 < segundosInicio) continue;
+                    if (!esViajeValido(stOrigen.trip_id, diaField, fechaYYYYMMDD)) continue;
+                    
+                    const trip1 = db.trips.get(stOrigen.trip_id);
+                    const route1 = db.routes.get(trip1.route_id);
+
+                    // Encontrar todas las paradas de este primer viaje
+                    const paradasTramo1 = db.stopTimes.filter(st => 
+                        st.trip_id === stOrigen.trip_id && 
+                        st.stop_sequence > stOrigen.stop_sequence
+                    );
+                    
+                    // Iterar por cada parada como posible transbordo
+                    for (const stTransbordo of paradasTramo1) {
+                        const paradaTransbordoId = stTransbordo.stop_id;
+                        if (paradaTransbordoId === destinoId) continue; // (Esto lo maneja la ruta directa)
+
+                        const segundosLlegada1 = aSegundos(stTransbordo.arrival_time);
+                        const segundosSalidaMin2 = segundosLlegada1 + MIN_TIEMPO_TRANSBORDO_SEGUNDOS;
+                        
+                        // TRAMO 2: Salir de Parada de Transbordo
+                        const salidasTramo2 = db.stopTimesPorParada.get(paradaTransbordoId) || [];
+                        
+                        for (const stOrigen2 of salidasTramo2) {
+                            const segundosSalida2 = aSegundos(stOrigen2.departure_time);
+                            // Comprobar si sale después de llegar + tiempo de transbordo
+                            if (segundosSalida2 < segundosSalidaMin2) continue;
+                            if (!esViajeValido(stOrigen2.trip_id, diaField, fechaYYYYMMDD)) continue;
+                            
+                            // Buscar destino final en este SEGUNDO viaje
+                            const stDestinoFinal = db.stopTimes.find(st => 
+                                st.trip_id === stOrigen2.trip_id &&
+                                st.stop_id === destinoId &&
+                                st.stop_sequence > stOrigen2.stop_sequence
+                            );
+                            
+                            if (stDestinoFinal) {
+                                // ¡Ruta con transbordo encontrada!
+                                const trip2 = db.trips.get(stOrigen2.trip_id);
+                                const route2 = db.routes.get(trip2.route_id);
+                                const segundosLlegada2 = aSegundos(stDestinoFinal.arrival_time);
+
+                                resultados.push({
+                                    tipo: 'transbordo',
+                                    tramos: [
+                                        { // Tramo 1
+                                            rutaNombre: route1.route_short_name,
+                                            rutaCompleta: route1.route_long_name,
+                                            destinoViaje: trip1.trip_headsign,
+                                            horaSalida: stOrigen.departure_time,
+                                            paradaOrigen: db.stops.get(origenId).stop_name,
+                                            horaLlegada: stTransbordo.arrival_time,
+                                            paradaDestino: db.stops.get(paradaTransbordoId).stop_name,
+                                            duracion: segundosAFormato(segundosLlegada1 - segundosSalida1)
+                                        },
+                                        { // Tramo 2
+                                            rutaNombre: route2.route_short_name,
+                                            rutaCompleta: route2.route_long_name,
+                                            destinoViaje: trip2.trip_headsign,
+                                            horaSalida: stOrigen2.departure_time,
+                                            paradaOrigen: db.stops.get(paradaTransbordoId).stop_name,
+                                            horaLlegada: stDestinoFinal.arrival_time,
+                                            paradaDestino: db.stops.get(destinoId).stop_name,
+                                            duracion: segundosAFormato(segundosLlegada2 - segundosSalida2)
+                                        }
+                                    ],
+                                    paradaTransbordo: db.stops.get(paradaTransbordoId).stop_name,
+                                    tiempoEspera: segundosAFormato(segundosSalida2 - segundosLlegada1),
+                                    segundosLlegadaFinal: segundosLlegada2
+                                });
+                                // Solo tomamos la primera conexión válida desde esta parada de transbordo
+                                break; 
+                            }
+                        }
+                    }
+                }
+                return resultados;
+            }
+
+            /** El "algoritmo" v2.0 para buscar rutas */
+            function buscarRutaGTFS() {
+                const origenId = dom.planOrigen.value;
+                const destinoId = dom.planDestino.value;
+                
+                dom.planResultados.innerHTML = '';
+                logDebug(`Buscando ruta de ${origenId} a ${destinoId}...`, 'info');
+
+                if (!origenId || !destinoId || origenId === destinoId) {
+                    dom.planResultados.innerHTML = `<h3 style="color: var(--color-alerta-texto); text-align: center;">Por favor seleccione un origen y un destino válidos.</h3>`;
+                    return;
+                }
+                
+                // 1. Buscar para HOY
+                let tiempoHoy = getDatosDeTiempo(false);
+                logDebug(`Buscando para HOY (Después de: ${tiempoHoy.segundosInicio}s, Día: ${tiempoHoy.diaField}, Fecha: ${tiempoHoy.fechaYYYYMMDD})`, 'info');
+                
+                let resultadosDirectos = encontrarRutasDirectas(origenId, destinoId, tiempoHoy);
+                let resultadosTransbordo = encontrarRutasConTransbordo(origenId, destinoId, tiempoHoy);
+                
+                let resultados = [...resultadosDirectos, ...resultadosTransbordo];
+                let esParaManana = false;
+
+                // 2. Si no hay para hoy, buscar para MAÑANA
+                if (resultados.length === 0) {
+                    logDebug("No se encontraron rutas para hoy. Buscando para mañana...", 'warn');
+                    let tiempoManana = getDatosDeTiempo(true); // paraManana = true
+                    logDebug(`Buscando para MAÑANA (Después de: ${tiempoManana.segundosInicio}s, Día: ${tiempoManana.diaField}, Fecha: ${tiempoManana.fechaYYYYMMDD})`, 'info');
+
+                    resultadosDirectos = encontrarRutasDirectas(origenId, destinoId, tiempoManana);
+                    resultadosTransbordo = encontrarRutasConTransbordo(origenId, destinoId, tiempoManana);
+                    
+                    resultados = [...resultadosDirectos, ...resultadosTransbordo];
+                    esParaManana = true;
+                }
+                
+                // 3. Ordenar resultados por hora de LLEGADA final
+                resultados.sort((a, b) => a.segundosLlegadaFinal - b.segundosLlegadaFinal);
+                
+                // 4. Renderizar
+                renderizarResultadosPlan(resultados, esParaManana);
+            }
+            
+            /** Dibuja los resultados del planificador en la UI */
+            function renderizarResultadosPlan(resultados, esParaManana = false) {
+                if (resultados.length === 0) {
+                    dom.planResultados.innerHTML = `<h3 style="color: var(--color-texto-secundario); text-align: center; margin-top: 40px;">
+                        No se encontraron rutas que cumplan los criterios.
+                    </h3>`;
+                    logDebug("No se encontraron rutas.", 'warn');
+                    return;
+                }
+                
+                logDebug(`Renderizando ${resultados.length} resultados de ruta.`, 'ok');
+                
+                let titulo = esParaManana ? 'Próximos Viajes (Mañana)' : 'Próximos Viajes';
+                let html = `<h2 class="${esParaManana ? 'manana' : ''}">${titulo}</h2>`;
+                
+                resultados.forEach(r => {
+                    html += `<div class="resultado-viaje">`;
+                    
+                    // Renderizar cada tramo (1 para directo, 2 para transbordo)
+                    r.tramos.forEach((tramo, index) => {
+                        html += `
+                            <h3>
+                                🚌 ${tramo.rutaNombre}: ${tramo.destinoViaje}
+                                <span>${tramo.rutaCompleta}</span>
+                            </h3>
+                            <div class="detalles">
+                                <div>
+                                    <span class="hora">${tramo.horaSalida}</span>
+                                    <div class="parada">${tramo.paradaOrigen}</div>
+                                </div>
+                                <div class="duracion">
+                                    ➔
+                                    <br>
+                                    ${tramo.duracion}
+                                </div>
+                                <div style="text-align: right;">
+                                    <span class="hora">${tramo.horaLlegada}</span>
+                                    <div class="parada">${tramo.paradaDestino}</div>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Si hay un tramo siguiente, mostrar conector de transbordo
+                        if (r.tipo === 'transbordo' && index < r.tramos.length - 1) {
+                            html += `
+                                <div class="transbordo-conector">
+                                    ▼ Transbordo en <strong>${r.paradaTransbordo}</strong> (Espera: ${r.tiempoEspera}) ▼
+                                </div>
+                            `;
+                        }
+                    });
+                    
+                    html += `</div>`;
+                });
+                
+                dom.planResultados.innerHTML = html;
+            }
+            
 
             // --- INICIAR ---
             main();
-            window.addEventListener('resize', () => mostrarPanel(esMovil() ? 'panel-rutas' : 'panel-rutas'));
+            window.addEventListener('resize', () => mostrarPanelHorarios(esMovil() ? 'panel-rutas' : 'panel-rutas'));
         });
     </script>
 </body>
