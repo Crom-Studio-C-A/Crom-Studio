@@ -13,14 +13,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
           
-    <!-- 
-      ==================================================================
-      NUEVO: API de Google Maps con tu API Key
-      ==================================================================
-    -->
+    <!-- API de Google Maps con tu API Key -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxQnqhHh_H7IGHH5p5bow2Bz8iPIIqRww&libraries=routes"></script>
 
-    <!-- CSS (Con estilos para Google Maps y Planificador v2) -->
+    <!-- CSS (Con estilos para Nuevas Funciones) -->
     <style>
         :root {
             --color-primario: #0d6efd;
@@ -112,48 +108,6 @@
             height: 100%;
         }
         
-        /* --- Panel de "Cómo Llegar" de Google Maps --- */
-        #directions-panel {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 5;
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 300px;
-        }
-        #directions-panel h3 {
-            margin: 0 0 5px 0;
-            font-size: 16px;
-        }
-        #directions-panel input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid var(--color-borde);
-            border-radius: 4px;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-        }
-        #directions-panel button {
-            padding: 10px;
-            background-color: var(--color-primario);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        #directions-panel button:hover {
-            background-color: #0b5ed7;
-        }
-        /* --- Fin Panel "Cómo Llegar" --- */
-
         /* --- Contenedor del Planificador --- */
         #visor-planificador {
             width: 100%;
@@ -214,9 +168,12 @@
             color: var(--color-texto);
             margin-bottom: 16px;
         }
-        /* Estilo para "Mañana" */
         #planificador-resultados h2.manana {
             color: var(--color-proximo-texto);
+            background: var(--color-proximo);
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
         }
         
         .resultado-viaje {
@@ -261,7 +218,6 @@
             color: var(--color-texto-secundario);
         }
         
-        /* Estilos para Transbordo */
         .transbordo-conector {
             text-align: center;
             font-size: 14px;
@@ -272,7 +228,6 @@
             border-top: 1px dashed var(--color-borde);
             border-bottom: 1px dashed var(--color-borde);
         }
-
         /* --- Fin Contenedor Planificador --- */
 
         .panel {
@@ -519,6 +474,61 @@
         .log-ok { color: #a5d6a7; }
         .log-warn { color: #ffcc80; }
         .log-error { color: #ef9a9a; }
+
+        /* --- NUEVO: Filtro de Agencias --- */
+        #agency-filter-container {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--color-borde);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .agency-filter-btn {
+            padding: 6px 12px;
+            border: 1px solid var(--color-borde);
+            background: none;
+            color: var(--color-texto-secundario);
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .agency-filter-btn:hover {
+            background: var(--color-hover);
+        }
+        .agency-filter-btn.active {
+            background: var(--color-primario);
+            color: white;
+            border-color: var(--color-primario);
+        }
+        
+        /* --- NUEVO: "Otras Rutas" en Parada --- */
+        #otras-rutas-container {
+            margin-top: 24px;
+            display: none; /* Oculto por defecto */
+        }
+        #otras-rutas-container h3 {
+            font-size: 18px;
+            color: var(--color-texto);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .otra-ruta-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--color-borde);
+            margin-bottom: 8px;
+        }
+        .otra-ruta-item .icon {
+            font-size: 18px;
+        }
+        .otra-ruta-item span {
+            font-weight: 500;
+        }
         
         @media (max-width: 768px) {
             #visor-horarios {
@@ -540,10 +550,6 @@
             /* Móvil: Planificador */
             #planificador-form {
                 grid-template-columns: 1fr;
-            }
-            /* Móvil: Panel de "Cómo Llegar" */
-            #directions-panel {
-                width: calc(100% - 20px);
             }
         }
     </style>
@@ -567,6 +573,12 @@
             <!-- Panel Izquierdo: Rutas -->
             <div id="panel-rutas" class="panel">
                 <div class="panel-header"> <h2>🚌 Rutas</h2> </div>
+                
+                <!-- NUEVO: Filtro de Agencias -->
+                <div id="agency-filter-container">
+                    <!-- Los botones de filtro se añadirán aquí -->
+                </div>
+                
                 <div id="novedades-generales-container" class="novedades-container" style="display: none;">
                     <h3>📣 Novedades Generales</h3>
                     <div id="novedades-generales-lista"></div>
@@ -609,14 +621,23 @@
                         <div id="reloj-actual" style="display:none;">
                             Día (Venezuela): <span id="reloj-dia">--</span> | Hora: <span id="reloj-hora">--:--:--</span>
                         </div>
+                        
+                        <!-- NUEVO: "Otras Rutas" -->
+                        <div id="otras-rutas-container" style="display: none;">
+                            <h3>Otras rutas en esta parada</h3>
+                            <div id="otras-rutas-lista">
+                                <!-- Items de otras rutas aquí -->
+                            </div>
+                        </div>
+                        
                         <div id="proximo-bus-resumen" style="display: none;">
-                            <h3>Próximo Autobús</h3>
+                            <h3>Próximo Autobús (Ruta Actual)</h3>
                             <div class="horario-item proximo-resumen">
                                 <span class="hora" id="proximo-hora">--:--:--</span>
                                 <span class="destino" id="proximo-destino">Cargando...</span>
                             </div>
                         </div>
-                        <h3 id="titulo-lista-horarios" style="display: none;">Todos los Horarios</h3>
+                        <h3 id="titulo-lista-horarios" style="display: none;">Todos los Horarios (Ruta Actual)</h3>
                         <div id="horarios-lista"></div>
                     </div>
                     <pre id="debug-log">Iniciando panel de diagnóstico...</pre>
@@ -628,14 +649,8 @@
         <div id="visor-mapa">
             <div id="mapa-principal"></div>
             
-            <!-- Panel de Cómo Llegar (Google Maps) -->
-            <div id="directions-panel">
-                <h3>Cómo Llegar (en auto/caminando)</h3>
-                <input type="text" id="directions-start" placeholder="Punto de inicio">
-                <input type="text" id="directions-end" placeholder="Punto de destino">
-                <button id="calculate-route-btn">Calcular Ruta</button>
-                <div id="directions-error" style="color: red; font-size: 12px;"></div>
-            </div>
+            <!-- Panel de Cómo Llegar ELIMINADO -->
+            
         </div>
         
         <!-- ===== VISOR PLANIFICADOR (GTFS) ===== -->
@@ -680,6 +695,7 @@
                 "miercoles": "wednesday", "jueves": "thursday", "viernes": "friday", "sabado": "saturday"
             };
             const MIN_TIEMPO_TRANSBORDO_SEGUNDOS = 20 * 60; // 20 minutos
+            const MAX_DISTANCIA_TRANSBORDO_KM = 5; // 5km para transbordos (ej. Guanare a Cabrestero)
             
             // --- DOM REFS ---
             const dom = {
@@ -719,11 +735,10 @@
                 tarifaInfo: document.getElementById("tarifa-info"),
                 tarifaDescripcion: document.getElementById("tarifa-descripcion"),
                 
-                // DOM de Mapa
-                directionsStart: document.getElementById("directions-start"),
-                directionsEnd: document.getElementById("directions-end"),
-                calculateRouteBtn: document.getElementById("calculate-route-btn"),
-                directionsError: document.getElementById("directions-error"),
+                // Nuevos DOM de Filtro y "Otras Rutas"
+                agencyFilterContainer: document.getElementById("agency-filter-container"),
+                otrasRutasContainer: document.getElementById("otras-rutas-container"),
+                otrasRutasLista: document.getElementById("otras-rutas-lista"),
                 
                 // DOM de Planificador
                 planOrigen: document.getElementById("plan-origen"),
@@ -739,8 +754,8 @@
                 stopTimes: [], noticias: [],
                 tarifas: new Map(), 
                 shapes: new Map(), 
+                agencies: new Map(),
                 agencyTimezone: "America/Caracas",
-                // Index para búsqueda rápida: stop_id -> [stop_time, stop_time, ...]
                 stopTimesPorParada: new Map() 
             };
             let relojIntervalo = null;
@@ -748,21 +763,14 @@
                 rutaActiva: null, paradaActiva: null,
                 diaActualGTFS_Field: 'monday',
                 fechaActualYYYYMMDD: 20250101,
-                // Estado de Google Maps
                 googleMap: null, 
-                mapaInicializado: false,
-                directionsService: null,
-                directionsRenderer: null
+                mapaInicializado: false
             };
             const esMovil = () => window.innerWidth <= 768;
 
             // --- LOGGING ---
             function logDebug(message, type = 'info') {
-                /* Oculto por petición del usuario
-                const tipoClase = `log-${type}`;
-                dom.debugLog.innerHTML += `\n<span class="${tipoClase}">[${new Date().toLocaleTimeString()}] ${message}</span>`;
-                dom.debugLog.scrollTop = dom.debugLog.scrollHeight;
-                */
+                /* Oculto por petición del usuario */
             }
 
             // --- INICIALIZACIÓN ---
@@ -794,6 +802,7 @@
 
                     // Procesar
                     if (agency.length > 0) db.agencyTimezone = agency[0].agency_timezone || "America/Caracas";
+                    agency.forEach(a => db.agencies.set(a.agency_id, a));
                     routes.forEach(r => db.routes.set(r.route_id, r));
                     stops.forEach(s => db.stops.set(s.stop_id, s));
                     trips.forEach(t => db.trips.set(t.trip_id, t));
@@ -810,7 +819,6 @@
                     });
                     db.shapes.forEach(points => points.sort((a, b) => a.shape_pt_sequence - b.shape_pt_sequence));
                     
-                    // --- NUEVO: Crear índice para el Planificador ---
                     logDebug("Creando índice de stop_times...", 'info');
                     db.stopTimes.forEach(st => {
                         if (!db.stopTimesPorParada.has(st.stop_id)) {
@@ -824,7 +832,8 @@
                     dom.estadoCarga.style.display = "none";
                     
                     renderizarNovedadesGenerales();
-                    renderizarListaRutas();
+                    renderizarFiltroAgencias();
+                    renderizarListaRutas('all');
                     iniciarReloj();
                     configurarNavegacion();
                     popularDropdownsPlanificador();
@@ -855,7 +864,7 @@
                     requestAnimationFrame(() => {
                         if (!estadoApp.mapaInicializado) {
                             logDebug("Iniciando mapa por primera vez...", 'info');
-                            iniciarMapaGoogle(); // Cambiado
+                            iniciarMapaGoogle();
                             renderizarTodasLasRutasEnMapa(); 
                             renderizarTodasLasParadasEnMapa(); 
                             estadoApp.mapaInicializado = true;
@@ -894,7 +903,6 @@
                 dom.backARutas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanelHorarios('panel-rutas'); });
                 dom.backAParadas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanelHorarios('panel-paradas'); });
                 
-                dom.calculateRouteBtn.addEventListener('click', calcularRutaGoogleMaps);
                 dom.btnBuscarRuta.addEventListener('click', buscarRutaGTFS);
             }
             
@@ -902,7 +910,6 @@
             
             function iniciarMapaGoogle() {
                 logDebug("Inicializando Google Maps...");
-                // Comprobar si la API de Google Maps se cargó
                 if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
                     logDebug("ERROR: La API de Google Maps no se ha cargado. ¿Falta la API Key o es inválida?", 'error');
                     dom.visorMapa.innerHTML = `<h2 style="padding: 20px; color: red;">Error: No se pudo cargar Google Maps. Verifique su API Key.</h2>`;
@@ -913,12 +920,12 @@
                 estadoApp.googleMap = new google.maps.Map(document.getElementById('mapa-principal'), {
                     zoom: 7,
                     center: mapCenter,
-                    mapTypeId: 'roadmap' // roadmap, satellite, hybrid, terrain
+                    mapTypeId: 'roadmap',
+                    disableDefaultUI: true,
+                    zoomControl: true,
+                    mapTypeControl: true,
+                    streetViewControl: false
                 });
-                
-                estadoApp.directionsService = new google.maps.DirectionsService();
-                estadoApp.directionsRenderer = new google.maps.DirectionsRenderer();
-                estadoApp.directionsRenderer.setMap(estadoApp.googleMap);
                 
                 logDebug("Google Maps inicializado.", 'ok');
             }
@@ -975,33 +982,7 @@
                 logDebug(`Renderizadas ${db.stops.size} paradas en Google Maps.`, 'ok');
             }
             
-            function calcularRutaGoogleMaps() {
-                const start = dom.directionsStart.value;
-                const end = dom.directionsEnd.value;
-                
-                if (!start || !end) {
-                    dom.directionsError.textContent = "Por favor, ingrese un inicio y un destino.";
-                    return;
-                }
-                dom.directionsError.textContent = "";
-                
-                const request = {
-                    origin: start,
-                    destination: end,
-                    travelMode: 'DRIVING' // Puede ser 'WALKING', 'BICYCLING'.
-                };
-                
-                estadoApp.directionsService.route(request, (result, status) => {
-                    if (status == 'OK') {
-                        estadoApp.directionsRenderer.setDirections(result);
-                    } else {
-                        logDebug(`Error al calcular ruta: ${status}`, 'error');
-                        dom.directionsError.textContent = `No se pudo calcular la ruta: ${status}`;
-                    }
-                });
-            }
-
-            // --- LÓGICA DE TIEMPO ---
+            // --- LÓGICA DE TIEMPO Y CÁLCULO ---
             function aSegundos(horaStr) {
                 if (!horaStr || typeof horaStr !== 'string' || horaStr.split(':').length < 3) return 0;
                 try {
@@ -1014,6 +995,21 @@
                 const horas = Math.floor(seg / 3600);
                 const minutos = Math.floor((seg % 3600) / 60);
                 return `${horas}h ${minutos}min`;
+            }
+            
+            /** Calcula la distancia en KM entre dos coordenadas */
+            function getDistanciaHaversine(lat1, lon1, lat2, lon2) {
+                function toRad(x) {
+                    return x * Math.PI / 180;
+                }
+                const R = 6371; // Radio de la Tierra en km
+                const dLat = toRad(lat2 - lat1);
+                const dLon = toRad(lon2 - lon1);
+                const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                          Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+                          Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                return R * c; // Distancia en km
             }
 
             function iniciarReloj() {
@@ -1083,10 +1079,48 @@
                     dom.novedadesRutaContainer.style.display = 'none';
                 }
             }
+            
+            function renderizarFiltroAgencias() {
+                dom.agencyFilterContainer.innerHTML = '';
+                
+                const btnTodas = document.createElement('button');
+                btnTodas.className = 'agency-filter-btn active';
+                btnTodas.textContent = 'Todas';
+                btnTodas.dataset.agencyId = 'all';
+                btnTodas.addEventListener('click', () => {
+                    renderizarListaRutas('all');
+                    document.querySelectorAll('.agency-filter-btn').forEach(b => b.classList.remove('active'));
+                    btnTodas.classList.add('active');
+                });
+                dom.agencyFilterContainer.appendChild(btnTodas);
 
-            function renderizarListaRutas() {
+                db.agencies.forEach(agency => {
+                    const btn = document.createElement('button');
+                    btn.className = 'agency-filter-btn';
+                    btn.textContent = agency.agency_name;
+                    btn.dataset.agencyId = agency.agency_id;
+                    btn.addEventListener('click', () => {
+                        renderizarListaRutas(agency.agency_id);
+                        document.querySelectorAll('.agency-filter-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    });
+                    dom.agencyFilterContainer.appendChild(btn);
+                });
+            }
+
+            function renderizarListaRutas(agencyId = 'all') {
                 dom.listaRutas.innerHTML = '';
-                db.routes.forEach(route => {
+                
+                const rutasAMostrar = (agencyId === 'all')
+                    ? [...db.routes.values()]
+                    : [...db.routes.values()].filter(r => r.agency_id === agencyId);
+                
+                if (rutasAMostrar.length === 0) {
+                    dom.listaRutas.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--color-texto-secundario);">No se encontraron rutas para esta agencia.</div>';
+                    return;
+                }
+
+                rutasAMostrar.forEach(route => {
                     const div = document.createElement('div');
                     div.className = 'list-item';
                     div.innerHTML = `
@@ -1168,8 +1202,44 @@
                 dom.horariosLista.innerHTML = '';
                 dom.proximoResumen.style.display = 'none';
                 dom.tituloListaHorarios.style.display = 'none';
+                dom.otrasRutasContainer.style.display = 'none';
                 
                 mostrarPanelHorarios('panel-paradas');
+            }
+            
+            function renderizarOtrasRutas(stopId) {
+                const stopTimes = db.stopTimesPorParada.get(stopId) || [];
+                const tripIds = new Set(stopTimes.map(st => st.trip_id));
+                
+                const routeIds = new Set();
+                tripIds.forEach(tid => {
+                    const trip = db.trips.get(tid);
+                    if (trip) routeIds.add(trip.route_id);
+                });
+
+                let html = '';
+                let count = 0;
+                routeIds.forEach(routeId => {
+                    if (routeId && routeId !== estadoApp.rutaActiva) {
+                        const route = db.routes.get(routeId);
+                        if(route) {
+                            html += `
+                                <div class="otra-ruta-item">
+                                    <span class="icon">🚌</span>
+                                    <span>${route.route_short_name} - ${route.route_long_name}</span>
+                                </div>
+                            `;
+                            count++;
+                        }
+                    }
+                });
+
+                if (count > 0) {
+                    dom.otrasRutasLista.innerHTML = html;
+                    dom.otrasRutasContainer.style.display = 'block';
+                } else {
+                    dom.otrasRutasContainer.style.display = 'none';
+                }
             }
 
             function renderizarHorarios(stopId, esRefresco = false) {
@@ -1179,6 +1249,9 @@
                     dom.detallesPlaceholder.style.display = "none";
                     dom.horariosLista.innerHTML = '';
                     dom.debugLog.innerHTML = 'Refrescando horarios...';
+                    
+                    renderizarOtrasRutas(stopId);
+                    
                     mostrarPanelHorarios('panel-detalles');
                 }
 
@@ -1293,7 +1366,7 @@
                 }
             }
             
-            // --- NUEVAS FUNCIONES (PLANIFICADOR v2) ---
+            // --- NUEVAS FUNCIONES (PLANIFICADOR v3 - TRANSBORDO ESPACIAL/TEMPORAL) ---
             
             function popularDropdownsPlanificador() {
                 const paradasOrdenadas = [...db.stops.values()].sort((a, b) => a.stop_name.localeCompare(b.stop_name));
@@ -1313,10 +1386,10 @@
             }
             
             /** Obtiene los datos de tiempo para una búsqueda (hoy o mañana) */
-            function getDatosDeTiempo(paraManana = false) {
+            function getDatosDeTiempo(dayOffset = 0) {
                 const ahora = new Date();
-                if (paraManana) {
-                    ahora.setDate(ahora.getDate() + 1);
+                if (dayOffset > 0) {
+                    ahora.setDate(ahora.getDate() + dayOffset);
                 }
                 
                 const opcionesHora = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: db.agencyTimezone };
@@ -1332,13 +1405,13 @@
                 const [y, m, d] = ymdFormatter.format(ahora).split('-');
                 const fechaYYYYMMDD = parseInt(`${y}${m}${d}`, 10);
                 
-                // Si es para mañana, la hora de inicio es 00:00:00
-                const segundosInicio = paraManana ? 0 : aSegundos(horaFormato);
+                const segundosInicio = (dayOffset > 0) ? 0 : aSegundos(horaFormato);
                 
                 return {
                     segundosInicio,
                     diaField,
-                    fechaYYYYMMDD
+                    fechaYYYYMMDD,
+                    diaNombre: diaNombreConAcento.charAt(0).toUpperCase() + diaNombreConAcento.slice(1)
                 };
             }
             
@@ -1364,16 +1437,14 @@
                 const salidasPosibles = db.stopTimesPorParada.get(origenId) || [];
 
                 for (const stOrigen of salidasPosibles) {
-                    // Comprobar si sale después de ahora y es válido hoy
                     const segundosSalida = aSegundos(stOrigen.departure_time);
                     if (segundosSalida < segundosInicio) continue;
                     if (!esViajeValido(stOrigen.trip_id, diaField, fechaYYYYMMDD)) continue;
                     
-                    // Buscar destino en el MISMO viaje
                     const stDestino = db.stopTimes.find(st => 
                         st.trip_id === stOrigen.trip_id && 
                         st.stop_id === destinoId &&
-                        st.stop_sequence > stOrigen.stop_sequence // Asegura la dirección
+                        st.stop_sequence > stOrigen.stop_sequence
                     );
                     
                     if (stDestino) {
@@ -1402,10 +1473,11 @@
                 return resultados;
             }
             
-            /** Encuentra rutas con 1 transbordo */
+            /** Encuentra rutas con 1 transbordo (Espacial y Temporal) */
             function encontrarRutasConTransbordo(origenId, destinoId, tiempo) {
                 const { segundosInicio, diaField, fechaYYYYMMDD } = tiempo;
                 let resultados = [];
+                const origenStop = db.stops.get(origenId);
                 
                 const salidasTramo1 = db.stopTimesPorParada.get(origenId) || [];
 
@@ -1418,72 +1490,100 @@
                     const trip1 = db.trips.get(stOrigen.trip_id);
                     const route1 = db.routes.get(trip1.route_id);
 
-                    // Encontrar todas las paradas de este primer viaje
                     const paradasTramo1 = db.stopTimes.filter(st => 
                         st.trip_id === stOrigen.trip_id && 
                         st.stop_sequence > stOrigen.stop_sequence
                     );
                     
                     // Iterar por cada parada como posible transbordo
-                    for (const stTransbordo of paradasTramo1) {
-                        const paradaTransbordoId = stTransbordo.stop_id;
-                        if (paradaTransbordoId === destinoId) continue; // (Esto lo maneja la ruta directa)
-
-                        const segundosLlegada1 = aSegundos(stTransbordo.arrival_time);
-                        const segundosSalidaMin2 = segundosLlegada1 + MIN_TIEMPO_TRANSBORDO_SEGUNDOS;
+                    for (const stTransbordo1 of paradasTramo1) {
+                        const paradaTransbordoId = stTransbordo1.stop_id;
+                        if (paradaTransbordoId === destinoId) continue; 
                         
-                        // TRAMO 2: Salir de Parada de Transbordo
-                        const salidasTramo2 = db.stopTimesPorParada.get(paradaTransbordoId) || [];
+                        const paradaB = db.stops.get(paradaTransbordoId);
+                        const segundosLlegada1 = aSegundos(stTransbordo1.arrival_time);
                         
-                        for (const stOrigen2 of salidasTramo2) {
-                            const segundosSalida2 = aSegundos(stOrigen2.departure_time);
-                            // Comprobar si sale después de llegar + tiempo de transbordo
-                            if (segundosSalida2 < segundosSalidaMin2) continue;
-                            if (!esViajeValido(stOrigen2.trip_id, diaField, fechaYYYYMMDD)) continue;
+                        // TRAMO 2: Buscar paradas cercanas para salir
+                        for (const paradaD of db.stops.values()) {
+                            if (paradaD.stop_id === paradaB.stop_id) continue; // No es transbordo espacial
                             
-                            // Buscar destino final en este SEGUNDO viaje
-                            const stDestinoFinal = db.stopTimes.find(st => 
-                                st.trip_id === stOrigen2.trip_id &&
-                                st.stop_id === destinoId &&
-                                st.stop_sequence > stOrigen2.stop_sequence
-                            );
+                            const dist = getDistanciaHaversine(paradaB.stop_lat, paradaB.stop_lon, paradaD.stop_lat, paradaD.stop_lon);
                             
-                            if (stDestinoFinal) {
-                                // ¡Ruta con transbordo encontrada!
-                                const trip2 = db.trips.get(stOrigen2.trip_id);
-                                const route2 = db.routes.get(trip2.route_id);
-                                const segundosLlegada2 = aSegundos(stDestinoFinal.arrival_time);
+                            // Si la parada D está lo suficientemente cerca de la parada B
+                            if (dist <= MAX_DISTANCIA_TRANSBORDO_KM) {
+                                // Buscar una conexión desde la parada D hasta el destino FINAL
+                                
+                                // Buscar en los próximos días
+                                for (let diaOffset2 = 0; diaOffset2 < 7; diaOffset2++) {
+                                    const tiempo2 = getDatosDeTiempo(diaOffset2); // (diaOffset se refiere a HOY + X días)
+                                    
+                                    // El tiempo de inicio del tramo 2 depende de si es el mismo día o un día futuro
+                                    let segundosInicio2 = 0;
+                                    
+                                    if (tiempo2.fechaYYYYMMDD === fechaYYYYMMDD) { // Mismo día
+                                        segundosInicio2 = segundosLlegada1 + MIN_TIEMPO_TRANSBORDO_SEGUNDOS;
+                                    } else if (tiempo2.fechaYYYYMMDD < fechaYYYYMMDD) {
+                                        continue; // Ya pasó este día
+                                    }
+                                    // Si es un día futuro (fecha > fechaLlegada1), segundosInicio2 es 0 (todo el día)
+                                    
+                                    const salidasTramo2 = db.stopTimesPorParada.get(paradaD.stop_id) || [];
+                                    
+                                    for (const stOrigen2 of salidasTramo2) {
+                                        const segundosSalida2 = aSegundos(stOrigen2.departure_time);
+                                        
+                                        // Comprobar si sale después de llegar + tiempo de transbordo
+                                        if (segundosSalida2 < segundosInicio2) continue;
+                                        
+                                        if (!esViajeValido(stOrigen2.trip_id, tiempo2.diaField, tiempo2.fechaYYYYMMDD)) continue;
+                                        
+                                        const stDestinoFinal = db.stopTimes.find(st => 
+                                            st.trip_id === stOrigen2.trip_id &&
+                                            st.stop_id === destinoId &&
+                                            st.stop_sequence > stOrigen2.stop_sequence
+                                        );
+                                        
+                                        if (stDestinoFinal) {
+                                            // ¡Ruta con transbordo encontrada!
+                                            const trip2 = db.trips.get(stOrigen2.trip_id);
+                                            const route2 = db.routes.get(trip2.route_id);
+                                            const segundosLlegada2 = aSegundos(stDestinoFinal.arrival_time);
 
-                                resultados.push({
-                                    tipo: 'transbordo',
-                                    tramos: [
-                                        { // Tramo 1
-                                            rutaNombre: route1.route_short_name,
-                                            rutaCompleta: route1.route_long_name,
-                                            destinoViaje: trip1.trip_headsign,
-                                            horaSalida: stOrigen.departure_time,
-                                            paradaOrigen: db.stops.get(origenId).stop_name,
-                                            horaLlegada: stTransbordo.arrival_time,
-                                            paradaDestino: db.stops.get(paradaTransbordoId).stop_name,
-                                            duracion: segundosAFormato(segundosLlegada1 - segundosSalida1)
-                                        },
-                                        { // Tramo 2
-                                            rutaNombre: route2.route_short_name,
-                                            rutaCompleta: route2.route_long_name,
-                                            destinoViaje: trip2.trip_headsign,
-                                            horaSalida: stOrigen2.departure_time,
-                                            paradaOrigen: db.stops.get(paradaTransbordoId).stop_name,
-                                            horaLlegada: stDestinoFinal.arrival_time,
-                                            paradaDestino: db.stops.get(destinoId).stop_name,
-                                            duracion: segundosAFormato(segundosLlegada2 - segundosSalida2)
+                                            resultados.push({
+                                                tipo: 'transbordo',
+                                                tramos: [
+                                                    { // Tramo 1
+                                                        rutaNombre: route1.route_short_name,
+                                                        destinoViaje: trip1.trip_headsign,
+                                                        horaSalida: stOrigen.departure_time,
+                                                        paradaOrigen: db.stops.get(origenId).stop_name,
+                                                        horaLlegada: stTransbordo1.arrival_time,
+                                                        paradaDestino: paradaB.stop_name,
+                                                        duracion: segundosAFormato(segundosLlegada1 - segundosSalida1)
+                                                    },
+                                                    { // Tramo 2
+                                                        rutaNombre: route2.route_short_name,
+                                                        destinoViaje: trip2.trip_headsign,
+                                                        horaSalida: stOrigen2.departure_time,
+                                                        paradaOrigen: paradaD.stop_name,
+                                                        horaLlegada: stDestinoFinal.arrival_time,
+                                                        paradaDestino: db.stops.get(destinoId).stop_name,
+                                                        duracion: segundosAFormato(segundosLlegada2 - segundosSalida2)
+                                                    }
+                                                ],
+                                                paradaTransbordo: paradaB.stop_name,
+                                                paradaTransbordo2: paradaD.stop_name,
+                                                distanciaTransbordo: dist.toFixed(2),
+                                                tiempoEspera: segundosAFormato(segundosSalida2 - segundosLlegada1), // Esto puede ser negativo si es al día siguiente
+                                                segundosLlegadaFinal: (tiempo2.fechaYYYYMMDD - fechaYYYYMMDD) * 86400 + segundosLlegada2 // Pondera por día
+                                            });
+                                            
+                                            // Solo tomamos la primera conexión válida (más temprana)
+                                            break; 
                                         }
-                                    ],
-                                    paradaTransbordo: db.stops.get(paradaTransbordoId).stop_name,
-                                    tiempoEspera: segundosAFormato(segundosSalida2 - segundosLlegada1),
-                                    segundosLlegadaFinal: segundosLlegada2
-                                });
-                                // Solo tomamos la primera conexión válida desde esta parada de transbordo
-                                break; 
+                                    }
+                                    if(resultados.length > 0 && resultados[resultados.length-1].tipo === 'transbordo') break; // Salir del loop de días si ya encontramos conexión
+                                }
                             }
                         }
                     }
@@ -1491,7 +1591,7 @@
                 return resultados;
             }
 
-            /** El "algoritmo" v2.0 para buscar rutas */
+            /** El "algoritmo" v3.0 para buscar rutas */
             function buscarRutaGTFS() {
                 const origenId = dom.planOrigen.value;
                 const destinoId = dom.planDestino.value;
@@ -1504,89 +1604,99 @@
                     return;
                 }
                 
-                // 1. Buscar para HOY
-                let tiempoHoy = getDatosDeTiempo(false);
-                logDebug(`Buscando para HOY (Después de: ${tiempoHoy.segundosInicio}s, Día: ${tiempoHoy.diaField}, Fecha: ${tiempoHoy.fechaYYYYMMDD})`, 'info');
+                let todosLosResultados = [];
+                let diaBusqueda = 0; 
                 
-                let resultadosDirectos = encontrarRutasDirectas(origenId, destinoId, tiempoHoy);
-                let resultadosTransbordo = encontrarRutasConTransbordo(origenId, destinoId, tiempoHoy);
-                
-                let resultados = [...resultadosDirectos, ...resultadosTransbordo];
-                let esParaManana = false;
-
-                // 2. Si no hay para hoy, buscar para MAÑANA
-                if (resultados.length === 0) {
-                    logDebug("No se encontraron rutas para hoy. Buscando para mañana...", 'warn');
-                    let tiempoManana = getDatosDeTiempo(true); // paraManana = true
-                    logDebug(`Buscando para MAÑANA (Después de: ${tiempoManana.segundosInicio}s, Día: ${tiempoManana.diaField}, Fecha: ${tiempoManana.fechaYYYYMMDD})`, 'info');
-
-                    resultadosDirectos = encontrarRutasDirectas(origenId, destinoId, tiempoManana);
-                    resultadosTransbordo = encontrarRutasConTransbordo(origenId, destinoId, tiempoManana);
+                while (diaBusqueda < 7) {
+                    let tiempo = getDatosDeTiempo(diaBusqueda);
+                    let diaNombre = (diaBusqueda === 0) ? "Hoy" : (diaBusqueda === 1) ? "Mañana" : tiempo.diaNombre;
                     
-                    resultados = [...resultadosDirectos, ...resultadosTransbordo];
-                    esParaManana = true;
+                    logDebug(`Buscando para ${diaNombre} (Offset: ${diaBusqueda}, Día: ${tiempo.diaField}, Fecha: ${tiempo.fechaYYYYMMDD})`, 'info');
+                    
+                    let resultadosDirectos = encontrarRutasDirectas(origenId, destinoId, tiempo);
+                    let resultadosTransbordo = encontrarRutasConTransbordo(origenId, destinoId, tiempo);
+                    
+                    let resultadosDelDia = [...resultadosDirectos, ...resultadosTransbordo];
+                    
+                    if (resultadosDelDia.length > 0) {
+                        // Ordenar por hora de LLEGADA final
+                        resultadosDelDia.sort((a, b) => a.segundosLlegadaFinal - b.segundosLlegadaFinal);
+                        
+                        todosLosResultados.push({
+                            diaNombre: diaNombre,
+                            resultados: resultadosDelDia
+                        });
+                    }
+                    
+                    diaBusqueda++;
                 }
                 
-                // 3. Ordenar resultados por hora de LLEGADA final
-                resultados.sort((a, b) => a.segundosLlegadaFinal - b.segundosLlegadaFinal);
-                
-                // 4. Renderizar
-                renderizarResultadosPlan(resultados, esParaManana);
+                renderizarResultadosPlan(todosLosResultados);
             }
             
             /** Dibuja los resultados del planificador en la UI */
-            function renderizarResultadosPlan(resultados, esParaManana = false) {
-                if (resultados.length === 0) {
+            function renderizarResultadosPlan(resultadosPorDia) {
+                
+                if (resultadosPorDia.length === 0) {
                     dom.planResultados.innerHTML = `<h3 style="color: var(--color-texto-secundario); text-align: center; margin-top: 40px;">
-                        No se encontraron rutas que cumplan los criterios.
+                        No se encontraron rutas que cumplan los criterios en los próximos 7 días.
                     </h3>`;
                     logDebug("No se encontraron rutas.", 'warn');
                     return;
                 }
                 
-                logDebug(`Renderizando ${resultados.length} resultados de ruta.`, 'ok');
+                logDebug(`Renderizando ${resultadosPorDia.length} días con resultados.`, 'ok');
                 
-                let titulo = esParaManana ? 'Próximos Viajes (Mañana)' : 'Próximos Viajes';
-                let html = `<h2 class="${esParaManana ? 'manana' : ''}">${titulo}</h2>`;
+                let html = ``;
                 
-                resultados.forEach(r => {
-                    html += `<div class="resultado-viaje">`;
+                resultadosPorDia.forEach(diaData => {
+                    let titulo = `Próximos Viajes (${diaData.diaNombre})`;
+                    let esManana = diaData.diaNombre === "Mañana";
                     
-                    // Renderizar cada tramo (1 para directo, 2 para transbordo)
-                    r.tramos.forEach((tramo, index) => {
-                        html += `
-                            <h3>
-                                🚌 ${tramo.rutaNombre}: ${tramo.destinoViaje}
-                                <span>${tramo.rutaCompleta}</span>
-                            </h3>
-                            <div class="detalles">
-                                <div>
-                                    <span class="hora">${tramo.horaSalida}</span>
-                                    <div class="parada">${tramo.paradaOrigen}</div>
-                                </div>
-                                <div class="duracion">
-                                    ➔
-                                    <br>
-                                    ${tramo.duracion}
-                                </div>
-                                <div style="text-align: right;">
-                                    <span class="hora">${tramo.horaLlegada}</span>
-                                    <div class="parada">${tramo.paradaDestino}</div>
-                                </div>
-                            </div>
-                        `;
+                    html += `<h2 class="${esManana ? 'manana' : ''}">${titulo}</h2>`;
+                    
+                    diaData.resultados.forEach(r => {
+                        html += `<div class="resultado-viaje">`;
                         
-                        // Si hay un tramo siguiente, mostrar conector de transbordo
-                        if (r.tipo === 'transbordo' && index < r.tramos.length - 1) {
+                        r.tramos.forEach((tramo, index) => {
                             html += `
-                                <div class="transbordo-conector">
-                                    ▼ Transbordo en <strong>${r.paradaTransbordo}</strong> (Espera: ${r.tiempoEspera}) ▼
+                                <h3>
+                                    🚌 ${tramo.rutaNombre}: ${tramo.destinoViaje}
+                                    <span>${tramo.rutaCompleta || ''}</span>
+                                </h3>
+                                <div class="detalles">
+                                    <div>
+                                        <span class="hora">${tramo.horaSalida}</span>
+                                        <div class="parada">${tramo.paradaOrigen}</div>
+                                    </div>
+                                    <div class="duracion">
+                                        ➔
+                                        <br>
+                                        ${tramo.duracion}
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span class="hora">${tramo.horaLlegada}</span>
+                                        <div class="parada">${tramo.paradaDestino}</div>
+                                    </div>
                                 </div>
                             `;
-                        }
+                            
+                            // Mostrar conector de transbordo
+                            if (r.tipo === 'transbordo' && index < r.tramos.length - 1) {
+                                let espera = (r.tiempoEspera.startsWith("-")) ? " (Día Siguiente)" : ` (Espera: ${r.tiempoEspera})`;
+                                let distancia = r.distanciaTransbordo > 0 ? `Caminar/Transporte ${r.distanciaTransbordo} km` : 'En la misma parada';
+                                
+                                html += `
+                                    <div class="transbordo-conector">
+                                        ▼ Transbordo en <strong>${r.paradaTransbordo}</strong><br>
+                                        <small>${distancia} a <strong>${r.paradaTransbordo2}</strong>${espera}</small> ▼
+                                    </div>
+                                `;
+                            }
+                        });
+                        
+                        html += `</div>`;
                     });
-                    
-                    html += `</div>`;
                 });
                 
                 dom.planResultados.innerHTML = html;
