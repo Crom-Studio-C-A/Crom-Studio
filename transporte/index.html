@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horarios y Mapa v19 - Crom Studio</title>
+    <title>Horarios y Mapa v20 - Crom Studio</title>
     
     <!-- JS de PapaParse (CDN - para leer los .txt/CSV) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -59,6 +59,7 @@
             flex-shrink: 0;
             background: var(--color-tarjeta);
             border-bottom: 1px solid var(--color-borde);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             padding: 0 10px;
         }
         #main-nav ul {
@@ -66,13 +67,14 @@
             padding: 0;
             display: flex;
             list-style: none;
-            flex-wrap: wrap; /* Para móviles */
-            justify-content: center;
+            flex-wrap: nowrap; /* Evita que se rompa la línea */
+            overflow-x: auto; /* Permite scroll horizontal en móvil */
+            -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
         }
         #main-nav li a {
             display: block;
-            padding: 16px 12px; /* Reducido para más pestañas */
-            font-size: 14px; /* Reducido */
+            padding: 16px 14px;
+            font-size: 15px;
             font-weight: 600;
             text-decoration: none;
             color: var(--color-texto-secundario);
@@ -248,7 +250,6 @@
             font-weight: 500;
             color: var(--color-texto-secundario);
         }
-        /* NUEVO: Estilo Tarifa Total */
         .resultado-viaje h3 .tarifa-total {
             font-weight: 700;
             color: var(--color-primario);
@@ -307,7 +308,7 @@
             border-bottom: 1px solid var(--color-borde);
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Para botón "Cerca de Mí" */
+            justify-content: space-between;
             gap: 12px;
             flex-shrink: 0;
         }
@@ -319,24 +320,6 @@
             font-size: 24px; font-weight: 600;
             text-decoration: none; color: var(--color-primario);
             line-height: 1;
-        }
-        
-        /* Botón Cerca de Mí */
-        #btn-cerca-de-mi {
-            background: none;
-            border: 1px solid var(--color-borde);
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            font-size: 18px;
-            cursor: pointer;
-            color: var(--color-texto-secundario);
-            transition: all 0.2s ease;
-        }
-        #btn-cerca-de-mi:hover {
-            color: var(--color-primario);
-            border-color: var(--color-primario);
-            background: var(--color-activo);
         }
         
         .panel-list {
@@ -355,7 +338,10 @@
             gap: 16px;
         }
         .list-item:last-child { border-bottom: none; }
-        .list-item:hover { background-color: var(--color-hover); }
+        .list-item:hover { 
+            background-color: var(--color-hover);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
         .list-item.active {
             background-color: var(--color-activo);
             box-shadow: inset 4px 0 0 var(--color-primario);
@@ -622,6 +608,9 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
         #btn-buscar-cercanas:hover {
             background: #0b5ed7;
@@ -633,25 +622,59 @@
         
         @media (max-width: 768px) {
             #main-nav ul {
-                justify-content: space-around;
+                justify-content: flex-start; /* Alinear a la izquierda para scroll */
             }
             #main-nav li a {
-                padding: 16px 8px;
-                font-size: 12px; /* Aún más pequeño */
+                padding: 16px 12px;
+                font-size: 14px;
             }
 
+            /* --- LÓGICA DE PANEL DESLIZANTE --- */
             #visor-horarios {
-                flex-direction: column;
-                height: 100%;
+                flex-direction: row; /* Mantener horizontal */
+                position: relative;
+                overflow: hidden;
             }
             .panel {
-                width: 100% !important;
+                width: 100% !important; /* Todos los paneles ocupan el ancho */
                 height: 100%;
                 border-right: none;
                 border-bottom: 1px solid var(--color-borde);
-                display: none;
+                /* Añadir position absolute y transition */
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: transform 0.3s ease-in-out;
             }
-            #panel-rutas { display: flex; }
+            /* Posiciones iniciales */
+            #panel-rutas { 
+                transform: translateX(0); 
+                z-index: 10;
+            }
+            #panel-paradas { 
+                transform: translateX(100%); 
+                z-index: 20;
+            }
+            #panel-detalles { 
+                transform: translateX(100%); 
+                z-index: 30;
+            }
+            
+            /* Estados de visibilidad */
+            #visor-horarios.show-paradas #panel-rutas {
+                transform: translateX(-100%);
+            }
+            #visor-horarios.show-paradas #panel-paradas {
+                transform: translateX(0);
+            }
+            
+            #visor-horarios.show-detalles #panel-paradas {
+                transform: translateX(-100%);
+            }
+            #visor-horarios.show-detalles #panel-detalles {
+                transform: translateX(0);
+            }
+            
             .back-button { display: block; }
             .panel-header { padding: 16px; }
             #debug-log { height: 100px; }
@@ -705,7 +728,6 @@
                 <div class="panel-header">
                     <a href="#" class="back-button" id="back-a-rutas" aria-label="Volver a Rutas">&lsaquo;</a>
                     <h2 id="paradas-titulo">📍 Paradas</h2>
-                    <!-- Botón "Cerca de Mí" movido a su propia pestaña -->
                 </div>
                 <div id="tarifa-info" style="display: none;">
                     <h3>💲 Tarifa y Pago</h3>
@@ -792,7 +814,7 @@
                     <h2>📡 Paradas Cerca de Mí</h2>
                     <p>Encuentra las paradas de autobús más cercanas a tu ubicación actual.</p>
                     <div id="cerca-de-mi-btn-container">
-                        <button id="btn-buscar-cercanas">Encontrar mi ubicación</button>
+                        <button id="btn-buscar-cercanas">📡 Encontrar mi ubicación</button>
                     </div>
                     <div id="cercanas-status" style="text-align: center; margin-top: 16px;"></div>
                     <div id="cercanas-resultados-lista" class="panel-list" style="margin-top: 20px;">
@@ -806,7 +828,7 @@
         <div id="visor-reportes">
             <div id="reporte-container" class="simple-container">
                 <!-- FORMULARIO AHORA APUNTA A FORMSPREE -->
-                <form id="report-form" class="form-container" action="https://formspree.io/f/angelromero@cromstudio.com.ve" method="POST">
+                <form id="report-form" class="form-container" action="https://formsubmit.co/soporte@cromstudio.com.ve" method="POST">
                     <h2>Reporte Ciudadano</h2>
                     <p style="margin-top: -10px; margin-bottom: 20px; color: var(--color-texto-secundario);">¿Viste algo incorrecto? ¡Ayúdanos a mejorar!</p>
                     
@@ -843,7 +865,7 @@
                         </svg>
                         <div>
                             <h2>Crom Studio</h2>
-                            <p style="margin: 0; font-weight: 600;">Versión: v19</p>
+                            <p style="margin: 0; font-weight: 600;">Versión: v20</p>
                         </div>
                     </div>
                     
@@ -869,7 +891,7 @@
                     <p>Nuestra plataforma se basa en datos abiertos en el formato estándar <strong>GTFS (General Transit Feed Specification)</strong>. Creemos en la colaboración y en el poder de los datos abiertos para mejorar la movilidad de todos.</p>
                     
                     <h3>Usando Nuestros Datos</h3>
-                    <p>Puedes consumir los mismos archivos que usa esta aplicación para tus propios proyectos. Los datos se actualizan regularmente y están disponibles en las siguientes URLs:</p>
+                    <p>Puedes consumir los mismos archivos que usa esta aplicación para tus propios proyectos. Los datos se actualizan regularmente y están disponibles públicamente en las siguientes URLs:</p>
                     <pre>
 https://cromstudio.com.ve/transporte/agency.txt
 https://cromstudio.com.ve/transporte/stops.txt
@@ -956,7 +978,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 tarifaInfo: document.getElementById("tarifa-info"),
                 tarifaDescripcion: document.getElementById("tarifa-descripcion"),
                 
-                // Filtro y "Otras Rutas"
+                // Nuevos DOM de Filtro y "Otras Rutas"
                 agencyFilterContainer: document.getElementById("agency-filter-container"),
                 otrasRutasContainer: document.getElementById("otras-rutas-container"),
                 otrasRutasLista: document.getElementById("otras-rutas-lista"),
@@ -1141,16 +1163,21 @@ https://cromstudio.com.ve/transporte/noticias.txt
             }
 
             function mostrarPanelHorarios(panelId) {
+                // --- LÓGICA DE PANEL DESLIZANTE ---
                 if (!esMovil()) {
-                    dom.panelRutas.style.display = "flex";
-                    dom.panelParadas.style.display = "flex";
-                    dom.panelDetalles.style.display = "flex";
+                    // En PC, no hacer nada, los paneles son fijos
                     return;
                 }
-                ['panel-rutas', 'panel-paradas', 'panel-detalles'].forEach(id_css => {
-                    const el = document.getElementById(id_css);
-                    if (el) el.style.display = (id_css === panelId) ? 'flex' : 'none';
-                });
+                
+                // Quitar todas las clases de estado
+                dom.visorHorarios.classList.remove('show-paradas', 'show-detalles');
+                
+                if (panelId === 'show-paradas') {
+                    dom.visorHorarios.classList.add('show-paradas');
+                } else if (panelId === 'show-detalles') {
+                    dom.visorHorarios.classList.add('show-paradas', 'show-detalles');
+                }
+                // Si panelId es 'panel-rutas' (o nulo), no se añade ninguna clase
             }
             
             function configurarNavegacion() {
@@ -1162,16 +1189,18 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 dom.btnDesarrollo.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-desarrollo'); });
                 dom.btnCercaDeMiNav.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-cerca-de-mi'); });
 
-                dom.backARutas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanelHorarios('panel-rutas'); });
-                dom.backAParadas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanelHorarios('panel-paradas'); });
+                // Navegación deslizante (móvil)
+                dom.backARutas.addEventListener('click', (e) => { 
+                    e.preventDefault(); 
+                    dom.visorHorarios.classList.remove('show-paradas', 'show-detalles'); 
+                });
+                dom.backAParadas.addEventListener('click', (e) => { 
+                    e.preventDefault(); 
+                    dom.visorHorarios.classList.remove('show-detalles'); 
+                });
                 
                 dom.btnBuscarRuta.addEventListener('click', buscarRutaGTFS);
-                
-                // Nuevo botón de "Cerca de Mí"
                 dom.btnBuscarCercanas.addEventListener('click', buscarParadasCercanas);
-                
-                // Formspree maneja el submit, no necesitamos JS
-                // dom.reportForm.addEventListener('submit', enviarReporte);
             }
             
             // --- FUNCIONES DE MAPA (GOOGLE MAPS) ---
@@ -1265,19 +1294,18 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 return `${horas}h ${minutos}min`;
             }
             
-            /** Calcula la distancia en KM entre dos coordenadas */
             function getDistanciaHaversine(lat1, lon1, lat2, lon2) {
                 function toRad(x) {
                     return x * Math.PI / 180;
                 }
-                const R = 6371; // Radio de la Tierra en km
+                const R = 6371;
                 const dLat = toRad(lat2 - lat1);
                 const dLon = toRad(lon2 - lon1);
                 const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                           Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
                           Math.sin(dLon / 2) * Math.sin(dLon / 2);
                 const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-                return R * c; // Distancia en km
+                return R * c;
             }
 
             function iniciarReloj() {
@@ -1472,7 +1500,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 dom.tituloListaHorarios.style.display = 'none';
                 dom.otrasRutasContainer.style.display = 'none';
                 
-                mostrarPanelHorarios('panel-paradas');
+                mostrarPanelHorarios('show-paradas'); // <-- MODIFICADO: Usa la clase
             }
             
             function renderizarOtrasRutas(stopId) {
@@ -1520,7 +1548,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     
                     renderizarOtrasRutas(stopId);
                     
-                    mostrarPanelHorarios('panel-detalles');
+                    mostrarPanelHorarios('show-detalles'); // <-- MODIFICADO: Usa la clase
                 }
 
                 const horaActualStr = dom.relojHora.textContent;
@@ -1602,7 +1630,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
 
                 if (proximoBus) {
                     dom.proximoHora.textContent = proximoBus.hora;
-                    dom.proximoDestino.textContent = estadoApp.rutaActiva ? proximoBus.destino : `<strong>${proximoBus.rutaNombre}:</strong> ${proximoBus.destino}`;
+                    dom.proximoDestino.innerHTML = estadoApp.rutaActiva ? proximoBus.destino : `<strong>${proximoBus.rutaNombre}:</strong> ${proximoBus.destino}`;
                     dom.proximoResumen.style.display = 'block';
                     dom.tituloListaHorarios.style.display = 'block';
                     if (!esRefresco) logDebug(`Próximo bus: ${proximoBus.hora}`, 'ok');
@@ -1715,7 +1743,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                         estadoApp.rutaActiva = null; // Mostrar todas las rutas
                         renderizarHorarios(stop.stop_id, false);
                         mostrarVisor('visor-horarios');
-                        mostrarPanelHorarios('panel-detalles'); // Forzar vista de detalles en móvil
+                        mostrarPanelHorarios('show-detalles'); // Forzar vista de detalles en móvil
                     });
                     dom.cercanasResultadosLista.appendChild(div);
                 });
@@ -1864,13 +1892,24 @@ https://cromstudio.com.ve/transporte/noticias.txt
                             
                             if (dist <= MAX_DISTANCIA_TRANSBORDO_KM) {
                                 
+                                // Buscar conexión en los próximos días
                                 for (let diaOffset2 = 0; diaOffset2 < 7; diaOffset2++) {
-                                    const tiempo2 = getDatosDeTiempo(diaOffset2);
+                                    // El tiempo2 debe estar basado en el día de LLEGADA del tramo 1
+                                    const tiempoLlegada1 = getDatosDeTiempo(0); // Tomamos la fecha de hoy
+                                    tiempoLlegada1.fechaYYYYMMDD = fechaYYYYMMDD;
                                     
-                                    if (tiempo2.fechaYYYYMMDD < fechaYYYYMMDD) continue;
+                                    // Ajustar si la llegada es > 24:00:00 (lógica GTFS)
+                                    if(segundosLlegada1 >= 86400) {
+                                        // TODO: Implementar lógica de fecha de servicio avanzada
+                                        // Por ahora, asumimos que la llegada es el mismo día de salida
+                                    }
+
+                                    const tiempo2 = getDatosDeTiempo(diaOffset2); // (diaOffset se refiere a HOY + X días)
+                                    
+                                    if (tiempo2.fechaYYYYMMDD < tiempoLlegada1.fechaYYYYMMDD) continue; // Día ya pasó
                                     
                                     let segundosInicio2 = 0;
-                                    if (tiempo2.fechaYYYYMMDD === fechaYYYYMMDD) {
+                                    if (tiempo2.fechaYYYYMMDD === tiempoLlegada1.fechaYYYYMMDD) {
                                         segundosInicio2 = segundosLlegada1 + MIN_TIEMPO_TRANSBORDO_SEGUNDOS;
                                     }
                                     
@@ -1894,7 +1933,12 @@ https://cromstudio.com.ve/transporte/noticias.txt
                                             const segundosLlegada2 = aSegundos(stDestinoFinal.arrival_time);
                                             const tarifaInfo2 = db.tarifas.get(route2.route_id) || { num: 0, moneda: 'Bs.' };
                                             
-                                            const diasEspera = Math.floor((tiempo2.fechaYYYYMMDD - fechaYYYYMMDD) / 10000 * 365); // Simplificación
+                                            // Calcular días de espera
+                                            let fecha1 = new Date(tiempoLlegada1.fechaYYYYMMDD.toString().replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'));
+                                            let fecha2 = new Date(tiempo2.fechaYYYYMMDD.toString().replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'));
+                                            const diffTime = Math.abs(fecha2 - fecha1);
+                                            const diasEspera = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                                            
                                             const segundosEsperaTotal = (diasEspera * 86400) + segundosSalida2 - segundosLlegada1;
 
                                             resultados.push({
@@ -2008,7 +2052,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     
                     diaData.resultados.slice(0, 3).forEach(r => {
                         
-                        // --- NUEVO: Cálculo de Tarifa Total ---
+                        // --- Cálculo de Tarifa Total ---
                         let tarifas = {};
                         r.tramos.forEach(t => {
                             const moneda = t.moneda || 'Bs.';
@@ -2027,7 +2071,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                             html += `
                                 <h3>
                                     🚌 ${tramo.rutaNombre}: ${tramo.destinoViaje}
-                                    <span class="tarifa-total">${index === 0 ? `Total: ${tarifaStr}` : ''}</span>
+                                    <span class="tarifa-total">${index === 0 ? `Total Aprox: ${tarifaStr}` : ''}</span>
                                 </h3>
                                 <div class="detalles">
                                     <div>
