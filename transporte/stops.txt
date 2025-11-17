@@ -15,9 +15,9 @@ S_VAR,Estación El Varillal,10.623761,-71.659134,1,
 S_VAR_A1,Andén (Sentido Libertador),10.623771,-71.659124,0,S_VAR
 S_VAR_A2,Andén (Sentido A. Vanega),10.623781,-71.659144,0,S_VAR
 
-S_GUA,Estación El Guayabal,10.621500,-71.644100,1,
-S_GUA_A1,Andén (Sentido Libertador),10.621510,-71.644090,0,S_GUA
-S_GUA_A2,Andén (Sentido A. Vanega),10.621520,-71.644110,0,S_GUA
+S_GUA,Estación El Guayabal,10.626347,-71.649450,1,
+S_GUA_A1,Andén (Sentido Libertador),10.626347,-71.649450,0,S_GUA
+S_GUA_A2,Andén (Sentido A. Vanega),10.626347,-71.649450,0,S_GUA
 
 S_SAB,Estación Sabaneta,10.629994,-71.640042,1,
 S_SAB_A1,Andén (Sentido Libertador),10.630004,-71.640032,0,S_SAB
