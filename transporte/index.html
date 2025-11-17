@@ -629,6 +629,24 @@
                 font-size: 14px;
             }
 
+ /* --- "Directorio de Paradas" --- */
+        #directorio-detalle-mapa {
+            width: 100%; 
+            height: 300px; 
+            border-radius: 8px; 
+            margin-bottom: 16px; 
+            background: #eee;
+        }
+
+        @media (max-width: 768px) {
+            #main-nav ul {
+                justify-content: flex-start; /* Alinear a la izquierda para scroll */
+            }
+            #main-nav li a {
+                padding: 16px 12px;
+                font-size: 14px;
+            }
+
             /* --- LÓGICA DE PANEL DESLIZANTE --- */
             #visor-horarios {
                 flex-direction: row; /* Mantener horizontal */
@@ -683,6 +701,7 @@
                 grid-template-columns: 1fr;
             }
         }
+        }
     </style>
 </head>
 <body>
@@ -694,6 +713,7 @@
             <li><a href="#" id="btn-mapa">Mapa</a></li>
             <li><a href="#" id="btn-planificador">Planificador</a></li>
             <li><a href="#" id="btn-cerca-de-mi">Cerca de Mí</a></li>
+            <li><a href="#" id="btn-directorio">Directorio</a></li> <!-- NUEVO -->
             <li><a href="#" id="btn-reportes">Reportes</a></li>
             <li><a href="#" id="btn-desarrollo">Desarrollo</a></li>
             <li><a href="#" id="btn-acerca-de">Acerca de</a></li>
@@ -824,6 +844,32 @@
             </div>
         </div>
         
+
+  <!-- ===== NUEVO: VISOR DIRECTORIO DE PARADAS ===== -->
+        <div id="visor-directorio">
+            <div class="simple-container">
+                <div class="form-container">
+                    <h2>📍 Directorio de Paradas</h2>
+                    <p>Seleccione una parada para ver su ubicación y qué rutas pasan por ella.</p>
+                    <div id="directorio-paradas-lista" class="panel-list" style="max-height: 400px; margin-bottom: 24px; border: 1px solid var(--color-borde); border-radius: 8px;">
+                        <!-- La lista de todas las paradas se inyectará aquí -->
+                    </div>
+                    
+                    <div id="directorio-detalle-container" style="display: none;">
+                        <h3 id="directorio-detalle-titulo" style="font-size: 20px;"></h3>
+                        <div id="directorio-detalle-mapa" style="width: 100%; height: 300px; border-radius: 8px; margin-bottom: 16px; background: #eee;"></div>
+                        <h4>Rutas que pasan por esta parada:</h4>
+                        <div id="directorio-detalle-rutas-lista">
+                            <!-- La lista de rutas de la parada se inyectará aquí -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <!-- ===== NUEVO: VISOR REPORTES ===== -->
         <div id="visor-reportes">
             <div id="reporte-container" class="simple-container">
@@ -950,6 +996,8 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 btnAcercaDe: document.getElementById("btn-acerca-de"),
                 btnCercaDeMiNav: document.getElementById("btn-cerca-de-mi"), // Botón de nav
                 btnDesarrollo: document.getElementById("btn-desarrollo"),
+                btnDirectorio: document.getElementById("btn-directorio"), // Añadido
+                visorDirectorio: document.getElementById("visor-directorio"), // Añadido
 
                 // Panel Horarios
                 estadoCarga: document.getElementById("estado-carga"),
@@ -997,6 +1045,13 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 
                 // Reportes
                 reportForm: document.getElementById("report-form"),
+
+                  // "Directorio"
+                directorioParadasLista: document.getElementById("directorio-paradas-lista"),
+                directorioDetalleContainer: document.getElementById("directorio-detalle-container"),
+                directorioDetalleTitulo: document.getElementById("directorio-detalle-titulo"),
+                directorioDetalleMapa: document.getElementById("directorio-detalle-mapa"),
+                directorioDetalleRutasLista: document.getElementById("directorio-detalle-rutas-lista"),
             };
 
             // --- DB & ESTADO ---
@@ -1016,7 +1071,9 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 diaActualGTFS_Field: 'monday',
                 fechaActualYYYYMMDD: 20250101,
                 googleMap: null, 
-                mapaInicializado: false
+                mapaInicializado: false,
+                directorioMapa: null // Mapa para el directorio
+
             };
             const esMovil = () => window.innerWidth <= 768;
 
@@ -1094,6 +1151,8 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     iniciarReloj();
                     configurarNavegacion();
                     popularDropdownsPlanificador();
+                    renderizarDirectorioParadas(); // <-- NUEVO
+
 
                 } catch (error) {
                     console.error("Error fatal en main():", error);
@@ -1114,6 +1173,8 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 dom.visorAcercaDe.style.display = 'none';
                 dom.visorDesarrollo.style.display = 'none';
                 dom.visorCercaDeMi.style.display = 'none';
+                dom.visorDirectorio.style.display = 'none';
+
                 
                 // Quitar 'active' de todos los botones
                 dom.btnHorarios.classList.remove('active');
@@ -1123,6 +1184,8 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 dom.btnAcercaDe.classList.remove('active');
                 dom.btnCercaDeMiNav.classList.remove('active');
                 dom.btnDesarrollo.classList.remove('active');
+                dom.btnDirectorio.classList.remove('active');
+
 
                 if (visorId === 'visor-mapa') {
                     dom.visorMapa.style.display = 'block';
@@ -1157,6 +1220,10 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     dom.visorCercaDeMi.style.display = 'block';
                     dom.btnCercaDeMiNav.classList.add('active');
                 }
+                else if (visorId === 'visor-directorio') {
+                    dom.visorDirectorio.style.display = 'block';
+                    dom.btnDirectorio.classList.add('active');
+                }
                 else { // 'visor-horarios' es el default
                     dom.visorHorarios.style.display = 'flex';
                     dom.btnHorarios.classList.add('active');
@@ -1189,7 +1256,9 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 dom.btnAcercaDe.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-acerca-de'); });
                 dom.btnDesarrollo.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-desarrollo'); });
                 dom.btnCercaDeMiNav.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-cerca-de-mi'); });
+                dom.btnDirectorio.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-directorio'); });
 
+            
                 // Navegación deslizante (móvil)
                 dom.backARutas.addEventListener('click', (e) => { 
                     e.preventDefault(); 
@@ -1750,6 +1819,87 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 });
             }
             
+
+  /** Rellena la lista del Directorio de Paradas */
+            function renderizarDirectorioParadas() {
+                const paradasOrdenadas = [...db.stops.values()].sort((a, b) => a.stop_name.localeCompare(b.stop_name));
+                
+                dom.directorioParadasLista.innerHTML = ''; // Limpiar
+                
+                paradasOrdenadas.forEach(stop => {
+                    const div = document.createElement('div');
+                    div.className = 'list-item';
+                    div.innerHTML = `
+                        <span class="icon">📍</span>
+                        <div><strong>${stop.stop_name}</strong></div>
+                    `;
+                    div.addEventListener('click', () => {
+                        document.querySelectorAll('#directorio-paradas-lista .list-item').forEach(el => el.classList.remove('active'));
+                        div.classList.add('active');
+                        mostrarDetalleDeParada(stop.stop_id);
+                    });
+                    dom.directorioParadasLista.appendChild(div);
+                });
+            }
+
+            /** Muestra el mapa y las rutas para una parada del directorio */
+            function mostrarDetalleDeParada(stopId) {
+                const stop = db.stops.get(stopId);
+                if (!stop) return;
+
+                dom.directorioDetalleTitulo.textContent = stop.stop_name;
+                
+                // 1. Mostrar Rutas
+                const stopTimes = db.stopTimesPorParada.get(stopId) || [];
+                const tripIds = new Set(stopTimes.map(st => st.trip_id));
+                const routeIds = new Set();
+                tripIds.forEach(tid => {
+                    const trip = db.trips.get(tid);
+                    if (trip) routeIds.add(trip.route_id);
+                });
+
+                let html = '';
+                let count = 0;
+                routeIds.forEach(routeId => {
+                    const route = db.routes.get(routeId);
+                    if(route) {
+                        html += `
+                            <div class="otra-ruta-item">
+                                <span class="icon">🚌</span>
+                                <span>${route.route_short_name} - ${route.route_long_name}</span>
+                            </div>
+                        `;
+                        count++;
+                    }
+                });
+                
+                dom.directorioDetalleRutasLista.innerHTML = (count > 0) ? html : '<p>No hay rutas asignadas a esta parada.</p>';
+                
+                // 2. Mostrar Mapa
+                if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
+                    dom.directorioDetalleMapa.innerHTML = '<p style="color:red;padding:10px;">No se pudo cargar Google Maps.</p>';
+                } else {
+                    // Re-inicializar el mapa del directorio cada vez
+                    const map = new google.maps.Map(dom.directorioDetalleMapa, {
+                        zoom: 16,
+                        center: { lat: stop.stop_lat, lng: stop.stop_lon },
+                        mapTypeId: 'roadmap',
+                        disableDefaultUI: true,
+                        zoomControl: true
+                    });
+                    
+                    new google.maps.Marker({
+                        position: { lat: stop.stop_lat, lng: stop.stop_lon },
+                        map: map,
+                        title: stop.stop_name
+                    });
+                }
+
+                // 3. Mostrar contenedor
+                dom.directorioDetalleContainer.style.display = 'block';
+            }
+            
+
             // --- PLANIFICADOR (v3 - TRANSBORDO ESPACIAL/TEMPORAL) ---
             
             function popularDropdownsPlanificador() {
