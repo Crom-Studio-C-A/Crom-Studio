@@ -1,4 +1,4 @@
-stop_id,stop_name,stop_lat,stop_lon
+stop_id,stop_name,stop_lat,stop_lon,location_type,parent_station
 P_VALERA,Parada Valera-Escuque (Valera),9.312756,-70.611262
 P_ESCUQUE,Parada Escuque-Valera (Escuque),9.295932,-70.670822
 T_GUANARE,Terminal de Pasajeros de Guanare,9.026222,-69.736546
@@ -9,7 +9,7 @@ T_VALERA,Terminal de Pasajeros de Valera,9.320137,-70.597900
 T_MARACAIBO,Terminal de Pasajeros de Marcaibo,10.635511,-71.619072
 T_BOCONO,Terminal de Pasajeros de Boconó,9.2379945,-70.2764009
 T_BISCUCUY,Terminal de Pasajeros de Biscucuy,9.3539744,-69.9876023
-
+T_BARQUISIMETO,Terminal de Pasajeros de Barquisimeto,10.0689898,-69.3351438
 
 S_VAN,Estación Altos de La Vanega,10.616111,-71.668333,1,
 S_VAN_A1,Estación Altos de La Vanega (Sentido Libertador),10.616121,-71.668323,0,S_VAN
