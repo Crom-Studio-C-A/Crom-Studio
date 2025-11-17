@@ -16,10 +16,11 @@
     <!-- API de Google Maps con tu API Key -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxQnqhHh_H7IGHH5p5bow2Bz8iPIIqRww&libraries=routes"></script>
 
-    <!-- CSS (Con estilos para Nuevas Funciones) -->
+    <!-- CSS (Diseño "Super Moderno" v22) -->
     <style>
         :root {
             --color-primario: #0d6efd;
+            --color-gradiente: linear-gradient(90deg, #0d6efd 0%, #0d47a1 100%);
             --color-fondo: #f8f9fa;
             --color-tarjeta: #ffffff;
             --color-texto: #212529;
@@ -69,10 +70,12 @@
             list-style: none;
             flex-wrap: nowrap; /* Evita que se rompa la línea */
             overflow-x: auto; /* Permite scroll horizontal en móvil */
-            -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
+            -webkit-overflow-scrolling: touch;
         }
         #main-nav li a {
-            display: block;
+            display: flex; /* Para icono y texto */
+            align-items: center;
+            gap: 8px;
             padding: 16px 12px;
             font-size: 14px;
             font-weight: 600;
@@ -81,12 +84,23 @@
             border-bottom: 3px solid transparent;
             white-space: nowrap;
         }
+        #main-nav li a svg {
+            width: 20px; height: 20px;
+            flex-shrink: 0;
+            fill: var(--color-texto-secundario);
+        }
         #main-nav li a:hover {
             color: var(--color-texto);
+        }
+        #main-nav li a:hover svg {
+            fill: var(--color-texto);
         }
         #main-nav li a.active {
             color: var(--color-primario);
             border-bottom-color: var(--color-primario);
+        }
+        #main-nav li a.active svg {
+            fill: var(--color-primario);
         }
         /* --- Fin Barra de Navegación --- */
 
@@ -131,7 +145,7 @@
             background: var(--color-tarjeta);
             border: 1px solid var(--color-borde);
             padding: 24px;
-            border-radius: 8px;
+            border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         .form-container h2, #acerca-de-content h2, #desarrollo-content h2 {
@@ -153,7 +167,7 @@
             padding: 12px;
             font-size: 16px;
             border: 1px solid var(--color-borde);
-            border-radius: 4px;
+            border-radius: 8px;
             background: #fff;
             margin-bottom: 16px;
         }
@@ -165,15 +179,15 @@
             padding: 12px 20px;
             font-size: 16px;
             font-weight: 600;
-            background: var(--color-primario);
+            background: var(--color-gradiente);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: opacity 0.2s;
         }
         .form-container button:hover {
-            background: #0b5ed7;
+            opacity: 0.9;
         }
         
         /* --- Contenido Pestañas Nuevas --- */
@@ -204,12 +218,8 @@
             background: #2b2b2b;
             color: #f1f1f1;
             padding: 16px;
-            border-radius: 6px;
+            border-radius: 8px;
             overflow-x: auto;
-        }
-        #desarrollo-content a {
-            color: var(--color-primario);
-            font-weight: 500;
         }
 
         /* --- Planificador --- */
@@ -219,6 +229,37 @@
             gap: 16px;
             align-items: end;
         }
+        /* NUEVO: Contenedor Autocomplete */
+        .autocomplete-container {
+            position: relative;
+        }
+        .autocomplete-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid var(--color-borde);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .autocomplete-list div {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--color-borde);
+        }
+        .autocomplete-list div:last-child {
+            border-bottom: none;
+        }
+        .autocomplete-list div:hover {
+            background-color: var(--color-hover);
+        }
+        
         #planificador-resultados {
             margin-top: 24px;
         }
@@ -231,16 +272,16 @@
             color: var(--color-proximo-texto);
             background: var(--color-proximo);
             padding: 8px 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             display: inline-block;
         }
         .resultado-viaje {
             background: var(--color-tarjeta);
             border: 1px solid var(--color-borde);
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 16px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .resultado-viaje h3 {
             background: var(--color-activo);
@@ -299,6 +340,7 @@
             flex-direction: column;
             height: 100%;
             flex-shrink: 0;
+            background: var(--color-tarjeta);
         }
         #panel-rutas { width: 320px; }
         #panel-paradas { width: 360px; }
@@ -344,7 +386,6 @@
         .list-item:last-child { border-bottom: none; }
         .list-item:hover { 
             background-color: var(--color-hover);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .list-item.active {
             background-color: var(--color-activo);
@@ -378,7 +419,7 @@
             border-bottom: 1px solid var(--color-borde);
         }
         .novedad-item {
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 12px;
             margin-bottom: 12px;
             border: 1px solid var(--color-borde);
@@ -565,7 +606,7 @@
             background: var(--color-hover);
         }
         .agency-filter-btn.active {
-            background: var(--color-primario);
+            background: var(--color-gradiente);
             color: white;
             border-color: var(--color-primario);
         }
@@ -586,7 +627,7 @@
             gap: 12px;
             align-items: center;
             padding: 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid var(--color-borde);
             margin-bottom: 8px;
         }
@@ -606,18 +647,18 @@
             padding: 16px 24px;
             font-size: 18px;
             font-weight: 600;
-            background: var(--color-primario);
+            background: var(--color-gradiente);
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: opacity 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 10px;
         }
         #btn-buscar-cercanas:hover {
-            background: #0b5ed7;
+            opacity: 0.9;
         }
         #cercanas-resultados-lista .list-item span {
             color: var(--color-primario);
@@ -706,14 +747,38 @@
     <!-- ===== NUEVA BARRA DE NAVEGACIÓN ===== -->
     <nav id="main-nav">
         <ul>
-            <li><a href="#" id="btn-horarios" class="active">Horarios</a></li>
-            <li><a href="#" id="btn-mapa">Mapa</a></li>
-            <li><a href="#" id="btn-planificador">Planificador</a></li>
-            <li><a href="#" id="btn-cerca-de-mi">Cerca de Mí</a></li>
-            <li><a href="#" id="btn-directorio">Directorio</a></li> <!-- NUEVO -->
-            <li><a href="#" id="btn-reportes">Reportes</a></li>
-            <li><a href="#" id="btn-desarrollo">Desarrollo</a></li>
-            <li><a href="#" id="btn-acerca-de">Acerca de</a></li>
+            <li><a href="#" id="btn-horarios" class="active">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8a8 8 0 0 1-8 8z"/><path fill="currentColor" d="M12 7a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h4a1 1 0 0 0 0-2h-3V8a1 1 0 0 0-1-1z"/></svg>
+                Horarios
+            </a></li>
+            <li><a href="#" id="btn-mapa">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20.5 3.5c-2.8-2.8-7.7-2.8-10.5 0L3.5 10c-2.8 2.8-2.8 7.7 0 10.5s7.7 2.8 10.5 0l6.5-6.5c2.8-2.8 2.8-7.7 0-10.5zM12 19.5c-4.1 0-7.5-3.4-7.5-7.5s3.4-7.5 7.5-7.5s7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5z"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/></svg>
+                Mapa
+            </a></li>
+            <li><a href="#" id="btn-planificador">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M21.7 11.3L12.7 2.3c-.4-.4-1-.4-1.4 0l-9 9c-.4.4-.4 1 0 1.4l9 9c.4.4 1 .4 1.4 0l9-9c.4-.4.4-1 0-1.4zM12 20.3L4.7 13H12v7.3zM12 3.7L19.3 11H12V3.7z"/></svg>
+                Planificador
+            </a></li>
+            <li><a href="#" id="btn-cerca-de-mi">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm0-10c-4.2 0-8 3.2-8 7.2 0 4.2 8 12.8 8 12.8s8-8.6 8-12.8C20 5.2 16.2 2 12 2zm0 10.5c-1.9 0-3.5-1.6-3.5-3.5s1.6-3.5 3.5-3.5 3.5 1.6 3.5 3.5-1.6 3.5-3.5 3.5z"/></svg>
+                Cerca de Mí
+            </a></li>
+            <li><a href="#" id="btn-directorio">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                Directorio
+            </a></li>
+            <li><a href="#" id="btn-reportes">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M13 14h-2v-4h2v4zm0 4h-2v-2h2v2zM19.99 4c0-1.1-.89-2-1.99-2H6c-1.1 0-2 .9-2 2v16l4-4h12c1.1 0 2-.9 2-2V4z"/></svg>
+                Reportes
+            </a></li>
+            <li><a href="#" id="btn-desarrollo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M7 8l-4 4 4 4zm10 8l4-4-4-4zM14 4l-4 16h2l4-16z"/></svg>
+                Desarrollo
+            </a></li>
+            <li><a href="#" id="btn-acerca-de">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2z"/></svg>
+                Acerca de
+            </a></li>
         </ul>
     </nav>
     
@@ -804,19 +869,24 @@
         <div id="visor-planificador">
             <div id="planificador-container" class="simple-container">
                 <div id="planificador-form" class="form-container">
-                    <div>
-                        <label for="plan-origen">Desde:</label>
-                        <select id="plan-origen">
-                            <option value="">Seleccione una parada...</option>
-                        </select>
+                    
+                    <!-- NUEVO: Buscador de Paradas (Origen) -->
+                    <div class="autocomplete-container">
+                        <label for="plan-origen-input">Desde:</label>
+                        <input type="text" id="plan-origen-input" placeholder="Buscar parada de origen...">
+                        <input type="hidden" id="plan-origen-id">
+                        <div class="autocomplete-list" id="plan-origen-list"></div>
                     </div>
-                    <div>
-                        <label for="plan-destino">Hasta:</label>
-                        <select id="plan-destino">
-                            <option value="">Seleccione una parada...</option>
-                        </select>
+
+                    <!-- NUEVO: Buscador de Paradas (Destino) -->
+                    <div class="autocomplete-container">
+                        <label for="plan-destino-input">Hasta:</label>
+                        <input type="text" id="plan-destino-input" placeholder="Buscar parada de destino...">
+                        <input type="hidden" id="plan-destino-id">
+                        <div class="autocomplete-list" id="plan-destino-list"></div>
                     </div>
-                    <button id="btn-buscar-ruta">Buscar Ruta en Autobús</button>
+                    
+                    <button id="btn-buscar-ruta">Buscar Ruta</button>
                 </div>
                 <div id="planificador-resultados">
                     <!-- Los resultados de la búsqueda aparecerán aquí -->
@@ -866,15 +936,13 @@
         <!-- ===== NUEVO: VISOR REPORTES ===== -->
         <div id="visor-reportes">
             <div id="reporte-container" class="simple-container">
-                <!-- FORMULARIO AHORA APUNTA A FORMSUBMIT.CO -->
                 <form id="report-form" class="form-container" action="https://formsubmit.co/angelromero@cromstudio.com.ve" method="POST">
                     <h2>Reporte Ciudadano</h2>
                     <p style="margin-top: -10px; margin-bottom: 20px; color: var(--color-texto-secundario);">¿Viste algo incorrecto? ¡Ayúdanos a mejorar!</p>
                     
-                    <!-- Configuración para FormSubmit -->
-                    <input type="hidden" name="_next" value="https://cromstudio.com.ve/transporte/index.html"> <!-- URL de agradecimiento (Opcional) -->
+                    <input type="hidden" name="_next" value="https://cromstudio.com.ve/transporte/index.html">
                     <input type="hidden" name="_subject" value="Nuevo Reporte de la App de Transporte">
-                    <input type="hidden" name="_captcha" value="false"> <!-- Puedes activarlo en FormSubmit -->
+                    <input type="hidden" name="_captcha" value="false"> 
 
                     <label for="reporte-tipo">Tipo de Reporte</label>
                     <select id="reporte-tipo" name="tipo_reporte" required>
@@ -909,7 +977,7 @@
                         </svg>
                         <div>
                             <h2>Crom Studio Transporte</h2>
-                            <p style="margin: 0; font-weight: 600;">Versión: v20</p>
+                            <p style="margin: 0; font-weight: 600;">Versión: v22</p>
                         </div>
                     </div>
                     
@@ -950,8 +1018,6 @@ https://cromstudio.com.ve/transporte/frequencies.txt
 </pre>
                     <p>Estos archivos siguen el estándar GTFS (con la adición de `tarifas.txt` y `noticias.txt` personalizados) y pueden ser utilizados en aplicaciones web, móviles o sistemas de información de transporte.</p>
                     
-                    <p>En el siguiente enlace, podrás ver más información sobre el desarrollo usando nuestros datos: <a href="https://cromstudio.com.ve/transporte/desarrollo/" target="_blank">https://cromstudio.com.ve/transporte/desarrollo/</a></p>
-
                     <h3>Contribuyendo</h3>
                     <p>¿Eres una agencia de transporte? ¿Manejas una línea de autobuses y te gustaría que tus horarios aparecieran aquí? ¡Nos encantaría colaborar!</p>
                     <p>Ponte en contacto con nosotros en <strong>angelromero@cromstudio.com.ve</strong> para discutir cómo podemos integrar tus datos en nuestra plataforma y ayudar a miles de pasajeros.</p>
@@ -966,7 +1032,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
     <!-- JS de PapaParse -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
-    <!-- SCRIPT DE LA APLICACIÓN (Actualizado con todas las funciones v20) -->
+    <!-- SCRIPT DE LA APLICACIÓN (Actualizado con todas las funciones v22) -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
@@ -1046,8 +1112,12 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 directorioDetalleRutasLista: document.getElementById("directorio-detalle-rutas-lista"),
 
                 // Planificador
-                planOrigen: document.getElementById("plan-origen"),
-                planDestino: document.getElementById("plan-destino"),
+                planOrigenInput: document.getElementById("plan-origen-input"), 
+                planOrigenId: document.getElementById("plan-origen-id"),     
+                planOrigenList: document.getElementById("plan-origen-list"), 
+                planDestinoInput: document.getElementById("plan-destino-input"), 
+                planDestinoId: document.getElementById("plan-destino-id"),     
+                planDestinoList: document.getElementById("plan-destino-list"), 
                 btnBuscarRuta: document.getElementById("btn-buscar-ruta"),
                 planResultados: document.getElementById("planificador-resultados"),
                 
@@ -1065,7 +1135,9 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 agencies: new Map(),
                 agencyTimezone: "America/Caracas",
                 stopTimesPorParada: new Map(),
-                frequencies: new Map() // <-- NUEVO: Para frecuencias de metro
+                frequencies: new Map(),
+                paradasPadreHijas: new Map(),
+                paradasPrincipales: new Map() 
             };
             let relojIntervalo = null;
             let estadoApp = {
@@ -1074,8 +1146,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 fechaActualYYYYMMDD: 20250101,
                 googleMap: null, 
                 mapaInicializado: false,
-                directorioMapa: null // Mapa para el directorio
-
+                directorioMapa: null 
             };
             const esMovil = () => window.innerWidth <= 768;
 
@@ -1109,14 +1180,14 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                         parseFile("stop_times.txt"), parseFile("calendar.txt"),
                         parseFile("noticias.txt"), parseFile("tarifas.txt"),
                         parseFile("shapes.txt"),
-                        parseFile("frequencies.txt") // <-- Cargar frecuencias
+                        parseFile("frequencies.txt") 
                     ]);
 
                     // Procesar
                     if (agency.length > 0) db.agencyTimezone = agency[0].agency_timezone || "America/Caracas";
                     agency.forEach(a => db.agencies.set(a.agency_id, a));
                     routes.forEach(r => db.routes.set(r.route_id, r));
-                    stops.forEach(s => db.stops.set(s.stop_id, s)); // <-- Cargar TODOS, incl. andenes
+                    stops.forEach(s => db.stops.set(s.stop_id, s));
                     trips.forEach(t => db.trips.set(t.trip_id, t));
                     calendar.forEach(c => db.calendar.set(c.service_id, c));
                     db.stopTimes = stopTimes;
@@ -1136,10 +1207,33 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                     });
                     db.shapes.forEach(points => points.sort((a, b) => a.shape_pt_sequence - b.shape_pt_sequence));
                     
-                    // Procesar Frecuencias
-                    frequencies.forEach(f => db.frequencies.set(f.trip_id, f));
+                    frequencies.forEach(f => {
+                        if (!db.frequencies.has(f.trip_id)) {
+                            db.frequencies.set(f.trip_id, []);
+                        }
+                        db.frequencies.get(f.trip_id).push(f);
+                    });
                     logDebug(`Procesadas ${db.frequencies.size} reglas de frecuencia.`, 'ok');
 
+                    logDebug("Creando índice de Paradas/Andenes...", 'info');
+                    db.stops.forEach(stop => {
+                        // CORRECCIÓN: Usar '==' para comparar `location_type` (puede ser string '0' o num 0)
+                        if (stop.location_type != 0 && stop.stop_name) {
+                            db.paradasPrincipales.set(stop.stop_id, stop);
+                        }
+                        
+                        if (!db.paradasPadreHijas.has(stop.stop_id)) {
+                            db.paradasPadreHijas.set(stop.stop_id, [stop.stop_id]);
+                        }
+                        if (stop.location_type == 0 && stop.parent_station) {
+                            if (!db.paradasPadreHijas.has(stop.parent_station)) {
+                                db.paradasPadreHijas.set(stop.parent_station, [stop.parent_station]);
+                            }
+                            db.paradasPadreHijas.get(stop.parent_station).push(stop.stop_id);
+                        }
+                    });
+                    logDebug(`Índice de Paradas/Andenes creado. ${db.paradasPrincipales.size} paradas principales.`, 'ok');
+                    
                     logDebug("Creando índice de stop_times...", 'info');
                     db.stopTimes.forEach(st => {
                         if (!db.stopTimesPorParada.has(st.stop_id)) {
@@ -1180,18 +1274,10 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 dom.visorDesarrollo.style.display = 'none';
                 dom.visorCercaDeMi.style.display = 'none';
                 dom.visorDirectorio.style.display = 'none';
-
                 
                 // Quitar 'active' de todos los botones
-                dom.btnHorarios.classList.remove('active');
-                dom.btnMapa.classList.remove('active');
-                dom.btnPlanificador.classList.remove('active');
-                dom.btnReportes.classList.remove('active');
-                dom.btnAcercaDe.classList.remove('active');
-                dom.btnCercaDeMiNav.classList.remove('active');
-                dom.btnDesarrollo.classList.remove('active');
-                dom.btnDirectorio.classList.remove('active');
-
+                const navButtons = [dom.btnHorarios, dom.btnMapa, dom.btnPlanificador, dom.btnReportes, dom.btnAcercaDe, dom.btnCercaDeMiNav, dom.btnDesarrollo, dom.btnDirectorio];
+                navButtons.forEach(btn => btn.classList.remove('active'));
 
                 if (visorId === 'visor-mapa') {
                     dom.visorMapa.style.display = 'block';
@@ -1237,15 +1323,8 @@ https://cromstudio.com.ve/transporte/frequencies.txt
             }
 
             function mostrarPanelHorarios(panelId) {
-                // --- LÓGICA DE PANEL DESLIZANTE ---
-                if (!esMovil()) {
-                    // En PC, no hacer nada, los paneles son fijos
-                    return;
-                }
-                
-                // Quitar todas las clases de estado
+                if (!esMovil()) return;
                 dom.visorHorarios.classList.remove('show-paradas', 'show-detalles');
-                
                 if (panelId === 'show-paradas') {
                     dom.visorHorarios.classList.add('show-paradas');
                 } else if (panelId === 'show-detalles') {
@@ -1263,16 +1342,8 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 dom.btnCercaDeMiNav.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-cerca-de-mi'); });
                 dom.btnDirectorio.addEventListener('click', (e) => { e.preventDefault(); mostrarVisor('visor-directorio'); });
 
-            
-                // Navegación deslizante (móvil)
-                dom.backARutas.addEventListener('click', (e) => { 
-                    e.preventDefault(); 
-                    dom.visorHorarios.classList.remove('show-paradas', 'show-detalles'); 
-                });
-                dom.backAParadas.addEventListener('click', (e) => { 
-                    e.preventDefault(); 
-                    dom.visorHorarios.classList.remove('show-detalles'); 
-                });
+                dom.backARutas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanelHorarios('panel-rutas'); });
+                dom.backAParadas.addEventListener('click', (e) => { e.preventDefault(); mostrarPanelHorarios('panel-paradas'); });
                 
                 dom.btnBuscarRuta.addEventListener('click', buscarRutaGTFS);
                 dom.btnBuscarCercanas.addEventListener('click', buscarParadasCercanas);
@@ -1337,9 +1408,8 @@ https://cromstudio.com.ve/transporte/frequencies.txt
 
             function renderizarTodasLasParadasEnMapa() {
                 // MODIFICADO: Iterar solo sobre paradas "mostrables"
-                db.stops.forEach(stop => {
-                    // No dibujar andenes (location_type 0)
-                    if (stop.location_type === 0) return; 
+                db.paradasPrincipales.forEach(stop => {
+                    if (!stop.stop_lat) return; // Si no tiene latitud, saltar
 
                     const marker = new google.maps.Marker({
                         position: { lat: stop.stop_lat, lng: stop.stop_lon },
@@ -1355,7 +1425,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                         infoWindow.open(estadoApp.googleMap, marker);
                     });
                 });
-                logDebug(`Renderizadas ${db.stops.size} paradas en Google Maps.`, 'ok');
+                logDebug(`Renderizadas ${db.paradasPrincipales.size} paradas principales en Google Maps.`, 'ok');
             }
             
             // --- LÓGICA DE TIEMPO Y CÁLCULO ---
@@ -1368,10 +1438,9 @@ https://cromstudio.com.ve/transporte/frequencies.txt
             }
             
             function segundosAHora(seg) {
-                const h = Math.floor(seg / 3600);
+                const h = Math.floor(seg / 3600); // No usar % 24 para permitir 25:00, etc.
                 const m = Math.floor((seg % 3600) / 60);
                 const s = Math.floor(seg % 60);
-                // Formato HH:MM:SS
                 return [
                     h.toString().padStart(2, '0'),
                     m.toString().padStart(2, '0'),
@@ -1507,14 +1576,12 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                     return;
                 }
                 
-                // Ordenar para que el metro aparezca primero
                 rutasAMostrar.sort((a, b) => (a.route_type || 3) - (b.route_type || 3));
 
                 rutasAMostrar.forEach(route => {
                     const div = document.createElement('div');
                     div.className = 'list-item';
                     
-                    // --- NUEVO: Icono de Metro ---
                     const icon = (route.route_type == 1) ? '🚇' : '🚌'; 
                     
                     div.innerHTML = `
@@ -1552,7 +1619,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 const viajesRuta = [...db.trips.values()].filter(t => t.route_id === routeId);
                 const idsViajesRuta = new Set(viajesRuta.map(t => t.trip_id));
                 
-                const idsParadasVisibles = new Set(); // <-- Usar Set para de-duplicar
+                const idsParadasVisibles = new Set(); 
                 const paradasOrdenadas = [];
                 
                 let primerViajeIda = viajesRuta.find(t => t.direction_id === 0)?.trip_id;
@@ -1565,12 +1632,10 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                         .filter(st => st.trip_id === primerViajeIda)
                         .sort((a,b) => a.stop_sequence - b.stop_sequence)
                         .forEach(st => {
-                            // --- LÓGICA DE ANDENES CORREGIDA ---
                             const stop = db.stops.get(st.stop_id);
                             if (!stop) return;
                             
-                            // Si es un andén (type 0), usar su estación padre. Si no, usar el ID de la parada.
-                            const stopIdToShow = (stop.location_type === 0 && stop.parent_station) ? stop.parent_station : stop.stop_id;
+                            const stopIdToShow = (stop.location_type == 0 && stop.parent_station) ? stop.parent_station : stop.stop_id;
                             
                             if (!idsParadasVisibles.has(stopIdToShow)) {
                                 paradasOrdenadas.push(stopIdToShow);
@@ -1610,16 +1675,8 @@ https://cromstudio.com.ve/transporte/frequencies.txt
             }
             
             function renderizarOtrasRutas(stopId) {
-                // --- LÓGICA DE ANDENES CORREGIDA ---
-                // Encontrar todas las paradas "hijas" (andenes) de esta estación
-                const paradasHijas = [stopId]; // Incluir la propia estación
-                db.stops.forEach(stop => {
-                    if (stop.parent_station === stopId) {
-                        paradasHijas.push(stop.stop_id);
-                    }
-                });
+                const paradasHijas = db.paradasPadreHijas.get(stopId) || [stopId];
                 
-                // Encontrar todos los stop_times para la estación Y sus andenes
                 let stopTimesEnEstacion = [];
                 paradasHijas.forEach(id => {
                     stopTimesEnEstacion = stopTimesEnEstacion.concat(db.stopTimesPorParada.get(id) || []);
@@ -1674,141 +1731,74 @@ https://cromstudio.com.ve/transporte/frequencies.txt
 
                 const horaActualStr = dom.relojHora.textContent;
                 const segundosActuales = aSegundos(horaActualStr);
-                const diaActualField = estadoApp.diaActualGTFS_Field;
-                const fechaActual = estadoApp.fechaActualYYYYMMDD;
-
-                if (!esRefresco) {
-                    logDebug(`Hora actual (${db.agencyTimezone}): ${horaActualStr} (${segundosActuales}s)`, 'info');
-                    logDebug(`Día (campo GTFS): ${diaActualField}`, 'info');
-                    logDebug(`Fecha (GTFS): ${fechaActual}`, 'info');
-                }
-
-                // --- LÓGICA DE ANDENES CORREGIDA ---
-                // Encontrar todas las paradas "hijas" (andenes) de esta estación
-                const paradasHijasIds = new Set([stopId]); // Incluir la estación principal
-                db.stops.forEach(stop => {
-                    if (stop.parent_station === stopId) {
-                        paradasHijasIds.add(stop.stop_id);
-                    }
-                });
-
-                const idsViajesRutaActiva = new Set(
-                    [...db.trips.values()]
-                        .filter(t => t.route_id === estadoApp.rutaActiva)
-                        .map(t => t.trip_id)
-                );
-
-                let horariosHoy = [];
-
-                // 1. Encontrar todos los stop_times válidos
-                const stopTimesHoy = db.stopTimes
-                    .filter(st => {
-                        // El stop_time debe ser de la estación O uno de sus andenes
-                        if (!paradasHijasIds.has(st.stop_id)) return false; 
-                        
-                        // Si hay una ruta activa, filtrar por ella.
-                        if (estadoApp.rutaActiva && !idsViajesRutaActiva.has(st.trip_id)) return false;
-                        
-                        const trip = db.trips.get(st.trip_id);
-                        if (!trip) return false;
-                        
-                        const calendario = db.calendar.get(trip.service_id);
-                        if (!calendario) return false;
-
-                        const esDiaValido = calendario[diaActualField] === 1;
-                        const estaEnRango = fechaActual >= calendario.start_date && fechaActual <= calendario.end_date;
-
-                        return esDiaValido && estaEnRango;
-                    });
                 
-                // 2. Procesar StopTimes y Frecuencias
-                stopTimesHoy.forEach(st => {
-                    const trip = db.trips.get(st.trip_id);
-                    const route = db.routes.get(trip.route_id);
-                    const freq = db.frequencies.get(st.trip_id);
-
-                    if (freq) {
-                        // --- LÓGICA DE FRECUENCIA ---
-                        const offset = aSegundos(st.departure_time);
-                        const startService = aSegundos(freq.start_time);
-                        const endService = aSegundos(freq.end_time);
-                        const headway = freq.headway_secs;
-                        
-                        for (let t = startService; t < endService; t += headway) {
-                            const tiempoLlegada = t + offset;
-                            horariosHoy.push({
-                                hora: segundosAHora(tiempoLlegada),
-                                segundos: tiempoLlegada,
-                                destino: trip.trip_headsign || "Sin destino",
-                                rutaNombre: route.route_short_name
-                            });
-                        }
-                    } else {
-                        // --- LÓGICA DE HORARIO FIJO (BUS) ---
-                        horariosHoy.push({
-                            hora: st.departure_time,
-                            segundos: aSegundos(st.departure_time),
-                            destino: trip.trip_headsign || "Sin destino",
-                            rutaNombre: route.route_short_name
-                        });
-                    }
-                });
-                
-                // 3. Ordenar por segundos
-                horariosHoy.sort((a, b) => a.segundos - b.segundos);
-
-                const horariosUnicos = [];
-                const visto = new Set();
-                for (const h of horariosHoy) {
-                    const id = h.hora + h.destino + h.rutaNombre;
-                    if (!visto.has(id)) {
-                        horariosUnicos.push(h);
-                        visto.add(id);
-                    }
-                }
-                
-                if (!esRefresco) {
-                    logDebug(`Se encontraron ${horariosUnicos.length} salidas únicas para hoy.`, 'ok');
-                }
-                
+                // --- Lógica de 7 días ---
                 let proximoBus = null;
-                for (const h of horariosUnicos) {
+                let horariosUnicos = [];
+                let diaOffset = 0;
+                let diaNombre = "Hoy";
+
+                // Buscar el próximo bus en los próximos 7 días
+                while (!proximoBus && diaOffset < 7) {
+                    const tiempo = getDatosDeTiempo(diaOffset);
+                    diaNombre = (diaOffset === 0) ? "Hoy" : (diaOffset === 1) ? "Mañana" : tiempo.diaNombre;
+                    
+                    horariosUnicos = encontrarHorariosPorDia(stopId, tiempo);
+                    
+                    for (const h of horariosUnicos) {
+                        // Si es hoy, comparar con la hora actual.
+                        // Si es un día futuro, el primero que se encuentre es el próximo.
+                        if (h.segundos > tiempo.segundosInicio) { 
+                            proximoBus = h;
+                            proximoBus.diaNombre = diaNombre;
+                            break;
+                        }
+                    }
+                    
+                    if (esRefresco && proximoBus) break; 
+                    
+                    if (!esRefresco && diaOffset === 0) {
+                         break;
+                    }
+
+                    diaOffset++;
+                }
+                
+                // Si es un refresco, solo nos importa el "Próximo bus"
+                if (esRefresco) {
+                    actualizarProximoBusUI(proximoBus, segundosActuales, horariosUnicos);
+                    return;
+                }
+                
+                // --- Renderizado completo (no es refresco) ---
+                
+                const horariosHoy = (diaOffset === 0) ? horariosUnicos : encontrarHorariosPorDia(stopId, getDatosDeTiempo(0));
+                
+                logDebug(`Se encontraron ${horariosHoy.length} salidas únicas para hoy.`, 'ok');
+                
+                let proximoBusHoy = null;
+                for (const h of horariosHoy) {
                     if (h.segundos > segundosActuales) {
-                        proximoBus = h;
+                        proximoBusHoy = h;
                         break;
                     }
                 }
+                
+                // Mostrar el "Próximo Bus" (que puede ser de hoy, mañana, etc.)
+                actualizarProximoBusUI(proximoBus, segundosActuales, horariosHoy, true);
 
-                // Definir título
-                const tituloHorarios = estadoApp.rutaActiva ? "Todos los Horarios (Ruta Actual)" : "Todos los Horarios (Todas las Rutas)";
-                dom.tituloListaHorarios.textContent = tituloHorarios;
-                const tituloProximo = estadoApp.rutaActiva ? "Próximo Autobús (Ruta Actual)" : "Próximo Autobús (Todas las Rutas)";
-                dom.proximoResumen.querySelector('h3').textContent = tituloProximo;
-
-                if (proximoBus) {
-                    dom.proximoHora.textContent = proximoBus.hora;
-                    dom.proximoDestino.innerHTML = (estadoApp.rutaActiva || db.routes.size === 1) ? proximoBus.destino : `<strong>${proximoBus.rutaNombre}:</strong> ${proximoBus.destino}`;
-                    dom.proximoResumen.style.display = 'block';
-                    dom.tituloListaHorarios.style.display = 'block';
-                    if (!esRefresco) logDebug(`Próximo bus: ${proximoBus.hora}`, 'ok');
-                } else {
-                    dom.proximoResumen.style.display = 'none';
-                    dom.tituloListaHorarios.style.display = 'none';
-                }
-
+                // Llenar la lista de "Todos los Horarios (Hoy)"
                 dom.horariosLista.innerHTML = '';
                 let busesPasados = 0;
                 
-                horariosUnicos.forEach(h => {
+                horariosHoy.forEach(h => {
                     const div = document.createElement('div');
                     div.className = 'horario-item';
-                    
                     const segundosBus = h.segundos;
                     
-                    if (proximoBus && h.hora === proximoBus.hora && h.destino === proximoBus.destino) {
+                    if (proximoBusHoy && h.hora === proximoBusHoy.hora && h.destino === proximoBusHoy.destino) {
                         div.classList.add('proximo');
                     }
-                    
                     if (segundosBus <= segundosActuales) {
                         busesPasados++;
                     }
@@ -1824,16 +1814,128 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                     dom.horariosLista.appendChild(div);
                 });
                 
-                const msgSinMasSalidas = 'No hay más salidas programadas para hoy.';
+                const msgSinMasSalidasHoy = 'No hay más salidas programadas para hoy.';
                 const msgSinSalidasHoy = `No hay salidas programadas para hoy (verifique el día y el rango de fechas del servicio).`;
                 
-                if (!proximoBus && horariosUnicos.length > 0) {
-                     dom.horariosLista.innerHTML = `<div class="horario-item" style="text-align: center; color: var(--color-texto-secundario); padding: 20px 0;">${msgSinMasSalidas}</div>`;
-                     if (!esRefresco) logDebug(msgSinMasSalidas, 'warn');
-                } else if (horariosUnicos.length === 0) {
+                if (!proximoBusHoy && horariosHoy.length > 0) {
+                     dom.horariosLista.innerHTML = `<div class="horario-item" style="text-align: center; color: var(--color-texto-secundario); padding: 20px 0;">${msgSinMasSalidasHoy}</div>`;
+                } else if (horariosHoy.length === 0) {
                      dom.horariosLista.innerHTML = `<div class="horario-item" style="text-align: center; color: var(--color-texto-secundario); padding: 20px 0;">${msgSinSalidasHoy}</div>`;
-                     if (!esRefresco) logDebug(msgSinSalidasHoy, 'warn');
                 }
+            }
+
+            function actualizarProximoBusUI(proximoBus, segundosActuales, horariosHoy, esRenderCompleto = false) {
+                const tituloHorarios = estadoApp.rutaActiva ? "Todos los Horarios (Ruta Actual)" : "Todos los Horarios (Todas las Rutas)";
+                dom.tituloListaHorarios.textContent = tituloHorarios;
+                const tituloProximo = estadoApp.rutaActiva ? "Próximo Autobús (Ruta Actual)" : "Próximo Autobús (Todas las Rutas)";
+                dom.proximoResumen.querySelector('h3').textContent = tituloProximo;
+
+                if (proximoBus) {
+                    let horaTexto = proximoBus.hora;
+                    if (proximoBus.diaNombre && proximoBus.diaNombre !== "Hoy") {
+                        horaTexto = `${proximoBus.diaNombre} - ${proximoBus.hora}`;
+                        if (esRenderCompleto) dom.tituloListaHorarios.style.display = 'block';
+                    } else {
+                        if (esRenderCompleto) dom.tituloListaHorarios.style.display = 'block';
+                    }
+
+                    dom.proximoHora.textContent = horaTexto;
+                    dom.proximoDestino.innerHTML = (estadoApp.rutaActiva || db.routes.size === 1) ? proximoBus.destino : `<strong>${proximoBus.rutaNombre}:</strong> ${proximoBus.destino}`;
+                    dom.proximoResumen.style.display = 'block';
+                    
+                    if (!esRenderCompleto) logDebug(`Próximo bus: ${proximoBus.hora}`, 'ok');
+                } else {
+                    dom.proximoResumen.style.display = 'none';
+                    if (horariosHoy.length === 0) {
+                        dom.tituloListaHorarios.style.display = 'none';
+                    }
+                }
+            }
+
+            function encontrarHorariosPorDia(stopId, tiempo) {
+                const { segundosInicio, diaField, fechaYYYYMMDD } = tiempo;
+                const paradasHijasIds = db.paradasPadreHijas.get(stopId) || [stopId];
+
+                const idsViajesRutaActiva = new Set(
+                    [...db.trips.values()]
+                        .filter(t => t.route_id === estadoApp.rutaActiva)
+                        .map(t => t.trip_id)
+                );
+
+                let horariosHoy = [];
+
+                const stopTimesEnEstacion = [];
+                paradasHijasIds.forEach(id => {
+                    (db.stopTimesPorParada.get(id) || []).forEach(st => {
+                        stopTimesEnEstacion.push(st);
+                    });
+                });
+                
+                const stopTimesHoy = stopTimesEnEstacion
+                    .filter(st => {
+                        if (estadoApp.rutaActiva && !idsViajesRutaActiva.has(st.trip_id)) return false;
+                        const trip = db.trips.get(st.trip_id);
+                        if (!trip) return false;
+                        const calendario = db.calendar.get(trip.service_id);
+                        if (!calendario) return false;
+                        const esDiaValido = calendario[diaField] === 1;
+                        const estaEnRango = fechaYYYYMMDD >= calendario.start_date && fechaYYYYMMDD <= calendario.end_date;
+                        return esDiaValido && estaEnRango;
+                    });
+                
+                stopTimesHoy.forEach(st => {
+                    const trip = db.trips.get(st.trip_id);
+                    const route = db.routes.get(trip.route_id);
+                    const freqs = db.frequencies.get(st.trip_id) || [];
+
+                    if (freqs.length > 0) {
+                        const st_inicial = db.stopTimes.find(s => s.trip_id === st.trip_id && s.stop_sequence === 1);
+                        if (!st_inicial) return;
+                        
+                        const offset = aSegundos(st.departure_time) - aSegundos(st_inicial.departure_time);
+                        
+                        freqs.forEach(freq => {
+                            const startService = aSegundos(freq.start_time);
+                            const endService = aSegundos(freq.end_time);
+                            const headway = freq.headway_secs;
+                            
+                            for (let t = startService; t < endService; t += headway) {
+                                const tiempoLlegada = t + offset;
+                                if (tiempoLlegada >= segundosInicio) { 
+                                    horariosHoy.push({
+                                        hora: segundosAHora(tiempoLlegada),
+                                        segundos: tiempoLlegada,
+                                        destino: trip.trip_headsign || "Sin destino",
+                                        rutaNombre: route.route_short_name
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        const segundosSalida = aSegundos(st.departure_time);
+                        if (segundosSalida >= segundosInicio) { 
+                            horariosHoy.push({
+                                hora: st.departure_time,
+                                segundos: segundosSalida,
+                                destino: trip.trip_headsign || "Sin destino",
+                                rutaNombre: route.route_short_name
+                            });
+                        }
+                    }
+                });
+                
+                horariosHoy.sort((a, b) => a.segundos - b.segundos);
+
+                const horariosUnicos = [];
+                const visto = new Set();
+                for (const h of horariosHoy) {
+                    const id = h.hora + h.destino + h.rutaNombre;
+                    if (!visto.has(id)) {
+                        horariosUnicos.push(h);
+                        visto.add(id);
+                    }
+                }
+                return horariosUnicos;
             }
             
             // --- NUEVAS FUNCIONES (GEOLOCALIZACIÓN Y DIRECTORIO) ---
@@ -1855,8 +1957,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                         const lon = posicion.coords.longitude;
                         logDebug(`Ubicación obtenida: ${lat}, ${lon}`, 'ok');
                         
-                        const paradasCercanas = [...db.stops.values()]
-                            .filter(stop => stop.location_type !== 0) // <-- No mostrar andenes
+                        const paradasCercanas = [...db.paradasPrincipales.values()] 
                             .map(stop => {
                                 const dist = getDistanciaHaversine(lat, lon, stop.stop_lat, stop.stop_lon);
                                 return { ...stop, dist };
@@ -1906,9 +2007,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
             }
             
             function renderizarDirectorioParadas() {
-                // MODIFICADO: Filtrar solo estaciones, no andenes
-                const paradasOrdenadas = [...db.stops.values()]
-                    .filter(stop => stop.location_type !== 0)
+                const paradasOrdenadas = [...db.paradasPrincipales.values()]
                     .sort((a, b) => a.stop_name.localeCompare(b.stop_name));
                 
                 dom.directorioParadasLista.innerHTML = '';
@@ -1936,12 +2035,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 dom.directorioDetalleTitulo.textContent = stop.stop_name;
                 
                 // 1. Mostrar Rutas (Lógica de Andenes Corregida)
-                const paradasHijas = [stopId];
-                db.stops.forEach(s => {
-                    if (s.parent_station === stopId) {
-                        paradasHijas.push(s.stop_id);
-                    }
-                });
+                const paradasHijas = db.paradasPadreHijas.get(stopId) || [stopId];
                 
                 let stopTimesEnEstacion = [];
                 paradasHijas.forEach(id => {
@@ -1990,7 +2084,6 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                         estadoApp.directorioMapa.setZoom(16);
                     }
                     
-                    // Re-crear el marcador
                      new google.maps.Marker({
                         position: { lat: stop.stop_lat, lng: stop.stop_lon },
                         map: estadoApp.directorioMapa,
@@ -2004,26 +2097,66 @@ https://cromstudio.com.ve/transporte/frequencies.txt
             // --- PLANIFICADOR (v3 - TRANSBORDO ESPACIAL/TEMPORAL) ---
             
             function popularDropdownsPlanificador() {
-                // MODIFICADO: Filtrar solo estaciones, no andenes
-                const paradasOrdenadas = [...db.stops.values()]
-                    .filter(stop => stop.location_type !== 0)
+                const paradasOrdenadas = [...db.paradasPrincipales.values()]
                     .sort((a, b) => a.stop_name.localeCompare(b.stop_name));
                 
-                dom.planOrigen.innerHTML = '<option value="">Seleccione una parada...</option>';
-                dom.planDestino.innerHTML = '<option value="">Seleccione una parada...</option>';
+                // Limpiar listas de autocomplete
+                dom.planOrigenList.innerHTML = '';
+                dom.planDestinoList.innerHTML = '';
                 
                 paradasOrdenadas.forEach(stop => {
-                    const optionOrigen = document.createElement('option');
-                    optionOrigen.value = stop.stop_id;
-                    optionOrigen.textContent = stop.stop_name;
-                    dom.planOrigen.appendChild(optionOrigen);
-                    
-                    const optionDestino = document.createElement('option');
-                    optionDestino.value = stop.stop_id;
-                    optionDestino.textContent = stop.stop_name;
-                    dom.planDestino.appendChild(optionDestino);
+                    // No es necesario poblar los <select> ocultos
                 });
-                logDebug("Dropdowns de planificador populados.", 'ok');
+                logDebug("Listas de autocomplete listas.", 'ok');
+
+                // --- NUEVO: Lógica de Autocomplete ---
+                configurarAutocomplete(dom.planOrigenInput, dom.planOrigenId, dom.planOrigenList);
+                configurarAutocomplete(dom.planDestinoInput, dom.planDestinoId, dom.planDestinoList);
+            }
+
+            function configurarAutocomplete(input, inputId, listContainer) {
+                input.addEventListener('focus', () => {
+                    filtrarListaAutocomplete(input.value, listContainer, input, inputId);
+                });
+                
+                input.addEventListener('input', () => {
+                    filtrarListaAutocomplete(input.value, listContainer, input, inputId);
+                    inputId.value = ""; // Limpiar ID si el usuario escribe
+                });
+
+                // Ocultar al hacer clic fuera
+                document.addEventListener('click', (e) => {
+                    if (e.target !== input && !listContainer.contains(e.target)) {
+                        listContainer.style.display = 'none';
+                    }
+                });
+            }
+
+            function filtrarListaAutocomplete(term, listContainer, input, inputId) {
+                listContainer.innerHTML = '';
+                const termLower = term.toLowerCase();
+                let count = 0;
+                
+                db.paradasPrincipales.forEach(stop => {
+                    if (count < 10 && stop.stop_name.toLowerCase().includes(termLower)) {
+                        const div = document.createElement('div');
+                        div.textContent = stop.stop_name;
+                        div.dataset.stopId = stop.stop_id;
+                        div.addEventListener('mousedown', (e) => { // mousedown es antes que 'blur'
+                            inputId.value = stop.stop_id;
+                            input.value = stop.stop_name; // El input visible
+                            listContainer.style.display = 'none';
+                        });
+                        listContainer.appendChild(div);
+                        count++;
+                    }
+                });
+                
+                listContainer.style.display = (count > 0) ? 'block' : 'none';
+                if (count === 0) {
+                    listContainer.innerHTML = '<div style="color: grey; padding: 12px 16px;">No se encontraron paradas</div>';
+                    listContainer.style.display = 'block';
+                }
             }
             
             function getDatosDeTiempo(dayOffset = 0) {
@@ -2068,17 +2201,13 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 return esDiaValido && estaEnRango;
             }
 
-            // MODIFICADO: Ahora busca desde una ESTACIÓN (ej. S_GUA) y mira sus ANDENES (ej. S_GUA_A1)
+            // MODIFICADO: Con lógica de Frecuencia y Andenes
             function encontrarRutasDirectas(origenId, destinoId, tiempo) {
                 const { segundosInicio, diaField, fechaYYYYMMDD } = tiempo;
                 let resultados = [];
                 
-                // Encontrar todas las paradas "hijas" (andenes) del origen
-                const paradasOrigenHijas = [origenId];
-                db.stops.forEach(s => { if (s.parent_station === origenId) paradasOrigenHijas.push(s.stop_id); });
-                
-                const paradasDestinoHijas = [destinoId];
-                db.stops.forEach(s => { if (s.parent_station === destinoId) paradasDestinoHijas.push(s.stop_id); });
+                const paradasOrigenHijas = db.paradasPadreHijas.get(origenId) || [origenId];
+                const paradasDestinoHijas = db.paradasPadreHijas.get(destinoId) || [destinoId];
 
                 let salidasPosibles = [];
                 paradasOrigenHijas.forEach(id => {
@@ -2086,33 +2215,41 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 });
 
                 for (const stOrigen of salidasPosibles) {
-                    const freq = db.frequencies.get(stOrigen.trip_id);
                     if (!esViajeValido(stOrigen.trip_id, diaField, fechaYYYYMMDD)) continue;
                     
+                    const freqs = db.frequencies.get(stOrigen.trip_id) || [];
                     const trip = db.trips.get(stOrigen.trip_id);
                     const route = db.routes.get(trip.route_id);
-                    
-                    if (freq) {
+                    const tarifaInfo = db.tarifas.get(route.route_id) || { num: 0, moneda: 'Bs.' };
+
+                    const stDestino = db.stopTimes.find(st => 
+                        st.trip_id === stOrigen.trip_id && 
+                        paradasDestinoHijas.includes(st.stop_id) && 
+                        st.stop_sequence > stOrigen.stop_sequence
+                    );
+                    if (!stDestino) continue;
+
+                    if (freqs.length > 0) {
                         // Lógica de Frecuencia
-                        const offsetOrigen = aSegundos(stOrigen.departure_time);
-                        const startService = aSegundos(freq.start_time);
-                        const endService = aSegundos(freq.end_time);
-                        const headway = freq.headway_secs;
+                        const st_inicial = db.stopTimes.find(s => s.trip_id === stOrigen.trip_id && s.stop_sequence === 1);
+                        if (!st_inicial) continue;
+                        
+                        const offsetOrigen = aSegundos(stOrigen.departure_time) - aSegundos(st_inicial.departure_time);
+                        const offsetDestino = aSegundos(stDestino.arrival_time) - aSegundos(st_inicial.departure_time);
+                        
+                        for (const freq of freqs) {
+                            const startService = aSegundos(freq.start_time);
+                            const endService = aSegundos(freq.end_time);
+                            const headway = freq.headway_secs;
 
-                        for (let t = startService; t < endService; t += headway) {
-                            const segundosSalida = t + offsetOrigen;
-                            if (segundosSalida < segundosInicio) continue;
-
-                            const stDestino = db.stopTimes.find(st => 
-                                st.trip_id === stOrigen.trip_id && 
-                                paradasDestinoHijas.includes(st.stop_id) && // Parada destino o sus andenes
-                                st.stop_sequence > stOrigen.stop_sequence
-                            );
+                            let t = startService;
+                            while (t + offsetOrigen < segundosInicio) {
+                                t += headway;
+                            }
                             
-                            if (stDestino) {
-                                const segundosLlegada = t + aSegundos(stDestino.arrival_time);
-                                const tarifaInfo = db.tarifas.get(route.route_id) || { num: 0, moneda: 'Bs.' };
-                                
+                            const segundosSalida = t + offsetOrigen;
+                            if (segundosSalida < endService + offsetOrigen) {
+                                const segundosLlegada = t + offsetDestino;
                                 resultados.push({
                                     tipo: 'directo',
                                     tramos: [{
@@ -2127,12 +2264,10 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                                         paradaDestino: db.stops.get(destinoId).stop_name,
                                         duracion: segundosAFormato(segundosLlegada - segundosSalida),
                                         tarifa: tarifaInfo.num,
-                                        moneda: tarifaInfo.moneda,
-                                        routeType: route.route_type // <-- Añadido para emoji
+                                        moneda: tarifaInfo.moneda
                                     }],
                                     segundosLlegadaFinal: segundosLlegada
                                 });
-                                break; 
                             }
                         }
                     } else {
@@ -2140,36 +2275,25 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                         const segundosSalida = aSegundos(stOrigen.departure_time);
                         if (segundosSalida < segundosInicio) continue;
                         
-                        const stDestino = db.stopTimes.find(st => 
-                            st.trip_id === stOrigen.trip_id && 
-                            paradasDestinoHijas.includes(st.stop_id) &&
-                            st.stop_sequence > stOrigen.stop_sequence
-                        );
-                        
-                        if (stDestino) {
-                            const segundosLlegada = aSegundos(stDestino.arrival_time);
-                            const tarifaInfo = db.tarifas.get(route.route_id) || { num: 0, moneda: 'Bs.' };
-                            
-                            resultados.push({
-                                tipo: 'directo',
-                                tramos: [{
-                                    rutaNombre: route.route_short_name,
-                                    rutaCompleta: route.route_long_name,
-                                    destinoViaje: trip.trip_headsign,
-                                    horaSalida: stOrigen.departure_time,
-                                    segundosSalida: segundosSalida,
-                                    paradaOrigen: db.stops.get(origenId).stop_name,
-                                    horaLlegada: stDestino.arrival_time,
-                                    segundosLlegada: segundosLlegada,
-                                    paradaDestino: db.stops.get(destinoId).stop_name,
-                                    duracion: segundosAFormato(segundosLlegada - segundosSalida),
-                                    tarifa: tarifaInfo.num,
-                                    moneda: tarifaInfo.moneda,
-                                    routeType: route.route_type // <-- Añadido para emoji
-                                }],
-                                segundosLlegadaFinal: segundosLlegada
-                            });
-                        }
+                        const segundosLlegada = aSegundos(stDestino.arrival_time);
+                        resultados.push({
+                            tipo: 'directo',
+                            tramos: [{
+                                rutaNombre: route.route_short_name,
+                                rutaCompleta: route.route_long_name,
+                                destinoViaje: trip.trip_headsign,
+                                horaSalida: stOrigen.departure_time,
+                                segundosSalida: segundosSalida,
+                                paradaOrigen: db.stops.get(origenId).stop_name,
+                                horaLlegada: stDestino.arrival_time,
+                                segundosLlegada: segundosLlegada,
+                                paradaDestino: db.stops.get(destinoId).stop_name,
+                                duracion: segundosAFormato(segundosLlegada - segundosSalida),
+                                tarifa: tarifaInfo.num,
+                                moneda: tarifaInfo.moneda
+                            }],
+                            segundosLlegadaFinal: segundosLlegada
+                        });
                     }
                 }
                 return resultados;
@@ -2179,11 +2303,8 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 const { segundosInicio, diaField, fechaYYYYMMDD } = tiempo;
                 let resultados = [];
                 
-                const paradasOrigenHijas = [origenId];
-                db.stops.forEach(s => { if (s.parent_station === origenId) paradasOrigenHijas.push(s.stop_id); });
-                
-                const paradasDestinoHijas = [destinoId];
-                db.stops.forEach(s => { if (s.parent_station === destinoId) paradasDestinoHijas.push(s.stop_id); });
+                const paradasOrigenHijas = db.paradasPadreHijas.get(origenId) || [origenId];
+                const paradasDestinoHijas = db.paradasPadreHijas.get(destinoId) || [destinoId];
 
                 let salidasTramo1 = [];
                 paradasOrigenHijas.forEach(id => {
@@ -2192,7 +2313,6 @@ https://cromstudio.com.ve/transporte/frequencies.txt
 
                 // TRAMO 1
                 for (const stOrigen of salidasTramo1) {
-                    // Ignorar viajes por frecuencia en transbordos por ahora
                     if (db.frequencies.has(stOrigen.trip_id)) continue; 
                     
                     const segundosSalida1 = aSegundos(stOrigen.departure_time);
@@ -2209,23 +2329,21 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                     );
                     
                     for (const stTransbordo1 of paradasTramo1) {
-                        const paradaB_Id = stTransbordo1.stop_id; // Este es el ID de la plataforma de llegada (ej. S_GUA_A1)
+                        const paradaB_Id = stTransbordo1.stop_id; 
+                        const paradaB_Padre_Id = db.stops.get(paradaB_Id).parent_station || paradaB_Id;
+                        
                         if (paradasDestinoHijas.includes(paradaB_Id)) continue; 
                         
-                        const paradaB_Plataforma = db.stops.get(paradaB_Id);
-                        if (!paradaB_Plataforma) continue;
-                        // Encontrar la ESTACIÓN padre (ej. S_GUA)
-                        const paradaB_EstacionId = paradaB_Plataforma.location_type === 0 ? paradaB_Plataforma.parent_station : paradaB_Id;
-                        const paradaB_Estacion = db.stops.get(paradaB_EstacionId);
+                        const paradaB_Coords = db.stops.get(paradaB_Id);
+                        if (!paradaB_Coords) continue;
                         
                         const segundosLlegada1 = aSegundos(stTransbordo1.arrival_time);
                         
                         // TRAMO 2: Buscar paradas cercanas
-                        for (const paradaD of db.stops.values()) {
-                            if (paradaD.location_type !== 0) continue; // Solo buscar desde ESTACIONES
+                        for (const paradaD of db.paradasPrincipales.values()) {
                             if (paradaD.stop_id === origenId) continue;
                             
-                            const dist = getDistanciaHaversine(paradaB_Estacion.stop_lat, paradaB_Estacion.stop_lon, paradaD.stop_lat, paradaD.stop_lon);
+                            const dist = getDistanciaHaversine(paradaB_Coords.stop_lat, paradaB_Coords.stop_lon, paradaD.stop_lat, paradaD.stop_lon);
                             
                             if (dist <= MAX_DISTANCIA_TRANSBORDO_KM) {
                                 
@@ -2242,17 +2360,14 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                                         segundosInicio2 = segundosLlegada1 + MIN_TIEMPO_TRANSBORDO_SEGUNDOS;
                                     }
                                     
-                                    // Buscar paradas hijas (andenes) de la parada D
-                                    const paradasDHijas = [paradaD.stop_id];
-                                    db.stops.forEach(s => { if (s.parent_station === paradaD.stop_id) paradasDHijas.push(s.stop_id); });
-                                    
+                                    const paradasDHijas = db.paradasPadreHijas.get(paradaD.stop_id) || [paradaD.stop_id];
                                     let salidasTramo2 = [];
                                     paradasDHijas.forEach(id => {
                                         salidasTramo2 = salidasTramo2.concat(db.stopTimesPorParada.get(id) || []);
                                     });
                                     
                                     for (const stOrigen2 of salidasTramo2) {
-                                        if (db.frequencies.has(stOrigen2.trip_id)) continue; // Ignorar freq
+                                        if (db.frequencies.has(stOrigen2.trip_id)) continue; 
                                         
                                         const segundosSalida2 = aSegundos(stOrigen2.departure_time);
                                         
@@ -2288,27 +2403,25 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                                                         horaSalida: stOrigen.departure_time,
                                                         paradaOrigen: db.stops.get(origenId).stop_name,
                                                         horaLlegada: stTransbordo1.arrival_time,
-                                                        paradaDestino: paradaB_Estacion.stop_name, // <-- Mostrar Estación
+                                                        paradaDestino: db.stops.get(paradaB_Padre_Id).stop_name,
                                                         duracion: segundosAFormato(segundosLlegada1 - segundosSalida1),
                                                         tarifa: tarifaInfo1.num,
-                                                        moneda: tarifaInfo1.moneda,
-                                                        routeType: route1.route_type
+                                                        moneda: tarifaInfo1.moneda
                                                     },
                                                     {
                                                         rutaNombre: route2.route_short_name,
                                                         rutaCompleta: route2.route_long_name,
                                                         destinoViaje: trip2.trip_headsign,
                                                         horaSalida: stOrigen2.departure_time,
-                                                        paradaOrigen: paradaD.stop_name, // <-- Mostrar Estación
+                                                        paradaOrigen: paradaD.stop_name,
                                                         horaLlegada: stDestinoFinal.arrival_time,
                                                         paradaDestino: db.stops.get(destinoId).stop_name,
                                                         duracion: segundosAFormato(segundosLlegada2 - segundosSalida2),
                                                         tarifa: tarifaInfo2.num,
-                                                        moneda: tarifaInfo2.moneda,
-                                                        routeType: route2.route_type
+                                                        moneda: tarifaInfo2.moneda
                                                     }
                                                 ],
-                                                paradaTransbordo: paradaB_Estacion.stop_name,
+                                                paradaTransbordo: db.stops.get(paradaB_Padre_Id).stop_name,
                                                 paradaTransbordo2: paradaD.stop_name,
                                                 distanciaTransbordo: dist.toFixed(2),
                                                 tiempoEspera: segundosAFormato(segundosEsperaTotal),
@@ -2329,8 +2442,8 @@ https://cromstudio.com.ve/transporte/frequencies.txt
             }
 
             function buscarRutaGTFS() {
-                const origenId = dom.planOrigen.value;
-                const destinoId = dom.planDestino.value;
+                const origenId = dom.planOrigenId.value; // <-- Usar el ID del input oculto
+                const destinoId = dom.planDestinoId.value; // <-- Usar el ID del input oculto
                 
                 dom.planResultados.innerHTML = '';
                 logDebug(`Buscando ruta de ${origenId} a ${destinoId}...`, 'info');
@@ -2391,7 +2504,6 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                     
                     diaData.resultados.slice(0, 3).forEach(r => {
                         
-                        // --- Cálculo de Tarifa Total ---
                         let tarifas = {};
                         r.tramos.forEach(t => {
                             const moneda = t.moneda || 'Bs.';
@@ -2402,12 +2514,11 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                             `${tarifas[moneda].toFixed(2)} ${moneda}`
                         ).join(' + ');
                         if (tarifaStr === "0.00 Bs.") tarifaStr = "Consulte en taquilla";
-                        // --- Fin Cálculo Tarifa ---
                         
                         html += `<div class="resultado-viaje">`;
                         
                         r.tramos.forEach((tramo, index) => {
-                            const icon = (tramo.routeType == 1) ? '🚇' : '🚌'; // <-- EMOJI CORREGIDO
+                            const icon = (tramo.rutaNombre.includes("Línea")) ? '🚇' : '🚌';
                             html += `
                                 <h3>
                                     ${icon} ${tramo.rutaNombre}: ${tramo.destinoViaje}
@@ -2430,7 +2541,6 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                                 </div>
                             `;
                             
-                            // Mostrar conector de transbordo
                             if (r.tipo === 'transbordo' && index < r.tramos.length - 1) {
                                 let espera = (r.diasEspera > 0) ? ` (Espera de ${r.diasEspera} día${r.diasEspera > 1 ? 's' : ''})` : ` (Espera: ${r.tiempoEspera})`;
                                 let distancia = r.distanciaTransbordo > 0 ? `Caminar/Taxi ${r.distanciaTransbordo} km` : 'En la misma parada';
