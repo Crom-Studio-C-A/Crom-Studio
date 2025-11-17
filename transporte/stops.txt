@@ -7,6 +7,9 @@ P_CABRES,Cabrestrero (Guanare),9.033715,-69.767703
 P_BISCUCUY,Plaza Bolívar de Biscucuy,9.358734,-69.982779
 T_VALERA,Terminal de Pasajeros de Valera,9.320137,-70.597900
 T_MARACAIBO,Terminal de Pasajeros de Marcaibo,10.635511,-71.619072
+T_BOCONO,Terminal de Pasajeros de Boconó,9.2379945,-70.2764009
+T_BISCUCUY,Terminal de Pasajeros de Biscucuy,9.3539744,-69.9876023
+
 
 S_VAN,Estación Altos de La Vanega,10.616111,-71.668333,1,
 S_VAN_A1,Estación Altos de La Vanega (Sentido Libertador),10.616121,-71.668323,0,S_VAN
