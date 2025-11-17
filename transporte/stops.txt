@@ -6,3 +6,4 @@ T_CARACAS,Terminal de Pasajeros La Bandera (Caracas),10.476213,-66.899044
 P_CABRES,Cabrestrero (Guanare),9.033715,-69.767703
 P_BISCUCUY,Plaza Bolívar de Biscucuy,9.358734,-69.982779
 T_VALERA,Terminal de Pasajeros de Valera,9.320137,-70.597900
+T_MARACAIBO,Terminal de Pasajeros de Marcaibo,10.635511,-71.619072
