@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horarios y Mapa v20 - Crom Studio</title>
+    <title>Horarios y Mapa v22 - Crom Studio</title>
     
     <!-- JS de PapaParse (CDN - para leer los .txt/CSV) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -206,6 +206,10 @@
             padding: 16px;
             border-radius: 6px;
             overflow-x: auto;
+        }
+        #desarrollo-content a {
+            color: var(--color-primario);
+            font-weight: 500;
         }
 
         /* --- Planificador --- */
@@ -659,14 +663,17 @@
             #panel-rutas { 
                 transform: translateX(0); 
                 z-index: 10;
+                display: flex; /* Asegurarse de que el primero sea visible */
             }
             #panel-paradas { 
                 transform: translateX(100%); 
                 z-index: 20;
+                display: flex;
             }
             #panel-detalles { 
                 transform: translateX(100%); 
                 z-index: 30;
+                display: flex;
             }
             
             /* Estados de visibilidad */
@@ -833,9 +840,8 @@
                 </div>
             </div>
         </div>
-        
 
-  <!-- ===== NUEVO: VISOR DIRECTORIO DE PARADAS ===== -->
+        <!-- ===== NUEVO: VISOR DIRECTORIO DE PARADAS ===== -->
         <div id="visor-directorio">
             <div class="simple-container">
                 <div class="form-container">
@@ -847,7 +853,7 @@
                     
                     <div id="directorio-detalle-container" style="display: none;">
                         <h3 id="directorio-detalle-titulo" style="font-size: 20px;"></h3>
-                        <div id="directorio-detalle-mapa" style="width: 100%; height: 300px; border-radius: 8px; margin-bottom: 16px; background: #eee;"></div>
+                        <div id="directorio-detalle-mapa"></div>
                         <h4>Rutas que pasan por esta parada:</h4>
                         <div id="directorio-detalle-rutas-lista">
                             <!-- La lista de rutas de la parada se inyectará aquí -->
@@ -856,18 +862,20 @@
                 </div>
             </div>
         </div>
-
-
-
-
+        
         <!-- ===== NUEVO: VISOR REPORTES ===== -->
         <div id="visor-reportes">
             <div id="reporte-container" class="simple-container">
-                <!-- FORMULARIO AHORA APUNTA A FORMSPREE -->
-                <form id="report-form" class="form-container" action="https://formsubmit.co/soporte@cromstudio.com.ve" method="POST">
+                <!-- FORMULARIO AHORA APUNTA A FORMSUBMIT.CO -->
+                <form id="report-form" class="form-container" action="https://formsubmit.co/angelromero@cromstudio.com.ve" method="POST">
                     <h2>Reporte Ciudadano</h2>
                     <p style="margin-top: -10px; margin-bottom: 20px; color: var(--color-texto-secundario);">¿Viste algo incorrecto? ¡Ayúdanos a mejorar!</p>
                     
+                    <!-- Configuración para FormSubmit -->
+                    <input type="hidden" name="_next" value="https://cromstudio.com.ve/transporte/index.html"> <!-- URL de agradecimiento (Opcional) -->
+                    <input type="hidden" name="_subject" value="Nuevo Reporte de la App de Transporte">
+                    <input type="hidden" name="_captcha" value="false"> <!-- Puedes activarlo en FormSubmit -->
+
                     <label for="reporte-tipo">Tipo de Reporte</label>
                     <select id="reporte-tipo" name="tipo_reporte" required>
                         <option value="">Seleccione un tipo...</option>
@@ -896,11 +904,11 @@
                     
                     <div id="acerca-de-logo">
                         <!-- Logo SVG simple como placeholder -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--color-primario)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--color-primario)" width="60px" height="60px">
                             <path d="M18.9 2.1c-1.8-1.8-4.3-2.7-6.9-2.7s-5.1.9-6.9 2.7C3.5 3.7 2.7 5.8 2.7 8v8.3c0 .8.4 1.5 1 1.9.6.4 1.4.6 2.1.6h.2c.2 0 .3 0 .4-.1.7-.1 1.3-.5 1.7-1l1.1-1.4c.1-.2.4-.3.6-.3h4.2c.2 0 .5.1.6.3l1.1 1.4c.4.5 1 1 1.7 1 .1 0 .3.1.4.1h.2c.8 0 1.5-.2 2.1-.6.6-.4 1-1.1 1-1.9V8c0-2.2-.8-4.3-2.4-5.9zM18 16.3c0 .1-.1.3-.3.4-.1.1-.3.1-.4.1h-.2c-.3 0-.7-.1-1-.4l-1.1-1.4c-.4-.5-1-1-1.7-1H8.7c-.7 0-1.3.5-1.7 1l-1.1 1.4c-.3.2-.6.4-1 .4h-.2c-.1 0-.3 0-.4-.1-.1-.1-.3-.2-.3-.4V8c0-1.7.6-3.3 1.9-4.5C8.4 2.2 10.1 1.5 12 1.5s3.6.7 4.9 1.9C18.2 4.7 18.9 6.3 18.9 8v8.3zM8.2 11.2c-.8 0-1.5-.7-1.5-1.5S7.4 8.2 8.2 8.2s1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm7.5 0c-.8 0-1.5-.7-1.5-1.5S15 8.2 15.8 8.2s1.5.7 1.5 1.5-.7 1.5-1.5 1.5z"></path>
                         </svg>
                         <div>
-                            <h2>Crom Studio</h2>
+                            <h2>Crom Studio Transporte</h2>
                             <p style="margin: 0; font-weight: 600;">Versión: v20</p>
                         </div>
                     </div>
@@ -938,12 +946,15 @@ https://cromstudio.com.ve/transporte/calendar.txt
 https://cromstudio.com.ve/transporte/shapes.txt
 https://cromstudio.com.ve/transporte/tarifas.txt
 https://cromstudio.com.ve/transporte/noticias.txt
+https://cromstudio.com.ve/transporte/frequencies.txt
 </pre>
-                    <p>Estos archivos siguen el estándar GTFS y pueden ser utilizados en aplicaciones web, móviles o sistemas de información de transporte.</p>
-<a href="https://cromstudio.com.ve/trasporte/desarrollo">En el siguiente enlace, podrás ver mas información sobre el desarrollo usando nuestros datos. </a>                    
+                    <p>Estos archivos siguen el estándar GTFS (con la adición de `tarifas.txt` y `noticias.txt` personalizados) y pueden ser utilizados en aplicaciones web, móviles o sistemas de información de transporte.</p>
+                    
+                    <p>En el siguiente enlace, podrás ver más información sobre el desarrollo usando nuestros datos: <a href="https://cromstudio.com.ve/transporte/desarrollo/" target="_blank">https://cromstudio.com.ve/transporte/desarrollo/</a></p>
+
                     <h3>Contribuyendo</h3>
                     <p>¿Eres una agencia de transporte? ¿Manejas una línea de autobuses y te gustaría que tus horarios aparecieran aquí? ¡Nos encantaría colaborar!</p>
-                    <p>Ponte en contacto con nosotros en <strong>soporte@cromstudio.com.ve</strong> para discutir cómo podemos integrar tus datos en nuestra plataforma y ayudar a miles de pasajeros.</p>
+                    <p>Ponte en contacto con nosotros en <strong>angelromero@cromstudio.com.ve</strong> para discutir cómo podemos integrar tus datos en nuestra plataforma y ayudar a miles de pasajeros.</p>
                 </div>
             </div>
         </div>
@@ -955,7 +966,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
     <!-- JS de PapaParse -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
-    <!-- SCRIPT DE LA APLICACIÓN (Actualizado con todas las funciones v19) -->
+    <!-- SCRIPT DE LA APLICACIÓN (Actualizado con todas las funciones v20) -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
@@ -1027,6 +1038,13 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 cercanasStatus: document.getElementById("cercanas-status"),
                 cercanasResultadosLista: document.getElementById("cercanas-resultados-lista"),
                 
+                // "Directorio"
+                directorioParadasLista: document.getElementById("directorio-paradas-lista"),
+                directorioDetalleContainer: document.getElementById("directorio-detalle-container"),
+                directorioDetalleTitulo: document.getElementById("directorio-detalle-titulo"),
+                directorioDetalleMapa: document.getElementById("directorio-detalle-mapa"),
+                directorioDetalleRutasLista: document.getElementById("directorio-detalle-rutas-lista"),
+
                 // Planificador
                 planOrigen: document.getElementById("plan-origen"),
                 planDestino: document.getElementById("plan-destino"),
@@ -1035,13 +1053,6 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 
                 // Reportes
                 reportForm: document.getElementById("report-form"),
-
-                  // "Directorio"
-                directorioParadasLista: document.getElementById("directorio-paradas-lista"),
-                directorioDetalleContainer: document.getElementById("directorio-detalle-container"),
-                directorioDetalleTitulo: document.getElementById("directorio-detalle-titulo"),
-                directorioDetalleMapa: document.getElementById("directorio-detalle-mapa"),
-                directorioDetalleRutasLista: document.getElementById("directorio-detalle-rutas-lista"),
             };
 
             // --- DB & ESTADO ---
@@ -1053,7 +1064,8 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 shapes: new Map(), 
                 agencies: new Map(),
                 agencyTimezone: "America/Caracas",
-                stopTimesPorParada: new Map() 
+                stopTimesPorParada: new Map(),
+                frequencies: new Map() // <-- NUEVO: Para frecuencias de metro
             };
             let relojIntervalo = null;
             let estadoApp = {
@@ -1091,24 +1103,25 @@ https://cromstudio.com.ve/transporte/noticias.txt
                         });
                     };
 
-                    const [agency, routes, stops, trips, stopTimes, calendar, noticias, tarifas, shapes] = await Promise.all([
+                    const [agency, routes, stops, trips, stopTimes, calendar, noticias, tarifas, shapes, frequencies] = await Promise.all([
                         parseFile("agency.txt"), parseFile("routes.txt"),
                         parseFile("stops.txt"), parseFile("trips.txt"),
                         parseFile("stop_times.txt"), parseFile("calendar.txt"),
                         parseFile("noticias.txt"), parseFile("tarifas.txt"),
-                        parseFile("shapes.txt") 
+                        parseFile("shapes.txt"),
+                        parseFile("frequencies.txt") // <-- Cargar frecuencias
                     ]);
 
                     // Procesar
                     if (agency.length > 0) db.agencyTimezone = agency[0].agency_timezone || "America/Caracas";
                     agency.forEach(a => db.agencies.set(a.agency_id, a));
                     routes.forEach(r => db.routes.set(r.route_id, r));
-                    stops.forEach(s => db.stops.set(s.stop_id, s));
+                    stops.forEach(s => db.stops.set(s.stop_id, s)); // <-- Cargar TODOS, incl. andenes
                     trips.forEach(t => db.trips.set(t.trip_id, t));
                     calendar.forEach(c => db.calendar.set(c.service_id, c));
                     db.stopTimes = stopTimes;
                     db.noticias = noticias.sort((a, b) => new Date(b.fecha_publicacion) - new Date(a.fecha_publicacion));
-                    // NUEVO: Procesar tarifas con valor numérico
+                    
                     tarifas.forEach(t => db.tarifas.set(t.route_id, {
                         num: t.tarifa_num || 0,
                         moneda: t.tipo_moneda || 'Bs.',
@@ -1123,6 +1136,10 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     });
                     db.shapes.forEach(points => points.sort((a, b) => a.shape_pt_sequence - b.shape_pt_sequence));
                     
+                    // Procesar Frecuencias
+                    frequencies.forEach(f => db.frequencies.set(f.trip_id, f));
+                    logDebug(`Procesadas ${db.frequencies.size} reglas de frecuencia.`, 'ok');
+
                     logDebug("Creando índice de stop_times...", 'info');
                     db.stopTimes.forEach(st => {
                         if (!db.stopTimesPorParada.has(st.stop_id)) {
@@ -1130,7 +1147,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                         }
                         db.stopTimesPorParada.get(st.stop_id).push(st);
                     });
-                    logDebug(`Índice creado para ${db.stopTimesPorParada.size} paradas.`, 'ok');
+                    logDebug(`Índice creado para ${db.stopTimesPorParada.size} paradas (incl. andenes).`, 'ok');
 
                     logDebug("Base de datos en memoria creada.", 'ok');
                     dom.estadoCarga.style.display = "none";
@@ -1141,8 +1158,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     iniciarReloj();
                     configurarNavegacion();
                     popularDropdownsPlanificador();
-                    renderizarDirectorioParadas(); // <-- NUEVO
-
+                    renderizarDirectorioParadas();
 
                 } catch (error) {
                     console.error("Error fatal en main():", error);
@@ -1235,7 +1251,6 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 } else if (panelId === 'show-detalles') {
                     dom.visorHorarios.classList.add('show-paradas', 'show-detalles');
                 }
-                // Si panelId es 'panel-rutas' (o nulo), no se añade ninguna clase
             }
             
             function configurarNavegacion() {
@@ -1321,7 +1336,11 @@ https://cromstudio.com.ve/transporte/noticias.txt
             }
 
             function renderizarTodasLasParadasEnMapa() {
+                // MODIFICADO: Iterar solo sobre paradas "mostrables"
                 db.stops.forEach(stop => {
+                    // No dibujar andenes (location_type 0)
+                    if (stop.location_type === 0) return; 
+
                     const marker = new google.maps.Marker({
                         position: { lat: stop.stop_lat, lng: stop.stop_lon },
                         map: estadoApp.googleMap,
@@ -1346,6 +1365,18 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     const [h, m, s] = horaStr.split(':').map(Number);
                     return (h * 3600) + (m * 60) + s;
                 } catch (e) { return 0; }
+            }
+            
+            function segundosAHora(seg) {
+                const h = Math.floor(seg / 3600);
+                const m = Math.floor((seg % 3600) / 60);
+                const s = Math.floor(seg % 60);
+                // Formato HH:MM:SS
+                return [
+                    h.toString().padStart(2, '0'),
+                    m.toString().padStart(2, '0'),
+                    s.toString().padStart(2, '0')
+                ].join(':');
             }
             
             function segundosAFormato(seg) {
@@ -1475,12 +1506,19 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     dom.listaRutas.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--color-texto-secundario);">No se encontraron rutas para esta agencia.</div>';
                     return;
                 }
+                
+                // Ordenar para que el metro aparezca primero
+                rutasAMostrar.sort((a, b) => (a.route_type || 3) - (b.route_type || 3));
 
                 rutasAMostrar.forEach(route => {
                     const div = document.createElement('div');
                     div.className = 'list-item';
+                    
+                    // --- NUEVO: Icono de Metro ---
+                    const icon = (route.route_type == 1) ? '🚇' : '🚌'; 
+                    
                     div.innerHTML = `
-                        <span class="icon">🚌</span>
+                        <span class="icon">${icon}</span>
                         <div>
                             <strong>${route.route_short_name || 'Ruta'}</strong>
                             <span>${route.route_long_name}</span>
@@ -1514,8 +1552,9 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 const viajesRuta = [...db.trips.values()].filter(t => t.route_id === routeId);
                 const idsViajesRuta = new Set(viajesRuta.map(t => t.trip_id));
                 
-                const idsParadas = new Set();
+                const idsParadasVisibles = new Set(); // <-- Usar Set para de-duplicar
                 const paradasOrdenadas = [];
+                
                 let primerViajeIda = viajesRuta.find(t => t.direction_id === 0)?.trip_id;
                 if (!primerViajeIda) {
                     primerViajeIda = viajesRuta.length > 0 ? viajesRuta[0].trip_id : null;
@@ -1526,16 +1565,23 @@ https://cromstudio.com.ve/transporte/noticias.txt
                         .filter(st => st.trip_id === primerViajeIda)
                         .sort((a,b) => a.stop_sequence - b.stop_sequence)
                         .forEach(st => {
-                            if (!idsParadas.has(st.stop_id)) {
-                                paradasOrdenadas.push(st.stop_id);
-                                idsParadas.add(st.stop_id);
+                            // --- LÓGICA DE ANDENES CORREGIDA ---
+                            const stop = db.stops.get(st.stop_id);
+                            if (!stop) return;
+                            
+                            // Si es un andén (type 0), usar su estación padre. Si no, usar el ID de la parada.
+                            const stopIdToShow = (stop.location_type === 0 && stop.parent_station) ? stop.parent_station : stop.stop_id;
+                            
+                            if (!idsParadasVisibles.has(stopIdToShow)) {
+                                paradasOrdenadas.push(stopIdToShow);
+                                idsParadasVisibles.add(stopIdToShow);
                             }
                         });
                 }
                 
                 dom.listaParadas.innerHTML = '';
                 paradasOrdenadas.forEach(stopId => {
-                    const stop = db.stops.get(stopId);
+                    const stop = db.stops.get(stopId); // Obtener la Estación (ej. S_GUA)
                     if (!stop) return;
                     
                     const div = document.createElement('div');
@@ -1547,7 +1593,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     div.addEventListener('click', () => {
                         document.querySelectorAll('#lista-paradas .list-item').forEach(el => el.classList.remove('active'));
                         div.classList.add('active');
-                        estadoApp.paradaActiva = stop.stop_id;
+                        estadoApp.paradaActiva = stop.stop_id; // Guardar ID de la ESTACIÓN
                         logDebug(`Parada seleccionada: ${stop.stop_name}`, 'info');
                         renderizarHorarios(stop.stop_id, false);
                     });
@@ -1560,12 +1606,26 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 dom.tituloListaHorarios.style.display = 'none';
                 dom.otrasRutasContainer.style.display = 'none';
                 
-                mostrarPanelHorarios('show-paradas'); // <-- MODIFICADO: Usa la clase
+                mostrarPanelHorarios('show-paradas');
             }
             
             function renderizarOtrasRutas(stopId) {
-                const stopTimes = db.stopTimesPorParada.get(stopId) || [];
-                const tripIds = new Set(stopTimes.map(st => st.trip_id));
+                // --- LÓGICA DE ANDENES CORREGIDA ---
+                // Encontrar todas las paradas "hijas" (andenes) de esta estación
+                const paradasHijas = [stopId]; // Incluir la propia estación
+                db.stops.forEach(stop => {
+                    if (stop.parent_station === stopId) {
+                        paradasHijas.push(stop.stop_id);
+                    }
+                });
+                
+                // Encontrar todos los stop_times para la estación Y sus andenes
+                let stopTimesEnEstacion = [];
+                paradasHijas.forEach(id => {
+                    stopTimesEnEstacion = stopTimesEnEstacion.concat(db.stopTimesPorParada.get(id) || []);
+                });
+
+                const tripIds = new Set(stopTimesEnEstacion.map(st => st.trip_id));
                 
                 const routeIds = new Set();
                 tripIds.forEach(tid => {
@@ -1579,9 +1639,10 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     if (routeId && routeId !== estadoApp.rutaActiva) {
                         const route = db.routes.get(routeId);
                         if(route) {
+                            const icon = (route.route_type == 1) ? '🚇' : '🚌';
                             html += `
                                 <div class="otra-ruta-item">
-                                    <span class="icon">🚌</span>
+                                    <span class="icon">${icon}</span>
                                     <span>${route.route_short_name} - ${route.route_long_name}</span>
                                 </div>
                             `;
@@ -1608,7 +1669,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     
                     renderizarOtrasRutas(stopId);
                     
-                    mostrarPanelHorarios('show-detalles'); // <-- MODIFICADO: Usa la clase
+                    mostrarPanelHorarios('show-detalles');
                 }
 
                 const horaActualStr = dom.relojHora.textContent;
@@ -1622,43 +1683,79 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     logDebug(`Fecha (GTFS): ${fechaActual}`, 'info');
                 }
 
+                // --- LÓGICA DE ANDENES CORREGIDA ---
+                // Encontrar todas las paradas "hijas" (andenes) de esta estación
+                const paradasHijasIds = new Set([stopId]); // Incluir la estación principal
+                db.stops.forEach(stop => {
+                    if (stop.parent_station === stopId) {
+                        paradasHijasIds.add(stop.stop_id);
+                    }
+                });
+
                 const idsViajesRutaActiva = new Set(
                     [...db.trips.values()]
                         .filter(t => t.route_id === estadoApp.rutaActiva)
                         .map(t => t.trip_id)
                 );
 
-                const horariosHoy = db.stopTimes
+                let horariosHoy = [];
+
+                // 1. Encontrar todos los stop_times válidos
+                const stopTimesHoy = db.stopTimes
                     .filter(st => {
-                        if (st.stop_id !== stopId) return false;
+                        // El stop_time debe ser de la estación O uno de sus andenes
+                        if (!paradasHijasIds.has(st.stop_id)) return false; 
                         
-                        // Si hay una ruta activa, filtrar por ella. Si no (ej. Cerca de Mí), mostrar todo.
+                        // Si hay una ruta activa, filtrar por ella.
                         if (estadoApp.rutaActiva && !idsViajesRutaActiva.has(st.trip_id)) return false;
                         
                         const trip = db.trips.get(st.trip_id);
                         if (!trip) return false;
                         
                         const calendario = db.calendar.get(trip.service_id);
-                        if (!calendario) {
-                            if (!esRefresco) logDebug(`ERROR: service_id "${trip.service_id}" (del trip "${trip.trip_id}") no se encuentra en calendar.txt`, 'error');
-                            return false;
-                        }
+                        if (!calendario) return false;
 
                         const esDiaValido = calendario[diaActualField] === 1;
                         const estaEnRango = fechaActual >= calendario.start_date && fechaActual <= calendario.end_date;
 
                         return esDiaValido && estaEnRango;
-                    })
-                    .map(st => {
-                        const trip = db.trips.get(st.trip_id);
-                        const route = db.routes.get(trip.route_id);
-                        return {
+                    });
+                
+                // 2. Procesar StopTimes y Frecuencias
+                stopTimesHoy.forEach(st => {
+                    const trip = db.trips.get(st.trip_id);
+                    const route = db.routes.get(trip.route_id);
+                    const freq = db.frequencies.get(st.trip_id);
+
+                    if (freq) {
+                        // --- LÓGICA DE FRECUENCIA ---
+                        const offset = aSegundos(st.departure_time);
+                        const startService = aSegundos(freq.start_time);
+                        const endService = aSegundos(freq.end_time);
+                        const headway = freq.headway_secs;
+                        
+                        for (let t = startService; t < endService; t += headway) {
+                            const tiempoLlegada = t + offset;
+                            horariosHoy.push({
+                                hora: segundosAHora(tiempoLlegada),
+                                segundos: tiempoLlegada,
+                                destino: trip.trip_headsign || "Sin destino",
+                                rutaNombre: route.route_short_name
+                            });
+                        }
+                    } else {
+                        // --- LÓGICA DE HORARIO FIJO (BUS) ---
+                        horariosHoy.push({
                             hora: st.departure_time,
+                            segundos: aSegundos(st.departure_time),
                             destino: trip.trip_headsign || "Sin destino",
                             rutaNombre: route.route_short_name
-                        }
-                    })
-                    .sort((a, b) => a.hora.localeCompare(b.hora));
+                        });
+                    }
+                });
+                
+                // 3. Ordenar por segundos
+                horariosHoy.sort((a, b) => a.segundos - b.segundos);
 
                 const horariosUnicos = [];
                 const visto = new Set();
@@ -1676,7 +1773,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 
                 let proximoBus = null;
                 for (const h of horariosUnicos) {
-                    if (aSegundos(h.hora) > segundosActuales) {
+                    if (h.segundos > segundosActuales) {
                         proximoBus = h;
                         break;
                     }
@@ -1690,7 +1787,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
 
                 if (proximoBus) {
                     dom.proximoHora.textContent = proximoBus.hora;
-                    dom.proximoDestino.innerHTML = estadoApp.rutaActiva ? proximoBus.destino : `<strong>${proximoBus.rutaNombre}:</strong> ${proximoBus.destino}`;
+                    dom.proximoDestino.innerHTML = (estadoApp.rutaActiva || db.routes.size === 1) ? proximoBus.destino : `<strong>${proximoBus.rutaNombre}:</strong> ${proximoBus.destino}`;
                     dom.proximoResumen.style.display = 'block';
                     dom.tituloListaHorarios.style.display = 'block';
                     if (!esRefresco) logDebug(`Próximo bus: ${proximoBus.hora}`, 'ok');
@@ -1706,7 +1803,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     const div = document.createElement('div');
                     div.className = 'horario-item';
                     
-                    const segundosBus = aSegundos(h.hora);
+                    const segundosBus = h.segundos;
                     
                     if (proximoBus && h.hora === proximoBus.hora && h.destino === proximoBus.destino) {
                         div.classList.add('proximo');
@@ -1716,8 +1813,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                         busesPasados++;
                     }
                     
-                    // Mostrar ruta si no hay ruta activa
-                    const destinoHtml = estadoApp.rutaActiva 
+                    const destinoHtml = (estadoApp.rutaActiva || db.routes.size === 1)
                         ? h.destino 
                         : `<strong>${h.rutaNombre}:</strong> ${h.destino}`;
                     
@@ -1740,7 +1836,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 }
             }
             
-            // --- NUEVAS FUNCIONES (GEOLOCALIZACIÓN Y REPORTES) ---
+            // --- NUEVAS FUNCIONES (GEOLOCALIZACIÓN Y DIRECTORIO) ---
 
             function buscarParadasCercanas() {
                 if (!navigator.geolocation) {
@@ -1760,9 +1856,10 @@ https://cromstudio.com.ve/transporte/noticias.txt
                         logDebug(`Ubicación obtenida: ${lat}, ${lon}`, 'ok');
                         
                         const paradasCercanas = [...db.stops.values()]
+                            .filter(stop => stop.location_type !== 0) // <-- No mostrar andenes
                             .map(stop => {
                                 const dist = getDistanciaHaversine(lat, lon, stop.stop_lat, stop.stop_lon);
-                                return { ...stop, dist }; // Añadir distancia al objeto
+                                return { ...stop, dist };
                             })
                             .filter(stop => stop.dist <= MAX_DISTANCIA_CERCANA_KM)
                             .sort((a, b) => a.dist - b.dist);
@@ -1798,23 +1895,23 @@ https://cromstudio.com.ve/transporte/noticias.txt
                         </div>
                     `;
                     div.addEventListener('click', () => {
-                        // Al hacer clic, ir a la pestaña Horarios y mostrar los horarios de esa parada
                         estadoApp.paradaActiva = stop.stop_id;
                         estadoApp.rutaActiva = null; // Mostrar todas las rutas
                         renderizarHorarios(stop.stop_id, false);
                         mostrarVisor('visor-horarios');
-                        mostrarPanelHorarios('show-detalles'); // Forzar vista de detalles en móvil
+                        mostrarPanelHorarios('show-detalles');
                     });
                     dom.cercanasResultadosLista.appendChild(div);
                 });
             }
             
-
-  /** Rellena la lista del Directorio de Paradas */
             function renderizarDirectorioParadas() {
-                const paradasOrdenadas = [...db.stops.values()].sort((a, b) => a.stop_name.localeCompare(b.stop_name));
+                // MODIFICADO: Filtrar solo estaciones, no andenes
+                const paradasOrdenadas = [...db.stops.values()]
+                    .filter(stop => stop.location_type !== 0)
+                    .sort((a, b) => a.stop_name.localeCompare(b.stop_name));
                 
-                dom.directorioParadasLista.innerHTML = ''; // Limpiar
+                dom.directorioParadasLista.innerHTML = '';
                 
                 paradasOrdenadas.forEach(stop => {
                     const div = document.createElement('div');
@@ -1832,16 +1929,26 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 });
             }
 
-            /** Muestra el mapa y las rutas para una parada del directorio */
             function mostrarDetalleDeParada(stopId) {
                 const stop = db.stops.get(stopId);
                 if (!stop) return;
 
                 dom.directorioDetalleTitulo.textContent = stop.stop_name;
                 
-                // 1. Mostrar Rutas
-                const stopTimes = db.stopTimesPorParada.get(stopId) || [];
-                const tripIds = new Set(stopTimes.map(st => st.trip_id));
+                // 1. Mostrar Rutas (Lógica de Andenes Corregida)
+                const paradasHijas = [stopId];
+                db.stops.forEach(s => {
+                    if (s.parent_station === stopId) {
+                        paradasHijas.push(s.stop_id);
+                    }
+                });
+                
+                let stopTimesEnEstacion = [];
+                paradasHijas.forEach(id => {
+                    stopTimesEnEstacion = stopTimesEnEstacion.concat(db.stopTimesPorParada.get(id) || []);
+                });
+
+                const tripIds = new Set(stopTimesEnEstacion.map(st => st.trip_id));
                 const routeIds = new Set();
                 tripIds.forEach(tid => {
                     const trip = db.trips.get(tid);
@@ -1853,9 +1960,10 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 routeIds.forEach(routeId => {
                     const route = db.routes.get(routeId);
                     if(route) {
+                        const icon = (route.route_type == 1) ? '🚇' : '🚌';
                         html += `
                             <div class="otra-ruta-item">
-                                <span class="icon">🚌</span>
+                                <span class="icon">${icon}</span>
                                 <span>${route.route_short_name} - ${route.route_long_name}</span>
                             </div>
                         `;
@@ -1869,31 +1977,40 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
                     dom.directorioDetalleMapa.innerHTML = '<p style="color:red;padding:10px;">No se pudo cargar Google Maps.</p>';
                 } else {
-                    // Re-inicializar el mapa del directorio cada vez
-                    const map = new google.maps.Map(dom.directorioDetalleMapa, {
-                        zoom: 16,
-                        center: { lat: stop.stop_lat, lng: stop.stop_lon },
-                        mapTypeId: 'roadmap',
-                        disableDefaultUI: true,
-                        zoomControl: true
-                    });
+                    if (!estadoApp.directorioMapa) {
+                        estadoApp.directorioMapa = new google.maps.Map(dom.directorioDetalleMapa, {
+                            zoom: 16,
+                            center: { lat: stop.stop_lat, lng: stop.stop_lon },
+                            mapTypeId: 'roadmap',
+                            disableDefaultUI: true,
+                            zoomControl: true
+                        });
+                    } else {
+                        estadoApp.directorioMapa.setCenter({ lat: stop.stop_lat, lng: stop.stop_lon });
+                        estadoApp.directorioMapa.setZoom(16);
+                    }
                     
-                    new google.maps.Marker({
+                    // Re-crear el marcador
+                     new google.maps.Marker({
                         position: { lat: stop.stop_lat, lng: stop.stop_lon },
-                        map: map,
+                        map: estadoApp.directorioMapa,
                         title: stop.stop_name
                     });
                 }
 
-                // 3. Mostrar contenedor
                 dom.directorioDetalleContainer.style.display = 'block';
             }
             
-
             // --- PLANIFICADOR (v3 - TRANSBORDO ESPACIAL/TEMPORAL) ---
             
             function popularDropdownsPlanificador() {
-                const paradasOrdenadas = [...db.stops.values()].sort((a, b) => a.stop_name.localeCompare(b.stop_name));
+                // MODIFICADO: Filtrar solo estaciones, no andenes
+                const paradasOrdenadas = [...db.stops.values()]
+                    .filter(stop => stop.location_type !== 0)
+                    .sort((a, b) => a.stop_name.localeCompare(b.stop_name));
+                
+                dom.planOrigen.innerHTML = '<option value="">Seleccione una parada...</option>';
+                dom.planDestino.innerHTML = '<option value="">Seleccione una parada...</option>';
                 
                 paradasOrdenadas.forEach(stop => {
                     const optionOrigen = document.createElement('option');
@@ -1951,47 +2068,108 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 return esDiaValido && estaEnRango;
             }
 
+            // MODIFICADO: Ahora busca desde una ESTACIÓN (ej. S_GUA) y mira sus ANDENES (ej. S_GUA_A1)
             function encontrarRutasDirectas(origenId, destinoId, tiempo) {
                 const { segundosInicio, diaField, fechaYYYYMMDD } = tiempo;
                 let resultados = [];
                 
-                const salidasPosibles = db.stopTimesPorParada.get(origenId) || [];
+                // Encontrar todas las paradas "hijas" (andenes) del origen
+                const paradasOrigenHijas = [origenId];
+                db.stops.forEach(s => { if (s.parent_station === origenId) paradasOrigenHijas.push(s.stop_id); });
+                
+                const paradasDestinoHijas = [destinoId];
+                db.stops.forEach(s => { if (s.parent_station === destinoId) paradasDestinoHijas.push(s.stop_id); });
+
+                let salidasPosibles = [];
+                paradasOrigenHijas.forEach(id => {
+                    salidasPosibles = salidasPosibles.concat(db.stopTimesPorParada.get(id) || []);
+                });
 
                 for (const stOrigen of salidasPosibles) {
-                    const segundosSalida = aSegundos(stOrigen.departure_time);
-                    if (segundosSalida < segundosInicio) continue;
+                    const freq = db.frequencies.get(stOrigen.trip_id);
                     if (!esViajeValido(stOrigen.trip_id, diaField, fechaYYYYMMDD)) continue;
                     
-                    const stDestino = db.stopTimes.find(st => 
-                        st.trip_id === stOrigen.trip_id && 
-                        st.stop_id === destinoId &&
-                        st.stop_sequence > stOrigen.stop_sequence
-                    );
+                    const trip = db.trips.get(stOrigen.trip_id);
+                    const route = db.routes.get(trip.route_id);
                     
-                    if (stDestino) {
-                        const trip = db.trips.get(stOrigen.trip_id);
-                        const route = db.routes.get(trip.route_id);
-                        const segundosLlegada = aSegundos(stDestino.arrival_time);
-                        const tarifaInfo = db.tarifas.get(route.route_id) || { num: 0, moneda: 'Bs.' };
+                    if (freq) {
+                        // Lógica de Frecuencia
+                        const offsetOrigen = aSegundos(stOrigen.departure_time);
+                        const startService = aSegundos(freq.start_time);
+                        const endService = aSegundos(freq.end_time);
+                        const headway = freq.headway_secs;
+
+                        for (let t = startService; t < endService; t += headway) {
+                            const segundosSalida = t + offsetOrigen;
+                            if (segundosSalida < segundosInicio) continue;
+
+                            const stDestino = db.stopTimes.find(st => 
+                                st.trip_id === stOrigen.trip_id && 
+                                paradasDestinoHijas.includes(st.stop_id) && // Parada destino o sus andenes
+                                st.stop_sequence > stOrigen.stop_sequence
+                            );
+                            
+                            if (stDestino) {
+                                const segundosLlegada = t + aSegundos(stDestino.arrival_time);
+                                const tarifaInfo = db.tarifas.get(route.route_id) || { num: 0, moneda: 'Bs.' };
+                                
+                                resultados.push({
+                                    tipo: 'directo',
+                                    tramos: [{
+                                        rutaNombre: route.route_short_name,
+                                        rutaCompleta: route.route_long_name,
+                                        destinoViaje: trip.trip_headsign,
+                                        horaSalida: segundosAHora(segundosSalida),
+                                        segundosSalida: segundosSalida,
+                                        paradaOrigen: db.stops.get(origenId).stop_name,
+                                        horaLlegada: segundosAHora(segundosLlegada),
+                                        segundosLlegada: segundosLlegada,
+                                        paradaDestino: db.stops.get(destinoId).stop_name,
+                                        duracion: segundosAFormato(segundosLlegada - segundosSalida),
+                                        tarifa: tarifaInfo.num,
+                                        moneda: tarifaInfo.moneda,
+                                        routeType: route.route_type // <-- Añadido para emoji
+                                    }],
+                                    segundosLlegadaFinal: segundosLlegada
+                                });
+                                break; 
+                            }
+                        }
+                    } else {
+                        // Lógica de Horario Fijo
+                        const segundosSalida = aSegundos(stOrigen.departure_time);
+                        if (segundosSalida < segundosInicio) continue;
                         
-                        resultados.push({
-                            tipo: 'directo',
-                            tramos: [{
-                                rutaNombre: route.route_short_name,
-                                rutaCompleta: route.route_long_name,
-                                destinoViaje: trip.trip_headsign,
-                                horaSalida: stOrigen.departure_time,
-                                segundosSalida: segundosSalida,
-                                paradaOrigen: db.stops.get(origenId).stop_name,
-                                horaLlegada: stDestino.arrival_time,
-                                segundosLlegada: segundosLlegada,
-                                paradaDestino: db.stops.get(destinoId).stop_name,
-                                duracion: segundosAFormato(segundosLlegada - segundosSalida),
-                                tarifa: tarifaInfo.num,
-                                moneda: tarifaInfo.moneda
-                            }],
-                            segundosLlegadaFinal: segundosLlegada
-                        });
+                        const stDestino = db.stopTimes.find(st => 
+                            st.trip_id === stOrigen.trip_id && 
+                            paradasDestinoHijas.includes(st.stop_id) &&
+                            st.stop_sequence > stOrigen.stop_sequence
+                        );
+                        
+                        if (stDestino) {
+                            const segundosLlegada = aSegundos(stDestino.arrival_time);
+                            const tarifaInfo = db.tarifas.get(route.route_id) || { num: 0, moneda: 'Bs.' };
+                            
+                            resultados.push({
+                                tipo: 'directo',
+                                tramos: [{
+                                    rutaNombre: route.route_short_name,
+                                    rutaCompleta: route.route_long_name,
+                                    destinoViaje: trip.trip_headsign,
+                                    horaSalida: stOrigen.departure_time,
+                                    segundosSalida: segundosSalida,
+                                    paradaOrigen: db.stops.get(origenId).stop_name,
+                                    horaLlegada: stDestino.arrival_time,
+                                    segundosLlegada: segundosLlegada,
+                                    paradaDestino: db.stops.get(destinoId).stop_name,
+                                    duracion: segundosAFormato(segundosLlegada - segundosSalida),
+                                    tarifa: tarifaInfo.num,
+                                    moneda: tarifaInfo.moneda,
+                                    routeType: route.route_type // <-- Añadido para emoji
+                                }],
+                                segundosLlegadaFinal: segundosLlegada
+                            });
+                        }
                     }
                 }
                 return resultados;
@@ -2001,10 +2179,22 @@ https://cromstudio.com.ve/transporte/noticias.txt
                 const { segundosInicio, diaField, fechaYYYYMMDD } = tiempo;
                 let resultados = [];
                 
-                const salidasTramo1 = db.stopTimesPorParada.get(origenId) || [];
+                const paradasOrigenHijas = [origenId];
+                db.stops.forEach(s => { if (s.parent_station === origenId) paradasOrigenHijas.push(s.stop_id); });
+                
+                const paradasDestinoHijas = [destinoId];
+                db.stops.forEach(s => { if (s.parent_station === destinoId) paradasDestinoHijas.push(s.stop_id); });
+
+                let salidasTramo1 = [];
+                paradasOrigenHijas.forEach(id => {
+                    salidasTramo1 = salidasTramo1.concat(db.stopTimesPorParada.get(id) || []);
+                });
 
                 // TRAMO 1
                 for (const stOrigen of salidasTramo1) {
+                    // Ignorar viajes por frecuencia en transbordos por ahora
+                    if (db.frequencies.has(stOrigen.trip_id)) continue; 
+                    
                     const segundosSalida1 = aSegundos(stOrigen.departure_time);
                     if (segundosSalida1 < segundosInicio) continue;
                     if (!esViajeValido(stOrigen.trip_id, diaField, fechaYYYYMMDD)) continue;
@@ -2019,44 +2209,51 @@ https://cromstudio.com.ve/transporte/noticias.txt
                     );
                     
                     for (const stTransbordo1 of paradasTramo1) {
-                        const paradaB_Id = stTransbordo1.stop_id;
-                        if (paradaB_Id === destinoId) continue; 
+                        const paradaB_Id = stTransbordo1.stop_id; // Este es el ID de la plataforma de llegada (ej. S_GUA_A1)
+                        if (paradasDestinoHijas.includes(paradaB_Id)) continue; 
                         
-                        const paradaB_Coords = db.stops.get(paradaB_Id);
+                        const paradaB_Plataforma = db.stops.get(paradaB_Id);
+                        if (!paradaB_Plataforma) continue;
+                        // Encontrar la ESTACIÓN padre (ej. S_GUA)
+                        const paradaB_EstacionId = paradaB_Plataforma.location_type === 0 ? paradaB_Plataforma.parent_station : paradaB_Id;
+                        const paradaB_Estacion = db.stops.get(paradaB_EstacionId);
+                        
                         const segundosLlegada1 = aSegundos(stTransbordo1.arrival_time);
                         
                         // TRAMO 2: Buscar paradas cercanas
                         for (const paradaD of db.stops.values()) {
+                            if (paradaD.location_type !== 0) continue; // Solo buscar desde ESTACIONES
                             if (paradaD.stop_id === origenId) continue;
                             
-                            const dist = getDistanciaHaversine(paradaB_Coords.stop_lat, paradaB_Coords.stop_lon, paradaD.stop_lat, paradaD.stop_lon);
+                            const dist = getDistanciaHaversine(paradaB_Estacion.stop_lat, paradaB_Estacion.stop_lon, paradaD.stop_lat, paradaD.stop_lon);
                             
                             if (dist <= MAX_DISTANCIA_TRANSBORDO_KM) {
                                 
-                                // Buscar conexión en los próximos días
                                 for (let diaOffset2 = 0; diaOffset2 < 7; diaOffset2++) {
-                                    // El tiempo2 debe estar basado en el día de LLEGADA del tramo 1
-                                    const tiempoLlegada1 = getDatosDeTiempo(0); // Tomamos la fecha de hoy
+                                    const tiempoLlegada1 = getDatosDeTiempo(0);
                                     tiempoLlegada1.fechaYYYYMMDD = fechaYYYYMMDD;
                                     
-                                    // Ajustar si la llegada es > 24:00:00 (lógica GTFS)
-                                    if(segundosLlegada1 >= 86400) {
-                                        // TODO: Implementar lógica de fecha de servicio avanzada
-                                        // Por ahora, asumimos que la llegada es el mismo día de salida
-                                    }
-
-                                    const tiempo2 = getDatosDeTiempo(diaOffset2); // (diaOffset se refiere a HOY + X días)
+                                    const tiempo2 = getDatosDeTiempo(diaOffset2);
                                     
-                                    if (tiempo2.fechaYYYYMMDD < tiempoLlegada1.fechaYYYYMMDD) continue; // Día ya pasó
+                                    if (tiempo2.fechaYYYYMMDD < tiempoLlegada1.fechaYYYYMMDD) continue;
                                     
                                     let segundosInicio2 = 0;
                                     if (tiempo2.fechaYYYYMMDD === tiempoLlegada1.fechaYYYYMMDD) {
                                         segundosInicio2 = segundosLlegada1 + MIN_TIEMPO_TRANSBORDO_SEGUNDOS;
                                     }
                                     
-                                    const salidasTramo2 = db.stopTimesPorParada.get(paradaD.stop_id) || [];
+                                    // Buscar paradas hijas (andenes) de la parada D
+                                    const paradasDHijas = [paradaD.stop_id];
+                                    db.stops.forEach(s => { if (s.parent_station === paradaD.stop_id) paradasDHijas.push(s.stop_id); });
+                                    
+                                    let salidasTramo2 = [];
+                                    paradasDHijas.forEach(id => {
+                                        salidasTramo2 = salidasTramo2.concat(db.stopTimesPorParada.get(id) || []);
+                                    });
                                     
                                     for (const stOrigen2 of salidasTramo2) {
+                                        if (db.frequencies.has(stOrigen2.trip_id)) continue; // Ignorar freq
+                                        
                                         const segundosSalida2 = aSegundos(stOrigen2.departure_time);
                                         
                                         if (segundosSalida2 < segundosInicio2) continue;
@@ -2064,7 +2261,7 @@ https://cromstudio.com.ve/transporte/noticias.txt
                                         
                                         const stDestinoFinal = db.stopTimes.find(st => 
                                             st.trip_id === stOrigen2.trip_id &&
-                                            st.stop_id === destinoId &&
+                                            paradasDestinoHijas.includes(st.stop_id) &&
                                             st.stop_sequence > stOrigen2.stop_sequence
                                         );
                                         
@@ -2074,7 +2271,6 @@ https://cromstudio.com.ve/transporte/noticias.txt
                                             const segundosLlegada2 = aSegundos(stDestinoFinal.arrival_time);
                                             const tarifaInfo2 = db.tarifas.get(route2.route_id) || { num: 0, moneda: 'Bs.' };
                                             
-                                            // Calcular días de espera
                                             let fecha1 = new Date(tiempoLlegada1.fechaYYYYMMDD.toString().replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'));
                                             let fecha2 = new Date(tiempo2.fechaYYYYMMDD.toString().replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3'));
                                             const diffTime = Math.abs(fecha2 - fecha1);
@@ -2092,25 +2288,27 @@ https://cromstudio.com.ve/transporte/noticias.txt
                                                         horaSalida: stOrigen.departure_time,
                                                         paradaOrigen: db.stops.get(origenId).stop_name,
                                                         horaLlegada: stTransbordo1.arrival_time,
-                                                        paradaDestino: paradaB_Coords.stop_name,
+                                                        paradaDestino: paradaB_Estacion.stop_name, // <-- Mostrar Estación
                                                         duracion: segundosAFormato(segundosLlegada1 - segundosSalida1),
                                                         tarifa: tarifaInfo1.num,
-                                                        moneda: tarifaInfo1.moneda
+                                                        moneda: tarifaInfo1.moneda,
+                                                        routeType: route1.route_type
                                                     },
                                                     {
                                                         rutaNombre: route2.route_short_name,
                                                         rutaCompleta: route2.route_long_name,
                                                         destinoViaje: trip2.trip_headsign,
                                                         horaSalida: stOrigen2.departure_time,
-                                                        paradaOrigen: paradaD.stop_name,
+                                                        paradaOrigen: paradaD.stop_name, // <-- Mostrar Estación
                                                         horaLlegada: stDestinoFinal.arrival_time,
                                                         paradaDestino: db.stops.get(destinoId).stop_name,
                                                         duracion: segundosAFormato(segundosLlegada2 - segundosSalida2),
                                                         tarifa: tarifaInfo2.num,
-                                                        moneda: tarifaInfo2.moneda
+                                                        moneda: tarifaInfo2.moneda,
+                                                        routeType: route2.route_type
                                                     }
                                                 ],
-                                                paradaTransbordo: paradaB_Coords.stop_name,
+                                                paradaTransbordo: paradaB_Estacion.stop_name,
                                                 paradaTransbordo2: paradaD.stop_name,
                                                 distanciaTransbordo: dist.toFixed(2),
                                                 tiempoEspera: segundosAFormato(segundosEsperaTotal),
@@ -2209,9 +2407,10 @@ https://cromstudio.com.ve/transporte/noticias.txt
                         html += `<div class="resultado-viaje">`;
                         
                         r.tramos.forEach((tramo, index) => {
+                            const icon = (tramo.routeType == 1) ? '🚇' : '🚌'; // <-- EMOJI CORREGIDO
                             html += `
                                 <h3>
-                                    🚌 ${tramo.rutaNombre}: ${tramo.destinoViaje}
+                                    ${icon} ${tramo.rutaNombre}: ${tramo.destinoViaje}
                                     <span class="tarifa-total">${index === 0 ? `Total Aprox: ${tarifaStr}` : ''}</span>
                                 </h3>
                                 <div class="detalles">
