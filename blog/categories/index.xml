@@ -9,8 +9,15 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Fri, 31 Oct 2025 16:13:29 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 18 Nov 2025 11:09:38 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guias</title>
+      <link>https://cromstudio.com.ve/blog/categories/guias/</link>
+      <pubDate>Tue, 18 Nov 2025 11:09:38 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/guias/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Analisis</title>
       <link>https://cromstudio.com.ve/blog/categories/analisis/</link>
@@ -79,13 +86,6 @@
       <link>https://cromstudio.com.ve/blog/categories/gaming/</link>
       <pubDate>Mon, 27 Oct 2025 12:25:34 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/gaming/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Guias</title>
-      <link>https://cromstudio.com.ve/blog/categories/guias/</link>
-      <pubDate>Mon, 27 Oct 2025 12:25:34 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/guias/</guid>
       <description></description>
     </item>
     <item>
