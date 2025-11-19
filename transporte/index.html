@@ -4,27 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
-
     <!-- ========================================== -->
     <!-- DATOS SEO Y METADATOS OPTIMIZADOS          -->
     <!-- ========================================== -->
     
-    <!-- Título Optimizado (Entre 50-60 caracteres es ideal) -->
     <title>Horarios de Transporte Público Venezuela | Planificador de Rutas - Crom Studio</title>
-    
-    <!-- Descripción Optimizada (Entre 150-160 caracteres) -->
     <meta name="description" content="Consulta horarios de autobuses y rutas de transporte en Venezuela en tiempo real. Planifica tu viaje en Guanare, Portuguesa y más con datos GTFS actualizados.">
-    
-    <!-- Palabras Clave (Aunque Google las usa poco, otros buscadores sí) -->
     <meta name="keywords" content="transporte público venezuela, horarios autobuses, rutas de bus, planificador de viajes, GTFS venezuela, sitssa, busportuguesa, guanare transporte">
-    
-    <!-- Autor y Robots -->
     <meta name="author" content="Crom Studio">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0d6efd">
-
-    <!-- URL Canónica (Evita contenido duplicado, AJUSTA LA URL FINAL SI ES DISTINTA) -->
     <link rel="canonical" href="https://cromstudio.com.ve/transporte/">
 
     <!-- Open Graph / Facebook / WhatsApp -->
@@ -32,7 +21,6 @@
     <meta property="og:url" content="https://cromstudio.com.ve/transporte/">
     <meta property="og:title" content="Horarios de Transporte Público Venezuela | Crom Studio">
     <meta property="og:description" content="Consulta horarios exactos, paradas y planifica tus rutas de autobús en Venezuela. Datos oficiales GTFS.">
-    <!-- IMPORTANTE: Cambia esta URL por una imagen real de tu app (1200x630px idealmente) -->
     <meta property="og:image" content="https://cromstudio.com.ve/imagenes/logos/logo-crom-studio.svg"> 
 
     <!-- Twitter -->
@@ -42,8 +30,6 @@
     <meta property="twitter:description" content="Planifica tus viajes en autobús fácilmente. Horarios y rutas actualizadas.">
     <meta property="twitter:image" content="https://cromstudio.com.ve/imagenes/logos/logo-crom-studio.svg">
 
-    <!-- DATOS ESTRUCTURADOS (Schema.org) - JSON-LD -->
-    <!-- Esto le dice a Google que esto es una "Aplicación Web" -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -70,12 +56,6 @@
     <!-- ========================================== -->
     <!-- FIN DATOS SEO                              -->
     <!-- ========================================== -->
-
-  
-  
-  
-  
-  
   
     <!-- JS de PapaParse (CDN - para leer los .txt/CSV) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -85,12 +65,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
           
-    <!-- API de Google Maps con tu API Key -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxQnqhHh_H7IGHH5p5bow2Bz8iPIIqRww&libraries=routes"></script>
-
-
-
-
+    <!-- ====================================================== -->
+    <!-- REEMPLAZO: LEAFLET CSS y JS (MAPAS GRATIS)             -->
+    <!-- ====================================================== -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
     <script>
@@ -99,10 +78,6 @@
       gtag('js', new Date());
       gtag('config', 'G-FTCG8F3HMV');
     </script>
-
-
-
-
 
     <!-- CSS (Diseño "Super Moderno" v22) -->
     <style>
@@ -215,6 +190,7 @@
         #mapa-principal {
             width: 100%;
             height: 100%;
+            z-index: 1; /* Asegura que se vea */
         }
         
         /* --- Contenedores de Pestañas Simples --- */
@@ -760,6 +736,7 @@
             border-radius: 8px; 
             margin-bottom: 16px; 
             background: #eee;
+            z-index: 0;
         }
 
         @media (max-width: 768px) {
@@ -948,7 +925,7 @@
             </div>
         </div>
         
-        <!-- ===== VISOR DE MAPA (GOOGLE MAPS) ===== -->
+        <!-- ===== VISOR DE MAPA (LEAFLET) ===== -->
         <div id="visor-mapa">
             <div id="mapa-principal"></div>
         </div>
@@ -1065,7 +1042,7 @@
                         </svg>
                         <div>
                             <h2>Crom Studio Transporte</h2>
-                            <p style="margin: 0; font-weight: 600;">Versión: v22</p>
+                            <p style="margin: 0; font-weight: 600;">Versión: v22 (Open Source)</p>
                         </div>
                     </div>
                     
@@ -1126,7 +1103,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
     <!-- JS de PapaParse -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
-    <!-- SCRIPT DE LA APLICACIÓN (Actualizado con todas las funciones v22) -->
+    <!-- SCRIPT DE LA APLICACIÓN (Actualizado con Leaflet) -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
@@ -1238,7 +1215,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 rutaActiva: null, paradaActiva: null,
                 diaActualGTFS_Field: 'monday',
                 fechaActualYYYYMMDD: 20250101,
-                googleMap: null, 
+                mapaPrincipal: null,  // Antes googleMap
                 mapaInicializado: false,
                 directorioMapa: null 
             };
@@ -1379,10 +1356,13 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                     
                     requestAnimationFrame(() => {
                         if (!estadoApp.mapaInicializado) {
-                            iniciarMapaGoogle();
+                            iniciarMapaLeaflet(); // CAMBIADO A LEAFLET
                             renderizarTodasLasRutasEnMapa(); 
                             renderizarTodasLasParadasEnMapa(); 
                             estadoApp.mapaInicializado = true;
+                        } else {
+                            // Redimensionar Leaflet al mostrar el contenedor
+                            if(estadoApp.mapaPrincipal) estadoApp.mapaPrincipal.invalidateSize();
                         }
                     });
 
@@ -1443,83 +1423,69 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 dom.btnBuscarCercanas.addEventListener('click', buscarParadasCercanas);
             }
             
-            // --- FUNCIONES DE MAPA (GOOGLE MAPS) ---
+            // --- FUNCIONES DE MAPA (LEAFLET JS) ---
             
-            function iniciarMapaGoogle() {
-                logDebug("Inicializando Google Maps...");
-                if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
-                    logDebug("ERROR: La API de Google Maps no se ha cargado. ¿Falta la API Key o es inválida?", 'error');
-                    dom.visorMapa.innerHTML = `<h2 style="padding: 20px; color: red;">Error: No se pudo cargar Google Maps. Verifique su API Key.</h2>`;
+            function iniciarMapaLeaflet() {
+                logDebug("Inicializando Leaflet...");
+                
+                if (typeof L === 'undefined') {
+                    logDebug("ERROR: Leaflet JS no cargó.", 'error');
                     return;
                 }
+
+                const mapCenter = [9.5, -69.5]; // Lat, Lng Venezuela
+                estadoApp.mapaPrincipal = L.map('mapa-principal').setView(mapCenter, 7);
+
+                // Capa Base: OpenStreetMap
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(estadoApp.mapaPrincipal);
                 
-                const mapCenter = { lat: 9.5, lng: -69.5 }; // Centro de Venezuela
-                estadoApp.googleMap = new google.maps.Map(document.getElementById('mapa-principal'), {
-                    zoom: 7,
-                    center: mapCenter,
-                    mapTypeId: 'roadmap',
-                    disableDefaultUI: true,
-                    zoomControl: true,
-                    mapTypeControl: true,
-                    streetViewControl: false
-                });
-                
-                logDebug("Google Maps inicializado.", 'ok');
+                logDebug("Mapa Leaflet inicializado.", 'ok');
             }
             
             function renderizarTodasLasRutasEnMapa() {
                 const colores = ['#0d6efd', '#dc3545', '#198754', '#ffc107', '#0dcaf0', '#fd7e14'];
                 let colorIndex = 0;
-                let groupBounds = new google.maps.LatLngBounds();
+                
+                // Leaflet usa Bounds un poco distinto
+                let groupBounds = L.latLngBounds([]);
+                let hayRutas = false;
 
                 db.shapes.forEach((points, shapeId) => {
-                    const latLngs = points.map(p => ({ lat: p.shape_pt_lat, lng: p.shape_pt_lon }));
+                    // Convertir a formato [[lat, lng], [lat, lng]]
+                    const latLngs = points.map(p => [p.shape_pt_lat, p.shape_pt_lon]);
                     const color = colores[colorIndex % colores.length];
                     
-                    const polyline = new google.maps.Polyline({
-                        path: latLngs,
-                        strokeColor: color,
-                        strokeOpacity: 0.8,
-                        strokeWeight: 5,
-                        map: estadoApp.googleMap
-                    });
+                    const polyline = L.polyline(latLngs, {
+                        color: color,
+                        weight: 5,
+                        opacity: 0.8
+                    }).addTo(estadoApp.mapaPrincipal);
                     
-                    const infoWindow = new google.maps.InfoWindow({ content: `Ruta: ${shapeId}` });
-                    polyline.addListener('click', (e) => {
-                        infoWindow.setPosition(e.latLng);
-                        infoWindow.open(estadoApp.googleMap);
-                    });
-
-                    latLngs.forEach(latLng => groupBounds.extend(latLng));
+                    polyline.bindPopup(`Ruta ID: ${shapeId}`);
+                    
+                    latLngs.forEach(ll => groupBounds.extend(ll));
+                    hayRutas = true;
                     colorIndex++;
                 });
                 
-                if (!groupBounds.isEmpty()) {
-                    estadoApp.googleMap.fitBounds(groupBounds);
+                if (hayRutas) {
+                    estadoApp.mapaPrincipal.fitBounds(groupBounds);
                 }
-                logDebug(`Renderizadas ${db.shapes.size} rutas en Google Maps.`, 'ok');
+                logDebug(`Renderizadas ${db.shapes.size} rutas en Mapa.`, 'ok');
             }
 
             function renderizarTodasLasParadasEnMapa() {
-                // MODIFICADO: Iterar solo sobre paradas "mostrables"
                 db.paradasPrincipales.forEach(stop => {
-                    if (!stop.stop_lat) return; // Si no tiene latitud, saltar
+                    if (!stop.stop_lat) return; 
 
-                    const marker = new google.maps.Marker({
-                        position: { lat: stop.stop_lat, lng: stop.stop_lon },
-                        map: estadoApp.googleMap,
-                        title: stop.stop_name
-                    });
-
-                    const infoWindow = new google.maps.InfoWindow({
-                        content: `<b>${stop.stop_name}</b>`
-                    });
-
-                    marker.addListener('click', () => {
-                        infoWindow.open(estadoApp.googleMap, marker);
-                    });
+                    const marker = L.marker([stop.stop_lat, stop.stop_lon]).addTo(estadoApp.mapaPrincipal);
+                    
+                    marker.bindPopup(`<b>${stop.stop_name}</b>`);
                 });
-                logDebug(`Renderizadas ${db.paradasPrincipales.size} paradas principales en Google Maps.`, 'ok');
+                logDebug(`Renderizadas ${db.paradasPrincipales.size} paradas en Mapa.`, 'ok');
             }
             
             // --- LÓGICA DE TIEMPO Y CÁLCULO ---
@@ -2128,7 +2094,7 @@ https://cromstudio.com.ve/transporte/frequencies.txt
 
                 dom.directorioDetalleTitulo.textContent = stop.stop_name;
                 
-                // 1. Mostrar Rutas (Lógica de Andenes Corregida)
+                // 1. Mostrar Rutas
                 const paradasHijas = db.paradasPadreHijas.get(stopId) || [stopId];
                 
                 let stopTimesEnEstacion = [];
@@ -2161,28 +2127,27 @@ https://cromstudio.com.ve/transporte/frequencies.txt
                 
                 dom.directorioDetalleRutasLista.innerHTML = (count > 0) ? html : '<p>No hay rutas asignadas a esta parada.</p>';
                 
-                // 2. Mostrar Mapa
-                if (typeof google === 'undefined' || typeof google.maps === 'undefined') {
-                    dom.directorioDetalleMapa.innerHTML = '<p style="color:red;padding:10px;">No se pudo cargar Google Maps.</p>';
+                // 2. Mostrar Mapa (LEAFLET)
+                if (typeof L === 'undefined') {
+                    dom.directorioDetalleMapa.innerHTML = '<p style="color:red;padding:10px;">No se pudo cargar el Mapa.</p>';
                 } else {
-                    if (!estadoApp.directorioMapa) {
-                        estadoApp.directorioMapa = new google.maps.Map(dom.directorioDetalleMapa, {
-                            zoom: 16,
-                            center: { lat: stop.stop_lat, lng: stop.stop_lon },
-                            mapTypeId: 'roadmap',
-                            disableDefaultUI: true,
-                            zoomControl: true
-                        });
-                    } else {
-                        estadoApp.directorioMapa.setCenter({ lat: stop.stop_lat, lng: stop.stop_lon });
-                        estadoApp.directorioMapa.setZoom(16);
+                    // Eliminar mapa previo si existe para evitar error "Map container is already initialized"
+                    if (estadoApp.directorioMapa) {
+                        estadoApp.directorioMapa.remove();
+                        estadoApp.directorioMapa = null;
                     }
+
+                    const latLng = [stop.stop_lat, stop.stop_lon];
+                    estadoApp.directorioMapa = L.map(dom.directorioDetalleMapa).setView(latLng, 16);
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '&copy; OpenStreetMap'
+                    }).addTo(estadoApp.directorioMapa);
                     
-                     new google.maps.Marker({
-                        position: { lat: stop.stop_lat, lng: stop.stop_lon },
-                        map: estadoApp.directorioMapa,
-                        title: stop.stop_name
-                    });
+                    L.marker(latLng).addTo(estadoApp.directorioMapa)
+                        .bindPopup(stop.stop_name)
+                        .openPopup();
                 }
 
                 dom.directorioDetalleContainer.style.display = 'block';
