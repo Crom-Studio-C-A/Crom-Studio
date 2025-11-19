@@ -3,5 +3,5 @@ LC,Linea Cuatricentenaria Skuke,https://www.cromstudio.com.ve/transporte/,Americ
 sitssa,Sistema Integral de Transporte Superficial S.A,https://www.sitssa.gob.ve/sobre-nosotros/,America/Caracas,es
 BP,BusPortuguesa,https://www.busportuguesa.com,America/Caracas,es
 METRO-MCBO,Metro de Maracaibo,https://www.metrodemaracaibo.gob.ve/,America/Caracas,es
-SINFO,SIN INFORMACIÓN,https://www.BUS.gob.ve/,America/Caracas,es
+SINFO,Sin Información,https://www.BUS.gob.ve/,America/Caracas,es
 

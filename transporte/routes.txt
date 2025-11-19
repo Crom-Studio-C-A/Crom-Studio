@@ -2,6 +2,6 @@ route_id,agency_id,route_short_name,route_long_name,route_type
 L-CUATRI,LC,Cuatricentenaria,Linea Cuatricentenaria (Valera - Escuque),3
 CCS-GRE,sitssa,Ruta 019 - Occidente, Caracas - Guanare | Ruta 019 - Occidente,3
 GRE-BIS,BP,Biscucuy,Ruta Guanare - Biscucuy,3
-L1-MARA,METRO-MARA,Línea 1,Altos de La Vanega - Libertador,1
+L1-MARA,METRO-MCBO,Línea 1,Altos de La Vanega - Libertador,1
 GRE-BAR,SINFO,Guanare - Barquisimeto,Ruta Guanare - Barquisimeto (SINFO),3
 GRE-BIS2,SINFO,Guanare - Biscucuy,Ruta Guanare - Biscucuy (SINFO),3
