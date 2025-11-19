@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - Crom Studio</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://cromstudio.com.ve/imagenes/faviconempresa.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Principal (Ruta ajustada) -->
+    <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
+    <!-- Si usas assets/css/style.css también, descomenta esta línea: -->
+    <!-- <link rel="stylesheet" href="../assets/css/style.css"> -->
+
+    <style>
+        /* Pequeños ajustes internos para reutilizar tus clases sin editar el CSS global */
+        .home__container-projects {
+            align-items: center;
+            text-align: center;
+            padding-top: 4rem;
+        }
+        
+        /* Para simular tarjetas de proyecto usando tus estilos de servicios */
+        .project__card {
+            background-color: var(--container-color);
+            padding: 2rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            transition: .3s;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+        .project__card:hover {
+            transform: translateY(-.25rem);
+            box-shadow: 0 4px 8px rgba(0,0,0,.15);
+        }
+        .project__icon {
+            display: block;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .project__title {
+            font-size: var(--h3-font-size);
+            margin-bottom: 1rem;
+            color: var(--title-color);
+        }
+        
+        /* Estilo para alternar imagen/texto en secciones de detalle */
+        .project-detail__container {
+            row-gap: 3rem;
+        }
+        .project-detail__img {
+            width: 100%;
+            border-radius: 1rem;
+            justify-self: center;
+        }
+        
+        /* Ajuste para el header en páginas internas */
+        .header {
+            background-color: var(--body-color);
+            box-shadow: 0 1px 4px rgba(0,0,0,.1);
+        }
+    </style>
+</head>
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="https://cromstudio.com.ve/" class="nav__logo">
+                Crom Studio
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="https://cromstudio.com.ve" class="nav__link">Inicio</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="https://cromstudio.com.ve/#about" class="nav__link">Nosotros</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="https://cromstudio.com.ve/#services" class="nav__link">Servicios</a>
+                    </li>
+                    <li class="nav__item">
+                        <!-- Enlace activo simulado con color primario -->
+                        <a href="#" class="nav__link" style="color: var(--primary-color); font-weight: var(--font-semi-bold);">Proyectos</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="https://cromstudio.com.ve/blog/" class="nav__link">Blog</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="https://cromstudio.com.ve/#contact" class="nav__link button button--ghost">Contáctanos</a>
+                    </li>
+                </ul>
+
+                <!-- Close button -->
+                <div class="nav__close" id="nav-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!--==================== HERO (Basado en HOME) ====================-->
+        <section class="section">
+            <div class="container grid home__container-projects">
+                <div class="home__content">
+                    <h1 class="section__title">Nuestros Proyectos <br> e Impacto Social</h1>
+                    <p class="section__subtitle" style="margin-bottom: 2rem; display: block;">
+                        Innovación tecnológica desde Venezuela para el mundo.
+                    </p>
+                    <p class="home__description" style="max-width: 800px; margin: 0 auto 2.5rem;">
+                        En Crom Studio, transformamos necesidades complejas en soluciones digitales accesibles. 
+                        Desde la modernización del transporte público hasta la integración tecnológica empresarial.
+                    </p>
+                    <a href="#detalles" class="button">Ver Casos de Éxito</a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== RESUMEN (Basado en SERVICES) ====================-->
+        <section class="section container">
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <!-- Card 1 -->
+                <div class="project__card">
+                    <i class="fa-solid fa-bus project__icon"></i>
+                    <h3 class="project__title">Transporte Público</h3>
+                    <p>Digitalización oficial de rutas y horarios en Google Maps para mejorar la movilidad de los venezolanos.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="project__card">
+                    <i class="fa-solid fa-laptop-code project__icon"></i>
+                    <h3 class="project__title">Integración Tecnológica</h3>
+                    <p>Soluciones de software que reducen la brecha digital y potencian a las empresas nacionales.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="project__card">
+                    <i class="fa-solid fa-earth-europe project__icon"></i>
+                    <h3 class="project__title">Expansión España</h3>
+                    <p>Exportación de talento y desarrollo de nuevas integraciones para el mercado europeo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== DETALLES DE PROYECTOS (Basado en ABOUT) ====================-->
+        
+        <!-- PROYECTO 1: TRANSPORTE -->
+        <section class="section" id="detalles">
+            <div class="container grid project-detail__container" style="grid-template-columns: repeat(2, 1fr); align-items: center;">
+                <!-- Imagen -->
+                <div class="about__img-wrapper">
+                    <img src="https://cromstudio.com.ve/imagenes/logos/google-play.svg" alt="Google Maps Transporte" class="project-detail__img" style="max-width: 300px; margin: 0 auto; display: block;">
+                </div>
+
+                <!-- Texto -->
+                <div class="about__data">
+                    <span class="section__subtitle">Venezuela</span>
+                    <h2 class="section__title">Digitalización del <br> Transporte Público</h2>
+                    <p class="about__description">
+                        Somos los encargados de subir y gestionar los horarios del transporte público de Venezuela en <b>Google Maps</b>. 
+                    </p>
+                    <p class="about__description">
+                        Esta iniciativa permite a miles de usuarios planificar sus rutas con exactitud, reduciendo la incertidumbre y modernizando la infraestructura de información vial del país. Aportamos una solución directa a una necesidad diaria.
+                    </p>
+                    <a href="https://cromstudio.com.ve/transporte/" class="button button--small">
+                        Ver Rutas Disponibles <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTO 2: INTEGRACIÓN TECNOLÓGICA (Invertido para dinamismo) -->
+        <section class="section" style="background-color: var(--container-color);">
+            <div class="container grid project-detail__container" style="grid-template-columns: repeat(2, 1fr); align-items: center;">
+                <!-- Texto (Primero en desktop para alternar) -->
+                <div class="about__data" style="order: 2;"> <!-- Orden por defecto -->
+                    <span class="section__subtitle">Soluciones Locales</span>
+                    <h2 class="section__title">Mejorando la <br> Integración Tecnológica</h2>
+                    <p class="about__description">
+                        Trabajamos mano a mano con empresas y emprendedores para implementar herramientas de vanguardia: facturación electrónica, sistemas administrativos (Valery) y conectividad robusta.
+                    </p>
+                    <p class="about__description">
+                        Nuestro enfoque no es solo vender software, sino educar y capacitar para asegurar que la tecnología sea un verdadero motor de cambio en la economía venezolana.
+                    </p>
+                </div>
+
+                <!-- Imagen -->
+                <div class="about__img-wrapper" style="order: 1;">
+                    <img src="https://cromstudio.com.ve/imagenes/desarrollo-web.svg" alt="Integración Tecnológica" class="project-detail__img">
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTO 3: ESPAÑA -->
+        <section class="section">
+            <div class="container grid project-detail__container" style="grid-template-columns: repeat(2, 1fr); align-items: center;">
+                <!-- Imagen -->
+                <div class="about__img-wrapper">
+                    <img src="https://cromstudio.com.ve/imagenes/logos/logo-crom-studio.svg" alt="Crom Studio España" class="project-detail__img" style="max-width: 250px; margin: 0 auto; display: block;">
+                </div>
+
+                <!-- Texto -->
+                <div class="about__data">
+                    <span class="section__subtitle">Internacional</span>
+                    <h2 class="section__title">Futuras Integraciones <br> en España</h2>
+                    <p class="about__description">
+                        Llevamos nuestra experiencia y resiliencia al mercado internacional. Estamos desarrollando nuevos módulos y adaptando nuestros servicios de desarrollo web para clientes en España.
+                    </p>
+                    <p class="about__description">
+                        Buscamos crear puentes tecnológicos, aplicando soluciones creativas probadas en entornos complejos a nuevos desafíos europeos.
+                    </p>
+                    <a href="https://cromstudio.com.ve/españa/" class="button button--small">
+                        Conocer Más <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== CALL TO ACTION ====================-->
+        <section class="section">
+            <div class="container" style="background-color: var(--primary-color); border-radius: 1rem; padding: 3rem 2rem; text-align: center; color: #fff;">
+                <h2 class="section__title" style="color: #fff; margin-bottom: 1rem;">¿Listo para Innovar?</h2>
+                <p style="margin-bottom: 2rem; color: var(--container-color);">
+                    Cuéntanos tu proyecto y trabajemos juntos en la próxima gran solución.
+                </p>
+                <a href="https://cromstudio.com.ve/#contact" class="button" style="background-color: var(--container-color); color: var(--primary-color);">
+                    Contactar Ahora
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer section">
+        <div class="footer__container container grid">
+            <div>
+                <a href="https://cromstudio.com.ve/index.html" class="footer__logo">
+                    Crom Studio
+                </a>
+                <p class="footer__description">
+                    Soluciones digitales <br> para el mundo real.
+                </p>
+            </div>
+
+            <div class="footer__content">
+                <div>
+                    <h3 class="footer__title">Servicios</h3>
+                    <ul class="footer__links">
+                        <li><a href="#" class="footer__link">Desarrollo Web</a></li>
+                        <li><a href="#" class="footer__link">Integraciones</a></li>
+                        <li><a href="#" class="footer__link">Soporte</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">Empresa</h3>
+                    <ul class="footer__links">
+                        <li><a href="https://cromstudio.com.ve/#about" class="footer__link">Nosotros</a></li>
+                        <li><a href="#" class="footer__link">Proyectos</a></li>
+                        <li><a href="https://cromstudio.com.ve/#contact" class="footer__link">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">Legal</h3>
+                    <ul class="footer__links">
+                        <li><a href="https://cromstudio.com.ve/politica-privacidad/" class="footer__link">Privacidad</a></li>
+                        <li><a href="https://cromstudio.com.ve/politica-cookies/" class="footer__link">Cookies</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="footer__title">Social</h3>
+                    <ul class="footer__social">
+                        <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer__social-link">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/cromstudio21" target="_blank" class="footer__social-link">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/cromstudio" target="_blank" class="footer__social-link">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__info container">
+            <span class="footer__copy">
+                &#169; Crom Studio. Todos los derechos reservados.
+            </span>
+        </div>
+    </footer>
+
+    <!--==================== SCROLL UP ====================-->
+    <a href="#" class="scrollup" id="scroll-up">
+        <i class="fa-solid fa-arrow-up scrollup__icon"></i>
+    </a>
+
+    <!--==================== SCRIPTS ====================-->
+    <script>
+        /* Copia exacta de tu lógica JS para mantener funcionalidad */
+        
+        /*=============== SHOW MENU ===============*/
+        const navMenu = document.getElementById('nav-menu'),
+            navToggle = document.getElementById('nav-toggle'),
+            navClose = document.getElementById('nav-close')
+
+        if(navToggle){
+            navToggle.addEventListener('click', () =>{
+                navMenu.classList.add('show-menu')
+            })
+        }
+
+        if(navClose){
+            navClose.addEventListener('click', () =>{
+                navMenu.classList.remove('show-menu')
+            })
+        }
+
+        /*=============== REMOVE MENU MOBILE ===============*/
+        const navLink = document.querySelectorAll('.nav__link')
+
+        function linkAction(){
+            const navMenu = document.getElementById('nav-menu')
+            navMenu.classList.remove('show-menu')
+        }
+        navLink.forEach(n => n.addEventListener('click', linkAction))
+
+        /*=============== CHANGE BACKGROUND HEADER ===============*/
+        function scrollHeader(){
+            const header = document.getElementById('header')
+            // Usamos 50 como breakpoint estándar
+            if(this.scrollY >= 50) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
+        }
+        window.addEventListener('scroll', scrollHeader)
+
+        /*=============== SHOW SCROLL UP ===============*/ 
+        function scrollUp(){
+            const scrollUp = document.getElementById('scroll-up');
+            if(this.scrollY >= 200) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
+        }
+        window.addEventListener('scroll', scrollUp)
+    </script>
+</body>
+</html>

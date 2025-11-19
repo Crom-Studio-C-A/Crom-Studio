@@ -5,6 +5,3 @@ GRE-BIS,BP,Biscucuy,Ruta Guanare - Biscucuy,3
 L1-MARA,METRO-MARA,Línea 1,Altos de La Vanega - Libertador,1
 GRE-BAR,SINFO,Guanare - Barquisimeto,Ruta Guanare - Barquisimeto (SINFO),3
 GRE-BIS2,SINFO,Guanare - Biscucuy,Ruta Guanare - Biscucuy (SINFO),3
-BAR-MAR,SINFO,Bar-Mar,Ruta Barquisimeto - Maracaibo (SINFO),3
-BIS-BOC,SINFO,Bis-Boc,Ruta Biscucuy - Boconó (SINFO),3
-BOC-VAL,SINFO,Boc-Val,Ruta Boconó - Valera (SINFO),3
