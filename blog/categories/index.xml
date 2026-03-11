@@ -9,8 +9,29 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Thu, 04 Dec 2025 09:43:47 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 11 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apuntes</title>
+      <link>https://cromstudio.com.ve/blog/categories/apuntes/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/apuntes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Computadoras</title>
+      <link>https://cromstudio.com.ve/blog/categories/computadoras/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/computadoras/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hardware</title>
+      <link>https://cromstudio.com.ve/blog/categories/hardware/</link>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/hardware/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Autogestión Comunitaria</title>
       <link>https://cromstudio.com.ve/blog/categories/autogesti%C3%B3n-comunitaria/</link>
