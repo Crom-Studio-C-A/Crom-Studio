@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telco Tycoon Ultra: Enterprise Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Patrones para capas de cobertura */
+        .bg-pattern-diagonal { background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) 1px, transparent 1px, transparent 8px); }
+        .bg-pattern-dots { background-image: radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 6px 6px; }
+        .bg-pattern-competitor { background-image: repeating-linear-gradient(-45deg, rgba(239,68,68,0.1) 0, rgba(239,68,68,0.1) 2px, transparent 2px, transparent 10px); }
+        
+        /* Animaciones suaves */
+        .fade-in-up { animation: fadeInUp 0.3s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Tooltip flotante */
+        #map-tooltip {
+            pointer-events: none;
+            transition: opacity 0.15s ease-in-out;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans overflow-hidden select-none">
+    <div id="root" class="h-screen flex flex-col"></div>
+    <div id="map-tooltip" class="fixed opacity-0 bg-slate-900/95 backdrop-blur-sm border border-slate-600 p-3 rounded-xl shadow-2xl text-xs flex flex-col gap-1 w-48 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"></div>
+
+    <script>
+        // --- CONSTANTES Y CONFIGURACIÓN ---
+        const GRID_SIZE = 24; 
+        const BASE_TICK_RATE = 10000; // 10.0s = 1 mes (Velocidad 1x)
+
+        const INFRA_TYPES = {
+            TOWER_3G: { id: 'TOWER_3G', name: 'Torre 3G/4G', type: 'mobile', tech: 2, range: 4, cost: 25000, rent: 500, power: 150, maint: 100, icon: 'radio-tower', color: 'text-blue-500' },
+            TOWER_5G: { id: 'TOWER_5G', name: 'Antena 5G', type: 'mobile', tech: 3, range: 2, cost: 75000, rent: 1200, power: 500, maint: 250, icon: 'radio-tower', color: 'text-purple-400' },
+            NODE_ADSL: { id: 'NODE_ADSL', name: 'Armario ADSL', type: 'fixed', tech: 1, range: 2, cost: 15000, rent: 100, power: 50, maint: 50, icon: 'router', color: 'text-orange-400' },
+            NODE_FIBER: { id: 'NODE_FIBER', name: 'Nodo Fibra', type: 'fixed', tech: 3, range: 4, cost: 55000, rent: 300, power: 200, maint: 150, icon: 'server', color: 'text-emerald-400' },
+            COMMERCIAL_OFFICE: { id: 'COMMERCIAL_OFFICE', name: 'Oficina Comercial', type: 'commercial', tech: 0, range: 3, cost: 120000, rent: 3000, power: 200, maint: 500, icon: 'store', color: 'text-yellow-400' }
+        };
+
+        const ZONES = [
+            { id: 0, name: 'Distrito Norte', bounds: { minX: 0, maxX: 11, minY: 0, maxY: 11 }, color: 'border-t-4 border-l-4 border-blue-900/50', bg: 'bg-blue-950/20' },
+            { id: 1, name: 'Distrito Este', bounds: { minX: 12, maxX: 23, minY: 0, maxY: 11 }, color: 'border-t-4 border-r-4 border-indigo-900/50', bg: 'bg-indigo-950/20' },
+            { id: 2, name: 'Distrito Sur', bounds: { minX: 0, maxX: 11, minY: 12, maxY: 23 }, color: 'border-b-4 border-l-4 border-emerald-900/50', bg: 'bg-emerald-950/20' },
+            { id: 3, name: 'Distrito Oeste', bounds: { minX: 12, maxX: 23, minY: 12, maxY: 23 }, color: 'border-b-4 border-r-4 border-purple-900/50', bg: 'bg-purple-950/20' }
+        ];
+
+        const COMP_TEMPLATES = [
+            { id: 'c1', name: 'MegaCom', color: 'text-red-500', bg: 'bg-red-500', style: 'aggressive' },
+            { id: 'c2', name: 'FastNet', color: 'text-orange-500', bg: 'bg-orange-500', style: 'balanced' },
+            { id: 'c3', name: 'GloboTel', color: 'text-cyan-500', bg: 'bg-cyan-500', style: 'tech' },
+            { id: 'c4', name: 'NovaLink', color: 'text-pink-500', bg: 'bg-pink-500', style: 'cheap' }
+        ];
+
+        const CONTRACT_TIERS = {
+            SLA_99: { id: 'SLA_99', name: 'Básico (SLA 99%)', reqTech: 2, baseValue: 2500, fine: 1000, desc: 'Requiere 4G o ADSL.' },
+            SLA_999: { id: 'SLA_999', name: 'Premium (SLA 99.9%)', reqTech: 3, baseValue: 6000, fine: 5000, desc: 'Requiere 5G o Fibra.' },
+            SLA_9999: { id: 'SLA_9999', name: 'Crítico (SLA 99.99%)', reqTech: 3, baseValue: 18000, fine: 20000, desc: 'Redundancia Móvil Lvl 3 + Fijo Lvl 3.' }
+        };
+
+        const SERVICE_COSTS = { voice: 1.5, sms: 0.5, data: 3.0, roaming: 5.0, internet: 6.0, tv: 15.0, streaming: 8.0 };
+        
+        const IT_SERVICES = {
+            hosting: { id: 'hosting', name: 'Web Hosting Corporativo', costToUnlock: 150000, revenuePerB2B: 400, reqTech: 3 },
+            cdn: { id: 'cdn', name: 'Red de Distribución (CDN)', costToUnlock: 350000, revenuePerB2B: 900, reqTech: 3 },
+            cloud: { id: 'cloud', name: 'Cloud Computing & IA', costToUnlock: 800000, revenuePerB2B: 2500, reqTech: 3 },
+            tv_rights: { id: 'tv_rights', name: 'Licencia TV Satelital', costToUnlock: 500000, revenuePerB2B: 0, reqTech: 0, type: 'content' },
+            stream_rights: { id: 'stream_rights', name: 'Licencia Streaming VOD', costToUnlock: 300000, revenuePerB2B: 0, reqTech: 0, type: 'content' }
+        };
+
+        // --- GENERACIÓN DEL MAPA INTELIGENTE ---
+        const generateMap = () => {
+            const newMap = [];
+            const townhalls = [ {x: 5, y: 5}, {x: 18, y: 5}, {x: 5, y: 18}, {x: 18, y: 18} ];
+
+            for (let y = 0; y < GRID_SIZE; y++) {
+                for (let x = 0; x < GRID_SIZE; x++) {
+                    const zoneId = (x < 12 ? 0 : 1) + (y < 12 ? 0 : 2);
+                    let type = 'empty'; let pop = 0; let isTownhall = false; let isBusiness = false; let isSchool = false;
+                    
+                    // Cálculo de distancia al ayuntamiento más cercano para crear aglomeración urbana
+                    const minDist = Math.min(...townhalls.map(th => Math.sqrt(Math.pow(th.x - x, 2) + Math.pow(th.y - y, 2))));
+                    const urbFactor = Math.max(0, 1 - (minDist / 8)); // 1 en el centro, 0 lejos
+                    const rand = Math.random() + (urbFactor * 0.4); // Zonas urbanas tienen más probabilidad de desarrollo
+
+                    if (townhalls.some(th => th.x === x && th.y === y)) {
+                        type = 'townhall'; isTownhall = true; pop = 0;
+                    } else if (rand > 1.25) {
+                        type = 'business'; isBusiness = true; pop = Math.floor(Math.random() * 300) + 100;
+                    } else if (rand > 1.20) {
+                        type = 'school'; isSchool = true; pop = Math.floor(Math.random() * 600) + 200;
+                    } else if (rand > 0.95) {
+                        type = 'building'; pop = Math.floor(Math.random() * 120) + 40;
+                    } else if (rand > 0.6) {
+                        type = 'house'; pop = Math.floor(Math.random() * 12) + 2;
+                    }
+
+                    // Contratos preexistentes de la competencia
+                    let compContract = null;
+                    if (isTownhall || isBusiness || isSchool) {
+                        const comp = COMP_TEMPLATES[Math.floor(Math.random() * COMP_TEMPLATES.length)];
+                        const tier = isSchool ? 'SLA_99' : (Math.random() > 0.5 ? 'SLA_999' : 'SLA_99');
+                        const basePrice = CONTRACT_TIERS[tier].baseValue;
+                        compContract = { compId: comp.id, compName: comp.name, tierId: tier, price: basePrice * (0.8 + Math.random()*0.4) };
+                    }
+
+                    newMap.push({ id: `${x}-${y}`, x, y, type, pop, isTownhall, isBusiness, isSchool, zoneId, planId: null, compContract });
+                }
+            }
+            return newMap;
+        };
+
+        const generateCompetitors = () => {
+            return COMP_TEMPLATES.map(t => ({
+                ...t,
+                relation: 50,
+                sharesOwned: 0,
+                valuation: 3000000 + Math.floor(Math.random() * 5000000),
+                plans: [{ name: 'Plan Estándar', price: 30 + Math.random() * 20 }],
+                licenses: ZONES.filter(() => Math.random() > 0.3).map(z => z.id) // Tienen licencias en zonas aleatorias
+            }));
+        };
+
+        // --- ESTADO GLOBAL ---
+        let state = {
+            month: 1, 
+            speed: 1, 
+            isPaused: false,
+            money: 50000000, 
+            mapData: generateMap(), 
+            competitors: generateCompetitors(),
+            infra: [],
+            isSpectator: false,
+            spectatorBank: 0,
+            settings: { competitionEnabled: true, smsAdsEnabled: false },
+            municipalities: ZONES.map(z => ({
+                id: z.id, name: z.name, hasSpectrum: false, spectrumCost: 150000 + Math.floor(Math.random() * 50000),
+                mayorRespect: 30 + Math.floor(Math.random() * 50),
+                compShare: 40 + Math.floor(Math.random() * 30),
+                subsidiaryActive: false
+            })),
+            plans: [
+                { id: 'p1', name: 'Prepago Básico', type: 'mobile', zoneId: 'all', price: 15, services: { voice: true, sms: true, data: false, roaming: false }, minTech: 1 },
+                { id: 'p2', name: 'Fibra Hogar 300Mb', type: 'fixed', zoneId: 'all', price: 40, services: { internet: true }, minTech: 3 },
+            ],
+            contracts: [],
+            itServices: { hosting: false, cdn: false, cloud: false },
+            contentLicenses: { tv: false, streaming: false },
+            wholesale: { agreements: [] }, 
+            transportAds: [], 
+            corporate: {
+                sharesOwned: 0, 
+                equityOwned: 100, 
+                marketIndexPrice: 100,
+                companyValuation: 500000
+            },
+            finances: { 
+                current: { incomePlans: 0, incomeContracts: 0, incomeIT: 0, incomeAds: 0, incomeWholesale: 0, incomeFinancial: 0, varCosts: 0, costWholesale: 0, rent: 0, power: 0, maint: 0, fines: 0, capEx: 0, net: 0 },
+                history: [], 
+                planPerformance: {} 
+            },
+            logs: [{month: 1, msg: 'Compañía fundada. Esperando despliegue de red...', type: 'info'}],
+            activeEvent: null,
+            gameOver: false
+        };
+
+        let uiState = {
+            mobileView: 'map', zoom: 1, activeTab: 'build', selectedTool: null, selectedCell: null, showCoverageMode: null,
+            newPlan: { name: '', type: 'mobile', zoneId: 'all', price: 25, minTech: 1, sVoice: true, sSms: true, sData: true, sRoaming: false, sInt: true, sTv: false, sStream: false },
+            contractForm: { tierId: 'SLA_99', askingPrice: 2000 }, showBuyoutModal: false, buyoutOffer: null,
+            notification: null
+        };
+
+        let gameInterval = null;
+        let pendingRender = false; // Control de re-renderizado para no interrumpir el teclado
+
+        // Selectores Derivados
+        let totalPop = 0; let connectedPop = 0; let arpu = 0; let fiberB2BClients = 0;
+        const getCompetitor = (id) => state.competitors.find(c => c.id === id);
+
+        // --- REDUCER ---
+        function gameReducer(currentState, action) {
+            if (currentState.gameOver) return currentState;
+            const addLog = (msg, type = 'info') => ({ month: currentState.month, msg, type });
+
+            switch (action.type) {
+                case 'SET_SPEED':
+                    return { ...currentState, speed: action.payload, isPaused: false };
+                
+                case 'TOGGLE_PAUSE':
+                    return { ...currentState, isPaused: !currentState.isPaused };
+
+                case 'BUILD_INFRA': {
+                    if (currentState.isSpectator) return currentState;
+                    const { x, y, infraType } = action.payload;
+                    const template = INFRA_TYPES[infraType];
+                    const zoneId = currentState.mapData.find(c => c.x === x && c.y === y).zoneId;
+                    const zone = currentState.municipalities.find(z => z.id === zoneId);
+                    
+                    if (currentState.money < template.cost) return { ...currentState, logs: [addLog(`Fondos insuficientes para ${template.name}`, 'error'), ...currentState.logs] };
+                    if (template.type === 'mobile' && !zone.hasSpectrum) return { ...currentState, logs: [addLog(`[RECHAZADO] Sin licencia de espectro en ${zone.name}.`, 'error'), ...currentState.logs] };
+                    if (currentState.infra.some(i => i.x === x && i.y === y)) return currentState;
+                    
+                    let finalCost = template.cost;
+                    let logMsg = `Construcción: ${template.name} en [${x},${y}]`;
+                    if (zone.mayorRespect < 35 && !zone.subsidiaryActive) {
+                        finalCost *= 1.35;
+                        logMsg += ` (+35% sobrecosto por trabas burocráticas)`;
+                    }
+
+                    return { 
+                        ...currentState, money: currentState.money - finalCost, 
+                        infra: [...currentState.infra, { id: Date.now().toString(), x, y, type: infraType, zoneId }],
+                        finances: { ...currentState.finances, current: { ...currentState.finances.current, capEx: currentState.finances.current.capEx + finalCost } },
+                        logs: [addLog(logMsg, 'success'), ...currentState.logs]
+                    };
+                }
+
+                case 'REMOVE_INFRA': {
+                    if (currentState.isSpectator) return currentState;
+                    const { x, y } = action.payload;
+                    const infraIndex = currentState.infra.findIndex(i => i.x === x && i.y === y);
+                    
+                    if (infraIndex === -1) return currentState; 
+                    if (currentState.infra[infraIndex].owner) return { ...currentState, logs: [addLog('No puedes demoler infraestructura de la competencia.', 'error'), ...currentState.logs] };
+
+                    const newInfra = [...currentState.infra];
+                    newInfra.splice(infraIndex, 1);
+                    
+                    const cost = 500;
+                    if (currentState.money < cost) return { ...currentState, logs: [addLog('Fondos insuficientes para demolición ($500).', 'error'), ...currentState.logs] };
+
+                    return {
+                        ...currentState, money: currentState.money - cost, infra: newInfra,
+                        logs: [addLog(`Infraestructura demolida en [${x},${y}].`, 'warning'), ...currentState.logs]
+                    };
+                }
+                
+                case 'BUY_SPECTRUM': {
+                    if (currentState.isSpectator) return currentState;
+                    const zone = currentState.municipalities.find(z => z.id === action.payload);
+                    if (currentState.money < zone.spectrumCost || zone.hasSpectrum) return currentState;
+                    const newMuns = currentState.municipalities.map(m => m.id === action.payload ? { ...m, hasSpectrum: true } : m);
+                    return { ...currentState, money: currentState.money - zone.spectrumCost, municipalities: newMuns, logs: [addLog(`Espectro adquirido en ${zone.name}.`, 'success'), ...currentState.logs] };
+                }
+
+                case 'LOBBY_MAYOR': {
+                    if (currentState.isSpectator) return currentState;
+                    const zone = currentState.municipalities.find(z => z.id === action.payload);
+                    if (currentState.money < 50000) return currentState;
+                    const newMuns = currentState.municipalities.map(m => m.id === action.payload ? { ...m, mayorRespect: Math.min(100, m.mayorRespect + 50) } : m);
+                    return { ...currentState, money: currentState.money - 50000, municipalities: newMuns, logs: [addLog(`Cabildeo exitoso en ${zone.name}.`, 'info'), ...currentState.logs] };
+                }
+
+                case 'CREATE_SUBSIDIARY': {
+                    const zone = currentState.municipalities.find(z => z.id === action.payload);
+                    if (currentState.money < 250000 || zone.subsidiaryActive) return currentState;
+                    const newMuns = currentState.municipalities.map(m => m.id === action.payload ? { ...m, subsidiaryActive: true, mayorRespect: 80 } : m);
+                    return { ...currentState, money: currentState.money - 250000, municipalities: newMuns, logs: [addLog(`Filial regional creada en ${zone.name}. Reputación municipal reseteada.`, 'success'), ...currentState.logs] };
+                }
+
+                case 'BUY_IT_SERVICE': {
+                    const svc = IT_SERVICES[action.payload];
+                    if (currentState.money < svc.costToUnlock) return currentState;
+                    
+                    if (svc.type === 'content') {
+                        if (currentState.contentLicenses[action.payload === 'tv_rights' ? 'tv' : 'streaming']) return currentState;
+                        return {
+                            ...currentState, money: currentState.money - svc.costToUnlock,
+                            contentLicenses: { ...currentState.contentLicenses, [action.payload === 'tv_rights' ? 'tv' : 'streaming']: true },
+                            logs: [addLog(`Licencia Adquirida: ${svc.name}.`, 'success'), ...currentState.logs]
+                        };
+                    } else {
+                        if (currentState.itServices[action.payload]) return currentState;
+                        return { 
+                            ...currentState, money: currentState.money - svc.costToUnlock, 
+                            itServices: { ...currentState.itServices, [action.payload]: true },
+                            logs: [addLog(`Servicio B2B Desbloqueado: ${svc.name}.`, 'success'), ...currentState.logs]
+                        };
+                    }
+                }
+
+                case 'TOGGLE_WHOLESALE': {
+                    const { compId, type } = action.payload; 
+                    const comp = currentState.competitors.find(c => c.id === compId);
+                    const exists = currentState.wholesale.agreements.find(a => a.compId === compId && a.type === type);
+                    
+                    if (exists) {
+                        return {
+                            ...currentState,
+                            wholesale: { agreements: currentState.wholesale.agreements.filter(a => !(a.compId === compId && a.type === type)) },
+                            logs: [addLog(`Acuerdo mayorista cancelado con ${comp.name}.`, 'info'), ...currentState.logs]
+                        };
+                    } else {
+                        if (comp.relation < 30) {
+                            return { ...currentState, logs: [addLog(`${comp.name} rechaza el acuerdo por mala relación.`, 'error'), ...currentState.logs] };
+                        }
+                        return {
+                            ...currentState,
+                            wholesale: { agreements: [...currentState.wholesale.agreements, { compId, type }] },
+                            logs: [addLog(`Acuerdo firmado con ${comp.name}.`, 'success'), ...currentState.logs]
+                        };
+                    }
+                }
+
+                case 'BUY_TRANSPORT_AD': {
+                    const { cellId, duration, cost } = action.payload;
+                    if (currentState.money < cost) return currentState;
+                    return { 
+                        ...currentState, money: currentState.money - cost,
+                        transportAds: [...currentState.transportAds, { cellId, monthsLeft: duration }],
+                        logs: [addLog(`Campaña activada por ${duration} meses.`, 'success'), ...currentState.logs]
+                    };
+                }
+
+                case 'BUY_SHARES': {
+                    const cost = currentState.corporate.marketIndexPrice * action.payload;
+                    if (currentState.money < cost) return currentState;
+                    return { ...currentState, money: currentState.money - cost, corporate: { ...currentState.corporate, sharesOwned: currentState.corporate.sharesOwned + action.payload }, logs: [addLog(`Compradas ${action.payload} acciones.`, 'info'), ...currentState.logs] };
+                }
+
+                case 'SELL_SHARES': {
+                    if (currentState.corporate.sharesOwned < action.payload) return currentState;
+                    const revenue = currentState.corporate.marketIndexPrice * action.payload;
+                    return { ...currentState, money: currentState.money + revenue, corporate: { ...currentState.corporate, sharesOwned: currentState.corporate.sharesOwned - action.payload }, logs: [addLog(`Vendidas ${action.payload} acciones por ${formatCur(revenue)}.`, 'success'), ...currentState.logs] };
+                }
+
+                case 'SELL_MY_SHARES': {
+                    const percent = 5;
+                    if (currentState.corporate.equityOwned <= 51) return { ...currentState, logs: [addLog('Debes mantener el control mayoritario (51%).', 'error'), ...currentState.logs] };
+                    const value = currentState.corporate.companyValuation * (percent / 100);
+                    return {
+                        ...currentState, money: currentState.money + value,
+                        corporate: { ...currentState.corporate, equityOwned: currentState.corporate.equityOwned - percent },
+                        logs: [addLog(`Vendido 5% de participación por ${formatCur(value)}.`, 'warning'), ...currentState.logs]
+                    };
+                }
+
+                case 'BUY_COMPETITOR_SHARES': {
+                    const { compId, percent } = action.payload;
+                    const comp = currentState.competitors.find(c => c.id === compId);
+                    const cost = (comp.valuation * (percent / 100)) * 1.1; // 10% premium
+                    
+                    if (currentState.money < cost) return { ...currentState, logs: [addLog(`Fondos insuficientes para adquirir acciones de ${comp.name}.`, 'error'), ...currentState.logs] };
+                    
+                    let newComps = currentState.competitors.map(c => c.id === compId ? { ...c, sharesOwned: Math.min(100, c.sharesOwned + percent) } : c);
+                    let newInfra = currentState.infra;
+                    let newMoney = currentState.money - cost;
+                    let log = `Adquirido ${percent}% de ${comp.name}.`;
+                    let newContracts = [...currentState.contracts];
+                    let newMapData = [...currentState.mapData];
+
+                    // Fusiones y Adquisiciones (M&A): Absorción Total
+                    if (newComps.find(c => c.id === compId).sharesOwned >= 100) {
+                        log = `¡ADQUISICIÓN HOSTIL EXITOSA! ${comp.name} ha sido absorbida. Heredas su red y contratos.`;
+                        // Transferir infraestructura
+                        newInfra = newInfra.map(i => i.owner === compId ? { ...i, owner: null } : i);
+                        // Transferir Contratos
+                        newMapData = newMapData.map(c => {
+                            if (c.compContract && c.compContract.compId === compId) {
+                                newContracts.push({
+                                    id: c.id, x: c.x, y: c.y,
+                                    type: c.isBusiness ? 'B2B' : 'B2G',
+                                    tierId: c.compContract.tierId,
+                                    value: c.compContract.price
+                                });
+                                return { ...c, compContract: null };
+                            }
+                            return c;
+                        });
+                        // Eliminar competidor de la lista
+                        newComps = newComps.filter(c => c.id !== compId);
+                    }
+
+                    return { ...currentState, money: newMoney, competitors: newComps, infra: newInfra, contracts: newContracts, mapData: newMapData, logs: [addLog(log, 'success'), ...currentState.logs] };
+                }
+
+                case 'NEGOTIATE_CONTRACT': {
+                    if (currentState.isSpectator) return currentState;
+                    const { x, y, type, tierId, askingPrice, zoneId } = action.payload;
+                    const cell = currentState.mapData.find(c => c.x === x && c.y === y);
+                    const tier = CONTRACT_TIERS[tierId];
+                    const zone = currentState.municipalities.find(z => z.id === zoneId);
+                    
+                    let successChance = 50;
+                    
+                    if (cell.compContract) {
+                        if (askingPrice < cell.compContract.price) successChance += 40; 
+                        else if (askingPrice > cell.compContract.price) successChance -= 60; 
+                        if (tierId !== cell.compContract.tierId) successChance -= 20; 
+                    } else {
+                        const priceRatio = askingPrice / tier.baseValue; 
+                        successChance -= (priceRatio - 1) * 100;
+                    }
+
+                    if (cell.isTownhall) successChance += (zone.mayorRespect - 50); 
+                    successChance = Math.max(5, Math.min(95, successChance));
+                    
+                    if (Math.random() * 100 <= successChance) {
+                        const newMap = currentState.mapData.map(c => c.id === `${x}-${y}` ? { ...c, compContract: null } : c);
+                        return { 
+                            ...currentState, mapData: newMap,
+                            contracts: [...currentState.contracts.filter(c => c.id !== `${x}-${y}`), { id: `${x}-${y}`, x, y, type, tierId, value: askingPrice }],
+                            logs: [addLog(`Contrato ganado en [${x},${y}]: ${tier.name} por ${formatCur(askingPrice)}/mes.`, 'success'), ...currentState.logs]
+                        };
+                    } else {
+                        return { ...currentState, logs: [addLog(`Oferta rechazada en [${x},${y}]. Precio no competitivo.`, 'warning'), ...currentState.logs] };
+                    }
+                }
+
+                case 'CANCEL_CONTRACT': return { ...currentState, contracts: currentState.contracts.filter(c => c.id !== action.payload) };
+                case 'TOGGLE_SETTING': return { ...currentState, settings: { ...currentState.settings, [action.payload]: !currentState.settings[action.payload] } };
+                case 'ADD_PLAN': return { ...currentState, plans: [...currentState.plans, action.payload], logs: [addLog(`Lanzado plan comercial: ${action.payload.name}`, 'info'), ...currentState.logs] };
+                case 'DELETE_PLAN': {
+                    const newMap = currentState.mapData.map(c => c.planId === action.payload ? { ...c, planId: null } : c);
+                    return { ...currentState, plans: currentState.plans.filter(p => p.id !== action.payload), mapData: newMap };
+                }
+
+                case 'ACCEPT_BUYOUT': {
+                    return {
+                        ...currentState,
+                        isSpectator: true, money: 0, spectatorBank: currentState.spectatorBank + action.payload,
+                        infra: [], contracts: [], plans: [],
+                        mapData: currentState.mapData.map(c => ({...c, planId: null, compContract: c.compContract || (c.isBusiness||c.isSchool||c.isTownhall ? { compName:'MegaCom (Adquiriente)', price: 5000, tierId: 'SLA_999' } : null)})),
+                        logs: [addLog(`¡EMPRESA VENDIDA! Has recibido ${formatCur(action.payload)}. Ahora eres un magnate inversor.`, 'success'), ...currentState.logs]
+                    };
+                }
+
+                case 'FOUND_NEW_STARTUP': {
+                    return {
+                        ...currentState, competitors: generateCompetitors(), isSpectator: false, money: currentState.spectatorBank, spectatorBank: 0,
+                        municipalities: ZONES.map(z => ({ ...z, hasSpectrum: false, mayorRespect: 50, subsidiaryActive: false })),
+                        logs: [addLog(`Nueva Operadora fundada con capital propio. El mercado tiembla.`, 'info'), ...currentState.logs]
+                    };
+                }
+
+                case 'CANCEL_FAILING_CONTRACTS': {
+                    // Cálculo rápido de cobertura para validar
+                    const cov = {};
+                    currentState.mapData.forEach(c => cov[c.id] = { m: 0, f: 0 });
+                    currentState.infra.forEach(i => {
+                        if (i.owner) return;
+                        const t = INFRA_TYPES[i.type];
+                        for (let dy = -t.range; dy <= t.range; dy++) {
+                            for (let dx = -t.range; dx <= t.range; dx++) {
+                                const cx = i.x + dx; const cy = i.y + dy;
+                                if (cx >= 0 && cx < GRID_SIZE && cy >= 0 && cy < GRID_SIZE) {
+                                    if (Math.sqrt(dx*dx + dy*dy) <= t.range) {
+                                        const id = `${cx}-${cy}`;
+                                        if (t.type === 'mobile' && t.tech > cov[id].m) cov[id].m = t.tech;
+                                        if (t.type === 'fixed' && t.tech > cov[id].f) cov[id].f = t.tech;
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    const failingContracts = currentState.contracts.filter(c => {
+                        const cellCov = cov[c.id];
+                        const tier = CONTRACT_TIERS[c.tierId];
+                        if (tier.id === 'SLA_9999') return !(cellCov.m >= 3 && cellCov.f >= 3);
+                        return !(cellCov.m >= tier.reqTech || cellCov.f >= tier.reqTech);
+                    });
+
+                    if (failingContracts.length === 0) return { ...currentState, logs: [addLog('No hay contratos con multas para cancelar.', 'info'), ...currentState.logs] };
+                    const failingIds = failingContracts.map(c => c.id);
+                    return { ...currentState, contracts: currentState.contracts.filter(c => !failingIds.includes(c.id)), logs: [addLog(`Cancelados ${failingContracts.length} contratos que generaban multas.`, 'success'), ...currentState.logs] };
+                }
+
+                case 'TICK': {
+                    let fin = { incomePlans: 0, incomeContracts: 0, incomeIT: 0, incomeAds: 0, incomeWholesale: 0, incomeFinancial: 0, varCosts: 0, costWholesale: 0, rent: 0, power: 0, maint: 0, fines: 0, capEx: 0, net: 0 };
+                    let planPerf = {}; currentState.plans.forEach(p => planPerf[p.id] = { subs: 0, revenue: 0, opEx: 0, churn: 0 });
+                    let newLogs = [];
+
+                    // --- IA COMPETENCIA AVANZADA ---
+                    let newInfra = [...currentState.infra];
+                    if (state.settings.competitionEnabled && currentState.month % 3 === 0) {
+                        currentState.competitors.forEach(comp => {
+                            if (comp.licenses.length > 0 && Math.random() > 0.4) {
+                                const targetZoneId = comp.licenses[Math.floor(Math.random() * comp.licenses.length)];
+                                // Buscar celda válida inteligente (Con población y sin torres)
+                                const candidates = currentState.mapData.filter(c => c.zoneId === targetZoneId && c.pop > 10 && !newInfra.some(i => i.x === c.x && i.y === c.y));
+                                
+                                if (candidates.length > 0) {
+                                    candidates.sort((a,b) => b.pop - a.pop); // Ordenar por población descendente
+                                    const target = candidates[0]; // Tomar la mejor parcela
+                                    const type = Math.random() > 0.6 ? 'TOWER_5G' : 'TOWER_3G';
+                                    newInfra.push({
+                                        id: `comp_${comp.id}_${Date.now()}`,
+                                        x: target.x, y: target.y, type: type, zoneId: targetZoneId, owner: comp.id
+                                    });
+                                }
+                            }
+                        });
+                    }
+
+                    let currentMarketPrice = currentState.corporate.marketIndexPrice;
+                    currentMarketPrice += (Math.random() * 10 - 4.5);
+                    currentMarketPrice = Math.max(10, currentMarketPrice);
+
+                    if (currentState.isSpectator) {
+                        return { ...currentState, month: currentState.month + 1, infra: newInfra, corporate: { ...currentState.corporate, marketIndexPrice: currentMarketPrice }, logs: [...newLogs, ...currentState.logs].slice(0, 50) };
+                    }
+
+                    // 1. Calcular Cobertura e Influencia Comercial
+                    const coverageMap = {}; 
+                    let commercialBoosts = {}; 
+                    const activeAds = currentState.transportAds.map(ad => ({...ad, monthsLeft: ad.monthsLeft - 1})).filter(ad => ad.monthsLeft > 0);
+
+                    currentState.mapData.forEach(c => coverageMap[c.id] = { mobile: 0, fixed: 0, owner: null });
+                    
+                    newInfra.forEach(i => {
+                        const t = INFRA_TYPES[i.type];
+                        if (!i.owner) { 
+                            fin.rent += t.rent; fin.power += t.power; fin.maint += t.maint;
+                        }
+
+                        for (let dy = -t.range; dy <= t.range; dy++) {
+                            for (let dx = -t.range; dx <= t.range; dx++) {
+                                const cx = i.x + dx; const cy = i.y + dy;
+                                if (cx >= 0 && cx < GRID_SIZE && cy >= 0 && cy < GRID_SIZE) {
+                                    if (Math.sqrt(dx*dx + dy*dy) <= t.range) {
+                                        const cellId = `${cx}-${cy}`;
+                                        if (!i.owner) { 
+                                            if (t.type === 'mobile' && t.tech > coverageMap[cellId].mobile) coverageMap[cellId].mobile = t.tech;
+                                            if (t.type === 'fixed' && t.tech > coverageMap[cellId].fixed) coverageMap[cellId].fixed = t.tech;
+                                            if (t.type === 'commercial') commercialBoosts[cellId] = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    // 2. Crecimiento Dinámico de la Ciudad
+                    let newMapData = [...currentState.mapData];
+                    if (Math.random() < 0.4) {
+                        const emptyCells = newMapData.filter(c => c.type === 'empty');
+                        if (emptyCells.length > 0) {
+                            const spawn = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                            spawn.type = 'house'; spawn.pop = Math.floor(Math.random() * 15) + 2;
+                        }
+                    }
+                    if (Math.random() < 0.1) {
+                        const houses = newMapData.filter(c => c.type === 'house');
+                        if (houses.length > 0) {
+                            const upgrade = houses[Math.floor(Math.random() * houses.length)];
+                            upgrade.type = 'building'; upgrade.pop = Math.floor(Math.random() * 80) + 30;
+                        }
+                    }
+                    if (currentState.month === 24 || currentState.month === 60 || currentState.month === 120) {
+                        const cell = newMapData.find(c => c.type === 'empty');
+                        if (cell) {
+                            cell.type = currentState.month === 60 ? 'train_station' : 'bus_stop';
+                            cell.pop = currentState.month === 60 ? 1500 : 300;
+                            newLogs.push(addLog(`¡Nueva ${cell.type==='train_station'?'Estación de Tren':'Central de Autobuses'} inaugurada en [${cell.x},${cell.y}]!`, 'success'));
+                        }
+                    }
+
+                    // 3. Clientes B2C
+                    newMapData = newMapData.map(cell => {
+                        if (cell.pop === 0 || cell.isTownhall || cell.isBusiness || cell.isSchool) return cell;
+
+                        const myCov = coverageMap[cell.id];
+                        const zone = currentState.municipalities.find(z => z.id === cell.zoneId);
+                        const compShareMulti = (currentState.settings.competitionEnabled && zone.compShare > 0) ? (1 - (zone.compShare / 100)) : 1;
+                        const availablePop = Math.floor(cell.pop * compShareMulti);
+
+                        let bestPlan = null; let bestValue = 0;
+                        const hasRoamingDeal = currentState.wholesale.agreements.some(a => a.type === 'rent_in');
+
+                        currentState.plans.forEach(plan => {
+                            if (plan.zoneId !== 'all' && plan.zoneId !== cell.zoneId) return;
+                            
+                            let hasCov = (plan.type === 'mobile' && myCov.mobile >= plan.minTech) || (plan.type === 'fixed' && myCov.fixed >= plan.minTech);
+                            if (!hasCov && plan.type === 'mobile' && hasRoamingDeal) hasCov = true;
+
+                            if (hasCov) {
+                                let value = (plan.minTech * 30); 
+                                if (plan.services?.data) value += 20;
+                                if (plan.services?.internet) value += 40; 
+                                if (plan.services?.tv) value += 30;
+                                if (plan.services?.streaming) value += 25;
+
+                                if (currentState.settings.smsAdsEnabled && plan.type === 'mobile') value -= 35; 
+                                value -= (plan.price * 1.5); 
+                                
+                                if (commercialBoosts[cell.id]) value += 25; 
+                                
+                                activeAds.forEach(ad => {
+                                    const station = currentState.mapData.find(c => c.id === ad.cellId);
+                                    if (station && Math.sqrt(Math.pow(station.x - cell.x, 2) + Math.pow(station.y - cell.y, 2)) <= 3) value += 40;
+                                });
+
+                                if (value > 0 && value > bestValue) { bestValue = value; bestPlan = plan; }
+                            }
+                        });
+
+                        let currentPlanId = cell.planId;
+                        const churnChance = commercialBoosts[cell.id] ? 0.02 : 0.08; // Tasas realistas de abandono
+
+                        if (Math.random() < churnChance) {
+                            if (currentPlanId !== (bestPlan ? bestPlan.id : null)) {
+                                if (currentPlanId && planPerf[currentPlanId]) planPerf[currentPlanId].churn += availablePop;
+                                currentPlanId = bestPlan ? bestPlan.id : null;
+                            }
+                        }
+                        
+                        if (currentPlanId) {
+                            const ap = currentState.plans.find(p => p.id === currentPlanId);
+                            const hasOwnCov = ap ? ((ap.type === 'mobile' && myCov.mobile >= ap.minTech) || (ap.type === 'fixed' && myCov.fixed >= ap.minTech)) : false;
+                            const canRoam = ap ? (ap.type === 'mobile' && hasRoamingDeal) : false;
+
+                            if (!ap || (!hasOwnCov && !canRoam)) {
+                                 if (planPerf[currentPlanId]) planPerf[currentPlanId].churn += availablePop;
+                                 currentPlanId = null;
+                            }
+                        }
+
+                        if (currentPlanId && availablePop > 0) {
+                            const p = currentState.plans.find(pl => pl.id === currentPlanId);
+                            if (p) {
+                                const rev = p.price * availablePop;
+                                let vCostPerUser = 0;
+                                if (p.services.voice) vCostPerUser += SERVICE_COSTS.voice;
+                                if (p.services.sms) vCostPerUser += SERVICE_COSTS.sms;
+                                if (p.services.data) vCostPerUser += SERVICE_COSTS.data;
+                                if (p.services.roaming) vCostPerUser += SERVICE_COSTS.roaming;
+                                if (p.services.internet) vCostPerUser += SERVICE_COSTS.internet;
+                                if (p.services.tv) vCostPerUser += SERVICE_COSTS.tv;
+                                if (p.services.streaming) vCostPerUser += SERVICE_COSTS.streaming;
+
+                                const isOwn = (p.type === 'mobile' && myCov.mobile >= p.minTech) || (p.type === 'fixed' && myCov.fixed >= p.minTech);
+                                if (!isOwn && p.type === 'mobile') {
+                                    fin.costWholesale += (5 * availablePop); 
+                                }
+                                
+                                const totalVCost = vCostPerUser * availablePop;
+                                fin.incomePlans += rev; fin.varCosts += totalVCost;
+                                if (currentState.settings.smsAdsEnabled && p.type === 'mobile') fin.incomeAds += 5 * availablePop;
+
+                                if (planPerf[p.id]) {
+                                    planPerf[p.id].subs += availablePop;
+                                    planPerf[p.id].revenue += rev;
+                                    planPerf[p.id].opEx += totalVCost;
+                                }
+                            }
+                        }
+                        return { ...cell, planId: currentPlanId };
+                    });
+
+                    // 4. Contratos B2B/B2G e IT Services
+                    let contractsToDrop = [];
+                    let localFiberB2BClients = 0;
+
+                    currentState.contracts.forEach(c => {
+                        const myCov = coverageMap[`${c.x}-${c.y}`];
+                        const tier = CONTRACT_TIERS[c.tierId];
+                        
+                        let satisfiesSLA = false;
+                        if (tier.id === 'SLA_9999') satisfiesSLA = (myCov.mobile >= 3 && myCov.fixed >= 3); 
+                        else satisfiesSLA = (myCov.mobile >= tier.reqTech || myCov.fixed >= tier.reqTech);
+
+                        if (satisfiesSLA) {
+                            fin.incomeContracts += c.value;
+                            if (myCov.fixed >= 3) localFiberB2BClients++; 
+                        } else {
+                            fin.fines += tier.fine;
+                            if (Math.random() < 0.35) {
+                                contractsToDrop.push(c.id);
+                                newLogs.push(addLog(`SLA INCUMPLIDO: Contrato perdido en [${c.x},${c.y}]. El cliente nos demandó.`, 'error'));
+                                const cellIndex = newMapData.findIndex(cell => cell.x === c.x && cell.y === c.y);
+                                if (cellIndex > -1) {
+                                    let fallbackName = 'Operador Local';
+                                    if (currentState.competitors.length > 0) fallbackName = currentState.competitors[Math.floor(Math.random() * currentState.competitors.length)].name;
+                                    newMapData[cellIndex].compContract = { compName: fallbackName, price: tier.baseValue * 1.1, tierId: c.tierId };
+                                }
+                            }
+                        }
+                    });
+                    const activeContracts = currentState.contracts.filter(c => !contractsToDrop.includes(c.id));
+                    fiberB2BClients = localFiberB2BClients;
+
+                    if (currentState.itServices.hosting) fin.incomeIT += (IT_SERVICES.hosting.revenuePerB2B * fiberB2BClients);
+                    if (currentState.itServices.cdn) fin.incomeIT += (IT_SERVICES.cdn.revenuePerB2B * fiberB2BClients);
+                    if (currentState.itServices.cloud) fin.incomeIT += (IT_SERVICES.cloud.revenuePerB2B * fiberB2BClients);
+
+                    fin.incomeFinancial = Math.floor(currentState.corporate.sharesOwned * (currentMarketPrice * 0.008));
+
+                    const rentOutDeals = currentState.wholesale.agreements.filter(a => a.type === 'rent_out').length;
+                    if (rentOutDeals > 0) {
+                        fin.incomeWholesale += (currentState.infra.length * 50 * rentOutDeals);
+                    }
+
+                    // 5. Política e IA Competencia
+                    const newMuns = currentState.municipalities.map(m => {
+                        const playerInfraCount = newInfra.filter(i => i.zoneId === m.id && !i.owner).length;
+                        const compInfraCount = newInfra.filter(i => i.zoneId === m.id && i.owner).length;
+                        const totalInfra = playerInfraCount + compInfraCount;
+                        
+                        let currentShare = m.compShare;
+                        if (totalInfra > 0) {
+                            const targetCompShare = (compInfraCount / totalInfra) * 100;
+                            if (currentShare < targetCompShare) currentShare += 1;
+                            else if (currentShare > targetCompShare) currentShare -= 0.5;
+                        }
+
+                        let res = m.mayorRespect;
+                        if (Math.random() > 0.6) res -= 1; 
+                        if (m.subsidiaryActive && Math.random() > 0.8) res += 1; 
+                        return { ...m, mayorRespect: Math.max(0, Math.min(100, res)), compShare: Math.max(5, Math.min(95, Math.floor(currentShare))) };
+                    });
+
+                    // 6. Eventos y M&A
+                    let offerObj = uiState.buyoutOffer;
+                    let showModal = uiState.showBuyoutModal;
+                    
+                    if (currentState.money > 2000000 && Math.random() < 0.02 && !showModal && !currentState.isSpectator) {
+                        const offerVal = currentState.money + (fin.incomePlans * 24); 
+                        let buyerName = 'Fondo de Inversión Global';
+                        if (currentState.competitors.length > 0) {
+                            buyerName = currentState.competitors[Math.floor(Math.random() * currentState.competitors.length)].name + ' Group';
+                        }
+                        offerObj = { buyer: buyerName, amount: offerVal };
+                        showModal = true;
+                    }
+
+                    fin.net = (fin.incomePlans + fin.incomeContracts + fin.incomeIT + fin.incomeAds + fin.incomeWholesale + fin.incomeFinancial) - (fin.varCosts + fin.costWholesale + fin.rent + fin.power + fin.maint + fin.fines);
+                    const newMoney = currentState.money + fin.net;
+                    const valuation = newMoney + (fin.net * 12) + (currentState.infra.length * 20000);
+
+                    uiState.buyoutOffer = offerObj;
+                    uiState.showBuyoutModal = showModal;
+
+                    return {
+                        ...currentState, month: currentState.month + 1, money: newMoney, mapData: newMapData, infra: newInfra, municipalities: newMuns, transportAds: activeAds,
+                        contracts: activeContracts, finances: { current: fin, planPerformance: planPerf },
+                        corporate: { ...currentState.corporate, marketIndexPrice: currentMarketPrice, companyValuation: valuation },
+                        logs: [...newLogs, ...currentState.logs].slice(0, 50),
+                        gameOver: newMoney < -1000000 // Aumentado margen de quiebra
+                    };
+                }
+                default: return currentState;
+            }
+        }
+
+        const formatCur = (num) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(num);
+        const icon = (name, size = 20, className = '') => `<i data-lucide="${name}" class="${className}" style="width: ${size}px; height: ${size}px; display: inline-block;"></i>`;
+
+        const calcNewPlanCost = () => {
+            let cost = 0;
+            if (uiState.newPlan.type === 'mobile') {
+                if (uiState.newPlan.sVoice) cost += SERVICE_COSTS.voice;
+                if (uiState.newPlan.sSms) cost += SERVICE_COSTS.sms;
+                if (uiState.newPlan.sData) cost += SERVICE_COSTS.data;
+                if (uiState.newPlan.sRoaming) cost += SERVICE_COSTS.roaming;
+            } else {
+                if (uiState.newPlan.sInt) cost += SERVICE_COSTS.internet;
+            }
+            if (uiState.newPlan.sTv) cost += SERVICE_COSTS.tv;
+            if (uiState.newPlan.sStream) cost += SERVICE_COSTS.streaming;
+            return cost;
+        };
+
+        // --- MANEJADORES GLOBALES ---
+        window.dispatch = (action) => { 
+            const prevLogsLength = state.logs.length;
+            state = gameReducer(state, action); 
+            
+            if (state.logs.length > prevLogsLength) {
+                const newLog = state.logs[0];
+                if (newLog.type !== 'info') {
+                    uiState.notification = newLog;
+                    if (window.toastTimer) clearTimeout(window.toastTimer);
+                    window.toastTimer = setTimeout(() => { uiState.notification = null; renderApp(); }, 4000);
+                }
+            }
+            renderApp(); 
+        };
+        window.setUiState = (key, val) => { uiState[key] = val; renderApp(); };
+        window.handleZoom = (inOut) => { uiState.zoom = Math.max(0.4, Math.min(2.5, uiState.zoom + (inOut === 'in' ? 0.2 : -0.2))); renderApp(); };
+
+        window.handleCellClick = (x, y) => {
+            const cellData = state.mapData.find(c => c.x === x && c.y === y);
+            const infraData = state.infra.find(i => i.x === x && i.y === y);
+            const zoneData = state.municipalities.find(z => z.id === cellData.zoneId);
+            const contract = state.contracts.find(c => c.x === x && c.y === y);
+            uiState.selectedCell = { ...cellData, infra: infraData, zoneData, contract, isCompInfra: infraData?.owner ? true : false };
+
+            if (uiState.selectedTool && !state.isSpectator) {
+                if (uiState.selectedTool === 'DEMOLISH') dispatch({ type: 'REMOVE_INFRA', payload: { x, y } });
+                else dispatch({ type: 'BUILD_INFRA', payload: { x, y, infraType: uiState.selectedTool } });
+                uiState.selectedTool = null;
+            } else {
+                if (window.innerWidth < 1024) { uiState.activeTab = 'inspector'; uiState.mobileView = 'panel'; }
+                renderApp();
+            }
+        };
+
+        window.selectTool = (key) => { uiState.selectedTool = uiState.selectedTool === key ? null : key; uiState.mobileView = 'map'; renderApp(); };
+        
+        // Función silenciosa para evitar parpadeos de teclado
+        window.updatePlanFormSilent = (key, val) => { uiState.newPlan[key] = val; };
+        window.updateContractFormSilent = (key, val) => { uiState.contractForm[key] = val; };
+        
+        window.updatePlanFormCheckbox = (key, val) => { uiState.newPlan[key] = !uiState.newPlan[key]; renderApp(); };
+        window.updatePlanFormSelect = (key, val) => { uiState.newPlan[key] = val; renderApp(); };
+        window.updateContractFormSelect = (key, val) => { 
+            uiState.contractForm[key] = val; 
+            if (key === 'tierId') uiState.contractForm.askingPrice = CONTRACT_TIERS[val].baseValue;
+            renderApp(); 
+        };
+
+        window.handleAddPlan = (e) => {
+            e.preventDefault();
+            if (uiState.newPlan.name && !state.isSpectator) {
+                const services = uiState.newPlan.type === 'mobile' 
+                    ? { voice: uiState.newPlan.sVoice, sms: uiState.newPlan.sSms, data: uiState.newPlan.sData, roaming: uiState.newPlan.sRoaming, tv: uiState.newPlan.sTv, streaming: uiState.newPlan.sStream } 
+                    : { internet: uiState.newPlan.sInt, tv: uiState.newPlan.sTv, streaming: uiState.newPlan.sStream };
+                
+                dispatch({ type: 'ADD_PLAN', payload: { id: 'p_' + Date.now(), name: uiState.newPlan.name, type: uiState.newPlan.type, zoneId: uiState.newPlan.zoneId, price: Number(uiState.newPlan.price), minTech: Number(uiState.newPlan.minTech), services } });
+                uiState.newPlan = {...uiState.newPlan, name: ''}; 
+            }
+        };
+
+        window.handleMouseEnter = (x, y, event) => {
+            const cellData = state.mapData.find(c => c.x === x && c.y === y);
+            const infra = state.infra.find(i => i.x === x && i.y === y);
+            const contract = state.contracts.find(c => c.x === x && c.y === y);
+            
+            let content = `<div class="font-bold text-slate-200 border-b border-slate-700 pb-1 mb-1">Parcela [${x},${y}]</div>`;
+            
+            if (infra) {
+                const t = INFRA_TYPES[infra.type];
+                const owner = infra.owner ? getCompetitor(infra.owner) : { name: 'Propia', color: 'text-emerald-400' };
+                content += `<div class="flex items-center gap-2 mb-1"><span class="${owner.color} font-bold">${icon('tower-control', 12)} ${owner.name}</span></div>`;
+                content += `<div class="text-xs text-slate-300">${t.name} (Nivel ${t.tech})</div>`;
+            } else {
+                content += `<div class="text-xs text-slate-300 font-bold">${cellData.type.toUpperCase()}</div>`;
+                if (cellData.pop > 0) content += `<div class="text-xs text-slate-400">Población: ${cellData.pop}</div>`;
+            }
+
+            if (contract) content += `<div class="mt-1 pt-1 border-t border-slate-700 text-xs text-emerald-400 font-bold">Contrato SLA Activo</div>`;
+            if (cellData.compContract) content += `<div class="mt-1 pt-1 border-t border-slate-700 text-xs text-red-400 font-bold">Contrato Rival Vigente</div>`;
+
+            const tooltipEl = document.getElementById('map-tooltip');
+            if (tooltipEl) {
+                tooltipEl.innerHTML = content;
+                tooltipEl.style.left = (event.clientX + 15) + 'px';
+                tooltipEl.style.top = (event.clientY + 15) + 'px';
+                tooltipEl.classList.remove('opacity-0');
+            }
+        };
+
+        window.handleMouseLeave = () => {
+            const tooltipEl = document.getElementById('map-tooltip');
+            if (tooltipEl) tooltipEl.classList.add('opacity-0');
+        };
+
+        window.addEventListener('mousemove', (e) => {
+            const tooltipEl = document.getElementById('map-tooltip');
+            if (tooltipEl && !tooltipEl.classList.contains('opacity-0')) {
+                tooltipEl.style.left = (e.clientX + 15) + 'px';
+                tooltipEl.style.top = (e.clientY + 15) + 'px';
+            }
+        });
+
+        // Evento Global de foco para solucionar saltos de teclado
+        document.addEventListener('blur', (e) => {
+            if (['INPUT', 'SELECT'].includes(e.target.tagName) && pendingRender) renderApp();
+        }, true);
+
+        // --- CONTROL DEL BUCLE DE JUEGO ---
+        function updateGameLoop() {
+            if (gameInterval) clearInterval(gameInterval);
+            if (!state.isPaused && state.speed > 0) {
+                const ms = BASE_TICK_RATE / state.speed;
+                gameInterval = setInterval(() => { dispatch({ type: 'TICK' }); }, ms);
+            }
+        }
+
+        // --- SISTEMA DE RENDERIZADO ---
+        function renderApp() {
+            // Protección Anti-Flicker de Input
+            const activeEl = document.activeElement;
+            const isInputFocused = activeEl && ['INPUT', 'SELECT'].includes(activeEl.tagName);
+            if (isInputFocused) {
+                pendingRender = true;
+                return; // Pausar re-render de UI para no cortar la escritura del usuario (El backend avanza igual)
+            }
+            pendingRender = false;
+
+            updateGameLoop();
+
+            const sidebarEl = document.getElementById('sidebar-content');
+            const mapEl = document.getElementById('map-container');
+            const sidebarScroll = sidebarEl ? sidebarEl.scrollTop : 0;
+            const mapScrollX = mapEl ? mapEl.scrollLeft : 0;
+            const mapScrollY = mapEl ? mapEl.scrollTop : 0;
+
+            totalPop = state.mapData.reduce((a, c) => a + c.pop, 0);
+            connectedPop = state.mapData.reduce((a, c) => a + (c.planId ? Math.floor(c.pop * (state.settings.competitionEnabled ? (1-(state.municipalities.find(z=>z.id===c.zoneId).compShare/100)) : 1)) : 0), 0);
+            arpu = connectedPop > 0 ? (state.finances.current.incomePlans / connectedPop) : 0;
+
+            const root = document.getElementById('root');
+            
+            if (state.gameOver) {
+                root.innerHTML = `<div class="min-h-screen bg-slate-900 w-full flex items-center justify-center text-white p-6"><div class="bg-slate-800 p-8 rounded-2xl max-w-lg text-center shadow-2xl border border-red-500/50"><div class="flex justify-center mb-4 text-red-500 animate-pulse">${icon('alert-triangle', 64)}</div><h1 class="text-4xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-rose-600">QUIEBRA CORPORATIVA</h1><p class="text-slate-400 mb-6">El regulador ha liquidado tus activos por exceso de deuda.</p><button onclick="window.location.reload()" class="w-full bg-blue-600 hover:bg-blue-500 p-4 rounded-xl font-bold uppercase transition-all shadow-lg shadow-blue-900/50">Nueva Partida</button></div></div>`;
+                lucide.createIcons(); return;
+            }
+
+            let mapHTML = state.mapData.map(cell => {
+                const infra = state.infra.find(i => i.x === cell.x && i.y === cell.y);
+                const contract = state.contracts.find(c => c.x === cell.x && c.y === cell.y);
+                const zone = ZONES.find(z => z.id === cell.zoneId);
+                
+                let bgClass = "bg-slate-900 hover:bg-slate-800"; 
+                if (cell.type === 'house') bgClass = cell.planId ? "bg-blue-900/50" : "bg-slate-800/80";
+                if (cell.type === 'building') bgClass = cell.planId ? "bg-blue-800/70" : "bg-slate-700";
+                if (cell.type === 'townhall') bgClass = "bg-indigo-900/60";
+                if (cell.type === 'business') bgClass = "bg-purple-900/50";
+                if (cell.type === 'school') bgClass = "bg-amber-900/40";
+                if (cell.type === 'train_station' || cell.type === 'bus_stop') bgClass = "bg-rose-900/40";
+
+                let competitorOverlay = cell.compContract ? 'bg-pattern-competitor border border-red-500/20' : '';
+
+                let innerIcon = '';
+                if (!infra) {
+                    if (cell.type === 'house') innerIcon = icon('home', 14, 'text-slate-500 opacity-60');
+                    if (cell.type === 'building') innerIcon = icon('building', 18, 'text-slate-400');
+                    if (cell.type === 'townhall') innerIcon = icon('landmark', 22, 'text-indigo-400 drop-shadow-md');
+                    if (cell.type === 'business') innerIcon = icon('briefcase', 18, 'text-purple-400');
+                    if (cell.type === 'school') innerIcon = icon('graduation-cap', 20, 'text-amber-400');
+                    if (cell.type === 'train_station') innerIcon = icon('train', 24, 'text-rose-400 drop-shadow-lg');
+                    if (cell.type === 'bus_stop') innerIcon = icon('bus', 20, 'text-rose-300');
+                } else {
+                    if (infra.owner) {
+                        const comp = state.competitors.find(c => c.id === infra.owner);
+                        const compColor = comp ? comp.color : 'text-gray-400';
+                        innerIcon = `<div class="absolute inset-0 flex items-center justify-center bg-slate-950/95 z-10 border border-red-500/40 shadow-[inset_0_0_10px_rgba(255,0,0,0.2)] rounded-sm">${icon('radio-tower', 20, compColor)}</div>`;
+                    } else {
+                        innerIcon = `<div class="absolute inset-0 flex items-center justify-center bg-slate-950/95 z-10 border border-white/10 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] rounded-sm">
+                            ${icon(INFRA_TYPES[infra.type].icon, INFRA_TYPES[infra.type].type === 'commercial' ? 24 : 20, INFRA_TYPES[infra.type].color)}
+                        </div>`;
+                    }
+                }
+
+                return `<div onmouseenter="handleMouseEnter(${cell.x}, ${cell.y}, event)" onmouseleave="handleMouseLeave()" onclick="handleCellClick(${cell.x}, ${cell.y})" class="relative w-full h-full flex items-center justify-center cursor-pointer transition-colors duration-150 ${bgClass} ${zone.color} ${zone.bg} ${competitorOverlay} ${uiState.selectedCell?.id === cell.id ? 'ring-2 ring-yellow-400 z-30 scale-110 shadow-2xl' : ''}" style="grid-column: ${cell.x + 1}; grid-row: ${cell.y + 1}">
+                    ${innerIcon}
+                    ${contract ? `<div class="absolute top-1 right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full border border-slate-900 z-20 shadow-[0_0_8px_rgba(52,211,153,1)] animate-pulse"></div>` : ''}
+                </div>`;
+            }).join('');
+
+            if (uiState.showCoverageMode) {
+                const isCompMode = uiState.showCoverageMode.startsWith('comp_');
+                const compId = isCompMode ? uiState.showCoverageMode.split('_')[1] : null;
+
+                mapHTML += state.mapData.map(cell => {
+                    let maxTech = 0; let maxStrength = 0;
+                    state.infra.forEach(i => {
+                        const isTarget = isCompMode ? i.owner === compId : !i.owner;
+                        if (!isTarget) return;
+                        
+                        const t = INFRA_TYPES[i.type];
+                        let show = false;
+                        if (isCompMode) show = true; 
+                        else if (uiState.showCoverageMode === 'mobile' && t.type === 'mobile') show = true;
+                        else if (uiState.showCoverageMode === 'fixed' && t.type === 'fixed') show = true;
+
+                        if (show) {
+                            const dist = Math.sqrt(Math.pow(i.x - cell.x, 2) + Math.pow(i.y - cell.y, 2));
+                            if (dist <= t.range) {
+                                if (t.tech > maxTech) { maxTech = t.tech; maxStrength = 1 - (dist / (t.range + 0.5)); } 
+                                else if (t.tech === maxTech) { const str = 1 - (dist / (t.range + 0.5)); if (str > maxStrength) maxStrength = str; }
+                            }
+                        }
+                    });
+                    if (maxTech === 0) return '';
+                    
+                    let bgClass = isCompMode ? 'bg-red-600' : 'bg-slate-600';
+                    if (!isCompMode && uiState.showCoverageMode === 'mobile') bgClass = maxTech === 3 ? 'bg-purple-600' : 'bg-blue-600';
+                    if (!isCompMode && uiState.showCoverageMode === 'fixed') bgClass = maxTech === 3 ? 'bg-emerald-600' : 'bg-orange-600';
+
+                    const pattern = uiState.showCoverageMode === 'fixed' ? 'bg-pattern-dots' : 'bg-pattern-diagonal';
+                    const opacity = 0.2 + (maxStrength * 0.6);
+
+                    return `<div class="absolute inset-0 pointer-events-none ${bgClass} ${pattern} z-20 transition-opacity duration-300" style="grid-column: ${cell.x + 1}; grid-row: ${cell.y + 1}; opacity: ${opacity}; mix-blend-mode: hard-light;"></div>`;
+                }).join('');
+            }
+
+            const tabs = [
+                { id: 'build', icon: 'hammer', text: 'Obras' },
+                { id: 'gov', icon: 'map', text: 'Regiones' },
+                { id: 'plans', icon: 'file-text', text: 'Tarifas & IT' },
+                { id: 'wholesale', icon: 'globe', text: 'Mercado' },
+                { id: 'finance', icon: 'bar-chart-3', text: 'Cuentas' },
+                { id: 'corp', icon: 'building-2', text: 'Corporativo' },
+                { id: 'inspector', icon: 'search', text: 'Inspector' }
+            ];
+
+            const renderTabButtons = tabs.map(tab => `
+                <button onclick="setUiState('activeTab', '${tab.id}')" class="px-3 py-2.5 text-xs font-bold rounded-lg flex items-center justify-center gap-1.5 whitespace-nowrap transition-all ${uiState.activeTab === tab.id ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-400 hover:bg-slate-800'} ${tab.id === 'inspector' && !uiState.selectedCell ? 'opacity-50 pointer-events-none' : ''}">
+                    ${icon(tab.icon, 16)} ${tab.text}
+                </button>
+            `).join('');
+
+            let tabContentHTML = '';
+            
+            if (uiState.activeTab === 'build') {
+                tabContentHTML = `<div class="space-y-4">
+                    ${state.isSpectator ? `<div class="bg-amber-900/50 p-4 rounded-xl text-amber-200 text-sm border border-amber-500/50">Modo Inversor: No puedes construir infraestructuras directamente.</div>` : 
+                    Object.entries(INFRA_TYPES).map(([key, infra]) => `
+                        <button onclick="selectTool('${key}')" class="w-full text-left p-4 rounded-xl border transition-all ${uiState.selectedTool === key ? 'border-blue-500 bg-blue-900/30 ring-2 ring-blue-500/30' : 'border-slate-700 bg-slate-800 hover:bg-slate-700'}">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 rounded-lg bg-slate-900 ${infra.color}">${icon(infra.icon, 20)}</div>
+                                    <span class="font-bold text-sm text-slate-100">${infra.name}</span>
+                                </div>
+                                <span class="font-mono text-emerald-400 text-base font-black">${formatCur(infra.cost)}</span>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 text-[10px] text-center">
+                                <div class="bg-slate-900/80 p-1.5 rounded border border-slate-700/50"><p class="text-slate-500">Tecnología</p><p class="font-bold text-slate-300">${infra.tech>0?'Nivel '+infra.tech:'Comercial'}</p></div>
+                                <div class="bg-slate-900/80 p-1.5 rounded border border-slate-700/50"><p class="text-slate-500">Alcance</p><p class="font-bold text-blue-300">${infra.range} Celdas</p></div>
+                                <div class="bg-slate-900/80 p-1.5 rounded border border-slate-700/50"><p class="text-slate-500">OPEX/Mes</p><p class="font-bold text-red-400">-${formatCur(infra.rent + infra.power + infra.maint)}</p></div>
+                            </div>
+                        </button>
+                    `).join('')}
+                    ${!state.isSpectator ? `
+                    <button onclick="selectTool('DEMOLISH')" class="w-full text-left p-4 rounded-xl border transition-all ${uiState.selectedTool === 'DEMOLISH' ? 'border-red-500 bg-red-900/30 ring-2 ring-red-500/30' : 'border-slate-700 bg-slate-800 hover:bg-slate-700'}">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div class="p-2 rounded-lg bg-slate-900 text-red-500">${icon('trash-2', 20)}</div>
+                                <span class="font-bold text-sm text-slate-100">Demoler Estructura</span>
+                            </div>
+                            <span class="font-mono text-red-400 text-xs font-black">-$500</span>
+                        </div>
+                    </button>` : ''}
+                </div>`;
+            } else if (uiState.activeTab === 'gov') {
+                tabContentHTML = `<div class="space-y-4">
+                    ${state.municipalities.map(mun => `
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 relative overflow-hidden">
+                            ${mun.subsidiaryActive ? `<div class="absolute top-0 right-0 bg-blue-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl">FILIAL LOCAL</div>` : ''}
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-2 mb-3">
+                                <h3 class="font-bold text-sm text-slate-200 flex items-center gap-2">${mun.name}</h3>
+                                <span class="text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider ${mun.hasSpectrum ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/50' : 'bg-red-500/20 text-red-400 border border-red-500/50'}">${mun.hasSpectrum ? 'Licencia OK' : 'Sin Licencia'}</span>
+                            </div>
+                            ${!mun.hasSpectrum && !state.isSpectator ? `<button onclick="dispatch({type: 'BUY_SPECTRUM', payload: ${mun.id}})" ${state.money < mun.spectrumCost ? 'disabled' : ''} class="w-full text-xs font-bold py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white transition-colors disabled:opacity-50 flex justify-between px-3 mb-3"><span>Comprar Licencia Móvil</span><span class="font-mono">${formatCur(mun.spectrumCost)}</span></button>` : ''}
+                            <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-700 text-xs flex flex-col gap-2 mb-2">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-400 flex items-center gap-1">${icon('shield', 14)} Ayto:</span>
+                                    <div class="flex-1 mx-3 h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full ${mun.mayorRespect < 35 ? 'bg-red-500' : mun.mayorRespect > 75 ? 'bg-emerald-500' : 'bg-yellow-500'}" style="width: ${mun.mayorRespect}%"></div></div>
+                                    <span class="font-mono text-slate-300 w-6 text-right">${Math.floor(mun.mayorRespect)}</span>
+                                </div>
+                                ${!state.isSpectator ? `<div class="flex gap-2 mt-1">
+                                    <button onclick="dispatch({type: 'LOBBY_MAYOR', payload: ${mun.id}})" ${state.money < 50000 ? 'disabled' : ''} class="flex-1 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded disabled:opacity-50 text-[10px] font-bold">Donar a Campaña ($50k)</button>
+                                    ${!mun.subsidiaryActive ? `<button onclick="dispatch({type: 'CREATE_SUBSIDIARY', payload: ${mun.id}})" ${state.money < 250000 ? 'disabled' : ''} class="flex-1 py-1.5 bg-blue-900/40 hover:bg-blue-800 border border-blue-700 rounded disabled:opacity-50 text-[10px] font-bold text-blue-300">Crear Filial ($250k)</button>`:''}
+                                </div>` : ''}
+                            </div>
+                            ${state.settings.competitionEnabled ? `<div class="bg-slate-900 p-2 rounded-lg border border-slate-700 text-xs flex justify-between items-center"><span class="text-slate-400 flex items-center gap-1">${icon('target', 14)} Dominio Rival:</span><span class="font-bold text-red-400">${mun.compShare}% mercado</span></div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>`;
+            } else if (uiState.activeTab === 'plans') {
+                tabContentHTML = `<div class="space-y-6">
+                    ${!state.isSpectator ? `
+                    <form onsubmit="window.handleAddPlan(event)" class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg">
+                        <h3 class="text-sm font-bold text-emerald-400 border-b border-slate-700 pb-2 mb-3">Diseñar Plan Tarifario B2C</h3>
+                        <input id="plan-name" required placeholder="Nombre Comercial (Ej: Fibra 1Gbps)" value="${uiState.newPlan.name}" oninput="updatePlanFormSilent('name', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-lg text-sm text-white mb-3 focus:ring-1 focus:ring-emerald-500 outline-none" />
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-3 text-xs">
+                            <div><label class="text-[10px] text-slate-500 uppercase block mb-1">Tipo de Red</label><select onchange="updatePlanFormSelect('type', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-white outline-none"><option value="mobile" ${uiState.newPlan.type === 'mobile' ? 'selected' : ''}>Móvil Celular</option><option value="fixed" ${uiState.newPlan.type === 'fixed' ? 'selected' : ''}>Fija (Hogar)</option></select></div>
+                            <div><label class="text-[10px] text-slate-500 uppercase block mb-1">Zona</label><select onchange="updatePlanFormSelect('zoneId', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-white outline-none"><option value="all" ${uiState.newPlan.zoneId === 'all' ? 'selected' : ''}>Nacional</option>${ZONES.map(z => `<option value="${z.id}" ${uiState.newPlan.zoneId == z.id ? 'selected' : ''}>${z.name}</option>`).join('')}</select></div>
+                        </div>
+
+                        <div class="mb-4 bg-slate-900 p-3 rounded-lg border border-slate-700">
+                            <label class="text-[10px] text-slate-500 uppercase font-bold block mb-2">Servicios Incluidos</label>
+                            ${uiState.newPlan.type === 'mobile' ? `
+                            <div class="grid grid-cols-2 gap-2 text-xs">
+                                <label class="flex items-center gap-2 text-slate-300"><input type="checkbox" ${uiState.newPlan.sVoice ? 'checked' : ''} onchange="updatePlanFormCheckbox('sVoice')" class="rounded accent-emerald-500"/> Voz (${formatCur(SERVICE_COSTS.voice)})</label>
+                                <label class="flex items-center gap-2 text-slate-300"><input type="checkbox" ${uiState.newPlan.sSms ? 'checked' : ''} onchange="updatePlanFormCheckbox('sSms')" class="rounded accent-emerald-500"/> SMS (${formatCur(SERVICE_COSTS.sms)})</label>
+                                <label class="flex items-center gap-2 text-blue-300"><input type="checkbox" ${uiState.newPlan.sData ? 'checked' : ''} onchange="updatePlanFormCheckbox('sData')" class="rounded accent-emerald-500"/> Datos (${formatCur(SERVICE_COSTS.data)})</label>
+                                <label class="flex items-center gap-2 text-purple-300"><input type="checkbox" ${uiState.newPlan.sRoaming ? 'checked' : ''} onchange="updatePlanFormCheckbox('sRoaming')" class="rounded accent-emerald-500"/> Roaming (${formatCur(SERVICE_COSTS.roaming)})</label>
+                            </div>` : `<label class="flex items-center gap-2 text-slate-300 text-xs"><input type="checkbox" ${uiState.newPlan.sInt ? 'checked' : ''} onchange="updatePlanFormCheckbox('sInt')" class="rounded accent-emerald-500"/> Internet Banda Ancha (${formatCur(SERVICE_COSTS.internet)})</label>`}
+                            
+                            <div class="grid grid-cols-2 gap-2 text-xs mt-2 pt-2 border-t border-slate-800">
+                                <label class="flex items-center gap-2 ${state.contentLicenses.tv ? 'text-amber-300' : 'text-slate-600'}"><input type="checkbox" ${uiState.newPlan.sTv ? 'checked' : ''} onchange="updatePlanFormCheckbox('sTv')" class="rounded accent-emerald-500" ${!state.contentLicenses.tv ? 'disabled' : ''}/> TV Satelital (${formatCur(SERVICE_COSTS.tv)})</label>
+                                <label class="flex items-center gap-2 ${state.contentLicenses.streaming ? 'text-rose-300' : 'text-slate-600'}"><input type="checkbox" ${uiState.newPlan.sStream ? 'checked' : ''} onchange="updatePlanFormCheckbox('sStream')" class="rounded accent-emerald-500" ${!state.contentLicenses.streaming ? 'disabled' : ''}/> Streaming VOD (${formatCur(SERVICE_COSTS.streaming)})</label>
+                            </div>
+                            ${(!state.contentLicenses.tv || !state.contentLicenses.streaming) ? '<p class="text-[9px] text-slate-500 italic mt-1">*Compra licencias en la sección inferior para activar</p>' : ''}
+                        </div>
+
+                        <div class="flex gap-3 mb-4 items-end">
+                            <div class="flex-1"><label class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Tecnología Req.</label><select onchange="updatePlanFormSelect('minTech', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-xs text-white outline-none"><option value="1" ${uiState.newPlan.minTech == 1 ? 'selected' : ''}>Lvl 1 (Básica)</option><option value="2" ${uiState.newPlan.minTech == 2 ? 'selected' : ''}>Lvl 2 (Media)</option><option value="3" ${uiState.newPlan.minTech == 3 ? 'selected' : ''}>Lvl 3 (Avanzada)</option></select></div>
+                            <div class="w-24"><label class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Precio $</label><input type="number" min="${calcNewPlanCost()}" max="300" required value="${uiState.newPlan.price}" oninput="updatePlanFormSilent('price', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-sm text-white font-mono outline-none focus:border-emerald-500" /></div>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-lg text-sm shadow-lg shadow-emerald-900/50">Lanzar Plan al Mercado</button>
+                    </form>` : ''}
+
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1 border-b border-slate-800 pb-1">Portafolio Activo</h3>
+                        ${state.plans.length === 0 ? '<p class="text-xs text-slate-600 italic">No hay planes activos.</p>' : state.plans.map(plan => {
+                            const perf = state.finances.planPerformance[plan.id];
+                            return `<div class="bg-slate-800 p-3 rounded-xl border border-slate-700 relative">
+                                <div class="absolute top-0 right-0 px-2 py-0.5 text-[9px] font-bold uppercase rounded-bl text-white ${plan.type==='mobile'?'bg-blue-600':'bg-orange-600'}">${plan.type === 'mobile' ? 'Móvil' : 'Fijo'}</div>
+                                <div class="flex justify-between items-start mb-2 pr-12"><p class="font-bold text-sm text-slate-100 truncate">${plan.name}</p><span class="font-mono font-black text-emerald-400">${formatCur(plan.price)}</span></div>
+                                <div class="grid grid-cols-3 gap-2 border-t border-slate-700 pt-2 mt-1">
+                                    <div class="text-center"><p class="text-[9px] text-slate-500 uppercase">Clientes</p><p class="font-bold text-xs text-slate-200">${perf?.subs || 0}</p></div>
+                                    <div class="text-center"><p class="text-[9px] text-slate-500 uppercase">Rev Bruto</p><p class="font-bold text-xs text-emerald-400">${formatCur(perf?.revenue || 0)}</p></div>
+                                    <div class="text-center"><p class="text-[9px] text-slate-500 uppercase">Margen Neto</p><p class="font-bold text-xs text-blue-400">${formatCur((perf?.revenue || 0) - (perf?.opEx || 0))}</p></div>
+                                </div>
+                                ${!state.isSpectator ? `<button onclick="dispatch({type: 'DELETE_PLAN', payload: '${plan.id}'})" class="w-full mt-2 text-[10px] py-1 text-red-400 hover:bg-red-950/30 border border-slate-700 rounded transition-colors">Retirar del Mercado</button>` : ''}
+                            </div>`
+                        }).join('')}
+                    </div>
+
+                    <div class="space-y-3 mt-6">
+                        <h3 class="text-xs font-bold text-indigo-400 uppercase tracking-widest pl-1 border-b border-slate-800 pb-1 flex items-center gap-2">${icon('cloud', 14)} Servicios B2B / Contenidos</h3>
+                        ${Object.values(IT_SERVICES).map(svc => {
+                            const unlocked = svc.type === 'content' ? (svc.id === 'tv_rights' ? state.contentLicenses.tv : state.contentLicenses.streaming) : state.itServices[svc.id];
+                            return `<div class="bg-slate-800 p-3 rounded-xl border ${unlocked?'border-indigo-500 bg-indigo-950/20':'border-slate-700'}">
+                                <div class="flex justify-between items-center mb-1">
+                                    <p class="font-bold text-sm text-slate-200">${svc.name}</p>
+                                    ${unlocked ? `<span class="bg-indigo-600 text-[9px] px-1.5 py-0.5 rounded font-bold uppercase">Activo</span>` : `<span class="font-mono text-emerald-400 text-xs">${formatCur(svc.costToUnlock)}</span>`}
+                                </div>
+                                <p class="text-[10px] text-slate-400 mb-2">${svc.type === 'content' ? 'Habilita creación de planes con este servicio.' : `Genera <span class="text-emerald-400 font-mono">${formatCur(svc.revenuePerB2B)}/m</span> por contrato B2B Fibra.`}</p>
+                                ${!unlocked && !state.isSpectator ? `<button onclick="dispatch({type: 'BUY_IT_SERVICE', payload: '${svc.id}'})" ${state.money < svc.costToUnlock ? 'disabled' : ''} class="w-full text-[10px] font-bold py-1.5 bg-indigo-600 hover:bg-indigo-500 rounded disabled:opacity-50 transition-colors">${svc.type === 'content' ? 'Adquirir Derechos' : 'Implementar Infraestructura IT'}</button>` : ''}
+                            </div>`
+                        }).join('')}
+                    </div>
+                </div>`;
+            } else if (uiState.activeTab === 'finance') {
+                tabContentHTML = `<div class="space-y-4">
+                    <div class="grid grid-cols-2 gap-3 mb-2">
+                        <div class="bg-slate-800 p-3 rounded-xl border border-slate-700"><p class="text-[10px] text-slate-500 uppercase font-bold">ARPU Medio</p><p class="font-mono text-lg font-black text-blue-400">${formatCur(arpu)} <span class="text-[10px] font-sans text-slate-500 font-normal">/usr</span></p></div>
+                        <div class="bg-slate-800 p-3 rounded-xl border border-slate-700"><p class="text-[10px] text-slate-500 uppercase font-bold">Cuota Total B2C</p><p class="font-mono text-lg font-black text-blue-400">${connectedPop}</p></div>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                        <h3 class="text-xs font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2">Estado de Resultados Mensual</h3>
+                        <div class="space-y-1 mb-3 text-xs">
+                            <p class="text-[10px] font-bold text-emerald-500 uppercase mb-1">Ingresos Operativos (+)</p>
+                            <div class="flex justify-between text-slate-300 pl-2"><span>Suscripciones B2C</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomePlans)}</span></div>
+                            <div class="flex justify-between text-slate-300 pl-2"><span>SLA Corporativo/B2G</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeContracts)}</span></div>
+                            <div class="flex justify-between text-slate-300 pl-2"><span>Servicios IT (Cloud/CDN)</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeIT)}</span></div>
+                            <div class="flex justify-between text-slate-300 pl-2"><span>Dividendos Inversiones</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeFinancial)}</span></div>
+                            <div class="flex justify-between text-slate-300 pl-2"><span>Alquiler de Red (Mayorista)</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeWholesale)}</span></div>
+                            ${state.settings.smsAdsEnabled ? `<div class="flex justify-between text-slate-300 pl-2"><span>Monetización Ads</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeAds)}</span></div>` : ''}
+                        </div>
+                        <div class="space-y-1 mb-3 text-xs">
+                            <p class="text-[10px] font-bold text-orange-400 uppercase mb-1">Costo de Ventas (-)</p>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Tráfico y Terminación</span><span class="font-mono text-orange-400">-${formatCur(state.finances.current.varCosts)}</span></div>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Roaming / OMV (A terceros)</span><span class="font-mono text-orange-400">-${formatCur(state.finances.current.costWholesale)}</span></div>
+                        </div>
+                        <div class="space-y-1 mb-3 text-xs">
+                            <p class="text-[10px] font-bold text-red-400 uppercase mb-1">Gastos Operativos (OPEX) (-)</p>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Arrendamientos</span><span class="font-mono text-red-400">-${formatCur(state.finances.current.rent)}</span></div>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Energía y Enfriamiento</span><span class="font-mono text-red-400">-${formatCur(state.finances.current.power)}</span></div>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Mantenimiento Preventivo</span><span class="font-mono text-red-400">-${formatCur(state.finances.current.maint)}</span></div>
+                        </div>
+                        <div class="space-y-1 mb-3 text-xs">
+                            <p class="text-[10px] font-bold text-yellow-500 uppercase mb-1">Otros / Extraordinarios</p>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Penalizaciones SLA</span><span class="font-mono text-red-400">-${formatCur(state.finances.current.fines)}</span></div>
+                        </div>
+                        ${state.finances.current.fines > 0 ? `<button onclick="dispatch({type: 'CANCEL_FAILING_CONTRACTS'})" class="w-full py-2 bg-red-900/50 hover:bg-red-800 border border-red-700 text-red-200 text-xs font-bold rounded mb-3 flex items-center justify-center gap-2">${icon('alert-triangle', 14)} Cancelar Contratos con Multas</button>` : ''}
+                        <div class="flex justify-between items-center pt-3 border-t border-slate-700">
+                            <span class="font-black text-sm text-slate-200 uppercase">EBITDA</span>
+                            <span class="font-mono text-xl font-black ${state.finances.current.net >= 0 ? 'text-emerald-500' : 'text-red-500'}">${state.finances.current.net >= 0 ? '+' : ''}${formatCur(state.finances.current.net)}</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 h-64 flex flex-col">
+                        <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Registro Operativo / Eventos</h3>
+                        <div class="flex-1 overflow-y-auto space-y-1.5 custom-scrollbar pr-1">
+                            ${state.logs.map((log) => `<div class="text-[10px] p-1.5 rounded border ${log.type === 'error' ? 'bg-red-950/30 border-red-900/50 text-red-300' : log.type === 'success' ? 'bg-emerald-950/30 border-emerald-900/50 text-emerald-300' : log.type === 'warning' ? 'bg-yellow-950/30 border-yellow-900/50 text-yellow-300' : 'bg-slate-900/50 border-slate-700 text-slate-400'}"><span class="opacity-50 font-mono mr-1">[M${log.month}]</span> ${log.msg}</div>`).join('')}
+                        </div>
+                    </div>
+                </div>`;
+            } else if (uiState.activeTab === 'wholesale') {
+                tabContentHTML = `<div class="space-y-4">
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                        <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('globe', 16)} Mercado de Operadores</h3>
+                        <p class="text-[10px] text-slate-400 mb-4">Analiza a la competencia, compra acciones para adquirir sus redes de forma hostil o firma acuerdos mayoristas de Roaming.</p>
+                        
+                        <div class="space-y-3">
+                            ${state.competitors.map(comp => {
+                                const rentIn = state.wholesale.agreements.find(a => a.compId === comp.id && a.type === 'rent_in');
+                                
+                                return `<div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="font-bold text-sm text-slate-200">${comp.name}</span>
+                                            <span class="text-[10px] px-1.5 py-0.5 rounded ${comp.relation > 60 ? 'bg-emerald-900 text-emerald-400' : comp.relation < 40 ? 'bg-red-900 text-red-400' : 'bg-yellow-900 text-yellow-400'}">Rel: ${comp.relation}%</span>
+                                        </div>
+                                        <span class="text-[10px] text-slate-400">Valor: ${formatCur(comp.valuation)}</span>
+                                    </div>
+                                    
+                                    <div class="bg-slate-950 p-2 rounded mb-2 text-[10px]">
+                                        <div class="flex justify-between mb-1"><span class="text-slate-500">Licencias en:</span> <span class="text-slate-300">${comp.licenses.length} Zonas</span></div>
+                                        <div class="flex justify-between mb-1"><span class="text-slate-500">Plan Base:</span> <span class="text-emerald-400">${formatCur(comp.plans[0].price)}</span></div>
+                                        <div class="flex justify-between"><span class="text-slate-500">Tus Acciones:</span> <span class="text-blue-400 font-bold">${comp.sharesOwned}%</span></div>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <button onclick="dispatch({type: 'BUY_COMPETITOR_SHARES', payload: {compId: '${comp.id}', percent: 10}})" class="p-2 bg-blue-900/30 hover:bg-blue-800 border border-blue-700 rounded text-[10px] font-bold text-blue-200 transition-colors" title="Si logras el 100%, heredarás toda su red e ingresos.">
+                                            Comprar 10% (${formatCur(comp.valuation * 0.11)})
+                                        </button>
+                                        <button onclick="dispatch({type: 'TOGGLE_WHOLESALE', payload: {compId: '${comp.id}', type: 'rent_in'}})" class="p-2 rounded border text-[10px] text-center transition-colors ${rentIn ? 'bg-blue-900/40 border-blue-500 text-blue-300' : 'bg-slate-800 border-slate-600 hover:bg-slate-700'}">
+                                            ${rentIn ? 'Cancelar Roaming' : `Usar Red ($-5/usr)`}
+                                        </button>
+                                    </div>
+                                </div>`
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>`;
+            } else if (uiState.activeTab === 'corp') {
+                tabContentHTML = `<div class="space-y-4">
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-5 rounded-xl border border-slate-700 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 opacity-5">${icon('building-2', 100)}</div>
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Valoración de la Empresa</h3>
+                        <p class="font-mono text-3xl font-black text-white mb-4">${formatCur(state.corporate.companyValuation)}</p>
+                        <div class="flex items-center justify-between bg-slate-950/30 p-2 rounded mb-3">
+                            <span class="text-xs text-slate-300">Tu Participación: <strong class="text-white">${state.corporate.equityOwned}%</strong></span>
+                            ${!state.isSpectator ? `<button onclick="dispatch({type: 'SELL_MY_SHARES'})" ${state.corporate.equityOwned <= 51 ? 'disabled' : ''} class="px-3 py-1 bg-amber-600 hover:bg-amber-500 text-[10px] font-bold text-white rounded transition-colors disabled:opacity-50">Ofertar 5%</button>` : ''}
+                        </div>
+                        ${state.isSpectator ? `
+                            <div class="bg-emerald-900/40 border border-emerald-500/50 p-4 rounded-lg">
+                                <p class="text-sm font-bold text-emerald-400 mb-2">Estado: Inversor Privado</p>
+                                <p class="text-[10px] text-slate-300 mb-3">Has vendido tu empresa. Puedes disfrutar de tus millones invertidos en el mercado global o fundar una nueva operadora.</p>
+                                <button onclick="dispatch({type:'FOUND_NEW_STARTUP'})" class="w-full bg-emerald-600 hover:bg-emerald-500 py-2 rounded text-xs font-bold uppercase transition-colors">Fundar Nueva Startup</button>
+                            </div>
+                        ` : `
+                            <div class="bg-slate-950/50 border border-slate-800 p-3 rounded-lg flex items-center gap-3">
+                                ${icon('info', 20, 'text-blue-400 shrink-0')}
+                                <p class="text-[10px] text-slate-400 leading-tight">Si tu valoración crece, consorcios globales intentarán adquirir tu empresa con ofertas multimillonarias.</p>
+                            </div>
+                        `}
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                        <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2">Mercado de Valores (Índice TELCO)</h3>
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <p class="text-[10px] text-slate-500 uppercase">Cotización Actual</p>
+                                <p class="font-mono text-lg font-bold text-blue-400">${formatCur(state.corporate.marketIndexPrice)} <span class="text-[10px] text-slate-400 font-sans">/acción</span></p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[10px] text-slate-500 uppercase">En Cartera</p>
+                                <p class="font-mono text-lg font-bold text-white">${state.corporate.sharesOwned} <span class="text-[10px] text-slate-400 font-sans">accs.</span></p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="dispatch({type: 'BUY_SHARES', payload: 100})" ${state.money < state.corporate.marketIndexPrice * 100 ? 'disabled' : ''} class="flex-1 bg-emerald-900/50 hover:bg-emerald-800 border border-emerald-700 py-1.5 rounded text-[10px] font-bold text-emerald-400 transition-colors disabled:opacity-50">Comprar 100</button>
+                            <button onclick="dispatch({type: 'SELL_SHARES', payload: 100})" ${state.corporate.sharesOwned < 100 ? 'disabled' : ''} class="flex-1 bg-red-900/50 hover:bg-red-800 border border-red-700 py-1.5 rounded text-[10px] font-bold text-red-400 transition-colors disabled:opacity-50">Vender 100</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+                        <h3 class="text-sm font-bold text-slate-200 mb-2">Ajustes Operativos</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <div><p class="text-xs font-bold text-slate-300">Mercado Competitivo</p><p class="text-[9px] text-slate-500">Permite OMV y competencia regional.</p></div>
+                                <button onclick="dispatch({type: 'TOGGLE_SETTING', payload: 'competitionEnabled'})" class="w-10 h-5 rounded-full transition-colors relative ${state.settings.competitionEnabled ? 'bg-emerald-500' : 'bg-slate-600'}"><div class="w-3 h-3 bg-white rounded-full absolute top-1 transition-all ${state.settings.competitionEnabled ? 'left-6' : 'left-1'}"></div></button>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div><p class="text-xs font-bold text-purple-300">Vender Data (Ads)</p><p class="text-[9px] text-slate-500">Gana dinero vendiendo info B2C (Aumenta churn).</p></div>
+                                <button onclick="dispatch({type: 'TOGGLE_SETTING', payload: 'smsAdsEnabled'})" class="w-10 h-5 rounded-full transition-colors relative ${state.settings.smsAdsEnabled ? 'bg-purple-500' : 'bg-slate-600'}"><div class="w-3 h-3 bg-white rounded-full absolute top-1 transition-all ${state.settings.smsAdsEnabled ? 'left-6' : 'left-1'}"></div></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            } else if (uiState.activeTab === 'inspector') {
+                tabContentHTML = `<div class="space-y-4">
+                    ${!uiState.selectedCell ? `
+                        <div class="h-40 flex flex-col items-center justify-center text-slate-500 border border-dashed border-slate-700 rounded-xl bg-slate-900/50">
+                            <div class="mb-2 opacity-50">${icon('search', 32)}</div>
+                            <p class="text-xs uppercase font-bold tracking-widest">Inspector Analítico</p>
+                            <p class="text-[10px]">Selecciona una parcela en el mapa.</p>
+                        </div>
+                    ` : `
+                        <div class="bg-slate-800 rounded-xl border border-slate-700 p-4 shadow-lg">
+                            <div class="flex justify-between items-start border-b border-slate-700 pb-3 mb-3">
+                                <div>
+                                    <p class="text-sm font-black text-slate-100 uppercase flex items-center gap-2">
+                                        ${uiState.selectedCell.type === 'townhall' ? icon('landmark', 16, 'text-indigo-400') : uiState.selectedCell.type === 'business' ? icon('briefcase', 16, 'text-purple-400') : uiState.selectedCell.type === 'building' ? icon('building', 16, 'text-blue-400') : uiState.selectedCell.type === 'school' ? icon('graduation-cap', 16, 'text-amber-400') : uiState.selectedCell.type === 'train_station' ? icon('train', 16, 'text-rose-400') : uiState.selectedCell.type === 'bus_stop' ? icon('bus', 16, 'text-rose-300') : icon('home', 16, 'text-slate-400')}
+                                        ${uiState.selectedCell.type === 'townhall' ? 'Ayuntamiento' : uiState.selectedCell.type === 'business' ? 'Corporación' : uiState.selectedCell.type === 'school' ? 'Centro Educativo' : uiState.selectedCell.type === 'building' ? 'Edificio Residencial' : uiState.selectedCell.type === 'train_station' ? 'Estación de Tren' : uiState.selectedCell.type === 'bus_stop' ? 'Terminal Autobuses' : uiState.selectedCell.type === 'house' ? 'Casa Particular' : 'Terreno Baldío'}
+                                    </p>
+                                    <p class="text-[10px] text-slate-400 mt-1">${uiState.selectedCell.zoneData.name} • Coords [${uiState.selectedCell.x}, ${uiState.selectedCell.y}]</p>
+                                </div>
+                                ${uiState.selectedCell.pop > 0 ? `<span class="bg-slate-900 px-2 py-1 rounded text-xs font-bold text-blue-300 border border-slate-700">${icon('users', 12, 'inline mr-1')}Pop: ${uiState.selectedCell.pop}</span>` : ''}
+                            </div>
+
+                            ${(uiState.selectedCell.isBusiness || uiState.selectedCell.isTownhall || uiState.selectedCell.isSchool) && !uiState.selectedCell.infra ? `
+                                <div class="mb-4">
+                                    ${uiState.selectedCell.contract ? `
+                                        <div class="bg-emerald-950/40 border border-emerald-900/50 p-3 rounded-lg relative overflow-hidden">
+                                            <div class="absolute right-0 top-0 w-1 h-full bg-emerald-500"></div>
+                                            <p class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1 flex items-center gap-1">${icon('check-circle', 12)} Proveedor Actual</p>
+                                            <p class="text-sm font-bold text-white">${CONTRACT_TIERS[uiState.selectedCell.contract.tierId].name}</p>
+                                            <p class="font-mono text-emerald-400 text-lg mt-1">${formatCur(uiState.selectedCell.contract.value)}<span class="text-[10px] font-sans text-slate-400">/m</span></p>
+                                            ${!state.isSpectator ? `<button onclick="dispatch({type: 'CANCEL_CONTRACT', payload: '${uiState.selectedCell.contract.id}'})" class="w-full text-[10px] font-bold text-red-400 bg-red-950/50 hover:bg-red-900/50 mt-3 py-1.5 rounded transition-colors">Rescindir Contrato</button>`:''}
+                                        </div>
+                                    ` : `
+                                        <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                ${icon('handshake', 16, 'text-slate-400')}
+                                                <p class="text-[10px] text-slate-300 uppercase font-bold tracking-wider">Licitación de Servicios</p>
+                                            </div>
+                                            
+                                            ${uiState.selectedCell.compContract ? `
+                                                <div class="bg-red-950/20 border border-red-900/30 p-2 rounded mb-3">
+                                                    <p class="text-[9px] text-red-400 uppercase font-bold mb-1">Contrato Vigente (Competencia)</p>
+                                                    <div class="flex justify-between items-center">
+                                                        <span class="text-xs font-bold text-slate-200">${uiState.selectedCell.compContract.compName}</span>
+                                                        <span class="font-mono text-xs text-red-300">${formatCur(uiState.selectedCell.compContract.price)}/m</span>
+                                                    </div>
+                                                    <p class="text-[9px] text-slate-500 mt-1">SLA Requerido: ${CONTRACT_TIERS[uiState.selectedCell.compContract.tierId].name}</p>
+                                                </div>
+                                            ` : `<p class="text-xs text-slate-500 italic mb-3">Sin proveedor actual. Abierto a ofertas.</p>`}
+
+                                            ${!state.isSpectator ? `
+                                            <div class="bg-slate-800 p-2 rounded border border-slate-700">
+                                                <label class="text-[9px] text-slate-400 block mb-1">Tu Oferta (SLA)</label>
+                                                <select onchange="updateContractFormSelect('tierId', this.value)" class="w-full bg-slate-900 border border-slate-600 text-[10px] p-2 rounded text-white mb-2 outline-none">
+                                                    ${Object.values(CONTRACT_TIERS).map(t => `<option value="${t.id}" ${uiState.contractForm.tierId === t.id ? 'selected' : ''}>${t.name} (Base: ${formatCur(t.baseValue)})</option>`).join('')}
+                                                </select>
+                                                
+                                                <label class="text-[9px] text-slate-400 block mb-1">Precio Ofertado ($/mes)</label>
+                                                <input type="number" value="${uiState.contractForm.askingPrice}" oninput="updateContractFormSilent('askingPrice', this.value)" class="w-full bg-slate-900 border border-slate-600 text-xs p-2 rounded text-white font-mono mb-3 outline-none focus:border-indigo-500" />
+                                                
+                                                <button onclick="dispatch({ type: 'NEGOTIATE_CONTRACT', payload: { x: ${uiState.selectedCell.x}, y: ${uiState.selectedCell.y}, type: '${uiState.selectedCell.type === 'business' ? 'B2B' : 'B2G'}', tierId: '${uiState.contractForm.tierId}', askingPrice: Number(${uiState.contractForm.askingPrice}), zoneId: ${uiState.selectedCell.zoneId} } })" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-bold py-2 rounded shadow-lg transition-colors">Enviar Oferta Competitiva</button>
+                                            </div>
+                                            ` : ''}
+                                        </div>
+                                    `}
+                                </div>
+                            ` : ''}
+
+                            ${uiState.selectedCell.pop > 0 && !uiState.selectedCell.isBusiness && !uiState.selectedCell.isTownhall && !uiState.selectedCell.isSchool ? `
+                                <div class="bg-slate-900 rounded-lg p-3 text-xs flex flex-col gap-1 border border-slate-800 mb-3">
+                                    <span class="text-slate-500 text-[10px] uppercase font-bold">Proveedor Residencial Elegido</span>
+                                    <span class="font-bold ${uiState.selectedCell.planId ? 'text-blue-400' : 'text-slate-600 italic'} flex items-center gap-2">
+                                        ${uiState.selectedCell.planId ? icon(state.plans.find(p=>p.id===uiState.selectedCell.planId)?.type==='mobile'?'smartphone':'router', 14) + state.plans.find(p=>p.id===uiState.selectedCell.planId)?.name : 'Ninguno (Buscando mejor oferta)'}
+                                    </span>
+                                </div>
+                            ` : ''}
+
+                            ${uiState.selectedCell.infra ? `
+                                <div class="bg-gradient-to-r from-slate-900 to-slate-800 border border-slate-700 p-3 rounded-lg flex items-center gap-4">
+                                    ${uiState.selectedCell.isCompInfra ? 
+                                        `<div class="p-2.5 rounded-xl bg-red-950/30 border border-red-500/30 text-red-400">${icon('radio-tower', 24)}</div>` : 
+                                        `<div class="p-2.5 rounded-xl bg-slate-950 shadow-inner ${INFRA_TYPES[uiState.selectedCell.infra.type].color}">${icon(INFRA_TYPES[uiState.selectedCell.infra.type].icon, 24)}</div>`
+                                    }
+                                    <div>
+                                        <p class="text-sm font-black text-white">${INFRA_TYPES[uiState.selectedCell.infra.type].name}</p>
+                                        ${uiState.selectedCell.isCompInfra ? 
+                                            `<p class="text-[10px] text-red-400 mt-0.5 font-bold">Propiedad de Competencia</p>` :
+                                            `<p class="text-[10px] text-slate-400 mt-0.5 flex items-center gap-1">${icon('activity', 10, 'text-emerald-400')} Activa y Operativa</p>`
+                                        }
+                                    </div>
+                                </div>
+                                ${!uiState.selectedCell.isCompInfra && !state.isSpectator ? `
+                                    <button onclick="dispatch({type: 'REMOVE_INFRA', payload: {x: ${uiState.selectedCell.x}, y: ${uiState.selectedCell.y}}})" class="w-full mt-3 py-2 bg-red-900/50 hover:bg-red-800 border border-red-700 text-red-200 text-xs font-bold rounded transition-colors flex items-center justify-center gap-2">
+                                        ${icon('trash-2', 14)} Demoler Infraestructura ($500)
+                                    </button>
+                                ` : ''}
+                            ` : ''}
+
+                            ${(uiState.selectedCell.type === 'train_station' || uiState.selectedCell.type === 'bus_stop') ? `
+                                <div class="bg-indigo-950/30 border border-indigo-500/30 p-3 rounded-lg mt-3">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        ${icon('megaphone', 16, 'text-indigo-400')}
+                                        <span class="text-xs font-bold text-indigo-300">Publicidad en Transporte</span>
+                                    </div>
+                                    <p class="text-[10px] text-slate-400 mb-2">Colocar anuncios aquí aumenta drásticamente la captación de clientes en esta zona.</p>
+                                    <div class="flex gap-2">
+                                        <button onclick="dispatch({type: 'BUY_TRANSPORT_AD', payload: {cellId: '${uiState.selectedCell.id}', duration: 6, cost: 5000}})" ${state.money < 5000 ? 'disabled' : ''} class="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-[9px] font-bold py-1.5 rounded text-white">6 Meses ($5k)</button>
+                                        <button onclick="dispatch({type: 'BUY_TRANSPORT_AD', payload: {cellId: '${uiState.selectedCell.id}', duration: 12, cost: 9000}})" ${state.money < 9000 ? 'disabled' : ''} class="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-[9px] font-bold py-1.5 rounded text-white">1 Año ($9k)</button>
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `}
+                </div>`;
+            }
+
+            const buyoutModalHTML = uiState.showBuyoutModal && uiState.buyoutOffer ? `
+                <div class="absolute inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 animate-in fade-in">
+                    <div class="bg-slate-900 border border-blue-500/50 rounded-2xl p-6 shadow-2xl max-w-sm w-full relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 text-blue-500/10">${icon('briefcase', 120)}</div>
+                        <h2 class="text-xl font-black text-white mb-2 relative z-10">OFERTA DE ADQUISICIÓN</h2>
+                        <p class="text-xs text-slate-300 mb-4 relative z-10">El consorcio <strong>${uiState.buyoutOffer.buyer}</strong> ha notado tu dominio del mercado y quiere comprar el 100% de tu operadora.</p>
+                        <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-center mb-6 relative z-10">
+                            <p class="text-[10px] text-slate-500 uppercase font-bold tracking-widest mb-1">Monto Ofrecido</p>
+                            <p class="font-mono text-3xl font-black text-emerald-400">${formatCur(uiState.buyoutOffer.amount)}</p>
+                        </div>
+                        <div class="flex gap-3 relative z-10">
+                            <button onclick="setUiState('showBuyoutModal', false)" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-lg transition-colors">Rechazar (Seguir operando)</button>
+                            <button onclick="dispatch({type: 'ACCEPT_BUYOUT', payload: ${uiState.buyoutOffer.amount}})" class="flex-1 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-lg shadow-lg shadow-blue-900/50 transition-colors">Aceptar y Vender</button>
+                        </div>
+                    </div>
+                </div>
+            ` : '';
+
+            root.innerHTML = `
+                <header class="bg-slate-950 border-b border-slate-800 p-3 shrink-0 flex justify-between items-center z-40 shadow-xl relative">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-2 rounded-lg shadow-lg hidden sm:block">${icon('signal', 20, 'text-white')}</div>
+                        <div>
+                            <h1 class="font-black text-lg sm:text-xl tracking-tight leading-none text-white">Telco<span class="text-blue-400">Tycoon</span> <span class="text-[10px] font-normal text-slate-500">Ultra</span></h1>
+                            <div class="flex items-center gap-2 mt-0.5">
+                                <p class="text-[10px] text-slate-400 font-medium">Mes ${state.month} • Año ${Math.floor((state.month-1)/12) + 1}</p>
+                                <div class="flex items-center bg-slate-900 rounded-md border border-slate-700 p-0.5">
+                                    <button onclick="dispatch({type:'TOGGLE_PAUSE'})" class="p-1 rounded hover:bg-slate-800 ${state.isPaused ? 'text-yellow-400' : 'text-slate-400'}">${state.isPaused ? icon('pause', 12) : icon('play', 12)}</button>
+                                    <div class="w-px h-3 bg-slate-700 mx-1"></div>
+                                    <button onclick="dispatch({type:'SET_SPEED', payload: 1})" class="px-1.5 text-[9px] font-bold rounded hover:bg-slate-800 ${state.speed === 1 ? 'text-white bg-slate-700' : 'text-slate-500'}">1x</button>
+                                    <button onclick="dispatch({type:'SET_SPEED', payload: 2})" class="px-1.5 text-[9px] font-bold rounded hover:bg-slate-800 ${state.speed === 2 ? 'text-white bg-slate-700' : 'text-slate-500'}">2x</button>
+                                    <button onclick="dispatch({type:'SET_SPEED', payload: 10})" class="px-1.5 text-[9px] font-bold rounded hover:bg-slate-800 ${state.speed === 10 ? 'text-white bg-slate-700' : 'text-slate-500'}">10x</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 sm:gap-6 text-right items-center">
+                        ${state.isSpectator ? `<div class="bg-emerald-900/30 border border-emerald-500/30 px-3 py-1 rounded hidden md:block"><p class="text-[10px] text-emerald-400 font-bold uppercase">Modo Inversor</p></div>` : ''}
+                        <div class="flex flex-col items-end">
+                            <p class="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">${state.isSpectator?'Banco Personal':'Caja Corp.'}</p>
+                            <p class="font-mono text-base sm:text-xl font-black text-emerald-400">${formatCur(state.money)}</p>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <p class="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">EBITDA</p>
+                            <p class="font-mono text-sm sm:text-lg font-bold flex items-center gap-1 ${state.finances.current.net >= 0 ? 'text-emerald-500' : 'text-red-500'}">
+                                ${state.finances.current.net >= 0 ? icon('trending-up', 14) : icon('trending-down', 14)}
+                                ${formatCur(Math.abs(state.finances.current.net))}
+                            </p>
+                        </div>
+                    </div>
+                    <button onclick="setUiState('mobileView', uiState.mobileView === 'map' ? 'panel' : 'map')" class="lg:hidden p-2 bg-slate-800 rounded-lg text-slate-300 z-50">
+                        ${uiState.mobileView === 'map' ? icon('menu', 24) : icon('map', 24)}
+                    </button>
+                </header>
+
+                <div class="flex flex-1 overflow-hidden relative">
+                    <!-- PANEL MAPA -->
+                    <div class="flex-1 bg-slate-950 relative overflow-hidden flex justify-center items-center border-r border-slate-800 transition-all ${uiState.mobileView === 'map' ? 'block' : 'hidden lg:flex'}">
+                        
+                        <div class="absolute top-4 left-4 z-30 flex flex-col gap-2">
+                            <div class="bg-slate-900/90 border border-slate-700 rounded-xl p-2 shadow-lg backdrop-blur-sm">
+                                <p class="text-[9px] text-slate-500 uppercase font-bold mb-2 ml-1">Capas de Mapa</p>
+                                <button onclick="setUiState('showCoverageMode', uiState.showCoverageMode === 'mobile' ? null : 'mobile')" class="w-full text-left px-3 py-2 rounded-lg text-[10px] font-bold flex items-center gap-2 transition-all mb-1 ${uiState.showCoverageMode === 'mobile' ? 'bg-blue-600 text-white' : 'hover:bg-slate-800 text-slate-300'}">${icon('smartphone', 14)} Cobertura Móvil</button>
+                                <button onclick="setUiState('showCoverageMode', uiState.showCoverageMode === 'fixed' ? null : 'fixed')" class="w-full text-left px-3 py-2 rounded-lg text-[10px] font-bold flex items-center gap-2 transition-all mb-1 ${uiState.showCoverageMode === 'fixed' ? 'bg-emerald-600 text-white' : 'hover:bg-slate-800 text-slate-300'}">${icon('router', 14)} Cobertura Fija</button>
+                                <div class="h-px bg-slate-700 my-1"></div>
+                                <p class="text-[9px] text-slate-500 uppercase font-bold mb-1 ml-1 mt-2">Competencia</p>
+                                ${state.competitors.map(c => `
+                                    <button onclick="setUiState('showCoverageMode', uiState.showCoverageMode === 'comp_${c.id}' ? null : 'comp_${c.id}')" class="w-full text-left px-3 py-1.5 rounded-lg text-[10px] font-bold flex items-center gap-2 transition-all ${uiState.showCoverageMode === 'comp_'+c.id ? 'bg-red-600 text-white' : 'hover:bg-slate-800 text-slate-400'}">
+                                        <div class="w-2 h-2 rounded-full ${c.bg}"></div> ${c.name}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-4 right-4 z-30 flex flex-col gap-1 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700 backdrop-blur-md shadow-2xl">
+                            <button onclick="handleZoom('in')" class="p-2.5 hover:bg-slate-700 rounded-lg text-slate-300 transition-colors">${icon('zoom-in', 20)}</button>
+                            <div class="h-px bg-slate-700 w-full mx-auto" style="width: 80%"></div>
+                            <button onclick="handleZoom('out')" class="p-2.5 hover:bg-slate-700 rounded-lg text-slate-300 transition-colors">${icon('zoom-out', 20)}</button>
+                        </div>
+
+                        <div id="map-container" class="w-full h-full overflow-auto custom-scrollbar flex items-center justify-center p-8 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
+                            <div class="grid gap-[1px] bg-slate-800 p-[2px] shadow-[0_0_50px_rgba(0,0,0,0.8)] transition-transform duration-300 rounded-sm" style="grid-template-columns: repeat(${GRID_SIZE}, 48px); grid-template-rows: repeat(${GRID_SIZE}, 48px); transform: scale(${uiState.zoom}); transform-origin: center center;">
+                                ${mapHTML}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL DERECHO -->
+                    <div class="w-full lg:w-[480px] bg-slate-900 flex flex-col shrink-0 z-40 transition-all ${uiState.mobileView === 'panel' ? 'block absolute inset-0' : 'hidden lg:flex'}">
+                        <div class="flex overflow-x-auto border-b border-slate-800 bg-slate-950 p-2 gap-1.5 shrink-0 custom-scrollbar pb-3">
+                            ${renderTabButtons}
+                        </div>
+                        <div id="sidebar-content" class="p-4 flex-1 overflow-y-auto custom-scrollbar bg-gradient-to-b from-slate-900/50 to-slate-950">
+                            ${tabContentHTML}
+                        </div>
+                    </div>
+                </div>
+                ${buyoutModalHTML}
+                ${uiState.notification ? `
+                    <div class="fixed bottom-6 left-0 right-0 flex justify-center z-50 pointer-events-none fade-in-up">
+                        <div class="bg-slate-900/95 border ${uiState.notification.type === 'error' ? 'border-red-500 text-red-400' : uiState.notification.type === 'success' ? 'border-emerald-500 text-emerald-400' : 'border-yellow-500 text-yellow-400'} px-6 py-3 rounded-full shadow-2xl backdrop-blur-md flex items-center gap-3">
+                            ${icon(uiState.notification.type === 'error' ? 'alert-circle' : uiState.notification.type === 'success' ? 'check-circle' : 'alert-triangle', 20)}
+                            <span class="text-xs font-bold">${uiState.notification.msg}</span>
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+
+            lucide.createIcons();
+            
+            const newSidebarEl = document.getElementById('sidebar-content');
+            const newMapEl = document.getElementById('map-container');
+            if(newSidebarEl) newSidebarEl.scrollTop = sidebarScroll;
+            if(newMapEl) { newMapEl.scrollLeft = mapScrollX; newMapEl.scrollTop = mapScrollY; }
+        }
+
+        renderApp();
+        updateGameLoop();
+    </script>
+</body>
+</html>
