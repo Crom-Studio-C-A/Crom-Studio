@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Despido - Ángel José Romero Martínez</title>
+    
+    <!-- Importar tipografías de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Nunito+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Importar iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Variables de color de la nueva paleta (Más vibrante y moderna) */
+        :root {
+            --disciplinario-main: #FF3366;
+            --disciplinario-light: #FFE6EC;
+            --objetivo-main: #00C4CC;
+            --objetivo-light: #E0F9FA;
+            --colectivo-main: #7B61FF;
+            --colectivo-light: #F0EDFF;
+            --text-dark: #1A1A24;
+            --text-gray: #5A5A6A;
+            --bg-page: #F4F5F9;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #2b2b36;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Contenedor principal: Medidas EXACTAS de un A4 Horizontal */
+        .flyer {
+            background-color: var(--bg-page);
+            width: 297mm;
+            height: 210mm;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* --- CABECERA --- */
+        .header {
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80') center/cover;
+            position: relative;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        /* Overlay oscuro para la imagen de cabecera */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(26,26,36,0.95) 0%, rgba(26,26,36,0.7) 100%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            flex: 1;
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .header h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 2px 0 0 0;
+            color: #00C4CC; /* Toque de color en el subtítulo */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .author-badge {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 12px;
+            text-align: right;
+            color: white;
+        }
+
+        .author-badge p { margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #ccc; }
+        .author-badge .name { font-weight: 800; font-size: 16px; font-family: 'Montserrat', sans-serif; color: #FFF; margin: 4px 0;}
+
+        /* --- CONTENIDO DE LAS COLUMNAS --- */
+        .content {
+            display: flex;
+            flex: 1;
+            padding: 25px 30px;
+            gap: 25px;
+            background-color: white;
+            border-radius: 30px 30px 0 0;
+            margin-top: -15px;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Tarjeta individual */
+        .card {
+            flex: 1;
+            background: var(--bg-page);
+            border-radius: 20px;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-top: 6px solid;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+        }
+
+        .card-disciplinario { border-color: var(--disciplinario-main); }
+        .card-objetivo { border-color: var(--objetivo-main); }
+        .card-colectivo { border-color: var(--colectivo-main); }
+
+        /* Título e Icono principal */
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .main-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .card-disciplinario .main-icon { background: linear-gradient(135deg, #FF3366, #C8103E); }
+        .card-objetivo .main-icon { background: linear-gradient(135deg, #00C4CC, #008891); }
+        .card-colectivo .main-icon { background: linear-gradient(135deg, #7B61FF, #5038C9); }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.1;
+            color: var(--text-dark);
+        }
+
+        /* Píldora de indemnización (Lo más visual) */
+        .indemnizacion-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .card-disciplinario .indemnizacion-badge { background-color: var(--disciplinario-light); color: var(--disciplinario-main); }
+        .card-objetivo .indemnizacion-badge { background-color: var(--objetivo-light); color: var(--objetivo-main); }
+        .card-colectivo .indemnizacion-badge { background-color: var(--colectivo-light); color: var(--colectivo-main); }
+
+        /* Bloques de información (Concepto, Procedimiento) */
+        .info-block {
+            margin-bottom: 15px;
+        }
+        
+        .info-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-disciplinario .info-title { color: var(--disciplinario-main); }
+        .card-objetivo .info-title { color: var(--objetivo-main); }
+        .card-colectivo .info-title { color: var(--colectivo-main); }
+
+        .info-text {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text-gray);
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .info-text strong {
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        /* Sección de noticias (Estilo tarjeta moderna) */
+        .news-section {
+            margin-top: auto;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border-left: 4px solid;
+            position: relative;
+        }
+
+        .card-disciplinario .news-section { border-color: var(--disciplinario-main); }
+        .card-objetivo .news-section { border-color: var(--objetivo-main); }
+        .card-colectivo .news-section { border-color: var(--colectivo-main); }
+
+        .news-section::before {
+            content: '\f1ea'; /* Fa-newspaper icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            opacity: 0.1;
+        }
+
+        .news-section h4 {
+            margin: 0 0 5px 0;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #A0A0B0;
+            letter-spacing: 1px;
+        }
+
+        .news-section p {
+            margin: 0;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 12px;
+            background: white;
+            color: #A0A0B0;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-top: 1px solid #EEE;
+        }
+
+        /* --- REGLAS ESTRICTAS PARA IMPRESIÓN --- */
+        @media print {
+            body { 
+                background-color: white; 
+                margin: 0; 
+                padding: 0; 
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+            .flyer { 
+                width: 297mm; 
+                height: 209mm;
+                box-shadow: none; 
+                margin: 0;
+                border: none;
+            }
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flyer">
+        
+        <!-- CABECERA -->
+        <div class="header">
+            <div class="header-content">
+                <h2>Guía Visual · Estatuto de los Trabajadores</h2>
+                <h1>Tipos de Despido en España</h1>
+            </div>
+            
+            <div class="author-badge">
+                <p>Elaborado por</p>
+                <div class="name">Ángel José Romero Martínez</div>
+                <p>IPE | Curso 25/26 | Prof. Isabel González</p>
+            </div>
+        </div>
+
+        <!-- CONTENIDO: 3 COLUMNAS -->
+        <div class="content">
+            
+            <!-- TARJETA 1: DISCIPLINARIO -->
+            <div class="card card-disciplinario">
+                <div class="card-header">
+                    <div class="main-icon"><i class="fa-solid fa-user-slash"></i></div>
+                    <h3>Despido<br>Disciplinario</h3>
+                </div>
+
+                <div class="indemnizacion-badge">
+                    <i class="fa-solid fa-sack-xmark"></i> 0 DÍAS DE INDEMNIZACIÓN
+                </div>
+
+                <div class="info-block">
+                    <div class="info-title"><i class="fa-solid fa-circle-info"></i> Concepto y Causas</div>
+                    <p class="info-text">Extinción decidida por el empresario ante un <strong>incumplimiento grave y culpable</strong> del trabajador (faltas repetidas, ofensas, embriaguez, desobediencia).</p>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-title"><i class="fa-solid fa-file-signature"></i> Procedimiento</div>
+                    <p class="info-text">Requiere notificación por <strong>carta escrita</strong> detallando hechos y fecha de efecto. El trabajador solo cobra el finiquito. <strong>No requiere preaviso.</strong></p>
+                </div>
+
+                <div class="news-section">
+                    <h4>Titular Destacado</h4>
+                    <p>"Un despido disciplinario tras pedir la reducción de jornada es considerado nulo"</p>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: OBJETIVO -->
+            <div class="card card-objetivo">
+                <div class="card-header">
+                    <div class="main-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                    <h3>Causas<br>Objetivas</h3>
+                </div>
+
+                <div class="indemnizacion-badge">
+                    <i class="fa-solid fa-coins"></i> 20 DÍAS POR AÑO (MÁX. 12 MESES)
+                </div>
+
+                <div class="info-block">
+                    <div class="info-title"><i class="fa-solid fa-circle-info"></i> Concepto y Causas</div>
+                    <p class="info-text">Extinción por razones ajenas al trabajador. Suele darse por <strong>causas Económicas, Técnicas, Organizativas o de Producción (ETOP)</strong> o por ineptitud.</p>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-title"><i class="fa-solid fa-clock-rotate-left"></i> Procedimiento</div>
+                    <p class="info-text">Comunicación escrita con un <strong>preaviso de 15 días</strong>. La indemnización económica se debe entregar obligatoriamente junto a la carta de despido.</p>
+                </div>
+
+                <div class="news-section">
+                    <h4>Titular Destacado</h4>
+                    <p>"No es admisible el despido por causas económicas si en la empresa se hacen horas extras"</p>
+                </div>
+            </div>
+
+            <!-- TARJETA 3: COLECTIVO -->
+            <div class="card card-colectivo">
+                <div class="card-header">
+                    <div class="main-icon"><i class="fa-solid fa-users-slash"></i></div>
+                    <h3>Despido<br>Colectivo (ERE)</h3>
+                </div>
+
+                <div class="indemnizacion-badge">
+                    <i class="fa-solid fa-handshake-angle"></i> MÍN. 20 DÍAS (SUELE SER MAYOR)
+                </div>
+
+                <div class="info-block">
+                    <div class="info-title"><i class="fa-solid fa-circle-info"></i> Concepto y Causas</div>
+                    <p class="info-text">Despido fundado en causas objetivas (ETOP) pero que afecta a un <strong>volumen importante de la plantilla</strong> de forma simultánea en un periodo de 90 días.</p>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-title"><i class="fa-solid fa-comments"></i> Procedimiento</div>
+                    <p class="info-text">Exige abrir un <strong>periodo de consultas de hasta 30 días</strong> con los representantes de los trabajadores y avisar formalmente a la Autoridad Laboral.</p>
+                </div>
+
+                <div class="news-section">
+                    <h4>Titular Destacado</h4>
+                    <p>"Telefónica firma con los sindicatos el ERE, con un coste de 2.500 millones para 5.500 salidas"</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            Material académico elaborado para IES Virgen de la Paloma · Curso 2025/2026
+        </div>
+
+    </div>
+
+</body>
+</html>

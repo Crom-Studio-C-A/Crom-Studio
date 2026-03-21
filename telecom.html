@@ -41,11 +41,15 @@
         const BASE_TICK_RATE = 10000; // 10.0s = 1 mes (Velocidad 1x)
 
         const INFRA_TYPES = {
-            TOWER_3G: { id: 'TOWER_3G', name: 'Torre 3G/4G', type: 'mobile', tech: 2, range: 4, cost: 25000, rent: 500, power: 150, maint: 100, icon: 'radio-tower', color: 'text-blue-500' },
-            TOWER_5G: { id: 'TOWER_5G', name: 'Antena 5G', type: 'mobile', tech: 3, range: 2, cost: 75000, rent: 1200, power: 500, maint: 250, icon: 'radio-tower', color: 'text-purple-400' },
-            NODE_ADSL: { id: 'NODE_ADSL', name: 'Armario ADSL', type: 'fixed', tech: 1, range: 2, cost: 15000, rent: 100, power: 50, maint: 50, icon: 'router', color: 'text-orange-400' },
-            NODE_FIBER: { id: 'NODE_FIBER', name: 'Nodo Fibra', type: 'fixed', tech: 3, range: 4, cost: 55000, rent: 300, power: 200, maint: 150, icon: 'server', color: 'text-emerald-400' },
-            COMMERCIAL_OFFICE: { id: 'COMMERCIAL_OFFICE', name: 'Oficina Comercial', type: 'commercial', tech: 0, range: 3, cost: 120000, rent: 3000, power: 200, maint: 500, icon: 'store', color: 'text-yellow-400' }
+            TOWER_4G: { id: 'TOWER_4G', name: 'Torre 4G/LTE', type: 'mobile', tech: 2, range: 4, cost: 25000, rent: 500, power: 150, maint: 100, cap: 1000, icon: 'radio-tower', color: 'text-blue-500' },
+            TOWER_5G: { id: 'TOWER_5G', name: 'Antena 5G', type: 'mobile', tech: 3, range: 2, cost: 75000, rent: 1200, power: 500, maint: 250, cap: 4000, icon: 'radio-tower', color: 'text-purple-400' },
+            RADIO_LINK: { id: 'RADIO_LINK', name: 'Radioenlace', type: 'backhaul', tech: 2, range: 6, cost: 15000, rent: 200, power: 100, maint: 50, cap: 800, icon: 'wifi', color: 'text-cyan-400' },
+            NODE_ADSL: { id: 'NODE_ADSL', name: 'Centralita ADSL', type: 'fixed', tech: 1, range: 2, cost: 15000, rent: 100, power: 50, maint: 50, cap: 500, icon: 'router', color: 'text-orange-400' },
+            NODE_FIBER: { id: 'NODE_FIBER', name: 'Nodo FTTH', type: 'fixed', tech: 3, range: 3, cost: 55000, rent: 300, power: 200, maint: 150, cap: 5000, icon: 'network', color: 'text-emerald-400' },
+            FIBER_TRUNK: { id: 'FIBER_TRUNK', name: 'Cableado Troncal', type: 'backhaul', tech: 3, range: 1, cost: 20000, rent: 50, power: 10, maint: 20, cap: 3000, icon: 'cable', color: 'text-slate-300' },
+            CENTRAL_OFFICE: { id: 'CENTRAL_OFFICE', name: 'Central Telefónica', type: 'core', tech: 2, range: 8, cost: 150000, rent: 1500, power: 800, maint: 600, cap: 15000, icon: 'building-2', color: 'text-gray-400' },
+            DATA_CENTER: { id: 'DATA_CENTER', name: 'Centro de Datos', type: 'core', tech: 3, range: 12, cost: 500000, rent: 5000, power: 2500, maint: 1500, cap: 50000, icon: 'database', color: 'text-indigo-400' },
+            COMMERCIAL_OFFICE: { id: 'COMMERCIAL_OFFICE', name: 'Oficina Comercial', type: 'commercial', tech: 0, range: 3, cost: 120000, rent: 3000, power: 200, maint: 500, cap: 0, icon: 'store', color: 'text-yellow-400' }
         };
 
         const ZONES = [
@@ -56,10 +60,9 @@
         ];
 
         const COMP_TEMPLATES = [
-            { id: 'c1', name: 'MegaCom', color: 'text-red-500', bg: 'bg-red-500', style: 'aggressive' },
-            { id: 'c2', name: 'FastNet', color: 'text-orange-500', bg: 'bg-orange-500', style: 'balanced' },
-            { id: 'c3', name: 'GloboTel', color: 'text-cyan-500', bg: 'bg-cyan-500', style: 'tech' },
-            { id: 'c4', name: 'NovaLink', color: 'text-pink-500', bg: 'bg-pink-500', style: 'cheap' }
+            { id: 'c1', name: 'MegaCom (Monopolio)', color: 'text-red-500', bg: 'bg-red-500', style: 'aggressive' },
+            { id: 'c2', name: 'PremiumNet (Premium)', color: 'text-purple-500', bg: 'bg-purple-500', style: 'premium' },
+            { id: 'c3', name: 'NovaLocal (Startup)', color: 'text-emerald-500', bg: 'bg-emerald-500', style: 'startup' }
         ];
 
         const CONTRACT_TIERS = {
@@ -68,7 +71,7 @@
             SLA_9999: { id: 'SLA_9999', name: 'Crítico (SLA 99.99%)', reqTech: 3, baseValue: 18000, fine: 20000, desc: 'Redundancia Móvil Lvl 3 + Fijo Lvl 3.' }
         };
 
-        const SERVICE_COSTS = { voice: 1.5, sms: 0.5, data: 3.0, roaming: 5.0, internet: 6.0, tv: 15.0, streaming: 8.0 };
+        const SERVICE_COSTS = { voice: 1.5, sms: 0.5, data: 3.0, roaming: 5.0, internet: 6.0, tv: 15.0, streaming: 8.0, sat_internet: 12.0, sat_tv: 10.0 };
         
         const IT_SERVICES = {
             hosting: { id: 'hosting', name: 'Web Hosting Corporativo', costToUnlock: 150000, revenuePerB2B: 400, reqTech: 3 },
@@ -81,28 +84,40 @@
         // --- GENERACIÓN DEL MAPA INTELIGENTE ---
         const generateMap = () => {
             const newMap = [];
-            const townhalls = [ {x: 5, y: 5}, {x: 18, y: 5}, {x: 5, y: 18}, {x: 18, y: 18} ];
+            const townhalls = [ {x: 6, y: 6}, {x: 18, y: 8}, {x: 9, y: 19} ];
 
             for (let y = 0; y < GRID_SIZE; y++) {
                 for (let x = 0; x < GRID_SIZE; x++) {
                     const zoneId = (x < 12 ? 0 : 1) + (y < 12 ? 0 : 2);
                     let type = 'empty'; let pop = 0; let isTownhall = false; let isBusiness = false; let isSchool = false;
+                    let terrain = 'plain';
+                    let wealth = 2; // 1: Bajo, 2: Medio, 3: Alto
                     
-                    // Cálculo de distancia al ayuntamiento más cercano para crear aglomeración urbana
-                    const minDist = Math.min(...townhalls.map(th => Math.sqrt(Math.pow(th.x - x, 2) + Math.pow(th.y - y, 2))));
-                    const urbFactor = Math.max(0, 1 - (minDist / 8)); // 1 en el centro, 0 lejos
-                    const rand = Math.random() + (urbFactor * 0.4); // Zonas urbanas tienen más probabilidad de desarrollo
+                    // Generación Geográfica
+                    if (x >= 21 + Math.sin(y)*1.5) {
+                        terrain = 'sea';
+                    } else if (Math.abs(x - (12 + Math.sin(y/1.5)*2)) <= 1) {
+                        terrain = 'river';
+                    } else if ((Math.pow(x-3, 2) + Math.pow(y-19, 2) < 16) || (Math.pow(x-18, 2) + Math.pow(y-3, 2) < 12)) {
+                        terrain = 'mountain';
+                    }
 
-                    if (townhalls.some(th => th.x === x && th.y === y)) {
-                        type = 'townhall'; isTownhall = true; pop = 0;
-                    } else if (rand > 1.25) {
-                        type = 'business'; isBusiness = true; pop = Math.floor(Math.random() * 300) + 100;
-                    } else if (rand > 1.20) {
-                        type = 'school'; isSchool = true; pop = Math.floor(Math.random() * 600) + 200;
-                    } else if (rand > 0.95) {
-                        type = 'building'; pop = Math.floor(Math.random() * 120) + 40;
-                    } else if (rand > 0.6) {
-                        type = 'house'; pop = Math.floor(Math.random() * 12) + 2;
+                    const minDist = Math.min(...townhalls.map(th => Math.sqrt(Math.pow(th.x - x, 2) + Math.pow(th.y - y, 2))));
+                    const urbFactor = Math.max(0, 1 - (minDist / 7)); 
+                    const rand = Math.random() + (urbFactor * 0.6); 
+
+                    if (terrain !== 'sea' && terrain !== 'river') {
+                        if (townhalls.some(th => th.x === x && th.y === y)) {
+                            type = 'townhall'; isTownhall = true; pop = 0; wealth = 3;
+                        } else if (rand > 1.3) {
+                            type = 'business'; isBusiness = true; pop = Math.floor(Math.random() * 300) + 100; wealth = 3;
+                        } else if (rand > 1.20) {
+                            type = 'school'; isSchool = true; pop = Math.floor(Math.random() * 600) + 200; wealth = 2;
+                        } else if (rand > 0.9) {
+                            type = 'building'; pop = Math.floor(Math.random() * 120) + 40; wealth = Math.random() > 0.5 ? 2 : 3;
+                        } else if (rand > 0.5) {
+                            type = 'house'; pop = Math.floor(Math.random() * 15) + 2; wealth = Math.random() > 0.7 ? 2 : 1;
+                        }
                     }
 
                     // Contratos preexistentes de la competencia
@@ -114,7 +129,7 @@
                         compContract = { compId: comp.id, compName: comp.name, tierId: tier, price: basePrice * (0.8 + Math.random()*0.4) };
                     }
 
-                    newMap.push({ id: `${x}-${y}`, x, y, type, pop, isTownhall, isBusiness, isSchool, zoneId, planId: null, compContract });
+                    newMap.push({ id: `${x}-${y}`, x, y, type, pop, isTownhall, isBusiness, isSchool, zoneId, planId: null, compContract, terrain, wealth });
                 }
             }
             return newMap;
@@ -125,6 +140,7 @@
                 ...t,
                 relation: 50,
                 sharesOwned: 0,
+                activeOffers: {},
                 valuation: 3000000 + Math.floor(Math.random() * 5000000),
                 plans: [{ name: 'Plan Estándar', price: 30 + Math.random() * 20 }],
                 licenses: ZONES.filter(() => Math.random() > 0.3).map(z => z.id) // Tienen licencias en zonas aleatorias
@@ -154,6 +170,11 @@
                 { id: 'p2', name: 'Fibra Hogar 300Mb', type: 'fixed', zoneId: 'all', price: 40, services: { internet: true }, minTech: 3 },
             ],
             contracts: [],
+            satellites: [],
+            satelliteContracts: [],
+            satelliteOffers: [],
+            tenders: [],
+            legal: { nationalLicense: false, dataProtection: false, taxRate: 0.20 },
             itServices: { hosting: false, cdn: false, cloud: false },
             contentLicenses: { tv: false, streaming: false },
             wholesale: { agreements: [] }, 
@@ -162,10 +183,27 @@
                 sharesOwned: 0, 
                 equityOwned: 100, 
                 marketIndexPrice: 100,
-                companyValuation: 500000
+                companyValuation: 500000,
+                loan: 0
+            },
+            hr: { 
+                technicians: { count: 5, salary: 1200, prod: 100, base: 1200 }, 
+                support: { count: 5, salary: 900, prod: 100, base: 900 }, 
+                engineers: { count: 2, salary: 2800, prod: 100, base: 2800 } 
+            },
+            noc: {
+                ping: 15,
+                loads: { 0: 0, 1: 0, 2: 0, 3: 0 },
+                capacities: { 0: 2000, 1: 2000, 2: 2000, 3: 2000 },
+                backbone: {
+                    0: { cap: 2000, level: 1 },
+                    1: { cap: 2000, level: 1 },
+                    2: { cap: 2000, level: 1 },
+                    3: { cap: 2000, level: 1 }
+                }
             },
             finances: { 
-                current: { incomePlans: 0, incomeContracts: 0, incomeIT: 0, incomeAds: 0, incomeWholesale: 0, incomeFinancial: 0, varCosts: 0, costWholesale: 0, rent: 0, power: 0, maint: 0, fines: 0, capEx: 0, net: 0 },
+                current: { incomePlans: 0, incomeContracts: 0, incomeIT: 0, incomeAds: 0, incomeWholesale: 0, incomeSpace: 0, incomeFinancial: 0, incomeGrants: 0, varCosts: 0, costWholesale: 0, rent: 0, power: 0, maint: 0, fines: 0, legalFines: 0, taxes: 0, capEx: 0, salaries: 0, interest: 0, net: 0 },
                 history: [], 
                 planPerformance: {} 
             },
@@ -175,8 +213,8 @@
         };
 
         let uiState = {
-            mobileView: 'map', zoom: 1, activeTab: 'build', selectedTool: null, selectedCell: null, showCoverageMode: null,
-            newPlan: { name: '', type: 'mobile', zoneId: 'all', price: 25, minTech: 1, sVoice: true, sSms: true, sData: true, sRoaming: false, sInt: true, sTv: false, sStream: false },
+            mobileView: 'map', zoom: 1, activeTab: 'dashboard', selectedTool: null, selectedCell: null, showCoverageMode: null,
+            newPlan: { name: '', type: 'mobile', zoneId: 'all', price: 25, minTech: 1, sVoice: true, sSms: true, sData: true, sRoaming: false, sInt: true, sTv: false, sStream: false, sSatInt: false, sSatTv: false },
             contractForm: { tierId: 'SLA_99', askingPrice: 2000 }, showBuyoutModal: false, buyoutOffer: null,
             notification: null
         };
@@ -204,26 +242,81 @@
                     if (currentState.isSpectator) return currentState;
                     const { x, y, infraType } = action.payload;
                     const template = INFRA_TYPES[infraType];
-                    const zoneId = currentState.mapData.find(c => c.x === x && c.y === y).zoneId;
+                    const cell = currentState.mapData.find(c => c.x === x && c.y === y);
+                    const zoneId = cell.zoneId;
                     const zone = currentState.municipalities.find(z => z.id === zoneId);
                     
-                    if (currentState.money < template.cost) return { ...currentState, logs: [addLog(`Fondos insuficientes para ${template.name}`, 'error'), ...currentState.logs] };
                     if (template.type === 'mobile' && !zone.hasSpectrum) return { ...currentState, logs: [addLog(`[RECHAZADO] Sin licencia de espectro en ${zone.name}.`, 'error'), ...currentState.logs] };
+                    if (template.type === 'core' && !currentState.legal.nationalLicense) return { ...currentState, logs: [addLog(`[RECHAZADO] Requiere Licencia Nacional para infra Core.`, 'error'), ...currentState.logs] };
                     if (currentState.infra.some(i => i.x === x && i.y === y)) return currentState;
                     
-                    let finalCost = template.cost;
+                    const terrainMultipliers = { plain: 1, mountain: 2.5, river: 1.5, sea: 5 };
+                    let finalCost = template.cost * terrainMultipliers[cell.terrain];
+
+                    if (currentState.money < finalCost) return { ...currentState, logs: [addLog(`Fondos insuficientes para ${template.name} (${formatCur(finalCost)})`, 'error'), ...currentState.logs] };
+
                     let logMsg = `Construcción: ${template.name} en [${x},${y}]`;
+                    if (cell.terrain !== 'plain') logMsg += ` (Terreno: ${cell.terrain.toUpperCase()}, Coste x${terrainMultipliers[cell.terrain]})`;
+
                     if (zone.mayorRespect < 35 && !zone.subsidiaryActive) {
                         finalCost *= 1.35;
                         logMsg += ` (+35% sobrecosto por trabas burocráticas)`;
                     }
 
+                    // --- GUERRA DE PRECIOS ---
+                    let newCompsForInfra = currentState.competitors.map(c => {
+                        if (c.licenses.includes(zoneId) && c.sharesOwned < 51 && zone.compShare > 20) {
+                            if (c.style === 'aggressive' || c.style === 'startup') {
+                                if (!c.activeOffers) c.activeOffers = {};
+                                if (!c.activeOffers[zoneId]) {
+                                    c.activeOffers[zoneId] = 3; // 3 meses de oferta
+                                    logMsg += ` | ¡GUERRA DE PRECIOS! ${c.name} regala 3 meses gratis.`;
+                                }
+                            }
+                        }
+                        return c;
+                    });
+
                     return { 
                         ...currentState, money: currentState.money - finalCost, 
+                        competitors: newCompsForInfra,
                         infra: [...currentState.infra, { id: Date.now().toString(), x, y, type: infraType, zoneId }],
                         finances: { ...currentState.finances, current: { ...currentState.finances.current, capEx: currentState.finances.current.capEx + finalCost } },
                         logs: [addLog(logMsg, 'success'), ...currentState.logs]
                     };
+                }
+
+                case 'HIRE_EMP': {
+                    const role = action.payload;
+                    const cost = currentState.hr[role].salary;
+                    if (currentState.money < cost) return { ...currentState, logs: [addLog('Fondos insuficientes para contratación.', 'error'), ...currentState.logs] };
+                    return { ...currentState, money: currentState.money - cost, hr: { ...currentState.hr, [role]: { ...currentState.hr[role], count: currentState.hr[role].count + 1 } }, logs: [addLog(`Empleado contratado.`, 'info'), ...currentState.logs] };
+                }
+
+                case 'FIRE_EMP': {
+                    const role = action.payload;
+                    if (currentState.hr[role].count <= 0) return currentState;
+                    return { ...currentState, hr: { ...currentState.hr, [role]: { ...currentState.hr[role], count: currentState.hr[role].count - 1 } }, logs: [addLog(`Empleado despedido.`, 'warning'), ...currentState.logs] };
+                }
+
+                case 'ADJUST_SALARY': {
+                    if (currentState.isSpectator) return currentState;
+                    const { role, amount } = action.payload;
+                    const emp = currentState.hr[role];
+                    const newSalary = Math.max(emp.base * 0.5, emp.salary + amount); // Min 50% del base
+                    const newProd = Math.floor((newSalary / emp.base) * 100);
+                    return { ...currentState, hr: { ...currentState.hr, [role]: { ...emp, salary: newSalary, prod: newProd } } };
+                }
+
+                case 'TAKE_LOAN': {
+                    return { ...currentState, money: currentState.money + action.payload, corporate: { ...currentState.corporate, loan: currentState.corporate.loan + action.payload }, logs: [addLog(`Préstamo adquirido por ${formatCur(action.payload)}.`, 'warning'), ...currentState.logs] };
+                }
+
+                case 'REPAY_LOAN': {
+                    if (currentState.corporate.loan <= 0) return currentState;
+                    const amount = Math.min(currentState.money, Math.min(action.payload, currentState.corporate.loan));
+                    if (amount <= 0) return currentState;
+                    return { ...currentState, money: currentState.money - amount, corporate: { ...currentState.corporate, loan: currentState.corporate.loan - amount }, logs: [addLog(`Deuda pagada por ${formatCur(amount)}.`, 'success'), ...currentState.logs] };
                 }
 
                 case 'REMOVE_INFRA': {
@@ -267,6 +360,21 @@
                     if (currentState.money < 250000 || zone.subsidiaryActive) return currentState;
                     const newMuns = currentState.municipalities.map(m => m.id === action.payload ? { ...m, subsidiaryActive: true, mayorRespect: 80 } : m);
                     return { ...currentState, money: currentState.money - 250000, municipalities: newMuns, logs: [addLog(`Filial regional creada en ${zone.name}. Reputación municipal reseteada.`, 'success'), ...currentState.logs] };
+                }
+
+                case 'BUY_NATIONAL_LICENSE': {
+                    if (currentState.money < 500000 || currentState.legal.nationalLicense) return currentState;
+                    return { ...currentState, money: currentState.money - 500000, legal: { ...currentState.legal, nationalLicense: true }, logs: [addLog('Licencia Nacional de Operador adquirida. Ya puedes construir Core.', 'success'), ...currentState.logs] };
+                }
+
+                case 'TOGGLE_DATA_PROTECTION': {
+                    const newState = !currentState.legal.dataProtection;
+                    return {
+                        ...currentState,
+                        legal: { ...currentState.legal, dataProtection: newState },
+                        settings: { ...currentState.settings, smsAdsEnabled: newState ? false : currentState.settings.smsAdsEnabled },
+                        logs: [addLog(`Protección de Datos ${newState ? 'Activada (Bloquea Venta Ads)' : 'Desactivada'}.`, 'info'), ...currentState.logs]
+                    };
                 }
 
                 case 'BUY_IT_SERVICE': {
@@ -350,10 +458,12 @@
                     const { compId, percent } = action.payload;
                     const comp = currentState.competitors.find(c => c.id === compId);
                     const cost = (comp.valuation * (percent / 100)) * 1.1; // 10% premium
+                    let prevShares = comp.sharesOwned;
                     
                     if (currentState.money < cost) return { ...currentState, logs: [addLog(`Fondos insuficientes para adquirir acciones de ${comp.name}.`, 'error'), ...currentState.logs] };
                     
-                    let newComps = currentState.competitors.map(c => c.id === compId ? { ...c, sharesOwned: Math.min(100, c.sharesOwned + percent) } : c);
+                    let newShares = Math.min(100, comp.sharesOwned + percent);
+                    let newComps = currentState.competitors.map(c => c.id === compId ? { ...c, sharesOwned: newShares } : c);
                     let newInfra = currentState.infra;
                     let newMoney = currentState.money - cost;
                     let log = `Adquirido ${percent}% de ${comp.name}.`;
@@ -361,8 +471,10 @@
                     let newMapData = [...currentState.mapData];
 
                     // Fusiones y Adquisiciones (M&A): Absorción Total
-                    if (newComps.find(c => c.id === compId).sharesOwned >= 100) {
-                        log = `¡ADQUISICIÓN HOSTIL EXITOSA! ${comp.name} ha sido absorbida. Heredas su red y contratos.`;
+                    if (newShares >= 51 && prevShares < 51) {
+                        log = `¡Control Mayoritario (51%) de ${comp.name}! Ahora dominas su junta directiva y cesan sus hostilidades.`;
+                    } else if (newShares >= 100) {
+                        log = `¡ADQUISICIÓN TOTAL! ${comp.name} ha sido absorbida. Heredas su red y clientes.`;
                         // Transferir infraestructura
                         newInfra = newInfra.map(i => i.owner === compId ? { ...i, owner: null } : i);
                         // Transferir Contratos
@@ -419,18 +531,29 @@
                 }
 
                 case 'CANCEL_CONTRACT': return { ...currentState, contracts: currentState.contracts.filter(c => c.id !== action.payload) };
-                case 'TOGGLE_SETTING': return { ...currentState, settings: { ...currentState.settings, [action.payload]: !currentState.settings[action.payload] } };
+                case 'TOGGLE_SETTING': {
+                    if (action.payload === 'smsAdsEnabled' && currentState.legal.dataProtection) {
+                        return { ...currentState, logs: [addLog('No puedes vender datos con la Protección de Datos activada.', 'warning'), ...currentState.logs] };
+                    }
+                    return { ...currentState, settings: { ...currentState.settings, [action.payload]: !currentState.settings[action.payload] } };
+                }
                 case 'ADD_PLAN': return { ...currentState, plans: [...currentState.plans, action.payload], logs: [addLog(`Lanzado plan comercial: ${action.payload.name}`, 'info'), ...currentState.logs] };
                 case 'DELETE_PLAN': {
                     const newMap = currentState.mapData.map(c => c.planId === action.payload ? { ...c, planId: null } : c);
                     return { ...currentState, plans: currentState.plans.filter(p => p.id !== action.payload), mapData: newMap };
+                }
+                
+                case 'ACCEPT_TENDER': {
+                    if (currentState.isSpectator) return currentState;
+                    const newTenders = currentState.tenders.map(t => t.id === action.payload ? { ...t, status: 'active', deadline: 24 } : t);
+                    return { ...currentState, tenders: newTenders, logs: [addLog('Licitación aceptada. Tienes 24 meses para cumplir la meta de cobertura.', 'info'), ...currentState.logs] };
                 }
 
                 case 'ACCEPT_BUYOUT': {
                     return {
                         ...currentState,
                         isSpectator: true, money: 0, spectatorBank: currentState.spectatorBank + action.payload,
-                        infra: [], contracts: [], plans: [],
+                        infra: [], contracts: [], plans: [], satellites: [], satelliteOffers: [], satelliteContracts: [], tenders: [], helpdesk: { activeTickets: [], resolved: 0, failed: 0 },
                         mapData: currentState.mapData.map(c => ({...c, planId: null, compContract: c.compContract || (c.isBusiness||c.isSchool||c.isTownhall ? { compName:'MegaCom (Adquiriente)', price: 5000, tierId: 'SLA_999' } : null)})),
                         logs: [addLog(`¡EMPRESA VENDIDA! Has recibido ${formatCur(action.payload)}. Ahora eres un magnate inversor.`, 'success'), ...currentState.logs]
                     };
@@ -438,11 +561,37 @@
 
                 case 'FOUND_NEW_STARTUP': {
                     return {
-                        ...currentState, competitors: generateCompetitors(), isSpectator: false, money: currentState.spectatorBank, spectatorBank: 0,
+                        ...currentState, competitors: generateCompetitors(), isSpectator: false, money: currentState.spectatorBank, spectatorBank: 0, satellites: [], satelliteOffers: [], satelliteContracts: [], tenders: [], helpdesk: { activeTickets: [], resolved: 0, failed: 0 },
+                        legal: { nationalLicense: false, dataProtection: false, taxRate: 0.20 },
                         municipalities: ZONES.map(z => ({ ...z, hasSpectrum: false, mayorRespect: 50, subsidiaryActive: false })),
                         logs: [addLog(`Nueva Operadora fundada con capital propio. El mercado tiembla.`, 'info'), ...currentState.logs]
                     };
                 }
+                
+                case 'LAUNCH_SATELLITE': {
+                    if (currentState.money < 2500000) return currentState;
+                    return {
+                        ...currentState, money: currentState.money - 2500000,
+                        satellites: [...currentState.satellites, { id: 'sat_' + Date.now(), name: 'TelcoSat ' + (currentState.satellites.length + 1), targetZone: 'all', capacity: 3 }],
+                        finances: { ...currentState.finances, current: { ...currentState.finances.current, capEx: currentState.finances.current.capEx + 2500000 } },
+                        logs: [addLog('Lanzamiento espacial exitoso. Nuevo satélite en órbita.', 'success'), ...currentState.logs]
+                    };
+                }
+                
+                case 'CHANGE_SAT_TARGET': {
+                    const { satId, zoneId } = action.payload;
+                    const newSats = currentState.satellites.map(s => s.id === satId ? { ...s, targetZone: zoneId } : s);
+                    const zoneName = zoneId === 'all' ? 'Nacional' : ZONES.find(z => z.id == zoneId).name;
+                    return { ...currentState, satellites: newSats, logs: [addLog(`Satélite reorientado hacia la zona: ${zoneName}.`, 'info'), ...currentState.logs] };
+                }
+                
+                case 'ACCEPT_SAT_OFFER': {
+                    const offer = currentState.satelliteOffers.find(o => o.id === action.payload.offerId);
+                    if (!offer) return currentState;
+                    return { ...currentState, satelliteContracts: [...currentState.satelliteContracts, { ...offer, monthsLeft: offer.duration }], satelliteOffers: currentState.satelliteOffers.filter(o => o.id !== action.payload.offerId), logs: [addLog(`Acuerdo B2B satelital firmado con ${offer.companyName}.`, 'success'), ...currentState.logs] };
+                }
+                
+                case 'REJECT_SAT_OFFER': return { ...currentState, satelliteOffers: currentState.satelliteOffers.filter(o => o.id !== action.payload.offerId) };
 
                 case 'CANCEL_FAILING_CONTRACTS': {
                     // Cálculo rápido de cobertura para validar
@@ -477,24 +626,110 @@
                     return { ...currentState, contracts: currentState.contracts.filter(c => !failingIds.includes(c.id)), logs: [addLog(`Cancelados ${failingContracts.length} contratos que generaban multas.`, 'success'), ...currentState.logs] };
                 }
 
+                case 'UPGRADE_BACKBONE': {
+                    if (currentState.isSpectator) return currentState;
+                    const zoneId = action.payload;
+                    const currentLevel = currentState.noc.backbone[zoneId].level;
+                    const cost = 120000 * Math.pow(2, currentLevel - 1);
+                    if (currentState.money < cost) return { ...currentState, logs: [addLog('Fondos insuficientes para ampliar troncal.', 'error'), ...currentState.logs] };
+                    
+                    return {
+                        ...currentState,
+                        money: currentState.money - cost,
+                        noc: { ...currentState.noc, backbone: { ...currentState.noc.backbone, [zoneId]: { cap: currentState.noc.backbone[zoneId].cap + 5000, level: currentLevel + 1 } } },
+                        finances: { ...currentState.finances, current: { ...currentState.finances.current, capEx: currentState.finances.current.capEx + cost } },
+                        logs: [addLog(`Backbone ampliado en Zona ${zoneId} (+5000 Tbps).`, 'success'), ...currentState.logs]
+                    };
+                }
+
+                case 'BUY_TRANSIT_PORT': {
+                    if (currentState.isSpectator || currentState.money < 50000) return currentState;
+                    return { ...currentState, money: currentState.money - 50000, noc: { ...currentState.noc, transit: { ...currentState.noc.transit, ports: currentState.noc.transit.ports + 1 } }, logs: [addLog('Puerto de Tránsito IP (10k Tbps) añadido.', 'success'), ...currentState.logs] };
+                }
+
+                case 'SETUP_PEERING': {
+                    if (currentState.isSpectator || currentState.money < action.payload.cost || !currentState.noc.global.ixp || currentState.noc.peering[action.payload.type]) return currentState;
+                    return { ...currentState, money: currentState.money - action.payload.cost, noc: { ...currentState.noc, peering: { ...currentState.noc.peering, [action.payload.type]: true } }, logs: [addLog(`Acuerdo de Peering ${action.payload.type === 'cdn' ? 'Directo CDN/Cloud' : 'Público'} establecido.`, 'success'), ...currentState.logs] };
+                }
+
+                case 'SET_BGP_POLICY': {
+                    if (currentState.isSpectator) return currentState;
+                    return { ...currentState, noc: { ...currentState.noc, bgp: { ...currentState.noc.bgp, policy: action.payload } }, logs: [addLog(`Política BGP cambiada a: ${action.payload}.`, 'info'), ...currentState.logs] };
+                }
+
                 case 'TICK': {
-                    let fin = { incomePlans: 0, incomeContracts: 0, incomeIT: 0, incomeAds: 0, incomeWholesale: 0, incomeFinancial: 0, varCosts: 0, costWholesale: 0, rent: 0, power: 0, maint: 0, fines: 0, capEx: 0, net: 0 };
+                    let fin = { incomePlans: 0, incomeContracts: 0, incomeIT: 0, incomeAds: 0, incomeWholesale: 0, incomeSpace: 0, incomeFinancial: 0, incomeGrants: 0, varCosts: 0, costWholesale: 0, rent: 0, power: 0, maint: 0, fines: 0, legalFines: 0, taxes: 0, capEx: 0, salaries: 0, interest: 0, net: 0 };
                     let planPerf = {}; currentState.plans.forEach(p => planPerf[p.id] = { subs: 0, revenue: 0, opEx: 0, churn: 0 });
                     let newLogs = [];
+                    let newLoads = { 0: 0, 1: 0, 2: 0, 3: 0 };
+
+                    let newInfra = [...currentState.infra];
+
+                    // --- EVENTOS NOC ---
+                    let currentEvent = currentState.activeEvent ? { ...currentState.activeEvent } : null;
+                    if (!currentEvent && Math.random() < 0.05) {
+                        const EVENTS = [
+                            { type: 'fiber_cut', name: 'Corte Troncal', desc: 'Una retroexcavadora cortó una fibra en la calle.', duration: 2 },
+                            { type: 'ddos', name: 'Ataque DDoS', desc: 'Tráfico basura satura los nodos B2B principales.', duration: 2 },
+                            { type: 'solar_storm', name: 'Tormenta Solar', desc: 'Interferencia electromagnética bloquea satélites.', duration: 3 },
+                            { type: 'gaming_patch', name: 'Pico de Tráfico', desc: 'Un parche masivo de un videojuego satura la red.', duration: 1 },
+                            { type: 'hurricane', name: 'Huracán', desc: 'Vientos huracanados destruyen antenas y torres.', duration: 1 },
+                            { type: 'earthquake', name: 'Terremoto', desc: 'Movimiento sísmico daña infraestructura terrestre y nodos.', duration: 1 }
+                        ];
+                        currentEvent = { ...EVENTS[Math.floor(Math.random() * EVENTS.length)] };
+                        newLogs.push(addLog(`¡INCIDENCIA NOC! ${currentEvent.name}: ${currentEvent.desc}`, 'warning'));
+
+                        if (currentEvent.type === 'hurricane' || currentEvent.type === 'earthquake') {
+                            let destroyedCount = 0;
+                            newInfra = newInfra.filter(i => {
+                                const t = INFRA_TYPES[i.type];
+                                let chance = 0.02; // Probabilidad base de destrucción general
+                                if (currentEvent.type === 'hurricane' && t.type === 'mobile') chance = 0.15; // 15% de destruir torres
+                                else if (currentEvent.type === 'earthquake' && (t.type === 'fixed' || t.type === 'core' || t.type === 'backhaul')) chance = 0.15; // 15% de destruir nodos fijos/core
+                                
+                                if (Math.random() < chance) {
+                                    if (!i.owner) destroyedCount++;
+                                    return false; // Se elimina del mapa
+                                }
+                                return true;
+                            });
+                            if (destroyedCount > 0) {
+                                newLogs.push(addLog(`¡Desastre natural! Has perdido ${destroyedCount} instalaciones en el evento.`, 'error'));
+                            }
+                        }
+                    } else if (currentEvent) {
+                        currentEvent.duration -= 1;
+                        if (currentEvent.duration <= 0) {
+                            newLogs.push(addLog(`Incidencia resuelta: ${currentEvent.name}.`, 'success'));
+                            currentEvent = null;
+                        }
+                    }
 
                     // --- IA COMPETENCIA AVANZADA ---
-                    let newInfra = [...currentState.infra];
+                    let newComps = currentState.competitors.map(comp => {
+                        let updatedOffers = { ...(comp.activeOffers || {}) };
+                        for (let z in updatedOffers) {
+                            if (updatedOffers[z] > 0) updatedOffers[z]--;
+                            if (updatedOffers[z] <= 0) delete updatedOffers[z];
+                        }
+                        return { ...comp, activeOffers: updatedOffers };
+                    });
+
                     if (state.settings.competitionEnabled && currentState.month % 3 === 0) {
-                        currentState.competitors.forEach(comp => {
-                            if (comp.licenses.length > 0 && Math.random() > 0.4) {
+                        newComps.forEach(comp => {
+                            if (comp.sharesOwned >= 51) return; // M&A: Si los controlas, no se expanden solos agresivamente
+                            if (comp.licenses.length > 0 && Math.random() > (comp.style === 'startup' ? 0.2 : 0.4)) {
                                 const targetZoneId = comp.licenses[Math.floor(Math.random() * comp.licenses.length)];
-                                // Buscar celda válida inteligente (Con población y sin torres)
                                 const candidates = currentState.mapData.filter(c => c.zoneId === targetZoneId && c.pop > 10 && !newInfra.some(i => i.x === c.x && i.y === c.y));
                                 
                                 if (candidates.length > 0) {
                                     candidates.sort((a,b) => b.pop - a.pop); // Ordenar por población descendente
                                     const target = candidates[0]; // Tomar la mejor parcela
-                                    const type = Math.random() > 0.6 ? 'TOWER_5G' : 'TOWER_3G';
+                                    let type = 'TOWER_4G';
+                                    if (comp.style === 'premium') type = Math.random() > 0.5 ? 'NODE_FIBER' : 'TOWER_5G';
+                                    else if (comp.style === 'aggressive') type = Math.random() > 0.6 ? 'TOWER_5G' : 'TOWER_4G';
+                                    else if (comp.style === 'startup') type = Math.random() > 0.5 ? 'NODE_ADSL' : 'RADIO_LINK';
+                                    
                                     newInfra.push({
                                         id: `comp_${comp.id}_${Date.now()}`,
                                         x: target.x, y: target.y, type: type, zoneId: targetZoneId, owner: comp.id
@@ -566,6 +801,30 @@
                             newLogs.push(addLog(`¡Nueva ${cell.type==='train_station'?'Estación de Tren':'Central de Autobuses'} inaugurada en [${cell.x},${cell.y}]!`, 'success'));
                         }
                     }
+                    
+                    // Procesar Satélites y Contratos Espaciales
+                    let satIncome = 0;
+                    let satMaint = (currentState.satellites || []).length * 25000;
+                    let activeSatContracts = [];
+                    (currentState.satelliteContracts || []).forEach(c => {
+                        satIncome += c.amount;
+                        if (c.monthsLeft > 1) activeSatContracts.push({ ...c, monthsLeft: c.monthsLeft - 1 });
+                    });
+                    let newSatOffers = [...(currentState.satelliteOffers || [])];
+                    if (!currentState.isSpectator && Math.random() < 0.15 && currentState.satellites && currentState.satellites.length > 0) {
+                        const randomSat = currentState.satellites[Math.floor(Math.random() * currentState.satellites.length)];
+                        if (activeSatContracts.filter(c => c.satId === randomSat.id).length < randomSat.capacity) {
+                            const compNames = ['GlobalNet Media', 'SkyLink Corp', 'Defensa Nacional', 'Agencia de Clima', 'TeleSur', 'Canal 5'];
+                            const name = compNames[Math.floor(Math.random() * compNames.length)];
+                            newSatOffers.push({
+                                id: 'off_' + Date.now() + Math.random(), satId: randomSat.id, companyName: name,
+                                amount: 25000 + Math.floor(Math.random() * 50000), duration: 12 + Math.floor(Math.random() * 24)
+                            });
+                            newLogs.push(addLog(`Oferta B2B: ${name} quiere alquilar capacidad en ${randomSat.name}.`, 'info'));
+                        }
+                    }
+                    fin.incomeSpace = satIncome;
+                    fin.maint += satMaint;
 
                     // 3. Clientes B2C
                     newMapData = newMapData.map(cell => {
@@ -578,12 +837,24 @@
 
                         let bestPlan = null; let bestValue = 0;
                         const hasRoamingDeal = currentState.wholesale.agreements.some(a => a.type === 'rent_in');
+                        
+                        let isSolarStorm = currentEvent && currentEvent.type === 'solar_storm';
+                        let hasSatCovAll = !isSolarStorm && currentState.satellites && currentState.satellites.some(s => s.targetZone === 'all');
+                        let hasSatCovZone = !isSolarStorm && currentState.satellites && currentState.satellites.some(s => s.targetZone == cell.zoneId);
+                        let hasSatCov = hasSatCovAll || hasSatCovZone;
+                        let isPriceWar = newComps.some(c => c.activeOffers && c.activeOffers[cell.zoneId] > 0);
 
                         currentState.plans.forEach(plan => {
                             if (plan.zoneId !== 'all' && plan.zoneId !== cell.zoneId) return;
                             
-                            let hasCov = (plan.type === 'mobile' && myCov.mobile >= plan.minTech) || (plan.type === 'fixed' && myCov.fixed >= plan.minTech);
-                            if (!hasCov && plan.type === 'mobile' && hasRoamingDeal) hasCov = true;
+                            let hasCov = false;
+                            if (plan.type === 'mobile') hasCov = (myCov.mobile >= plan.minTech) || hasRoamingDeal;
+                            else if (plan.type === 'fixed') hasCov = (myCov.fixed >= plan.minTech);
+                            else if (plan.type === 'convergent') hasCov = ((myCov.mobile >= plan.minTech) || hasRoamingDeal) && (myCov.fixed >= plan.minTech);
+                            
+                            if ((plan.services?.sat_internet || plan.services?.sat_tv) && !hasSatCov) {
+                                hasCov = false; 
+                            }
 
                             if (hasCov) {
                                 let value = (plan.minTech * 30); 
@@ -591,10 +862,15 @@
                                 if (plan.services?.internet) value += 40; 
                                 if (plan.services?.tv) value += 30;
                                 if (plan.services?.streaming) value += 25;
+                                if (plan.services?.sat_internet) { value += hasSatCovZone ? 50 : 30; if (cell.type === 'house' || cell.type === 'empty') value += 25; }
+                                if (plan.services?.sat_tv) value += hasSatCovZone ? 40 : 20;
 
-                                if (currentState.settings.smsAdsEnabled && plan.type === 'mobile') value -= 35; 
-                                value -= (plan.price * 1.5); 
+                                if (plan.type === 'convergent') value += 30; // Bonificación de valor percibido por paquete
+                                if (currentState.settings.smsAdsEnabled && (plan.type === 'mobile' || plan.type === 'convergent')) value -= 35; 
+                                const priceSensitivity = cell.wealth === 1 ? 2.5 : cell.wealth === 3 ? 0.8 : 1.5;
+                                value -= (plan.price * priceSensitivity); 
                                 
+                                if (isPriceWar) value -= 50; // La guerra de precios destruye tu valor percibido
                                 if (commercialBoosts[cell.id]) value += 25; 
                                 
                                 activeAds.forEach(ad => {
@@ -607,7 +883,13 @@
                         });
 
                         let currentPlanId = cell.planId;
-                        const churnChance = commercialBoosts[cell.id] ? 0.02 : 0.08; // Tasas realistas de abandono
+                        let churnChance = commercialBoosts[cell.id] ? 0.02 : 0.08;
+                        churnChance -= (currentState.hr.support.count * (currentState.hr.support.prod / 100) * 0.005); // Soporte mitiga bajas
+                        if (currentState.legal.dataProtection) churnChance -= 0.03; // Mayor fidelidad
+                        if (currentEvent && currentEvent.type === 'fiber_cut') churnChance += 0.05; // El corte aumenta las bajas B2C
+                        if (currentState.noc.ping > 45) churnChance += 0.10; // Saturación genera bajas
+                        if (isPriceWar) churnChance += 0.25; // Massive churn to competitor
+                        churnChance = Math.max(0.01, churnChance);
 
                         if (Math.random() < churnChance) {
                             if (currentPlanId !== (bestPlan ? bestPlan.id : null)) {
@@ -618,10 +900,15 @@
                         
                         if (currentPlanId) {
                             const ap = currentState.plans.find(p => p.id === currentPlanId);
-                            const hasOwnCov = ap ? ((ap.type === 'mobile' && myCov.mobile >= ap.minTech) || (ap.type === 'fixed' && myCov.fixed >= ap.minTech)) : false;
-                            const canRoam = ap ? (ap.type === 'mobile' && hasRoamingDeal) : false;
+                            let retainsCov = false;
+                            if (ap) {
+                                if (ap.type === 'mobile') retainsCov = myCov.mobile >= ap.minTech || hasRoamingDeal;
+                                else if (ap.type === 'fixed') retainsCov = myCov.fixed >= ap.minTech;
+                                else if (ap.type === 'convergent') retainsCov = (myCov.mobile >= ap.minTech || hasRoamingDeal) && myCov.fixed >= ap.minTech;
+                                if ((ap.services?.sat_internet || ap.services?.sat_tv) && !hasSatCov) retainsCov = false;
+                            }
 
-                            if (!ap || (!hasOwnCov && !canRoam)) {
+                            if (!ap || !retainsCov) {
                                  if (planPerf[currentPlanId]) planPerf[currentPlanId].churn += availablePop;
                                  currentPlanId = null;
                             }
@@ -630,6 +917,7 @@
                         if (currentPlanId && availablePop > 0) {
                             const p = currentState.plans.find(pl => pl.id === currentPlanId);
                             if (p) {
+                                newLoads[cell.zoneId] += availablePop;
                                 const rev = p.price * availablePop;
                                 let vCostPerUser = 0;
                                 if (p.services.voice) vCostPerUser += SERVICE_COSTS.voice;
@@ -639,15 +927,20 @@
                                 if (p.services.internet) vCostPerUser += SERVICE_COSTS.internet;
                                 if (p.services.tv) vCostPerUser += SERVICE_COSTS.tv;
                                 if (p.services.streaming) vCostPerUser += SERVICE_COSTS.streaming;
+                                if (p.services.sat_internet) vCostPerUser += SERVICE_COSTS.sat_internet;
+                                if (p.services.sat_tv) vCostPerUser += SERVICE_COSTS.sat_tv;
 
-                                const isOwn = (p.type === 'mobile' && myCov.mobile >= p.minTech) || (p.type === 'fixed' && myCov.fixed >= p.minTech);
-                                if (!isOwn && p.type === 'mobile') {
+                                if (currentEvent && currentEvent.type === 'gaming_patch') {
+                                    vCostPerUser *= 1.5; // El pico de tráfico aumenta los costos de tránsito en un 50%
+                                }
+                                
+                                if ((p.type === 'mobile' || p.type === 'convergent') && myCov.mobile < p.minTech && hasRoamingDeal) {
                                     fin.costWholesale += (5 * availablePop); 
                                 }
                                 
                                 const totalVCost = vCostPerUser * availablePop;
                                 fin.incomePlans += rev; fin.varCosts += totalVCost;
-                                if (currentState.settings.smsAdsEnabled && p.type === 'mobile') fin.incomeAds += 5 * availablePop;
+                                if (currentState.settings.smsAdsEnabled && (p.type === 'mobile' || p.type === 'convergent')) fin.incomeAds += 5 * availablePop;
 
                                 if (planPerf[p.id]) {
                                     planPerf[p.id].subs += availablePop;
@@ -663,13 +956,72 @@
                     let contractsToDrop = [];
                     let localFiberB2BClients = 0;
 
+                    // Pre-calculo de cargas B2B, Capacidades de Red y Ping (NOC)
+                    let zoneCapacities = { 0: 0, 1: 0, 2: 0, 3: 0 };
+                    for (let z in currentState.noc.backbone) {
+                        zoneCapacities[z] += currentState.noc.backbone[z].cap;
+                    }
+                    let dcCount = 0;
+                    newInfra.forEach(i => {
+                        if (i.owner) return;
+                        const t = INFRA_TYPES[i.type];
+                        if (t.cap) zoneCapacities[i.zoneId] += t.cap;
+                        if (i.type === 'DATA_CENTER') dcCount++;
+                    });
+
+                    currentState.contracts.forEach(c => {
+                        const cCell = currentState.mapData.find(m => m.x === c.x && m.y === c.y);
+                        if (cCell) newLoads[cCell.zoneId] += 250; 
+                    });
+
+                    let pingAcc = 15 - (dcCount * 2);
+                    if (pingAcc < 2) pingAcc = 2;
+                    
+                    for (let z in newLoads) {
+                        let cap = zoneCapacities[z];
+                        if (cap === 0) cap = 1;
+                        if (newLoads[z] > cap) {
+                            pingAcc += ((newLoads[z] - cap) / cap) * 300;
+                            if (newLoads[z] > cap * 1.3 && Math.random() < 0.15) {
+                                newLogs.push(addLog(`¡CAÍDA DE SERVICIO en ${ZONES.find(x=>x.id==parseInt(z)).name}! Nodos colapsados.`, 'error'));
+                            }
+                        }
+                    }
+                    let currentPing = Math.floor(pingAcc);
+                    if (currentPing > 60 && Math.random() < 0.2) newLogs.push(addLog(`¡ALERTA NOC! Ping crítico (${currentPing}ms). Fuga de empresas inminente.`, 'error'));
+
+                    // BGP, Peering & Transit
+                    let totalLoad = Object.values(newLoads).reduce((a,b)=>a+b, 0);
+                    let peeringOffload = 0;
+                    if (currentState.noc.peering.public) peeringOffload += 0.3;
+                    if (currentState.noc.peering.cdn) peeringOffload += 0.4;
+                    
+                    if (currentState.noc.bgp.policy === 'cost') { peeringOffload *= 1.2; currentPing += 15; }
+                    else if (currentState.noc.bgp.policy === 'latency') { peeringOffload *= 0.7; currentPing -= 10; }
+                    peeringOffload = Math.min(0.9, peeringOffload);
+                    
+                    let transitTraffic = totalLoad * (1 - peeringOffload);
+                    let transitCapacity = currentState.noc.transit.ports * 10000;
+                    
+                    if (transitTraffic > transitCapacity) {
+                        currentPing += ((transitTraffic - transitCapacity) / transitCapacity) * 200;
+                        if (Math.random() < 0.2 && !currentState.isSpectator) newLogs.push(addLog('¡Saturación de Tránsito IP (Tráfico dropeado por Tier-1)!', 'error'));
+                    }
+                    
+                    fin.varCosts += (currentState.noc.transit.ports * 25000); // 25k monthly per Tier-1 port
+                    const transitStats = { totalLoad, peeringOffload, transitTraffic, transitCapacity };
+
                     currentState.contracts.forEach(c => {
                         const myCov = coverageMap[`${c.x}-${c.y}`];
                         const tier = CONTRACT_TIERS[c.tierId];
                         
                         let satisfiesSLA = false;
-                        if (tier.id === 'SLA_9999') satisfiesSLA = (myCov.mobile >= 3 && myCov.fixed >= 3); 
-                        else satisfiesSLA = (myCov.mobile >= tier.reqTech || myCov.fixed >= tier.reqTech);
+                        if (tier.id === 'SLA_9999') satisfiesSLA = (myCov.mobile >= 3 && myCov.fixed >= 3 && currentPing <= 45); 
+                        else satisfiesSLA = ((myCov.mobile >= tier.reqTech || myCov.fixed >= tier.reqTech) && currentPing <= 90);
+
+                        if (currentEvent && currentEvent.type === 'ddos' && (currentState.hr.engineers.count * (currentState.hr.engineers.prod / 100)) < 3) {
+                            satisfiesSLA = false; // Sin 3 ingenieros, los ataques DDoS tiran los servicios B2B (Multas)
+                        }
 
                         if (satisfiesSLA) {
                             fin.incomeContracts += c.value;
@@ -697,6 +1049,13 @@
 
                     fin.incomeFinancial = Math.floor(currentState.corporate.sharesOwned * (currentMarketPrice * 0.008));
 
+                    // Dividendos de adquisiciones 51%+
+                    newComps.forEach(comp => {
+                        if (comp.sharesOwned >= 51 && comp.sharesOwned < 100) {
+                            fin.incomeFinancial += Math.floor((comp.valuation * 0.02) * (comp.sharesOwned / 100)); // 2% yield
+                        }
+                    });
+
                     const rentOutDeals = currentState.wholesale.agreements.filter(a => a.type === 'rent_out').length;
                     if (rentOutDeals > 0) {
                         fin.incomeWholesale += (currentState.infra.length * 50 * rentOutDeals);
@@ -721,6 +1080,42 @@
                         return { ...m, mayorRespect: Math.max(0, Math.min(100, res)), compShare: Math.max(5, Math.min(95, Math.floor(currentShare))) };
                     });
 
+                    // 5.5 Licitaciones y Subsidios
+                    let oneTimeGrants = 0;
+                    let newTenders = [...(currentState.tenders || [])];
+                    
+                    if (newTenders.length < 3 && Math.random() < 0.08 && !currentState.isSpectator) {
+                        const zId = Math.floor(Math.random() * 4);
+                        const rTech = Math.floor(Math.random() * 2) + 2; 
+                        const reward = (rTech * 200000) + Math.floor(Math.random() * 200000);
+                        newTenders.push({
+                            id: 'tnd_' + Date.now() + Math.floor(Math.random()*100),
+                            zoneId: zId, targetType: 'house', reqTech: rTech, reqCount: 3 + Math.floor(Math.random() * 4),
+                            reward: reward, deadline: 24, status: 'available', currentCount: 0
+                        });
+                        newLogs.push(addLog(`Nueva licitación gubernamental publicada para el ${ZONES.find(z=>z.id===zId).name}.`, 'info'));
+                    }
+
+                    newTenders = newTenders.map(t => {
+                        if (t.status === 'active') {
+                            t.deadline -= 1;
+                            let covered = 0;
+                            newMapData.filter(c => c.zoneId === t.zoneId && c.type === t.targetType).forEach(c => {
+                                if (coverageMap[c.id].mobile >= t.reqTech || coverageMap[c.id].fixed >= t.reqTech) covered++;
+                            });
+                            t.currentCount = covered;
+                            if (covered >= t.reqCount) {
+                                oneTimeGrants += t.reward; t.status = 'completed';
+                                newLogs.push(addLog(`¡Licitación completada! Llevaste red a zonas rurales de ${ZONES.find(z=>z.id===t.zoneId).name}. Recompensa: +${formatCur(t.reward)}`, 'success'));
+                            } else if (t.deadline <= 0) {
+                                fin.legalFines += t.reward * 0.25; t.status = 'failed';
+                                newLogs.push(addLog(`Licitación vencida. No cumpliste la meta en ${ZONES.find(z=>z.id===t.zoneId).name}. Multa: ${formatCur(t.reward * 0.25)}`, 'error'));
+                            }
+                        } else if (t.status === 'available') { t.deadline -= 1; if (t.deadline <= 0) t.status = 'expired'; }
+                        return t;
+                    }).filter(t => t.status === 'available' || t.status === 'active');
+                    fin.incomeGrants = oneTimeGrants;
+
                     // 6. Eventos y M&A
                     let offerObj = uiState.buyoutOffer;
                     let showModal = uiState.showBuyoutModal;
@@ -735,7 +1130,24 @@
                         showModal = true;
                     }
 
-                    fin.net = (fin.incomePlans + fin.incomeContracts + fin.incomeIT + fin.incomeAds + fin.incomeWholesale + fin.incomeFinancial) - (fin.varCosts + fin.costWholesale + fin.rent + fin.power + fin.maint + fin.fines);
+                    fin.salaries = (currentState.hr.technicians.count * currentState.hr.technicians.salary) + (currentState.hr.support.count * currentState.hr.support.salary) + (currentState.hr.engineers.count * currentState.hr.engineers.salary);
+                    fin.interest = (currentState.corporate.loan || 0) * 0.03; // 3% interés mensual altísimo por deuda corporativa
+
+                    // Incidentes Legales y Compliance
+                    if (currentState.settings.smsAdsEnabled && !currentState.legal.dataProtection && Math.random() < 0.08) {
+                        const breachFine = 25000 + (connectedPop * 2);
+                        fin.legalFines += breachFine;
+                        newLogs.push(addLog(`¡MULTA GUBERNAMENTAL! Violación de privacidad por venta de datos. Sanción: ${formatCur(breachFine)}`, 'error'));
+                    }
+                    if (currentState.legal.dataProtection) {
+                        fin.maint += connectedPop * 0.5; // Costo de cumplimiento legal y servidores seguros
+                    }
+
+                    let preTaxNet = (fin.incomePlans + fin.incomeContracts + fin.incomeIT + fin.incomeAds + fin.incomeWholesale + fin.incomeFinancial + fin.incomeSpace + fin.incomeGrants) - (fin.varCosts + fin.costWholesale + fin.rent + fin.power + fin.maint + fin.fines + fin.legalFines + fin.salaries + fin.interest);
+                    
+                    fin.taxes = preTaxNet > 0 ? preTaxNet * currentState.legal.taxRate : 0;
+                    fin.net = preTaxNet - fin.taxes;
+                    
                     const newMoney = currentState.money + fin.net;
                     const valuation = newMoney + (fin.net * 12) + (currentState.infra.length * 20000);
 
@@ -743,11 +1155,13 @@
                     uiState.showBuyoutModal = showModal;
 
                     return {
-                        ...currentState, month: currentState.month + 1, money: newMoney, mapData: newMapData, infra: newInfra, municipalities: newMuns, transportAds: activeAds,
-                        contracts: activeContracts, finances: { current: fin, planPerformance: planPerf },
+                        ...currentState, month: currentState.month + 1, money: newMoney, mapData: newMapData, infra: newInfra, competitors: newComps, municipalities: newMuns, transportAds: activeAds,
+                        contracts: activeContracts, finances: { current: fin, planPerformance: planPerf }, noc: { ...currentState.noc, ping: currentPing, loads: newLoads, capacities: zoneCapacities },
                         corporate: { ...currentState.corporate, marketIndexPrice: currentMarketPrice, companyValuation: valuation },
+                        satellites: currentState.satellites || [], satelliteContracts: activeSatContracts, satelliteOffers: newSatOffers,
                         logs: [...newLogs, ...currentState.logs].slice(0, 50),
-                        gameOver: newMoney < -1000000 // Aumentado margen de quiebra
+                        activeEvent: currentEvent,
+                        gameOver: newMoney < -5000000 // Margen subido a -5M por permitir deudas
                     };
                 }
                 default: return currentState;
@@ -759,16 +1173,19 @@
 
         const calcNewPlanCost = () => {
             let cost = 0;
-            if (uiState.newPlan.type === 'mobile') {
+            if (uiState.newPlan.type === 'mobile' || uiState.newPlan.type === 'convergent') {
                 if (uiState.newPlan.sVoice) cost += SERVICE_COSTS.voice;
                 if (uiState.newPlan.sSms) cost += SERVICE_COSTS.sms;
                 if (uiState.newPlan.sData) cost += SERVICE_COSTS.data;
                 if (uiState.newPlan.sRoaming) cost += SERVICE_COSTS.roaming;
-            } else {
+            } 
+            if (uiState.newPlan.type === 'fixed' || uiState.newPlan.type === 'convergent') {
                 if (uiState.newPlan.sInt) cost += SERVICE_COSTS.internet;
             }
             if (uiState.newPlan.sTv) cost += SERVICE_COSTS.tv;
             if (uiState.newPlan.sStream) cost += SERVICE_COSTS.streaming;
+            if (uiState.newPlan.sSatInt) cost += SERVICE_COSTS.sat_internet;
+            if (uiState.newPlan.sSatTv) cost += SERVICE_COSTS.sat_tv;
             return cost;
         };
 
@@ -824,9 +1241,16 @@
         window.handleAddPlan = (e) => {
             e.preventDefault();
             if (uiState.newPlan.name && !state.isSpectator) {
-                const services = uiState.newPlan.type === 'mobile' 
-                    ? { voice: uiState.newPlan.sVoice, sms: uiState.newPlan.sSms, data: uiState.newPlan.sData, roaming: uiState.newPlan.sRoaming, tv: uiState.newPlan.sTv, streaming: uiState.newPlan.sStream } 
-                    : { internet: uiState.newPlan.sInt, tv: uiState.newPlan.sTv, streaming: uiState.newPlan.sStream };
+                const services = {};
+                if (uiState.newPlan.type === 'mobile' || uiState.newPlan.type === 'convergent') {
+                    services.voice = uiState.newPlan.sVoice; services.sms = uiState.newPlan.sSms;
+                    services.data = uiState.newPlan.sData; services.roaming = uiState.newPlan.sRoaming;
+                }
+                if (uiState.newPlan.type === 'fixed' || uiState.newPlan.type === 'convergent') {
+                    services.internet = uiState.newPlan.sInt;
+                }
+                services.tv = uiState.newPlan.sTv; services.streaming = uiState.newPlan.sStream;
+                services.sat_internet = uiState.newPlan.sSatInt; services.sat_tv = uiState.newPlan.sSatTv;
                 
                 dispatch({ type: 'ADD_PLAN', payload: { id: 'p_' + Date.now(), name: uiState.newPlan.name, type: uiState.newPlan.type, zoneId: uiState.newPlan.zoneId, price: Number(uiState.newPlan.price), minTech: Number(uiState.newPlan.minTech), services } });
                 uiState.newPlan = {...uiState.newPlan, name: ''}; 
@@ -840,6 +1264,11 @@
             
             let content = `<div class="font-bold text-slate-200 border-b border-slate-700 pb-1 mb-1">Parcela [${x},${y}]</div>`;
             
+            const terrainNames = { plain: 'Llanura', mountain: 'Montaña (x2.5 Coste)', river: 'Río (x1.5 Coste)', sea: 'Mar (x5 Coste)' };
+            const wealthNames = { 1: 'Bajo', 2: 'Medio', 3: 'Alto' };
+            content += `<div class="text-[10px] text-slate-400 mb-1">Terreno: ${terrainNames[cellData.terrain]}</div>`;
+            if (cellData.pop > 0) content += `<div class="text-[10px] text-yellow-400 font-bold mb-1">Poder Adquisitivo: ${wealthNames[cellData.wealth]}</div>`;
+            
             if (infra) {
                 const t = INFRA_TYPES[infra.type];
                 const owner = infra.owner ? getCompetitor(infra.owner) : { name: 'Propia', color: 'text-emerald-400' };
@@ -852,6 +1281,12 @@
 
             if (contract) content += `<div class="mt-1 pt-1 border-t border-slate-700 text-xs text-emerald-400 font-bold">Contrato SLA Activo</div>`;
             if (cellData.compContract) content += `<div class="mt-1 pt-1 border-t border-slate-700 text-xs text-red-400 font-bold">Contrato Rival Vigente</div>`;
+            
+            let hasSatCovAll = state.satellites && state.satellites.some(s => s.targetZone === 'all');
+            let hasSatCovZone = state.satellites && state.satellites.some(s => s.targetZone == cellData.zoneId);
+            if (hasSatCovAll || hasSatCovZone) {
+                content += `<div class="mt-1 pt-1 border-t border-slate-700 text-[10px] text-cyan-400 font-bold flex items-center gap-1">${icon('satellite', 10)} Cobertura Satelital</div>`;
+            }
 
             const tooltipEl = document.getElementById('map-tooltip');
             if (tooltipEl) {
@@ -925,7 +1360,11 @@
                 const zone = ZONES.find(z => z.id === cell.zoneId);
                 
                 let bgClass = "bg-slate-900 hover:bg-slate-800"; 
-                if (cell.type === 'house') bgClass = cell.planId ? "bg-blue-900/50" : "bg-slate-800/80";
+                if (cell.terrain === 'sea') bgClass = "bg-cyan-950/40 hover:bg-cyan-900/40";
+                if (cell.terrain === 'river') bgClass = "bg-blue-900/30 hover:bg-blue-800/40";
+                if (cell.terrain === 'mountain') bgClass = "bg-stone-800/50 hover:bg-stone-700/60";
+
+                if (cell.type === 'house') bgClass = cell.planId ? "bg-blue-900/60" : "bg-slate-800/80";
                 if (cell.type === 'building') bgClass = cell.planId ? "bg-blue-800/70" : "bg-slate-700";
                 if (cell.type === 'townhall') bgClass = "bg-indigo-900/60";
                 if (cell.type === 'business') bgClass = "bg-purple-900/50";
@@ -937,12 +1376,15 @@
                 let innerIcon = '';
                 if (!infra) {
                     if (cell.type === 'house') innerIcon = icon('home', 14, 'text-slate-500 opacity-60');
-                    if (cell.type === 'building') innerIcon = icon('building', 18, 'text-slate-400');
-                    if (cell.type === 'townhall') innerIcon = icon('landmark', 22, 'text-indigo-400 drop-shadow-md');
-                    if (cell.type === 'business') innerIcon = icon('briefcase', 18, 'text-purple-400');
-                    if (cell.type === 'school') innerIcon = icon('graduation-cap', 20, 'text-amber-400');
-                    if (cell.type === 'train_station') innerIcon = icon('train', 24, 'text-rose-400 drop-shadow-lg');
-                    if (cell.type === 'bus_stop') innerIcon = icon('bus', 20, 'text-rose-300');
+                    else if (cell.type === 'building') innerIcon = icon('building', 18, 'text-slate-400');
+                    else if (cell.type === 'townhall') innerIcon = icon('landmark', 22, 'text-indigo-400 drop-shadow-md');
+                    else if (cell.type === 'business') innerIcon = icon('briefcase', 18, 'text-purple-400');
+                    else if (cell.type === 'school') innerIcon = icon('graduation-cap', 20, 'text-amber-400');
+                    else if (cell.type === 'train_station') innerIcon = icon('train', 24, 'text-rose-400 drop-shadow-lg');
+                    else if (cell.type === 'bus_stop') innerIcon = icon('bus', 20, 'text-rose-300');
+                    else if (cell.terrain === 'sea') innerIcon = icon('waves', 16, 'text-cyan-600/30');
+                    else if (cell.terrain === 'river') innerIcon = icon('waves', 16, 'text-blue-500/40');
+                    else if (cell.terrain === 'mountain') innerIcon = icon('mountain', 16, 'text-stone-500/50');
                 } else {
                     if (infra.owner) {
                         const comp = state.competitors.find(c => c.id === infra.owner);
@@ -998,10 +1440,23 @@
                 }).join('');
             }
 
+            let mobileCovered = 0;
+            let fixedCovered = 0;
+            const totalCellsCount = GRID_SIZE * GRID_SIZE;
+            for (let id in coverageMap) {
+                if (coverageMap[id].mobile > 0) mobileCovered++;
+                if (coverageMap[id].fixed > 0) fixedCovered++;
+            }
+            const mobileCovPct = (mobileCovered / totalCellsCount) * 100;
+            const fixedCovPct = (fixedCovered / totalCellsCount) * 100;
+
             const tabs = [
+                { id: 'dashboard', icon: 'layout-dashboard', text: 'Resumen' },
                 { id: 'build', icon: 'hammer', text: 'Obras' },
                 { id: 'gov', icon: 'map', text: 'Regiones' },
+                { id: 'noc', icon: 'activity', text: 'NOC / Core' },
                 { id: 'plans', icon: 'file-text', text: 'Tarifas & IT' },
+                { id: 'space', icon: 'rocket', text: 'Espacial' },
                 { id: 'wholesale', icon: 'globe', text: 'Mercado' },
                 { id: 'finance', icon: 'bar-chart-3', text: 'Cuentas' },
                 { id: 'corp', icon: 'building-2', text: 'Corporativo' },
@@ -1016,7 +1471,74 @@
 
             let tabContentHTML = '';
             
-            if (uiState.activeTab === 'build') {
+            if (uiState.activeTab === 'dashboard') {
+                const tStats = state.noc.transitStats || { transitTraffic: 0, transitCapacity: 10000 };
+                const totalIncome = state.finances.current.incomePlans + state.finances.current.incomeContracts + state.finances.current.incomeIT + state.finances.current.incomeAds + state.finances.current.incomeWholesale + state.finances.current.incomeSpace + (state.finances.current.incomeGrants || 0);
+                
+                tabContentHTML = `<div class="space-y-4">
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-sm">
+                        <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('users', 16)} Clientes y Mercado</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                                <p class="text-[10px] text-slate-500 uppercase font-bold">Usuarios B2C</p>
+                                <p class="font-mono text-xl font-black text-blue-400">${connectedPop}</p>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                                <p class="text-[10px] text-slate-500 uppercase font-bold">Contratos B2B/G</p>
+                                <p class="font-mono text-xl font-black text-purple-400">${state.contracts.length}</p>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-700 col-span-2">
+                                <div class="flex justify-between items-center mb-1">
+                                    <p class="text-[10px] text-slate-500 uppercase font-bold">Cuota de Mercado Global</p>
+                                    <span class="text-xs font-bold text-emerald-400">${((connectedPop/Math.max(1, totalPop))*100).toFixed(1)}%</span>
+                                </div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-emerald-500 h-full" style="width: ${(connectedPop/Math.max(1, totalPop))*100}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-sm">
+                        <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('dollar-sign', 16)} Resumen Financiero</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                                <p class="text-[10px] text-slate-500 uppercase font-bold">Ingresos Brutos</p>
+                                <p class="font-mono text-lg font-black text-emerald-400">${formatCur(totalIncome)}</p>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                                <p class="text-[10px] text-slate-500 uppercase font-bold">Beneficio Neto</p>
+                                <p class="font-mono text-lg font-black ${state.finances.current.net >= 0 ? 'text-emerald-400' : 'text-red-400'}">${formatCur(state.finances.current.net)}</p>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-700 col-span-2">
+                                <p class="text-[10px] text-slate-500 uppercase font-bold">Valoración Corporativa</p>
+                                <p class="font-mono text-2xl font-black text-white">${formatCur(state.corporate.companyValuation)}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-sm">
+                            <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('activity', 16)} Red y Tránsito</h3>
+                            <p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Carga Tier-1 (Tbps)</p>
+                            <p class="font-mono text-sm font-bold ${tStats.transitTraffic > tStats.transitCapacity ? 'text-red-400' : 'text-blue-400'} mb-1">${Math.round(tStats.transitTraffic)} / ${tStats.transitCapacity}</p>
+                            <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden mb-3"><div class="${tStats.transitTraffic > tStats.transitCapacity ? 'bg-red-500' : 'bg-blue-500'} h-full" style="width: ${Math.min(100, (tStats.transitTraffic / Math.max(1, tStats.transitCapacity)) * 100)}%"></div></div>
+                            <p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Ping Global</p>
+                            <p class="font-mono text-lg font-black ${state.noc.ping < 45 ? 'text-emerald-400' : state.noc.ping < 90 ? 'text-yellow-400' : 'text-red-500'}">${state.noc.ping} ms</p>
+                        </div>
+
+                        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-sm">
+                            <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('wifi', 16)} Cobertura</h3>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold flex items-center gap-1 mb-1">${icon('smartphone', 12)} Red Móvil</p>
+                            <p class="font-mono text-sm font-bold text-blue-400 mb-1">${mobileCovPct.toFixed(1)}%</p>
+                            <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden mb-3"><div class="bg-blue-500 h-full" style="width: ${mobileCovPct}%"></div></div>
+                            <p class="text-[10px] text-slate-400 uppercase font-bold flex items-center gap-1 mb-1">${icon('router', 12)} Red Fija</p>
+                            <p class="font-mono text-sm font-bold text-emerald-400 mb-1">${fixedCovPct.toFixed(1)}%</p>
+                            <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden"><div class="bg-emerald-500 h-full" style="width: ${fixedCovPct}%"></div></div>
+                        </div>
+                    </div>
+                </div>`;
+            } else if (uiState.activeTab === 'build') {
                 tabContentHTML = `<div class="space-y-4">
                     ${state.isSpectator ? `<div class="bg-amber-900/50 p-4 rounded-xl text-amber-200 text-sm border border-amber-500/50">Modo Inversor: No puedes construir infraestructuras directamente.</div>` : 
                     Object.entries(INFRA_TYPES).map(([key, infra]) => `
@@ -1028,10 +1550,11 @@
                                 </div>
                                 <span class="font-mono text-emerald-400 text-base font-black">${formatCur(infra.cost)}</span>
                             </div>
-                            <div class="grid grid-cols-3 gap-2 text-[10px] text-center">
-                                <div class="bg-slate-900/80 p-1.5 rounded border border-slate-700/50"><p class="text-slate-500">Tecnología</p><p class="font-bold text-slate-300">${infra.tech>0?'Nivel '+infra.tech:'Comercial'}</p></div>
-                                <div class="bg-slate-900/80 p-1.5 rounded border border-slate-700/50"><p class="text-slate-500">Alcance</p><p class="font-bold text-blue-300">${infra.range} Celdas</p></div>
-                                <div class="bg-slate-900/80 p-1.5 rounded border border-slate-700/50"><p class="text-slate-500">OPEX/Mes</p><p class="font-bold text-red-400">-${formatCur(infra.rent + infra.power + infra.maint)}</p></div>
+                            <div class="grid grid-cols-4 gap-1 text-[9px] text-center">
+                                <div class="bg-slate-900/80 p-1 rounded border border-slate-700/50"><p class="text-slate-500">Tech</p><p class="font-bold text-slate-300">${infra.tech>0?'Lvl '+infra.tech:'Com'}</p></div>
+                                <div class="bg-slate-900/80 p-1 rounded border border-slate-700/50"><p class="text-slate-500">Alcance</p><p class="font-bold text-blue-300">${infra.range} Cds</p></div>
+                                <div class="bg-slate-900/80 p-1 rounded border border-slate-700/50"><p class="text-slate-500">OPEX</p><p class="font-bold text-red-400">-${formatCur(infra.rent + infra.power + infra.maint)}</p></div>
+                                <div class="bg-slate-900/80 p-1 rounded border border-slate-700/50"><p class="text-slate-500">Capac.</p><p class="font-bold text-emerald-400">${infra.cap > 0 ? '+'+infra.cap : '-'}</p></div>
                             </div>
                         </button>
                     `).join('')}
@@ -1046,8 +1569,109 @@
                         </div>
                     </button>` : ''}
                 </div>`;
+            } else if (uiState.activeTab === 'noc') {
+                tabContentHTML = `<div class="space-y-4">
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-5 rounded-xl border border-slate-700 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-2 -top-2 opacity-10">${icon('router', 80)}</div>
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Latencia Global (Ping)</h3>
+                        <p class="font-mono text-4xl font-black ${state.noc.ping < 45 ? 'text-emerald-400' : state.noc.ping < 90 ? 'text-yellow-400' : 'text-red-500'} mb-2">${state.noc.ping} <span class="text-lg">ms</span></p>
+                        <p class="text-[10px] text-slate-300">Si el ping supera los 45ms fallan los SLA Críticos (99.99%). Si supera 90ms fallan los demás contratos B2B. Los Centros de Datos reducen el ping base.</p>
+                    </div>
+                    <h3 class="text-xs font-bold text-slate-200 mt-2 border-b border-slate-700 pb-2">Capacidad y Congestión por Zona</h3>
+                    ${ZONES.map(z => {
+                        const load = state.noc.loads[z.id] || 0;
+                        const cap = state.noc.capacities ? state.noc.capacities[z.id] : state.noc.backbone[z.id].cap;
+                        const level = state.noc.backbone[z.id].level;
+                        const pct = Math.min(100, (load / cap) * 100);
+                        const cost = 120000 * Math.pow(2, level - 1);
+                        const isOverloaded = load > cap;
+                        return `<div class="bg-slate-800 p-3 rounded-xl border ${isOverloaded ? 'border-red-500 bg-red-950/20' : 'border-slate-700'}"><div class="flex justify-between items-center mb-2"><span class="font-bold text-xs text-slate-200">${z.name} <span class="text-slate-500 font-normal">(Troncal Lvl ${level})</span></span><span class="text-[10px] ${isOverloaded ? 'text-red-400 font-bold animate-pulse' : 'text-slate-400'}">${load} / ${cap} Tbps</span></div><div class="h-2 w-full bg-slate-900 rounded-full overflow-hidden mb-3"><div class="h-full ${pct > 90 ? 'bg-red-500' : pct > 70 ? 'bg-yellow-500' : 'bg-emerald-500'}" style="width: ${pct}%"></div></div>${!state.isSpectator ? `<button onclick="dispatch({type: 'UPGRADE_BACKBONE', payload: ${z.id}})" ${state.money < cost ? 'disabled' : ''} class="w-full py-2 bg-slate-700 hover:bg-slate-600 disabled:opacity-50 text-[10px] font-bold rounded transition-colors text-white flex items-center justify-center gap-2">${icon('zap', 12)} Ampliar Troncal (${formatCur(cost)})</button>` : ''}</div>`;
+                    }).join('')}
+                    
+                    <h3 class="text-xs font-bold text-slate-200 mt-4 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('globe-2', 16)} Expansión Global Tier-1</h3>
+                    <div class="space-y-2 mt-2">
+                        <div class="bg-slate-800 p-3 rounded-xl border ${state.noc.global.ixp ? 'border-emerald-500' : 'border-slate-700'}">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold text-sm text-slate-200">Conexión a IXP Regional</span>
+                                ${state.noc.global.ixp ? `<span class="text-[10px] bg-emerald-900/50 text-emerald-400 border border-emerald-700 px-2 py-0.5 rounded font-bold uppercase">Conectado</span>` : `<button onclick="dispatch({type: 'BUY_GLOBAL_UPGRADE', payload: 'ixp'})" ${state.money < 1500000 ? 'disabled' : ''} class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold py-1 px-3 rounded shadow-lg transition-colors disabled:opacity-50">Comprar ($1.5M)</button>`}
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-tight mt-1">Punto de Intercambio de Internet. Reduce los costos variables de tránsito de Datos e Internet un 30%.</p>
+                        </div>
+                        <div class="bg-slate-800 p-3 rounded-xl border ${state.noc.global.nationalFiber ? 'border-emerald-500' : 'border-slate-700'}">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold text-sm text-slate-200">Anillo de Fibra Nacional</span>
+                                ${state.noc.global.nationalFiber ? `<span class="text-[10px] bg-emerald-900/50 text-emerald-400 border border-emerald-700 px-2 py-0.5 rounded font-bold uppercase">Construido</span>` : `<button onclick="dispatch({type: 'BUY_GLOBAL_UPGRADE', payload: 'nationalFiber'})" ${state.money < 5000000 || !state.noc.global.ixp ? 'disabled' : ''} class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold py-1 px-3 rounded shadow-lg transition-colors disabled:opacity-50">Construir ($5M)</button>`}
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-tight mt-1">Reducción drástica de latencia (-15ms Ping). Reduce masivamente las caídas de SLA. Requiere IXP previo.</p>
+                        </div>
+                        <div class="bg-slate-800 p-3 rounded-xl border ${state.noc.global.submarineCable ? 'border-emerald-500' : 'border-slate-700'}">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-bold text-sm text-slate-200">Cable Submarino Transoceánico</span>
+                                ${state.noc.global.submarineCable ? `<span class="text-[10px] bg-emerald-900/50 text-emerald-400 border border-emerald-700 px-2 py-0.5 rounded font-bold uppercase">Operativo</span>` : `<button onclick="dispatch({type: 'BUY_GLOBAL_UPGRADE', payload: 'submarineCable'})" ${state.money < 20000000 || !state.noc.global.nationalFiber ? 'disabled' : ''} class="bg-purple-600 hover:bg-purple-500 text-white text-[10px] font-bold py-1 px-3 rounded shadow-lg transition-colors disabled:opacity-50">Desplegar ($20M)</button>`}
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-tight mt-1">Vende tránsito de Datos Internacional (+$500k/mes mayorista) y reduce costos de Roaming al 50%. Requiere Fibra Nacional.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs font-bold text-slate-200 mt-4 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('git-merge', 16)} Enrutamiento BGP y Tránsito (AS${state.noc.bgp.asn})</h3>
+                    <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 mt-2">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <span class="font-bold text-sm text-slate-200">Tránsito IP (Tier-1)</span>
+                                <p class="text-[9px] text-slate-400">Capacidad: ${state.noc.transitStats.transitCapacity} Tbps • En uso: ${Math.round(state.noc.transitStats.transitTraffic)} Tbps</p>
+                            </div>
+                            ${!state.isSpectator ? `<button onclick="dispatch({type: 'BUY_TRANSIT_PORT'})" ${state.money < 50000 ? 'disabled' : ''} class="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-2 py-1.5 rounded text-[10px] font-bold text-white transition-colors">Añadir Puerto ($50k)</button>` : ''}
+                        </div>
+                        <div class="h-2 w-full bg-slate-900 rounded-full overflow-hidden mb-3"><div class="h-full ${state.noc.transitStats.transitTraffic > state.noc.transitStats.transitCapacity ? 'bg-red-500' : state.noc.transitStats.transitTraffic > state.noc.transitStats.transitCapacity * 0.8 ? 'bg-yellow-500' : 'bg-blue-500'}" style="width: ${Math.min(100, (state.noc.transitStats.transitTraffic / Math.max(1, state.noc.transitStats.transitCapacity)) * 100)}%"></div></div>
+                        
+                        <p class="text-[10px] text-slate-400 uppercase font-bold mt-1 mb-1">Acuerdos de Peering (Offload: ${Math.round(state.noc.transitStats.peeringOffload * 100)}%)</p>
+                        <div class="grid grid-cols-2 gap-2 mb-3">
+                            <button onclick="dispatch({type: 'SETUP_PEERING', payload: {type: 'public', cost: 150000}})" ${state.noc.peering.public ? 'disabled' : ''} class="${state.noc.peering.public ? 'bg-emerald-900/50 border border-emerald-500 text-emerald-400' : (!state.noc.global.ixp || state.money < 150000 ? 'bg-slate-700/50 text-slate-500 disabled' : 'bg-slate-700 hover:bg-slate-600 text-white border border-slate-600')} p-2 rounded text-[10px] font-bold transition-colors">
+                                ${state.noc.peering.public ? 'Peering Público OK' : 'Peering Público ($150k)'}
+                            </button>
+                            <button onclick="dispatch({type: 'SETUP_PEERING', payload: {type: 'cdn', cost: 400000}})" ${state.noc.peering.cdn ? 'disabled' : ''} class="${state.noc.peering.cdn ? 'bg-emerald-900/50 border border-emerald-500 text-emerald-400' : (!state.noc.global.ixp || state.money < 400000 ? 'bg-slate-700/50 text-slate-500 disabled' : 'bg-slate-700 hover:bg-slate-600 text-white border border-slate-600')} p-2 rounded text-[10px] font-bold transition-colors">
+                                ${state.noc.peering.cdn ? 'Peering CDN OK' : 'Peering Directo CDN ($400k)'}
+                            </button>
+                        </div>
+                        ${!state.noc.global.ixp ? '<p class="text-[9px] text-yellow-500 italic mt-0.5 mb-2">* El Peering requiere conexión a un IXP Regional.</p>' : ''}
+                        
+                        <p class="text-[10px] text-slate-400 uppercase font-bold mt-1 mb-1 border-t border-slate-700 pt-2">Políticas BGP</p>
+                        <div class="flex gap-1">
+                            <button onclick="dispatch({type: 'SET_BGP_POLICY', payload: 'cost'})" class="flex-1 py-1.5 rounded text-[9px] font-bold transition-colors ${state.noc.bgp.policy === 'cost' ? 'bg-emerald-600 text-white' : 'bg-slate-900 text-slate-400 hover:bg-slate-700 border border-slate-700'}">Menor Costo<br><span class="font-normal text-[8px]">+Peering +Ping</span></button>
+                            <button onclick="dispatch({type: 'SET_BGP_POLICY', payload: 'balanced'})" class="flex-1 py-1.5 rounded text-[9px] font-bold transition-colors ${state.noc.bgp.policy === 'balanced' ? 'bg-blue-600 text-white' : 'bg-slate-900 text-slate-400 hover:bg-slate-700 border border-slate-700'}">Balanceado<br><span class="font-normal text-[8px]">Ruta Estándar</span></button>
+                            <button onclick="dispatch({type: 'SET_BGP_POLICY', payload: 'latency'})" class="flex-1 py-1.5 rounded text-[9px] font-bold transition-colors ${state.noc.bgp.policy === 'latency' ? 'bg-purple-600 text-white' : 'bg-slate-900 text-slate-400 hover:bg-slate-700 border border-slate-700'}">Menor Latencia<br><span class="font-normal text-[8px]">+Tier1 -Ping</span></button>
+                        </div>
+                    </div>
+                </div>`;
             } else if (uiState.activeTab === 'gov') {
                 tabContentHTML = `<div class="space-y-4">
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-4 rounded-xl border border-slate-700 shadow-xl relative overflow-hidden mb-4">
+                        <div class="absolute -right-4 -top-4 opacity-10 text-slate-100">${icon('scale', 100)}</div>
+                        <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2 relative z-10">Ministerio y Regulador Nacional</h3>
+                        
+                        <div class="flex justify-between items-center bg-slate-950/50 p-2 rounded mb-2 relative z-10 border border-slate-800">
+                            <div>
+                                <p class="text-xs font-bold text-slate-300">Licencia de Operador Nacional</p>
+                                <p class="text-[9px] text-slate-500">Permite construir Core (Datacenters/Centrales)</p>
+                            </div>
+                            ${state.legal.nationalLicense ? `<span class="text-[10px] bg-emerald-900/50 text-emerald-400 border border-emerald-700 px-2 py-1 rounded font-bold uppercase">Concedida</span>` : `<button onclick="dispatch({type: 'BUY_NATIONAL_LICENSE'})" ${state.money < 500000 ? 'disabled' : ''} class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold py-1.5 px-3 rounded shadow-lg transition-colors disabled:opacity-50">Comprar ($500k)</button>`}
+                        </div>
+
+                        <div class="flex justify-between items-center bg-slate-950/50 p-2 rounded mb-2 relative z-10 border border-slate-800">
+                            <div>
+                                <p class="text-xs font-bold text-slate-300">Privacidad y Compliance (GDPR)</p>
+                                <p class="text-[9px] text-slate-500">Reduce abandono, previene multas masivas. Coste: $0.5/usr.</p>
+                            </div>
+                            <button onclick="dispatch({type: 'TOGGLE_DATA_PROTECTION'})" class="w-10 h-5 rounded-full transition-colors relative ${state.legal.dataProtection ? 'bg-emerald-500' : 'bg-slate-600'}"><div class="w-3 h-3 bg-white rounded-full absolute top-1 transition-all ${state.legal.dataProtection ? 'left-6' : 'left-1'}"></div></button>
+                        </div>
+
+                        <div class="flex justify-between items-center bg-slate-950/50 p-2 rounded relative z-10 border border-slate-800">
+                            <div><p class="text-xs font-bold text-slate-300">Impuesto de Sociedades</p><p class="text-[9px] text-slate-500">Aplicado sobre los beneficios netos (EBITDA positivo)</p></div>
+                            <span class="font-mono text-red-400 font-bold">${state.legal.taxRate * 100}%</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1 border-b border-slate-800 pb-1 mb-3 mt-4">Licencias Regionales y Cabildeo</h3>
                     ${state.municipalities.map(mun => `
                         <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 relative overflow-hidden">
                             ${mun.subsidiaryActive ? `<div class="absolute top-0 right-0 bg-blue-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl">FILIAL LOCAL</div>` : ''}
@@ -1070,6 +1694,32 @@
                             ${state.settings.competitionEnabled ? `<div class="bg-slate-900 p-2 rounded-lg border border-slate-700 text-xs flex justify-between items-center"><span class="text-slate-400 flex items-center gap-1">${icon('target', 14)} Dominio Rival:</span><span class="font-bold text-red-400">${mun.compShare}% mercado</span></div>` : ''}
                         </div>
                     `).join('')}
+                    
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 mt-4 mb-4">
+                        <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('file-signature', 16)} Licitaciones Públicas</h3>
+                        ${state.tenders.length === 0 ? '<p class="text-[10px] text-slate-500 italic">No hay licitaciones disponibles en este momento.</p>' : ''}
+                        <div class="space-y-3">
+                            ${state.tenders.map(t => `
+                                <div class="bg-slate-900 p-3 rounded-lg border ${t.status === 'active' ? 'border-blue-500/50' : 'border-slate-700'}">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-200">Cobertura: ${ZONES.find(z => z.id === t.zoneId).name}</p>
+                                            <p class="text-[9px] text-slate-400 mt-0.5">Llevar red Tech Lvl ${t.reqTech} a ${t.reqCount} viviendas.</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="font-mono text-emerald-400 font-bold text-sm">+${formatCur(t.reward)}</p>
+                                            <p class="text-[9px] text-slate-500">${t.status === 'active' ? 'Restan: ' + t.deadline + 'm' : 'Expira en ' + t.deadline + 'm'}</p>
+                                        </div>
+                                    </div>
+                                    ${t.status === 'active' ? `
+                                        <div class="mt-2"><div class="flex justify-between text-[9px] mb-1"><span class="text-slate-400">Progreso de Cobertura</span><span class="text-blue-400 font-bold">${t.currentCount || 0} / ${t.reqCount}</span></div><div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden"><div class="bg-blue-500 h-full" style="width: ${Math.min(100, ((t.currentCount || 0) / t.reqCount) * 100)}%"></div></div></div>
+                                    ` : `
+                                        <button onclick="dispatch({type: 'ACCEPT_TENDER', payload: '${t.id}'})" class="w-full py-1.5 mt-2 bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-300 border border-slate-600 rounded transition-colors">Aceptar Licitación</button>
+                                    `}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
                 </div>`;
             } else if (uiState.activeTab === 'plans') {
                 tabContentHTML = `<div class="space-y-6">
@@ -1079,25 +1729,32 @@
                         <input id="plan-name" required placeholder="Nombre Comercial (Ej: Fibra 1Gbps)" value="${uiState.newPlan.name}" oninput="updatePlanFormSilent('name', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2.5 rounded-lg text-sm text-white mb-3 focus:ring-1 focus:ring-emerald-500 outline-none" />
                         
                         <div class="grid grid-cols-2 gap-3 mb-3 text-xs">
-                            <div><label class="text-[10px] text-slate-500 uppercase block mb-1">Tipo de Red</label><select onchange="updatePlanFormSelect('type', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-white outline-none"><option value="mobile" ${uiState.newPlan.type === 'mobile' ? 'selected' : ''}>Móvil Celular</option><option value="fixed" ${uiState.newPlan.type === 'fixed' ? 'selected' : ''}>Fija (Hogar)</option></select></div>
+                            <div><label class="text-[10px] text-slate-500 uppercase block mb-1">Tipo de Red</label><select onchange="updatePlanFormSelect('type', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-white outline-none"><option value="mobile" ${uiState.newPlan.type === 'mobile' ? 'selected' : ''}>Móvil Celular</option><option value="fixed" ${uiState.newPlan.type === 'fixed' ? 'selected' : ''}>Fija (Hogar)</option><option value="convergent" ${uiState.newPlan.type === 'convergent' ? 'selected' : ''}>Convergente (Móvil+Fijo)</option></select></div>
                             <div><label class="text-[10px] text-slate-500 uppercase block mb-1">Zona</label><select onchange="updatePlanFormSelect('zoneId', this.value)" class="w-full bg-slate-900 border border-slate-700 p-2 rounded text-white outline-none"><option value="all" ${uiState.newPlan.zoneId === 'all' ? 'selected' : ''}>Nacional</option>${ZONES.map(z => `<option value="${z.id}" ${uiState.newPlan.zoneId == z.id ? 'selected' : ''}>${z.name}</option>`).join('')}</select></div>
                         </div>
 
                         <div class="mb-4 bg-slate-900 p-3 rounded-lg border border-slate-700">
                             <label class="text-[10px] text-slate-500 uppercase font-bold block mb-2">Servicios Incluidos</label>
-                            ${uiState.newPlan.type === 'mobile' ? `
-                            <div class="grid grid-cols-2 gap-2 text-xs">
+                            ${uiState.newPlan.type === 'mobile' || uiState.newPlan.type === 'convergent' ? `
+                            <div class="grid grid-cols-2 gap-2 text-xs mb-2">
                                 <label class="flex items-center gap-2 text-slate-300"><input type="checkbox" ${uiState.newPlan.sVoice ? 'checked' : ''} onchange="updatePlanFormCheckbox('sVoice')" class="rounded accent-emerald-500"/> Voz (${formatCur(SERVICE_COSTS.voice)})</label>
                                 <label class="flex items-center gap-2 text-slate-300"><input type="checkbox" ${uiState.newPlan.sSms ? 'checked' : ''} onchange="updatePlanFormCheckbox('sSms')" class="rounded accent-emerald-500"/> SMS (${formatCur(SERVICE_COSTS.sms)})</label>
                                 <label class="flex items-center gap-2 text-blue-300"><input type="checkbox" ${uiState.newPlan.sData ? 'checked' : ''} onchange="updatePlanFormCheckbox('sData')" class="rounded accent-emerald-500"/> Datos (${formatCur(SERVICE_COSTS.data)})</label>
                                 <label class="flex items-center gap-2 text-purple-300"><input type="checkbox" ${uiState.newPlan.sRoaming ? 'checked' : ''} onchange="updatePlanFormCheckbox('sRoaming')" class="rounded accent-emerald-500"/> Roaming (${formatCur(SERVICE_COSTS.roaming)})</label>
-                            </div>` : `<label class="flex items-center gap-2 text-slate-300 text-xs"><input type="checkbox" ${uiState.newPlan.sInt ? 'checked' : ''} onchange="updatePlanFormCheckbox('sInt')" class="rounded accent-emerald-500"/> Internet Banda Ancha (${formatCur(SERVICE_COSTS.internet)})</label>`}
+                            </div>` : ''}
+                            ${uiState.newPlan.type === 'fixed' || uiState.newPlan.type === 'convergent' ? `
+                            <label class="flex items-center gap-2 text-slate-300 text-xs"><input type="checkbox" ${uiState.newPlan.sInt ? 'checked' : ''} onchange="updatePlanFormCheckbox('sInt')" class="rounded accent-emerald-500"/> Internet Banda Ancha (${formatCur(SERVICE_COSTS.internet)})</label>
+                            ` : ''}
                             
                             <div class="grid grid-cols-2 gap-2 text-xs mt-2 pt-2 border-t border-slate-800">
                                 <label class="flex items-center gap-2 ${state.contentLicenses.tv ? 'text-amber-300' : 'text-slate-600'}"><input type="checkbox" ${uiState.newPlan.sTv ? 'checked' : ''} onchange="updatePlanFormCheckbox('sTv')" class="rounded accent-emerald-500" ${!state.contentLicenses.tv ? 'disabled' : ''}/> TV Satelital (${formatCur(SERVICE_COSTS.tv)})</label>
                                 <label class="flex items-center gap-2 ${state.contentLicenses.streaming ? 'text-rose-300' : 'text-slate-600'}"><input type="checkbox" ${uiState.newPlan.sStream ? 'checked' : ''} onchange="updatePlanFormCheckbox('sStream')" class="rounded accent-emerald-500" ${!state.contentLicenses.streaming ? 'disabled' : ''}/> Streaming VOD (${formatCur(SERVICE_COSTS.streaming)})</label>
                             </div>
-                            ${(!state.contentLicenses.tv || !state.contentLicenses.streaming) ? '<p class="text-[9px] text-slate-500 italic mt-1">*Compra licencias en la sección inferior para activar</p>' : ''}
+                            <div class="grid grid-cols-2 gap-2 text-xs mt-2 pt-2 border-t border-slate-800">
+                                <label class="flex items-center gap-2 ${state.satellites.length > 0 ? 'text-cyan-300' : 'text-slate-600'}"><input type="checkbox" ${uiState.newPlan.sSatInt ? 'checked' : ''} onchange="updatePlanFormCheckbox('sSatInt')" class="rounded accent-emerald-500" ${state.satellites.length === 0 ? 'disabled' : ''}/> Internet Satelital (${formatCur(SERVICE_COSTS.sat_internet)})</label>
+                                <label class="flex items-center gap-2 ${state.satellites.length > 0 ? 'text-pink-300' : 'text-slate-600'}"><input type="checkbox" ${uiState.newPlan.sSatTv ? 'checked' : ''} onchange="updatePlanFormCheckbox('sSatTv')" class="rounded accent-emerald-500" ${state.satellites.length === 0 ? 'disabled' : ''}/> TV Satelital Prm (${formatCur(SERVICE_COSTS.sat_tv)})</label>
+                            </div>
+                            ${(!state.contentLicenses.tv || !state.contentLicenses.streaming || state.satellites.length === 0) ? '<p class="text-[9px] text-slate-500 italic mt-1">*Requiere infraestructura satelital o licencias correspondientes.</p>' : ''}
                         </div>
 
                         <div class="flex gap-3 mb-4 items-end">
@@ -1112,7 +1769,7 @@
                         ${state.plans.length === 0 ? '<p class="text-xs text-slate-600 italic">No hay planes activos.</p>' : state.plans.map(plan => {
                             const perf = state.finances.planPerformance[plan.id];
                             return `<div class="bg-slate-800 p-3 rounded-xl border border-slate-700 relative">
-                                <div class="absolute top-0 right-0 px-2 py-0.5 text-[9px] font-bold uppercase rounded-bl text-white ${plan.type==='mobile'?'bg-blue-600':'bg-orange-600'}">${plan.type === 'mobile' ? 'Móvil' : 'Fijo'}</div>
+                                <div class="absolute top-0 right-0 px-2 py-0.5 text-[9px] font-bold uppercase rounded-bl text-white ${plan.type==='mobile'?'bg-blue-600':plan.type==='fixed'?'bg-orange-600':'bg-purple-600'}">${plan.type === 'mobile' ? 'Móvil' : plan.type === 'fixed' ? 'Fijo' : 'Convergente'}</div>
                                 <div class="flex justify-between items-start mb-2 pr-12"><p class="font-bold text-sm text-slate-100 truncate">${plan.name}</p><span class="font-mono font-black text-emerald-400">${formatCur(plan.price)}</span></div>
                                 <div class="grid grid-cols-3 gap-2 border-t border-slate-700 pt-2 mt-1">
                                     <div class="text-center"><p class="text-[9px] text-slate-500 uppercase">Clientes</p><p class="font-bold text-xs text-slate-200">${perf?.subs || 0}</p></div>
@@ -1153,7 +1810,9 @@
                             <div class="flex justify-between text-slate-300 pl-2"><span>SLA Corporativo/B2G</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeContracts)}</span></div>
                             <div class="flex justify-between text-slate-300 pl-2"><span>Servicios IT (Cloud/CDN)</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeIT)}</span></div>
                             <div class="flex justify-between text-slate-300 pl-2"><span>Dividendos Inversiones</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeFinancial)}</span></div>
+                            <div class="flex justify-between text-slate-300 pl-2"><span>Subsidios y Licitaciones</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeGrants || 0)}</span></div>
                             <div class="flex justify-between text-slate-300 pl-2"><span>Alquiler de Red (Mayorista)</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeWholesale)}</span></div>
+                            <div class="flex justify-between text-slate-300 pl-2"><span>Alquiler Satelital B2B</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeSpace)}</span></div>
                             ${state.settings.smsAdsEnabled ? `<div class="flex justify-between text-slate-300 pl-2"><span>Monetización Ads</span><span class="font-mono text-emerald-400">+${formatCur(state.finances.current.incomeAds)}</span></div>` : ''}
                         </div>
                         <div class="space-y-1 mb-3 text-xs">
@@ -1170,11 +1829,28 @@
                         <div class="space-y-1 mb-3 text-xs">
                             <p class="text-[10px] font-bold text-yellow-500 uppercase mb-1">Otros / Extraordinarios</p>
                             <div class="flex justify-between text-slate-400 pl-2"><span>Penalizaciones SLA</span><span class="font-mono text-red-400">-${formatCur(state.finances.current.fines)}</span></div>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Sanciones Legales/Privacidad</span><span class="font-mono text-red-400">-${formatCur(state.finances.current.legalFines || 0)}</span></div>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Nómina Empleados</span><span class="font-mono text-red-400">-${formatCur(state.finances.current.salaries || 0)}</span></div>
+                            <div class="flex justify-between text-slate-400 pl-2"><span>Intereses Deuda (3%)</span><span class="font-mono text-red-400">-${formatCur(state.finances.current.interest || 0)}</span></div>
                         </div>
                         ${state.finances.current.fines > 0 ? `<button onclick="dispatch({type: 'CANCEL_FAILING_CONTRACTS'})" class="w-full py-2 bg-red-900/50 hover:bg-red-800 border border-red-700 text-red-200 text-xs font-bold rounded mb-3 flex items-center justify-center gap-2">${icon('alert-triangle', 14)} Cancelar Contratos con Multas</button>` : ''}
+                        <div class="space-y-1 mb-3 text-xs border-t border-slate-700 pt-2 mt-2">
+                            <div class="flex justify-between text-slate-300 font-bold pl-2"><span>Impuestos Corporativos (20%)</span><span class="font-mono text-red-500">-${formatCur(state.finances.current.taxes || 0)}</span></div>
+                        </div>
                         <div class="flex justify-between items-center pt-3 border-t border-slate-700">
                             <span class="font-black text-sm text-slate-200 uppercase">EBITDA</span>
                             <span class="font-mono text-xl font-black ${state.finances.current.net >= 0 ? 'text-emerald-500' : 'text-red-500'}">${state.finances.current.net >= 0 ? '+' : ''}${formatCur(state.finances.current.net)}</span>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 mt-4">
+                        <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2">Préstamos e Inversión</h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs text-slate-400 uppercase font-bold">Deuda Activa</span>
+                            <span class="font-mono text-lg font-black text-red-400">${formatCur(state.corporate.loan || 0)}</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="dispatch({type: 'TAKE_LOAN', payload: 1000000})" class="bg-red-900/50 hover:bg-red-800 border border-red-700 py-2 rounded text-xs font-bold text-red-300 transition-colors">Pedir $1M</button>
+                            <button onclick="dispatch({type: 'REPAY_LOAN', payload: 1000000})" ${!state.corporate.loan || state.money <= 0 ? 'disabled' : ''} class="bg-emerald-900/50 hover:bg-emerald-800 border border-emerald-700 py-2 rounded text-xs font-bold text-emerald-300 transition-colors disabled:opacity-50">Abonar hasta $1M</button>
                         </div>
                     </div>
                     <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 h-64 flex flex-col">
@@ -1183,6 +1859,52 @@
                             ${state.logs.map((log) => `<div class="text-[10px] p-1.5 rounded border ${log.type === 'error' ? 'bg-red-950/30 border-red-900/50 text-red-300' : log.type === 'success' ? 'bg-emerald-950/30 border-emerald-900/50 text-emerald-300' : log.type === 'warning' ? 'bg-yellow-950/30 border-yellow-900/50 text-yellow-300' : 'bg-slate-900/50 border-slate-700 text-slate-400'}"><span class="opacity-50 font-mono mr-1">[M${log.month}]</span> ${log.msg}</div>`).join('')}
                         </div>
                     </div>
+                </div>`;
+            } else if (uiState.activeTab === 'space') {
+                tabContentHTML = `<div class="space-y-4">
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-5 rounded-xl border border-slate-700 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 text-cyan-500/10">${icon('rocket', 100)}</div>
+                        <h3 class="text-lg font-black text-cyan-400 mb-2 relative z-10">Programa Espacial</h3>
+                        <p class="text-xs text-slate-300 mb-4 relative z-10">Lanza satélites de comunicaciones para ofrecer cobertura global, vender servicios de TV/Internet satelital y alquilar capacidad a terceros.</p>
+                        ${!state.isSpectator ? `
+                        <button onclick="dispatch({type: 'LAUNCH_SATELLITE'})" ${state.money < 2500000 ? 'disabled' : ''} class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-lg shadow-lg shadow-cyan-900/50 transition-colors disabled:opacity-50 flex justify-between px-4 items-center">
+                            <span>Lanzar Satélite Órbita Baja</span>
+                            <span class="font-mono text-cyan-200">${formatCur(2500000)}</span>
+                        </button>
+                        ` : '<p class="text-xs text-amber-300">Modo inversor: No puedes realizar lanzamientos.</p>'}
+                    </div>
+                    ${state.satellites.length > 0 ? `
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1 border-b border-slate-800 pb-1 flex items-center gap-2">${icon('satellite', 14)} Satélites en Órbita</h3>
+                        ${state.satellites.map(sat => {
+                            const activeContracts = state.satelliteContracts.filter(c => c.satId === sat.id);
+                            const capacityUsed = activeContracts.length;
+                            return `<div class="bg-slate-800 p-3 rounded-xl border border-slate-700 relative">
+                                <div class="flex justify-between items-center mb-2 border-b border-slate-700 pb-2">
+                                    <p class="font-bold text-sm text-cyan-300 flex items-center gap-2">${icon('satellite', 16)} ${sat.name}</p>
+                                    <span class="text-[10px] bg-slate-900 px-2 py-1 rounded border border-slate-600">Capacidad: ${capacityUsed}/${sat.capacity}</span>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="text-[10px] text-slate-500 uppercase font-bold block mb-1">Apuntar a (Foco de Señal)</label>
+                                    <select onchange="dispatch({type: 'CHANGE_SAT_TARGET', payload: {satId: '${sat.id}', zoneId: this.value === 'all' ? 'all' : Number(this.value)}})" class="w-full bg-slate-900 border border-slate-600 text-xs p-2 rounded text-white outline-none">
+                                        <option value="all" ${sat.targetZone === 'all' ? 'selected' : ''}>Cobertura Nacional (Potencia Media)</option>
+                                        ${ZONES.map(z => `<option value="${z.id}" ${sat.targetZone == z.id ? 'selected' : ''}>${z.name} (Alta Potencia)</option>`).join('')}
+                                    </select>
+                                </div>
+                                ${activeContracts.length > 0 ? `<p class="text-[9px] text-slate-500 uppercase font-bold mb-1">Contratos B2B Activos</p><div class="space-y-1 mb-2">${activeContracts.map(c => `<div class="flex justify-between text-[10px] bg-slate-950/50 p-1.5 rounded border border-slate-700"><span class="text-slate-300">${c.companyName} <span class="text-slate-500">(${c.monthsLeft}m)</span></span><span class="text-emerald-400 font-mono">+${formatCur(c.amount)}/m</span></div>`).join('')}</div>` : '<p class="text-[10px] text-slate-500 italic mb-2">Sin contratos de alquiler activos.</p>'}
+                            </div>`;
+                        }).join('')}
+                    </div>
+                    ` : ''}
+                    ${state.satelliteOffers.length > 0 ? `
+                    <div class="space-y-3 mt-4">
+                        <h3 class="text-xs font-bold text-amber-400 uppercase tracking-widest pl-1 border-b border-slate-800 pb-1 flex items-center gap-2">${icon('mail', 14)} Ofertas de Alquiler</h3>
+                        ${state.satelliteOffers.map(offer => {
+                            const sat = state.satellites.find(s => s.id === offer.satId);
+                            return `<div class="bg-amber-950/20 border border-amber-900/50 p-3 rounded-xl"><p class="text-xs font-bold text-slate-200 mb-1">${offer.companyName}</p><p class="text-[10px] text-slate-400 mb-2">Desea alquilar capacidad en <strong class="text-cyan-300">${sat ? sat.name : 'Satélite'}</strong> por ${offer.duration} meses.</p><p class="font-mono text-emerald-400 text-sm font-bold mb-3">${formatCur(offer.amount)} <span class="text-[10px] font-sans text-slate-500 font-normal">/mes</span></p><div class="flex gap-2"><button onclick="dispatch({type: 'REJECT_SAT_OFFER', payload: {offerId: '${offer.id}'}})" class="flex-1 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-bold rounded transition-colors">Rechazar</button><button onclick="dispatch({type: 'ACCEPT_SAT_OFFER', payload: {offerId: '${offer.id}'}})" class="flex-1 py-1.5 bg-amber-600 hover:bg-amber-500 text-white text-[10px] font-bold rounded transition-colors">Aceptar Contrato</button></div></div>`;
+                        }).join('')}
+                    </div>
+                    ` : ''}
                 </div>`;
             } else if (uiState.activeTab === 'wholesale') {
                 tabContentHTML = `<div class="space-y-4">
@@ -1204,9 +1926,10 @@
                                     </div>
                                     
                                     <div class="bg-slate-950 p-2 rounded mb-2 text-[10px]">
-                                        <div class="flex justify-between mb-1"><span class="text-slate-500">Licencias en:</span> <span class="text-slate-300">${comp.licenses.length} Zonas</span></div>
+                                        <div class="flex justify-between mb-1"><span class="text-slate-500">Perfil IA:</span> <span class="text-slate-300 capitalize">${comp.style}</span></div>
                                         <div class="flex justify-between mb-1"><span class="text-slate-500">Plan Base:</span> <span class="text-emerald-400">${formatCur(comp.plans[0].price)}</span></div>
-                                        <div class="flex justify-between"><span class="text-slate-500">Tus Acciones:</span> <span class="text-blue-400 font-bold">${comp.sharesOwned}%</span></div>
+                                        <div class="flex justify-between"><span class="text-slate-500">Tus Acciones:</span> <span class="text-blue-400 font-bold">${comp.sharesOwned}% ${comp.sharesOwned >= 51 ? '(Mando)' : ''}</span></div>
+                                        ${comp.activeOffers && Object.keys(comp.activeOffers).length > 0 ? `<div class="text-red-400 font-bold animate-pulse mt-2 border-t border-slate-800 pt-1">¡Guerra de Precios Activa!</div>` : ''}
                                     </div>
 
                                     <div class="grid grid-cols-2 gap-2">
@@ -1277,6 +2000,87 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 mt-4">
+                        <h3 class="text-sm font-bold text-slate-200 mb-3 border-b border-slate-700 pb-2 flex items-center gap-2">${icon('users', 16)} Recursos Humanos y Productividad</h3>
+                        <div class="space-y-3">
+                            ${[
+                                { id: 'technicians', name: 'Técnicos', desc: 'Abaratan resolución de averías' },
+                                { id: 'support', name: 'Soporte al Cliente', desc: 'Reducen la tasa de abandono (Churn)' },
+                                { id: 'engineers', name: 'Ingenieros NOC', desc: 'Protegen el SLA y arreglan caídas remotas' }
+                            ].map(role => `
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <div>
+                                            <p class="text-xs font-bold text-slate-200">${role.name}</p>
+                                            <p class="text-[9px] text-slate-500">${role.desc}</p>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <button onclick="dispatch({type: 'FIRE_EMP', payload: '${role.id}'})" class="w-5 h-5 bg-slate-800 border border-slate-600 rounded hover:bg-red-600 text-white font-bold flex items-center justify-center transition-colors">-</button>
+                                            <span class="font-mono text-sm font-bold text-white w-4 text-center">${state.hr[role.id].count}</span>
+                                            <button onclick="dispatch({type: 'HIRE_EMP', payload: '${role.id}'})" class="w-5 h-5 bg-slate-800 border border-slate-600 rounded hover:bg-emerald-600 text-white font-bold flex items-center justify-center transition-colors">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between items-center border-t border-slate-800 pt-2">
+                                        <div class="flex items-center gap-1">
+                                            <button onclick="dispatch({type: 'ADJUST_SALARY', payload: {role: '${role.id}', amount: -100}})" class="text-slate-500 hover:text-red-400 px-1">-</button>
+                                            <span class="font-mono text-[10px] text-emerald-400">${formatCur(state.hr[role.id].salary)}/m</span>
+                                            <button onclick="dispatch({type: 'ADJUST_SALARY', payload: {role: '${role.id}', amount: 100}})" class="text-slate-500 hover:text-emerald-400 px-1">+</button>
+                                        </div>
+                                        <div class="flex items-center gap-2 w-1/2">
+                                            <span class="text-[9px] text-slate-500 uppercase">Prod.</span>
+                                            <div class="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                                <div class="h-full ${state.hr[role.id].prod >= 100 ? 'bg-blue-500' : 'bg-red-500'}" style="width: ${Math.min(100, (state.hr[role.id].prod / 150) * 100)}%"></div>
+                                            </div>
+                                            <span class="font-mono text-[10px] ${state.hr[role.id].prod >= 100 ? 'text-blue-400' : 'text-red-400'} font-bold">${state.hr[role.id].prod}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>`;
+            } else if (uiState.activeTab === 'helpdesk') {
+                tabContentHTML = `<div class="space-y-4">
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-900 p-5 rounded-xl border border-slate-700 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 opacity-10 text-emerald-500">${icon('headset', 100)}</div>
+                        <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Helpdesk & SLA</h3>
+                        <div class="flex gap-4 mt-3 relative z-10">
+                            <div>
+                                <p class="text-[10px] text-slate-500 uppercase">Resueltos</p>
+                                <p class="font-mono text-2xl font-black text-emerald-400">${state.helpdesk.resolved}</p>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 uppercase">SLA Fallidos</p>
+                                <p class="font-mono text-2xl font-black text-red-400">${state.helpdesk.failed}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-bold text-slate-300 uppercase tracking-widest pl-1 border-b border-slate-700 pb-1 flex items-center gap-2">${icon('ticket', 14)} Bandeja de Tickets</h3>
+                        ${state.helpdesk.activeTickets.length === 0 ? '<p class="text-xs text-slate-500 italic p-2">Sin tickets pendientes. ¡Excelente servicio!</p>' : state.helpdesk.activeTickets.map(t => `
+                            <div class="bg-slate-800 p-3 rounded-xl border ${t.sla === 1 ? 'border-red-500/50 bg-red-950/20' : 'border-slate-700'} relative">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div>
+                                        <p class="font-bold text-sm text-slate-200">${t.name}</p>
+                                        <p class="text-[10px] text-slate-400">${t.customer}</p>
+                                    </div>
+                                    <span class="text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider ${t.sla > 2 ? 'bg-emerald-900/50 text-emerald-400 border border-emerald-800' : 'bg-red-900/50 text-red-400 border border-red-800 animate-pulse'}">SLA: ${t.sla} meses</span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2 mt-3">
+                                    <button onclick="dispatch({type: 'RESOLVE_TICKET', payload: {ticketId: '${t.id}', method: 'remote'}})" class="py-2 bg-slate-700 hover:bg-slate-600 rounded text-[10px] font-bold transition-colors border border-slate-600 text-slate-200 flex flex-col items-center justify-center">
+                                        <span>Remoto (${t.remoteCost > 0 ? formatCur(t.remoteCost) : 'Gratis'})</span>
+                                        <span class="font-normal text-[8px] text-slate-400 mt-0.5">Éxito: ${Math.round(t.remoteChance*100)}%</span>
+                                    </button>
+                                    <button onclick="dispatch({type: 'RESOLVE_TICKET', payload: {ticketId: '${t.id}', method: 'express'}})" class="py-2 bg-blue-600 hover:bg-blue-500 text-white rounded text-[10px] font-bold transition-colors shadow-lg flex flex-col items-center justify-center">
+                                        <span>Técnico (${formatCur(t.expressCost)})</span>
+                                        <span class="font-normal text-[8px] text-blue-200 mt-0.5">Éxito: 100%</span>
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
                 </div>`;
             } else if (uiState.activeTab === 'inspector') {
                 tabContentHTML = `<div class="space-y-4">
@@ -1294,9 +2098,12 @@
                                         ${uiState.selectedCell.type === 'townhall' ? icon('landmark', 16, 'text-indigo-400') : uiState.selectedCell.type === 'business' ? icon('briefcase', 16, 'text-purple-400') : uiState.selectedCell.type === 'building' ? icon('building', 16, 'text-blue-400') : uiState.selectedCell.type === 'school' ? icon('graduation-cap', 16, 'text-amber-400') : uiState.selectedCell.type === 'train_station' ? icon('train', 16, 'text-rose-400') : uiState.selectedCell.type === 'bus_stop' ? icon('bus', 16, 'text-rose-300') : icon('home', 16, 'text-slate-400')}
                                         ${uiState.selectedCell.type === 'townhall' ? 'Ayuntamiento' : uiState.selectedCell.type === 'business' ? 'Corporación' : uiState.selectedCell.type === 'school' ? 'Centro Educativo' : uiState.selectedCell.type === 'building' ? 'Edificio Residencial' : uiState.selectedCell.type === 'train_station' ? 'Estación de Tren' : uiState.selectedCell.type === 'bus_stop' ? 'Terminal Autobuses' : uiState.selectedCell.type === 'house' ? 'Casa Particular' : 'Terreno Baldío'}
                                     </p>
-                                    <p class="text-[10px] text-slate-400 mt-1">${uiState.selectedCell.zoneData.name} • Coords [${uiState.selectedCell.x}, ${uiState.selectedCell.y}]</p>
+                                    <p class="text-[10px] text-slate-400 mt-1">${uiState.selectedCell.zoneData.name} • Coords [${uiState.selectedCell.x}, ${uiState.selectedCell.y}] • Terreno: <span class="capitalize text-slate-300">${uiState.selectedCell.terrain === 'sea' ? 'Mar' : uiState.selectedCell.terrain === 'mountain' ? 'Montaña' : uiState.selectedCell.terrain === 'river' ? 'Río' : 'Llanura'}</span></p>
                                 </div>
-                                ${uiState.selectedCell.pop > 0 ? `<span class="bg-slate-900 px-2 py-1 rounded text-xs font-bold text-blue-300 border border-slate-700">${icon('users', 12, 'inline mr-1')}Pop: ${uiState.selectedCell.pop}</span>` : ''}
+                                <div class="flex flex-col gap-1 items-end">
+                                    ${uiState.selectedCell.pop > 0 ? `<span class="bg-slate-900 px-2 py-1 rounded text-xs font-bold text-blue-300 border border-slate-700">${icon('users', 12, 'inline mr-1')}Pop: ${uiState.selectedCell.pop}</span>` : ''}
+                                    ${uiState.selectedCell.pop > 0 ? `<span class="bg-slate-900 px-2 py-1 rounded text-[10px] font-bold text-yellow-400 border border-slate-700">${icon('coins', 10, 'inline mr-1')}Econ: ${uiState.selectedCell.wealth === 3 ? 'Alta' : uiState.selectedCell.wealth === 2 ? 'Media' : 'Baja'}</span>` : ''}
+                                </div>
                             </div>
 
                             ${(uiState.selectedCell.isBusiness || uiState.selectedCell.isTownhall || uiState.selectedCell.isSchool) && !uiState.selectedCell.infra ? `
@@ -1375,6 +2182,24 @@
                                 ` : ''}
                             ` : ''}
 
+                            ${(() => {
+                                let sats = state.satellites.filter(s => s.targetZone === 'all' || s.targetZone == uiState.selectedCell.zoneId);
+                                let isSolarStorm = state.activeEvent && state.activeEvent.type === 'solar_storm' && !state.itServices.sat_shielding;
+                                if (sats.length > 0) {
+                                    if (isSolarStorm) {
+                                        return `<div class="bg-red-950/30 border border-red-500/30 p-2 rounded-lg mt-3 flex items-center gap-3">
+                                            ${icon('zap-off', 20, 'text-red-400 shrink-0 animate-pulse')}
+                                            <div><p class="text-xs font-bold text-red-400">Satélites Inoperativos</p><p class="text-[9px] text-red-300">Tormenta Solar Activa</p></div>
+                                        </div>`;
+                                    }
+                                    return `<div class="bg-cyan-950/30 border border-cyan-500/30 p-2 rounded-lg mt-3 flex items-center gap-3">
+                                        ${icon('satellite', 20, 'text-cyan-400 shrink-0')}
+                                        <div><p class="text-xs font-bold text-cyan-300">Cobertura Satelital Activa</p><p class="text-[9px] text-slate-400">Proporcionada por: ${sats.map(s => s.name).join(', ')}</p></div>
+                                    </div>`;
+                                }
+                                return '';
+                            })()}
+
                             ${(uiState.selectedCell.type === 'train_station' || uiState.selectedCell.type === 'bus_stop') ? `
                                 <div class="bg-indigo-950/30 border border-indigo-500/30 p-3 rounded-lg mt-3">
                                     <div class="flex items-center gap-2 mb-2">
@@ -1431,6 +2256,10 @@
                     </div>
                     <div class="flex gap-4 sm:gap-6 text-right items-center">
                         ${state.isSpectator ? `<div class="bg-emerald-900/30 border border-emerald-500/30 px-3 py-1 rounded hidden md:block"><p class="text-[10px] text-emerald-400 font-bold uppercase">Modo Inversor</p></div>` : ''}
+                        <div class="flex flex-col items-end hidden sm:flex border-r border-slate-700 pr-4 mr-2">
+                            <p class="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">Ping</p>
+                            <p class="font-mono text-base sm:text-xl font-black ${state.noc.ping < 45 ? 'text-emerald-400' : state.noc.ping < 90 ? 'text-yellow-400' : 'text-red-500'}">${state.noc.ping} ms</p>
+                        </div>
                         <div class="flex flex-col items-end">
                             <p class="text-[9px] sm:text-[10px] text-slate-500 uppercase font-bold tracking-wider">${state.isSpectator?'Banco Personal':'Caja Corp.'}</p>
                             <p class="font-mono text-base sm:text-xl font-black text-emerald-400">${formatCur(state.money)}</p>
