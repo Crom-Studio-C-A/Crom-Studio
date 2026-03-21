@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telco Tycoon Ultra: Enterprise Edition</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -31,8 +33,9 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans overflow-hidden select-none">
-    <div id="root" class="h-screen flex flex-col"></div>
+<body class="bg-slate-950 text-slate-100 font-sans overflow-hidden select-none m-0 p-0">
+    <div id="canvas-container" class="fixed inset-0 z-0 bg-slate-950"></div>
+    <div id="root" class="fixed inset-0 z-10 flex flex-col pointer-events-none"></div>
     <div id="map-tooltip" class="fixed opacity-0 bg-slate-900/95 backdrop-blur-sm border border-slate-600 p-3 rounded-xl shadow-2xl text-xs flex flex-col gap-1 w-48 shadow-[0_10px_40px_rgba(0,0,0,0.5)]"></div>
 
     <script>
@@ -200,7 +203,12 @@
                     1: { cap: 2000, level: 1 },
                     2: { cap: 2000, level: 1 },
                     3: { cap: 2000, level: 1 }
-                }
+                },
+                global: { ixp: false, nationalFiber: false, submarineCable: false },
+                bgp: { asn: Math.floor(Math.random() * 60000) + 1000, policy: 'balanced' },
+                transit: { ports: 1 },
+                peering: { public: false, cdn: false },
+                transitStats: { totalLoad: 0, peeringOffload: 0, transitTraffic: 0, transitCapacity: 10000 }
             },
             finances: { 
                 current: { incomePlans: 0, incomeContracts: 0, incomeIT: 0, incomeAds: 0, incomeWholesale: 0, incomeSpace: 0, incomeFinancial: 0, incomeGrants: 0, varCosts: 0, costWholesale: 0, rent: 0, power: 0, maint: 0, fines: 0, legalFines: 0, taxes: 0, capEx: 0, salaries: 0, interest: 0, net: 0 },
@@ -225,6 +233,330 @@
         // Selectores Derivados
         let totalPop = 0; let connectedPop = 0; let arpu = 0; let fiberB2BClients = 0;
         const getCompetitor = (id) => state.competitors.find(c => c.id === id);
+
+        // --- MOTOR GRÁFICO 3D (THREE.JS) ---
+        const CELL_SIZE = 6;
+        class SceneManager {
+            constructor() {
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x0f172a); 
+                
+                this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+                const centerOffset = (GRID_SIZE * CELL_SIZE) / 2;
+                this.camera.position.set(centerOffset, 120, centerOffset + 140);
+                
+                this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.shadowMap.enabled = true;
+                this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+                document.getElementById('canvas-container').appendChild(this.renderer.domElement);
+                
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.target.set(centerOffset, 0, centerOffset);
+                this.controls.maxPolarAngle = Math.PI / 2 - 0.05; 
+                this.controls.maxDistance = 300;
+                this.controls.minDistance = 20;
+                
+                const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.5);
+                this.scene.add(hemiLight);
+                
+                const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+                dirLight.position.set(centerOffset + 100, 150, centerOffset - 100);
+                dirLight.castShadow = true;
+                dirLight.shadow.camera.left = -150;
+                dirLight.shadow.camera.right = 150;
+                dirLight.shadow.camera.top = 150;
+                dirLight.shadow.camera.bottom = -150;
+                dirLight.shadow.bias = -0.0005;
+                dirLight.shadow.mapSize.width = 2048;
+                dirLight.shadow.mapSize.height = 2048;
+                this.scene.add(dirLight);
+
+                this.raycaster = new THREE.Raycaster();
+                this.mouse = new THREE.Vector2();
+                
+                this.cellMeshes = new Map();
+                this.infraMeshes = new Map();
+                
+                this.initTextures();
+                this.buildBaseGrid();
+
+                this.renderer.domElement.addEventListener('pointermove', this.onPointerMove.bind(this));
+                this.renderer.domElement.addEventListener('pointerdown', this.onPointerDown.bind(this));
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+                this.animate();
+            }
+
+            initTextures() {
+                this.textures = {};
+                
+                // 1. Fachada de Cristal (Rascacielos y Edificios)
+                const cFac = document.createElement('canvas'); cFac.width = 512; cFac.height = 512;
+                const ctxFac = cFac.getContext('2d');
+                ctxFac.fillStyle = '#0f172a'; ctxFac.fillRect(0, 0, 512, 512); // Base oscura
+                const w = 34, h = 45, padX = 8, padY = 12;
+                for(let r=0; r<9; r++) {
+                    for(let c=0; c<12; c++) {
+                        const isLit = Math.random() > 0.65;
+                        if(isLit) {
+                            ctxFac.fillStyle = `rgba(252, 211, 77, ${0.4 + Math.random()*0.6})`; // Luz interior
+                            ctxFac.shadowColor = '#fcd34d'; ctxFac.shadowBlur = 15;
+                        } else {
+                            const grad = ctxFac.createLinearGradient(0, r*(h+padY), 0, r*(h+padY)+h);
+                            grad.addColorStop(0, '#1e293b'); grad.addColorStop(1, '#334155'); // Reflejo del cielo
+                            ctxFac.fillStyle = grad;
+                            ctxFac.shadowBlur = 0;
+                        }
+                        ctxFac.fillRect(padX + c*(w+padX), padY + r*(h+padY), w, h);
+                        // Añadir persianas aleatorias en ventanas encendidas
+                        if(isLit && Math.random()>0.5) { ctxFac.fillStyle='rgba(0,0,0,0.6)'; ctxFac.shadowBlur=0; ctxFac.fillRect(padX + c*(w+padX), padY + r*(h+padY), w, h * (Math.random()*0.8)); }
+                    }
+                }
+                this.textures.facade = new THREE.CanvasTexture(cFac);
+                this.textures.facade.wrapS = THREE.RepeatWrapping; this.textures.facade.wrapT = THREE.RepeatWrapping;
+                
+                // 2. Textura Residencial (Casas)
+                const cHou = document.createElement('canvas'); cHou.width = 256; cHou.height = 256;
+                const ctxHou = cHou.getContext('2d');
+                ctxHou.fillStyle = '#cbd5e1'; ctxHou.fillRect(0,0,256,256);
+                // Ruido estuco
+                for(let i=0; i<4000; i++) { ctxHou.fillStyle = Math.random()>0.5?'rgba(255,255,255,0.3)':'rgba(0,0,0,0.05)'; ctxHou.fillRect(Math.random()*256, Math.random()*256, 1, 1); }
+                ctxHou.fillStyle = '#334155'; ctxHou.fillRect(40, 80, 40, 60); ctxHou.fillRect(176, 80, 40, 60); // Ventanas oscuras
+                ctxHou.fillStyle = '#6366f1'; ctxHou.fillRect(108, 120, 40, 136); // Puerta
+                this.textures.house = new THREE.CanvasTexture(cHou);
+
+                // 3. Suelo / Asfalto
+                const cGnd = document.createElement('canvas'); cGnd.width = 512; cGnd.height = 512;
+                const ctxGnd = cGnd.getContext('2d');
+                ctxGnd.fillStyle = '#0f172a'; ctxGnd.fillRect(0,0,512,512);
+                for(let i=0; i<15000; i++) { ctxGnd.fillStyle = Math.random()>0.5?'rgba(255,255,255,0.02)':'rgba(0,0,0,0.08)'; ctxGnd.fillRect(Math.random()*512, Math.random()*512, 2, 2); }
+                this.textures.ground = new THREE.CanvasTexture(cGnd);
+                this.textures.ground.wrapS = THREE.RepeatWrapping; this.textures.ground.wrapT = THREE.RepeatWrapping;
+                this.textures.ground.repeat.set(GRID_SIZE, GRID_SIZE);
+                
+                // 4. Agua realista
+                const cWat = document.createElement('canvas'); cWat.width = 256; cWat.height = 256;
+                const ctxWat = cWat.getContext('2d');
+                ctxWat.fillStyle = '#0284c7'; ctxWat.fillRect(0,0,256,256);
+                ctxWat.fillStyle = 'rgba(255,255,255,0.1)';
+                for(let i=0; i<80; i++) { ctxWat.beginPath(); ctxWat.ellipse(Math.random()*256, Math.random()*256, Math.random()*25+10, Math.random()*2+1, 0, 0, Math.PI*2); ctxWat.fill(); }
+                this.textures.water = new THREE.CanvasTexture(cWat);
+                this.textures.water.wrapS = THREE.RepeatWrapping; this.textures.water.wrapT = THREE.RepeatWrapping;
+            }
+
+            buildBaseGrid() {
+                const size = GRID_SIZE * CELL_SIZE;
+                const geo = new THREE.PlaneGeometry(size, size);
+                const mat = new THREE.MeshStandardMaterial({ color: 0x0f172a, map: this.textures.ground, roughness: 0.9, metalness: 0.1 });
+                this.basePlane = new THREE.Mesh(geo, mat);
+                this.basePlane.rotation.x = -Math.PI / 2;
+                this.basePlane.position.set(size/2 - CELL_SIZE/2, -0.1, size/2 - CELL_SIZE/2);
+                this.basePlane.receiveShadow = true;
+                this.scene.add(this.basePlane);
+            }
+
+            update(stateObj, coverageMap) {
+                if (this.cellMeshes.size === 0) {
+                    stateObj.mapData.forEach(cell => {
+                        const px = cell.x * CELL_SIZE;
+                        const pz = cell.y * CELL_SIZE;
+                        const group = new THREE.Group();
+                        group.position.set(px, 0, pz);
+
+                        let tColor = 0x334155; let tMatOpts = { color: tColor, roughness: 0.9 };
+                        if (cell.terrain === 'sea') { tColor = 0x0ea5e9; tMatOpts = { color: tColor, map: this.textures.water, roughness: 0.1, metalness: 0.8 }; }
+                        else if (cell.terrain === 'river') { tColor = 0x38bdf8; tMatOpts = { color: tColor, map: this.textures.water, roughness: 0.2, metalness: 0.7 }; }
+                        else if (cell.terrain === 'mountain') { tColor = 0x475569; tMatOpts = { color: tColor, roughness: 1.0 }; }
+                        else {
+                            if (cell.zoneId === 0) tColor = 0x1e293b; else if (cell.zoneId === 1) tColor = 0x0f172a;
+                            else if (cell.zoneId === 2) tColor = 0x111827; else if (cell.zoneId === 3) tColor = 0x171717;
+                            tMatOpts = { color: tColor, map: this.textures.ground, roughness: 0.9 };
+                        }
+
+                        const base = new THREE.Mesh(new THREE.BoxGeometry(CELL_SIZE-0.2, 0.2, CELL_SIZE-0.2), new THREE.MeshStandardMaterial(tMatOpts));
+                        base.position.y = 0.1;
+                        base.receiveShadow = true;
+                        group.add(base);
+
+                        if (cell.terrain !== 'sea' && cell.terrain !== 'river') {
+                            if (cell.type === 'house') {
+                                const m = new THREE.Mesh(new THREE.BoxGeometry(2.5, 2, 2.5), new THREE.MeshStandardMaterial({ map: this.textures.house, roughness: 0.9 }));
+                                m.position.y = 1.1; m.castShadow = true; m.receiveShadow = true; group.add(m);
+                                // Techo
+                                const roof = new THREE.Mesh(new THREE.ConeGeometry(2.2, 1.5, 4), new THREE.MeshStandardMaterial({ color: 0x7f1d1d, roughness: 0.8 }));
+                                roof.position.y = 2.85; roof.rotation.y = Math.PI/4; roof.castShadow = true; group.add(roof);
+                            } else if (cell.type === 'building') {
+                                const h = 5 + Math.random() * 8;
+                                const bMat = new THREE.MeshStandardMaterial({ map: this.textures.facade.clone(), color: 0xe2e8f0, roughness: 0.2, metalness: 0.6 });
+                                bMat.map.needsUpdate = true; bMat.map.repeat.set(1, Math.floor(h/3));
+                                const m = new THREE.Mesh(new THREE.BoxGeometry(3, h, 3), bMat);
+                                m.position.y = h/2 + 0.2; m.castShadow = true; m.receiveShadow = true; group.add(m);
+                            } else if (cell.isBusiness) {
+                                const h = 10 + Math.random() * 15;
+                                const bMat = new THREE.MeshStandardMaterial({ map: this.textures.facade.clone(), color: 0xbae6fd, roughness: 0.1, metalness: 0.8 });
+                                bMat.map.needsUpdate = true; bMat.map.repeat.set(1, Math.floor(h/4));
+                                const m = new THREE.Mesh(new THREE.BoxGeometry(4, h, 4), bMat);
+                                m.position.y = h/2 + 0.2; m.castShadow = true; m.receiveShadow = true; group.add(m);
+                            } else if (cell.isTownhall) {
+                                const m = new THREE.Mesh(new THREE.BoxGeometry(5, 6, 5), new THREE.MeshStandardMaterial({ color: 0xfde047 }));
+                                m.position.y = 3.2; m.castShadow = true; group.add(m);
+                            } else if (cell.isSchool) {
+                                const m = new THREE.Mesh(new THREE.BoxGeometry(5, 3, 5), new THREE.MeshStandardMaterial({ color: 0xfca5a5 }));
+                                m.position.y = 1.7; m.castShadow = true; group.add(m);
+                            }
+                        }
+
+                        group.userData = { originalMats: [] };
+                        group.children.forEach(c => group.userData.originalMats.push(c.material.clone()));
+                        this.scene.add(group);
+                        this.cellMeshes.set(`${cell.x},${cell.y}`, group);
+                    });
+                }
+
+                const currentInfraIds = new Set(stateObj.infra.map(i => i.id));
+                for (let [id, mesh] of this.infraMeshes.entries()) {
+                    if (!currentInfraIds.has(id)) { this.scene.remove(mesh); this.infraMeshes.delete(id); }
+                }
+                
+                stateObj.infra.forEach(i => {
+                    if (!this.infraMeshes.has(i.id)) {
+                        const group = new THREE.Group();
+                        const px = i.x * CELL_SIZE; const pz = i.y * CELL_SIZE;
+                        group.position.set(px, 0, pz);
+                        
+                        let iColor = 0x3b82f6; 
+                        if (i.owner) iColor = 0xef4444; 
+                        else if (i.type.includes('5G')) iColor = 0xa855f7; 
+                        else if (i.type.includes('FIBER') || i.type.includes('ADSL')) iColor = 0x10b981; 
+                        else if (i.type.includes('CENTER') || i.type.includes('OFFICE')) iColor = 0xf59e0b; 
+
+                        const h = i.type.includes('TOWER') ? 12 : i.type.includes('LINK') ? 8 : 4;
+                        const m = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.5, h, 8), new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.8 }));
+                        m.position.y = h/2 + 2; m.castShadow = true; group.add(m);
+                        
+                        const beacon = new THREE.Mesh(new THREE.SphereGeometry(0.8), new THREE.MeshBasicMaterial({ color: iColor }));
+                        beacon.position.y = h + 2; group.add(beacon);
+                        
+                        const light = new THREE.PointLight(iColor, 1, 20);
+                        light.position.y = h + 2; group.add(light);
+
+                        this.scene.add(group);
+                        this.infraMeshes.set(i.id, group);
+                    }
+                });
+
+                const mode = uiState.showCoverageMode;
+                const isCompMode = mode && mode.startsWith('comp_');
+                const compId = isCompMode ? mode.split('_')[1] : null;
+
+                this.cellMeshes.forEach((group, key) => {
+                    const [cx, cy] = key.split(',').map(Number);
+                    const cov = coverageMap[key];
+                    let highlightColor = null; let intensity = 0;
+
+                    if (mode) {
+                        let maxTech = 0; let maxStrength = 0;
+                        stateObj.infra.forEach(i => {
+                            const isTarget = isCompMode ? i.owner === compId : !i.owner;
+                            if (!isTarget) return;
+                            const t = INFRA_TYPES[i.type];
+                            let show = isCompMode || (mode === 'mobile' && t.type === 'mobile') || (mode === 'fixed' && t.type === 'fixed');
+                            if (show) {
+                                const dist = Math.sqrt(Math.pow(i.x - cx, 2) + Math.pow(i.y - cy, 2));
+                                if (dist <= t.range) {
+                                    if (t.tech > maxTech) { maxTech = t.tech; maxStrength = 1 - (dist / (t.range + 0.5)); } 
+                                    else if (t.tech === maxTech) { maxStrength = Math.max(maxStrength, 1 - (dist / (t.range + 0.5))); }
+                                }
+                            }
+                        });
+                        if (maxTech > 0) {
+                            highlightColor = isCompMode ? new THREE.Color(0xef4444) : 
+                                             (mode === 'mobile' ? (maxTech === 3 ? new THREE.Color(0xa855f7) : new THREE.Color(0x3b82f6)) : 
+                                                                  (maxTech === 3 ? new THREE.Color(0x10b981) : new THREE.Color(0xf97316)));
+                            intensity = 0.2 + (maxStrength * 0.5);
+                        }
+                    }
+
+                    group.children.forEach((mesh, i) => {
+                        if (highlightColor) {
+                            mesh.material = group.userData.originalMats[i].clone();
+                            mesh.material.emissive = highlightColor;
+                            mesh.material.emissiveIntensity = intensity;
+                        } else {
+                            if (uiState.selectedCell && uiState.selectedCell.x === cx && uiState.selectedCell.y === cy) {
+                                mesh.material = group.userData.originalMats[i].clone();
+                                mesh.material.emissive = new THREE.Color(0xfde047);
+                                mesh.material.emissiveIntensity = 0.3;
+                            } else {
+                                mesh.material = group.userData.originalMats[i];
+                            }
+                        }
+                    });
+                });
+            }
+
+            onPointerMove(e) {
+                this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+                this.raycaster.setFromCamera(this.mouse, this.camera);
+                const intersects = this.raycaster.intersectObject(this.basePlane);
+                if (intersects.length > 0) {
+                    const pt = intersects[0].point;
+                    const cx = Math.floor((pt.x + CELL_SIZE/2) / CELL_SIZE);
+                    const cy = Math.floor((pt.z + CELL_SIZE/2) / CELL_SIZE);
+                    if (cx >= 0 && cx < GRID_SIZE && cy >= 0 && cy < GRID_SIZE) {
+                        if (this.lastHover !== `${cx},${cy}`) {
+                            this.lastHover = `${cx},${cy}`;
+                            if (window.handleMouseEnter) window.handleMouseEnter(cx, cy, e);
+                        } else {
+                            const tooltipEl = document.getElementById('map-tooltip');
+                            if (tooltipEl && !tooltipEl.classList.contains('opacity-0')) {
+                                tooltipEl.style.left = (e.clientX + 15) + 'px';
+                                tooltipEl.style.top = (e.clientY + 15) + 'px';
+                            }
+                        }
+                    } else {
+                        if (window.handleMouseLeave) window.handleMouseLeave();
+                        this.lastHover = null;
+                    }
+                }
+            }
+
+            onPointerDown(e) {
+                if (e.button !== 0) return; 
+                this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+                this.raycaster.setFromCamera(this.mouse, this.camera);
+                const intersects = this.raycaster.intersectObject(this.basePlane);
+                if (intersects.length > 0) {
+                    const pt = intersects[0].point;
+                    const cx = Math.floor((pt.x + CELL_SIZE/2) / CELL_SIZE);
+                    const cy = Math.floor((pt.z + CELL_SIZE/2) / CELL_SIZE);
+                    if (cx >= 0 && cx < GRID_SIZE && cy >= 0 && cy < GRID_SIZE) {
+                        if (window.handleCellClick) window.handleCellClick(cx, cy);
+                    }
+                }
+            }
+
+            zoom(direction) {
+                const zoomAmount = 30;
+                const dir = new THREE.Vector3();
+                this.camera.getWorldDirection(dir);
+                if (direction === 'in') this.camera.position.addScaledVector(dir, zoomAmount);
+                else this.camera.position.addScaledVector(dir, -zoomAmount);
+            }
+
+            animate() {
+                requestAnimationFrame(this.animate.bind(this));
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
 
         // --- REDUCER ---
         function gameReducer(currentState, action) {
@@ -1326,6 +1658,8 @@
 
         // --- SISTEMA DE RENDERIZADO ---
         function renderApp() {
+            if (!window.sceneManager) { window.sceneManager = new SceneManager(); }
+            
             // Protección Anti-Flicker de Input
             const activeEl = document.activeElement;
             const isInputFocused = activeEl && ['INPUT', 'SELECT'].includes(activeEl.tagName);
@@ -1337,11 +1671,32 @@
 
             updateGameLoop();
 
+            // Calcular cobertura globalmente para la UI y la Escena 3D
+            const coverageMap = {};
+            state.mapData.forEach(c => coverageMap[c.id] = { mobile: 0, fixed: 0, owner: null });
+            state.infra.forEach(i => {
+                const t = INFRA_TYPES[i.type];
+                for (let dy = -t.range; dy <= t.range; dy++) {
+                    for (let dx = -t.range; dx <= t.range; dx++) {
+                        const cx = i.x + dx; const cy = i.y + dy;
+                        if (cx >= 0 && cx < GRID_SIZE && cy >= 0 && cy < GRID_SIZE) {
+                            if (Math.sqrt(dx*dx + dy*dy) <= t.range) {
+                                const cellId = `${cx}-${cy}`;
+                                if (!i.owner) { 
+                                    if (t.type === 'mobile' && t.tech > coverageMap[cellId].mobile) coverageMap[cellId].mobile = t.tech;
+                                    if (t.type === 'fixed' && t.tech > coverageMap[cellId].fixed) coverageMap[cellId].fixed = t.tech;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Sincronizar el Mundo 3D
+            window.sceneManager.update(state, coverageMap);
+
             const sidebarEl = document.getElementById('sidebar-content');
-            const mapEl = document.getElementById('map-container');
             const sidebarScroll = sidebarEl ? sidebarEl.scrollTop : 0;
-            const mapScrollX = mapEl ? mapEl.scrollLeft : 0;
-            const mapScrollY = mapEl ? mapEl.scrollTop : 0;
 
             totalPop = state.mapData.reduce((a, c) => a + c.pop, 0);
             connectedPop = state.mapData.reduce((a, c) => a + (c.planId ? Math.floor(c.pop * (state.settings.competitionEnabled ? (1-(state.municipalities.find(z=>z.id===c.zoneId).compShare/100)) : 1)) : 0), 0);
@@ -1352,92 +1707,6 @@
             if (state.gameOver) {
                 root.innerHTML = `<div class="min-h-screen bg-slate-900 w-full flex items-center justify-center text-white p-6"><div class="bg-slate-800 p-8 rounded-2xl max-w-lg text-center shadow-2xl border border-red-500/50"><div class="flex justify-center mb-4 text-red-500 animate-pulse">${icon('alert-triangle', 64)}</div><h1 class="text-4xl font-black mb-2 text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-rose-600">QUIEBRA CORPORATIVA</h1><p class="text-slate-400 mb-6">El regulador ha liquidado tus activos por exceso de deuda.</p><button onclick="window.location.reload()" class="w-full bg-blue-600 hover:bg-blue-500 p-4 rounded-xl font-bold uppercase transition-all shadow-lg shadow-blue-900/50">Nueva Partida</button></div></div>`;
                 lucide.createIcons(); return;
-            }
-
-            let mapHTML = state.mapData.map(cell => {
-                const infra = state.infra.find(i => i.x === cell.x && i.y === cell.y);
-                const contract = state.contracts.find(c => c.x === cell.x && c.y === cell.y);
-                const zone = ZONES.find(z => z.id === cell.zoneId);
-                
-                let bgClass = "bg-slate-900 hover:bg-slate-800"; 
-                if (cell.terrain === 'sea') bgClass = "bg-cyan-950/40 hover:bg-cyan-900/40";
-                if (cell.terrain === 'river') bgClass = "bg-blue-900/30 hover:bg-blue-800/40";
-                if (cell.terrain === 'mountain') bgClass = "bg-stone-800/50 hover:bg-stone-700/60";
-
-                if (cell.type === 'house') bgClass = cell.planId ? "bg-blue-900/60" : "bg-slate-800/80";
-                if (cell.type === 'building') bgClass = cell.planId ? "bg-blue-800/70" : "bg-slate-700";
-                if (cell.type === 'townhall') bgClass = "bg-indigo-900/60";
-                if (cell.type === 'business') bgClass = "bg-purple-900/50";
-                if (cell.type === 'school') bgClass = "bg-amber-900/40";
-                if (cell.type === 'train_station' || cell.type === 'bus_stop') bgClass = "bg-rose-900/40";
-
-                let competitorOverlay = cell.compContract ? 'bg-pattern-competitor border border-red-500/20' : '';
-
-                let innerIcon = '';
-                if (!infra) {
-                    if (cell.type === 'house') innerIcon = icon('home', 14, 'text-slate-500 opacity-60');
-                    else if (cell.type === 'building') innerIcon = icon('building', 18, 'text-slate-400');
-                    else if (cell.type === 'townhall') innerIcon = icon('landmark', 22, 'text-indigo-400 drop-shadow-md');
-                    else if (cell.type === 'business') innerIcon = icon('briefcase', 18, 'text-purple-400');
-                    else if (cell.type === 'school') innerIcon = icon('graduation-cap', 20, 'text-amber-400');
-                    else if (cell.type === 'train_station') innerIcon = icon('train', 24, 'text-rose-400 drop-shadow-lg');
-                    else if (cell.type === 'bus_stop') innerIcon = icon('bus', 20, 'text-rose-300');
-                    else if (cell.terrain === 'sea') innerIcon = icon('waves', 16, 'text-cyan-600/30');
-                    else if (cell.terrain === 'river') innerIcon = icon('waves', 16, 'text-blue-500/40');
-                    else if (cell.terrain === 'mountain') innerIcon = icon('mountain', 16, 'text-stone-500/50');
-                } else {
-                    if (infra.owner) {
-                        const comp = state.competitors.find(c => c.id === infra.owner);
-                        const compColor = comp ? comp.color : 'text-gray-400';
-                        innerIcon = `<div class="absolute inset-0 flex items-center justify-center bg-slate-950/95 z-10 border border-red-500/40 shadow-[inset_0_0_10px_rgba(255,0,0,0.2)] rounded-sm">${icon('radio-tower', 20, compColor)}</div>`;
-                    } else {
-                        innerIcon = `<div class="absolute inset-0 flex items-center justify-center bg-slate-950/95 z-10 border border-white/10 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)] rounded-sm">
-                            ${icon(INFRA_TYPES[infra.type].icon, INFRA_TYPES[infra.type].type === 'commercial' ? 24 : 20, INFRA_TYPES[infra.type].color)}
-                        </div>`;
-                    }
-                }
-
-                return `<div onmouseenter="handleMouseEnter(${cell.x}, ${cell.y}, event)" onmouseleave="handleMouseLeave()" onclick="handleCellClick(${cell.x}, ${cell.y})" class="relative w-full h-full flex items-center justify-center cursor-pointer transition-colors duration-150 ${bgClass} ${zone.color} ${zone.bg} ${competitorOverlay} ${uiState.selectedCell?.id === cell.id ? 'ring-2 ring-yellow-400 z-30 scale-110 shadow-2xl' : ''}" style="grid-column: ${cell.x + 1}; grid-row: ${cell.y + 1}">
-                    ${innerIcon}
-                    ${contract ? `<div class="absolute top-1 right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full border border-slate-900 z-20 shadow-[0_0_8px_rgba(52,211,153,1)] animate-pulse"></div>` : ''}
-                </div>`;
-            }).join('');
-
-            if (uiState.showCoverageMode) {
-                const isCompMode = uiState.showCoverageMode.startsWith('comp_');
-                const compId = isCompMode ? uiState.showCoverageMode.split('_')[1] : null;
-
-                mapHTML += state.mapData.map(cell => {
-                    let maxTech = 0; let maxStrength = 0;
-                    state.infra.forEach(i => {
-                        const isTarget = isCompMode ? i.owner === compId : !i.owner;
-                        if (!isTarget) return;
-                        
-                        const t = INFRA_TYPES[i.type];
-                        let show = false;
-                        if (isCompMode) show = true; 
-                        else if (uiState.showCoverageMode === 'mobile' && t.type === 'mobile') show = true;
-                        else if (uiState.showCoverageMode === 'fixed' && t.type === 'fixed') show = true;
-
-                        if (show) {
-                            const dist = Math.sqrt(Math.pow(i.x - cell.x, 2) + Math.pow(i.y - cell.y, 2));
-                            if (dist <= t.range) {
-                                if (t.tech > maxTech) { maxTech = t.tech; maxStrength = 1 - (dist / (t.range + 0.5)); } 
-                                else if (t.tech === maxTech) { const str = 1 - (dist / (t.range + 0.5)); if (str > maxStrength) maxStrength = str; }
-                            }
-                        }
-                    });
-                    if (maxTech === 0) return '';
-                    
-                    let bgClass = isCompMode ? 'bg-red-600' : 'bg-slate-600';
-                    if (!isCompMode && uiState.showCoverageMode === 'mobile') bgClass = maxTech === 3 ? 'bg-purple-600' : 'bg-blue-600';
-                    if (!isCompMode && uiState.showCoverageMode === 'fixed') bgClass = maxTech === 3 ? 'bg-emerald-600' : 'bg-orange-600';
-
-                    const pattern = uiState.showCoverageMode === 'fixed' ? 'bg-pattern-dots' : 'bg-pattern-diagonal';
-                    const opacity = 0.2 + (maxStrength * 0.6);
-
-                    return `<div class="absolute inset-0 pointer-events-none ${bgClass} ${pattern} z-20 transition-opacity duration-300" style="grid-column: ${cell.x + 1}; grid-row: ${cell.y + 1}; opacity: ${opacity}; mix-blend-mode: hard-light;"></div>`;
-                }).join('');
             }
 
             let mobileCovered = 0;
@@ -2237,7 +2506,7 @@
             ` : '';
 
             root.innerHTML = `
-                <header class="bg-slate-950 border-b border-slate-800 p-3 shrink-0 flex justify-between items-center z-40 shadow-xl relative">
+                <header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-800 p-3 shrink-0 flex justify-between items-center z-40 shadow-xl relative pointer-events-auto">
                     <div class="flex items-center gap-3">
                         <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-2 rounded-lg shadow-lg hidden sm:block">${icon('signal', 20, 'text-white')}</div>
                         <div>
@@ -2278,12 +2547,12 @@
                 </header>
 
                 <div class="flex flex-1 overflow-hidden relative">
-                    <!-- PANEL MAPA -->
-                    <div class="flex-1 bg-slate-950 relative overflow-hidden flex justify-center items-center border-r border-slate-800 transition-all ${uiState.mobileView === 'map' ? 'block' : 'hidden lg:flex'}">
+                    <!-- CONTROLES FLOTANTES MAPA 3D -->
+                    <div class="flex-1 relative overflow-hidden flex justify-center items-center border-r border-slate-800 transition-all ${uiState.mobileView === 'map' ? 'block' : 'hidden lg:flex'} pointer-events-none">
                         
-                        <div class="absolute top-4 left-4 z-30 flex flex-col gap-2">
+                        <div class="absolute top-4 left-4 z-30 flex flex-col gap-2 pointer-events-auto">
                             <div class="bg-slate-900/90 border border-slate-700 rounded-xl p-2 shadow-lg backdrop-blur-sm">
-                                <p class="text-[9px] text-slate-500 uppercase font-bold mb-2 ml-1">Capas de Mapa</p>
+                                <p class="text-[9px] text-slate-500 uppercase font-bold mb-2 ml-1">Capas de Mapa 3D</p>
                                 <button onclick="setUiState('showCoverageMode', uiState.showCoverageMode === 'mobile' ? null : 'mobile')" class="w-full text-left px-3 py-2 rounded-lg text-[10px] font-bold flex items-center gap-2 transition-all mb-1 ${uiState.showCoverageMode === 'mobile' ? 'bg-blue-600 text-white' : 'hover:bg-slate-800 text-slate-300'}">${icon('smartphone', 14)} Cobertura Móvil</button>
                                 <button onclick="setUiState('showCoverageMode', uiState.showCoverageMode === 'fixed' ? null : 'fixed')" class="w-full text-left px-3 py-2 rounded-lg text-[10px] font-bold flex items-center gap-2 transition-all mb-1 ${uiState.showCoverageMode === 'fixed' ? 'bg-emerald-600 text-white' : 'hover:bg-slate-800 text-slate-300'}">${icon('router', 14)} Cobertura Fija</button>
                                 <div class="h-px bg-slate-700 my-1"></div>
@@ -2296,21 +2565,15 @@
                             </div>
                         </div>
 
-                        <div class="absolute bottom-4 right-4 z-30 flex flex-col gap-1 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700 backdrop-blur-md shadow-2xl">
-                            <button onclick="handleZoom('in')" class="p-2.5 hover:bg-slate-700 rounded-lg text-slate-300 transition-colors">${icon('zoom-in', 20)}</button>
+                        <div class="absolute bottom-4 right-4 z-30 flex flex-col gap-1 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700 backdrop-blur-md shadow-2xl pointer-events-auto">
+                            <button onclick="window.sceneManager.zoom('in')" class="p-2.5 hover:bg-slate-700 rounded-lg text-slate-300 transition-colors">${icon('zoom-in', 20)}</button>
                             <div class="h-px bg-slate-700 w-full mx-auto" style="width: 80%"></div>
-                            <button onclick="handleZoom('out')" class="p-2.5 hover:bg-slate-700 rounded-lg text-slate-300 transition-colors">${icon('zoom-out', 20)}</button>
-                        </div>
-
-                        <div id="map-container" class="w-full h-full overflow-auto custom-scrollbar flex items-center justify-center p-8 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
-                            <div class="grid gap-[1px] bg-slate-800 p-[2px] shadow-[0_0_50px_rgba(0,0,0,0.8)] transition-transform duration-300 rounded-sm" style="grid-template-columns: repeat(${GRID_SIZE}, 48px); grid-template-rows: repeat(${GRID_SIZE}, 48px); transform: scale(${uiState.zoom}); transform-origin: center center;">
-                                ${mapHTML}
-                            </div>
+                            <button onclick="window.sceneManager.zoom('out')" class="p-2.5 hover:bg-slate-700 rounded-lg text-slate-300 transition-colors">${icon('zoom-out', 20)}</button>
                         </div>
                     </div>
 
                     <!-- PANEL DERECHO -->
-                    <div class="w-full lg:w-[480px] bg-slate-900 flex flex-col shrink-0 z-40 transition-all ${uiState.mobileView === 'panel' ? 'block absolute inset-0' : 'hidden lg:flex'}">
+                    <div class="w-full lg:w-[480px] bg-slate-900/95 backdrop-blur-xl border-l border-slate-800 flex flex-col shrink-0 z-40 transition-all ${uiState.mobileView === 'panel' ? 'block absolute inset-0' : 'hidden lg:flex'} pointer-events-auto shadow-2xl">
                         <div class="flex overflow-x-auto border-b border-slate-800 bg-slate-950 p-2 gap-1.5 shrink-0 custom-scrollbar pb-3">
                             ${renderTabButtons}
                         </div>
@@ -2333,9 +2596,7 @@
             lucide.createIcons();
             
             const newSidebarEl = document.getElementById('sidebar-content');
-            const newMapEl = document.getElementById('map-container');
             if(newSidebarEl) newSidebarEl.scrollTop = sidebarScroll;
-            if(newMapEl) { newMapEl.scrollLeft = mapScrollX; newMapEl.scrollTop = mapScrollY; }
         }
 
         renderApp();
