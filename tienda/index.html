@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Scents | Tienda de Perfumes</title>
+    <!-- Tailwind CSS para los estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para los iconos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+        
+        /* Ocultar scrollbar en el carrito para un diseño más limpio */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-neutral-50 font-sans text-neutral-900">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 bg-white border-b border-neutral-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <button class="md:hidden p-2 text-neutral-600 hover:text-black">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <h1 class="text-2xl font-serif font-bold tracking-tight text-black">AURA <span class="font-light">SCENTS</span></h1>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8" id="nav-filters">
+                <button onclick="setFilter('todos')" class="filter-btn text-sm font-medium text-black border-b-2 border-black" data-category="todos">Catálogo</button>
+                <button onclick="setFilter('mujer')" class="filter-btn text-sm font-medium text-neutral-500 hover:text-black" data-category="mujer">Mujer</button>
+                <button onclick="setFilter('hombre')" class="filter-btn text-sm font-medium text-neutral-500 hover:text-black" data-category="hombre">Hombre</button>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="relative hidden sm:block">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 w-4 h-4"></i>
+                    <input 
+                        type="text" 
+                        id="search-input"
+                        placeholder="Buscar perfume..." 
+                        oninput="handleSearch(event)"
+                        class="pl-10 pr-4 py-2 border border-neutral-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent w-48 transition-all"
+                    />
+                </div>
+                <button 
+                    onclick="toggleCart(true)"
+                    class="relative p-2 text-neutral-800 hover:text-black transition-colors"
+                >
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    <span id="cart-badge" class="hidden absolute top-0 right-0 -mt-1 -mr-1 bg-black text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-neutral-900 text-white overflow-hidden">
+        <div class="absolute inset-0">
+            <img 
+                src="https://images.unsplash.com/photo-1608528577891-eb0559d33261?auto=format&fit=crop&q=80&w=2000" 
+                alt="Perfume background" 
+                class="w-full h-full object-cover opacity-40"
+            />
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 flex flex-col items-center text-center">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif mb-4 drop-shadow-lg">Encuentra tu Esencia</h2>
+            <p class="text-lg md:text-xl max-w-2xl text-neutral-200 mb-8">
+                Perfumes 100% originales para hombre y mujer. Envíos rápidos a toda España con atención personalizada.
+            </p>
+            <div class="flex gap-4">
+                <button onclick="setFilter('mujer')" class="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-neutral-100 transition-colors">Para Ella</button>
+                <button onclick="setFilter('hombre')" class="border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-colors">Para Él</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CATALOG -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <h3 class="text-2xl font-serif font-semibold">Colección Exclusiva</h3>
+                <p class="text-neutral-500 mt-1">Nuestra selección de los más deseados.</p>
+            </div>
+            <p id="products-count" class="text-sm text-neutral-400 hidden sm:block">Mostrando 0 productos</p>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Los productos se insertarán aquí dinámicamente mediante JS -->
+        </div>
+        
+        <div id="no-products-msg" class="hidden text-center py-20">
+            <p class="text-neutral-500 text-lg">No encontramos perfumes que coincidan con tu búsqueda.</p>
+        </div>
+    </main>
+
+    <!-- CART DRAWER -->
+    <div id="cart-container" class="fixed inset-0 z-50 overflow-hidden pointer-events-none opacity-0 transition-opacity duration-300">
+        <!-- Overlay oscuro -->
+        <div 
+            id="cart-overlay"
+            class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" 
+            onclick="toggleCart(false)"
+        ></div>
+        
+        <!-- Panel Lateral -->
+        <div id="cart-drawer" class="absolute inset-y-0 right-0 w-full max-w-md flex flex-col bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-auto">
+            <!-- Header carrito -->
+            <div class="flex items-center justify-between p-6 border-b border-neutral-100">
+                <h2 class="text-xl font-serif font-bold">Tu Carrito</h2>
+                <button onclick="toggleCart(false)" class="p-2 rounded-full hover:bg-neutral-100 text-neutral-500 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Items carrito -->
+            <div id="cart-items" class="flex-1 overflow-y-auto p-6 no-scrollbar">
+                <!-- Se rellena por JS -->
+            </div>
+
+            <!-- Footer carrito (Resumen y Checkout) -->
+            <div id="cart-footer" class="border-t border-neutral-100 p-6 bg-neutral-50 hidden">
+                
+                <!-- Selector de Envío -->
+                <div class="space-y-3 mb-6">
+                    <h3 class="text-sm font-bold text-neutral-900 flex items-center gap-2">
+                        <i data-lucide="truck" class="w-4 h-4"></i> Método de envío
+                    </h3>
+                    <div id="shipping-options-container" class="flex flex-col gap-2">
+                        <!-- Opciones de envío se generan por JS -->
+                    </div>
+                </div>
+
+                <!-- Desglose Fiscal -->
+                <div class="space-y-3 mb-6 text-sm border-t border-neutral-200 pt-6">
+                    <div class="flex justify-between text-neutral-600">
+                        <span>Subtotal (Sin IVA)</span>
+                        <span id="summary-subtotal">0.00€</span>
+                    </div>
+                    <div class="flex justify-between text-neutral-600">
+                        <span>IVA (21%)</span>
+                        <span id="summary-iva">0.00€</span>
+                    </div>
+                    <div class="flex justify-between text-neutral-600">
+                        <span class="flex items-center gap-1">
+                            Gastos de envío 
+                            <i data-lucide="info" class="w-3 h-3 text-neutral-400 cursor-help" title="Envío fijo Península."></i>
+                        </span>
+                        <span id="summary-shipping">0.00€</span>
+                    </div>
+                    
+                    <!-- Progress bar envío gratis -->
+                    <div id="free-shipping-progress-container" class="mt-2 hidden">
+                        <div class="flex justify-between text-xs text-neutral-500 mb-1">
+                            <span id="free-shipping-text">Faltan X€ para envío gratis</span>
+                        </div>
+                        <div class="w-full bg-neutral-200 rounded-full h-1.5">
+                            <div id="free-shipping-bar" class="bg-black h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 mt-3 border-t border-neutral-200 flex justify-between items-center">
+                        <span class="text-base font-bold text-neutral-900">Total a pagar</span>
+                        <span id="summary-total" class="text-2xl font-black text-black">0.00€</span>
+                    </div>
+                </div>
+
+                <!-- Botón de compra -->
+                <button 
+                    onclick="checkoutWhatsApp()"
+                    class="w-full bg-black text-white py-4 rounded-xl font-bold text-lg hover:bg-neutral-800 transition-colors shadow-lg shadow-black/20 flex items-center justify-center gap-2"
+                >
+                    Pedir por WhatsApp
+                </button>
+                <p class="text-xs text-center text-neutral-500 mt-3">
+                    Te enviaremos los detalles de pago (Bizum/Transferencia) y confirmaremos tu dirección de envío.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT PRINCIPAL DE LA TIENDA -->
+    <script>
+        // ==========================================
+        // 🛠️ 1. ZONA DE CONFIGURACIÓN (EDITA ESTO)
+        // ==========================================
+        
+        // Tu número de WhatsApp con código de país (Ej: España es 34)
+        const WHATSAPP_NUMBER = "34600000000"; 
+        
+        // Impuestos y Envíos
+        const IVA_RATE = 0.21; // 21%
+        const FREE_SHIPPING_THRESHOLD = 150.00; // Envío gratis a partir de 150€
+
+        // Métodos de envío disponibles
+        const SHIPPING_METHODS = {
+            inpost: { id: 'inpost', name: 'InPost (Punto Pack)', price: 3.99, description: 'Recogida en comercio (3-5 días)' },
+            correos_std: { id: 'correos_std', name: 'Correos (Domicilio)', price: 4.99, description: 'Entrega estándar (48-72h)' },
+            correos_exp: { id: 'correos_exp', name: 'Correos Express', price: 6.90, description: 'Entrega urgente (24h)' },
+        };
+
+        // Tu Catálogo de Productos (Añade, quita o modifica aquí)
+        // NOTA: El basePrice es SIN IVA. El sistema calculará el IVA automáticamente.
+        const CATALOGO = [
+            {
+                id: 1,
+                name: "Sauvage Elixir",
+                brand: "Dior",
+                category: "hombre",
+                basePrice: 115.00,
+                image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=600",
+                description: "Fragancia intensa y especiada con notas de lavanda y maderas.",
+                rating: 4.9
+            },
+            {
+                id: 2,
+                name: "Bleu de Chanel",
+                brand: "Chanel",
+                category: "hombre",
+                basePrice: 95.00,
+                image: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&q=80&w=600",
+                description: "Amaderado aromático, perfecto para el día a día y eventos formales.",
+                rating: 4.8
+            },
+            {
+                id: 3,
+                name: "Good Girl",
+                brand: "Carolina Herrera",
+                category: "mujer",
+                basePrice: 82.50,
+                image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=600",
+                description: "Dulce, sensual y misteriosa. Notas de jazmín y cacao.",
+                rating: 4.7
+            },
+            {
+                id: 4,
+                name: "Black Opium",
+                brand: "Yves Saint Laurent",
+                category: "mujer",
+                basePrice: 78.00,
+                image: "https://images.unsplash.com/photo-1615634260167-c8cd6f1491ae?auto=format&fit=crop&q=80&w=600",
+                description: "Adicción floral con café negro. Vibrante y enérgica.",
+                rating: 4.9
+            },
+            {
+                id: 5,
+                name: "Acqua di Giò Profumo",
+                brand: "Armani",
+                category: "hombre",
+                basePrice: 88.00,
+                image: "https://images.unsplash.com/photo-1616949755610-8c9bac08f9f7?auto=format&fit=crop&q=80&w=600",
+                description: "Acuático, profundo e intensamente masculino con notas de incienso.",
+                rating: 4.6
+            },
+            {
+                id: 6,
+                name: "Libre Intense",
+                brand: "Yves Saint Laurent",
+                category: "mujer",
+                basePrice: 92.00,
+                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=600",
+                description: "Lavanda floral y azahar de Marruecos. Fuerte y audaz.",
+                rating: 4.8
+            }
+        ];
+
+
+        // ==========================================
+        // ⚙️ 2. LÓGICA DE LA APLICACIÓN (NO EDITAR)
+        // ==========================================
+
+        // Estado de la app
+        let cart = [];
+        let activeFilter = 'todos';
+        let searchQuery = '';
+        let currentShippingMethod = 'inpost';
+        let cartCalculations = { baseSubtotal: 0, ivaAmount: 0, subtotalWithIva: 0, shipping: 0, total: 0 };
+
+        // Inicialización al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons(); // Cargar iconos
+            renderProducts();
+            renderShippingOptions();
+        });
+
+        // -- FUNCIONES DEL CATÁLOGO --
+
+        function getFilteredProducts() {
+            return CATALOGO.filter(product => {
+                const matchesFilter = activeFilter === 'todos' || product.category === activeFilter;
+                const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      product.brand.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesFilter && matchesSearch;
+            });
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            const noProductsMsg = document.getElementById('no-products-msg');
+            const countLabel = document.getElementById('products-count');
+            
+            const products = getFilteredProducts();
+            countLabel.textContent = `Mostrando ${products.length} productos`;
+
+            if (products.length === 0) {
+                grid.innerHTML = '';
+                noProductsMsg.classList.remove('hidden');
+                return;
+            }
+
+            noProductsMsg.classList.add('hidden');
+            grid.innerHTML = products.map(product => {
+                const finalPrice = (product.basePrice * (1 + IVA_RATE)).toFixed(2);
+                return `
+                    <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-neutral-100">
+                        <div class="relative aspect-square overflow-hidden bg-neutral-100">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"/>
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-black">
+                                ${product.brand}
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-lg font-bold text-neutral-900">${product.name}</h4>
+                                <div class="flex items-center text-amber-500 text-sm">
+                                    <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                                    <span class="ml-1 font-medium text-neutral-700">${product.rating}</span>
+                                </div>
+                            </div>
+                            <p class="text-neutral-500 text-sm mb-4 line-clamp-2">${product.description}</p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <div>
+                                    <p class="text-xl font-bold text-neutral-900">${finalPrice}€</p>
+                                    <p class="text-xs text-neutral-400">IVA incluido</p>
+                                </div>
+                                <button onclick="addToCart(${product.id})" class="bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-neutral-800 active:scale-95 transition-all shadow-md">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            lucide.createIcons();
+        }
+
+        function setFilter(category) {
+            activeFilter = category;
+            
+            // Actualizar UI de botones de filtro
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if(btn.dataset.category === category) {
+                    btn.className = "filter-btn text-sm font-medium text-black border-b-2 border-black";
+                } else {
+                    btn.className = "filter-btn text-sm font-medium text-neutral-500 hover:text-black";
+                }
+            });
+            renderProducts();
+        }
+
+        function handleSearch(event) {
+            searchQuery = event.target.value;
+            renderProducts();
+        }
+
+        // -- FUNCIONES DEL CARRITO --
+
+        function toggleCart(isOpen) {
+            const container = document.getElementById('cart-container');
+            const drawer = document.getElementById('cart-drawer');
+            
+            if (isOpen) {
+                container.classList.remove('pointer-events-none', 'opacity-0');
+                container.classList.add('opacity-100');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                container.classList.remove('opacity-100');
+                container.classList.add('pointer-events-none', 'opacity-0');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function addToCart(productId) {
+            const product = CATALOGO.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function setShippingMethod(methodId) {
+            currentShippingMethod = methodId;
+            updateCartUI();
+        }
+
+        // -- RENDERIZADO DEL CARRITO Y CÁLCULOS --
+
+        function updateCartUI() {
+            renderCartItems();
+            calculateTotals();
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cart-badge');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (totalItems > 0) {
+                badge.textContent = totalItems;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items');
+            const footer = document.getElementById('cart-footer');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-full text-neutral-500 space-y-4">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 text-neutral-300"></i>
+                        <p class="text-lg">Tu carrito está vacío</p>
+                        <button onclick="toggleCart(false)" class="text-black underline font-medium">Volver a la tienda</button>
+                    </div>
+                `;
+                footer.classList.add('hidden');
+            } else {
+                container.innerHTML = `<div class="space-y-6">` + cart.map(item => {
+                    const priceWithIva = (item.basePrice * (1 + IVA_RATE)).toFixed(2);
+                    return `
+                        <div class="flex gap-4">
+                            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg border border-neutral-200" />
+                            <div class="flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex justify-between">
+                                        <h4 class="font-bold text-neutral-900 text-sm md:text-base">${item.name}</h4>
+                                        <button onclick="removeFromCart(${item.id})" class="text-neutral-400 hover:text-red-500"><i data-lucide="x" class="w-4 h-4"></i></button>
+                                    </div>
+                                    <p class="text-xs text-neutral-500">${item.brand}</p>
+                                </div>
+                                <div class="flex items-center justify-between mt-2">
+                                    <div class="flex items-center border border-neutral-200 rounded-full">
+                                        <button onclick="updateQuantity(${item.id}, -1)" class="p-1 px-3 text-neutral-500 hover:text-black"><i data-lucide="minus" class="w-3.5 h-3.5"></i></button>
+                                        <span class="text-sm font-medium w-4 text-center">${item.quantity}</span>
+                                        <button onclick="updateQuantity(${item.id}, 1)" class="p-1 px-3 text-neutral-500 hover:text-black"><i data-lucide="plus" class="w-3.5 h-3.5"></i></button>
+                                    </div>
+                                    <p class="font-semibold">${priceWithIva}€</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('') + `</div>`;
+                footer.classList.remove('hidden');
+            }
+            lucide.createIcons();
+        }
+
+        function renderShippingOptions() {
+            const container = document.getElementById('shipping-options-container');
+            const optionsHTML = Object.values(SHIPPING_METHODS).map(method => `
+                <label class="flex items-center justify-between p-3 rounded-lg border cursor-pointer transition-all ${currentShippingMethod === method.id ? 'border-black bg-white shadow-sm ring-1 ring-black' : 'border-neutral-200 bg-transparent hover:bg-white'}">
+                    <div class="flex items-center gap-3">
+                        <input 
+                            type="radio" 
+                            name="shipping" 
+                            value="${method.id}"
+                            ${currentShippingMethod === method.id ? 'checked' : ''}
+                            onchange="setShippingMethod('${method.id}')"
+                            class="text-black focus:ring-black accent-black w-4 h-4"
+                        />
+                        <div class="flex flex-col">
+                            <span class="text-sm font-semibold text-neutral-900">${method.name}</span>
+                            <span class="text-xs text-neutral-500">${method.description}</span>
+                        </div>
+                    </div>
+                    <span class="text-sm font-bold shipping-price-label" data-price="${method.price}">
+                        ${method.price.toFixed(2)}€
+                    </span>
+                </label>
+            `).join('');
+            container.innerHTML = optionsHTML;
+        }
+
+        function calculateTotals() {
+            if (cart.length === 0) return;
+
+            const baseSubtotal = cart.reduce((sum, item) => sum + (item.basePrice * item.quantity), 0);
+            const ivaAmount = baseSubtotal * IVA_RATE;
+            const subtotalWithIva = baseSubtotal + ivaAmount;
+            
+            let currentShipping = SHIPPING_METHODS[currentShippingMethod].price;
+            let isFreeShipping = false;
+
+            if (subtotalWithIva >= FREE_SHIPPING_THRESHOLD) {
+                currentShipping = 0;
+                isFreeShipping = true;
+            }
+
+            const total = subtotalWithIva + currentShipping;
+
+            // Guardar en variable global para WhatsApp
+            cartCalculations = { baseSubtotal, ivaAmount, subtotalWithIva, shipping: currentShipping, total };
+
+            // Renderizar selector de envíos para actualizar estilos activos
+            renderShippingOptions();
+            
+            // Si el envío es gratis, actualizar etiquetas de precios en opciones
+            if (isFreeShipping) {
+                document.querySelectorAll('.shipping-price-label').forEach(el => el.textContent = '0.00€');
+            }
+
+            // Actualizar Desglose
+            document.getElementById('summary-subtotal').textContent = `${baseSubtotal.toFixed(2)}€`;
+            document.getElementById('summary-iva').textContent = `${ivaAmount.toFixed(2)}€`;
+            
+            const shippingElem = document.getElementById('summary-shipping');
+            if (isFreeShipping) {
+                shippingElem.innerHTML = `<span class="text-green-600 font-medium">¡GRATIS!</span>`;
+            } else {
+                shippingElem.textContent = `${currentShipping.toFixed(2)}€`;
+            }
+
+            document.getElementById('summary-total').textContent = `${total.toFixed(2)}€`;
+
+            // Progress bar de envío gratis
+            const progressContainer = document.getElementById('free-shipping-progress-container');
+            if (currentShipping > 0) {
+                progressContainer.classList.remove('hidden');
+                const faltante = (FREE_SHIPPING_THRESHOLD - subtotalWithIva).toFixed(2);
+                document.getElementById('free-shipping-text').textContent = `Faltan ${faltante}€ para envío gratis`;
+                const percentage = Math.min((subtotalWithIva / FREE_SHIPPING_THRESHOLD) * 100, 100);
+                document.getElementById('free-shipping-bar').style.width = `${percentage}%`;
+            } else {
+                progressContainer.classList.add('hidden');
+            }
+        }
+
+        // -- CHECKOUT --
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return;
+
+            let message = `¡Hola! Quiero hacer un pedido en tu tienda:\n\n`;
+            
+            cart.forEach(item => {
+                const priceWithIva = (item.basePrice * (1 + IVA_RATE)).toFixed(2);
+                message += `▪ ${item.quantity}x ${item.name} (${item.brand}) - ${priceWithIva}€\n`;
+            });
+
+            message += `\n*Resumen:*\n`;
+            message += `- Subtotal (sin IVA): ${cartCalculations.baseSubtotal.toFixed(2)}€\n`;
+            message += `- IVA (21%): ${cartCalculations.ivaAmount.toFixed(2)}€\n`;
+            
+            const shippingName = SHIPPING_METHODS[currentShippingMethod].name;
+            const shippingCostTxt = cartCalculations.shipping === 0 ? '¡GRATIS!' : `${cartCalculations.shipping.toFixed(2)}€`;
+            message += `- Envío (${shippingName}): ${shippingCostTxt}\n`;
+            
+            message += `*TOTAL A PAGAR: ${cartCalculations.total.toFixed(2)}€*\n\n`;
+            message += `Por favor, indícame los pasos para realizar el pago (Bizum/Transferencia) y te paso mis datos para el envío.`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+        }
+
+    </script>
+</body>
+</html>
