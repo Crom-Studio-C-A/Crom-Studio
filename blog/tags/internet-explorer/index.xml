@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Internet Explorer on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/internet-explorer/</link>
+    <description>Recent content in Internet Explorer on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Mon, 28 Sep 2026 02:40:18 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/internet-explorer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>El fin definitivo de Internet Explorer: Microsoft eliminará el modo de compatibilidad en 2029</title>
+      <link>https://cromstudio.com.ve/blog/posts/el-fin-de-internet-explorer-2029/</link>
+      <pubDate>Mon, 28 Sep 2026 02:40:18 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/el-fin-de-internet-explorer-2029/</guid>
+      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/0ttVsLq.png&#34;&#xD;&#xA;      alt=&#34;Internet Explorer&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Microsoft confirmó que eliminará el modo de compatibilidad de Internet Explorer a finales de 2029, el último resquicio que mantenía vivo al navegador dentro de Microsoft Edge. La decisión afecta a miles de empresas que aún usan aplicaciones internas basadas en tecnologías antiguas.&lt;/p&gt;&#xA;&lt;h2 id=&#34;el-modo-de-compatibilidad-ie-dejará-de-funcionar-en-2029&#34;&gt;El modo de compatibilidad IE dejará de funcionar en 2029&lt;/h2&gt;&#xA;&lt;p&gt;El modo IE es una función presente en las versiones recientes de Microsoft Edge, el navegador basado en Chromium. Permite cargar páginas web antiguas con el motor &lt;strong&gt;Trident&lt;/strong&gt;, el mismo que impulsaba a Internet Explorer 11. Así, las organizaciones mantienen operativos sistemas internos sin tener que reescribir su infraestructura digital.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
