@@ -9,8 +9,36 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Mon, 28 Sep 2026 03:07:45 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 06:46:12 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Desarrollo</title>
+      <link>https://cromstudio.com.ve/blog/categories/desarrollo/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/desarrollo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Herramientas</title>
+      <link>https://cromstudio.com.ve/blog/categories/herramientas/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/herramientas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Negocios</title>
+      <link>https://cromstudio.com.ve/blog/categories/negocios/</link>
+      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/negocios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tecnología</title>
+      <link>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</link>
+      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</guid>
+      <description></description>
+    </item>
     <item>
       <title>CromPOS</title>
       <link>https://cromstudio.com.ve/blog/categories/crompos/</link>
@@ -240,13 +268,6 @@
       <link>https://cromstudio.com.ve/blog/categories/juegos/</link>
       <pubDate>Fri, 28 Nov 2025 10:52:03 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/juegos/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tecnología</title>
-      <link>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</link>
-      <pubDate>Fri, 28 Nov 2025 10:52:03 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</guid>
       <description></description>
     </item>
     <item>
@@ -842,13 +863,6 @@
       <link>https://cromstudio.com.ve/blog/categories/contabilidad/</link>
       <pubDate>Sun, 05 Jan 2025 13:11:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/contabilidad/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Negocios</title>
-      <link>https://cromstudio.com.ve/blog/categories/negocios/</link>
-      <pubDate>Sun, 05 Jan 2025 13:11:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/negocios/</guid>
       <description></description>
     </item>
     <item>

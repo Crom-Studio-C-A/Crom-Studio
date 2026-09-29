@@ -9,20 +9,118 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Mon, 28 Sep 2026 03:07:45 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2026 06:46:12 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Control De Inventario</title>
-      <link>https://cromstudio.com.ve/blog/tags/control-de-inventario/</link>
-      <pubDate>Mon, 28 Sep 2026 03:07:45 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/control-de-inventario/</guid>
+      <title>API</title>
+      <link>https://cromstudio.com.ve/blog/tags/api/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/api/</guid>
       <description></description>
     </item>
     <item>
       <title>Crom Studio</title>
       <link>https://cromstudio.com.ve/blog/tags/crom-studio/</link>
-      <pubDate>Mon, 28 Sep 2026 03:07:45 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/crom-studio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Desarrolladores</title>
+      <link>https://cromstudio.com.ve/blog/tags/desarrolladores/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/desarrolladores/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Desarrollo Web</title>
+      <link>https://cromstudio.com.ve/blog/tags/desarrollo-web/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/desarrollo-web/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dólar BCV</title>
+      <link>https://cromstudio.com.ve/blog/tags/d%C3%B3lar-bcv/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/d%C3%B3lar-bcv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>JSON</title>
+      <link>https://cromstudio.com.ve/blog/tags/json/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/json/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open Data</title>
+      <link>https://cromstudio.com.ve/blog/tags/open-data/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/open-data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tasa De Cambio</title>
+      <link>https://cromstudio.com.ve/blog/tags/tasa-de-cambio/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/tasa-de-cambio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Venezuela</title>
+      <link>https://cromstudio.com.ve/blog/tags/venezuela/</link>
+      <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/venezuela/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ciberseguridad</title>
+      <link>https://cromstudio.com.ve/blog/tags/ciberseguridad/</link>
+      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/ciberseguridad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Código Abierto</title>
+      <link>https://cromstudio.com.ve/blog/tags/c%C3%B3digo-abierto/</link>
+      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/c%C3%B3digo-abierto/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Empresas</title>
+      <link>https://cromstudio.com.ve/blog/tags/empresas/</link>
+      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/empresas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Innovación</title>
+      <link>https://cromstudio.com.ve/blog/tags/innovaci%C3%B3n/</link>
+      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/innovaci%C3%B3n/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Soberanía Digital</title>
+      <link>https://cromstudio.com.ve/blog/tags/soberan%C3%ADa-digital/</link>
+      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/soberan%C3%ADa-digital/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software Libre</title>
+      <link>https://cromstudio.com.ve/blog/tags/software-libre/</link>
+      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/software-libre/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Control De Inventario</title>
+      <link>https://cromstudio.com.ve/blog/tags/control-de-inventario/</link>
+      <pubDate>Mon, 28 Sep 2026 03:07:45 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/control-de-inventario/</guid>
       <description></description>
     </item>
     <item>
@@ -86,13 +184,6 @@
       <link>https://cromstudio.com.ve/blog/tags/tecnolog%C3%ADa/</link>
       <pubDate>Mon, 28 Sep 2026 02:47:42 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/tecnolog%C3%ADa/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Venezuela</title>
-      <link>https://cromstudio.com.ve/blog/tags/venezuela/</link>
-      <pubDate>Mon, 28 Sep 2026 02:47:42 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/venezuela/</guid>
       <description></description>
     </item>
     <item>
@@ -1244,13 +1335,6 @@
       <description></description>
     </item>
     <item>
-      <title>Ciberseguridad</title>
-      <link>https://cromstudio.com.ve/blog/tags/ciberseguridad/</link>
-      <pubDate>Fri, 21 Mar 2025 05:30:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/ciberseguridad/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Cómo Prevenir Ransomware</title>
       <link>https://cromstudio.com.ve/blog/tags/c%C3%B3mo-prevenir-ransomware/</link>
       <pubDate>Fri, 21 Mar 2025 05:30:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
@@ -1916,13 +2000,6 @@
       <description></description>
     </item>
     <item>
-      <title>Desarrollo Web</title>
-      <link>https://cromstudio.com.ve/blog/tags/desarrollo-web/</link>
-      <pubDate>Thu, 02 Jan 2025 13:00:53 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/desarrollo-web/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Web</title>
       <link>https://cromstudio.com.ve/blog/tags/web/</link>
       <pubDate>Thu, 02 Jan 2025 13:00:53 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
@@ -2462,13 +2539,6 @@
       <description></description>
     </item>
     <item>
-      <title>Innovación</title>
-      <link>https://cromstudio.com.ve/blog/tags/innovaci%C3%B3n/</link>
-      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/innovaci%C3%B3n/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Internet</title>
       <link>https://cromstudio.com.ve/blog/tags/internet/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
@@ -2788,13 +2858,6 @@
       <link>https://cromstudio.com.ve/blog/tags/servicio-al-cliente/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/servicio-al-cliente/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Software Libre</title>
-      <link>https://cromstudio.com.ve/blog/tags/software-libre/</link>
-      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/software-libre/</guid>
       <description></description>
     </item>
     <item>

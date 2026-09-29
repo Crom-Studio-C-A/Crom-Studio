@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <title>API Pública y Gratuita del Dólar BCV (JSON) para Desarrolladores y Empresas :: Blog - Crom Studio</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Mantener los sistemas de facturación, tiendas en línea y plataformas de punto de venta actualizados con la tasa de cambio oficial es un desafío técnico constante para las empresas en Venezuela.
+Para facilitar este proceso, en Crom Studio hemos liberado nuestra API pública del Dólar BCV, una interfaz de programación de aplicaciones (REST API) gratuita, rápida y diseñada para integrarse en cualquier proyecto de software en cuestión de minutos.
+"
+/>
+<meta
+  name="keywords"
+  content="crom studio, blog crom studio, blog venezuela, noticias de tecnologia, tecnologia venezuela"
+/>
+<meta name="robots" content="noodp" /><link rel="manifest" href="/manifest.json" /><meta property="og:url" content="https://cromstudio.com.ve/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/">
+  <meta property="og:site_name" content="Blog - Crom Studio">
+  <meta property="og:title" content="API Pública y Gratuita del Dólar BCV (JSON) para Desarrolladores y Empresas">
+  <meta property="og:description" content="Mantener los sistemas de facturación, tiendas en línea y plataformas de punto de venta actualizados con la tasa de cambio oficial es un desafío técnico constante para las empresas en Venezuela.
+Para facilitar este proceso, en Crom Studio hemos liberado nuestra API pública del Dólar BCV, una interfaz de programación de aplicaciones (REST API) gratuita, rápida y diseñada para integrarse en cualquier proyecto de software en cuestión de minutos.">
+  <meta property="og:locale" content="es">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-09-29T06:46:12-04:00">
+    <meta property="article:modified_time" content="2026-09-29T06:46:12-04:00">
+    <meta property="article:tag" content="API">
+    <meta property="article:tag" content="Dólar BCV">
+    <meta property="article:tag" content="Tasa De Cambio">
+    <meta property="article:tag" content="JSON">
+    <meta property="article:tag" content="Desarrollo Web">
+    <meta property="article:tag" content="Venezuela">
+    <meta property="og:image" content="https://i.imgur.com/lgg2TQv.png">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://i.imgur.com/lgg2TQv.png">
+  <meta name="twitter:title" content="API Pública y Gratuita del Dólar BCV (JSON) para Desarrolladores y Empresas">
+  <meta name="twitter:description" content="Mantener los sistemas de facturación, tiendas en línea y plataformas de punto de venta actualizados con la tasa de cambio oficial es un desafío técnico constante para las empresas en Venezuela.
+Para facilitar este proceso, en Crom Studio hemos liberado nuestra API pública del Dólar BCV, una interfaz de programación de aplicaciones (REST API) gratuita, rápida y diseñada para integrarse en cualquier proyecto de software en cuestión de minutos.">
+
+
+<link rel="canonical" href="https://cromstudio.com.ve/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/" />
+
+<link rel="shortcut icon" href="/blog/favicon.ico" />
+<link rel="stylesheet" href="/blog/css/index.min.c860e17f20d9f258820c02bf7ab3f57c9595d0bc21dede7eda08ccd63ba3f4cc.css">
+
+
+
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-FTCG8F3HMV');
+        }
+      </script>
+
+
+
+
+
+     
+<link rel="alternate" type="application/rss+xml" href="https://cromstudio.com.ve/blog/index.xml" title="Blog - Crom Studio">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7313467653686833"
+     crossorigin="anonymous"></script>
+
+  
+  
+
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800"><header class="flex flex-none justify-center z-10">
+    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/blog/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/blog/logo.webp" alt="logo">
+    </a>
+  </div>
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Abrir menú principal</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-sm md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="post" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600 text-emerald-600"
+            href="/blog/posts/" title="Publicaciones">Publicaciones</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href=/blog/search/ class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Buscar</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Cambiar a modo oscuro">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Cambiar a modo oscuro">
+      <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
+        <i class="h-6 w-6 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:group-[]:invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+        </i>
+        <i class="h-6 w-6 flex-none rounded-full place-self-center invisible peer-checked:group-[]:visible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+        </i>
+      </div>
+    </label>
+  </div>
+</div>
+
+
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://cromstudio.com.ve/blog/index.xml"
+      title="Blog - Crom Studio">
+
+
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7313467653686833"
+     crossorigin="anonymous"></script>
+  </header>
+  <main class="flex flex-auto justify-center">
+    
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
+    <div>
+      <a href="/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/">
+        
+      </a>
+    </div>
+    <div class="flex flex-col gap-y-3 p-6">
+      <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+        <a href="/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/">API Pública y Gratuita del Dólar BCV (JSON) para Desarrolladores y Empresas</a>
+      </h1>
+
+      
+      
+  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
+    
+      
+      <li>
+        <a href="/blog/categories/herramientas/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          Herramientas
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/categories/desarrollo/"
+          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
+          Desarrollo
+        </a>
+      </li>
+      
+    
+    
+      
+      <li>
+        <a href="/blog/tags/api/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">API</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/d%C3%B3lar-bcv/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Dólar BCV</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/tasa-de-cambio/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Tasa De Cambio</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/json/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">JSON</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/desarrollo-web/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Desarrollo Web</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/venezuela/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Venezuela</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/crom-studio/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Crom Studio</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/open-data/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Open Data</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/tags/desarrolladores/"
+          class="flex flex-row text-sm mr-2 py-1">
+          <i class="h-5 w-5 flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M5 9l14 0"></path>
+   <path d="M5 15l14 0"></path>
+   <path d="M11 4l-4 16"></path>
+   <path d="M17 4l-4 16"></path>
+</svg>
+
+          </i>
+          <span class="ml-0">Desarrolladores</span>
+        </a>
+      </li>
+      
+    
+  </ul>
+
+
+
+      <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2026-09-29T06:46:12-04:00">
+      2026-09-29
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+</svg>
+
+    </i>
+    <span>
+      4 minutos de lectura
+    </span>
+  </div>
+</div>
+
+      
+
+      
+        
+        <section class="prose prose-slate dark:prose-invert w-full max-w-4xl lg:max-w-5xl mt-6">
+          <h2>Tabla de contenido</h2>
+          <aside><nav id="TableOfContents">
+  <ul>
+    <li><a href="#endpoints-disponibles">Endpoints disponibles</a></li>
+    <li><a href="#formato-de-respuesta-json">Formato de respuesta JSON</a>
+      <ul>
+        <li><a href="#ejemplo-de-respuesta">Ejemplo de respuesta</a></li>
+        <li><a href="#diccionario-de-datos">Diccionario de datos</a></li>
+      </ul>
+    </li>
+    <li><a href="#por-qué-integrar-la-api-de-crom-studio-en-tu-proyecto">¿Por qué integrar la API de Crom Studio en tu proyecto?</a>
+      <ul>
+        <li><a href="#alta-disponibilidad">Alta disponibilidad</a></li>
+        <li><a href="#formato-estándar">Formato estándar</a></li>
+        <li><a href="#cero-costos">Cero costos</a></li>
+        <li><a href="#ideal-para-ia-y-bots">Ideal para IA y bots</a></li>
+      </ul>
+    </li>
+    <li><a href="#ejemplo-de-integración-en-javascript">Ejemplo de integración en JavaScript</a></li>
+    <li><a href="#ejemplo-con-asyncawait">Ejemplo con async/await</a></li>
+    <li><a href="#usos-posibles">Usos posibles</a></li>
+    <li><a href="#una-api-pensada-para-el-ecosistema-tecnológico-venezolano">Una API pensada para el ecosistema tecnológico venezolano</a></li>
+  </ul>
+</nav></aside>
+        </section>
+        
+      
+
+      <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+        <p><div class="not-prose">
+<figure>
+    <img src="https://i.imgur.com/lgg2TQv.png"
+      alt="BCV API" 
+      loading="lazy"
+    >
+  </figure></div>
+
+Mantener los <a href="https://cromstudio.com.ve/blog/posts/crompos-sistema-de-facturacion-venezuela/" target="_blank" rel="noopener">sistemas de facturación</a>
+, tiendas en línea y plataformas de punto de venta actualizados con la tasa de cambio oficial es un desafío técnico constante para las empresas en Venezuela.</p>
+<p>Para facilitar este proceso, en <strong>Crom Studio</strong> hemos liberado nuestra <strong>API pública del Dólar BCV</strong>, una interfaz de programación de aplicaciones (REST API) gratuita, rápida y diseñada para integrarse en cualquier proyecto de software en cuestión de minutos.</p>
+<p>Esta herramienta de datos abiertos permite a desarrolladores y empresas consultar la tasa de cambio oficial del <strong>Banco Central de Venezuela (BCV)</strong> estructurada en formato JSON, ideal para automatizar cálculos multimoneda sin depender de procesos manuales.</p>
+<h2 id="endpoints-disponibles">Endpoints disponibles</h2>
+<p>Nuestra API responde a peticiones HTTP <code>GET</code> estándar de forma instantánea. No requiere autenticación mediante API Keys ni registros previos.</p>
+<p>Puedes realizar consultas directamente a las siguientes rutas:</p>
+<ul>
+<li><strong>Ruta principal:</strong> <a href="https://datos.cromstudio.com.ve/tasa" target="_blank" rel="noopener">https://datos.cromstudio.com.ve/tasa</a>
+</li>
+<li><strong>Ruta alternativa:</strong> <a href="https://datos.cromstudio.com.ve/dolar" target="_blank" rel="noopener">https://datos.cromstudio.com.ve/dolar</a>
+</li>
+</ul>
+<h2 id="formato-de-respuesta-json">Formato de respuesta JSON</h2>
+<p>La API devuelve una estructura JSON limpia y fácil de procesar con cualquier lenguaje de programación, incluyendo PHP, Python, JavaScript, Java y C#.</p>
+<h3 id="ejemplo-de-respuesta">Ejemplo de respuesta</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;fuente&#34;</span><span class="p">:</span> <span class="s2">&#34;BCV_DB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;fecha_valor&#34;</span><span class="p">:</span> <span class="s2">&#34;Martes, 29 Septiembre 2026&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tasas&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;USD&#34;</span><span class="p">:</span> <span class="mf">857.8876</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;EUR&#34;</span><span class="p">:</span> <span class="mf">974.71473336</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;actualizado_el&#34;</span><span class="p">:</span> <span class="s2">&#34;2026-09-28T17:42:10.434283-04:00&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="diccionario-de-datos">Diccionario de datos</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Campo</th>
+          <th>Descripción</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>fuente</code></td>
+          <td>Indica el origen de los datos, en este caso el Banco Central de Venezuela.</td>
+      </tr>
+      <tr>
+          <td><code>fecha_valor</code></td>
+          <td>Fecha oficial de vigencia de la tasa aplicable para facturación.</td>
+      </tr>
+      <tr>
+          <td><code>tasas</code></td>
+          <td>Objeto que contiene las cotizaciones actualizadas, incluyendo el Dólar Estadounidense (<code>USD</code>) y el Euro (<code>EUR</code>).</td>
+      </tr>
+      <tr>
+          <td><code>actualizado_el</code></td>
+          <td>Marca de tiempo (<em>timestamp</em>) en formato ISO 8601 que indica el momento de la última sincronización con los servidores oficiales.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="por-qué-integrar-la-api-de-crom-studio-en-tu-proyecto">¿Por qué integrar la API de Crom Studio en tu proyecto?</h2>
+<h3 id="alta-disponibilidad">Alta disponibilidad</h3>
+<p>Desarrollada sobre nuestra infraestructura de datos en la nube, la API está pensada para ofrecer respuestas rápidas y disponibilidad para aplicaciones que necesitan consultar la tasa de cambio de manera automatizada.</p>
+<h3 id="formato-estándar">Formato estándar</h3>
+<p>La respuesta utiliza una estructura JSON predecible, evitando depender de técnicas de extracción de datos (<em>scraping</em>) sobre páginas web cuyo diseño puede cambiar.</p>
+<h3 id="cero-costos">Cero costos</h3>
+<p>Es una herramienta <strong>gratuita y de acceso público</strong>, alineada con nuestra filosofía de aportar infraestructura y herramientas de datos abiertos a la comunidad tecnológica.</p>
+<h3 id="ideal-para-ia-y-bots">Ideal para IA y bots</h3>
+<p>Al mantener una estructura de datos estandarizada, asistentes de Inteligencia Artificial y bots de Telegram o WhatsApp pueden consumir estos datos fácilmente para responder consultas relacionadas con la tasa de cambio.</p>
+<h2 id="ejemplo-de-integración-en-javascript">Ejemplo de integración en JavaScript</h2>
+<p>Implementar esta solución en tu frontend o backend es sencillo. Por ejemplo, puedes utilizar la API <code>fetch()</code> de JavaScript para consultar la tasa del dólar:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;https://datos.cromstudio.com.ve/tasa&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">tasaDolar</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">tasas</span><span class="p">.</span><span class="nx">USD</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">fecha</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">fecha_valor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="sb">`La tasa oficial para el </span><span class="si">${</span><span class="nx">fecha</span><span class="si">}</span><span class="sb"> es de Bs. </span><span class="si">${</span><span class="nx">tasaDolar</span><span class="si">}</span><span class="sb">`</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">})</span>
+</span></span><span class="line"><span class="cl">  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error al obtener la tasa BCV:&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span></code></pre></div><h2 id="ejemplo-con-asyncawait">Ejemplo con async/await</h2>
+<p>También puedes consumir el endpoint utilizando <code>async/await</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">async</span> <span class="kd">function</span> <span class="nx">obtenerTasaBCV</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">      <span class="s1">&#39;https://datos.cromstudio.com.ve/tasa&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Tasa USD:&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">tasas</span><span class="p">.</span><span class="nx">USD</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Tasa EUR:&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">tasas</span><span class="p">.</span><span class="nx">EUR</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Fecha:&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">fecha_valor</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error al obtener la tasa BCV:&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">obtenerTasaBCV</span><span class="p">();</span>
+</span></span></code></pre></div><h2 id="usos-posibles">Usos posibles</h2>
+<p>La API puede integrarse en diferentes tipos de aplicaciones y servicios, por ejemplo:</p>
+<ul>
+<li>Sistemas de facturación.</li>
+<li>Puntos de venta (POS).</li>
+<li>Tiendas en línea.</li>
+<li>Sistemas administrativos.</li>
+<li>Aplicaciones móviles.</li>
+<li>Bots de Telegram y WhatsApp.</li>
+<li>Automatizaciones empresariales.</li>
+<li>Dashboards financieros.</li>
+<li>Sistemas de inventario.</li>
+<li>Aplicaciones desarrolladas con PHP, Python, JavaScript, Java, C# y otros lenguajes.</li>
+</ul>
+<h2 id="una-api-pensada-para-el-ecosistema-tecnológico-venezolano">Una API pensada para el ecosistema tecnológico venezolano</h2>
+<p>La disponibilidad de datos estructurados permite que los desarrolladores puedan automatizar procesos que tradicionalmente requieren consultas manuales.</p>
+<p>En <strong>Crom Studio</strong> no solo construimos aplicaciones y sistemas web a medida; también proporcionamos bloques de infraestructura y herramientas para que otros desarrolladores puedan crear software más eficiente y adaptado a la realidad comercial venezolana.</p>
+<p>Si necesitas consultar la tasa de cambio desde tu aplicación, puedes comenzar directamente con cualquiera de nuestros endpoints:</p>
+<ul>
+<li><a href="https://datos.cromstudio.com.ve/tasa" target="_blank" rel="noopener">https://datos.cromstudio.com.ve/tasa</a>
+</li>
+<li><a href="https://datos.cromstudio.com.ve/dolar" target="_blank" rel="noopener">https://datos.cromstudio.com.ve/dolar</a>
+</li>
+</ul>
+<p><strong>Crom Studio — Infraestructura, Servidores y Odoo ERP.</strong></p>
+
+      </article>
+
+      
+
+
+
+
+    </div>
+  </div>
+</div>
+
+  </main>
+  <footer class="flex flex-none justify-center">
+    <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-3 md:gap-4 items-center justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-sm text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+      
+  
+  
+    <a href="https://www.facebook.com/cromstudio21" target="_blank" title="Facebook" class="flex flex-row mr-2">
+      <span class="hidden">Facebook</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://twitter.com/cromstudio" target="_blank" title="Twitter" class="flex flex-row mr-2">
+      <span class="hidden">Twitter</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+   <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://www.instagram.com/cromstudio21" target="_blank" title="Instagram" class="flex flex-row mr-2">
+      <span class="hidden">Instagram</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M16.5 7.5l0 .01"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+
+  <div class="flex flex-row items-center text-center md:text-left">
+      
+          <i class="inline-block h-4 w-4 align-middle flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2021 - 2026 Blog Crom Studio
+      
+  </div>
+
+      <a href="https://cromstudio.com.ve/politica-privacidad" class="hover:underline whitespace-nowrap">Política de Privacidad</a>
+
+  <a href="https://cromstudio.com.ve/politica-cookies" class="hover:underline whitespace-nowrap">Política de Cookies</a>
+   
+  
+  <div class="flex flex-row items-center ml-0 pl-0 md:ml-2 md:pl-2 border-l-0 md:border-l border-slate-300 dark:border-slate-400">
+      <span> 
+          Con tecnología de <a href="https://cromstudio.com.ve/" target="_blank" rel="noopener" class="hover:underline">Crom Studio</a> <no value> <no value>
+      </span>
+  </div>
+  
+</section>
+  </footer>
+  <script src="/blog/main.min.65ca5b0808abf278fcec5d424701ebf0b4bc46a737129cd5e57fdb739f463e79.js"></script>
+
+<div class="hidden top-1 right-1" id="code-copy">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+  <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+</svg>
+
+  </i>
+</div>
+<div class="hidden top-1 right-1" id="code-copy-done">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M5 12l5 5l10 -10" />
+</svg>
+
+  </i>
+</div><script src="/blog/code-copy.min.e7b2a74adef1ed474c335c8bd5e7832b2316b8842b0f9184d65286c5bd64f51a.js"></script>
+
+
+
+
+
+
+</body>
+</html>
