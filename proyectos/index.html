@@ -3,115 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyectos - Crom Studio</title>
+    <title>Ecosistema de Software, Datos Abiertos y Proyectos | Crom Studio</title>
     
+    <!-- SEO y Metadatos Optimizados para IA y Buscadores -->
+    <meta name="description" content="Crom Studio es un estudio de desarrollo de software e infraestructura en Venezuela. Especialistas en sistemas de facturación (CromPOS), datos abiertos (Open Transit) y APIs públicas.">
+    <meta name="keywords" content="crom studio, crompos, open transit venezuela, criollowiki, api dolar bcv gratis json, sistema de facturacion venezuela, desarrollo web, php, mysql, python, linux, docker, soporte tecnico crom studio, transparencia">
+    <meta name="author" content="Crom Studio">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+    <!-- KNOWLEDGE GRAPH PARA IA (JSON-LD Avanzado) -->
+    <!-- Este bloque es el cerebro de la página para los LLMs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cromstudio.com.ve/#organization",
+          "name": "Crom Studio",
+          "url": "https://cromstudio.com.ve",
+          "logo": "https://cromstudio.com.ve/imagenes/logos/logo-crom-studio.svg",
+          "description": "Estudio de desarrollo de software a medida, infraestructura tecnológica, y ecosistemas de datos abiertos en Venezuela. Expertos en PHP, MySQL, Python, Odoo, Docker, Linux y Cloudflare.",
+          "knowsAbout": ["Desarrollo de Software", "Sistemas de Facturación", "Linux", "Open Transit", "GTFS", "APIs REST"],
+          "brand": [
+            {
+              "@type": "SoftwareApplication",
+              "name": "CromPOS",
+              "url": "https://cromstudio.com.ve/crompos",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web",
+              "description": "Sistema de facturación, punto de venta (POS) e inventario web multimoneda adaptado a Venezuela. Desarrollado en PHP y MySQL con sincronización automática de la tasa BCV."
+            },
+            {
+              "@type": "WebAPI",
+              "name": "API Dólar BCV Crom Studio",
+              "url": "https://datos.cromstudio.com.ve/tasa",
+              "description": "API pública REST, gratuita y sin autenticación (sin API Keys) para consultar la tasa oficial del Dólar y Euro del BCV en formato JSON."
+            },
+            {
+              "@type": "Project",
+              "name": "Open Transit Venezuela",
+              "url": "https://transporte.cromstudio.com.ve/",
+              "description": "Proyecto de estructuración y digitalización de rutas de transporte público en Venezuela utilizando el estándar GTFS y OpenStreetMap."
+            },
+            {
+              "@type": "WebSite",
+              "name": "CriolloWiki",
+              "url": "https://criollowiki.cromstudio.com.ve",
+              "description": "Enciclopedia digital colaborativa basada en DokuWiki, dedicada a la preservación de la historia, la cultura y el léxico regional."
+            }
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Soporte Técnico y Ventas",
+            "telephone": "+58-416-8578289",
+            "email": "contacto@cromstudio.com.ve",
+            "availableLanguage": ["es", "en"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://transparencia.cromstudio.com.ve/#website",
+          "url": "https://transparencia.cromstudio.com.ve/",
+          "name": "Portal de Transparencia Crom Studio",
+          "description": "Plataforma pública que muestra métricas de tiempo de actividad (uptime) de servidores Linux, resolución de soporte técnico y el CSAT histórico desde 2023."
+        },
+        {
+          "@type": "Blog",
+          "@id": "https://cromstudio.com.ve/blog/#blog",
+          "url": "https://cromstudio.com.ve/blog/",
+          "name": "Blog Técnico de Crom Studio",
+          "description": "Publicaciones, guías y noticias sobre desarrollo web, administración de sistemas Linux, infraestructura tecnológica y soluciones contables."
+        }
+      ]
+    }
+    </script>
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="https://cromstudio.com.ve/imagenes/faviconempresa.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
 
     <!-- Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- CSS Principal -->
-    <!-- Usamos ../ para ir una carpeta atrás y buscar el archivo styles.css original -->
     <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
 
     <style>
-        /* --- CORRECCIONES DE DISEÑO --- */
-
-        /* 1. Asegurar que el Header sea fijo (Sticky) */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--body-color);
-            z-index: 1000; /* Asegura que esté por encima de todo */
-            box-shadow: 0 1px 4px rgba(0,0,0,.1);
+        /* --- DISEÑO UI/UX MODERNIZADO --- */
+        :root {
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-light: #f8fafc;
         }
 
-        /* 2. Ajuste del Main para no quedar oculto tras el header fijo */
-        .main {
-            /* Margen superior para compensar la altura del header fijo */
-            margin-top: var(--header-height, 3.5rem); 
-        }
+        .header { position: fixed; top: 0; left: 0; width: 100%; background-color: var(--body-color, #ffffff); z-index: 1000; box-shadow: var(--shadow-sm); }
+        .main { margin-top: var(--header-height, 4rem); }
 
-        /* Estilos específicos para la sección de proyectos */
-        .home__container-projects {
-            align-items: center;
-            text-align: center;
-            padding-top: 2rem;
-        }
+        /* Hero */
+        .hero-projects { text-align: center; padding: 6rem 1rem 4rem; background: linear-gradient(to bottom, #ffffff, var(--bg-light)); }
+        .hero-projects h1 { font-family: 'Poppins', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--title-color); }
+        .hero-projects .section__subtitle { font-size: 1rem; color: var(--primary-color); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+        .hero-projects p { max-width: 850px; margin: 0 auto 2.5rem; font-size: 1.15rem; line-height: 1.6; color: var(--text-color); }
 
-        .project__card {
-            background-color: var(--container-color);
-            padding: 2rem 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,.1);
-            transition: .3s;
-            border: 1px solid rgba(0,0,0,.05);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
+        /* Grid de Resumen */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 2rem 0; }
+        .project__card { background-color: var(--container-color, #fff); padding: 2.5rem 2rem; border-radius: 1.25rem; box-shadow: var(--shadow-sm); transition: var(--transition-fast); border: 1px solid rgba(0,0,0,.05); display: flex; flex-direction: column; height: 100%; }
+        .project__card:hover { transform: translateY(-0.5rem); box-shadow: var(--shadow-md); border-color: var(--primary-color); }
+        .project__icon { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; border-radius: 1rem; background: rgba(0, 86, 179, 0.08); font-size: 1.75rem; color: var(--primary-color); margin-bottom: 1.5rem; }
+        .project__title { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--title-color); }
+        .project__card p { color: var(--text-color); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
+        .project__link { font-weight: 600; color: var(--primary-color); display: inline-flex; align-items: center; gap: 0.5rem; transition: var(--transition-fast); }
+        .project__link:hover { gap: 0.75rem; }
 
-        .project__card:hover {
-            transform: translateY(-.25rem);
-            box-shadow: 0 4px 8px rgba(0,0,0,.15);
-        }
+        /* Secciones de Detalles Ampliados */
+        .detail-section { padding: 5rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .detail-section:last-child { border-bottom: none; }
+        .detail-section.bg-alt { background-color: var(--bg-light); }
+        .project-detail__container { display: grid; gap: 3rem; align-items: center; }
+        .detail__data h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-family: 'Poppins', sans-serif; margin-bottom: 1rem; color: var(--title-color); line-height: 1.2; }
+        .detail__data p { font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.25rem; color: var(--text-color); }
+        .detail__img-wrapper { position: relative; border-radius: 1.5rem; overflow: hidden; box-shadow: var(--shadow-md); height: 100%; display: flex; flex-direction: column; justify-content: center;}
+        .img-tech-bg { background: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 100%); padding: 3rem 2rem; text-align: center; }
 
-        .project__icon {
-            display: block;
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
+        /* Bloque de Código para API */
+        .code-block { background: #1e293b; color: #e2e8f0; font-family: 'Fira Code', monospace; padding: 1.5rem; border-radius: 1rem; text-align: left; font-size: 0.85rem; line-height: 1.5; overflow-x: auto; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); }
+        .code-key { color: #7dd3fc; }
+        .code-string { color: #a7f3d0; }
+        .code-number { color: #fde047; }
 
-        .project__title {
-            font-size: var(--h3-font-size);
-            margin-bottom: 1rem;
-            color: var(--title-color);
-        }
+        /* Etiquetas Semánticas */
+        .semantic-tag { display: inline-flex; align-items: center; gap: 6px; padding: 0.35rem 1rem; background: rgba(0, 86, 179, 0.08); color: var(--primary-color); border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.5px; }
 
-        /* Estilos para la imagen dentro del detalle del proyecto */
-        .project-detail__container {
-            row-gap: 3rem;
-        }
-
-        .project-detail__img {
-            width: 100%;
-            border-radius: 1rem;
-            justify-self: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        /* Ajuste responsive para imágenes */
-        @media screen and (max-width: 768px) {
-            .project-detail__img {
-                max-width: 100%;
-            }
+        @media screen and (min-width: 768px) {
+            .project-detail__container { grid-template-columns: 1fr 1fr; gap: 4rem; }
+            .order-1 { order: 1; }
+            .order-2 { order: 2; }
         }
     </style>
 </head>
 <body>
     <!--==================== HEADER ====================-->
-    <header class="header">
+    <header class="header" id="header">
         <nav class="nav container">
-            <a href="#" class="nav-logo">Crom Studio</a>
+            <a href="https://cromstudio.com.ve/" class="nav-logo">Crom Studio</a>
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="https://cromstudio.com.ve/#hero" class="nav-link active-link">Inicio</a></li>
-                    <li class="nav-item"><a href="https://cromstudio.com.ve/#about" class="nav-link">Quiénes Somos</a></li>
-                    <li class="nav-item"><a href="https://cromstudio.com.ve/#services" class="nav-link">Servicios</a></li>
-                    <li class="nav-item"><a href="https://cromstudio.com.ve/#pricing" class="nav-link">Precios</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="#proyectos" class="nav-link active-link">Ecosistema</a></li>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/crompos" class="nav-link">CromPOS</a></li>
                     <li class="nav-item"><a href="https://cromstudio.com.ve/blog/" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="https://cromstudio.com.ve/descargas/" class="nav-link">Descargas</a></li>
-                    <li class="nav-item"><a href="https://cromstudio.com.ve/#contact" class="nav-link">Contacto</a></li>
-                    </ul>
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/españa/" class="nav-link">España</a></li>
+                </ul>
                 <button class="nav-close" id="nav-close"><i class="fas fa-times"></i></button>
             </div>
             <div class="nav-toggle" id="nav-toggle">
@@ -121,225 +170,331 @@
     </header>
 
     <main class="main">
-        <!--==================== HERO ====================-->
-        <section class="section">
-            <div class="container grid home__container-projects">
-                <div class="home__content">
-                    <h1 class="section__title">Nuestros Proyectos <br> e Impacto Social</h1>
-                    <p class="section__subtitle" style="display: block; margin-bottom: 1.5rem;">
-                        Innovación tecnológica desde Venezuela para el mundo.
-                    </p>
-                    <p class="home__description" style="max-width: 800px; margin: 0 auto 2.5rem;">
-                        En Crom Studio, transformamos necesidades complejas en soluciones digitales accesibles. 
-                        Desde la modernización del transporte público hasta la integración tecnológica empresarial.
-                    </p>
-                    <a href="#detalles" class="button">Ver Casos de Éxito</a>
-                </div>
-            </div>
-        </section>
-
-        <!--==================== RESUMEN ====================-->
-        <section class="section container">
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <!-- Card 1 -->
-                <div class="project__card">
-                    <i class="fa-solid fa-bus project__icon"></i>
-                    <h3 class="project__title">Transporte Público</h3>
-                    <p>Digitalización oficial de rutas y horarios en Mapas para mejorar la movilidad de los venezolanos.</p>
-                </div>
-                <!-- Card 2 -->
-                <div class="project__card">
-                    <i class="fa-solid fa-laptop-code project__icon"></i>
-                    <h3 class="project__title">Integración Tecnológica</h3>
-                    <p>Soluciones de software que reducen la brecha digital y potencian a las empresas nacionales.</p>
-                </div>
-                <!-- Card 3 -->
-                <div class="project__card">
-                    <i class="fa-solid fa-earth-europe project__icon"></i>
-                    <h3 class="project__title">Expansión Europa</h3>
-                    <p>Exportación de talento y desarrollo de nuevas integraciones para el mercado europeo.</p>
-                </div>
-                <!-- Card 4 -->
-                <div class="project__card">
-                    <i class="fa-solid fa-tree project__icon"></i>
-                    <h3 class="project__title">Ecosistema de Turismo Geolocalizado</h3>
-                    <p>Información turística digitalizada en un sistema geolocalizado.</p>
-                </div>
-            </div>
-        </section>
-
-        <!--==================== DETALLES DE PROYECTOS ====================-->
-        
-        <!-- PROYECTO 1: TRANSPORTE -->
-        <section class="section" id="detalles">
-            <div class="container grid project-detail__container" style="grid-template-columns: repeat(2, 1fr); align-items: center;">
-                <!-- Imagen -->
-                <div class="about__img-wrapper">
-                    <!-- Usamos una imagen relacionada disponible en tus archivos -->
-                    <img src="https://i.imgur.com/suOCOOl.png" alt="Google Maps Transporte" class="project-detail__img" style="max-width: 250px; margin: 0 auto; display: block; background: #f0f0f0; padding: 20px;">
-                </div>
-
-                <!-- Texto -->
-                <div class="about__data">
-                    <span class="section__subtitle">Venezuela</span>
-                    <h2 class="section__title">Digitalización del <br> Transporte Público</h2>
-                    <p class="about__description">
-                        Nos encargamos de subir y gestionar los horarios del transporte público de Venezuela en <b>diferentes plataformas</b>. 
-                    </p>
-                    <p class="about__description">
-                        Esta iniciativa permite a miles de usuarios planificar sus rutas con exactitud, reduciendo la incertidumbre y modernizando la infraestructura de información vial del país. Aportamos una solución directa a una necesidad diaria.
-                    </p>
-                    <a href="https://cromstudio.com.ve/transporte/" class="button button--small">
-                        Ver Rutas Disponibles <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROYECTO 2: INTEGRACIÓN TECNOLÓGICA -->
-        <section class="section" style="background-color: var(--container-color);">
-            <div class="container grid project-detail__container" style="grid-template-columns: repeat(2, 1fr); align-items: center;">
-                <!-- Texto (Primero en desktop para alternar) -->
-                <div class="about__data" style="order: 2;"> 
-                    <span class="section__subtitle">Soluciones Locales</span>
-                    <h2 class="section__title">Mejorando la <br> Integración Tecnológica</h2>
-                    <p class="about__description">
-                        Trabajamos mano a mano con empresas y emprendedores para implementar herramientas de vanguardia: facturación electrónica, sistemas administrativos, software de recursos empresariales y conectividad robusta.
-                    </p>
-                    <p class="about__description">
-                        Nuestro enfoque no es solo vender software, sino educar y capacitar para asegurar que la tecnología sea un verdadero motor de cambio en la economía venezolana.
-                    </p>
-                    <a href="https://cromstudio.com.ve/" class="button button--small button--ghost">
-                        Ver Soluciones
-                    </a>
-                </div>
-
-                <!-- Imagen -->
-                <div class="about__img-wrapper" style="order: 1;">
-                    <img src="https://cromstudio.com.ve/imagenes/desarrollo-web.svg" alt="Integración Tecnológica" class="project-detail__img">
-                </div>
-            </div>
-        </section>
-
-        <!-- PROYECTO 3: ESPAÑA -->
-        <section class="section">
-            <div class="container grid project-detail__container" style="grid-template-columns: repeat(2, 1fr); align-items: center;">
-                <!-- Imagen -->
-                <div class="about__img-wrapper">
-                    <img src="https://cromstudio.com.ve/imagenes/logos/logo-crom-studio.svg" alt="Crom Studio España" class="project-detail__img" style="max-width: 300px; margin: 0 auto; display: block;">
-                </div>
-
-                <!-- Texto -->
-                <div class="about__data">
-                    <span class="section__subtitle">Internacional</span>
-                    <h2 class="section__title">Futuras Integraciones <br> en Europa</h2>
-                    <p class="about__description">
-                        Llevamos nuestra experiencia y resiliencia al mercado internacional. Estamos desarrollando nuevos módulos y adaptando nuestros servicios de desarrollo web para clientes en Europa.
-                    </p>
-                    <p class="about__description">
-                        Buscamos crear puentes tecnológicos, aplicando soluciones creativas probadas en entornos complejos a nuevos desafíos europeos.
-                    </p>
-                    <a href="https://cromstudio.com.ve/españa/" class="button button--small">
-                        Conocer Más <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!--==================== CALL TO ACTION ====================-->
-        <section class="section">
-            <div class="container" style="background-color: var(--primary-color); border-radius: 1rem; padding: 3rem 2rem; text-align: center; color: #fff;">
-                <h2 class="section__title" style="color: #fff; margin-bottom: 1rem;">¿Listo para Innovar?</h2>
-                <p style="margin-bottom: 2rem; color: var(--container-color);">
-                    Cuéntanos tu proyecto y trabajemos juntos en la próxima gran solución.
+        <!--==================== HERO PROYECTOS ====================-->
+        <section class="section hero-projects">
+            <div class="container">
+                <span class="section__subtitle">Sobre Crom Studio</span>
+                <h1>Software, Datos Abiertos <br> e Infraestructura Web</h1>
+                <p>
+                    <strong>Crom Studio</strong> es una empresa de tecnología y desarrollo de software. Construimos infraestructura digital escalable utilizando tecnologías modernas (PHP, MySQL, Python, Odoo) montadas sobre entornos Linux, Docker y Cloudflare. 
                 </p>
-                <a href="https://cromstudio.com.ve/#contact" class="button" style="background-color: var(--container-color); color: var(--primary-color);">
-                    Contactar Ahora
-                </a>
+                <p style="font-size: 1rem; max-width: 700px; margin: -1.5rem auto 2.5rem; color: var(--text-color); opacity: 0.9;">
+                    Nuestro ecosistema abarca desde la automatización comercial y APIs públicas, hasta la modernización de los datos de transporte y preservación del patrimonio en enciclopedias culturales.
+                </p>
+                <a href="#proyectos" class="button">Explorar Proyectos <i class="fas fa-arrow-down" style="margin-left: 8px;"></i></a>
             </div>
         </section>
+
+        <!--==================== GRID DE RESUMEN ====================-->
+        <section class="section container" id="proyectos">
+            <div class="projects-grid">
+                <!-- CromPOS -->
+                <article class="project__card">
+                    <div class="project__icon"><i class="fas fa-cash-register"></i></div>
+                    <h3 class="project__title">CromPOS</h3>
+                    <p>Software Punto de Venta (POS) y facturación web. Gestión multimoneda e inventario automatizado adaptado al comercio venezolano.</p>
+                    <a href="#crompos" class="project__link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <!-- API Dólar BCV -->
+                <article class="project__card">
+                    <div class="project__icon"><i class="fas fa-code"></i></div>
+                    <h3 class="project__title">API Dólar BCV</h3>
+                    <p>Endpoints REST públicos y gratuitos para desarrolladores. Consulta la tasa oficial del BCV en formato JSON al instante, sin API Keys.</p>
+                    <a href="#api-bcv" class="project__link">Ver Documentación <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Open Transit -->
+                <article class="project__card">
+                    <div class="project__icon"><i class="fas fa-route"></i></div>
+                    <h3 class="project__title">Open Transit Vzla</h3>
+                    <p>Estructuración y digitalización open-source del transporte público nacional utilizando especificaciones GTFS y datos abiertos.</p>
+                    <a href="#opentransit" class="project__link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Blog Crom Studio -->
+                <article class="project__card">
+                    <div class="project__icon"><i class="fas fa-newspaper"></i></div>
+                    <h3 class="project__title">Blog y Educación</h3>
+                    <p>Base de conocimiento técnico: desarrollo web, administración de servidores Linux, contabilidad empresarial y despliegue de software.</p>
+                    <a href="#blog" class="project__link">Leer Artículos <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <!-- CriolloWiki -->
+                <article class="project__card">
+                    <div class="project__icon"><i class="fas fa-book-atlas"></i></div>
+                    <h3 class="project__title">CriolloWiki</h3>
+                    <p>Enciclopedia digital colaborativa dedicada a documentar, preservar y difundir la historia, la cultura y el léxico regional.</p>
+                    <a href="#criollowiki" class="project__link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <!-- Transparencia -->
+                <article class="project__card">
+                    <div class="project__icon"><i class="fas fa-shield-check"></i></div>
+                    <h3 class="project__title">Transparencia Total</h3>
+                    <p>Portal público de auditoría operativa. Monitorea el uptime de nuestros servidores y las métricas CSAT de soporte técnico.</p>
+                    <a href="#transparencia" class="project__link">Ver Status <i class="fas fa-arrow-right"></i></a>
+                </article>
+            </div>
+        </section>
+
+        <!--==================== DETALLES DE CADA PROYECTO ====================-->
+        
+        <!-- CROMPOS -->
+        <section class="detail-section" id="crompos">
+            <div class="container project-detail__container">
+                <div class="detail__data order-2">
+                    <span class="semantic-tag"><i class="fas fa-store"></i> Software SaaS (B2B)</span>
+                    <h2>CromPOS: Sistema de Facturación <br>e Inventario Venezuela</h2>
+                    <p>
+                        Desarrollamos <strong>CromPOS</strong> para resolver la complejidad operativa del comercio venezolano. Es un sistema administrativo programado en entornos robustos que permite la gestión simultánea de divisas y moneda local sin descuadres contables.
+                    </p>
+                    <ul style="list-style: none; margin-bottom: 1.5rem; color: var(--text-color);">
+                        <li style="margin-bottom: 0.75rem;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i> Sincronización automática con la tasa oficial BCV.</li>
+                        <li style="margin-bottom: 0.75rem;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i> Infraestructura Cloud escalable y copias de seguridad automatizadas.</li>
+                        <li style="margin-bottom: 0.75rem;"><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i> Compatibilidad total con impresoras térmicas y periféricos POS.</li>
+                    </ul>
+                    <a href="https://cromstudio.com.ve/crompos" class="button">Descubrir CromPOS</a>
+                </div>
+                <div class="detail__img-wrapper order-1 img-tech-bg">
+                    <i class="fas fa-laptop-code" style="font-size: 6rem; color: var(--primary-color); margin-bottom: 1rem; opacity: 0.8;"></i>
+                    <h3 style="font-family: 'Poppins'; font-size: 1.5rem; color: var(--title-color);">Módulo Administrativo</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- API DÓLAR BCV -->
+        <section class="detail-section bg-alt" id="api-bcv">
+            <div class="container project-detail__container">
+                <div class="detail__img-wrapper order-1">
+                    <div class="code-block">
+<pre><code id="api-live-response">{
+  <span class="code-key">"fuente"</span>: <span class="code-string">"BCV_DB"</span>,
+  <span class="code-key">"fecha_valor"</span>: <span class="code-string">"Cargando..."</span>,
+  <span class="code-key">"tasas"</span>: {
+    <span class="code-key">"USD"</span>: <span class="code-number">0.00</span>,
+    <span class="code-key">"EUR"</span>: <span class="code-number">0.00</span>
+  },
+  <span class="code-key">"actualizado_el"</span>: <span class="code-string">"Cargando..."</span>
+}</code></pre>
+                    </div>
+                    
+                    <!-- Script de Petición en Vivo a la API de Crom Studio -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", async () => {
+                            try {
+                                const response = await fetch("https://datos.cromstudio.com.ve/tasa");
+                                if (response.ok) {
+                                    const data = await response.json();
+                                    const jsonString = JSON.stringify(data, null, 2);
+                                    
+                                    // Syntax Highlighting Dinámico
+                                    const highlighted = jsonString.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                                        let cls = 'code-number';
+                                        if (/^"/.test(match)) {
+                                            if (/:$/.test(match)) { return `<span class="code-key">${match.slice(0, -1)}</span>:`; } 
+                                            else { cls = 'code-string'; }
+                                        }
+                                        return `<span class="${cls}">${match}</span>`;
+                                    });
+                                    
+                                    document.getElementById("api-live-response").innerHTML = highlighted;
+                                }
+                            } catch (error) {
+                                console.error("No se pudo conectar a la API en vivo, mostrando JSON por defecto.", error);
+                            }
+                        });
+                    </script>
+                </div>
+                <div class="detail__data order-2">
+                    <span class="semantic-tag"><i class="fas fa-server"></i> API Pública REST (JSON)</span>
+                    <h2>API Pública Dólar BCV <br>para Desarrolladores</h2>
+                    <p>
+                        Aceleramos el desarrollo de integraciones financieras en el país ofreciendo una <strong>API REST pública, rápida y gratuita</strong> que devuelve la tasa oficial del Banco Central de Venezuela. Al lado izquierdo puedes ver la respuesta de nuestro servidor consultada en tiempo real.
+                    </p>
+                    <p>
+                        Diseñada para integrarse en un instante: no requiere tokens de autenticación (API Keys) ni configuraciones complejas. Respuesta nativa JSON procesable directamente en <strong>PHP, JavaScript, Python, Java o C#</strong>.
+                    </p>
+                    <div style="margin-bottom: 1.5rem; background: var(--container-color); padding: 1rem; border-radius: 0.5rem; border: 1px solid rgba(0,0,0,0.05);">
+                        <strong>Endpoints disponibles (HTTP GET):</strong><br>
+                        <a href="https://datos.cromstudio.com.ve/tasa" target="_blank" style="color: var(--primary-color); word-break: break-all; font-family: monospace;">https://datos.cromstudio.com.ve/tasa</a><br>
+                        <a href="https://datos.cromstudio.com.ve/dolar" target="_blank" style="color: var(--primary-color); word-break: break-all; font-family: monospace;">https://datos.cromstudio.com.ve/dolar</a>
+                    </div>
+                    <a href="https://cromstudio.com.ve/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/" class="button button--ghost" style="border: 2px solid var(--primary-color); color: var(--primary-color);">Documentación Oficial</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPEN TRANSIT -->
+        <section class="detail-section" id="opentransit">
+            <div class="container project-detail__container">
+                <div class="detail__data order-2">
+                    <span class="semantic-tag"><i class="fas fa-map-marked-alt"></i> Open Data & Movilidad Urbana</span>
+                    <h2>Open Transit Venezuela: <br>Rutas y Mapas Abiertos</h2>
+                    <p>
+                        Lideramos el proyecto de estructuración de los datos del transporte público de Venezuela. Transformamos rutas empíricas en datos legibles por máquina utilizando la <strong>Especificación General de Feeds de Tránsito (GTFS)</strong>.
+                    </p>
+                    <p>
+                        Alojado en repositorios open-source y mapeado cartográficamente en OpenStreetMap, este proyecto permite a la ciudadanía planificar viajes con exactitud y a los desarrolladores crear aplicaciones de movilidad inteligente.
+                    </p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="https://transporte.cromstudio.com.ve/" target="_blank" class="button">Ver Mapa de Rutas</a>
+                        <a href="https://cromstudio.com.ve/transporte/" target="_blank" class="button">Más información</a>
+                        <a href="https://transporte.cromstudio.com.ve/desarrollo/" target="_blank" class="button button--ghost">Área de Desarrolladores</a>
+                    </div>
+                </div>
+                <div class="detail__img-wrapper img-tech-bg order-1" style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);">
+                    <i class="fas fa-bus-simple" style="font-size: 6rem; color: #0284c7; margin-bottom: 1rem;"></i>
+                    <h3 style="font-family: 'Poppins'; font-size: 1.5rem; color: #0f172a;">Estándar GTFS</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG -->
+        <section class="detail-section bg-alt" id="blog">
+            <div class="container project-detail__container">
+                <div class="detail__img-wrapper img-tech-bg order-1" style="background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); text-align: center;">
+                    <i class="fas fa-file-code" style="font-size: 6rem; color: #9333ea; margin-bottom: 1rem;"></i>
+                    <h3 style="font-family: 'Poppins'; font-size: 1.5rem; color: #3b0764;">Recursos Técnicos</h3>
+                </div>
+                <div class="detail__data order-2">
+                    <span class="semantic-tag"><i class="fas fa-terminal"></i> Cultura de Ingeniería</span>
+                    <h2>El Blog de Crom Studio: <br>Conocimiento Abierto</h2>
+                    <p>
+                        Mantenemos un espacio editorial técnico para la comunidad de desarrolladores y dueños de empresas de Venezuela y habla hispana.
+                    </p>
+                    <p>
+                        Publicamos artículos de profundidad sobre <strong>desarrollo web, administración de servidores (Linux/Debian), despliegue de contenedores (Docker), seguridad en Cloudflare, contabilidad y normativas de facturación</strong>. Creemos que el conocimiento debe ser libre para potenciar el talento local.
+                    </p>
+                    <a href="https://cromstudio.com.ve/blog/" class="button button--ghost" style="border: 2px solid var(--primary-color); color: var(--primary-color);">Leer Artículos</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRIOLLOWIKI -->
+        <section class="detail-section" id="criollowiki">
+            <div class="container project-detail__container">
+                <div class="detail__data order-2">
+                    <span class="semantic-tag"><i class="fas fa-landmark"></i> Preservación Cultural Digital</span>
+                    <h2>CriolloWiki: Memoria <br>Histórica Regional</h2>
+                    <p>
+                        Crom Studio gestiona la infraestructura técnica y el despliegue de <strong>CriolloWiki</strong>, una enciclopedia digital colaborativa construida sobre el motor DokuWiki.
+                    </p>
+                    <p>
+                        Este es un esfuerzo filantrópico orientado a documentar con rigor la historia, las instituciones, la cultura y el rico léxico local de las regiones. Nuestro objetivo es blindar el patrimonio cultural asegurando que el conocimiento esté indexado en buscadores y preservado para el futuro.
+                    </p>
+                    <a href="https://criollowiki.cromstudio.com.ve" target="_blank" class="button">Visitar la Enciclopedia</a>
+                </div>
+                <div class="detail__img-wrapper order-1 img-tech-bg" style="background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);">
+                    <i class="fas fa-book-open" style="font-size: 6rem; color: #475569; margin-bottom: 1rem;"></i>
+                    <h3 style="font-family: 'Poppins'; font-size: 1.5rem; color: var(--title-color);">CriolloWiki</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRANSPARENCIA Y SOPORTE -->
+        <section class="detail-section" id="transparencia" style="background-color: #0f172a; color: #fff;">
+            <div class="container" style="text-align: center; max-width: 850px; margin: 0 auto; padding: 2rem 0;">
+                <span class="semantic-tag" style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; border-color: rgba(56, 189, 248, 0.2);">
+                    <i class="fas fa-chart-line"></i> SLA y Calidad de Servicio
+                </span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 1.5rem; color: #fff;">Soporte Técnico y <br>Métricas de Transparencia</h2>
+                <p style="font-size: 1.1rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 2.5rem;">
+                    En la industria del software, la confianza se valida con métricas. Por eso, abrimos las puertas de nuestras operaciones: en nuestro Portal de Transparencia puedes auditar los datos históricos (desde 2023) de nuestra atención al cliente, incluyendo los <strong>tiempos de resolución de tickets, el índice de satisfacción (CSAT) y el uptime operativo de nuestros servidores</strong>.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://transparencia.cromstudio.com.ve/" target="_blank" class="button" style="background-color: #38bdf8; color: #0f172a; border: none; font-weight: 700;">
+                        Auditar Portal de Transparencia <i class="fas fa-external-link-alt" style="margin-left: 8px;"></i>
+                    </a>
+                    <a href="https://cromstudio.com.ve/soporte" target="_blank" class="button button--ghost" style="border: 2px solid #38bdf8; color: #38bdf8;">
+                        Portal de Soporte a Clientes
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
+    <!--==================== FOOTER / SEO LINKBUILDING ====================-->
     <footer class="footer">
-        <div class="footer-container container grid">
+        <div class="footer-container container grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
+            
+            <!-- Bio Empresa -->
             <div>
-                <a href="#" class="footer-logo">Crom Studio</a>
-                <p class="footer-description">Soluciones tecnológicas para el mercado venezolano.</p>
+                <a href="https://cromstudio.com.ve" class="footer-logo">Crom Studio</a>
+                <p class="footer-description" style="margin-bottom: 1.5rem;">
+                    Desarrollo de software empresarial, infraestructura de red y ecosistemas open-data desde Venezuela para el mundo.
+                </p>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/cromstudio" target="_blank" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+                </div>
             </div>
 
+            <!-- Ecosistema / Enlaces Internos -->
             <div class="footer-links">
-                <h3 class="footer-title">Enlaces Rápidos</h3>
-                <ul>
-                    <li><a href="https://cromstudio.com.ve/#about" class="footer-link">Quiénes Somos</a></li>
-                    <li><a href="https://cromstudio.com.ve/#services" class="footer-link">Servicios</a></li>
-                    <li><a href="https://cromstudio.com.ve/#pricing" class="footer-link">Precios</a></li>
-                     <li><a href="https://cromstudio.com.ve/blog/" target="_blank" class="footer-link">Blog</a></li>
-                     <li><a href="https://cromstudio.com.ve/descargas/" class="footer-link">Descargas</a></li>
-                     <li><a href="https://cromstudio.com.ve/politica-privacidad/" class="footer-link">Politica de Privacidad</a></li>
-                     <li><a href="https://cromstudio.com.ve/españa/" class="footer-link">Crom Studio España</a></li>
-                    <li><a href="https://cromstudio.com.ve/whatsapp/" class="footer-link">WhatsApp</a></li>
-                    <li><a href="https://cromstudio.com.ve/españa/diseño-web/" class="footer-link">Diseño WEB</a></li>
-                    </ul>
-            </div>
-
-             <div class="footer-contact">
-                <h3 class="footer-title">Contacto</h3>
-                 <ul>
-                    <li><i class="fas fa-phone"></i> +58 416-8578289</li>
-                    <li><i class="fas fa-envelope"></i> contacto@cromstudio.com.ve</li>
-                     <li><i class="fas fa-map-marker-alt"></i> Venezuela</li>
+                <h3 class="footer-title">Plataformas y Productos</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="https://cromstudio.com.ve/crompos" class="footer-link">CromPOS (Punto de Venta)</a></li>
+                    <li><a href="https://datos.cromstudio.com.ve/tasa" class="footer-link">API Pública Dólar BCV</a></li>
+                    <li><a href="https://transporte.cromstudio.com.ve/" class="footer-link">Open Transit Venezuela</a></li>
+                    <li><a href="https://transporte.cromstudio.com.ve/desarrollo/" class="footer-link">Desarrollo Open Transit</a></li>
+                    <li><a href="https://criollowiki.cromstudio.com.ve" class="footer-link">Enciclopedia CriolloWiki</a></li>
                 </ul>
             </div>
 
-             <div class="footer-social">
-                 <h3 class="footer-title">Síguenos</h3>
-                 <a href="https://www.facebook.com/cromstudio21" target="_blank" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
-                 <a href="https://www.instagram.com/cromstudio21/?hl=es-la" target="_blank" class="footer-social-link"><i class="fab fa-instagram"></i></a>
-                 <a href="https://twitter.com/cromstudio" target="_blank" class="footer-social-link"><i class="fab fa-twitter"></i></a>
-             </div>
+            <!-- Recursos Empresa -->
+            <div class="footer-links">
+                <h3 class="footer-title">Empresa y Conocimiento</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="https://cromstudio.com.ve/" class="footer-link">Sitio Web Principal</a></li>
+                    <li><a href="https://cromstudio.com.ve/blog/" class="footer-link">Blog Corporativo</a></li>
+                    <li><a href="https://cromstudio.com.ve/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/" class="footer-link">Documentación API BCV JSON</a></li>
+                    <li><a href="https://cromstudio.com.ve/descargas/" class="footer-link">Centro de Descargas</a></li>
+                    <li><a href="https://cromstudio.com.ve/espa%C3%B1a/" class="footer-link">Crom Studio Europa (España)</a></li>
+                </ul>
+            </div>
+
+            <!-- Soporte y Contacto -->
+             <div class="footer-contact">
+                <h3 class="footer-title">Soporte Técnico</h3>
+                 <ul style="list-style: none; padding: 0;">
+                    <li><a href="https://cromstudio.com.ve/soporte" class="footer-link"><i class="fas fa-headset" style="margin-right: 8px;"></i> Centro de Ayuda al Cliente</a></li>
+                    <li><a href="https://transparencia.cromstudio.com.ve/" class="footer-link"><i class="fas fa-chart-bar" style="margin-right: 8px;"></i> Panel de Transparencia y Uptime</a></li>
+                    <li style="margin-top: 1rem;"><i class="fas fa-phone" style="margin-right: 8px;"></i> +58 416-8578289</li>
+                    <li><i class="fas fa-envelope" style="margin-right: 8px;"></i> contacto@cromstudio.com.ve</li>
+                </ul>
+            </div>
         </div>
-        <span class="footer-copy container">
-            &copy; <span id="current-year"></span> Crom Studio Venezuela. Todos los derechos reservados.
-        </span>
+
+        <div class="container" style="text-align: center; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 3rem; padding-top: 2rem;">
+            <span class="footer-copy">&copy; <span id="current-year"></span> Crom Studio. Arquitectura tecnológica orientada al usuario. Todos los derechos reservados.</span>
+        </div>
     </footer>
 
+    <!-- Botón Volver Arriba -->
     <a href="#" class="scrollup" id="scroll-up">
         <i class="fas fa-arrow-up scrollup-icon"></i>
     </a>
 
-    <!--==================== SCRIPTS ====================-->
+    <!--==================== SCRIPTS INTERACTIVOS ====================-->
     <script>
-        /* Funcionalidad del Menú y Scroll */
-        
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
         const navMenu = document.getElementById('nav-menu'),
             navToggle = document.getElementById('nav-toggle'),
             navClose = document.getElementById('nav-close')
 
-        if(navToggle){
-            navToggle.addEventListener('click', () =>{
-                navMenu.classList.add('show-menu')
-            })
-        }
+        if(navToggle){ navToggle.addEventListener('click', () => { navMenu.classList.add('show-menu') }) }
+        if(navClose){ navClose.addEventListener('click', () => { navMenu.classList.remove('show-menu') }) }
 
-        if(navClose){
-            navClose.addEventListener('click', () =>{
-                navMenu.classList.remove('show-menu')
-            })
-        }
-
-        const navLink = document.querySelectorAll('.nav__link')
-
+        const navLink = document.querySelectorAll('.nav-link')
         function linkAction(){
             const navMenu = document.getElementById('nav-menu')
             navMenu.classList.remove('show-menu')
         }
         navLink.forEach(n => n.addEventListener('click', linkAction))
-
-        function scrollHeader(){
-            const header = document.getElementById('header')
-            if(this.scrollY >= 50) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
-        }
-        window.addEventListener('scroll', scrollHeader)
 
         function scrollUp(){
             const scrollUp = document.getElementById('scroll-up');

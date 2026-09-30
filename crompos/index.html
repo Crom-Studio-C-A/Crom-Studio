@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Facturación e Inventario en Venezuela | CromPOS</title>
+
+    <meta name="description" content="CromPOS es el mejor Sistema de Facturación e Inventario en Venezuela. Controla tu negocio, facturación, y stock con Tasa BCV automática. Ideal para bodegones, farmacias y ferreterías.">
+    <meta name="keywords" content="sistema de facturacion venezuela, sistema de facturacion e inventario venezuela, software de facturacion multimoneda, punto de venta web, control de inventario venezuela, crompos, crom studio, tasa bcv automatica, programa para bodegones, software administrativo pymes, facturacion seniat">
+    <meta name="author" content="Crom Studio Venezuela">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="language" content="es">
+    
+    <!-- Open Graph y Twitter Cards para Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CromPOS | El Sistema Administrativo y Punto de Venta Definitivo">
+    <meta property="og:description" content="Gestiona tu negocio sin complicaciones. Tasa BCV automática, facturación rápida y control de inventario en la nube.">
+    <meta property="og:image" content="https://cromstudio.com.ve/imagenes/logos/logo-crom-studio.svg">
+    <meta property="og:url" content="https://cromstudio.com.ve/crompos/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/imagenes/faviconempresa.ico"> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cromstudio.com.ve/styles.css">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "CromPOS",
+      "operatingSystem": "Web, Windows, macOS, Android, iOS",
+      "applicationCategory": "BusinessApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "342"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "10.00",
+        "priceCurrency": "EUR"
+      },
+      "description": "Sistema de facturación e inventario web multimoneda adaptado a Venezuela con tasa BCV automática. Cumple con exigencias del comercio venezolano.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Crom Studio"
+      }
+    }
+    </script>
+
+    <style>
+        /* Variables y ajustes generales de Landing Page */
+        :root {
+            --brand-color: #0056b3;
+            --brand-light: #e6f0fa;
+            --brand-accent: #faad14;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-gray: #f8fafc;
+        }
+
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background-color: #fff; }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
+
+        /* Hero Section Premium */
+        .hero-premium { position: relative; padding: 8rem 1rem 5rem; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #fff; text-align: center; overflow: hidden; }
+        .hero-premium::after { content: ''; position: absolute; bottom: -50px; left: 0; right: 0; height: 100px; background: #fff; transform: skewY(-2deg); }
+        .hero-premium .badge { display: inline-block; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; font-size: 0.875rem; font-weight: 600; color: var(--brand-accent); margin-bottom: 1.5rem; letter-spacing: 1px; }
+        .hero-premium h1 {  color: #fff; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-premium h1 span { color: var(--brand-accent); }
+        .hero-premium p { font-size: 1.25rem; color: #cbd5e1; max-width: 800px; margin: 0 auto 2.5rem; line-height: 1.6; }
+        .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 10; }
+        .btn-gold { background: var(--brand-accent); color: #000; font-weight: 700; padding: 1rem 2rem; border-radius: 0.5rem; transition: transform 0.3s, box-shadow 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(250, 173, 20, 0.3); }
+
+        /* Puntos de Dolor */
+        .pain-points { padding: 5rem 1rem; background: var(--bg-gray); text-align: center; }
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 3rem auto 0; }
+        .pain-card { background: #fff; padding: 2.5rem 2rem; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; transition: transform 0.3s; text-align: left; }
+        .pain-card:hover { transform: translateY(-5px); border-color: var(--brand-accent); }
+        .pain-card i { font-size: 2.5rem; color: #ef4444; margin-bottom: 1.5rem; background: #fee2e2; padding: 1rem; border-radius: 0.75rem; }
+        .pain-card.success i { color: #10b981; background: #d1fae5; }
+        .pain-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 700; }
+        .pain-card p { color: var(--text-muted); line-height: 1.6; }
+
+        /* Industrias */
+        .industries { padding: 5rem 1rem; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .ind-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .ind-item { padding: 2rem; border-radius: 1rem; border: 1px solid #e2e8f0; transition: all 0.3s; cursor: pointer; }
+        .ind-item:hover { background: var(--brand-light); border-color: var(--brand-color); }
+        .ind-item i { font-size: 2.5rem; color: var(--brand-color); margin-bottom: 1rem; }
+        .ind-item h4 { font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .ind-item p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* Videos Demo */
+        .video-section { padding: 5rem 1rem; background: var(--bg-gray); text-align: center; }
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 3rem auto 0; }
+        .video-card { background: #000; border-radius: 1rem; overflow: hidden; position: relative; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .video-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: opacity 0.3s; }
+        .video-card:hover img { opacity: 0.4; }
+        .video-card .play-btn { position: absolute; font-size: 3rem; color: #fff; transition: transform 0.3s; }
+        .video-card:hover .play-btn { transform: scale(1.1); color: var(--brand-accent); }
+        .video-title { margin-top: 1rem; font-weight: 600; font-size: 1.1rem; }
+
+        /* Testimonios */
+        .testimonials { padding: 5rem 1rem; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .test-card { background: #fff; padding: 2rem; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; text-align: left; }
+        .test-card .stars { color: var(--brand-accent); margin-bottom: 1rem; }
+        .test-card p { font-style: italic; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+        .test-author { display: flex; align-items: center; gap: 1rem; }
+        .test-author .avatar { width: 45px; height: 45px; background: var(--brand-light); color: var(--brand-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
+
+        /* Precios Flexbox Corregido */
+        .pricing-section { padding: 5rem 1rem; background: var(--bg-gray); text-align: center; }
+        .pricing-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3rem; }
+        .pricing-card { background: #fff; padding: 3rem 2rem; border-radius: 1rem; border: 1px solid #e2e8f0; max-width: 350px; width: 100%; transition: transform 0.3s, box-shadow 0.3s; position: relative; text-align: left; }
+        .pricing-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+        .pricing-card.recommended { border: 2px solid var(--brand-accent); }
+        .pricing-recommended { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand-accent); color: #000; font-size: 0.8rem; font-weight: 700; padding: 0.25rem 1rem; border-radius: 50px; }
+        .pricing-features { list-style: none; padding: 0; margin: 2rem 0; }
+        .pricing-features li { margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 0.5rem; color: var(--text-muted); }
+        .pricing-features i { color: #10b981; margin-top: 4px; }
+
+        /* FAQs Interactivas */
+        .faq-section { padding: 5rem 1rem; max-width: 800px; margin: 0 auto; }
+        .faq-item { background: #fff; border: 1px solid #e2e8f0; border-radius: 0.5rem; margin-bottom: 1rem; overflow: hidden; transition: all 0.3s; }
+        .faq-question { padding: 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--text-dark); }
+        .faq-question i { color: var(--brand-color); transition: transform 0.3s; }
+        .faq-answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.3s, padding 0.3s; color: var(--text-muted); line-height: 1.6; }
+        .faq-item.active { border-color: var(--brand-accent); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .faq-item.active .faq-answer { padding: 0 1.5rem 1.5rem; max-height: 500px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+/* Galería de Imágenes (Reemplazo de Videos) */
+        .gallery-section { padding: 5rem 1rem; background: var(--bg-gray); text-align: center; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 3rem auto 0; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; aspect-ratio: 16/10; cursor: pointer; background: #fff; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.9), transparent 60%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 1.5rem; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay h4 { color: #fff; margin: 0; font-size: 1.2rem; font-weight: 600; text-align: left; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+
+    </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTCG8F3HMV');
+    </script>
+</head>
+<body>
+    <!-- Chat Tawk.to -->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/64dba6e394cf5d49dc6a8f62/1h7t07q5p';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+
+    <header class="header scroll-header">
+        <nav class="nav container">
+            <a href="https://cromstudio.com.ve" class="nav-logo">Crom Studio</a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="https://cromstudio.com.ve/" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="#beneficios" class="nav-link">Beneficios</a></li>
+                    <li class="nav-item"><a href="#rubros" class="nav-link">Sectores</a></li>
+                    <li class="nav-item"><a href="#precios" class="nav-link">Precios</a></li>
+                    <li class="nav-item"><a href="#faq" class="nav-link">FAQ</a></li>
+                </ul>
+                <button class="nav-close" id="nav-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-premium">
+            <div class="container">
+                <span class="badge"><i class="fas fa-rocket"></i> Software de Gestión Empresarial ERP</span>
+                <h1>El Sistema Administrativo y de Facturación <span>#1 para Venezuela</span></h1>
+                <p>Gestiona ventas, automatiza la Tasa BCV, controla tu inventario y factura rápidamente. Olvídate de los errores manuales y el Excel. 100% en la Nube.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn-gold"><i class="fab fa-whatsapp"></i> Solicitar Demostración Gratis</a>
+                    <a href="https://cromstudio.com.ve/blog/categories/crompos/" class="button button-secondary" style="border-color: rgba(255,255,255,0.3); color: #fff;">Ver Manual del Sistema</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Puntos de Dolor -->
+        <section class="pain-points" id="beneficios">
+            <span class="section-subtitle" style="color: var(--brand-accent); font-weight: 700;">¿Te suena familiar?</span>
+            <h2 class="section-title">A miles de emprendedores les pasa lo mismo</h2>
+            
+            <div class="pain-grid container">
+                <div class="pain-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>“Pierdo tiempo calculando dólares y bolívares”</h3>
+                    <p>Facturar con dos monedas, dar el vuelto en Pago Móvil y efectivo a la vez retrasa las colas y genera errores contables.</p>
+                </div>
+                <div class="pain-card">
+                    <i class="fas fa-file-excel"></i>
+                    <h3>“El Excel se me volvió imposible”</h3>
+                    <p>Fórmulas que se borran, inventario que no cuadra a final de mes y descuadres que nadie en el equipo sabe explicar.</p>
+                </div>
+                <div class="pain-card success">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>La Solución: CromPOS</h3>
+                    <p>Calculamos cobros mixtos automáticamente a Tasa BCV. El inventario se descuenta en tiempo real. Toma el control desde tu celular.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulos / Industrias -->
+        <section class="industries" id="rubros">
+            <span class="section-subtitle" style="color: var(--brand-accent); font-weight: 700;">Adaptable a ti</span>
+            <h2 class="section-title">Diseñado para los negocios que mueven el país</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">No importa si vendes al detal, prestas servicios o manejas almacenes. CromPOS se configura a tu medida.</p>
+
+            <div class="ind-grid container">
+                <div class="ind-item">
+                    <i class="fas fa-shopping-basket"></i>
+                    <h4>Bodegones y Minimarkets</h4>
+                    <p>Soporte para lectores de códigos de barra, ventas rápidas y control de mermas.</p>
+                </div>
+                <div class="ind-item">
+                    <i class="fas fa-prescription-bottle-alt"></i>
+                    <h4>Farmacias y Salud</h4>
+                    <p>Control exacto de stock y facturación rápida para atención en mostrador.</p>
+                </div>
+                <div class="ind-item">
+                    <i class="fas fa-tools"></i>
+                    <h4>Ferreterías y Repuestos</h4>
+                    <p>Miles de referencias, búsqueda rápida y carga masiva de productos vía Excel.</p>
+                </div>
+                <div class="ind-item">
+                    <i class="fas fa-tshirt"></i>
+                    <h4>Tiendas de Ropa y Calzado</h4>
+                    <p>Manejo de categorías e inventario centralizado para sucursales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería de Interfaz -->
+        <section class="gallery-section" id="galeria">
+            <span class="section-subtitle" style="color: var(--brand-accent); font-weight: 700;">Transparencia Total</span>
+            <h2 class="section-title">Conoce la interfaz de CromPOS</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Un sistema moderno, limpio y fácil de usar. Diseñado para que tú y tus empleados aprendan a facturar en minutos, sin procesos complicados.</p>
+
+            <div class="gallery-grid container">
+                <div class="gallery-item">
+                    <img src="/imagenes/crompos-pos-caja.jpg" alt="Punto de Venta CromPOS" onerror="this.src='https://placehold.co/800x500/1e293b/ffffff?text=Módulo+de+Caja'">
+                    <div class="gallery-overlay">
+                        <h4>Punto de Venta (POS) Rápido</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/imagenes/crompos-inventario.jpg" alt="Control de Inventario" onerror="this.src='https://placehold.co/800x500/1e293b/ffffff?text=Control+de+Inventario'">
+                    <div class="gallery-overlay">
+                        <h4>Gestión de Inventario en Tiempo Real</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="grid-column: 1 / -1; max-width: 800px; margin: 0 auto; width: 100%;">
+                    <img src="/imagenes/crompos-dashboard-placeholder.jpg" alt="Reportes y Estadísticas" onerror="this.src='https://placehold.co/1000x500/1e293b/ffffff?text=Reportes+y+Métricas'">
+                    <div class="gallery-overlay">
+                        <h4>Dashboard y Reportes de Ganancias</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem;">
+                <a href="https://cromstudio.com.ve/blog/categories/crompos/" class="button button-primary" target="_blank"><i class="fas fa-book-open"></i> Explorar el Manual de Usuario</a>
+            </div>
+        </section>
+
+        <!-- Videos / Demos (COMENTADO TEMPORALMENTE) -->
+        <!-- 
+        <section class="video-section">
+            <span class="section-subtitle" style="color: var(--brand-accent); font-weight: 700;">Transparencia Total</span>
+            <h2 class="section-title">Mira cómo funciona el sistema</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Te mostramos la plataforma por dentro. Cero instalaciones complejas, interfaz limpia y amigable.</p>
+
+            <div class="video-grid container">
+                <div>
+                    <div class="video-card">
+                        <img src="/imagenes/crompos-dashboard-placeholder.jpg" alt="Demostración de Inventario" onerror="this.src='https://placehold.co/800x450/1e293b/ffffff?text=Video:+Cargar+Inventario'">
+                        <i class="fas fa-play-circle play-btn"></i>
+                    </div>
+                    <p class="video-title">Cómo cargar inventario desde Excel</p>
+                </div>
+                <div>
+                    <div class="video-card">
+                        <img src="/imagenes/crompos-pos-placeholder.jpg" alt="Demostración de Facturación Multimoneda" onerror="this.src='https://placehold.co/800x450/1e293b/ffffff?text=Video:+Punto+de+Venta'">
+                        <i class="fas fa-play-circle play-btn"></i>
+                    </div>
+                    <p class="video-title">Ventas mixtas: Dólares y Pago Móvil</p>
+                </div>
+            </div>
+        </section> 
+        -->
+
+        <!-- Precios -->
+        <section class="pricing-section" id="precios">
+            <span class="section-subtitle" style="color: var(--brand-accent); font-weight: 700;">Inversión Inteligente</span>
+            <h2 class="section-title">Planes sin contratos forzosos</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Pago mensual en Bolívares (Tasa BCV) o USDT (Binance).</p>
+
+            <div class="pricing-container container">
+                <div class="pricing-card">
+                    <h3 style="font-size: 1.5rem; color: var(--text-dark);">Emprendedor</h3>
+                    <div style="font-size: 3rem; font-weight: 800; margin: 1rem 0; color: var(--brand-color);">10€<span style="font-size: 1rem; color: var(--text-muted);">/mes</span></div>
+                    <p style="color: var(--text-muted); border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">Para dueños que operan solos su local.</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> 1 Usuario Principal</li>
+                        <li><i class="fas fa-check-circle"></i> Módulo Inventario + POS</li>
+                        <li><i class="fas fa-check-circle"></i> Multimoneda Automático</li>
+                        <li><i class="fas fa-check-circle"></i> Reportes Básicos</li>
+                        <li><i class="fas fa-check-circle"></i> Soporte vía Ticket</li>
+                    </ul>
+                    <a href="#contacto" class="button button-secondary" style="width: 100%; display: block; text-align: center;">Seleccionar Plan</a>
+                </div>
+                
+                <div class="pricing-card recommended">
+                    <span class="pricing-recommended">MÁS ELEGIDO</span>
+                    <h3 style="font-size: 1.5rem; color: var(--text-dark);">Empresarial</h3>
+                    <div style="font-size: 3rem; font-weight: 800; margin: 1rem 0; color: var(--text-dark);">20€<span style="font-size: 1rem; color: var(--text-muted);">/mes</span></div>
+                    <p style="color: var(--text-muted); border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">Para equipos de trabajo y crecimiento.</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> <strong>Usuarios ILIMITADOS</strong></li>
+                        <li><i class="fas fa-check-circle"></i> Roles (Cajeros, Almacén, Gerencia)</li>
+                        <li><i class="fas fa-check-circle"></i> Módulo Inventario + POS Avanzado</li>
+                        <li><i class="fas fa-check-circle"></i> Reportes de Utilidad y Ganancias</li>
+                        <li><i class="fas fa-check-circle"></i> Soporte Prioritario WhatsApp</li>
+                    </ul>
+                    <a href="#contacto" class="button button-primary" style="width: 100%; display: block; text-align: center;">Seleccionar Plan</a>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 750px; margin: 3rem auto 0; background: #fff; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid var(--brand-accent); text-align: center;">
+                <i class="fas fa-tools" style="color: var(--brand-accent); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                <h4 style="margin-bottom: 0.5rem;">Costo de Despliegue y Capacitación: <strong>50€ (Pago Único)</strong></h4>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">Incluye crear tu servidor en la nube, migrar tus productos desde Excel y entrenar a tu personal vía remota.</p>
+            </div>
+        </section>
+
+        <!-- Testimonios -->
+        <section class="testimonials">
+            <span class="section-subtitle" style="color: var(--brand-accent); font-weight: 700;">Resultados Reales</span>
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            
+            <div class="test-grid container">
+                <div class="test-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Antes perdía horas cuadrando la caja porque los clientes pagaban en dólares y zelle. Con CromPOS, el sistema saca el cálculo de los vueltos solo. ¡Un alivio!"</p>
+                    <div class="test-author">
+                        <div class="avatar">M</div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">María González</h4>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Dueña de Minimarket</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Excelente herramienta. La migración del inventario viejo al nuevo sistema fue rapidísima gracias a la plantilla de Excel que me dieron. El soporte siempre responde."</p>
+                    <div class="test-author">
+                        <div class="avatar">J</div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Javier Torres</h4>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Gerente de Ferretería</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="test-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p>"Me encanta poder entrar desde el teléfono cuando estoy fuera de la tienda y ver en tiempo real cuánto están facturando los empleados en caja."</p>
+                    <div class="test-author">
+                        <div class="avatar">C</div>
+                        <div>
+                            <h4 style="margin: 0; font-size: 1rem;">Carlos R.</h4>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">Emprendedor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<!-- FAQ -->
+        <section class="faq-section" id="faq">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-subtitle" style="color: var(--brand-accent); font-weight: 700;">Resolvemos tus dudas</span>
+                <h2 class="section-title">Preguntas Frecuentes (FAQ)</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">1. ¿Cómo se actualiza la tasa del dólar (BCV)? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">El sistema se sincroniza de forma automática todos los días con la tasa oficial del Banco Central de Venezuela (BCV). También tienes la opción de establecer una tasa manual o referencial si la política de tu negocio lo requiere.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">2. ¿El sistema calcula el vuelto en diferentes monedas al mismo tiempo? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Sí, CromPOS cuenta con un módulo de pagos mixtos. Un cliente puede pagarte una parte en efectivo (Dólares) y el resto en Pago Móvil (Bolívares). El sistema calcula el vuelto exacto automáticamente y sin errores.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">3. ¿Necesito internet constante para usarlo? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Sí. CromPOS es un sistema nativo en la nube para garantizar que tus datos estén respaldados y la tasa BCV actualizada. Sin embargo, está tan bien optimizado que su consumo de datos es mínimo; puedes facturar compartiendo internet (Megas) desde tu celular si falla tu proveedor local.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">4. ¿Qué pasa con mi información si se va la luz? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Tus datos están 100% seguros. Al estar alojado en servidores en la nube, ninguna falla eléctrica en tu local afectará tu base de datos o tu inventario. Al volver la luz (o si entras desde tu celular con batería), todo estará exactamente donde lo dejaste.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">5. ¿Ya tengo mis productos en Excel, tengo que cargarlos a mano? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">¡Para nada! Como parte de nuestra instalación y configuración inicial, te entregamos una plantilla de Excel. La llenas con tu catálogo actual y nosotros nos encargamos de realizar la importación masiva. Empiezas a vender desde el día uno.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">6. ¿Qué equipos necesito comprar para usar el sistema? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Ninguno en específico. No necesitas servidores costosos ni computadoras de última generación. CromPOS funciona desde cualquier navegador web (Chrome, Firefox, Safari). Puedes usar la PC o laptop que ya tienes en caja.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">7. ¿Es compatible con lectores de código de barras e impresoras? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Sí, es 100% plug-and-play con lectores de códigos de barras (USB o Bluetooth) y es compatible con cualquier impresora térmica (de 58mm u 80mm) para emitir tus tickets de venta rápidamente.</div>
+            </div>
+
+
+            <div class="faq-item">
+                <div class="faq-question">8. ¿Puedo usar el sistema desde mi teléfono celular? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Totalmente. El diseño es responsivo (se adapta a cualquier pantalla). Puedes revisar cómo van las ventas del día o verificar existencias en el almacén desde tu smartphone mientras estás fuera del negocio.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">9. ¿Hay límite de facturas o de ventas mensuales? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">No. Todos nuestros planes incluyen registro de ventas, creación de productos y emisión de tickets de manera ILIMITADA. No te cobramos comisiones adicionales por vender más.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">10. ¿El sistema tiene control de permisos para mis empleados? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Sí, a partir del Plan Empresarial puedes crear múltiples usuarios y asignarles roles. Un "Cajero" solo podrá facturar (sin modificar el inventario), mientras que el "Administrador" tendrá acceso total a reportes, edición de inventario y configuración.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">11. ¿Mis datos y los de mis clientes están seguros? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Absolutamente. Utilizamos servidores privados de alta seguridad (Crom Studio Cloud) con certificados SSL (conexión encriptada) y realizamos copias de seguridad (backups) automáticas para garantizar que tu información esté siempre protegida.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">12. ¿Puedo conectar varias sucursales? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Sí. Si tienes más de un local, puedes unificarlos en la nube bajo un plan corporativo o manejar instancias separadas. Contáctanos y te armaremos la estructura ideal para consolidar todas tus sucursales.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">13. ¿Tienen soporte técnico si ocurre alguna falla o tengo dudas? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Sí, no te dejamos solo. Ofrecemos soporte técnico continuo mediante nuestro sistema de Tickets, y si adquieres el Plan Empresarial, contarás con Soporte Prioritario directo a través de WhatsApp. Además, tienes acceso 24/7 a nuestro Manual de Usuario interactivo.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">14. ¿Qué métodos de pago aceptan para la mensualidad? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Pensando en tu comodidad, aceptamos pagos en Bolívares (Pago Móvil o Transferencia bancaria calculados a la Tasa BCV del día) y pagos en criptomonedas como USDT a través de Binance Pay.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">15. ¿Hay algún contrato o tiempo mínimo de permanencia? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">No existen contratos forzosos ni letras pequeñas. Es un servicio prepago mensual. Eres libre de cancelar tu suscripción en el momento que lo desees y, de ser así, te facilitaremos una exportación de tus bases de datos en Excel para que conserves tu información.</div>
+            </div>
+        </section>
+
+        <!-- Formulario Contacto -->
+        <section class="contact section" id="contacto">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-title">Agenda tu Demostración</h2>
+                <p style="color: var(--text-muted);">Escríbenos por WhatsApp para un acceso de prueba o déjanos tus datos.</p>
+            </div>
+            
+            <div class="contact-container container grid">
+                <div class="contact-info">
+                    <div class="contact-item" style="background: #f8fafc; padding: 2rem; border-radius: 1rem;">
+                        <i class="fab fa-whatsapp contact-icon" style="font-size: 3rem; color: #25D366; margin-bottom: 1rem;"></i>
+                        <div>
+                            <span class="contact-label" style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Atención Directa</span>
+                            <a href="https://wa.me/584168578289?text=Hola,%20quiero%20información%20y%20una%20demostración%20gratuita%20del%20sistema%20CromPOS" target="_blank" class="button button-primary" style="background: #25D366; width: 100%; text-align: center;">Chatear ahora al +58 416-8578289</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="https://formsubmit.co/sitioweb@cromstudio.com.ve" method="POST" class="contact-form">
+                    <h3 class="contact-form-title">Te contactamos por correo</h3>
+                    <input type="hidden" name="_subject" value="Solicitud de Demo CromPOS WEB">
+                    <input type="hidden" name="_cc" value="angelromero@cromstudio.com.ve">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://cromstudio.com.ve/crompos/#contacto">
+
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nombre del Negocio o Titular</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Teléfono</label>
+                        <input type="text" id="phone" name="phone" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">¿A qué rubro se dedica tu negocio?</label>
+                        <textarea id="message" name="message" rows="3" class="form-input" placeholder="Ej: Farmacia, Bodegón..." required></textarea>
+                    </div>
+                    <button type="submit" class="button button-primary" style="width: 100%;">Solicitar Acceso</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Original Crom Studio -->
+    <footer class="footer" style="background: #1e293b; color: #cbd5e1;">
+        <div class="footer-container container grid">
+            <div>
+                <a href="https://cromstudio.com.ve/" class="footer-logo" style="color: #fff;">Crom Studio</a>
+                <p class="footer-description">Software e Infraestructura Tecnológica para Venezuela.</p>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-title" style="color: #fff;">Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="https://cromstudio.com.ve/#services" class="footer-link">Todos los Servicios</a></li>
+                    <li><a href="https://cromstudio.com.ve/blog/categories/crompos/" class="footer-link">Manual CromPOS</a></li>
+                    <li><a href="https://cromstudio.com.ve/politica-privacidad/" class="footer-link">Política de Privacidad</a></li>
+                    <li><a href="https://cromstudio.com.ve/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/" class="footer-link">API Dolar BCV Venezuela (JSON)</a></li>
+                    <li><a href="https://cromstudio.com.ve/sms-masivos-venezuela/" class="footer-link">SMS API Gateway Venezuela</a></li>
+                    </ul>
+            </div>
+             <div class="footer-contact">
+                <h3 class="footer-title" style="color: #fff;">Contacto</h3>
+                 <ul>
+                    <li><i class="fas fa-phone"></i> +58 416-8578289</li>
+                    <li><i class="fas fa-envelope"></i> contacto@cromstudio.com.ve</li>
+                </ul>
+            </div>
+        </div>
+        <span class="footer-copy container" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;">
+            &copy; <span id="current-year"></span> Crom Studio. Todos los derechos reservados.
+        </span>
+    </footer>
+
+    <!-- Scripts Adicionales -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        /* Nav Menu Toggle */
+        const navMenu = document.getElementById('nav-menu'),
+              navToggle = document.getElementById('nav-toggle'),
+              navClose = document.getElementById('nav-close');
+        if (navToggle) navToggle.addEventListener('click', () => { navMenu.classList.add('show-menu'); });
+        if (navClose) navClose.addEventListener('click', () => { navMenu.classList.remove('show-menu'); });
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.classList.contains('show-menu')) navMenu.classList.remove('show-menu');
+            });
+        });
+
+        /* Acordeón FAQ Interactivo */
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                item.classList.toggle('active');
+            });
+        });
+
+        /* Sombra Header en Scroll */
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= 80) { header.classList.add('scroll-header'); } 
+            else { header.classList.remove('scroll-header'); }
+        });
+    </script>
+</body>
+</html>
