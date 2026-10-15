@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Historia Regional on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/historia-regional/</link>
+    <description>Recent content in Historia Regional on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Fri, 02 Oct 2026 05:32:17 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/historia-regional/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>El reto de documentar la historia regional en la era digital usando DokuWiki</title>
+      <link>https://cromstudio.com.ve/blog/posts/documentar-historia-regional-en-la-era-digital-criollowiki/</link>
+      <pubDate>Fri, 02 Oct 2026 05:32:17 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/documentar-historia-regional-en-la-era-digital-criollowiki/</guid>
+      <description>En la actual era de la hiperconexión, donde la información fluye a velocidades vertiginosas, existe un fenómeno paradójico: el olvido digital de lo local. Mientras que los grandes eventos globales se documentan al instante, la historia regional, los modismos de nuestros pueblos y las biografías de personajes ilustres locales corren el riesgo de desaparecer en el vasto océano de internet.&#xA;Para combatir esta amnesia cultural, en Crom Studio&#xD;impulsamos CriolloWiki&#xD;, una enciclopedia venezolana de conocimiento libre&#xD;.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,19 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
 <head>
-  <title>Posts :: Blog - Crom Studio</title>
+  <title>Posts | Blog - Crom Studio</title>
   
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta
-  name="description"
-  content=""
-/>
-<meta
-  name="keywords"
-  content="crom studio, blog crom studio, blog venezuela, noticias de tecnologia, tecnologia venezuela"
-/>
-<meta name="robots" content="noodp" /><link rel="manifest" href="/manifest.json" /><meta property="og:url" content="https://cromstudio.com.ve/blog/posts/">
+  
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="" />
+<meta name="keywords" content="crom studio, blog crom studio, blog venezuela, noticias de tecnologia, tecnologia venezuela" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" /><link rel="manifest" href="/blog/manifest.json" /><meta property="og:url" content="https://cromstudio.com.ve/blog/posts/">
   <meta property="og:site_name" content="Blog - Crom Studio">
   <meta property="og:title" content="Posts">
   <meta property="og:description" content="Blog de Crom Studio Venezuela, acá encontraras publicaciones de interes.">
@@ -27,14 +22,15 @@
 
 
 <link rel="canonical" href="https://cromstudio.com.ve/blog/posts/" />
-
 <link rel="shortcut icon" href="/blog/favicon.ico" />
+
+<link rel="alternate" type="application/rss+xml" href="https://cromstudio.com.ve/blog/posts/index.xml" title="Blog - Crom Studio" />
 <link rel="stylesheet" href="/blog/css/index.min.c860e17f20d9f258820c02bf7ab3f57c9595d0bc21dede7eda08ccd63ba3f4cc.css">
 
 
 
-
-
+  
+    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-FTCG8F3HMV"></script>
       <script>
         var doNotTrack = false;
@@ -49,6 +45,10 @@
           gtag('config', 'G-FTCG8F3HMV');
         }
       </script>
+    
+  
+
+
 
 
 
@@ -56,15 +56,394 @@
 
      
 <link rel="alternate" type="application/rss+xml" href="https://cromstudio.com.ve/blog/index.xml" title="Blog - Crom Studio">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7313467653686833"
-     crossorigin="anonymous"></script>
+<style>
+   
+  .pj-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    box-sizing: border-box;
+  }
+  .pj-hero-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 1.5rem !important;
+    border-radius: 1rem;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    box-sizing: border-box;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  @media (min-width: 768px) {
+    .pj-hero-card {
+      grid-template-columns: 1.15fr 1fr;
+      align-items: center;
+      padding: 1.85rem !important;
+    }
+  }
+  .pj-main-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: start;
+  }
+  @media (min-width: 1024px) {
+    .pj-main-layout {
+      grid-template-columns: minmax(0, 1fr) 340px;
+    }
+  }
+  .pj-posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .pj-posts-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .pj-related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .pj-related-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .pj-nav-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 2.25rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+  }
+  @media (min-width: 640px) {
+    .pj-nav-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
 
+   
+  .pj-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.35rem !important;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    transition: all 0.25s ease;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .pj-nav-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 1.25rem 1.4rem !important;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+  .pj-card:hover, .pj-hero-card:hover, .pj-nav-card:hover {
+    border-color: rgba(16, 185, 129, 0.7);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.2);
+  }
+  .pj-card-meta {
+    margin-top: 0.95rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.78rem;
+  }
+  .pj-card-title {
+    margin-top: 0.35rem;
+    margin-bottom: 0.65rem;
+    line-height: 1.35;
+  }
+  .pj-card-desc {
+    margin-top: 0.4rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.55;
+  }
+  .pj-card-footer {
+    padding-top: 0.9rem;
+    margin-top: 1rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .pj-single-box {
+    padding: 1.5rem !important;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-sizing: border-box;
+  }
+  @media (min-width: 768px) {
+    .pj-single-box {
+      padding: 2.25rem !important;
+    }
+  }
+  .pj-thumb-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    margin-bottom: 0.85rem;
+    background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);
+  }
+  .pj-thumb-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+  .pj-card:hover .pj-thumb-box img,
+  .pj-hero-card:hover .pj-thumb-box img {
+    transform: scale(1.04);
+  }
+  .pj-FloatingBadges {
+    position: absolute;
+    top: 0.65rem;
+    left: 0.65rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    z-index: 5;
+  }
+  .pj-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    background: rgba(16, 185, 129, 0.94);
+    color: #ffffff;
+    backdrop-filter: blur(4px);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .pj-badge-alt {
+    background: rgba(59, 130, 246, 0.94);
+  }
+  .pj-sidebar-widget {
+    border-radius: 1rem;
+    padding: 1.35rem !important;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+  }
+  .pj-cat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+  .pj-cat-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    padding: 0.65rem 0.8rem !important;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+  .pj-cat-box:hover {
+    border-color: #10b981;
+    color: #10b981;
+  }
+  .pj-cat-box span:first-child {
+    word-break: break-word;
+    line-height: 1.25;
+  }
+  .pj-bcv-card {
+    background: #d4ff00;
+    color: #090d16;
+    border-radius: 1rem;
+    padding: 1.4rem !important;
+    border: 2px solid #090d16;
+    box-shadow: 6px 6px 0px rgba(16, 185, 129, 0.85);
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+  }
+  .pj-bcv-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #090d16;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .pj-bcv-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.92;
+    color: #d4ff00;
+  }
+  .pj-google-source-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 0.75rem;
+    border: 1.5px solid rgba(16, 185, 129, 0.6);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+  .pj-google-source-btn:hover {
+    background: #10b981;
+    color: #ffffff !important;
+    border-color: #10b981;
+  }
+  .pj-section-3col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .pj-section-3col {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .pj-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .pj-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+   
+  .pj-calc-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 640px) {
+    .pj-calc-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .pj-calc-box {
+    padding: 1.25rem;
+    border-radius: 0.9rem;
+    border: 1.5px solid rgba(148, 163, 184, 0.3);
+    box-sizing: border-box;
+  }
+  .pj-calc-input {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 800;
+    padding: 0.75rem 1rem;
+    border-radius: 0.65rem;
+    border: 2px solid rgba(16, 185, 129, 0.55);
+    background: transparent;
+    color: inherit;
+    box-sizing: border-box;
+    margin-top: 0.4rem;
+    outline: none;
+  }
+  .pj-calc-input:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  }
+  .pj-quick-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  .pj-quick-table th, .pj-quick-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  }
+</style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7313467653686833" crossorigin="anonymous"></script>
   
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora Dólar y Euro BCV Hoy en Bolívares - Crom Studio",
+      "url": "\"https://cromstudio.com.ve/blog/posts/\"",
+      "description": "Calculadora interactiva en tiempo real para convertir Dólares (USD) y Euros (EUR) a Bolívares (VES) según la tasa oficial del Banco Central de Venezuela (BCV).",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "\"Blog - Crom Studio\""
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cómo convertir dólares o euros a bolívares a tasa BCV hoy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ingresa el monto en dólares (USD), euros (EUR) o bolívares (Bs) en cualquiera de las casillas de nuestra calculadora y obtendrás la conversión exacta al instante con la tasa oficial vigente del Banco Central de Venezuela."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿De dónde provienen los datos de la tasa BCV?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Los valores se actualizan automáticamente desde nuestra API pública en datos.cromstudio.com.ve/tasa, sincronizada con las publicaciones oficiales del BCV."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 </head>
-<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800"><header class="flex flex-none justify-center z-10">
-    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
-  <div class="flex-none ml-2 md:ml-0">
-    <a href="/blog/" class="">
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200"><header class="flex flex-none justify-center z-10 border-b border-slate-200 dark:border-gray-700 bg-slate-50 dark:bg-gray-800">
+    
+<div class="pj-container flex flex-row gap-2 items-center justify-between h-16">
+  <div class="flex-none">
+    <a href="/blog/" class="flex flex-row items-center gap-3" title="Blog - Crom Studio">
       <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/blog/logo.webp" alt="logo">
     </a>
   </div>
@@ -106,7 +485,7 @@
   <div class="flex-none mx-1"></div>
   
   <div class="flex-none md:hidden">
-    <a href=/blog/search/ class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+    <a href="/blog/search/" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
       <span class="sr-only">Buscar</span>
       <i class="w-8 h-8">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -118,7 +497,7 @@
       </i>
     </a>
   </div>
-  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+  <div class="darkmode-toggle flex flex-none">
     <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Cambiar a modo oscuro">
       <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Cambiar a modo oscuro">
       <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
@@ -150,16 +529,6 @@
     </label>
   </div>
 </div>
-
-
-<link rel="alternate"
-      type="application/rss+xml"
-      href="https://cromstudio.com.ve/blog/index.xml"
-      title="Blog - Crom Studio">
-
-
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7313467653686833"
-     crossorigin="anonymous"></script>
   </header>
   <main class="flex flex-auto justify-center">
     
@@ -170,230 +539,434 @@
   
   
   
+
   
 
-  <div class="flex flex-col w-full max-w-4xl lg:max-w-5xl relative">
-    <div class="flex flex-row">
-      <section class="flex flex-col w-full md:w-2/3">
+  <div class="pj-container py-6">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between pb-6 gap-4">
+      <div>
         
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/que-son-las-bases-de-datos-conceptos-tipos-aplicaciones-bd/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/que-son-las-bases-de-datos-conceptos-tipos-aplicaciones-bd/">¿Qué Son las Bases de Datos? Conceptos Clave, Tipos y Aplicaciones en la Era Digital</a>
-              </h2>
+          
+<nav aria-label="Breadcrumb" class="mb-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+  <ol class="flex flex-wrap items-center gap-1.5" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li class="inline-flex items-center" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="https://cromstudio.com.ve/blog/" itemprop="item" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors flex items-center gap-1 font-medium">
+        <span itemprop="name">Inicio</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li><li class="inline-flex items-center gap-1.5 text-slate-700 dark:text-slate-200 font-semibold" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+      <span class="text-slate-300 dark:text-slate-600">/</span>
+      <span itemprop="name">Posts</span>
+      <link itemprop="item" href="https://cromstudio.com.ve/blog/posts/" />
+      <meta itemprop="position" content="2" />
+    </li>
+  </ol>
+</nav>
+        
+        <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100 mt-1">
+          Posts
+        </h1>
+        <p class="text-sm text-slate-500 dark:text-slate-300 mt-1">
+          
+            Explorando todos los artículos publicados en Posts
+          
+        </p>
+      </div>
 
-              
+      <div class="flex flex-wrap items-center gap-2">
+        <a href="/blog/calculadora/" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-gray-700 text-slate-800 dark:text-slate-200 shadow-sm hover:text-emerald-600" style="border: 1px solid rgba(16,185,129,0.5);">
+          <span>💱 Calculadora BCV</span>
+        </a>
+        <a href="https://www.google.com/preferences/source?q=https://cromstudio.com.ve" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-gray-700 text-slate-800 dark:text-slate-200 shadow-sm hover:text-emerald-600" style="border: 1px solid rgba(16,185,129,0.5);">
+          <span>🌐 Añadir como fuente en Google</span>
+        </a>
+        <a href="/blog/search/" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-gray-700 text-slate-800 dark:text-slate-200 shadow-sm hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.25);">
+          <span>🔍 Buscar</span>
+        </a>
+        <a href="/blog/index.xml" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold bg-white dark:bg-gray-700 text-slate-800 dark:text-slate-200 shadow-sm hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.25);">
+          <span>📡 RSS</span>
+        </a>
+      </div>
+    </div>
+
+    
+
+    <div class="pj-main-layout">
+
+      
+      <section>
+        <div class="pj-posts-grid">
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/el-camino-de-santiago-el-camino-primitivo/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">Camino de Santiago</span><span class="pj-badge pj-badge-alt">Guías</span></div><img src="https://i.imgur.com/AJsbQRx.png" alt="El Camino Primitivo: Guía Completa Etapa por Etapa" loading="lazy" /></div>
+                  </a>
+
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
   
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/UYaiFwa.png"
-      alt="base de datos" 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p>En la era digital actual, las <strong>bases de datos</strong> juegan un papel fundamental en el almacenamiento, organización y gestión de la información. Ya sea que se trate de una pequeña empresa o una gran corporación, las bases de datos son esenciales para el manejo eficiente de datos, asegurando que la información esté disponible, accesible y protegida. Si alguna vez te has preguntado qué son las bases de datos y cómo funcionan, este artículo te proporcionará una explicación detallada y fácil de entender sobre este concepto clave.</p>
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2025-07-20T11:23:26-04:00">
+      2025-07-20
+    </time>
   </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+</svg>
+
+    </i>
+    <span>
+      3 minutos de lectura
+    </span>
+  </div>
+</div>
+
+                  </div>
+
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/el-camino-de-santiago-el-camino-primitivo/" class="hover:text-emerald-600">
+                      El Camino Primitivo: Guía Completa Etapa por Etapa
+                    </a>
+                  </h2>
+
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    El Camino Primitivo: Guía Completa Etapa por Etapa El Camino Primitivo es considerado la ruta más antigua del Camino de Santiago. Elegido por el rey Alfonso II en el siglo IX, este recorrido histórico ofrece una experiencia más íntima y exigente. Inicia en Oviedo y finaliza en Santiago de Compostela, recorriendo aproximadamente 321 kilómetros a lo largo de paisajes montañosos, pueblos con encanto y un ambiente de verdadera peregrinación.
+                  </p>
+                </div>
+
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/el-camino-de-santiago-el-camino-primitivo/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#Camino de Santiago</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/el-camino-de-santiago-camino-del-norte/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">Viajes</span><span class="pj-badge pj-badge-alt">Senderismo</span></div><img src="https://i.imgur.com/AJsbQRx.png" alt="El Camino del Norte: Guía Completa Etapa por Etapa desde Irún" loading="lazy" /></div>
+                  </a>
+
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
   
-
-
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/base-de-datos/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Base De Datos
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/mysql/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          MySQL
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/postgresql/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          PostgreSQL
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/mongodb/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          MongoDB
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/oracle/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Oracle
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/sql-server/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          SQL Server
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/qu%C3%A9-son-las-bases-de-datos/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
 </svg>
 
-          </i>
-          <span class="ml-0">Qué Son Las Bases De Datos</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/tipos-de-bases-de-datos/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    </i>
+    <time datetime="2025-07-20T11:10:16-04:00">
+      2025-07-20
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
 </svg>
 
-          </i>
-          <span class="ml-0">Tipos De Bases De Datos</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/bases-de-datos-relacionales/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    </i>
+    <span>
+      6 minutos de lectura
+    </span>
+  </div>
+</div>
+
+                  </div>
+
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/el-camino-de-santiago-camino-del-norte/" class="hover:text-emerald-600">
+                      El Camino del Norte: Guía Completa Etapa por Etapa desde Irún
+                    </a>
+                  </h2>
+
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    🏞️ Introducción El Camino del Norte (Northern Way) es una de las rutas más escénicas y exigentes del Camino de Santiago, con un recorrido aproximado de 820 km desde Irún (frontera con Francia) hasta Santiago de Compostela. Atravesando el País Vasco, Cantabria, Asturias y Galicia, combina acantilados, playas salvajes, montañas y pueblos costeros con rica cultura y gastronomía. Esta guía te ofrece un itinerario exhaustivo con distancias, dificultad estimada, sugerencias de albergues y consejos originales para cada etapa.
+                  </p>
+                </div>
+
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/el-camino-de-santiago-camino-del-norte/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#Camino del Norte</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/el-camino-frances-el-camino-de-santiago-guias/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">Viajes</span><span class="pj-badge pj-badge-alt">Senderismo</span></div><img src="https://i.imgur.com/HNc3ohP.png" alt="El Camino Francés: Guía Completa Etapa por Etapa desde St. Jean‑Pied‑de‑Port" loading="lazy" /></div>
+                  </a>
+
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
 </svg>
 
-          </i>
-          <span class="ml-0">Bases De Datos Relacionales</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/bases-de-datos-nosql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    </i>
+    <time datetime="2025-06-15T14:20:35-04:00">
+      2025-06-15
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
 </svg>
 
-          </i>
-          <span class="ml-0">Bases De Datos NoSQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/sgbd/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    </i>
+    <span>
+      5 minutos de lectura
+    </span>
+  </div>
+</div>
+
+                  </div>
+
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/el-camino-frances-el-camino-de-santiago-guias/" class="hover:text-emerald-600">
+                      El Camino Francés: Guía Completa Etapa por Etapa desde St. Jean‑Pied‑de‑Port
+                    </a>
+                  </h2>
+
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    El Camino Francés es la ruta más icónica del Camino de Santiago, recorriendo aproximadamente 780 km desde Saint‑Jean‑Pied‑de‑Port (Francia) hasta Santiago de Compostela. Atrae a peregrinos de todo el mundo, ofreciendo una mezcla de naturaleza, cultura, historia y espiritualidad. En esta guía exhaustiva, detallamos cada etapa con su distancia, nivel de dificultad, sugerencias de albergues y consejos útiles.
+Camino Francés
+La ruta más transitada y documentada. Inicia en Saint-Jean-Pied-de-Port (Francia) y recorre aproximadamente 780 km hasta Santiago.
+                  </p>
+                </div>
+
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/el-camino-frances-el-camino-de-santiago-guias/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#Camino Francés</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/guia-definitiva-del-camino-de-santiago-2025-todo-lo-que-debes-de-saber/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">Viajes</span><span class="pj-badge pj-badge-alt">Senderismo</span></div><img src="https://i.imgur.com/KSZlRij.png" alt="Guía Definitiva del Camino de Santiago 2025: Todo lo que Debes Saber" loading="lazy" /></div>
+                  </a>
+
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
 </svg>
 
-          </i>
-          <span class="ml-0">SGBD</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/aplicaciones-de-bases-de-datos/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    </i>
+    <time datetime="2025-06-15T14:10:02-04:00">
+      2025-06-15
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
 </svg>
 
-          </i>
-          <span class="ml-0">Aplicaciones De Bases De Datos</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/gesti%C3%B3n-de-datos/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    </i>
+    <span>
+      4 minutos de lectura
+    </span>
+  </div>
+</div>
+
+                  </div>
+
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/guia-definitiva-del-camino-de-santiago-2025-todo-lo-que-debes-de-saber/" class="hover:text-emerald-600">
+                      Guía Definitiva del Camino de Santiago 2025: Todo lo que Debes Saber
+                    </a>
+                  </h2>
+
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    🌄 Introducción al Camino de Santiago El Camino de Santiago es una de las rutas de peregrinación más célebres del mundo. Cada año, cientos de miles de personas recorren sus senderos históricos para llegar a la Catedral de Santiago de Compostela, en Galicia, donde se encuentra la tumba del Apóstol Santiago. En esta Guía Definitiva 2025, encontrarás todo lo que necesitas saber para planificar, disfrutar y completar esta experiencia única: rutas, preparación física, estadía, consejos útiles, enlaces internos y externos para profundizar.
+                  </p>
+                </div>
+
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/guia-definitiva-del-camino-de-santiago-2025-todo-lo-que-debes-de-saber/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#Camino de Santiago</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/el-camino-de-santiago-un-viaje-de-mil-rutas-y-un-destino-interior/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">España</span><span class="pj-badge pj-badge-alt">Madrid</span></div><img src="https://i.imgur.com/tRg9y3p.jpeg" alt="El Camino de Santiago: Un Viaje de Mil Rutas y un Destino Interior" loading="lazy" /></div>
+                  </a>
+
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
 </svg>
 
-          </i>
-          <span class="ml-0">Gestión De Datos</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/bases-de-datos-en-la-nube/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    </i>
+    <time datetime="2025-06-14T17:45:46-04:00">
+      2025-06-14
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
 </svg>
 
-          </i>
-          <span class="ml-0">Bases De Datos en La Nube</span>
-        </a>
-      </li>
-      
-    
-  </ul>
+    </i>
+    <span>
+      5 minutos de lectura
+    </span>
+  </div>
+</div>
 
+                  </div>
 
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/el-camino-de-santiago-un-viaje-de-mil-rutas-y-un-destino-interior/" class="hover:text-emerald-600">
+                      El Camino de Santiago: Un Viaje de Mil Rutas y un Destino Interior
+                    </a>
+                  </h2>
 
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    Más que una simple ruta de senderismo, el Camino de Santiago es un tapiz de historia, cultura y transformación personal que atrae a cientos de miles de personas cada año. Un viaje ancestral que, lejos de perder fuelle, se reinventa con cada peregrino que ata sus botas y echa a andar.
+Desde hace más de mil años, las flechas amarillas y las conchas de vieira marcan un sendero que es mucho más que un camino físico.
+                  </p>
+                </div>
+
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/el-camino-de-santiago-un-viaje-de-mil-rutas-y-un-destino-interior/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#España</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/que-son-las-bases-de-datos-conceptos-tipos-aplicaciones-bd/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">Base de Datos</span><span class="pj-badge pj-badge-alt">MySQL</span></div><img src="https://i.imgur.com/UYaiFwa.png" alt="¿Qué Son las Bases de Datos? Conceptos Clave, Tipos y Aplicaciones en la Era Digital" loading="lazy" /></div>
+                  </a>
+
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
   
   
   <div class="flex flex-row text-base gap-x-1">
@@ -430,210 +1003,41 @@
   </div>
 </div>
 
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/views-en-mysql-todo-lo-que-debes-de-saber/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/views-en-mysql-todo-lo-que-debes-de-saber/">Todo lo que Necesitas Saber sobre las &ldquo;Views&rdquo; en MySQL: Guía Completa</a>
-              </h2>
+                  </div>
 
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/aGK5J1Q.png"
-      alt="MYSQL" 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p>Cuando trabajamos con bases de datos en <strong>MySQL</strong>, uno de los conceptos clave que debemos conocer es el de las <strong>&ldquo;views&rdquo;</strong> (vistas). Las vistas son una herramienta poderosa que nos permite organizar y consultar los datos de manera eficiente sin tener que duplicar la información. En este artículo, exploraremos qué son las vistas en MySQL, cómo crear y utilizar vistas, y por qué son tan útiles en el desarrollo de bases de datos.</p>
-  </div>
-  
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/que-son-las-bases-de-datos-conceptos-tipos-aplicaciones-bd/" class="hover:text-emerald-600">
+                      ¿Qué Son las Bases de Datos? Conceptos Clave, Tipos y Aplicaciones en la Era Digital
+                    </a>
+                  </h2>
 
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    En la era digital actual, las bases de datos juegan un papel fundamental en el almacenamiento, organización y gestión de la información. Ya sea que se trate de una pequeña empresa o una gran corporación, las bases de datos son esenciales para el manejo eficiente de datos, asegurando que la información esté disponible, accesible y protegida. Si alguna vez te has preguntado qué son las bases de datos y cómo funcionan, este artículo te proporcionará una explicación detallada y fácil de entender sobre este concepto clave.
+                  </p>
+                </div>
 
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/mysql/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          MySQL
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/vistas-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/que-son-las-bases-de-datos-conceptos-tipos-aplicaciones-bd/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#Qué son las bases de datos</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/views-en-mysql-todo-lo-que-debes-de-saber/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">MySQL</span></div><img src="https://i.imgur.com/aGK5J1Q.png" alt="Todo lo que Necesitas Saber sobre las &#34;Views&#34; en MySQL: Guía Completa" loading="lazy" /></div>
+                  </a>
 
-          </i>
-          <span class="ml-0">Vistas en MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/c%C3%B3mo-crear-views-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Cómo Crear Views MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/qu%C3%A9-son-las-views-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Qué Son Las Views en MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/consultas-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Consultas MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/ejemplos-de-views-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Ejemplos De Views MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/ventajas-de-las-views-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Ventajas De Las Views MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/eliminar-views-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Eliminar Views MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/rendimiento-de-las-views-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Rendimiento De Las Views MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/modificar-vistas-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Modificar Vistas MySQL</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
   
   
   <div class="flex flex-row text-base gap-x-1">
@@ -670,227 +1074,41 @@
   </div>
 </div>
 
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/uso-de-join-en-mysql-tipo-sintaxis-y-ejemplos/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/uso-de-join-en-mysql-tipo-sintaxis-y-ejemplos/">Guía Completa sobre el Uso de JOIN en MySQL: Tipos, Sintaxis y Ejemplos</a>
-              </h2>
+                  </div>
 
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/aGK5J1Q.png"
-      alt="MYSQL" 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p>Uno de los aspectos más poderosos y útiles al trabajar con bases de datos es la capacidad de combinar datos de varias tablas. En <strong>MySQL</strong>, esto se logra utilizando el comando <strong>JOIN</strong>, que nos permite hacer consultas complejas al combinar registros de dos o más tablas basándonos en una relación entre ellas. Si estás aprendiendo MySQL o deseas optimizar tus consultas SQL, dominar el uso de <strong>JOIN</strong> es esencial.</p>
-  </div>
-  
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/views-en-mysql-todo-lo-que-debes-de-saber/" class="hover:text-emerald-600">
+                      Todo lo que Necesitas Saber sobre las &ldquo;Views&rdquo; en MySQL: Guía Completa
+                    </a>
+                  </h2>
 
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    Cuando trabajamos con bases de datos en MySQL, uno de los conceptos clave que debemos conocer es el de las &amp;ldquo;views&amp;rdquo; (vistas). Las vistas son una herramienta poderosa que nos permite organizar y consultar los datos de manera eficiente sin tener que duplicar la información. En este artículo, exploraremos qué son las vistas en MySQL, cómo crear y utilizar vistas, y por qué son tan útiles en el desarrollo de bases de datos.
+                  </p>
+                </div>
 
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/mysql/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          MySQL
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/join-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/views-en-mysql-todo-lo-que-debes-de-saber/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#vistas en MySQL</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/uso-de-join-en-mysql-tipo-sintaxis-y-ejemplos/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">MySQL</span></div><img src="https://i.imgur.com/aGK5J1Q.png" alt="Guía Completa sobre el Uso de JOIN en MySQL: Tipos, Sintaxis y Ejemplos" loading="lazy" /></div>
+                  </a>
 
-          </i>
-          <span class="ml-0">JOIN en MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/inner-join/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">INNER JOIN</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/left-join/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">LEFT JOIN</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/right-join/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">RIGHT JOIN</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/cross-join/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">CROSS JOIN</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/full-join-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">FULL JOIN en MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/ejemplos-de-join-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Ejemplos De JOIN MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/rendimiento-de-join-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Rendimiento De JOIN en MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/c%C3%B3mo-usar-join-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Cómo Usar JOIN en MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/tipos-de-join-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Tipos De JOIN en MySQL</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
   
   
   <div class="flex flex-row text-base gap-x-1">
@@ -927,193 +1145,41 @@
   </div>
 </div>
 
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/curso-de-mysql-avanzado/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/curso-de-mysql-avanzado/">MySQL Avanzado: Domina las Funciones y Características Más Potentes de MySQL</a>
-              </h2>
+                  </div>
 
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/aGK5J1Q.png"
-      alt="MYSQL" 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p><strong>MySQL</strong> es uno de los sistemas de gestión de bases de datos más populares y robustos en el mundo del desarrollo de software. Si ya tienes experiencia con <strong>MySQL básico</strong> y deseas profundizar en su uso, este artículo te guiará a través de técnicas avanzadas que te permitirán aprovechar al máximo este poderoso sistema de bases de datos. En esta guía, exploraremos conceptos avanzados de <strong>MySQL</strong>, como <strong>optimización de consultas</strong>, <strong>índices</strong>, <strong>procedimientos almacenados</strong>, <strong>triggers</strong>, <strong>vistas</strong>, y mucho más. Si estás buscando una manera de llevar tus habilidades con MySQL al siguiente nivel, ¡este artículo es para ti!</p>
-  </div>
-  
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/uso-de-join-en-mysql-tipo-sintaxis-y-ejemplos/" class="hover:text-emerald-600">
+                      Guía Completa sobre el Uso de JOIN en MySQL: Tipos, Sintaxis y Ejemplos
+                    </a>
+                  </h2>
 
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    Uno de los aspectos más poderosos y útiles al trabajar con bases de datos es la capacidad de combinar datos de varias tablas. En MySQL, esto se logra utilizando el comando JOIN, que nos permite hacer consultas complejas al combinar registros de dos o más tablas basándonos en una relación entre ellas. Si estás aprendiendo MySQL o deseas optimizar tus consultas SQL, dominar el uso de JOIN es esencial.
+                  </p>
+                </div>
 
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/mysql/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          MySQL
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/mysql-avanzado/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/uso-de-join-en-mysql-tipo-sintaxis-y-ejemplos/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#JOIN en MySQL</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/curso-de-mysql-avanzado/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">MySQL</span></div><img src="https://i.imgur.com/aGK5J1Q.png" alt="MySQL Avanzado: Domina las Funciones y Características Más Potentes de MySQL" loading="lazy" /></div>
+                  </a>
 
-          </i>
-          <span class="ml-0">MySQL Avanzado</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/optimizaci%C3%B3n-de-consultas-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Optimización De Consultas MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/procedimientos-almacenados-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Procedimientos Almacenados MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/triggers-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Triggers MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/vistas-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Vistas MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/replicaci%C3%B3n-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Replicación MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/particionamiento-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Particionamiento MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/seguridad-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Seguridad en MySQL</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
   
   
   <div class="flex flex-row text-base gap-x-1">
@@ -1150,272 +1216,41 @@
   </div>
 </div>
 
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/">Guía Completa sobre el Update de MySQL: Todo lo que Necesitas Saber</a>
-              </h2>
+                  </div>
 
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/aGK5J1Q.png"
-      alt="MySQL" 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p>MySQL es uno de los sistemas de gestión de bases de datos más utilizados en el mundo debido a su fiabilidad, rendimiento y facilidad de uso. Ya sea que estés administrando una base de datos pequeña o una infraestructura más compleja, es importante entender cómo funciona el comando <code>UPDATE</code> en MySQL. En este artículo, te ofreceremos una guía detallada sobre el uso del <code>UPDATE</code> en MySQL, desde sus conceptos básicos hasta las mejores prácticas y ejemplos avanzados.</p>
-  </div>
-  
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/curso-de-mysql-avanzado/" class="hover:text-emerald-600">
+                      MySQL Avanzado: Domina las Funciones y Características Más Potentes de MySQL
+                    </a>
+                  </h2>
 
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    MySQL es uno de los sistemas de gestión de bases de datos más populares y robustos en el mundo del desarrollo de software. Si ya tienes experiencia con MySQL básico y deseas profundizar en su uso, este artículo te guiará a través de técnicas avanzadas que te permitirán aprovechar al máximo este poderoso sistema de bases de datos. En esta guía, exploraremos conceptos avanzados de MySQL, como optimización de consultas, índices, procedimientos almacenados, triggers, vistas, y mucho más.
+                  </p>
+                </div>
 
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/mysql/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          MySQL
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/tutoriales/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Tutoriales
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/tutorial/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Tutorial
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/guias/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Guias
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/guia/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Guia
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/curso-de-mysql-avanzado/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#MySQL avanzado</span>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="pj-card bg-white dark:bg-gray-700 shadow-md">
+                <div>
+                  <a href="/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/" class="block">
+                    
+<div class="pj-thumb-box">
+  <div class="pj-FloatingBadges"><span class="pj-badge ">MySQL</span><span class="pj-badge pj-badge-alt">Tutoriales</span></div><img src="https://i.imgur.com/aGK5J1Q.png" alt="Guía Completa sobre el Update de MySQL: Todo lo que Necesitas Saber" loading="lazy" /></div>
+                  </a>
 
-          </i>
-          <span class="ml-0">MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/comando-update/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Comando `UPDATE`</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/tutorial-de-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Tutorial De MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/actualizar-registros-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Actualizar Registros MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/mejores-pr%C3%A1cticas-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Mejores Prácticas en MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/sql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">SQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/base-de-datos-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Base De Datos MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/actualizaci%C3%B3n-de-datos/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Actualización De Datos</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/rendimiento-de-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Rendimiento De MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/subconsulta-en-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Subconsulta en MySQL</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/transacciones-mysql/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Transacciones MySQL</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+                  <div class="pj-card-meta text-slate-500 dark:text-slate-400">
+                    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
   
   
   <div class="flex flex-row text-base gap-x-1">
@@ -1452,1525 +1287,34 @@
   </div>
 </div>
 
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/guia-completa-para-crear-una-pagina-web-con-html-y-css/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/guia-completa-para-crear-una-pagina-web-con-html-y-css/">Guía Completa para Crear una Página Web Sencilla con HTML y CSS: ¡Aprende con un Ejemplo!</a>
-              </h2>
-
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/P83lSPB.png"
-      alt="pagina web" 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p>Hoy en día, crear tu propia página web es más sencillo que nunca, incluso si eres un principiante. HTML (HyperText Markup Language) y CSS (Cascading Style Sheets) son los dos lenguajes fundamentales para diseñar y estructurar páginas web. En este artículo, te enseñaremos paso a paso cómo crear una página web sencilla utilizando HTML y CSS, con un ejemplo práctico que podrás modificar y personalizar a tu gusto.</p>
-  </div>
-  
-
-
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/curso/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Curso
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/tutoriales/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Tutoriales
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/guias/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Guias
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/html/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          HTML
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/css/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          CSS
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/desarrollo-web/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Desarrollo Web
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/dise%C3%B1o-web/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Diseño Web
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/crear-una-pagina-web-gratis/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Crear Una Pagina Web Gratis
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/c%C3%B3mo-crear-una-p%C3%A1gina-web-con-html/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Cómo Crear Una Página Web Con HTML</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/tutorial-html-y-css/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Tutorial HTML Y CSS</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/ejemplo-de-p%C3%A1gina-web-sencilla/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Ejemplo De Página Web Sencilla</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/aprender-html-y-css/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Aprender HTML Y CSS</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/crear-p%C3%A1gina-web-f%C3%A1cil/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Crear Página Web Fácil</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/gu%C3%ADa-html-y-css/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Guía HTML Y CSS</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/dise%C3%B1o-web-b%C3%A1sico/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Diseño Web Básico</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/aprender-a-programar-web/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Aprender a Programar Web</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
-  
-  
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-   <path d="M16 3v4"></path>
-   <path d="M8 3v4"></path>
-   <path d="M4 11h16"></path>
-   <path d="M11 15h1"></path>
-   <path d="M12 15v3"></path>
-</svg>
-
-    </i>
-    <time datetime="2025-04-07T06:03:05-04:00">
-      2025-04-07
-    </time>
-  </div>
-
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M6.5 7h11"></path>
-   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
-   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
-</svg>
-
-    </i>
-    <span>
-      6 minutos de lectura
-    </span>
-  </div>
-</div>
-
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/que-cursos-hacer-este-2025-en-espa%C3%B1a-guia-completa/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/que-cursos-hacer-este-2025-en-espa%C3%B1a-guia-completa/">¿Qué Cursos Hacer Este 2025 en España? Guía Completa para Impulsar Tu Carrera</a>
-              </h2>
-
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/Rsxv9qw.jpeg"
-      alt="cursos en españa en este 2025" 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p>El 2025 se perfila como un año lleno de oportunidades y cambios significativos en el mundo laboral, sobre todo en España, donde las tendencias de empleo están evolucionando rápidamente. El aprendizaje continuo y la actualización de habilidades son clave para mantenerse competitivo en el mercado de trabajo. Si estás pensando en mejorar tus perspectivas laborales, es el momento perfecto para realizar un curso que te brinde nuevas competencias.</p>
-  </div>
-  
-
-
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/cursos/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Cursos
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/espa%C3%B1a/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          España
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/educaci%C3%B3n/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Educación
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/tecnolog%C3%ADa/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Tecnología
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/aprendizaje/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Aprendizaje
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/madrid/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Madrid
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/formaci%C3%B3n/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Formación
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/ia/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          IA
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/habilidades/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Habilidades
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/cursos-2025-en-espa%C3%B1a/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Cursos 2025 en España</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/cursos-recomendados-2025/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Cursos Recomendados 2025</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/aprender-nuevas-habilidades-2025/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Aprender Nuevas Habilidades 2025</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/cursos-m%C3%A1s-demandados-espa%C3%B1a/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Cursos Más Demandados España</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/formaci%C3%B3n-online-en-espa%C3%B1a/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Formación Online en España</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/cursos-para-mejorar-empleo-espa%C3%B1a/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Cursos Para Mejorar Empleo España</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/tendencias-de-formaci%C3%B3n-2025/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Tendencias De Formación 2025</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
-  
-  
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-   <path d="M16 3v4"></path>
-   <path d="M8 3v4"></path>
-   <path d="M4 11h16"></path>
-   <path d="M11 15h1"></path>
-   <path d="M12 15v3"></path>
-</svg>
-
-    </i>
-    <time datetime="2025-04-07T05:55:32-04:00">
-      2025-04-07
-    </time>
-  </div>
-
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M6.5 7h11"></path>
-   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
-   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
-</svg>
-
-    </i>
-    <span>
-      6 minutos de lectura
-    </span>
-  </div>
-</div>
-
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/proyecto-socio-productivos-en-contabilidad-impulso-al-emprendimiento-en-venezuela-2025/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/proyecto-socio-productivos-en-contabilidad-impulso-al-emprendimiento-en-venezuela-2025/">Proyectos Socio Productivos en Contabilidad: Impulso al Emprendimiento en Venezuela en 2025</a>
-              </h2>
-
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/zX9oTlK.png"
-      alt="Foto de Venezuela Mujer Cafe, tomada de VTV." 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p>En el año 2025, los <a href="https://cromstudio.com.ve/blog/posts/importancia-de-un-proyecto-socio-productivo/" target="_blank" rel="noopener"><strong>proyectos socio productivos</strong></a>
- se han consolidado como una estrategia fundamental para el desarrollo económico y social de Venezuela. Estos proyectos, que combinan objetivos sociales con actividades productivas, buscan mejorar la calidad de vida de las comunidades y fortalecer la economía nacional.​</p>
-<h2 id="definición-de-proyectos-socio-productivoshttpscromstudiocomveblogpostsque-es-un-proyecto-socio-productivo"><a href="https://cromstudio.com.ve/blog/posts/que-es-un-proyecto-socio-productivo/" target="_blank" rel="noopener">Definición de Proyectos Socio Productivos</a>
-</h2>
-<p>Un <strong>proyecto socio productivo</strong> es una iniciativa que integra actividades económicas con fines sociales, orientadas a satisfacer necesidades colectivas y promover el bienestar comunitario. Estos proyectos buscan generar ingresos y empleo, al mismo tiempo que contribuyen al desarrollo social y comunitario.​</p>
-  </div>
-  
-
-
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/proyecto-socio-productivo/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Proyecto Socio-Productivo
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/emprendimiento-social/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Emprendimiento Social
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/proyectos-economicos/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Proyectos Economicos
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/proyecto-socio-productivo/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyecto Socio-Productivo</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/emprendimiento-social/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Emprendimiento Social</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/proyectos-economicos/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyectos Economicos</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/proyectos-sociales/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyectos Sociales</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/emprendimiento-social-en-venezuela/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Emprendimiento Social en Venezuela</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/proyectos-socio-productivos-en-venezuela/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyectos Socio Productivos en Venezuela</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/contabilidad/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Contabilidad</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/econom%C3%ADa-social/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Economía Social</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/emprendimiento-social-en-venezuela-2025/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Emprendimiento Social en Venezuela 2025</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/proyectos-socio-productivos-en-venezuela-2025/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyectos Socio Productivos en Venezuela 2025</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
-  
-  
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-   <path d="M16 3v4"></path>
-   <path d="M8 3v4"></path>
-   <path d="M4 11h16"></path>
-   <path d="M11 15h1"></path>
-   <path d="M12 15v3"></path>
-</svg>
-
-    </i>
-    <time datetime="2025-04-07T05:52:07-04:00">
-      2025-04-07
-    </time>
-  </div>
-
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M6.5 7h11"></path>
-   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
-   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
-</svg>
-
-    </i>
-    <span>
-      3 minutos de lectura
-    </span>
-  </div>
-</div>
-
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/emprendimiento-social-en-venezuela-proyectos-economicos/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/emprendimiento-social-en-venezuela-proyectos-economicos/">Emprendimiento Social en Venezuela: Contabilidad y Proyectos Económicos en 2025</a>
-              </h2>
-
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.imgur.com/i9jm5Kd.png"
-      alt="PROYECTOS SOCIOS PRODUCTIVOS" 
-      loading="lazy"
-    >
-  </figure></div>
-</p>
-<p>El emprendimiento social en Venezuela ha emergido como una respuesta innovadora a los desafíos económicos y sociales que enfrenta el país. En 2025, diversos <a href="https://cromstudio.com.ve/blog/posts/que-es-un-proyecto-socio-productivo/" target="_blank" rel="noopener">proyectos socio-productivos y educativos </a>
-han contribuido al desarrollo económico y social, demostrando la resiliencia y creatividad de los venezolanos.​</p>
-<h2 id="definición-de-emprendimiento-socialhttpscromstudiocomveblogpoststodo-lo-que-debes-de-saber-sobre-emprendimientos-sociales-en-venezuela">Definición de <a href="https://cromstudio.com.ve/blog/posts/todo-lo-que-debes-de-saber-sobre-emprendimientos-sociales/" target="_blank" rel="noopener">Emprendimiento Social</a>
- en Venezuela</h2>
-<p>El <a href="https://cromstudio.com.ve/blog/posts/todo-lo-que-debes-de-saber-sobre-emprendimientos-sociales/" target="_blank" rel="noopener">emprendimiento social en Venezuela</a>
- se refiere a iniciativas que buscan soluciones innovadoras a problemas sociales, culturales y ambientales, combinando la sostenibilidad económica con un impacto positivo en la comunidad. Estos emprendimientos abordan necesidades específicas del entorno venezolano, enfocándose en áreas como la educación, la salud, la agricultura y la inclusión financiera.​</p>
-  </div>
-  
-
-
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/proyecto-socio-productivo/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Proyecto Socio-Productivo
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/emprendimiento-social/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Emprendimiento Social
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/proyectos-economicos/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Proyectos Economicos
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/proyecto-socio-productivo/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyecto Socio-Productivo</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/emprendimiento-social/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Emprendimiento Social</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/proyectos-economicos/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyectos Economicos</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/proyectos-sociales/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyectos Sociales</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/emprendimiento-social-en-venezuela/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Emprendimiento Social en Venezuela</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/proyectos-socio-productivos-en-venezuela/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Proyectos Socio Productivos en Venezuela</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/contabilidad/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Contabilidad</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
-  
-  
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-   <path d="M16 3v4"></path>
-   <path d="M8 3v4"></path>
-   <path d="M4 11h16"></path>
-   <path d="M11 15h1"></path>
-   <path d="M12 15v3"></path>
-</svg>
-
-    </i>
-    <time datetime="2025-04-07T05:47:14-04:00">
-      2025-04-07
-    </time>
-  </div>
-
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M6.5 7h11"></path>
-   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
-   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
-</svg>
-
-    </i>
-    <span>
-      3 minutos de lectura
-    </span>
-  </div>
-</div>
-
-              
-            </div>
-          </article>
-        
-          <article class="flex flex-col mt-6 mx-2 md:mx-0 rounded-lg overflow-hidden shadow-md bg-white dark:bg-gray-700">
-            <div>
-              <a href="/blog/posts/consejos-para-aprender-inlges-britanico-guia-completa/">
-                
-              </a>
-            </div>
-            <div class="flex flex-col gap-y-3 p-6">
-              <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
-                <a href="/blog/posts/consejos-para-aprender-inlges-britanico-guia-completa/">Consejos para Aprender Inglés Británico: Guía Completa para Dominarlos de Manera Efectiva</a>
-              </h2>
-
-              
-  
-  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
-    <p><div class="not-prose">
-<figure>
-    <img src="https://i.postimg.cc/1zqydrqw/29764884-7517872.jpg"
-      alt="ingles" 
-      loading="lazy"
-    >
-  </figure></div>
-<p>El <strong>inglés británico</strong> es una de las variantes del inglés más populares y conocidas en todo el mundo. Su influencia se extiende desde la literatura hasta la política, y sigue siendo la variante preferida en muchos países, especialmente en aquellos que tienen lazos históricos con el Reino Unido. Si te preguntas <strong>cómo aprender inglés británico</strong> de manera efectiva, este artículo está hecho para ti.</p></p>
-<p>En este post, exploraremos <strong>consejos prácticos</strong> que te ayudarán a aprender y dominar el inglés británico de forma eficiente, para que puedas comunicarte con confianza y comprender las sutilezas de esta variante del idioma. Si estás buscando mejorar tu nivel de inglés, ya sea por motivos académicos, profesionales o personales, sigue leyendo para descubrir cómo hacerlo.</p>
-  </div>
-  
-
-
-              
-  <ul class="flex flex-row flex-wrap text-slate-500 dark:text-slate-300">
-    
-      
-      <li>
-        <a href="/blog/categories/ingles/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Ingles
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/ingles-britanico/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Ingles Britanico
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/guias/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Guias
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/categories/consejos/"
-          class="text-sm mr-2 px-2 py-1 rounded border border-emerald-800 bg-emerald-800 text-slate-50">
-          Consejos
-        </a>
-      </li>
-      
-    
-    
-      
-      <li>
-        <a href="/blog/tags/aprender-ingl%C3%A9s-brit%C3%A1nico/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Aprender Inglés Británico</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/consejos-ingl%C3%A9s-brit%C3%A1nico/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Consejos Inglés Británico</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/c%C3%B3mo-aprender-ingl%C3%A9s-brit%C3%A1nico/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Cómo Aprender Inglés Británico</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/diferencias-entre-ingl%C3%A9s-brit%C3%A1nico-y-americano/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Diferencias Entre Inglés Británico Y Americano</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/gram%C3%A1tica-del-ingl%C3%A9s-brit%C3%A1nico/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Gramática Del Inglés Británico</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/pronunciaci%C3%B3n-inglesa/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Pronunciación Inglesa</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/estudiar-ingl%C3%A9s-brit%C3%A1nico/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Estudiar Inglés Británico</span>
-        </a>
-      </li>
-      
-      <li>
-        <a href="/blog/tags/recursos-para-aprender-ingl%C3%A9s/"
-          class="flex flex-row text-sm mr-2 py-1">
-          <i class="h-5 w-5 flex-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-          </i>
-          <span class="ml-0">Recursos Para Aprender Inglés</span>
-        </a>
-      </li>
-      
-    
-  </ul>
-
-
-
-              <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
-  
-  
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
-   <path d="M16 3v4"></path>
-   <path d="M8 3v4"></path>
-   <path d="M4 11h16"></path>
-   <path d="M11 15h1"></path>
-   <path d="M12 15v3"></path>
-</svg>
-
-    </i>
-    <time datetime="2025-03-21T05:31:30-04:00">
-      2025-03-21
-    </time>
-  </div>
-
-  <div class="flex flex-row text-base gap-x-1">
-    <i class="h-6 w-6 flex-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M6.5 7h11"></path>
-   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
-   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
-</svg>
-
-    </i>
-    <span>
-      6 minutos de lectura
-    </span>
-  </div>
-</div>
-
-              
-            </div>
-          </article>
-        
-      </section>
-      <aside class="hidden md:flex flex-col md:w-1/3 ml-3 top-0 sticky self-start">
-        <section class="pl-6 mt-6 w-full max-w-4xl lg:max-w-5xl">
-  <form class="" action=/blog/search/ method="get">
-    <div class="flex">
-      <input type="text" name="search" id="search-input" required placeholder="Buscar..." class="rounded-none rounded-s-lg border border-gray-300 text-slate-800 focus:outline-none focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-3  dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-slate-200 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <button class="inline-flex items-center px-3 text-sm text-slate-900 bg-slate-200 border border-e-0 border-gray-300 rounded-e-lg dark:bg-slate-600 dark:text-slate-400 dark:border-slate-600">
-        <i class="h-6 w-6 flex-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-    <path d="M21 21l-6 -6" />
-</svg>
-
-        </i>
-      </button>
-    </div>
-  </form>
-</section>
-
-
-  
-
-<section class="flex flex-col w-full gap-y-3 pl-6 py-3 mt-6 text-slate-800 dark:text-slate-200">
-  <div class="flex flex-row">
-    <a class="flex flex-row" href='/blog/categories/'>
-      <i class="h-6 w-6 flex-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M14 4h6v6h-6z"></path>
-   <path d="M4 14h6v6h-6z"></path>
-   <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-   <path d="M7 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-</svg>
-
-      </i>
-      <h2 class="pl-1 uppercase">
-        Categorías
-      </h2>
-    </a>
-  </div>
-
-  <ul class="flex flex-row flex-wrap">
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/tecnolog%C3%ADa/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Tecnología
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/guias/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Guias
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/crom-studio-cloud/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Crom Studio Cloud
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/emprendimiento/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Emprendimiento
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/nube/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Nube
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/espa%C3%B1a/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        España
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/gu%C3%ADas/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Guías
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/mysql/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        MySQL
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/telecomunicaciones/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Telecomunicaciones
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/categories/finanzas/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Finanzas
-      </a>
-    </li>
-    
-  </ul>
-</section>
-
-  
-
-  
-
-  
-
-<section class="flex flex-col w-full gap-y-3 pl-6 py-3 mt-6 text-slate-800 dark:text-slate-200">
-  <div class="flex flex-row">
-    <a class="flex flex-row" href='/blog/tags/'>
-      <i class="h-6 w-6 flex-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M5 9l14 0"></path>
-   <path d="M5 15l14 0"></path>
-   <path d="M11 4l-4 16"></path>
-   <path d="M17 4l-4 16"></path>
-</svg>
-
-      </i>
-      <h2 class="pl-1 uppercase">
-        Etiquetas
-      </h2>
-    </a>
-  </div>
-
-  <ul class="flex flex-row flex-wrap">
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/venezuela/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Venezuela
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/tecnolog%C3%ADa/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Tecnología
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/almacenamiento-en-la-nube/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Almacenamiento en La Nube
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/proyecto-socio-productivo/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Proyecto Socio-Productivo
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/contabilidad/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Contabilidad
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/crom-studio-cloud/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Crom Studio Cloud
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/guias/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Guias
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/negocios/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Negocios
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/nextcloud/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Nextcloud
-      </a>
-    </li>
-    
-    <li class="mt-2 mr-2">
-      <a href="/blog/tags/crom-studio/"
-        class="rounded px-2 py-1 text-sm text-slate-800 dark:text-slate-300 ring-1 ring-slate-900/5 dark:ring-slate-50/5 backdrop-blur bg-slate-50 dark:bg-gray-700">
-        Crom Studio
-      </a>
-    </li>
-    
-  </ul>
-</section>
-
-  
-
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7313467653686833"
-     crossorigin="anonymous"></script>
-
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7313467653686833"
-     data-ad-slot="5767397260"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-      </aside>
-    </div>
-
-    
+                  </div>
+
+                  <h2 class="text-xl font-semibold text-slate-800 dark:text-slate-100 pj-card-title">
+                    <a href="/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/" class="hover:text-emerald-600">
+                      Guía Completa sobre el Update de MySQL: Todo lo que Necesitas Saber
+                    </a>
+                  </h2>
+
+                  <p class="text-sm text-slate-600 dark:text-slate-300 pj-clamp-3 pj-card-desc">
+                    MySQL es uno de los sistemas de gestión de bases de datos más utilizados en el mundo debido a su fiabilidad, rendimiento y facilidad de uso. Ya sea que estés administrando una base de datos pequeña o una infraestructura más compleja, es importante entender cómo funciona el comando UPDATE en MySQL. En este artículo, te ofreceremos una guía detallada sobre el uso del UPDATE en MySQL, desde sus conceptos básicos hasta las mejores prácticas y ejemplos avanzados.
+                  </p>
+                </div>
+
+                <div class="pj-card-footer">
+                  <a href="/blog/posts/update-en-mysql-todo-lo-que-debes-de-saber/" class="text-xs font-semibold text-emerald-600 hover:underline">
+                    Leer artículo →
+                  </a>
+                  
+                    <span class="text-xs text-slate-500 dark:text-slate-400">#MySQL</span>
+                  
+                </div>
+              </article>
+            
+          
+        </div>
+
+        <div class="mt-8">
+          
 <div class="flex flex-row justify-center mt-6 gap-2">
   
     <a href="/blog/posts/page/3/"
@@ -2997,10 +1341,433 @@ han contribuido al desarrollo económico y social, demostrando la resiliencia y 
 </div>
 
 
+        </div>
+      </section>
+
+      
+      <aside>
+        
+
+<div class="flex flex-col">
+
+  
+  <div class="pj-bcv-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem;">
+      <span style="font-size:0.75rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;">
+        DÓLAR Y EURO BCV HOY
+      </span>
+      <span style="font-size:0.65rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:999px;background:rgba(0,0,0,0.12);">
+        OFICIAL
+      </span>
+    </div>
+
+    <div style="display:flex;align-items:baseline;gap:0.35rem;margin:0.25rem 0;">
+      <span id="crom-usd-bcv" style="font-size:2.35rem;font-weight:900;line-height:1;letter-spacing:-0.03em;">
+        Cargando...
+      </span>
+      <span style="font-size:1.1rem;font-weight:800;">Bs</span>
+    </div>
+
+    <div style="font-size:0.85rem;font-weight:700;margin-top:0.35rem;padding-top:0.35rem;border-top:1px solid rgba(0,0,0,0.15);display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.4rem;">
+      <span>EURO BCV: <strong id="crom-eur-bcv">--</strong> Bs</span>
+    </div>
+
+    <div id="crom-fecha-bcv" style="font-size:0.78rem;font-weight:800;margin-top:0.35rem;margin-bottom:0.9rem;">
+      📅 Fecha tasa: Cargando...
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+      <a href="/blog/calculadora/" class="pj-bcv-btn">
+        <span>CALCULAR →</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const usdEl = document.getElementById('crom-usd-bcv');
+      const eurEl = document.getElementById('crom-eur-bcv');
+      const dateEl = document.getElementById('crom-fecha-bcv');
+
+      function formatRate(val) {
+        if (val === undefined || val === null) return null;
+        const num = parseFloat(String(val).replace(',', '.'));
+        if (isNaN(num)) return String(val);
+        return num.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function formatFechaHoy(rawDate) {
+        if (rawDate) {
+          const d = new Date(rawDate);
+          if (!isNaN(d.getTime()) && String(rawDate).includes('-')) {
+            return d.toLocaleDateString('es-VE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+          }
+          return String(rawDate);
+        }
+        return new Date().toLocaleDateString('es-VE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+      }
+
+      if (dateEl) {
+        dateEl.textContent = '📅 Fecha tasa: ' + formatFechaHoy();
+      }
+
+      fetch('https://datos.cromstudio.com.ve/tasa', { headers: { 'Accept': 'application/json, text/plain, */*' } })
+        .then(async function(res) {
+          const text = await res.text();
+          try {
+            const data = JSON.parse(text);
+            const src = data.data || data.tasa || data.tasas || data.bcv || data;
+            const usd = src.usd || src.dolar || src.USD || src.dolar_bcv || (src.bcv && (src.bcv.usd || src.bcv.dolar)) || data.usd || data.dolar || data.promedio;
+            const eur = src.eur || src.euro || src.EUR || src.euro_bcv || (src.bcv && (src.bcv.eur || src.bcv.euro)) || data.eur || data.euro;
+            const fecha = src.fecha || src.fecha_valor || src.fechaValor || src.date || src.updated_at || src.ultima_actualizacion || data.fecha || data.fecha_valor || data.date;
+
+            if (usd && usdEl) usdEl.textContent = formatRate(usd);
+            if (eur && eurEl) eurEl.textContent = formatRate(eur);
+            if (dateEl) dateEl.textContent = '📅 Fecha tasa: ' + formatFechaHoy(fecha);
+          } catch (e) {
+            const usdMatch = text.match(/(?:d[oó]lar|usd)[^0-9]{0,25}([0-9]+[.,][0-9]{2,4})/i);
+            const eurMatch = text.match(/(?:euro|eur)[^0-9]{0,25}([0-9]+[.,][0-9]{2,4})/i);
+            const dateMatch = text.match(/([0-9]{1,2}[\/\-][0-9]{1,2}[\/\-][0-9]{2,4})/);
+            if (usdMatch && usdEl) usdEl.textContent = formatRate(usdMatch[1]);
+            else if (usdEl) usdEl.textContent = 'Ver tasa';
+            if (eurMatch && eurEl) eurEl.textContent = formatRate(eurMatch[1]);
+            if (dateEl) dateEl.textContent = '📅 Fecha tasa: ' + (dateMatch ? dateMatch[1] : formatFechaHoy());
+          }
+        })
+        .catch(function() {
+          if (usdEl) usdEl.textContent = 'Consultar';
+          if (eurEl) eurEl.textContent = 'Ver web';
+        });
+    })();
+  </script>
+
+  
+  <div class="pj-sidebar-widget bg-white dark:bg-gray-700 shadow-md text-center">
+    <a href="https://www.google.com/preferences/source?q=https://cromstudio.com.ve" target="_blank" rel="noopener" class="pj-google-source-btn w-full text-slate-800 dark:text-slate-100">
+      <span>🌐 Añadir como fuente en Google</span>
+    </a>
+  </div>
+
+  
+  <div class="pj-sidebar-widget bg-white dark:bg-gray-700 shadow-md">
+    <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200 dark:border-gray-600">
+      <h3 class="text-base font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <span class="text-emerald-600">●</span> Categorías
+      </h3>
+      <a href="/blog/categories/" class="text-xs text-emerald-600 hover:underline">Ver todas</a>
+    </div>
+    <div class="pj-cat-grid">
+      
+        
+        
+        
+          <a href="/blog/categories/tecnolog%C3%ADa/" class="pj-cat-box bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200">
+            <span class="mr-1">Tecnología</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-emerald-600 font-semibold flex-none">40</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/categories/guias/" class="pj-cat-box bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200">
+            <span class="mr-1">Guias</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-emerald-600 font-semibold flex-none">15</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/categories/crom-studio-cloud/" class="pj-cat-box bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200">
+            <span class="mr-1">Crom Studio Cloud</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-emerald-600 font-semibold flex-none">11</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/categories/emprendimiento/" class="pj-cat-box bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200">
+            <span class="mr-1">Emprendimiento</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-emerald-600 font-semibold flex-none">11</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/categories/gu%C3%ADas/" class="pj-cat-box bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200">
+            <span class="mr-1">Guías</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-emerald-600 font-semibold flex-none">11</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/categories/nube/" class="pj-cat-box bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200">
+            <span class="mr-1">Nube</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-emerald-600 font-semibold flex-none">11</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/categories/espa%C3%B1a/" class="pj-cat-box bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200">
+            <span class="mr-1">España</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-emerald-600 font-semibold flex-none">9</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/categories/mysql/" class="pj-cat-box bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200">
+            <span class="mr-1">MySQL</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-700 text-emerald-600 font-semibold flex-none">9</span>
+          </a>
+        
+      
+    </div>
+  </div>
+
+  
+  <div class="pj-sidebar-widget bg-white dark:bg-gray-700 shadow-md text-center">
+    <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-slate-50 dark:bg-gray-800 text-emerald-600 mb-2">
+      ✍️
+    </div>
+    <div class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+      130
+    </div>
+    <div class="text-xs text-slate-500 dark:text-slate-300 mt-1">
+      Artículos Redactados
+    </div>
+  </div>
+
+  
+  <div class="pj-sidebar-widget bg-white dark:bg-gray-700 shadow-md">
+    <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200 dark:border-gray-600">
+      <h3 class="text-base font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+        <span class="text-emerald-600">●</span> Tags Populares
+      </h3>
+      <a href="/blog/tags/" class="text-xs text-emerald-600 hover:underline">Ver todos</a>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      
+        
+        
+        
+          <a href="/blog/tags/venezuela/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Venezuela <span class="text-emerald-600 font-semibold">19</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/tecnolog%C3%ADa/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Tecnología <span class="text-emerald-600 font-semibold">14</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/crom-studio/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Crom Studio <span class="text-emerald-600 font-semibold">12</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/almacenamiento-en-la-nube/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Almacenamiento en La Nube <span class="text-emerald-600 font-semibold">10</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/proyecto-socio-productivo/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Proyecto Socio-Productivo <span class="text-emerald-600 font-semibold">10</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/contabilidad/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Contabilidad <span class="text-emerald-600 font-semibold">8</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/crom-studio-cloud/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Crom Studio Cloud <span class="text-emerald-600 font-semibold">8</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/guias/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Guias <span class="text-emerald-600 font-semibold">8</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/negocios/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Negocios <span class="text-emerald-600 font-semibold">8</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/nextcloud/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Nextcloud <span class="text-emerald-600 font-semibold">8</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/espa%C3%B1a/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            España <span class="text-emerald-600 font-semibold">6</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/nube/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Nube <span class="text-emerald-600 font-semibold">6</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/redes-sociales/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Redes Sociales <span class="text-emerald-600 font-semibold">6</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/camino-de-santiago/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Camino De Santiago <span class="text-emerald-600 font-semibold">5</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/mysql/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            MySQL <span class="text-emerald-600 font-semibold">5</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/turismo/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Turismo <span class="text-emerald-600 font-semibold">5</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/ciberseguridad/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Ciberseguridad <span class="text-emerald-600 font-semibold">4</span>
+          </a>
+        
+      
+        
+        
+        
+          <a href="/blog/tags/desarrollo-comunitario/" class="px-2 py-1 rounded-lg text-xs font-medium bg-slate-50 dark:bg-gray-800 text-slate-800 dark:text-slate-200 hover:text-emerald-600" style="border: 1px solid rgba(148,163,184,0.2);">
+            Desarrollo Comunitario <span class="text-emerald-600 font-semibold">4</span>
+          </a>
+        
+      
+    </div>
+  </div>
+
+  
+  <div class="pj-sidebar-widget bg-white dark:bg-gray-700 shadow-md">
+    <h3 class="text-base font-semibold text-slate-800 dark:text-slate-100 flex items-center gap-2 mb-3 pb-2 border-b border-slate-200 dark:border-gray-600">
+      <span class="text-emerald-600">●</span> Redes Sociales
+    </h3>
+    <div class="flex flex-wrap gap-3 justify-center py-2">
+      
+  
+  
+    <a href="https://www.facebook.com/cromstudio21" target="_blank" title="Facebook" class="flex flex-row mr-2">
+      <span class="hidden">Facebook</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://twitter.com/cromstudio" target="_blank" title="Twitter" class="flex flex-row mr-2">
+      <span class="hidden">Twitter</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+   <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+    <a href="https://www.instagram.com/cromstudio21" target="_blank" title="Instagram" class="flex flex-row mr-2">
+      <span class="hidden">Instagram</span>
+      <i class="h-6 w-6 flex-none"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M16.5 7.5l0 .01"></path>
+</svg>
+ </i>
+    </a>
+  
+  
+  
+  
+  
+  
+
+
+    </div>
+  </div>
+
+</div>
+      </aside>
+
+    </div>
+
+    
+    
+
   </div>
 
   </main>
-  <footer class="flex flex-none justify-center">
+  <footer class="flex flex-none justify-center border-t border-slate-200 dark:border-gray-700 mt-10">
     <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-3 md:gap-4 items-center justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-sm text-slate-500 dark:text-slate-300">
   <div class="flex flex-row">
       

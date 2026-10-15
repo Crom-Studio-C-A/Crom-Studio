@@ -9,56 +9,91 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Tue, 29 Sep 2026 06:46:12 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 19:52:11 +0000</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/tags/crom-studio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Qué es DokuWiki y cómo funciona: Guía definitiva para crear wikis</title>
+      <link>https://cromstudio.com.ve/blog/posts/que-es-dokuwiki-y-como-funciona/</link>
+      <pubDate>Thu, 15 Oct 2026 19:52:11 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/que-es-dokuwiki-y-como-funciona/</guid>
+      <description>DokuWiki&#xD;es un motor de documentación wiki de código abierto, altamente versátil y ligero, que almacena todo su contenido en archivos de texto plano sin requerir bases de datos relacionales. Creado originalmente en 2004, este sistema se ha consolidado como el estándar de referencia para desarrolladores, sysadmins y organizaciones que buscan una fuente de verdad centralizada, segura y totalmente autohospedada.&#xA;Dominar su funcionamiento técnico permite optimizar la gestión del conocimiento interno en proyectos de desarrollo y sistemas, reduciendo la dependencia de plataformas SaaS de pago.</description>
+    </item>
+    <item>
+      <title>Tutorial de Cisco Packet Tracer: Guía completa de redes y simulación</title>
+      <link>https://cromstudio.com.ve/blog/posts/tutorial-cisco-packet-tracer-guia-completa/</link>
+      <pubDate>Wed, 14 Oct 2026 10:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/tutorial-cisco-packet-tracer-guia-completa/</guid>
+      <description>Cisco Packet Tracer es el simulador gráfico de redes estándar de la industria, diseñado originalmente como plataforma formativa para las certificaciones CCNA. Permite a ingenieros, estudiantes y administradores de sistemas construir topologías virtuales complejas, configurar hardware de red mediante comandos reales y auditar el tráfico de datos por capas sin necesidad de infraestructura física.&#xA;Dominar esta herramienta resulta indispensable para diseñar arquitecturas de telecomunicaciones robustas o validar esquemas de conectividad antes de implementarlos en entornos de producción.</description>
+    </item>
+    <item>
+      <title>CromPOS: El sistema de facturación e inventario diseñado para la realidad multimoneda</title>
+      <link>https://cromstudio.com.ve/blog/posts/descubre-crompos-sistema-pos-facturacion-inventario-multimoneda/</link>
+      <pubDate>Mon, 05 Oct 2026 06:06:52 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/descubre-crompos-sistema-pos-facturacion-inventario-multimoneda/</guid>
+      <description>Administrar un comercio hoy en día exige agilidad, precisión y, sobre todo, adaptabilidad. En un entorno dinámico donde las transacciones se realizan frecuentemente en múltiples divisas y las tasas de cambio fluctúan, los sistemas de facturación tradicionales se quedan cortos, generando retrasos molestos en la caja y graves descuadres en la contabilidad.&#xA;Para resolver este desafío de raíz, Crom Studio&#xD;desarrollamos CromPOS&#xD;, una plataforma de punto de venta (POS) y gestión de inventario 100% web, diseñada desde cero para ofrecer una experiencia fluida frente al mostrador y un control total desde la administración.</description>
+    </item>
+    <item>
+      <title>El reto de documentar la historia regional en la era digital usando DokuWiki</title>
+      <link>https://cromstudio.com.ve/blog/posts/documentar-historia-regional-en-la-era-digital-criollowiki/</link>
+      <pubDate>Fri, 02 Oct 2026 05:32:17 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/documentar-historia-regional-en-la-era-digital-criollowiki/</guid>
+      <description>En la actual era de la hiperconexión, donde la información fluye a velocidades vertiginosas, existe un fenómeno paradójico: el olvido digital de lo local. Mientras que los grandes eventos globales se documentan al instante, la historia regional, los modismos de nuestros pueblos y las biografías de personajes ilustres locales corren el riesgo de desaparecer en el vasto océano de internet.&#xA;Para combatir esta amnesia cultural, en Crom Studio&#xD;impulsamos CriolloWiki&#xD;, una enciclopedia venezolana de conocimiento libre&#xD;.</description>
+    </item>
     <item>
       <title>API Pública y Gratuita del Dólar BCV en Venezuela (JSON) para Desarrolladores y Empresas</title>
       <link>https://cromstudio.com.ve/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/</link>
       <pubDate>Tue, 29 Sep 2026 06:46:12 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/api-publica-gratis-dolar-bcv-desarolladores-empresas/</guid>
-      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/lgg2TQv.png&#34;&#xD;&#xA;      alt=&#34;BCV API&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Mantener los &lt;a href=&#34;https://cromstudio.com.ve/blog/posts/crompos-sistema-de-facturacion-venezuela/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sistemas de facturación&lt;/a&gt;&#xD;&#xA;, tiendas en línea y plataformas de punto de venta actualizados con la tasa de cambio oficial es un desafío técnico constante para las empresas en Venezuela.&lt;/p&gt;&#xA;&lt;p&gt;Para facilitar este proceso, en &lt;strong&gt;Crom Studio&lt;/strong&gt; hemos liberado nuestra &lt;strong&gt;API pública del Dólar BCV&lt;/strong&gt;, una interfaz de programación de aplicaciones (REST API) gratuita, rápida y diseñada para integrarse en cualquier proyecto de software en cuestión de minutos.&lt;/p&gt;</description>
+      <description>Mantener los sistemas de facturación&#xD;, tiendas en línea y plataformas de punto de venta actualizados con la tasa de cambio oficial es un desafío técnico constante para las empresas en Venezuela.&#xA;Para facilitar este proceso, en Crom Studio hemos liberado nuestra API pública del Dólar BCV, una interfaz de programación de aplicaciones (REST API) gratuita, rápida y diseñada para integrarse en cualquier proyecto de software en cuestión de minutos.</description>
     </item>
     <item>
       <title>¿Qué es CromPOS? El Sistema de Facturación e Inventario en la Nube que tu Negocio Necesita</title>
       <link>https://cromstudio.com.ve/blog/posts/crompos-sistema-de-facturacion-venezuela/</link>
       <pubDate>Mon, 28 Sep 2026 03:07:45 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/crompos-sistema-de-facturacion-venezuela/</guid>
-      <description>&lt;p&gt;¿Cansado de sacar cuentas manuales entre Dólares y Bolívares cada vez que atiendes a un cliente? ¿Te frustra no poder saber cómo van las ventas de tu local cuando no estás presente? Si eres dueño de un negocio, sabes que el tiempo vale oro y la precisión lo es todo.&lt;/p&gt;&#xA;&lt;p&gt;Para solucionar estos dolores de cabeza diarios, desde &lt;a href=&#34;https://cromstudio.com.ve/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Crom Studio&lt;/a&gt;&#xD;&#xA; hemos desarrollado CromPOS: nuestro sistema de facturación e inventario en la nube diseñado para hacerte la vida más fácil. En este artículo te contamos qué es, cómo funciona y por qué es la herramienta ideal para tu emprendimiento o empresa.&lt;/p&gt;</description>
+      <description>¿Cansado de sacar cuentas manuales entre Dólares y Bolívares cada vez que atiendes a un cliente? ¿Te frustra no poder saber cómo van las ventas de tu local cuando no estás presente? Si eres dueño de un negocio, sabes que el tiempo vale oro y la precisión lo es todo.&#xA;Para solucionar estos dolores de cabeza diarios, desde Crom Studio&#xD;hemos desarrollado CromPOS: nuestro sistema de facturación e inventario en la nube diseñado para hacerte la vida más fácil.</description>
     </item>
     <item>
       <title>Qué es Crom Studio: Servicios de Desarrollo de Software y Soluciones Tecnológicas</title>
       <link>https://cromstudio.com.ve/blog/posts/crom-studio-que-es-servicios-venezuela/</link>
       <pubDate>Mon, 28 Sep 2026 02:47:42 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/crom-studio-que-es-servicios-venezuela/</guid>
-      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://cromstudio.com.ve/blog/logo.webp&#34;&#xD;&#xA;      alt=&#34;crom studio&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;En un entorno empresarial cada vez más digitalizado, contar con un aliado tecnológico confiable es clave para el éxito. &lt;a href=&#34;https://cromstudio.com.ve/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Crom Studio&lt;/a&gt;&#xD;&#xA; se ha consolidado como una empresa líder en el desarrollo de software y la implementación de soluciones digitales integrales, ayudando a negocios y emprendedores a escalar y optimizar sus operaciones.&lt;/p&gt;&#xA;&lt;p&gt;En este artículo, detallamos qué es &lt;a href=&#34;https://cromstudio.com.ve/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Crom Studio&lt;/a&gt;&#xD;&#xA;, cuáles son nuestros servicios principales y cómo puedes ponerte en contacto con nuestro equipo para potenciar tu empresa.&lt;/p&gt;</description>
+      <description>En un entorno empresarial cada vez más digitalizado, contar con un aliado tecnológico confiable es clave para el éxito. Crom Studio&#xD;se ha consolidado como una empresa líder en el desarrollo de software y la implementación de soluciones digitales integrales, ayudando a negocios y emprendedores a escalar y optimizar sus operaciones.&#xA;En este artículo, detallamos qué es Crom Studio&#xD;, cuáles son nuestros servicios principales y cómo puedes ponerte en contacto con nuestro equipo para potenciar tu empresa.</description>
     </item>
     <item>
       <title>CriolloWiki: El Hogar Digital de la Identidad, Cultura e Historia Venezolana</title>
       <link>https://cromstudio.com.ve/blog/posts/criollowiki-que-es-hogar-digital-cultura/</link>
       <pubDate>Mon, 28 Sep 2026 02:19:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/criollowiki-que-es-hogar-digital-cultura/</guid>
-      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/WXPrUCe.png&#34;&#xD;&#xA;      alt=&#34;CriolloWiki&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;En la era de la información globalizada, preservar las raíces, el lenguaje y la historia local se ha convertido en un desafío vital. Es aquí donde nace un proyecto brillante que busca digitalizar y resguardar la esencia del país: &lt;a href=&#34;https://criollowiki.cromstudio.com.ve/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CriolloWiki&lt;/a&gt;&#xD;&#xA;.&lt;/p&gt;&#xA;&lt;p&gt;Si aún no conoces esta plataforma, prepárate para descubrir un espacio donde la venezolanidad es la protagonista absoluta. En este artículo, exploraremos qué es CriolloWiki, qué puedes encontrar en ella y quién está detrás de esta enciclopedia digital.&lt;/p&gt;</description>
+      <description>En la era de la información globalizada, preservar las raíces, el lenguaje y la historia local se ha convertido en un desafío vital. Es aquí donde nace un proyecto brillante que busca digitalizar y resguardar la esencia del país: CriolloWiki&#xD;.&#xA;Si aún no conoces esta plataforma, prepárate para descubrir un espacio donde la venezolanidad es la protagonista absoluta. En este artículo, exploraremos qué es CriolloWiki, qué puedes encontrar en ella y quién está detrás de esta enciclopedia digital.</description>
     </item>
     <item>
       <title>Cómo un Buen Sistema Contable Puede Transformar tu Negocio</title>
       <link>https://cromstudio.com.ve/blog/posts/un-buen-sistema-puede-transformar-tu-negocio/</link>
       <pubDate>Sun, 05 Jan 2025 13:11:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/un-buen-sistema-puede-transformar-tu-negocio/</guid>
-      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.postimg.cc/c4HvcMfJ/sistema-contable-venezuela.webp&#34;&#xD;&#xA;      alt=&#34;Sistema Contable en Venezuela&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;En un mercado competitivo y en constante cambio, la gestión financiera eficiente es fundamental para el éxito de cualquier negocio. La contabilidad no solo es una obligación legal, sino que también es el corazón de la planificación estratégica y la toma de decisiones empresariales. En este contexto, un buen sistema contable puede marcar la diferencia entre un negocio que simplemente sobrevive y uno que prospera.&lt;/p&gt;</description>
+      <description>En un mercado competitivo y en constante cambio, la gestión financiera eficiente es fundamental para el éxito de cualquier negocio. La contabilidad no solo es una obligación legal, sino que también es el corazón de la planificación estratégica y la toma de decisiones empresariales. En este contexto, un buen sistema contable puede marcar la diferencia entre un negocio que simplemente sobrevive y uno que prospera.&#xA;En este artículo, exploraremos cómo un sistema contable puede transformar tu negocio, los beneficios que aporta, y por qué Crom Studio es tu mejor aliado para implementar soluciones contables adaptadas a las necesidades del mercado venezolano.</description>
     </item>
     <item>
       <title>¿Qué es un Sistema Administrativo y Por Qué Tu Empresa en Venezuela Lo Necesita?</title>
       <link>https://cromstudio.com.ve/blog/posts/que-es-un-sistema-administrativo-por-que-necesito-uno-venezuela/</link>
       <pubDate>Sun, 05 Jan 2025 11:38:51 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/que-es-un-sistema-administrativo-por-que-necesito-uno-venezuela/</guid>
-      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.postimg.cc/zfzpdhBG/sistema-administrativo-venezuela.webp&#34;&#xD;&#xA;      alt=&#34;sistema administrativo&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h2 id=&#34;qué-es-un-sistema-administrativo&#34;&gt;¿Qué es un Sistema Administrativo?&lt;/h2&gt;&#xA;&lt;p&gt;Un sistema administrativo es una herramienta tecnológica diseñada para optimizar y gestionar los procesos internos de una empresa. Este software integra funciones esenciales como contabilidad, facturación, inventario, nómina, y reportes financieros, permitiendo un control más eficiente de los recursos y las operaciones empresariales.&lt;/p&gt;&#xA;&lt;p&gt;En pocas palabras, un sistema administrativo actúa como el cerebro operativo de una empresa, proporcionando la capacidad de tomar decisiones estratégicas basadas en datos confiables y en tiempo real. En mercados complejos como el venezolano, donde los cambios económicos y regulatorios son frecuentes, contar con esta herramienta no es solo una ventaja, sino una necesidad.&lt;/p&gt;</description>
+      <description>¿Qué es un Sistema Administrativo? Un sistema administrativo es una herramienta tecnológica diseñada para optimizar y gestionar los procesos internos de una empresa. Este software integra funciones esenciales como contabilidad, facturación, inventario, nómina, y reportes financieros, permitiendo un control más eficiente de los recursos y las operaciones empresariales.&#xA;En pocas palabras, un sistema administrativo actúa como el cerebro operativo de una empresa, proporcionando la capacidad de tomar decisiones estratégicas basadas en datos confiables y en tiempo real.</description>
     </item>
     <item>
       <title>Medios de Contacto de Crom Studio</title>
       <link>https://cromstudio.com.ve/blog/posts/medios-de-contacto-de-crom-studio/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/medios-de-contacto-de-crom-studio/</guid>
-      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://cromstudio.com.ve/blog/logo.webp&#34;&#xD;&#xA;      alt=&#34;crom studio&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;h2 id=&#34;medios-de-contacto-de-crom-studio&#34;&gt;Medios de Contacto de Crom Studio&lt;/h2&gt;&#xA;&lt;p&gt;Para atender todas tus consultas y brindarte el mejor servicio, en &lt;strong&gt;Crom Studio&lt;/strong&gt; contamos con diversos medios de contacto. Nos enfocamos en proporcionar una comunicación directa y efectiva para resolver tus dudas, recibir tus sugerencias o brindarte asistencia con cualquiera de nuestros servicios.&lt;/p&gt;&#xA;&lt;h3 id=&#34;-whatsapp&#34;&gt;📲 WhatsApp&lt;/h3&gt;&#xA;&lt;p&gt;Nuestro equipo de soporte está disponible en WhatsApp para responder tus consultas de forma rápida y sencilla. Puedes escribirnos haciendo clic en el siguiente enlace:&lt;/p&gt;</description>
+      <description>Medios de Contacto de Crom Studio Para atender todas tus consultas y brindarte el mejor servicio, en Crom Studio contamos con diversos medios de contacto. Nos enfocamos en proporcionar una comunicación directa y efectiva para resolver tus dudas, recibir tus sugerencias o brindarte asistencia con cualquiera de nuestros servicios.&#xA;📲 WhatsApp Nuestro equipo de soporte está disponible en WhatsApp para responder tus consultas de forma rápida y sencilla. Puedes escribirnos haciendo clic en el siguiente enlace:</description>
+    </item>
+    <item>
+      <title>Calculadora Dólar y Euro BCV Hoy en Bolívares (Tasa Oficial)</title>
+      <link>https://cromstudio.com.ve/blog/calculadora/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/calculadora/</guid>
+      <description>⚡ HERRAMIENTA OFICIAL EN TIEMPO REAL · CROM STUDIO DÓLAR OFICIAL BCV (USD) Cargando... Bs / USD EURO OFICIAL BCV (EUR) Cargando... Bs / EUR 💱 Conversor BCV en Tiempo Real (Escribe en cualquier casilla) Sincronizando con datos.cromstudio.com.ve/tasa... 🇺🇸 Dólares Americanos (USD) 🇪🇺 Euros Oficiales (EUR) 🇻🇪 Bolívares Digitales (Bs / VES) — Monto para Pago Móvil o Transferencia 1 $ 5 $ 10 $ 20 $ 50 $ 100 $ 500 $ 📋 Copiar monto en Bs 📊 Tabla de Conversión Rápida Dólar y Euro BCV a Bolívares Hoy Divisa Equivalente Dólar BCV (Bs) Equivalente Euro BCV (Bs) Cargando tabla de equivalencias oficiales.</description>
     </item>
   </channel>
 </rss>

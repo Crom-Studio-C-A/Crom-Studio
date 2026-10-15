@@ -9,14 +9,21 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Fri, 31 Oct 2025 16:01:07 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 10:00:00 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/inteligencia-artificial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gemini 4 Argon: El nuevo modelo de Google para código y ciberseguridad</title>
+      <link>https://cromstudio.com.ve/blog/posts/gemini-4-argon-el-nuevo-modelo-de-google-para-codigo-ciberseguridad/</link>
+      <pubDate>Thu, 15 Oct 2026 10:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/gemini-4-argon-el-nuevo-modelo-de-google-para-codigo-ciberseguridad/</guid>
+      <description>El ecosistema tecnológico global experimenta un punto de inflexión con el lanzamiento de Gemini 4 Argon, el nuevo modelo de frontera de Google DeepMind orientado a la ingeniería de software de alta complejidad, el análisis financiero avanzado y la defensa cibernética autónoma. Anunciado oficialmente por Koray Kavukcuoglu, este desarrollo redefine los límites del razonamiento computacional en flujos de trabajo de larga duración.&#xA;La irrupción de esta tecnología marca un cambio profundo en la manera en que desarrolladores, auditores de seguridad y corporaciones automatizan tareas críticas.</description>
+    </item>
     <item>
       <title>Hablemos de Inteligencia Artificial: ¿Revolución Real o Humo del Bueno?</title>
       <link>https://cromstudio.com.ve/blog/posts/hablemos-de-inteligencia-artificial/</link>
       <pubDate>Fri, 31 Oct 2025 16:01:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/hablemos-de-inteligencia-artificial/</guid>
-      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/CqYrzlp.png&#34;&#xD;&#xA;      alt=&#34;AI&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;A ver, que levante la mano quien no esté ya un poco harto del temita de la &amp;ldquo;Inteligencia Artificial&amp;rdquo;. ¿No?&lt;/p&gt;&#xA;&lt;p&gt;Abres Twitter (bueno, X, o como se llame esta semana) y &lt;strong&gt;zasca&lt;/strong&gt;. Que si la IA nos quita el trabajo. Que si ahora escribe poemas mejor que Bécquer. Que si tu tostadora pronto conspirará contra ti en el desayuno. Hay un &lt;em&gt;runrún&lt;/em&gt; constante, una especie de histeria colectiva que, la verdad, es bastante agotadora.&lt;/p&gt;</description>
+      <description>A ver, que levante la mano quien no esté ya un poco harto del temita de la &amp;ldquo;Inteligencia Artificial&amp;rdquo;. ¿No?&#xA;Abres Twitter (bueno, X, o como se llame esta semana) y zasca. Que si la IA nos quita el trabajo. Que si ahora escribe poemas mejor que Bécquer. Que si tu tostadora pronto conspirará contra ti en el desayuno. Hay un runrún constante, una especie de histeria colectiva que, la verdad, es bastante agotadora.</description>
     </item>
   </channel>
 </rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LibreOffice on Blog - Crom Studio</title>
+    <link>http://localhost:1313/blog/tags/libreoffice/</link>
+    <description>Recent content in LibreOffice on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Thu, 30 Oct 2025 10:49:35 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/libreoffice/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cómo Instalar Libreoffice</title>
+      <link>http://localhost:1313/blog/posts/guia-como-instalar-libreoffice-2025/</link>
+      <pubDate>Thu, 30 Oct 2025 10:49:35 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>http://localhost:1313/blog/posts/guia-como-instalar-libreoffice-2025/</guid>
+      <description>LibreOffice es una suite de producción ofimática, totalmente gratuita y de código abierto. Ofrece un conjunto de aplicaciones que cubren las necesidades más comunes de una oficina, que van desde la redacción de documentos hasta la creación de hojas de cálculos y presentaciones.&#xA;A través de esta documentación/bitácora, llevaremos a cabo el proceso de instalación de la suite ofimática en Microsoft Windows. Sin embargo, siguiendo los mismos pasos podremos realizar la instalación en otros sistemas operativos.</description>
+    </item>
+  </channel>
+</rss>

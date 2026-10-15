@@ -9,8 +9,64 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Tue, 29 Sep 2026 06:46:12 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 19:52:11 +0000</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guías</title>
+      <link>https://cromstudio.com.ve/blog/categories/gu%C3%ADas/</link>
+      <pubDate>Thu, 15 Oct 2026 19:52:11 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/gu%C3%ADas/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tecnología</title>
+      <link>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</link>
+      <pubDate>Thu, 15 Oct 2026 19:52:11 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Inteligencia Artificial</title>
+      <link>https://cromstudio.com.ve/blog/categories/inteligencia-artificial/</link>
+      <pubDate>Thu, 15 Oct 2026 10:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/inteligencia-artificial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Noticias</title>
+      <link>https://cromstudio.com.ve/blog/categories/noticias/</link>
+      <pubDate>Thu, 15 Oct 2026 10:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/noticias/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CromPOS</title>
+      <link>https://cromstudio.com.ve/blog/categories/crompos/</link>
+      <pubDate>Mon, 05 Oct 2026 06:06:52 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/crompos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productos</title>
+      <link>https://cromstudio.com.ve/blog/categories/productos/</link>
+      <pubDate>Mon, 05 Oct 2026 06:06:52 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/productos/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cultura Digital</title>
+      <link>https://cromstudio.com.ve/blog/categories/cultura-digital/</link>
+      <pubDate>Fri, 02 Oct 2026 05:32:17 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/cultura-digital/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Desarrollo Web</title>
+      <link>https://cromstudio.com.ve/blog/categories/desarrollo-web/</link>
+      <pubDate>Fri, 02 Oct 2026 05:32:17 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/desarrollo-web/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Desarrollo</title>
       <link>https://cromstudio.com.ve/blog/categories/desarrollo/</link>
@@ -30,27 +86,6 @@
       <link>https://cromstudio.com.ve/blog/categories/negocios/</link>
       <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/negocios/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Tecnología</title>
-      <link>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</link>
-      <pubDate>Tue, 29 Sep 2026 06:31:44 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>CromPOS</title>
-      <link>https://cromstudio.com.ve/blog/categories/crompos/</link>
-      <pubDate>Mon, 28 Sep 2026 03:07:45 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/crompos/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Productos</title>
-      <link>https://cromstudio.com.ve/blog/categories/productos/</link>
-      <pubDate>Mon, 28 Sep 2026 03:07:45 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/productos/</guid>
       <description></description>
     </item>
     <item>
@@ -75,13 +110,6 @@
       <description></description>
     </item>
     <item>
-      <title>Noticias</title>
-      <link>https://cromstudio.com.ve/blog/categories/noticias/</link>
-      <pubDate>Mon, 28 Sep 2026 02:40:18 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/noticias/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Software</title>
       <link>https://cromstudio.com.ve/blog/categories/software/</link>
       <pubDate>Mon, 28 Sep 2026 02:40:18 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
@@ -93,13 +121,6 @@
       <link>https://cromstudio.com.ve/blog/categories/criollowiki/</link>
       <pubDate>Mon, 28 Sep 2026 02:19:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/criollowiki/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cultura Digital</title>
-      <link>https://cromstudio.com.ve/blog/categories/cultura-digital/</link>
-      <pubDate>Mon, 28 Sep 2026 02:19:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/cultura-digital/</guid>
       <description></description>
     </item>
     <item>
@@ -411,13 +432,6 @@
       <description></description>
     </item>
     <item>
-      <title>Inteligencia Artificial</title>
-      <link>https://cromstudio.com.ve/blog/categories/inteligencia-artificial/</link>
-      <pubDate>Fri, 31 Oct 2025 16:01:07 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/inteligencia-artificial/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Comprar</title>
       <link>https://cromstudio.com.ve/blog/categories/comprar/</link>
       <pubDate>Mon, 27 Oct 2025 12:25:34 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
@@ -450,13 +464,6 @@
       <link>https://cromstudio.com.ve/blog/categories/fiscal/</link>
       <pubDate>Sun, 20 Jul 2025 11:37:52 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/fiscal/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Guías</title>
-      <link>https://cromstudio.com.ve/blog/categories/gu%C3%ADas/</link>
-      <pubDate>Sun, 20 Jul 2025 11:37:52 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/gu%C3%ADas/</guid>
       <description></description>
     </item>
     <item>
@@ -611,13 +618,6 @@
       <link>https://cromstudio.com.ve/blog/categories/curso/</link>
       <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/curso/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Desarrollo Web</title>
-      <link>https://cromstudio.com.ve/blog/categories/desarrollo-web/</link>
-      <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/desarrollo-web/</guid>
       <description></description>
     </item>
     <item>

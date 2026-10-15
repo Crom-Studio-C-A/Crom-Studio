@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Multimoneda on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/software-multimoneda/</link>
+    <description>Recent content in Software Multimoneda on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Mon, 05 Oct 2026 06:06:52 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/software-multimoneda/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CromPOS: El sistema de facturación e inventario diseñado para la realidad multimoneda</title>
+      <link>https://cromstudio.com.ve/blog/posts/descubre-crompos-sistema-pos-facturacion-inventario-multimoneda/</link>
+      <pubDate>Mon, 05 Oct 2026 06:06:52 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/descubre-crompos-sistema-pos-facturacion-inventario-multimoneda/</guid>
+      <description>Administrar un comercio hoy en día exige agilidad, precisión y, sobre todo, adaptabilidad. En un entorno dinámico donde las transacciones se realizan frecuentemente en múltiples divisas y las tasas de cambio fluctúan, los sistemas de facturación tradicionales se quedan cortos, generando retrasos molestos en la caja y graves descuadres en la contabilidad.&#xA;Para resolver este desafío de raíz, Crom Studio&#xD;desarrollamos CromPOS&#xD;, una plataforma de punto de venta (POS) y gestión de inventario 100% web, diseñada desde cero para ofrecer una experiencia fluida frente al mostrador y un control total desde la administración.</description>
+    </item>
+  </channel>
+</rss>

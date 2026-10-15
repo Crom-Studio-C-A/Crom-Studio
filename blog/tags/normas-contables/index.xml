@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Normas Contables on Blog - Crom Studio</title>
+    <link>http://localhost:1313/blog/tags/normas-contables/</link>
+    <description>Recent content in Normas Contables on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Fri, 03 Jan 2025 13:17:46 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/normas-contables/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Principales Normas Contables Aplicadas en Venezuela</title>
+      <link>http://localhost:1313/blog/posts/principales-normas-contables-en-venezuela/</link>
+      <pubDate>Fri, 03 Jan 2025 13:17:46 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>http://localhost:1313/blog/posts/principales-normas-contables-en-venezuela/</guid>
+      <description>Introducción Las normas contables son un conjunto de principios y procedimientos diseñados para guiar la preparación y presentación de información financiera. En Venezuela, la contabilidad juega un papel crucial debido a las particularidades económicas, como la inflación, controles fiscales y la necesidad de transparencia en los registros financieros. Este artículo aborda las principales normas contables aplicadas en el país, su importancia y cómo las empresas pueden cumplir con ellas.&#xA;¿Qué Son las Normas Contables?</description>
+    </item>
+  </channel>
+</rss>

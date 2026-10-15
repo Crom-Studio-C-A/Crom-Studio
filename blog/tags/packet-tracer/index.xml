@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Packet Tracer on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/packet-tracer/</link>
+    <description>Recent content in Packet Tracer on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Wed, 14 Oct 2026 10:00:00 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/packet-tracer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tutorial de Cisco Packet Tracer: Guía completa de redes y simulación</title>
+      <link>https://cromstudio.com.ve/blog/posts/tutorial-cisco-packet-tracer-guia-completa/</link>
+      <pubDate>Wed, 14 Oct 2026 10:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/tutorial-cisco-packet-tracer-guia-completa/</guid>
+      <description>Cisco Packet Tracer es el simulador gráfico de redes estándar de la industria, diseñado originalmente como plataforma formativa para las certificaciones CCNA. Permite a ingenieros, estudiantes y administradores de sistemas construir topologías virtuales complejas, configurar hardware de red mediante comandos reales y auditar el tráfico de datos por capas sin necesidad de infraestructura física.&#xA;Dominar esta herramienta resulta indispensable para diseñar arquitecturas de telecomunicaciones robustas o validar esquemas de conectividad antes de implementarlos en entornos de producción.</description>
+    </item>
+  </channel>
+</rss>

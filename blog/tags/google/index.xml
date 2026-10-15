@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/google/</link>
+    <description>Recent content in Google on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Thu, 15 Oct 2026 10:00:00 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/google/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gemini 4 Argon: El nuevo modelo de Google para código y ciberseguridad</title>
+      <link>https://cromstudio.com.ve/blog/posts/gemini-4-argon-el-nuevo-modelo-de-google-para-codigo-ciberseguridad/</link>
+      <pubDate>Thu, 15 Oct 2026 10:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/gemini-4-argon-el-nuevo-modelo-de-google-para-codigo-ciberseguridad/</guid>
+      <description>El ecosistema tecnológico global experimenta un punto de inflexión con el lanzamiento de Gemini 4 Argon, el nuevo modelo de frontera de Google DeepMind orientado a la ingeniería de software de alta complejidad, el análisis financiero avanzado y la defensa cibernética autónoma. Anunciado oficialmente por Koray Kavukcuoglu, este desarrollo redefine los límites del razonamiento computacional en flujos de trabajo de larga duración.&#xA;La irrupción de esta tecnología marca un cambio profundo en la manera en que desarrolladores, auditores de seguridad y corporaciones automatizan tareas críticas.</description>
+    </item>
+  </channel>
+</rss>

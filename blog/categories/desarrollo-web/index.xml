@@ -9,14 +9,21 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Mon, 07 Apr 2025 06:03:05 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 02 Oct 2026 05:32:17 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/desarrollo-web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>El reto de documentar la historia regional en la era digital usando DokuWiki</title>
+      <link>https://cromstudio.com.ve/blog/posts/documentar-historia-regional-en-la-era-digital-criollowiki/</link>
+      <pubDate>Fri, 02 Oct 2026 05:32:17 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/documentar-historia-regional-en-la-era-digital-criollowiki/</guid>
+      <description>En la actual era de la hiperconexión, donde la información fluye a velocidades vertiginosas, existe un fenómeno paradójico: el olvido digital de lo local. Mientras que los grandes eventos globales se documentan al instante, la historia regional, los modismos de nuestros pueblos y las biografías de personajes ilustres locales corren el riesgo de desaparecer en el vasto océano de internet.&#xA;Para combatir esta amnesia cultural, en Crom Studio&#xD;impulsamos CriolloWiki&#xD;, una enciclopedia venezolana de conocimiento libre&#xD;.</description>
+    </item>
     <item>
       <title>Guía Completa para Crear una Página Web Sencilla con HTML y CSS: ¡Aprende con un Ejemplo!</title>
       <link>https://cromstudio.com.ve/blog/posts/guia-completa-para-crear-una-pagina-web-con-html-y-css/</link>
       <pubDate>Mon, 07 Apr 2025 06:03:05 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/posts/guia-completa-para-crear-una-pagina-web-con-html-y-css/</guid>
-      <description>&lt;p&gt;&lt;div class=&#34;not-prose&#34;&gt;&#xD;&#xA;&lt;figure&gt;&#xD;&#xA;    &lt;img src=&#34;https://i.imgur.com/P83lSPB.png&#34;&#xD;&#xA;      alt=&#34;pagina web&#34; &#xD;&#xA;      loading=&#34;lazy&#34;&#xD;&#xA;    &gt;&#xD;&#xA;  &lt;/figure&gt;&lt;/div&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;Hoy en día, crear tu propia página web es más sencillo que nunca, incluso si eres un principiante. HTML (HyperText Markup Language) y CSS (Cascading Style Sheets) son los dos lenguajes fundamentales para diseñar y estructurar páginas web. En este artículo, te enseñaremos paso a paso cómo crear una página web sencilla utilizando HTML y CSS, con un ejemplo práctico que podrás modificar y personalizar a tu gusto.&lt;/p&gt;</description>
+      <description>Hoy en día, crear tu propia página web es más sencillo que nunca, incluso si eres un principiante. HTML (HyperText Markup Language) y CSS (Cascading Style Sheets) son los dos lenguajes fundamentales para diseñar y estructurar páginas web. En este artículo, te enseñaremos paso a paso cómo crear una página web sencilla utilizando HTML y CSS, con un ejemplo práctico que podrás modificar y personalizar a tu gusto.&#xA;¿Qué es HTML y CSS?</description>
     </item>
   </channel>
 </rss>
