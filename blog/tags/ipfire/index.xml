@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IPFire on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/ipfire/</link>
+    <description>Recent content in IPFire on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Fri, 16 Oct 2026 03:00:00 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/ipfire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IPFire: Un Buen Firewall Gratuito para Mantenerte Protegido</title>
+      <link>https://cromstudio.com.ve/blog/posts/ipfire-buen-firewall-gratuito-proteccion-redes/</link>
+      <pubDate>Fri, 16 Oct 2026 03:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/ipfire-buen-firewall-gratuito-proteccion-redes/</guid>
+      <description>Para blindar tu infraestructura digital sin arruinar tu presupuesto, IPFire: un buen Firewall gratuito para mantenerte protegido, se posiciona como la solución definitiva. No hablamos de un simple programa de escritorio, sino de una distribución Linux completa (un sistema operativo autónomo) diseñada para instalarse en hardware económico y transformar cualquier equipo básico en un enrutador y cortafuegos de grado corporativo.&#xA;Depender exclusivamente del router que te entrega tu proveedor de internet es dejar la puerta abierta a ciberataques que pueden paralizar tu facturación.</description>
+    </item>
+  </channel>
+</rss>

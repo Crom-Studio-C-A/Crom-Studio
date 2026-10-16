@@ -9,20 +9,34 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Thu, 15 Oct 2026 19:52:11 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 05:00:00 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Guías</title>
-      <link>https://cromstudio.com.ve/blog/categories/gu%C3%ADas/</link>
-      <pubDate>Thu, 15 Oct 2026 19:52:11 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/gu%C3%ADas/</guid>
+      <title>Redes Y Servidores</title>
+      <link>https://cromstudio.com.ve/blog/categories/redes-y-servidores/</link>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/redes-y-servidores/</guid>
       <description></description>
     </item>
     <item>
       <title>Tecnología</title>
       <link>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</link>
-      <pubDate>Thu, 15 Oct 2026 19:52:11 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ciberseguridad</title>
+      <link>https://cromstudio.com.ve/blog/categories/ciberseguridad/</link>
+      <pubDate>Fri, 16 Oct 2026 03:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/ciberseguridad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Guías</title>
+      <link>https://cromstudio.com.ve/blog/categories/gu%C3%ADas/</link>
+      <pubDate>Thu, 15 Oct 2026 19:52:11 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/categories/gu%C3%ADas/</guid>
       <description></description>
     </item>
     <item>
@@ -716,13 +730,6 @@
       <link>https://cromstudio.com.ve/blog/categories/antivirus/</link>
       <pubDate>Fri, 21 Mar 2025 05:30:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/categories/antivirus/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ciberseguridad</title>
-      <link>https://cromstudio.com.ve/blog/categories/ciberseguridad/</link>
-      <pubDate>Fri, 21 Mar 2025 05:30:06 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/categories/ciberseguridad/</guid>
       <description></description>
     </item>
     <item>

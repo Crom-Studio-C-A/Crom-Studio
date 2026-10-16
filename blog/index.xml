@@ -9,8 +9,22 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Thu, 15 Oct 2026 19:52:11 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 05:00:00 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>¿Qué son las subredes y por qué tu empresa necesita subnetting?</title>
+      <link>https://cromstudio.com.ve/blog/posts/que-son-las-subredes-guia-subnetting/</link>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/que-son-las-subredes-guia-subnetting/</guid>
+      <description>Para responder de forma directa a qué son las subredes: se trata de divisiones lógicas e independientes creadas a partir de una red de computadoras principal (IP) mucho más grande. Esta partición permite aislar el tráfico, mejorar la seguridad operativa y evitar el colapso del ancho de banda al organizar los dispositivos en bloques manejables en lugar de mantenerlos todos conectados en un único y ruidoso canal de comunicación.&#xA;Implementar una estrategia de subnetting dejó de ser una tarea exclusiva de los grandes centros de datos.</description>
+    </item>
+    <item>
+      <title>IPFire: Un Buen Firewall Gratuito para Mantenerte Protegido</title>
+      <link>https://cromstudio.com.ve/blog/posts/ipfire-buen-firewall-gratuito-proteccion-redes/</link>
+      <pubDate>Fri, 16 Oct 2026 03:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/ipfire-buen-firewall-gratuito-proteccion-redes/</guid>
+      <description>Para blindar tu infraestructura digital sin arruinar tu presupuesto, IPFire: un buen Firewall gratuito para mantenerte protegido, se posiciona como la solución definitiva. No hablamos de un simple programa de escritorio, sino de una distribución Linux completa (un sistema operativo autónomo) diseñada para instalarse en hardware económico y transformar cualquier equipo básico en un enrutador y cortafuegos de grado corporativo.&#xA;Depender exclusivamente del router que te entrega tu proveedor de internet es dejar la puerta abierta a ciberataques que pueden paralizar tu facturación.</description>
+    </item>
     <item>
       <title>Qué es DokuWiki y cómo funciona: Guía definitiva para crear wikis</title>
       <link>https://cromstudio.com.ve/blog/posts/que-es-dokuwiki-y-como-funciona/</link>

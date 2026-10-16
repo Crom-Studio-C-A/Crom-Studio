@@ -2,11 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://cromstudio.com.ve/blog/posts/que-son-las-subredes-guia-subnetting/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
     <loc>https://cromstudio.com.ve/blog/</loc>
-    <lastmod>2026-10-15T19:52:11+00:00</lastmod>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/</loc>
-    <lastmod>2026-10-15T19:52:11+00:00</lastmod>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/ciberseguridad/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/direccionamiento-ip/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/infraestructura-it/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/optimizaci%C3%B3n/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/redes-y-servidores/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/subnetting/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</loc>
+    <lastmod>2026-10-16T05:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/categories/ciberseguridad/</loc>
+    <lastmod>2026-10-16T03:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/firewall/</loc>
+    <lastmod>2026-10-16T03:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/ipfire/</loc>
+    <lastmod>2026-10-16T03:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/posts/ipfire-buen-firewall-gratuito-proteccion-redes/</loc>
+    <lastmod>2026-10-16T03:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/linux/</loc>
+    <lastmod>2026-10-16T03:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/open-source/</loc>
+    <lastmod>2026-10-16T03:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://cromstudio.com.ve/blog/tags/seguridad-inform%C3%A1tica/</loc>
+    <lastmod>2026-10-16T03:00:00-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/crom-studio/</loc>
     <lastmod>2026-10-15T19:52:11+00:00</lastmod>
@@ -23,23 +74,11 @@
     <loc>https://cromstudio.com.ve/blog/tags/php/</loc>
     <lastmod>2026-10-15T19:52:11+00:00</lastmod>
   </url><url>
-    <loc>https://cromstudio.com.ve/blog/posts/</loc>
-    <lastmod>2026-10-15T19:52:11+00:00</lastmod>
-  </url><url>
     <loc>https://cromstudio.com.ve/blog/posts/que-es-dokuwiki-y-como-funciona/</loc>
     <lastmod>2026-10-15T19:52:11+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/software-libre/</loc>
     <lastmod>2026-10-15T19:52:11+00:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/tags/</loc>
-    <lastmod>2026-10-15T19:52:11+00:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/categories/tecnolog%C3%ADa/</loc>
-    <lastmod>2026-10-15T19:52:11+00:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/tags/ciberseguridad/</loc>
-    <lastmod>2026-10-15T10:00:00-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/gemini-4-argon/</loc>
     <lastmod>2026-10-15T10:00:00-04:00</lastmod>
@@ -1071,9 +1110,6 @@
     <lastmod>2025-03-21T05:31:30-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/antivirus/</loc>
-    <lastmod>2025-03-21T05:30:06-04:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/categories/ciberseguridad/</loc>
     <lastmod>2025-03-21T05:30:06-04:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/tags/c%C3%B3mo-prevenir-ransomware/</loc>
@@ -2145,9 +2181,6 @@
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/seguridad/</loc>
-    <lastmod>2024-11-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://cromstudio.com.ve/blog/tags/seguridad-inform%C3%A1tica/</loc>
     <lastmod>2024-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://cromstudio.com.ve/blog/categories/seguridad-web/</loc>

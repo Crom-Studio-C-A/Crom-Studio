@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Direccionamiento IP on Blog - Crom Studio</title>
+    <link>https://cromstudio.com.ve/blog/tags/direccionamiento-ip/</link>
+    <description>Recent content in Direccionamiento IP on Blog - Crom Studio</description>
+    <generator>Hugo</generator>
+    <language>es</language>
+    <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
+    <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
+    <copyright>Blog Crom Studio</copyright>
+    <lastBuildDate>Fri, 16 Oct 2026 05:00:00 -0400</lastBuildDate>
+    <atom:link href="https://cromstudio.com.ve/blog/tags/direccionamiento-ip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>¿Qué son las subredes y por qué tu empresa necesita subnetting?</title>
+      <link>https://cromstudio.com.ve/blog/posts/que-son-las-subredes-guia-subnetting/</link>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/posts/que-son-las-subredes-guia-subnetting/</guid>
+      <description>Para responder de forma directa a qué son las subredes: se trata de divisiones lógicas e independientes creadas a partir de una red de computadoras principal (IP) mucho más grande. Esta partición permite aislar el tráfico, mejorar la seguridad operativa y evitar el colapso del ancho de banda al organizar los dispositivos en bloques manejables en lugar de mantenerlos todos conectados en un único y ruidoso canal de comunicación.&#xA;Implementar una estrategia de subnetting dejó de ser una tarea exclusiva de los grandes centros de datos.</description>
+    </item>
+  </channel>
+</rss>

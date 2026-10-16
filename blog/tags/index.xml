@@ -9,8 +9,78 @@
     <managingEditor>contacto@cromstudio.com.ve (Crom Studio)</managingEditor>
     <webMaster>contacto@cromstudio.com.ve (Crom Studio)</webMaster>
     <copyright>Blog Crom Studio</copyright>
-    <lastBuildDate>Thu, 15 Oct 2026 19:52:11 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 05:00:00 -0400</lastBuildDate>
     <atom:link href="https://cromstudio.com.ve/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ciberseguridad</title>
+      <link>https://cromstudio.com.ve/blog/tags/ciberseguridad/</link>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/ciberseguridad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Direccionamiento IP</title>
+      <link>https://cromstudio.com.ve/blog/tags/direccionamiento-ip/</link>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/direccionamiento-ip/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Infraestructura IT</title>
+      <link>https://cromstudio.com.ve/blog/tags/infraestructura-it/</link>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/infraestructura-it/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimización</title>
+      <link>https://cromstudio.com.ve/blog/tags/optimizaci%C3%B3n/</link>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/optimizaci%C3%B3n/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Subnetting</title>
+      <link>https://cromstudio.com.ve/blog/tags/subnetting/</link>
+      <pubDate>Fri, 16 Oct 2026 05:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/subnetting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Firewall</title>
+      <link>https://cromstudio.com.ve/blog/tags/firewall/</link>
+      <pubDate>Fri, 16 Oct 2026 03:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/firewall/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IPFire</title>
+      <link>https://cromstudio.com.ve/blog/tags/ipfire/</link>
+      <pubDate>Fri, 16 Oct 2026 03:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/ipfire/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://cromstudio.com.ve/blog/tags/linux/</link>
+      <pubDate>Fri, 16 Oct 2026 03:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/linux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open Source</title>
+      <link>https://cromstudio.com.ve/blog/tags/open-source/</link>
+      <pubDate>Fri, 16 Oct 2026 03:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/open-source/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Seguridad Informática</title>
+      <link>https://cromstudio.com.ve/blog/tags/seguridad-inform%C3%A1tica/</link>
+      <pubDate>Fri, 16 Oct 2026 03:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
+      <guid>https://cromstudio.com.ve/blog/tags/seguridad-inform%C3%A1tica/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Crom Studio</title>
       <link>https://cromstudio.com.ve/blog/tags/crom-studio/</link>
@@ -44,13 +114,6 @@
       <link>https://cromstudio.com.ve/blog/tags/software-libre/</link>
       <pubDate>Thu, 15 Oct 2026 19:52:11 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/software-libre/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ciberseguridad</title>
-      <link>https://cromstudio.com.ve/blog/tags/ciberseguridad/</link>
-      <pubDate>Thu, 15 Oct 2026 10:00:00 -0400</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/ciberseguridad/</guid>
       <description></description>
     </item>
     <item>
@@ -2949,13 +3012,6 @@
       <link>https://cromstudio.com.ve/blog/tags/seguridad/</link>
       <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
       <guid>https://cromstudio.com.ve/blog/tags/seguridad/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Seguridad Informática</title>
-      <link>https://cromstudio.com.ve/blog/tags/seguridad-inform%C3%A1tica/</link>
-      <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate><author>contacto@cromstudio.com.ve (Crom Studio)</author>
-      <guid>https://cromstudio.com.ve/blog/tags/seguridad-inform%C3%A1tica/</guid>
       <description></description>
     </item>
     <item>
